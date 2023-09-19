@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="/sunshineRoadUploadImg/**" location="file:///C:/finalproject/upload/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!--
+	<context:component-scan base-package="com.javajo.sunshineRoad" name-generator="com.javajo.sunshineRoad.config.ProjectBeanNameGenerator"/>
+	-->
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/member/**"/>
+			<exclude-mapping path="/admin/member/bookDetail"/>
+			<exclude-mapping path="/admin/member/bookDetail"/>
+			<exclude-mapping path="/admin/member/createAccountForm"/>
+			<exclude-mapping path="/admin/member/createAccountConfirm"/>
+			<exclude-mapping path="/admin/member/loginForm"/>
+			<exclude-mapping path="/admin/member/loginConfirm"/>
+			<exclude-mapping path="/admin/member/findPasswordForm"/>
+			<exclude-mapping path="/admin/member/findPasswordConfirm"/>
+			<beans:bean class="com.javajo.sunshineRoad.admin.member.AdminMemberLoginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/book/admin/**"/>
+			<exclude-mapping path="/book/admin/searchBookConfirm"/>
+			<exclude-mapping path="/book/admin/bookDetail"/>
+			<beans:bean class="com.javajo.sunshineRoad.admin.member.AdminMemberLoginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/book/user/rentalBookConfirm"/>
+			<mapping path="/book/user/enterBookshelf"/>
+			<mapping path="/book/user/listupRentalBookHistory"/>
+			<mapping path="/book/user/requestHopeBookForm"/>
+			<mapping path="/book/user/listupRequestHopeBook"/>
+			<mapping path="/user/member/**"/>
+			<exclude-mapping path="/user/member/createAccountForm"/>
+			<exclude-mapping path="/user/member/createAccountConfirm"/>
+			<exclude-mapping path="/user/member/loginForm"/>
+			<exclude-mapping path="/user/member/loginConfirm"/>
+			<exclude-mapping path="/user/member/findPasswordForm"/>
+			<exclude-mapping path="/user/member/findPasswordConfirm"/>
+			<beans:bean class="com.javajo.sunshineRoad.user.member.UserMemberLoginInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+</beans:beans>

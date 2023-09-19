@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;home.jsp, login_form.jsp, login_ng.jsp, login_ok.jsp&apos; to &apos;member&apos;" description="Move 4 resources to &apos;member&apos;" destination="src/main/webapp/WEB-INF/views/member" element1="src/main/webapp/WEB-INF/views/home.jsp" element2="src/main/webapp/WEB-INF/views/login_form.jsp" element3="src/main/webapp/WEB-INF/views/login_ng.jsp" element4="src/main/webapp/WEB-INF/views/login_ok.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="4" stamp="1683077246584" updateReferences="true"/>
+</session>
