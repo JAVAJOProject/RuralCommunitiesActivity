@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
-<aop-project name="BookRentalPtj"/>
 <aop-project name="RuralCommunitiesActivity"/>
 </aop-reference-model>
