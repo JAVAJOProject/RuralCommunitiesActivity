@@ -164,6 +164,7 @@ import MemberReservationInfoPage from './components/Service/page/myPage/Experien
 import RecActKeywordSelectedPage from './components/Service/page/recActivityPage/RecActKeywordSelectedPage';
 import RecActDetailPage from './components/Service/page/recActivityPage/RecActDetailPage';
 import ExPage from './components/Service/page/ExPage';
+import LoadingPage from './components/Intro/loading/LoadingPage';
 
 const router = createBrowserRouter([
   {
@@ -609,8 +610,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'test-ex',
-            element: <ExPage />,
-            // element: <LoadingPage />,
+            // element: <ExPage />,
+            element: <LoadingPage />,
           },
         ],
       },

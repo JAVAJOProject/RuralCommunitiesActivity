@@ -1,6 +1,6 @@
-import React from "react";
-import "./YellowActivityCardImg.css";
-import Favorites from "../../../../common/Favorite/Favorites";
+import React from 'react';
+import './YellowActivityCardImg.css';
+import Favorites from '../../../../common/Favorite/Favorites';
 
 export default function YellowActivityCardImg({ imgSrc, favoritesNum }) {
   return (
@@ -9,10 +9,11 @@ export default function YellowActivityCardImg({ imgSrc, favoritesNum }) {
       <Favorites
         favoritesNum={favoritesNum}
         style={{
-          position: "absolute",
-          bottom: "1rem",
-          left: "0.7rem",
-          opacity: "80%",
+          position: 'absolute',
+          bottom: '1rem',
+          left: '0.7rem',
+          opacity: '80%',
+          fontFamily: 'Jua',
         }}
       />
     </div>

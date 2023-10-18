@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageActivityReviewMapper">
+
+	<resultMap id="ActivityReviewInfoForClob"
+		type="ActivityReviewDTO">
+		<id property="revId" column="rev_id" />
+		<result property="uId" column="u_id" />
+		<result property="aPostId" column="a_post_id" />
+		<result property="rDateCreated" column="r_date_created" />
+		<result property="rContent" column="r_content" jdbcType="CLOB" />
+		<result property="rStarRating" column="r_star_rating" />
+		<result property="rTitile" column="r_title" />
+	</resultMap>
+
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT
+		COUNT(*) FROM ACTIVITY_REVIEW WHERE U_ID=#{uId}
+	</select>
+
+	<select id="selectByNo" parameterType="int"
+		resultType="ActivityReviewDTO">
+		SELECT
+		rev_id ,
+		u_id ,
+		a_post_id ,
+		r_date_created ,
+		r_content ,
+		r_star_rating ,
+		r_title
+		FROM
+		(SELECT ROW_NUMBER() OVER(ORDER BY R_DATE_CREATED DESC) NUM, R.* FROM
+		ACTIVITY_REVIEW R WHERE U_ID=#{uId})
+		WHERE NUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="insertRev" parameterType="ActivityReviewDTO">
+		INSERT INTO ACTIVITY_REVIEW
+		VALUES(ACTIVITY_REVIEW_SEQ.NEXTVAL, #{uId}, #{aPostId}, SYSDATE,
+		#{rContent}, #{rStarRating}, #{rTitle})
+	</select>
+	<!-- # 으로 변경 해야함 -->
+
+	<update id="updateRev" parameterType="ActivityReviewDTO">
+		UPDATE ACTIVITY_REVIEW SET
+		R_CONTENT = #{rContent} WHERE REV_ID = ${revId}
+	</update>
+</mapper>

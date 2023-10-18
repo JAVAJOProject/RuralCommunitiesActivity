@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.MemberCommunityMapper">
+    <resultMap id="MemberCommunityPostForClob" type="MemberCommunityPost">
+        <result property="uCommunityPostId" column="u_community_post_id" />
+        <result property="uId" column="u_id" />
+        <result property="uCommunityImgId" column="u_community_img_id" />
+        <result property="communityImgName" column="community_img_name" />
+        <result property="uCommunityContent" column="u_community_content" jdbcType="CLOB" javaType="java.lang.String" />
+        <result property="uCommunityDateCreated" column="u_community_date_created" />
+        <result property="communityLikeCnt" column="community_like_cnt" />
+        <result property="communityViewCnt" column="community_view_cnt" />
+        <result property="communityCumCnt" column="community_cum_cnt" />
+    </resultMap>
+
+<!--    Oracle-->
+    <select id="getRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob">
+        SELECT
+            u_community_post_id,
+            u_id,
+            u_community_img_id,
+            community_img_name,
+            u_community_content,
+            u_community_date_created,
+            community_like_cnt,
+            community_view_cnt,
+            community_cum_cnt
+        FROM (SELECT
+            post.u_community_post_id,
+            post.u_id,
+            post.u_community_img_id,
+            img.community_img_name,
+            post.u_community_content,
+            post.u_community_date_created,
+            post.community_like_cnt,
+            post.community_view_cnt,
+            post.community_cum_cnt
+        FROM
+            member_community post
+                INNER JOIN
+            community_post_img img ON (post.u_community_img_id = img.community_img_id)
+        WHERE
+            u_community_post_id > #{postId}
+        ORDER BY post.u_id desc)
+        WHERE ROWNUM <![CDATA[<=]]> #{perPagePostCount}
+    </select>
+
+    <select id="getOneRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" parameterType="int">
+        SELECT
+            post.u_community_post_id,
+            post.u_id,
+            post.u_community_img_id,
+            img.community_img_name,
+            post.u_community_content,
+            post.u_community_date_created,
+            post.community_like_cnt,
+            post.community_view_cnt,
+            post.community_cum_cnt
+        FROM
+            member_community post
+                INNER JOIN
+            community_post_img img ON (post.u_community_img_id = img.community_img_id)
+        WHERE
+            u_community_post_id = #{postId}
+    </select>
+
+    <insert id="postRequestMemberCommunityPost" parameterType="MemberCommunityPost">
+        INSERT INTO member_community (
+            u_community_post_id,
+            u_id,
+            post_type_id,
+            u_community_img_id,
+            u_community_content,
+            u_community_date_created,
+            community_like_cnt,
+            community_view_cnt,
+            community_cum_cnt)
+        VALUES
+            (member_community_seq.NEXTVAL, #{uId}, DEFAULT, #{uCommunityImgId}, #{uCommunityContent}, SYSTIMESTAMP, DEFAULT, DEFAULT, DEFAULT)
+    </insert>
+
+    <update id="updateMemberCommunityPost" parameterType="MemberCommunityPost">
+        UPDATE member_community
+        SET u_id = #{uId},
+            u_community_img_id = #{uCommunityImgId},
+            u_community_content = #{uCommunityContent}
+        WHERE u_community_post_id = #{uCommunityPostId}
+    </update>
+
+    <delete id="deleteMemberCommunityPost" parameterType="int">
+        DELETE FROM member_community WHERE u_community_post_id = #{uCommunityPostId}
+    </delete>
+
+    <select id="checkAuthorMemberBeforeUpdatingOrDeletingPost" parameterType="MemberCommunityPost">
+        SELECT COUNT(*) FROM member_community WHERE u_community_post_id = #{uCommunityPostId} AND u_id = #{uId}
+    </select>
+
+<!--    MySQL-->
+<!--    <select id="getRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob">-->
+<!--        SELECT-->
+<!--            post.u_community_post_id,-->
+<!--            post.u_id,-->
+<!--            post.u_community_img_id,-->
+<!--            img.community_img_name,-->
+<!--            post.u_community_content,-->
+<!--            post.u_community_date_created,-->
+<!--            post.community_like_cnt,-->
+<!--            post.community_view_cnt,-->
+<!--            post.community_cum_cnt-->
+<!--        FROM-->
+<!--            member_community post-->
+<!--                INNER JOIN-->
+<!--            community_post_img img ON (post.u_community_img_id = img.community_img_id)-->
+<!--        WHERE-->
+<!--            u_community_post_id > #{postId}-->
+<!--            LIMIT #{perPagePostCount}-->
+<!--    </select>-->
+
+<!--    <select id="getOneRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" parameterType="int">-->
+<!--        SELECT-->
+<!--            post.u_community_post_id,-->
+<!--            post.u_id,-->
+<!--            post.u_community_img_id,-->
+<!--            img.community_img_name,-->
+<!--            post.u_community_content,-->
+<!--            post.u_community_date_created,-->
+<!--            post.community_like_cnt,-->
+<!--            post.community_view_cnt,-->
+<!--            post.community_cum_cnt-->
+<!--        FROM-->
+<!--            member_community post-->
+<!--                INNER JOIN-->
+<!--            community_post_img img ON (post.u_community_img_id = img.community_img_id)-->
+<!--        WHERE-->
+<!--            u_community_post_id = #{postId}-->
+<!--    </select>-->
+
+<!--    <insert id="postRequestMemberCommunityPost" parameterType="MemberCommunityPost">-->
+<!--        INSERT INTO member_community (-->
+<!--            u_community_post_id,-->
+<!--            u_id,-->
+<!--            post_type_id,-->
+<!--            u_community_img_id,-->
+<!--            u_community_content,-->
+<!--            u_community_date_created,-->
+<!--            community_like_cnt,-->
+<!--            community_view_cnt,-->
+<!--            community_cum_cnt)-->
+<!--        VALUES-->
+<!--            (NULL, #{uId}, DEFAULT, #{uCommunityImgId}, #{uCommunityContent}, CURRENT_TIMESTAMP, DEFAULT, DEFAULT, DEFAULT)-->
+<!--    </insert>-->
+
+<!--    <update id="updateMemberCommunityPost" parameterType="MemberCommunityPost">-->
+<!--        UPDATE member_community-->
+<!--        SET-->
+<!--            u_id = #{uId},-->
+<!--            u_community_img_id = #{uCommunityImgId},-->
+<!--            u_community_content = #{uCommunityContent}-->
+<!--        WHERE-->
+<!--            u_community_post_id = #{uCommunityPostId}-->
+<!--    </update>-->
+
+<!--    <delete id="deleteMemberCommunityPost" parameterType="int">-->
+<!--        DELETE FROM member_community WHERE u_community_post_id = #{uCommunityPostId}-->
+<!--    </delete>-->
+
+<!--    <select id="checkAuthorMemberBeforeUpdatingOrDeletingPost" parameterType="MemberCommunityPost">-->
+<!--        SELECT COUNT(*) FROM member_community WHERE u_community_post_id = #{uCommunityPostId} AND u_id = #{uId}-->
+<!--    </select>-->
+</mapper>
