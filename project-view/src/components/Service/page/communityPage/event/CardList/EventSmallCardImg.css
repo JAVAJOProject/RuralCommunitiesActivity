@@ -1,0 +1,13 @@
+.eventSmallCardImgBox {
+  height: 14.54469rem;
+  width: fit-content;
+  position: relative;
+  margin: 0.8rem;
+}
+
+.eventSmallCardImg {
+  width: 14.44006rem;
+  height: 14.54469rem;
+  border-radius: 0.3125rem;
+  object-fit: fill;
+}

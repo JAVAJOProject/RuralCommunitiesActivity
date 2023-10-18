@@ -1,0 +1,14 @@
+.ratingDataTableBodyMedal {
+  width: 8.625rem;
+  height: 3.3125rem;
+  border-radius: 0.4375rem;
+}
+
+.ratingDataTableBodyMedal > img {
+  width: 2.375rem;
+  line-height: 3.3125rem;
+  object-fit: contain;
+  mix-blend-mode: darken;
+  display: block;
+  margin: auto;
+}

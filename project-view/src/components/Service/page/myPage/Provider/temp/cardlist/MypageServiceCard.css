@@ -1,0 +1,20 @@
+.mypageServiceCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.mypageServiceCardContent {
+  margin-bottom: 1.5rem;
+}
+
+.mypageServiceCardUl {
+  display: flex;
+  margin: 1rem 1.5rem 0;
+}
+
+.mypageServiceCardUl > div:first-of-type {
+  padding-right: 6rem;
+}

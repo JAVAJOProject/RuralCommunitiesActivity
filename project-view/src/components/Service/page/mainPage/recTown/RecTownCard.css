@@ -1,0 +1,28 @@
+.recTownCard {
+  width: 60rem;
+  height: 20rem;
+  border-radius: 0.9375rem;
+  background: rgba(255, 184, 0, 0.12);
+  margin: 1rem auto 1rem;
+}
+.recTownCard {
+  display: flex;
+  align-items: center;
+}
+
+.mainRecTownImg_left {
+  position: relative;
+}
+.mainRecTownImg_left .recTownContent {
+  position: absolute;
+  left: 32rem;
+}
+
+.mainRecTownImg_right {
+  justify-content: end;
+  position: relative;
+}
+.mainRecTownImg_right .recTownContent {
+  position: absolute;
+  right: 31.5rem;
+}

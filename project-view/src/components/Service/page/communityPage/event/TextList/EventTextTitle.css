@@ -1,0 +1,10 @@
+.eventTextTitle {
+  width: 16rem;
+}
+
+.eventTextTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.2rem;
+  font-weight: 400;
+}

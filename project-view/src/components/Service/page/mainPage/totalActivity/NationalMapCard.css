@@ -1,0 +1,9 @@
+.nationalMapCard {
+  width: 23rem;
+  height: 25.2rem;
+  border-radius: 1.25rem;
+  border: 2px solid #dfdfdf;
+  background: rgba(232, 230, 210, 0.1);
+  margin: 1rem;
+  margin-right: 0;
+}

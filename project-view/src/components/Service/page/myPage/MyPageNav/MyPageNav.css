@@ -1,0 +1,17 @@
+.myPageNav {
+  position: relative;
+}
+
+.myPageNavTitleBox {
+  position: relative;
+  width: 88%;
+  height: 7rem;
+}
+
+.myPageNavBoxes {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 1rem;
+  margin-bottom: 3rem;
+}

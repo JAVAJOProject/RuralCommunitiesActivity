@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.RegTotalActivityMapper">
+	<!-- insert -->
+	<select id="getRegActivityData" resultType="TotalActivityContent">
+		SELECT
+		A.a_id, A.s_id, A.sigungu_id, A.a_theme_id, 
+		A.a_start_date, A.a_end_date,
+		A.a_addr, A.a_name, A.a_one_liner,
+		A.a_min_people, A.a_max_people,
+		A.a_charge,
+		A.a_thumbnail_img,
+		A.s_site, A.a_reservation_deadline,
+		B.a_post_id,
+		B.a_img_id,
+		B.a_post_content, B.a_view_cnt,
+		B.a_favorite_cnt,
+		B.a_post_date_created,
+		C.a_img1, C.a_img2, C.a_img3, C.a_img4, C.a_img5
+		FROM activity_info A
+		LEFT OUTER JOIN
+		activity_post B ON A.a_id = B.a_id
+		LEFT OUTER JOIN
+		activity_images C ON B.a_img_id = C.a_img_id
+	</select>
+
+	<insert id="insertTotalActivityInfoData"
+		parameterType="TotalActivityContent">
+		INSERT INTO activity_info (
+		a_id, s_id, sigungu_id, a_theme_id, 
+		a_start_date,
+		a_end_date, 
+		a_addr, a_name, a_one_liner, 
+		a_min_people, a_max_people,
+		a_charge, s_site, 
+		a_reservation_deadline
+		)
+		VALUES (
+		activity_info_seq.NEXTVAL,
+		#{sId}, #{sigunguId}, #{aThemeId},
+		TO_DATE(#{aStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+		TO_DATE(#{aEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
+		#{aAddr}, #{aName}, #{aOneLiner}, 
+		#{aMinPeople}, #{aMaxPeople}, 
+		#{aCharge}, #{sSite},
+		TO_DATE(#{aReservationDeadline}, 'YYYY-MM-DD HH24:MI:SS')
+		)
+	</insert>
+	<insert id="insertTotalActivityPostData"
+		parameterType="TotalActivityContent">
+		INSERT
+		INTO activity_post (
+		a_post_id, 
+		a_id, a_img_id,
+		a_post_content, 
+		a_view_cnt, a_favorite_cnt, 
+		a_post_date_created
+		)
+		VALUES (
+		activity_post_seq.NEXTVAL,
+		#{aId}, #{aImgId}, 
+		#{aPostContent},
+		#{aViewCnt}, #{aFavoriteCnt},
+		SYSTIMESTAMP
+		)
+	</insert>
+	<select id="getTotalActivityCurrentIdData" resultType="int">
+		SELECT MAX(a_id) FROM activity_info
+	</select>
+
+	<select id="getTotalActivityImgCurrentIdData" resultType="int">
+		SELECT MAX(a_img_id) FROM activity_images
+	</select>
+
+	<insert id="insertTotalActivityImagesData" parameterType="TotalActivityImages">
+		INSERT INTO activity_images
+		VALUES (activity_images_seq.NEXTVAL, #{aImg1}, #{aImg2}, #{aImg3},
+		#{aImg4}, #{aImg5})
+	</insert>
+
+	<update id="updateTotalActivityImagesIdInfoData" parameterType="TotalActivityContent">
+		UPDATE activity_info SET a_img_id = #{aImgId} WHERE a_id = #{aId}		
+	</update>
+	
+	<!-- update -->
+	<update id="updateTotalActivityInfoData"
+		parameterType="TotalActivityContent">
+		UPDATE activity_info
+		SET
+		a_img_id = #{aImgId},
+		sigungu_id =
+		#{sigunguId},
+		a_theme_id = #{aThemeId},
+		a_start_date =
+		to_timestamp(#{aStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+		a_end_date =
+		to_timestamp(#{aEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
+		a_addr = #{aAddr},
+		a_name = #{aName},
+		a_one_liner = #{aOneLiner},
+		a_min_people =
+		#{aMinPeople},
+		a_max_people = #{aMaxPeople},
+		a_charge =
+		#{aCharge},
+		s_site = #{sSite},
+		a_reservation_deadline =
+		to_timestamp(#{aReservationDeadline}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE
+		a_id = #{aId}
+	</update>
+	<update id="updateTotalActivityPostData"
+		parameterType="TotalActivityContent">
+		UPDATE activity_post
+		SET
+		a_post_content = #{aPostContent,
+		jdbcType=CLOB}
+		WHERE a_post_id = #{aId}
+	</update>
+	<update id="updateTotalActivityImgData"
+		parameterType="TotalActivityContent">
+		UPDATE activity_images
+		SET
+		a_img1 = #{aImg1},
+		a_img2 =
+		#{aImg2},
+		a_img3 = #{aImg3},
+		a_img4 = #{aImg4},
+		a_img5 = #{aImg5}
+		WHERE
+		a_img_id = #{aId}
+	</update>
+
+	<delete id="deleteTotalActivityInfoData" parameterType="int">
+		DELETE
+		FROM
+		activity_info
+		WHERE a_id = #{aId}
+	</delete>
+	<delete id="deleteTotalActivityPostData" parameterType="int">
+		DELETE
+		FROM activity_post
+		WHERE a_post_id = #{aId}
+	</delete>
+	<delete id="deleteTotalActivityImgData" parameterType="int">
+		DELETE
+		FROM activity_images
+		WHERE a_img_id = #{aId}
+	</delete>
+</mapper>

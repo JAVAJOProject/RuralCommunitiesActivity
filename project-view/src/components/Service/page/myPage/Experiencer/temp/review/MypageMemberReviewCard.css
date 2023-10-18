@@ -1,0 +1,10 @@
+.mypageMemberReviewCard {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+.mypageMemberReviewCardBox > div {
+  margin-top: 3rem;
+}

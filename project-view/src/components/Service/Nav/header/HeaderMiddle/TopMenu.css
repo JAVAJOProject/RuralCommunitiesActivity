@@ -1,0 +1,40 @@
+.topMenu {
+  height: 4.5rem;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* .topMenu:hover,
+.topMenu:hover .topMenuText {
+  background: #ffb800;
+  color: #fff;
+} */
+.activeTopMenu:active {
+  background: #ffb800;
+  color: #fff;
+}
+
+.topMenuText {
+  text-decoration: none;
+  color: #000;
+  font-family: SUITE Variable;
+  font-size: 1.3rem;
+  font-weight: 600;
+  width: fit-content;
+  height: fit-content;
+}
+@media all and (min-width: 1101px) {
+  .topMenu {
+    width: 10rem;
+  }
+}
+@media all and (max-width: 1100px) {
+  .topMenu {
+    width: 8rem;
+  }
+}

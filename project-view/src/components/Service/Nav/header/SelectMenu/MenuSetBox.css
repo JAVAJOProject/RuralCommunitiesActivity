@@ -1,0 +1,20 @@
+.menuSetBox {
+  height: 14rem;
+}
+
+.menuSetBox:hover,
+.menuSetBox:hover .detailMenuText {
+  background: #ffb800;
+  color: #fff;
+}
+
+@media all and (min-width: 1101px) {
+  .menuSetBox {
+    width: 10rem;
+  }
+}
+@media all and (max-width: 1100px) {
+  .menuSetBox {
+    width: 8rem;
+  }
+}

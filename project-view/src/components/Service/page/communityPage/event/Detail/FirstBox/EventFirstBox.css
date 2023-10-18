@@ -1,0 +1,11 @@
+.eventFirstBox {
+  width: 58.1875rem;
+  height: 7rem;
+  border-radius: 0.4375rem;
+  background: rgba(211, 196, 118, 0.17);
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-right: 5rem;
+}

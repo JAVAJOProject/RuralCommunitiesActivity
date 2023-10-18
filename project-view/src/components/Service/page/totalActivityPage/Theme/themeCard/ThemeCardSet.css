@@ -1,0 +1,8 @@
+.themeActivityBox {
+  display: flex;
+  padding: 0.5rem;
+}
+
+.themeActivityBox > div {
+  margin: 1rem;
+}

@@ -1,0 +1,5 @@
+.totalActMainTitleImgBox > img {
+  width: 6rem;
+  height: 7.25rem;
+  mix-blend-mode: darken;
+}

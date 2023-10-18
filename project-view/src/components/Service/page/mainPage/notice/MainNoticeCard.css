@@ -1,0 +1,16 @@
+.noticeCard {
+  width: 40rem;
+  height: 25rem;
+  border-radius: 1.25rem;
+  border: 2px solid #dfdfdf;
+  background: rgba(232, 230, 210, 0.1);
+  margin: auto 1rem;
+}
+
+.noticeCard h3 {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0.7rem auto 0.5rem;
+}

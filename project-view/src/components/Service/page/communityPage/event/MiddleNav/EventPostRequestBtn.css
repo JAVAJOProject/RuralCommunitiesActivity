@@ -1,0 +1,16 @@
+.eventPostRequestBtn {
+  width: 12.875rem;
+  height: 3.4375rem;
+  border-radius: 0.625rem;
+  background: #000;
+  margin: 1.4rem;
+  cursor: pointer;
+}
+
+.eventPostRequestBtn > p {
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+}

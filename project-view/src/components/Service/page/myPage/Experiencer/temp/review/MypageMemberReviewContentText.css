@@ -1,0 +1,14 @@
+.mypageMemberReviewContentText {
+  width: fit-content;
+  height: fit-content;
+	margin: 1rem auto
+}
+
+.mypageMemberReviewContentText > p {
+  width: 29.8125rem;
+  height: 6.375rem;
+  text-align: justify;
+  font-family: SUITE Variable;
+  font-size: 0.875rem;
+  font-weight: 400;
+}

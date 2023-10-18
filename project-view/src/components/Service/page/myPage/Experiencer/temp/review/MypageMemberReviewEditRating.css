@@ -1,0 +1,43 @@
+.mypageMemberReviewEditRating {
+  position: absolute;
+  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.mypageMemberReviewEditRating > label {
+  font-family: Jua;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-right: 0.3rem;
+}
+
+.mypageMemberReviewEditRating > select {
+  width: 2.875rem;
+  height: 1.625rem;
+  border-radius: 0.3125rem;
+  background: #ffd05c;
+  border-style: none;
+
+  font-family: Jua;
+  font-size: 1rem;
+  font-weight: 400;
+}
+/* .mypagememberrevieweditrating > select:: {
+} */
+
+.mypageMemberReviewEditRating option {
+  text-indent: 0.5rem;
+  background: #ffd05c;
+  color: #ff9c06;
+  text-align: center;
+}
+.mypageMemberReviewEditRating option:checked,
+.mypageMemberReviewEditRating option:hover,
+.mypageMemberReviewEditRating option:focus {
+  color: #ff6006;
+  background: #ffd05c;
+
+  border-radius: 0.3125rem;
+  border-style: none;
+}

@@ -1,0 +1,32 @@
+.mainBigContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 18rem;
+  height: 25.2rem;
+  border-radius: 1.25rem;
+  background: rgba(233, 233, 233, 0.74);
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.mainBigContent p {
+  margin: 0.5rem;
+}
+
+.mainBigTitle {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.mainBigSubtitle {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 0.9rem;
+  font-weight: 400;
+}

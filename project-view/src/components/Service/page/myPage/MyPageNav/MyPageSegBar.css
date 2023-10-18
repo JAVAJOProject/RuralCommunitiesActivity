@@ -1,0 +1,8 @@
+.myPageSegBar {
+  clear: both;
+  width: 80%;
+  height: 1.1875rem;
+  margin: auto;
+  border-radius: 1.25rem;
+  background: #d9d9d9;
+}

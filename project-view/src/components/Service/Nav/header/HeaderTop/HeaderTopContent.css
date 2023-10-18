@@ -1,0 +1,17 @@
+.contentBox {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.contentBox p {
+  color: #fff;
+  font-family: SUITE Variable;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration-line: none;
+  width: fit-content;
+  height: fit-content;
+  white-space: nowrap;
+}

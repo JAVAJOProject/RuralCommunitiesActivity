@@ -1,0 +1,10 @@
+.myPageMemberContentxBox {
+  border-radius: 0.625rem;
+  background: #fff;
+  box-shadow: -5px 6px 15px 7px rgba(165, 149, 83, 0.15);
+  padding: 2.5rem 5rem 3rem;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
+  margin-bottom: 2rem;
+}

@@ -1,0 +1,8 @@
+.eventFirstBoxMiniBox {
+  display: flex;
+  align-items: center;
+}
+
+.eventFirstBoxMiniBox > div {
+  margin: 0.3rem;
+}

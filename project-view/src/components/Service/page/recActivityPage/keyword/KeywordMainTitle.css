@@ -1,0 +1,30 @@
+.keywordMainTitle {
+  width: fit-content;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.keywordMainTitle > p:first-of-type {
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.8125rem;
+  font-weight: 400;
+}
+
+.keywordMainTitle > img {
+  width: 10.875rem;
+  mix-blend-mode: darken;
+  margin-top: -1rem;
+}
+
+.keywordMainTitle > p:last-of-type {
+  margin-top: -1.5rem;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+}

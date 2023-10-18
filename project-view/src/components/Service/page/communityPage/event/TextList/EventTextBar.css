@@ -1,0 +1,18 @@
+.eventTextListTextBarBox {
+  width: 59.9375rem;
+  height: 5.0625rem;
+  margin: 1rem auto;
+  border-radius: 0.75rem;
+  background: rgba(211, 196, 118, 0.17);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventTextListTextBarBox:hover {
+  background: rgba(255, 184, 0, 0.4);
+}
+
+.eventTextListTextBarBox > div {
+  margin: 0.5rem;
+}

@@ -1,0 +1,23 @@
+.adminDashboardNavBox {
+  width: 9.0625rem;
+  height: 2.5625rem;
+  border-radius: 1.25rem;
+  border: 1px solid #f3f6ff;
+  box-shadow: 1px 1px 1px 1px rgba(5, 94, 182, 0.2);
+  margin: 0.5rem;
+}
+
+.adminDashboardNavBox a {
+  text-decoration: none;
+}
+
+.adminDashboardNavText {
+  color: #e7ecfc;
+  text-shadow: 1px 1px 0px #e7ecfc;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+  height: 2.5625rem;
+  line-height: 2.5625rem;
+  text-align: center;
+}

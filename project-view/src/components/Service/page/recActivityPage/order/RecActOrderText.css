@@ -1,0 +1,19 @@
+.recActOrderText,
+.recActOrderTextActive {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.recActOrderText p {
+  color: #9f9f9f;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.recActOrderTextActive p {
+  color: #3e3e3e;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

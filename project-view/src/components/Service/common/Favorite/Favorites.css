@@ -1,0 +1,5 @@
+.heart {
+  width: 1.8rem;
+  mix-blend-mode: darken;
+  cursor: pointer;
+}

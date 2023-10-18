@@ -1,0 +1,15 @@
+.titleFaqImg {
+  width: 22rem;
+  mix-blend-mode: darken;
+  margin: auto;
+  margin-bottom: -2rem;
+  display: block;
+}
+
+.titleFaqText p {
+  color: #316dc6;
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.1rem;
+  font-weight: 400;
+}

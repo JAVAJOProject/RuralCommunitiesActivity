@@ -1,0 +1,9 @@
+.noticeContentImg {
+  padding: 3rem;
+}
+
+.noticeContentImg > img {
+  max-width: 39.375rem;
+  display: block;
+  margin: auto;
+}

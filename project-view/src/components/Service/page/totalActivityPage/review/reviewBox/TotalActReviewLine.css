@@ -1,0 +1,8 @@
+.totalActReviewLine {
+  margin: 1rem auto;
+}
+
+.totalActReviewLine > hr {
+  width: 23rem;
+  border: 0.03rem solid black;
+}

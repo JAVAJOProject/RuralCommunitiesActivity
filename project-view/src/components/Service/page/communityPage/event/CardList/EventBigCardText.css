@@ -1,0 +1,16 @@
+.eventBigCardTextBox {
+  width: 24rem;
+  height: 16.875rem;
+}
+
+.eventBigCardTextTitle {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 2rem auto 1rem;
+}
+
+.eventBigCardTextBox > ul {
+  margin-left: 3rem;
+}

@@ -1,0 +1,71 @@
+.eventApplyBtnBox {
+  border-radius: 6.25rem;
+  background: rgba(148, 193, 91, 0.35);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.eventApplyBtnBoxBig {
+  float: right;
+  margin-top: 0.7rem;
+  margin-right: 1.8rem;
+  width: 10.375rem;
+  height: 3.25rem;
+}
+.eventApplyBtnBoxSmall {
+  width: 8.33856rem;
+  height: 2.58275rem;
+  margin: auto;
+  margin-top: 0.6rem;
+}
+.eventApplyBtnBoxRed {
+  background: rgba(232, 118, 118, 0.65);
+}
+.eventApplyBtnBox:hover {
+  background: rgba(148, 193, 91, 0.65);
+}
+.eventApplyBtnBoxRed:hover {
+  background: rgba(232, 118, 118, 0.856);
+}
+
+.eventApplyBtnCircleBack {
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.683);
+}
+.eventApplyBtnCircleBig {
+  width: 2.6875rem;
+  height: 2.6875rem;
+  margin-right: 0.5rem;
+  margin-left: 0.3rem;
+}
+.eventApplyBtnCircleSmall {
+  width: 2.06619rem;
+  height: 2.06619rem;
+  margin-left: 0.2rem;
+  margin-right: 0.5rem;
+}
+
+.eventApplyBtnCircle > img {
+  mix-blend-mode: darken;
+  opacity: 70%;
+}
+.eventApplyBtnCircleBig > img {
+  width: 2.6875rem;
+  height: 2.6875rem;
+}
+.eventApplyBtnCircleSmall > img {
+  width: 2.21381rem;
+  height: 2.21381rem;
+}
+
+.eventApplyBtnBox > p {
+  text-align: center;
+  font-family: Jua;
+  font-weight: 400;
+}
+.eventApplyBtnBoxBig > p {
+  font-size: 1.55rem;
+}
+.eventApplyBtnBoxSmall > p {
+  font-size: 1.25rem;
+}

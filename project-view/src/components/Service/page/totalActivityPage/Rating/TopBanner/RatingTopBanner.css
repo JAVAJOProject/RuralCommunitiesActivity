@@ -1,0 +1,15 @@
+.ratingTopBanner {
+  width: 100vw;
+  height: fit-content;
+  background: #bee2b6;
+  margin: 3rem 0;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ratingTopBanner > div {
+  display: flex;
+}
+

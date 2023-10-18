@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerMapper">
+	<select id="selectByNo" parameterType="int"
+		resultType="SellerDTO">
+		SELECT * FROM SELLER WHERE S_ID=#{sId}
+	</select>
+	<!-- <delete id="delMember" parameterType="int"> DELETE FROM MEMBER WHERE 
+		U_ID=#{uId} </delete> -->
+</mapper>
+
+<!-- parameterType : 넣어야 하는 변수 타입 -->
+<!-- resultType : 반환되는 결과(한 row) 타입 -->
+<!-- #{} : '' 이 자동으로 씌워져서 들어감 -> 문자열에 적합 -->
+<!-- ${} : 변수 그대로 들어감 -> 정수형에 적합 -->

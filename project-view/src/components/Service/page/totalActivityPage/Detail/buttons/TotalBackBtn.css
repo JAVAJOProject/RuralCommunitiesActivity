@@ -1,0 +1,27 @@
+.totalBackBtn {
+  width: 11.5rem;
+  height: 3.5rem;
+  border-radius: 6.25rem;
+  background: rgba(232, 118, 118, 0.65);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.totalBackBtn:hover {
+  background: rgba(232, 118, 118, 0.856);
+}
+
+.totalBackBtn > img {
+  margin-left: 0.3rem;
+  width: 3rem;
+  mix-blend-mode: darken;
+}
+
+.totalBackBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.875rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}

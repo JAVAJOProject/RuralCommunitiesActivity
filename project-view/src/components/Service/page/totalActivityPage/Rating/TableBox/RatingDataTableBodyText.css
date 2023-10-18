@@ -1,0 +1,20 @@
+.ratingDataTableBodyText {
+  border-radius: 0.4375rem;
+}
+
+.ratingDataTableBodyText > p {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 3.261rem;
+}
+
+.ratingDataTableBodyTextNarrow {
+  width: 10.55131rem;
+  height: 3.261rem;
+}
+.ratingDataTableBodyTextWide {
+  width: 18.68069rem;
+  height: 3.261rem;
+}

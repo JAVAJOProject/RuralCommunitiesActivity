@@ -1,0 +1,15 @@
+.eventCard {
+  width: 18rem;
+  height: 25rem;
+  border-radius: 1.25rem;
+  background: rgba(246, 186, 45, 0.49);
+  margin: auto 1rem;
+}
+
+.eventCard h3 {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem auto 2rem;
+}

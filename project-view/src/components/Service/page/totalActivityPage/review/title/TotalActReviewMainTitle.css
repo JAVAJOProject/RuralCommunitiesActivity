@@ -1,0 +1,20 @@
+.totalActReviewMainTitle {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+.totalActReviewMainTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.1875rem;
+  font-weight: 400;
+}
+
+.totalActReviewMainTitle > img {
+  width: 4.3125rem;
+  mix-blend-mode: darken;
+  margin-left: -0.5rem;
+  margin-bottom: 0.15rem;
+}

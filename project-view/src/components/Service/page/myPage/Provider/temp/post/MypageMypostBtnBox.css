@@ -1,0 +1,10 @@
+.mypageMypostBtnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2.5rem;
+}
+
+.mypageMypostBtnBox > div {
+  margin: auto 1rem;
+}

@@ -1,0 +1,16 @@
+.ratingCategoryTextBox {
+  width: 8.625rem;
+  height: 2.625rem;
+  border-radius: 1.875rem;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ratingCategoryTextBox > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+}

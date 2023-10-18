@@ -1,0 +1,9 @@
+.eventMiddleNav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventMiddleNav div:last-of-type {
+  margin-right: 1.3rem;
+}

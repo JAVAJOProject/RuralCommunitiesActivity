@@ -1,0 +1,12 @@
+.totalActReviewBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem auto;
+}
+.totalActReviewBox:not(div:last-of-type),
+.totalActReviewBox > hr {
+  display: block;
+}

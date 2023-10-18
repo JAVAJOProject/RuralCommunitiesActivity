@@ -1,0 +1,10 @@
+.mypageReservationTitleBox {
+  display: flex;
+  align-items: end;
+  margin-bottom: 1.5rem;
+  margin-left: -2.5rem;
+}
+
+.mypageReservationTitleSet {
+  display: block;
+}

@@ -1,0 +1,21 @@
+.contentTitle div {
+  text-align: center;
+  font-weight: 400;
+}
+
+.mainTitle {
+  font-family: Jua;
+  font-size: 2.3rem;
+}
+
+.subtitles {
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.subtitle {
+  font-family: SUITE Variable;
+  font-size: 1.2rem;
+  padding: 1rem 2rem 2rem;
+}

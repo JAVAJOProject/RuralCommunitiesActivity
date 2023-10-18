@@ -1,0 +1,10 @@
+.totalActMainTitleSet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: -2.5rem;
+}
+
+.totalActMainTitleSet > div {
+  margin: 0.5rem;
+}

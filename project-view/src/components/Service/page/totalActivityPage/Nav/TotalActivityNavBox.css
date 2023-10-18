@@ -1,0 +1,33 @@
+.totalActivityNavBox {
+  width: 15.5rem;
+  height: 4.4375rem;
+  border-radius: 0.625rem;
+  background: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.totalActivityNavBoxActive {
+  border: 2px solid #6b6b6b;
+  background: rgba(237, 237, 237, 0);
+}
+
+.totalActivityNavBox a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalActivityNavBox p {
+  width: fit-content;
+  height: fit-content;
+  color: #000;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.375rem;
+  font-weight: 400;
+  display: block;
+}

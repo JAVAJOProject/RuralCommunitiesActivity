@@ -1,0 +1,32 @@
+.keywordBox {
+  width: 8.5rem;
+  height: 2.8rem;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+  margin: 1.5rem;
+  line-height: 2.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+}
+
+.keywordBox:hover {
+  background: #9fe3a9;
+}
+
+.keywordBox p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  color: #000;
+}
+
+.keywordBoxActive {
+  background: #55825c;
+}
+.keywordBoxActive p {
+  color: #fff;
+}

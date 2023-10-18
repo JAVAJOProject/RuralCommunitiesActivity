@@ -1,0 +1,10 @@
+.ratingCategoryCard {
+  width: 10.1875rem;
+  height: 10.1875rem;
+  border-radius: 0.625rem;
+  background: rgba(255, 206, 80, 0.31);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

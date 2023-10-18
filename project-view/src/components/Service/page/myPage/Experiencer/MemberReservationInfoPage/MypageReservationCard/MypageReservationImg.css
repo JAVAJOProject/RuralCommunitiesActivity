@@ -1,0 +1,14 @@
+.mypageReservationImg {
+  height: 18.375rem;
+  width: 18.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center; /*3개 ㄱ기본 */
+}
+
+.mypageReservationImg > img {
+  width: 15.5rem;
+  height: 14.9375rem;
+  border-radius: 0.625rem;
+  object-fit: cover;
+}

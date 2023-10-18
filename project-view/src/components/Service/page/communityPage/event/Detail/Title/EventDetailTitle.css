@@ -1,0 +1,11 @@
+.eventDetailTitle {
+  width: 58.1875rem;
+  height: 4.25rem;
+  border-radius: 0.4375rem;
+  background: rgba(255, 184, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 1rem auto;
+}

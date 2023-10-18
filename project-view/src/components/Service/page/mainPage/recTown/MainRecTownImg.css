@@ -1,0 +1,13 @@
+.mainRecTownImg {
+  display: block;
+  width: fit-content;
+  height: fit-content;
+}
+.mainRecTownImg img {
+  display: block;
+  width: 27rem;
+  height: 18.5rem;
+  border-radius: 0.9375rem;
+  object-fit: cover;
+  margin: 0 1rem 0;
+}

@@ -1,0 +1,6 @@
+.recActOrderBox {
+  display: flex;
+  float: right;
+  margin-top: -5rem;
+  margin-right: -2rem;
+}

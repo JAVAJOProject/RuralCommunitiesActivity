@@ -1,0 +1,9 @@
+.ratingDataTableHead th {
+  border-radius: 0.4375rem;
+  background: #245247;
+  color: #fff;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

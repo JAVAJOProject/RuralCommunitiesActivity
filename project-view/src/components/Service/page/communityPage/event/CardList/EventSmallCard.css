@@ -1,0 +1,13 @@
+.eventSmallCard {
+  width: 16.16656rem;
+  height: 28.25225rem;
+  border-radius: 0.9375rem;
+  background: rgba(211, 196, 118, 0.17);
+  align-items: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.eventSmallCard:hover {
+  background: rgba(255, 184, 0, 0.4);
+}

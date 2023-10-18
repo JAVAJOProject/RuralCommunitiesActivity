@@ -1,0 +1,22 @@
+{
+  "short_name": "농촌빛길",
+  "name": "농촌빛길 : 농어촌 체험 중개 사이트",
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png"
+    },
+    {
+      "src": "logo.png",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

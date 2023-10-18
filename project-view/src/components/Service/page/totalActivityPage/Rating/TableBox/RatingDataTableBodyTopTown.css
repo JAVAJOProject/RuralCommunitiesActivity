@@ -1,0 +1,15 @@
+.ratingDataTableBodyTopTown {
+  width: 4.8125rem;
+  height: 3.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ratingDataTableBodyTopTown > img {
+  width: 3rem;
+  mix-blend-mode: darken;
+  margin: auto;
+  line-height: 3.25rem;
+  display: block;
+}

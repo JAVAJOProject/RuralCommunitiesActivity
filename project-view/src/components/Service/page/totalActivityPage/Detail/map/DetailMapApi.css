@@ -1,0 +1,28 @@
+.detailMapApi {
+  width: 58.1875rem;
+  height: 26.5625rem;
+  border-radius: 0.4375rem;
+  margin: auto;
+
+  border: 1px solid black;
+}
+
+.detailMapApiText {
+  background-color: white;
+  padding: 0.3rem 0.7rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6.25rem;
+  border: 0.2rem solid rgba(232, 118, 118, 0.65);
+}
+
+.detailMapApiText > p {
+  width: 100%;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.3rem;
+  font-weight: 400;
+  white-space: nowrap;
+}

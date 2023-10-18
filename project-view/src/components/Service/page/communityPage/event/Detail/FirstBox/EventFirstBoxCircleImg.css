@@ -1,0 +1,14 @@
+.eventFirstBoxCircleImgBox {
+  width: 2rem;
+  height: 2rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventFirstBoxCircleImgBox > img {
+  height: 1.5rem;
+  mix-blend-mode: darken;
+}

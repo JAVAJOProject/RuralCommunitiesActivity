@@ -1,0 +1,9 @@
+.totalBtnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto 2rem;
+}
+.totalBtnBox > div {
+  margin: 1rem;
+}

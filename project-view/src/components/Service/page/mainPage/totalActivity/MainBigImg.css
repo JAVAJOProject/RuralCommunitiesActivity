@@ -1,0 +1,15 @@
+.mainBigImg {
+  position: relative;
+}
+
+.mainBigImg img {
+  width: 18rem;
+  height: 25.2rem;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  margin: 1rem;
+}
+
+.mainBigImg:hover .mainBigContent {
+  display: flex;
+}

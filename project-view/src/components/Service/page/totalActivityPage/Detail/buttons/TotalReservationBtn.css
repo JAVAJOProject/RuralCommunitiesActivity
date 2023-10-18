@@ -1,0 +1,26 @@
+.totalReservationBtn {
+  width: 11.5rem;
+  height: 3.5rem;
+  border-radius: 6.25rem;
+  background: rgba(148, 193, 91, 0.65);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.totalReservationBtn:hover {
+  background: rgba(149, 193, 91, 0.904);
+}
+
+.totalReservationBtn > img {
+  margin-left: 0.3rem;
+  width: 3rem;
+  mix-blend-mode: darken;
+}
+
+.totalReservationBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.875rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}

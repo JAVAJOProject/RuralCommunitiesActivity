@@ -1,0 +1,15 @@
+.totalActThemeTitleImg {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background-color: #fff2d0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.totalActThemeTitleImg > img {
+  width: 3rem;
+  mix-blend-mode: darken;
+  border-radius: 50%;
+}

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.AdminMapper">
+
+	<select id="getAllAdmin" resultType="Admin">
+	SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+	ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM (
+		SELECT 
+		SEQ,
+		ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+		ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM  (
+			SELECT 
+			ROWNUM AS SEQ,
+			ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM  ( 
+				SELECT 
+				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM ADMIN
+				ORDER BY ADMIN_ID)
+    		)
+    		WHERE seq <![CDATA[>=]]> #{startPostNo}
+    	)
+    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+	</select>
+	
+	<select id="selectAdminID" parameterType="int"  resultType="Admin">
+				SELECT 
+				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				FROM ADMIN  
+				WHERE ADMIN_ID=#{adminId})
+
+	</select>
+	
+	<select id="selectAdminDATE" resultType="Admin">
+	SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+	ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+		FROM(SELECT 
+		SEQ,
+		ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+		ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+			FROM (SELECT 
+			ROWNUM AS SEQ,
+			ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				FROM (SELECT 
+				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				FROM ADMIN  
+				WHERE ADMIN_REG_DATE BETWEEN 
+				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+				ORDER BY ADMIN_ID)
+    		)
+    		WHERE seq <![CDATA[>=]]> #{startPostNo}
+    	)
+    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  				
+	</select>
+	
+	<update id="updateAdmin" parameterType="Admin">
+	UPDATE ADMIN SET
+	ADMIN_AUTHORITY_ID=#{adminAuthorityId},
+	ADMIN_PW=#{adminPw},
+	ADMIN_TEL=#{adminTel}
+	WHERE ADMIN_ID=#{adminId}
+	</update>
+
+
+	<delete id="delAdmin" parameterType="int">
+	DELETE FROM ADMIN WHERE ADMIN_ID=#{adminId}
+	</delete>
+	
+ 
+
+ 	
+	<select id="appAdmin" resultType="Admin">
+	SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+	ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+		FROM(SELECT 
+		SEQ,
+		ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+		ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+			FROM (SELECT 
+			ROWNUM AS SEQ,
+			ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				FROM (SELECT 
+				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				FROM ADMIN
+				WHERE ADMIN_AUTHORITY_ID IS NULL
+				ORDER BY ADMIN_ID)
+    		)
+    		WHERE seq <![CDATA[>=]]> #{startPostNo}
+    	)
+    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+	</select>
+	
+ 	<update id="updateApp" parameterType="int">
+ 	UPDATE ADMIN SET
+ 	ADMIN_AUTHORITY_ID=2
+ 	WHERE ADMIN_ID=#{adminId}
+ 	</update>
+
+</mapper>

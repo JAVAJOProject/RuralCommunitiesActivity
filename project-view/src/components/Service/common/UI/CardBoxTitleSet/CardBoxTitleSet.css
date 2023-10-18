@@ -1,0 +1,11 @@
+.cardBoxTitleSet {
+  display: flex;
+  align-items: flex-end;
+  margin-top: -3rem;
+  margin-left: -3rem;
+}
+
+.cardBoxTitleTextBarSet {
+  margin-bottom: 0.4rem;
+  margin-left: 0.6rem;
+}

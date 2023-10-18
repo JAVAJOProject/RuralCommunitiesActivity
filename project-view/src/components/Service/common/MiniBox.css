@@ -1,0 +1,26 @@
+.miniBox {
+  background-color: #ffffff;
+  border-radius: 0.625rem;
+  padding: 0.3rem 0.5rem;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.miniBox > img,
+.miniBox > p {
+  display: block;
+  margin: auto;
+}
+
+.miniBox > img {
+  width: 1.4rem;
+  object-fit: cover;
+}
+
+.miniBox > p {
+  padding-left: 0.5rem;
+  white-space: nowrap;
+}

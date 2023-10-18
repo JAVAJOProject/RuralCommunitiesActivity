@@ -1,0 +1,19 @@
+.mainNoticePlus {
+  width: 2.12613rem;
+  height: 2.12613rem;
+  border-radius: 0.7rem;
+  background: #c8c8c8;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.1rem 2.3rem;
+}
+
+.mainNoticePlus > div {
+  width: fit-content;
+  height: fit-content;
+  color: #fff;
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.25rem;
+  font-weight: 400;
+}

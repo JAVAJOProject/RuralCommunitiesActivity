@@ -1,0 +1,10 @@
+.circleContent_small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circleContent_img:nth-of-type(3) img {
+  width: 10rem;
+  height: 10rem;
+}

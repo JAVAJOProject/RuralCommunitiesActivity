@@ -1,0 +1,14 @@
+.mypageReservationTitleImg {
+  width: 4.8125rem;
+  height: 4.8125rem;
+  border-radius: 50%;
+  background: #f8f8f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -0.5rem;
+}
+
+.mypageReservationTitleImg > img {
+  width: 3.5rem;
+}

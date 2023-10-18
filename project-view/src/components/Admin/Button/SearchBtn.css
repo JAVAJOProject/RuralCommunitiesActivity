@@ -1,0 +1,18 @@
+.searchBtn {
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    width: 90px;
+    height: 36px;
+    padding: 10px;
+    margin-left: 10px;
+
+    border-width: 0;
+    color: #FFFFFF;
+    background: #754BCE;
+    border-radius: 20px;
+    float: right;
+}
+

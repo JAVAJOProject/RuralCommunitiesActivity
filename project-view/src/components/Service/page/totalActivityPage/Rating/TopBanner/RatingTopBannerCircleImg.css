@@ -1,0 +1,31 @@
+.ratingTopBannerCircle {
+  margin: 2rem;
+  margin-bottom: 0;
+}
+
+.ratingTopBannerCircle > p {
+  color: #50694b;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin: 1rem;
+}
+
+.ratingTopBannerCircleImg {
+  width: 10.05044rem;
+  height: 10.05044rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.ratingTopBannerCircleImg > img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -1,0 +1,10 @@
+.logoBox {
+  display: block;
+}
+
+.logo {
+  width: 10rem;
+  margin-left: 3.7rem;
+  margin-top: 0.3rem;
+  margin-right: auto;
+}

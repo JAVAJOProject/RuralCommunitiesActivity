@@ -1,0 +1,32 @@
+.mainSmallContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 17rem;
+  height: 11.5rem;
+  border-radius: 1.25rem;
+  background: rgba(233, 233, 233, 0.74);
+  position: absolute;
+  margin: 1rem;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.mainSmallContent p {
+  margin: 0.5rem;
+}
+
+.mainSmallTitle {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.mainSmallSubtitle {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 0.9rem;
+  font-weight: 400;
+}

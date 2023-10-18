@@ -1,0 +1,11 @@
+.yellowActivityCardImg {
+  position: relative;
+}
+
+.yellowActivityCardImg > img {
+  width: 13.75rem;
+  height: 10.3125rem;
+  border-radius: 0.3125rem;
+  object-fit: cover;
+  margin-top: 1rem;
+}

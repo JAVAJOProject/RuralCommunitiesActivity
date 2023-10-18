@@ -1,0 +1,10 @@
+.mypageMemberReviewLine {
+  width: fit-content;
+  margin: auto;
+}
+
+.mypageMemberReviewLine > hr {
+  width: 33.75rem;
+  height: 0.0625rem;
+  border: 0.03rem solid rgb(247, 207, 86);
+}

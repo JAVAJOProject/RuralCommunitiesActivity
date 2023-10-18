@@ -1,0 +1,11 @@
+.mypageMemberReivewContents > div:first-of-type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 33rem;
+  margin-bottom: 0.5rem;
+}
+
+.mypageMemberReivewContents > div:last-of-type {
+  margin-top: -1.5rem;
+}

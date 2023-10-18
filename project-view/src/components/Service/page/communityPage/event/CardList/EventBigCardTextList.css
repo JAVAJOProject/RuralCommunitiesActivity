@@ -1,0 +1,23 @@
+.eventBigCardTextList {
+  display: flex;
+  align-items: center;
+}
+
+.eventBigCardTextListCircle {
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: #9d904c;
+  border-radius: 50%;
+}
+
+.eventBigCardTextList > p,
+.eventBigCardTextList > div {
+  padding: 0.3rem;
+}
+
+.eventBigCardTextList > p {
+  color: rgba(0, 0, 0, 0.74);
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+}

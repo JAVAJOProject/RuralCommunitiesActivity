@@ -1,0 +1,14 @@
+.inputSelectBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.6rem 1rem;
+}
+
+.inputSelectBox > label {
+  margin: 0.6rem;
+}
+
+.inputSelects {
+  display: flex;
+}

@@ -1,0 +1,13 @@
+.menuBtns {
+  display: flex;
+  justify-content: center;
+}
+
+.menuBtns > div {
+  cursor: pointer;
+}
+
+.menuBtns > div > svg {
+  margin: -1rem;
+  padding: 0;
+}

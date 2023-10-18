@@ -1,0 +1,7 @@
+.mypageReservationContents > ul {
+  display: flex;
+}
+
+.mypageReservationUl > div {
+  padding-right: 7rem;
+}

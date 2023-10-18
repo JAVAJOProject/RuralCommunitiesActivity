@@ -1,0 +1,12 @@
+.mypageMemberReviewBtnBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: -3.5rem;
+}
+
+.mypageMemberReviewBtnBox > div input {
+  width: 8.375rem;
+  height: 3.4375rem;
+  border-radius: 0.625rem;
+}

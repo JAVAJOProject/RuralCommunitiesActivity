@@ -1,0 +1,24 @@
+.searchingBox {
+  width: 35.9375rem;
+  height: 4.5625rem;
+  border-radius: 0.625rem;
+  border: 4px solid rgba(128, 204, 32, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchingBox > input {
+  width: 30.5rem;
+  height: 3rem;
+  border: none;
+  padding: 0.4em;
+  font-family: SUITE Variable;
+  font-size: 1.0625rem;
+  font-weight: 400;
+}
+
+.searchingBox > img {
+  width: 3rem;
+  margin-left: 1rem;
+}

@@ -1,0 +1,34 @@
+.mainContentBox {
+  margin: 4rem auto 7rem;
+}
+
+div.mainContentBox:nth-of-type(2) .subtitle {
+  padding-left: 10.2rem;
+  padding-right: 7.5rem;
+}
+
+.mainLastCard {
+  display: flex;
+  justify-content: center;
+}
+
+.mainEventBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainNoticeBox {
+  padding: 1rem;
+}
+
+.mainNoticeBox .mainNoticePlus {
+  float: right;
+  margin-right: 3.5rem;
+  margin-bottom: 1rem;
+}
+.mainNoticeBox .mainNoticeTable {
+  clear: both;
+  margin-top: 2.5rem;
+}

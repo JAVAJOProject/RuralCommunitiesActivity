@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.PostReportMapper">
+    <!--    Oracle-->
+    <select id="checkIsReported" resultType="int" parameterType="int">
+        SELECT COUNT(*) FROM report_info WHERE board_id = #{boardId}
+    </select>
+
+    <select id="getCurrentReportedCount" resultType="int" parameterType="int">
+        SELECT report_cnt FROM report_info WHERE board_id = #{boardId}
+    </select>
+
+    <insert id="postReportPost" parameterType="int">
+        INSERT INTO report_info VALUES (#{boardId}, DEFAULT, DEFAULT, DEFAULT)
+    </insert>
+
+    <update id="updateReportedCount" parameterType="PostReport">
+        UPDATE report_info SET report_cnt = #{reportCnt} WHERE board_id = #{boardId}
+    </update>
+
+    <!--    MySQL-->
+<!--    <select id="checkIsReported" resultType="int" parameterType="int">-->
+<!--        SELECT COUNT(*) FROM report_info WHERE board_id = #{boardId}-->
+<!--    </select>-->
+
+<!--    <select id="getCurrentReportedCount" resultType="int" parameterType="int">-->
+<!--        SELECT report_cnt FROM report_info WHERE board_id = #{boardId}-->
+<!--    </select>-->
+
+<!--    <insert id="postReportPost" parameterType="int">-->
+<!--        INSERT INTO report_info VALUES (#{boardId}, DEFAULT, DEFAULT, DEFAULT)-->
+<!--    </insert>-->
+
+<!--    <update id="updateReportedCount" parameterType="PostReport">-->
+<!--        UPDATE report_info SET report_cnt = #{reportCnt} WHERE board_id = #{boardId}-->
+<!--    </update>-->
+</mapper>

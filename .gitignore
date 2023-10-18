@@ -1,0 +1,11 @@
+project/.metadata/
+project/RuralCommunitiesActivity/.metadata/
+project/RuralCommunitiesActivity/.idea/
+project/RuralCommunitiesActivity/.settings/
+project/RuralCommunitiesActivity/.classpath
+project/RuralCommunitiesActivity/.factorypath
+
+project-view/.idea/
+project-view/.vscode/
+project-view/node_modules/
+project-view/package-lock.json

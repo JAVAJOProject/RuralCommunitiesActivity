@@ -1,0 +1,6 @@
+.mypageReservationActLine > hr {
+  width: 33.75rem;
+  height: 0.0625rem;
+  border-color: #4777d3;
+  margin: 1rem auto;
+}

@@ -1,0 +1,28 @@
+.mypageBtn {
+  width: 9rem;
+  height: 3.1875rem;
+  border-radius: 0.625rem;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.mypageBtn > p {
+  color: #fff;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.375rem;
+  font-weight: 400;
+}
+
+.mypageServiceRegistBtn {
+  width: 11.3rem;
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+}
+.mypageServiceRegistBtn > p {
+  font-size: 1.25rem;
+}

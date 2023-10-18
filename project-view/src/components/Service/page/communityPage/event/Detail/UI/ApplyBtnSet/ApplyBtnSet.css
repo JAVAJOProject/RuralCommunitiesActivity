@@ -1,0 +1,10 @@
+.applyBtnSet {
+  margin: 1.5rem auto 3.5rem;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+}
+
+.applyBtnSet div {
+  float: none;
+}

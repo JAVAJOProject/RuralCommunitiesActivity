@@ -1,0 +1,8 @@
+.eventSmallCards {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 3rem;
+}

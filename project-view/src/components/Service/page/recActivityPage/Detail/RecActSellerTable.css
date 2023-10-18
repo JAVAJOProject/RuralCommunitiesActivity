@@ -1,0 +1,18 @@
+.recActSellerTable {
+  margin: auto;
+}
+
+.recActSellerTable th,
+.recActSellerTable td {
+  padding: 0.6rem 1rem;
+  font-family: Jua;
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+
+.recActSellerTable td {
+  text-align: left;
+}
+.recActSellerTable th {
+  text-align: left;
+}

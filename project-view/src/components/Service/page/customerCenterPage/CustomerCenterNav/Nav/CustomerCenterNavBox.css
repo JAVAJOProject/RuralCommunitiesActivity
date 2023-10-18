@@ -1,0 +1,21 @@
+.navBox {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 0.625rem;
+  background: #ededed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem 1rem 2rem;
+}
+
+.navBoxText {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  height: 4rem;
+  line-height: 4rem;
+}

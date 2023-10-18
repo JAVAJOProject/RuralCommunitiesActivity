@@ -1,0 +1,42 @@
+.faqTitleBar {
+  width: 52.625rem;
+  border-radius: 0.625rem;
+  background: rgba(229, 229, 229, 0.5);
+  margin: 1rem auto;
+}
+.faqTitleBarActive {
+  background: rgba(104, 159, 240, 0.36);
+}
+
+.faqTitleBarQuestion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4.0625rem;
+}
+
+.faqTitleBarAnswer > hr {
+  width: 50.05269rem;
+  border: #316dc6 0.01rem solid;
+  margin: auto;
+}
+
+.faqTitleBarAnswerContent {
+  display: flex;
+  justify-content: center;
+  height: fit-content;
+  margin: 1rem auto;
+}
+.faqTitleBarAnswerContent > p {
+  width: 45.125rem;
+  height: fit-content;
+  text-align: justify;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.faqMainContent {
+  margin-bottom: 3rem;
+}

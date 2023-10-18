@@ -1,0 +1,23 @@
+.eventSmallCardTextList {
+  display: flex;
+  align-items: center;
+}
+
+.eventSmallCardTextListCircle {
+  border-radius: 50%;
+  background-color: #dec74e;
+  width: 0.73244rem;
+  height: 0.73244rem;
+}
+
+.eventSmallCardTextList > p,
+.eventSmallCardTextList > div {
+  padding: 0.3rem;
+}
+
+.eventSmallCardTextList > p {
+  color: rgba(0, 0, 0, 0.74);
+  font-family: Jua;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}

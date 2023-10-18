@@ -1,0 +1,13 @@
+.eventBigCardImgBox {
+  height: 15.3125rem;
+  width: fit-content;
+  position: relative;
+  margin-left: 0.8rem;
+}
+
+.eventBigCardImg {
+  width: 12.875rem;
+  height: 15.3125rem;
+  border-radius: 0.3125rem;
+  object-fit: fill;
+}

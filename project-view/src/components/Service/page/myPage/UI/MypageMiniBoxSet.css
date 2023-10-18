@@ -1,0 +1,11 @@
+.mypageMiniBoxSet {
+  display: flex;
+  padding-left: 3rem;
+  padding-top: 2.5rem;
+}
+
+.mypageMiniBoxSet > div {
+  opacity: 85%;
+  border-radius: 0.3125rem;
+  margin: 0.5rem;
+}

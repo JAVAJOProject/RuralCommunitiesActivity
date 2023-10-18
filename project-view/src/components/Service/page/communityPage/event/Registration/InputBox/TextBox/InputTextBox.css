@@ -1,0 +1,8 @@
+.inputTextBox {
+  display: flex;
+  justify-content: center;
+}
+
+.inputTextBox > div {
+  margin: 0.6rem;
+}

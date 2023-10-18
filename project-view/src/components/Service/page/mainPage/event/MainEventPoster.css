@@ -1,0 +1,13 @@
+.mainEventPoster {
+  width: 16rem;
+  height: 18rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 184, 0, 0.38);
+}
+
+.mainEventPoster img {
+  width: 16rem;
+  height: 18rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 184, 0, 0.38);
+}

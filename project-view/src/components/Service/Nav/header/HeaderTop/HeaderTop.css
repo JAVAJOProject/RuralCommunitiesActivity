@@ -1,0 +1,27 @@
+.headerTop {
+  width: 100%;
+  height: 3.5rem;
+  background-color: #45451f;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.projectIntro {
+  padding-left: 5%;
+  width: fit-content;
+  height: fit-content;
+  margin-right: auto;
+}
+
+.login,
+.logout,
+.mypage {
+  width: fit-content;
+  height: fit-content;
+  padding-right: 2rem;
+}
+
+.siteMap {
+  padding-right: 5rem;
+}

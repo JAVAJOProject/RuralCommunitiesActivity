@@ -1,0 +1,25 @@
+.isRecruitingCheckBox {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.isRecruitingCheckBox > p {
+  color: #000;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.isRecruitingCheckBox > img {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  cursor: pointer;
+}
+
+.isRecruitingCheckBox > p,
+.isRecruitingCheckBox > img {
+  margin: 0.2rem;
+}

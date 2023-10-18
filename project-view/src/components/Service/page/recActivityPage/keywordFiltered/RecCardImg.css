@@ -1,0 +1,19 @@
+.recCardImg {
+  width: 19.8125rem;
+  height: 22.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recCardImg > img {
+  width: 17.4375rem;
+  height: 20.125rem;
+  border-radius: 0.3125rem;
+  object-fit: cover;
+}
+
+.recCardImgRight {
+  position: absolute;
+  right: 0;
+}

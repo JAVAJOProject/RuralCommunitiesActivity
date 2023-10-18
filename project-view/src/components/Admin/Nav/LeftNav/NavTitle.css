@@ -1,0 +1,17 @@
+.adminNavTitleBox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.adminNavTitleImg {
+  width: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+.adminNavTitle {
+  color: #fff;
+  font-family: SUITE Variable;
+  font-size: 1.3rem;
+  font-weight: 800;
+}

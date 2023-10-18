@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageActivityPostMapper">
+
+	<resultMap type="MypageMemberDTO" id="actMemListView">
+		<result column="u_nick" property="uNick" />
+		<result column="u_name" property="uName" />
+		<result column="u_tel" property="uTel" />
+		<result column="u_email" property="eMail" />
+		<!-- activityCustomer 객체의 참여인원만 가져오기 -->
+		<association property="activityCustomer"
+			javaType="MypageActivityCustomerDTO">
+			<result column="act_cus_cnt" property="actCusCnt" />
+		</association>
+		<!-- reservation 객체의 예약상태만 가져오기 -->
+		<association property="reservation" javaType="Reservation">
+			<result column="reservation_status"
+				property="reservationStatus" />
+		</association>
+	</resultMap>
+
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT
+		COUNT(*) FROM ACTIVITY_POST WHERE A_ID IN
+		(SELECT A_ID FROM
+		ACTIVITY_INFO WHERE S_ID = #{sId})
+	</select>
+
+	<select id="selectByNo" parameterType="int"
+		resultType="ActivityPost">
+		SELECT
+		a_post_id ,
+		a_id ,
+		a_img_id ,
+		a_post_content ,
+		a_view_cnt ,
+		a_favorite_cnt ,
+		a_post_date_created
+		FROM
+		(SELECT
+		ROW_NUMBER() OVER(ORDER BY A_POST_DATE_CREATED DESC) NUM,
+		P.* FROM
+		ACTIVITY_POST P WHERE A_ID IN
+		(SELECT A_ID FROM ACTIVITY_INFO
+		WHERE S_ID
+		= #{sId}))
+		WHERE NUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="selectParticipantCount" parameterType="int"
+		resultType="int">
+		SELECT
+		COUNT(*)
+		FROM (SELECT U_ID, ACT_CUS_CNT FROM
+		ACTIVITY_CUSTOMER_1 WHERE A_POST_ID = #{POSTID}) A
+		JOIN MEMBER M ON
+		(A.U_ID = M.U_ID)
+		JOIN RESERVATION R ON (R.U_ID = M.U_ID)
+		WHERE R.A_ID =
+		${POSTID}
+	</select>
+
+	<!-- 체험 게시글에서 멤버 정보 가져오기 -->
+	<select id="selectInfoByPostId" parameterType="int"
+		resultMap="actMemListView">
+		SELECT
+		U_NICK,
+		U_NAME,
+		U_TEL,
+		U_EMAIL,
+		ACT_CUS_CNT,
+		RESERVATION_STATUS
+		FROM
+		(SELECT
+		ROW_NUMBER() OVER(ORDER BY R.RESERVATION_DATE DESC) NUM,
+		M.U_NICK,
+		M.U_NAME,
+		M.U_TEL,
+		M.U_EMAIL,
+		A.ACT_CUS_CNT,
+		R.RESERVATION_STATUS
+		FROM
+		(SELECT U_ID, ACT_CUS_CNT FROM
+		ACTIVITY_CUSTOMER_1 WHERE A_POST_ID =
+		#{POSTID}) A
+		JOIN MEMBER M ON
+		(A.U_ID = M.U_ID)
+		JOIN RESERVATION R ON
+		(R.U_ID = M.U_ID)
+		WHERE R.A_ID =
+		${POSTID})
+		WHERE NUM BETWEEN #{start}
+		AND #{end}
+	</select>
+
+</mapper>

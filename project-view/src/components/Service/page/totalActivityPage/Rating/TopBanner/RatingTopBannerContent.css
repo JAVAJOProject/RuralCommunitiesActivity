@@ -1,0 +1,10 @@
+.ratingTopBannerContent > p {
+  white-space: pre-line;
+  width: 40rem;
+  height: fit-content;
+  color: #445840;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 2.1875rem; /* 175% */
+}

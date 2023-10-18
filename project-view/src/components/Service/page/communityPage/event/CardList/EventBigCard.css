@@ -1,0 +1,14 @@
+.eventBigCard {
+  width: 34.5rem;
+  height: 16.875rem;
+  border-radius: 0.9375rem;
+  background: rgba(211, 196, 118, 0.17);
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.eventBigCard:hover {
+  background: rgba(255, 184, 0, 0.4);
+}

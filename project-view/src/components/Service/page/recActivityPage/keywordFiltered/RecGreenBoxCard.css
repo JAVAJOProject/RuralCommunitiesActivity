@@ -1,0 +1,8 @@
+.recGreenBoxCard {
+  width: 52.4375rem;
+  height: 22.5rem;
+  border-radius: 0.625rem;
+  background: rgba(178, 238, 131, 0.23);
+  margin-top: 3rem;
+  cursor: pointer;
+}

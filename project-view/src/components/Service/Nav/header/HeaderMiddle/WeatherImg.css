@@ -1,0 +1,14 @@
+.weatherImg {
+  object-fit: contain;
+}
+
+@media all and (min-width: 1101px) {
+  .weatherImg {
+    width: 6.6875rem;
+  }
+}
+@media all and (max-width: 1100px) {
+  .weatherImg {
+    width: 5rem;
+  }
+}

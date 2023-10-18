@@ -1,0 +1,8 @@
+.ratingTopBannerLeftImg {
+  margin-top: -0.6rem;
+  margin-right: -2rem;
+}
+
+.ratingTopBannerLeftImg > img {
+  mix-blend-mode: darken;
+}

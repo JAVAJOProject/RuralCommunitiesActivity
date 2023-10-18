@@ -1,0 +1,15 @@
+.mainSmallImg {
+  position: relative;
+}
+
+.mainSmallImg img {
+  width: 17rem;
+  height: 11.5rem;
+  border-radius: 1.25rem;
+  object-fit: cover;
+  margin: 1rem;
+}
+
+.mainSmallImg:hover .mainSmallContent {
+  display: flex;
+}

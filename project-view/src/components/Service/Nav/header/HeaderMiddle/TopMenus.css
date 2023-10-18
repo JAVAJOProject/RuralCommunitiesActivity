@@ -1,0 +1,25 @@
+.menuListUl {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  margin-left: auto;
+  align-self: flex-end;
+  padding-bottom: 0.3rem;
+  flex-wrap: nowrap;
+}
+
+@media all and (min-width: 1501px) {
+  .menuListUl {
+    margin-right: 4rem;
+  }
+}
+@media all and (max-width: 1500px) {
+  .menuListUl {
+    margin-right: 3rem;
+  }
+}
+@media all and (max-width: 1100px) {
+  .menuListUl {
+    margin-right: 2rem;
+  }
+}

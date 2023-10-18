@@ -1,0 +1,7 @@
+.eventTextListTextBarImgBox > img {
+  width: 9rem;
+  height: 4.3125rem;
+  border-radius: 0.3125rem;
+  object-fit: cover;
+  object-position: 50% 0%;
+}

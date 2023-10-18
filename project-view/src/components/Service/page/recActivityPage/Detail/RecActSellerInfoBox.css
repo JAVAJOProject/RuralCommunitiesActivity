@@ -1,0 +1,9 @@
+.recActSellerInfoBox {
+  margin: 3rem auto;
+}
+
+.recActSellerInfoBox > hr {
+  width: 43.625rem;
+  border: 0.03rem solid black;
+  margin: 1rem auto;
+}

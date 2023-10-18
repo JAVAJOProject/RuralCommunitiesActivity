@@ -1,0 +1,15 @@
+.faqTitleText {
+  width: 43rem;
+}
+
+.faqTitleText > p {
+  display: -webkit-box;
+  width: 40rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

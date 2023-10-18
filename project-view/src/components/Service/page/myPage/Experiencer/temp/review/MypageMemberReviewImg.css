@@ -1,0 +1,14 @@
+.mypageMemberReviewImg {
+  width: 19.1875rem;
+  height: 20.1875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageMemberReviewImg > img {
+  width: 15.5rem;
+  height: 17.0625rem;
+  border-radius: 0.625rem;
+  object-fit: cover;
+}

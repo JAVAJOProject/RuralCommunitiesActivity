@@ -1,0 +1,21 @@
+.mypageSellerEventStatusBar {
+  height: 1.375rem;
+  border-radius: 3.125rem;
+  background: #9dc1e1;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  float: left;
+  margin-left: 1rem;
+}
+
+.mypageSellerEventStatusBar > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  width: fit-content;
+}

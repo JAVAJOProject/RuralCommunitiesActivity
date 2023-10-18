@@ -1,0 +1,21 @@
+.detailMenuBoxLink {
+  text-decoration: none;
+}
+
+.detailMenuBox {
+  display: flex;
+  height: 3.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailMenuText {
+  flex-shrink: 1;
+  flex-basis: auto;
+  color: #000;
+  font-family: SUITE Variable;
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
+}

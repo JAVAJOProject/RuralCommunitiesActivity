@@ -1,0 +1,17 @@
+.labelBox {
+  width: 13.39563rem;
+  border-radius: 0.4375rem;
+  background: #e7e7e7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-line;
+}
+
+.labelBox > label,
+.labelBox > p {
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 500;
+}

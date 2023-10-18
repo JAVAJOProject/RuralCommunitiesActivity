@@ -1,0 +1,5 @@
+.onlyFavoritesImg > img {
+  width: 1.3rem;
+  mix-blend-mode: darken;
+  cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.mypageReservationActList > div {
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: #30497a;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  margin-left: 1.2rem;
+}
+
+.mypageReservationActList > p {
+  font-family: SUITE Variable;
+  font-size: 0.875rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mypageReservationActList {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  margin: 0.5rem auto;
+}

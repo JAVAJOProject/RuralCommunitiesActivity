@@ -1,0 +1,25 @@
+.circle_small {
+  width: fit-content;
+  height: fit-content;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle_small img {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 8.8125rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.circle_small p {
+  color: #000;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.3rem;
+  font-weight: 400;
+}

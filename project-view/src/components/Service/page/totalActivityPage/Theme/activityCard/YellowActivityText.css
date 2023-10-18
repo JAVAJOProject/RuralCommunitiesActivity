@@ -1,0 +1,11 @@
+.yellowActivityText {
+  display: flex;
+  width: 15.5625rem;
+  height: 5.375rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.yellowActivityText > div {
+  margin-left: 1rem;
+}

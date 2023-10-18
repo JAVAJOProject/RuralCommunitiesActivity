@@ -1,0 +1,15 @@
+.titleCircleImg {
+  width: 4.8125rem;
+  height: 4.8125rem;
+  background-color: #eef5f8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleCircleImg > img {
+  width: 4.46038rem;
+  height: 4.46038rem;
+  border-radius: 50%;
+}

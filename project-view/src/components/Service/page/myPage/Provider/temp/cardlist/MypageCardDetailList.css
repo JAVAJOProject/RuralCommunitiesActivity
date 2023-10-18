@@ -1,0 +1,19 @@
+.mypageCardDetailList {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+
+.mypageCardDetailList > div {
+  border-radius: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  background-color: #30497a;
+}
+
+.mypageCardDetailList > p {
+  font-family: SUITE Variable;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}

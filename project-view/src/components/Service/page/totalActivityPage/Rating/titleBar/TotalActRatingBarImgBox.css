@@ -1,0 +1,11 @@
+.totalActRatingBarImgBox {
+  display: flex;
+}
+
+.totalActRatingBarImg {
+  margin-right: 10px;
+}
+
+.totalActRatingBarImgBox {
+  margin-top: -230px;
+}

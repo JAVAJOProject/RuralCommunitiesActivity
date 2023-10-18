@@ -1,0 +1,14 @@
+.modifyBtn {
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+
+    width: 90px;
+    height: 36px;
+    padding: 10px;
+    border-width: 0;
+    margin-left: 10px;
+
+}

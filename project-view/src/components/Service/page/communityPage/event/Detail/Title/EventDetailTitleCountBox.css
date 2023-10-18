@@ -1,0 +1,11 @@
+.eventDetailTitleCountBox {
+  position: absolute;
+  right: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.eventDetailTitleCountBox > div {
+  margin: 0.5rem;
+  opacity: 80%;
+}

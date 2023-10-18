@@ -1,0 +1,14 @@
+.mypageCardRectImg {
+  width: 18.375rem;
+  height: 18.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageCardRectImg > img {
+  width: 15.5rem;
+  height: 15.5rem;
+  object-fit: cover;
+  border-radius: 0.625rem;
+}

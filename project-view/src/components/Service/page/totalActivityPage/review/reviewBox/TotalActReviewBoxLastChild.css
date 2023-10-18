@@ -1,0 +1,6 @@
+.totalActReviewBoxLastChild {
+  width: 22.25rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

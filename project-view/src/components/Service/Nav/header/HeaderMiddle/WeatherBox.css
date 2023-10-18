@@ -1,0 +1,67 @@
+.weatherBox {
+  display: flex;
+  margin-right: 3rem;
+  margin-bottom: 0.3rem;
+}
+
+.weatherContentBox {
+  display: block;
+  margin: auto;
+}
+
+.weatherContentBox p {
+  display: block;
+  white-space: nowrap;
+}
+
+.weatherTitle {
+  color: #000;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-weight: 400;
+  margin: 0.3rem auto 0.3rem;
+}
+
+.temperature {
+  color: #000;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+@media all and (min-width: 1501px) {
+  .weatherBox {
+    margin-right: 10rem;
+  }
+  .weatherTitle {
+    font-size: 1.125rem;
+  }
+  .temperature {
+    font-size: 1.5rem;
+  }
+}
+@media all and (max-width: 1500px) {
+  .weatherBox {
+    width: 13.3125rem;
+    height: 6.5rem;
+  }
+  .weatherTitle {
+    font-size: 1.125rem;
+  }
+  .temperature {
+    font-size: 1.5rem;
+  }
+}
+@media all and (max-width: 1100px) {
+  .weatherBox {
+    width: 7rem;
+    height: 4rem;
+  }
+  .weatherTitle {
+    font-size: 0.8rem;
+  }
+  .temperature {
+    font-size: 1.2rem;
+  }
+}

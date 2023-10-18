@@ -1,0 +1,18 @@
+.mypageMypost {
+  width: 46.6875rem;
+  height: 10.5rem;
+  margin: 1rem auto;
+}
+
+.mypageMypost > p {
+  width: 46.6875rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+  text-align: justify;
+  text-overflow: ellipsis;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+}

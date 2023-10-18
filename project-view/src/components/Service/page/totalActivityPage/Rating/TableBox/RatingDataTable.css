@@ -1,0 +1,17 @@
+.ratingDataTable {
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.ratingDataTable tr th,
+.ratingDataTable tr td {
+  border: 0.2rem solid white;
+}
+
+.ratingDataTable tr:nth-of-type(odd) td {
+  background-color: rgba(255, 213, 106, 0.11);
+}
+
+.ratingDataTable tr:nth-of-type(even) td {
+  background-color: rgba(151, 221, 62, 0.1);
+}

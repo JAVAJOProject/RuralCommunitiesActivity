@@ -1,0 +1,18 @@
+.recCardContentsBox {
+  width: 32.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recCardContentsBox > div:first-of-type {
+  width: 30.625rem;
+  position: relative;
+}
+
+.recCardContentsBox > div:first-of-type > div:last-of-type {
+  margin-top: -2.8rem;
+  font-weight: 700;
+  opacity: 100%;
+}

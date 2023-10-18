@@ -1,0 +1,12 @@
+.appMain {
+  height: auto;
+  min-height: calc(100vh - 52.2rem);
+}
+
+.appAdmin {
+  position: absolute;
+  top: 10rem;
+  left: 22rem;
+  width: 100vw;
+  margin: 0;
+}

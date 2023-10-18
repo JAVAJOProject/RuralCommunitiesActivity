@@ -1,0 +1,16 @@
+.pageNo {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.875rem;
+  font-weight: 400;
+  margin: 1rem;
+}
+
+.pageNo:hover {
+  color: #afafaf;
+}
+
+.activePageNo {
+  color: #afafaf;
+  text-decoration-line: underline;
+}

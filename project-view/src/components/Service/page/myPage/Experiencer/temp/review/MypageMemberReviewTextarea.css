@@ -1,0 +1,20 @@
+.mypageMemberReviewTextarea {
+  width: fit-content;
+  margin: auto;
+}
+
+.mypageMemberReviewTextarea > textarea {
+  width: 27.625rem;
+  height: 14rem;
+  resize: none;
+  background: none;
+  border-radius: 0.625rem;
+  border: 0.03rem solid black;
+  padding: 0.5rem;
+
+  text-align: justify;
+  font-family: Jua;
+  font-size: 1.1rem;
+  font-style: normal;
+  letter-spacing: -0.05rem;
+}

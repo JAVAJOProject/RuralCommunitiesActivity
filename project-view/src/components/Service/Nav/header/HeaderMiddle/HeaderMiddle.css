@@ -1,0 +1,7 @@
+.headerMiddle {
+  width: 100%;
+  height: 5.7rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
