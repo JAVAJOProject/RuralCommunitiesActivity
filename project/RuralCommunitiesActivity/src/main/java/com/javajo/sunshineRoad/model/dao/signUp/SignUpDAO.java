@@ -1,13 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.signUp;
 
+import com.javajo.sunshineRoad.mappers.security.SignUpMapper;
 import com.javajo.sunshineRoad.model.dto.signUp.SellerAccountInfoDTO;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
-
-import com.javajo.sunshineRoad.mappers.SignUpMapper;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpMemberDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpSellerDTO;
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor

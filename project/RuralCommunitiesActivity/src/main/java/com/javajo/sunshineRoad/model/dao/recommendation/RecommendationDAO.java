@@ -1,22 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.recommendation;
 
-import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import
-org.springframework.stereotype.Repository;
-
-import com.javajo.sunshineRoad.mappers.RecommendationMapper;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecActivityInfoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecActivityKeywordDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecImagesDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecTownImagesDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecTownInfoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RegionSidoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.TownReportDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.TownReportImagesDTO;
-
+import com.javajo.sunshineRoad.mappers.recommendation.RecommendationMapper;
+import com.javajo.sunshineRoad.model.dto.recommendation.*;
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -25,7 +15,7 @@ public class RecommendationDAO {
 
 	//추천 체험 전체 조회
 	public int getAllRecActivityList() {
-		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class); 
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getAllRecActivityData(); 
 	}
 	

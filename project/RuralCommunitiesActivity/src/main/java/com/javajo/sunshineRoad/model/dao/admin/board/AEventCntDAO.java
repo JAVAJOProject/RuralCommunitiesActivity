@@ -1,12 +1,10 @@
 package com.javajo.sunshineRoad.model.dao.admin.board;
 
+import com.javajo.sunshineRoad.mappers.admin.AdminEventCntMapper;
+import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
-import com.javajo.sunshineRoad.mappers.AdminEventCntMapper;
-import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
-
-import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor

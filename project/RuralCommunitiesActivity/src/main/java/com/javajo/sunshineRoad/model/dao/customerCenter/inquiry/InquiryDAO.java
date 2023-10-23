@@ -1,14 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.customerCenter.inquiry;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.mappers.customerCenter.InquiryMapper;
+import com.javajo.sunshineRoad.model.dto.customerCenter.inquiry.InquiryInfoDTO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.javajo.sunshineRoad.mappers.InquiryMapper;
-import com.javajo.sunshineRoad.model.dto.customerCenter.inquiry.InquiryInfoDTO;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

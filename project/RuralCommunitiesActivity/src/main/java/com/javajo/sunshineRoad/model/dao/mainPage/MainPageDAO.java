@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.mainPage;
 
-import com.javajo.sunshineRoad.mappers.MainPageMapper;
+import com.javajo.sunshineRoad.mappers.common.MainPageMapper;
 import com.javajo.sunshineRoad.model.dto.mainPage.*;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.event;
 
-import com.javajo.sunshineRoad.mappers.EventMapper;
+import com.javajo.sunshineRoad.mappers.community.EventMapper;
 import com.javajo.sunshineRoad.model.dto.event.EventDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventImagesDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventStoryDTO;

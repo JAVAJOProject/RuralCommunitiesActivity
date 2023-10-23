@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.common;
 
-import com.javajo.sunshineRoad.mappers.ViewCountMapper;
+import com.javajo.sunshineRoad.mappers.common.ViewCountMapper;
 import com.javajo.sunshineRoad.model.dto.common.view.ViewCountDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

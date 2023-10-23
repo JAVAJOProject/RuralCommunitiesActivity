@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.community;
 
-import com.javajo.sunshineRoad.mappers.SellerCommunityMapper;
+import com.javajo.sunshineRoad.mappers.community.SellerCommunityMapper;
 import com.javajo.sunshineRoad.model.dto.community.SellerCommunityPostDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

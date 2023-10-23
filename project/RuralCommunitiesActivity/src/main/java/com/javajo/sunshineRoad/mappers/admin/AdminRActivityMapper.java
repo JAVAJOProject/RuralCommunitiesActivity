@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers.admin;;
+package com.javajo.sunshineRoad.mappers.admin;
 
 import com.javajo.sunshineRoad.model.dto.admin.board.ARActivityImgDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ARecActivityDTO;

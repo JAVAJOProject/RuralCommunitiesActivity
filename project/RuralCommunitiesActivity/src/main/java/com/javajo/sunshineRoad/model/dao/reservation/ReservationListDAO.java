@@ -1,14 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.reservation;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.mappers.totalActivity.ResSummaryListMapper;
+import com.javajo.sunshineRoad.model.dto.reservation.ResSummaryListDTO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.javajo.sunshineRoad.mappers.ResSummaryListMapper;
-import com.javajo.sunshineRoad.model.dto.reservation.ResSummaryListDTO;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

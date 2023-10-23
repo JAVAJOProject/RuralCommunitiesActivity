@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.common;
 
-import com.javajo.sunshineRoad.mappers.PostReportMapper;
+import com.javajo.sunshineRoad.mappers.common.PostReportMapper;
 import com.javajo.sunshineRoad.model.dto.common.report.PostReportDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

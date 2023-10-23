@@ -1,15 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.customerCenter.notice;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.mappers.customerCenter.NoticeMapper;
+import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeListInfoDTO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-
-import com.javajo.sunshineRoad.mappers.NoticeMapper;
-
-import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeListInfoDTO;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.common;
 
-import com.javajo.sunshineRoad.mappers.SiteAccessMapper;
+import com.javajo.sunshineRoad.mappers.common.SiteAccessMapper;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;

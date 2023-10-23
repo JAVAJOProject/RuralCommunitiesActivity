@@ -1,14 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.review;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.mappers.mypageMember.ReviewMapper;
+import com.javajo.sunshineRoad.model.dto.review.ReviewDTO;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.javajo.sunshineRoad.mappers.ReviewMapper;
-import com.javajo.sunshineRoad.model.dto.review.ReviewDTO;
-
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor

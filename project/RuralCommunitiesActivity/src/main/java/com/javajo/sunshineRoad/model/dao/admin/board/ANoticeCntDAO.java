@@ -1,9 +1,9 @@
 package com.javajo.sunshineRoad.model.dao.admin.board;
 
+import com.javajo.sunshineRoad.mappers.admin.AdminNoticeCntMapper;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-import com.javajo.sunshineRoad.mappers.AdminNoticeCntMapper;
-import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor

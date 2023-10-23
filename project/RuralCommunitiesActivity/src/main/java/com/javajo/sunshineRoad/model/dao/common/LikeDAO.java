@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.common;
 
-import com.javajo.sunshineRoad.mappers.LikeMapper;
+import com.javajo.sunshineRoad.mappers.common.LikeMapper;
 import com.javajo.sunshineRoad.model.dto.common.likes.LikesDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

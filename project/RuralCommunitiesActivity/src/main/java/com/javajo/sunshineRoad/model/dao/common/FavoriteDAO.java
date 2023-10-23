@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.common;
 
-import com.javajo.sunshineRoad.mappers.FavoriteMapper;
+import com.javajo.sunshineRoad.mappers.common.FavoriteMapper;
 import com.javajo.sunshineRoad.model.dto.common.favorites.FavoritesDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;

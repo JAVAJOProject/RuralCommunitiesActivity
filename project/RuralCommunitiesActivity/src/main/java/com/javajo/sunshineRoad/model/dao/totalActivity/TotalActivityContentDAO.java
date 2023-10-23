@@ -1,13 +1,11 @@
 package com.javajo.sunshineRoad.model.dao.totalActivity;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.stereotype.Repository;
-
-import com.javajo.sunshineRoad.mappers.TotalActivityContentMapper;
+import com.javajo.sunshineRoad.mappers.totalActivity.TotalActivityContentMapper;
 import com.javajo.sunshineRoad.model.dto.totalActivity.TotalActivityContentDTO;
 import com.javajo.sunshineRoad.model.dto.totalActivity.TotalActivityImagesDTO;
-
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
