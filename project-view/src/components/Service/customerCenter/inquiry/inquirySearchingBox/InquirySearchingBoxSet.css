@@ -1,0 +1,14 @@
+.inquirySearchingBoxSet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+.inquirySearchingBoxSet div:last-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

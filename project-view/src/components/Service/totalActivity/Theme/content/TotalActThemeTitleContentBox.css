@@ -1,0 +1,39 @@
+.totalActThemeTitleContentBoxRight {
+  height: fit-content;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0.5rem;
+  padding-bottom: 1rem;
+}
+.totalActThemeTitleContentBoxLeft {
+  height: fit-content;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-bottom: 1rem;
+}
+.totalActThemeTitleContentBoxRight > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  text-align: right;
+  margin-right: 1rem;
+}
+.totalActThemeTitleContentBoxLeft > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 1rem;
+}
+.totalActThemeTitleImgBoxRight {
+  padding-bottom: 1rem;
+}
+.totalActThemeTitleImgBoxLeft {
+  padding-bottom: 1rem;
+}

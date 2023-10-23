@@ -1,0 +1,27 @@
+.inquirySearchingBox {
+  width: 15.72306rem;
+  height: 2.76563rem;
+  border: 0.23rem solid rgba(229, 229, 229, 0.85);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.3rem;
+}
+
+.inquirySearchingBox > input {
+  width: 12.5rem;
+  height: 1.5rem;
+  border-style: none;
+
+  color: #474545;
+  font-family: SUITE Variable;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  padding-left: 0.4rem;
+}
+
+.inquirySearchingBox > img {
+  margin-left: 0.3rem;
+  cursor: pointer;
+}

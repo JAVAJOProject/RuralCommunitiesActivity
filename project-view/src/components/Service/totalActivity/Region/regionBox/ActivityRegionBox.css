@@ -1,0 +1,32 @@
+.activityRegionBox {
+  width: 6rem;
+  height: 3rem;
+  border-radius: 0.625rem;
+  background: rgba(148, 193, 91, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.3rem;
+  cursor: pointer;
+}
+
+.activityRegionBox > p {
+  color: #93aa74;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.activityRegionBox:hover,
+.activityRegionBox:hover > p {
+  background: #d9f7ae;
+  color: #fff;
+}
+
+.activityRegionBoxActive {
+  background: rgba(55, 210, 0, 0.76);
+}
+.activityRegionBoxActive > p {
+  color: #fff;
+}

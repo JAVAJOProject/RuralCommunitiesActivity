@@ -1,0 +1,7 @@
+.regionMap {
+  width: 55rem;
+  height: 34rem;
+  border: 1px solid black;
+  margin: 2rem auto;
+  border-radius: 0.625rem;
+}

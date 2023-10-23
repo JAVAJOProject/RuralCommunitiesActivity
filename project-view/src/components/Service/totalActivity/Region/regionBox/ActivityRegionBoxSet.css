@@ -1,0 +1,6 @@
+.activityRegionBoxSet {
+  display: flex;
+  width: 60rem;
+  flex-wrap: wrap;
+  margin: 1rem auto 3rem;
+}

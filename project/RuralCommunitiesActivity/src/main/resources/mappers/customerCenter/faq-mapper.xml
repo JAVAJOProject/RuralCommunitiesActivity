@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.customerCenter.FaqMapper">
+
+	<resultMap id="FaqInfoDTOForClob" type="FaqInfo">
+			<result property="faqId" column="faq_id" />
+			<result property="faqTypeId" column="faq_type_id" />
+			<result property="faqQ" column="faq_q" jdbcType="CLOB" javaType="java.lang.String"/>
+			<result property="faqA" column="faq_a" jdbcType="CLOB" javaType="java.lang.String"/>
+	</resultMap>
+
+
+	<!-- Oracle -->
+	<select id="getFaqListCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM faq
+		WHERE faq_type_id = #{faqTypeId}
+	</select>
+	
+	<select id="getRequestPageFaqList" resultMap="FaqInfoDTOForClob">
+		SELECT
+				faq_id,
+				faq_type_id,
+				faq_q
+			FROM (
+			SELECT
+				seq,
+				faq_id,
+				faq_type_id,
+				faq_q
+			FROM (
+			SELECT
+				ROWNUM AS seq,
+				faq_id,
+				faq_type_id,
+				faq_q
+			FROM (
+			SELECT
+				f.faq_id,
+				type.faq_type_id,
+				f.faq_q
+			FROM faq f
+				LEFT OUTER JOIN
+			faq_type type on(f.faq_type_id=type.faq_type_id)
+			WHERE f.faq_type_id= #{faqTypeId})
+			)
+	         WHERE seq <![CDATA[>=]]> #{startPostNo}
+			)
+			WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	</select>
+	
+	<select id="getFaqDetail" resultMap="FaqInfoDTOForClob" parameterType="int">
+	
+				SELECT
+					f.faq_id,
+					type.faq_type_id,
+					f.faq_q,
+					f.faq_a
+				FROM faq f
+					LEFT OUTER JOIN
+				faq_type type on (f.faq_type_id = type.faq_type_id)
+				WHERE f.faq_id = #{faqId}
+	</select>
+</mapper>

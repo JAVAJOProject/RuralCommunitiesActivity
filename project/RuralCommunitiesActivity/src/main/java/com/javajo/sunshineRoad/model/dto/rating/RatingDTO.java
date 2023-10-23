@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RatingDTO {
-	private long 선정연도;
+   private long 선정연도;
     private String 시도;
     private String 마을이름;
     private String 시군구;
@@ -14,5 +14,4 @@ public class RatingDTO {
     private int 체험;
     private int 음식;
     private int 숙박;
-    private int totalCount;
 }

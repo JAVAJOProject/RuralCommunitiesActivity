@@ -30,9 +30,9 @@ public class RecommendationDAO {
 	}
 	
 	//추천 체험 페이징처리
-	public List<RecActivityInfoDTO> getRequestPageRecActivityContent(int startPostNo, int endPostNo) {
+	public List<RecActivityInfoDTO> getRequestPageRecActivityContent(String colName, int startPostNo, int endPostNo) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.getTotalRecActivityCount(startPostNo, endPostNo);
+		return mapper.getTotalRecActivityCount(colName, startPostNo, endPostNo);
 	}
 	
 	//추천 자세히 보기
@@ -48,9 +48,9 @@ public class RecommendationDAO {
 	}
 	
 	//마을 페이징처리
-	public List<RecTownInfoDTO> getRequestPageRecTownContent(int startPostNo, int endPostNo) {
+	public List<RecTownInfoDTO> getRequestPageRecTownContent(String colName, int startPostNo, int endPostNo) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.getTotalRecTownCount(startPostNo, endPostNo);
+		return mapper.getTotalRecTownCount(colName, startPostNo, endPostNo);
 	}
 	
 	//마을 자세히 보기
@@ -69,21 +69,31 @@ public class RecommendationDAO {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getSidoData();
 	}
-	//키워드 필터
-	public List<RecActivityInfoDTO> keywordFilterList(int recAKeywordId) {
+	//키워드 필터 수
+	public int getRecKeywordCnt(int recAKeywordId) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.keywordFilter(recAKeywordId);
+		return mapper.keywordData(recAKeywordId);
+	}
+	//키워드 필터
+	public List<RecActivityInfoDTO> keywordFilterList(int recAKeywordId, String colName, int startPostNo, int endPostNo) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.keywordFilter(recAKeywordId, colName, startPostNo, endPostNo);
 	}
 	//시군구 필터
 	public List<RegionSidoDTO> sigunguFilter(int sidoId) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.sigunguFilter(sidoId);
 	}
+	//시군구 필터 수
+	public int getRecSigunguCnt(int sigunguId) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.sigunguData(sigunguId);
+	}
 	
 	//시군구별 체험보기
-	public List<RecActivityInfoDTO> sigunguActivity(int sigunguId){
+	public List<RecActivityInfoDTO> sigunguActivity(int sigunguId, String colName, int startPostNo, int endPostNo){
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.sigunguActivity(sigunguId);
+		return mapper.sigunguActivity(sigunguId, colName, startPostNo, endPostNo);
 	}
 	//마을 제보
 	public void createTownReport(TownReportDTO town) {

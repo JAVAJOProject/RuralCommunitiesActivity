@@ -27,24 +27,19 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/mypage/member")
 @RequiredArgsConstructor
 public class MypageEventController {
-
 	private final MypageEventService eventService;
     private final GetOneEventService getOneEventService;
     private final GetOneImgFromPathService getOneImgFromPathService;
-
 	@GetMapping("/event/list/{currentPage}")
 	public List<MypageEventWinnerDTO> getEventList(@PathVariable int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
 //		int uId = member.getUId();
 		System.out.println("--------------");
 		int uId = 1;
-		
 		int eventCount = eventService.getEventCount(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, eventCount, 3);
 		List<MypageEventWinnerDTO> eventpageList = eventService.getEventList(uId, pageInfo);
 		return eventpageList;
 	}
-	
-	
 	// 이벤트 목록 
 	@GetMapping("/event/list")
 	public List<MypageEventDTO> getInfo(/* @SessionAttribute("loginMember") MemberDTO member */) {
@@ -54,7 +49,6 @@ public class MypageEventController {
 		List<MypageEventDTO> eventList = eventService.getInfo(eventId);
 		return eventList;
 	}
-	
 	// 이미지처리
     @GetMapping("/event-image/{id}")
     public ResponseEntity<UrlResource> getMainPageEventData(@PathVariable int id) {
@@ -65,8 +59,30 @@ public class MypageEventController {
             return ResponseEntity.badRequest().build();
         }
     }
-
+	//이벤트 참여 취소 , 응모 취소 
+	@GetMapping("/event/cancel/{reportId}")
+	public int cancelEvent(@PathVariable int reportId) {
+		System.out.println("reportId" + reportId);
+		int selectEvent = eventService.cancelEvent(reportId);
+		return selectEvent;
+	}
 	
+	//이벤트 사연 수정 페이지 가기
+	@GetMapping("/event/modify/{reportId}")
+	public MypageEventWinnerDTO getReport(@PathVariable int reportId ) {
+		System.out.println("reportId" + reportId);
+		MypageEventWinnerDTO selectEvent = eventService.getReport(reportId);
+		return selectEvent;
+	}
+	
+	// 이벤트 사연 수정하기 버튼
+	@PostMapping("/event/modify")
+	public int modifyEvent(@ModelAttribute("eventWinner") MypageEventWinnerDTO eventWinner) {
+		System.out.println("eventWinner" + eventWinner);
+		int selectEvent = eventService.modifyEvent(eventWinner);
+		return selectEvent;
+	}
+
 	// 시향언니꺼 URL 그대로 사용해야함. 
 	// 상세보기 
 //	@GetMapping("/event/{eventId}")
@@ -76,13 +92,6 @@ public class MypageEventController {
 //		return selectEvent;
 //	}
 	
-	//이벤트 참여 취소 , 응모 취소 
-	@GetMapping("/event/cancel/{reportId}")
-	public int cancelEvent(@PathVariable int reportId) {
-		System.out.println("reportId" + reportId);
-		int selectEvent = eventService.cancelEvent(reportId);
-		return selectEvent;
-	}
 	//위에 아니며 아래 껄로 처리 하기 
 //	 @PostMapping("/event/cancel")
 //	    public ResponseEntity<String> cancelEvent(@RequestParam int reportId) {
@@ -99,21 +108,4 @@ public class MypageEventController {
 //	            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("서버 오류가 발생했습니다.");
 //	        }
 //	    }
-//	
-	//이벤트 사연 수정 페이지 가기
-	@GetMapping("/event/modify/{reportId}")
-	public MypageEventWinnerDTO getReport(@PathVariable int reportId ) {
-		System.out.println("reportId" + reportId);
-		MypageEventWinnerDTO selectEvent = eventService.getReport(reportId);
-		return selectEvent;
-	}
-	
-	// 이벤트 사연 수정하기 버튼
-	@PostMapping("/event/modify")
-	public int modifyEvent(@ModelAttribute("eventWinner") MypageEventWinnerDTO eventWinner) {
-		System.out.println("eventWinner" + eventWinner);
-		int selectEvent = eventService.modifyEvent(eventWinner);
-		return selectEvent;
-	}
-	
 }

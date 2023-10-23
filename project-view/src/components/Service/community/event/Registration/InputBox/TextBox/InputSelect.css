@@ -1,0 +1,40 @@
+.inputSelectLabel {
+  margin-left: 0.35rem;
+  margin-right: 0.35rem;
+}
+
+.inputSelect {
+  width: 11.2rem;
+  height: 3.6875rem;
+  border-radius: 0.4375rem;
+  border: 0.5px solid #000;
+  background: rgba(231, 231, 231, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.inputSelect > input,
+.inputSelect > input:checked {
+  appearance: none;
+}
+
+.inputSelect > p {
+  width: 7.98638rem;
+  height: 1.3125rem;
+  text-align: center;
+  color: #484848;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.inputSelectActive {
+  background: #484848;
+}
+.inputSelectActive > p {
+  color: #fff;
+}

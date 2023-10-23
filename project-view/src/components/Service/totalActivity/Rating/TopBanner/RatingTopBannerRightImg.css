@@ -1,0 +1,11 @@
+.ratingTopBannerRightImg {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  margin-left: -1rem;
+}
+
+.ratingTopBannerRightImg > img {
+  width: 20rem;
+  object-fit: contain;
+}

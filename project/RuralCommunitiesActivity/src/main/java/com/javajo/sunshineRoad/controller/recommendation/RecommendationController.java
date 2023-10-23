@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,12 +27,13 @@ import com.javajo.sunshineRoad.model.dto.recommendation.TownReportDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.service.ImgPathToBase64Service;
 import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetKeywordFilterService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetOneRecActivityInfoService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetOneRecTownInfoService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecActivityInfoService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecActivityKeywordService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecImagesByImgIdService;
+import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecKeywordCntService;
+import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecSigunguCntService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecTownImagesByImgIdService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecTownInfoService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRegionSidoService;
@@ -39,6 +41,7 @@ import com.javajo.sunshineRoad.model.service.IService.recommendation.GetSigunguA
 import com.javajo.sunshineRoad.model.service.IService.recommendation.GetSigunguFilterService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.InsertTownReportService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecActivityService;
+import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecKeywordService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecTownService;
 
 @RestController
@@ -48,7 +51,6 @@ public class RecommendationController {
 	private final GetRecTownInfoService getRecTownInfoService;
 	private final GetRecActivityKeywordService getRecActivityKeywordService;
 	private final GetRegionSidoService getRegionSidoService;
-	private final GetKeywordFilterService getKeywordFilterService;
 	private final GetSigunguFilterService getSigunguFilterService;
 	private final GetOneRecActivityInfoService getOneRecActivityInfoService;
 	private final GetOneRecTownInfoService getOneRecTownInfoService;
@@ -58,6 +60,9 @@ public class RecommendationController {
 	private final InsertTownReportService insertTownReportService;
 	private final GetRecImagesByImgIdService getRecImagesByImgIdService;
 	private final GetRecTownImagesByImgIdService getRecTownImagesByImgIdService;
+	private final GetRecKeywordCntService getRecKeywordCntService;
+	private final PostRequestRecKeywordService postRequestRecKeywordService;
+	private final GetRecSigunguCntService getRecSigunguCntService;
 	
 	private final StoreRequestImagesService storeRequestImagesService;
 	private final ImageInfoUploadMarker recTownReportImageInfoUploadMarker;
@@ -66,7 +71,7 @@ public class RecommendationController {
 	
 	public RecommendationController(GetRecActivityInfoService getRecActivityInfoService,
 			GetRecTownInfoService getRecTownInfoService, GetRecActivityKeywordService getRecActivityKeywordService,
-			GetRegionSidoService getRegionSidoService, GetKeywordFilterService getKeywordFilterService,
+			GetRegionSidoService getRegionSidoService, PostRequestRecKeywordService postRequestRecKeywordService,
 			GetSigunguFilterService getSigunguFilterService, GetOneRecActivityInfoService getOneRecActivityInfoService,
 			GetOneRecTownInfoService getOneRecTownInfoService,
 			PostRequestRecActivityService postRequestRecActivityService,
@@ -74,13 +79,13 @@ public class RecommendationController {
 			InsertTownReportService insertTownReportService, StoreRequestImagesService storeRequestImagesService,
 			@Qualifier("RecTownReportImageInfoUploader") ImageInfoUploadMarker recTownReportImageInfoUploadMarker,
 			ImgPathToBase64Service imgPathToBase64Service, GetRecImagesByImgIdService getRecImagesByImgIdService,
-			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService) {
+			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService, GetRecKeywordCntService getRecKeywordCntService,
+			GetRecSigunguCntService getRecSigunguCntService) {
 		super();
 		this.getRecActivityInfoService = getRecActivityInfoService;
 		this.getRecTownInfoService = getRecTownInfoService;
 		this.getRecActivityKeywordService = getRecActivityKeywordService;
 		this.getRegionSidoService = getRegionSidoService;
-		this.getKeywordFilterService = getKeywordFilterService;
 		this.getSigunguFilterService = getSigunguFilterService;
 		this.getOneRecActivityInfoService = getOneRecActivityInfoService;
 		this.getOneRecTownInfoService = getOneRecTownInfoService;
@@ -93,19 +98,22 @@ public class RecommendationController {
 		this.imgPathToBase64Service = imgPathToBase64Service;
 		this.getRecImagesByImgIdService = getRecImagesByImgIdService;
 		this.getRecTownImagesByImgIdService = getRecTownImagesByImgIdService;
+		this.getRecKeywordCntService = getRecKeywordCntService;
+		this.postRequestRecKeywordService = postRequestRecKeywordService;
+		this.getRecSigunguCntService = getRecSigunguCntService;
 	}
 	
 	
 	//activity/list?pageNo=3 (@RequestParams int pageNo)
 	//activity-list/3 (@PathVariable int requestPage)
 	//PostMapping Json 받아오기 ->(@RequestBody DTO recTown)
-	//전체 추천 체험
+	//전체 추천 체험/recommendation/activity-list/1?requestOrderType=최신순
 	@GetMapping("/activity-list/{requestPageNo}")
-	public ResponseEntity<List<RecActivityInfoDTO>> getAllRecActivityList(@PathVariable int requestPageNo) {
+	public ResponseEntity<List<RecActivityInfoDTO>> getAllRecActivityList(@RequestParam String requestOrderType, @PathVariable int requestPageNo) {
 		
 		int perPagePostCount = 3;
 		int totalCount = getRecActivityInfoService.getAllRecActivityList();
-		List<RecActivityInfoDTO> responseData = postRequestRecActivityService.postRequesRecActivity(totalCount, perPagePostCount, requestPageNo);
+		List<RecActivityInfoDTO> responseData = postRequestRecActivityService.postRequesRecActivity(requestOrderType, totalCount, perPagePostCount, requestPageNo);
 
 		return ResponseEntity.ok(responseData);
 	}
@@ -116,11 +124,11 @@ public class RecommendationController {
 	}
 	//전체 마을
 	@GetMapping("/town-list/{requestPageNo}")
-	public ResponseEntity<List<RecTownInfoDTO>> getAllRectownList(@PathVariable int requestPageNo) {
+	public ResponseEntity<List<RecTownInfoDTO>> getAllRectownList(@RequestParam String requestOrderType, @PathVariable int requestPageNo) {
 		
 		int perPagePostCount = 4;
 		int totalCount = getRecTownInfoService.getAllRecTownList();
-		List<RecTownInfoDTO> responseData = postRequestRecTownService.postRequesRecTown(totalCount, perPagePostCount, requestPageNo);
+		List<RecTownInfoDTO> responseData = postRequestRecTownService.postRequesRecTown(requestOrderType, totalCount, perPagePostCount, requestPageNo);
 
 		return ResponseEntity.ok(responseData);
 	}
@@ -130,9 +138,14 @@ public class RecommendationController {
 		return getOneRecTownInfoService.getOneRecTownInfo(recTId);
 	}
 	//키워드별로 체험 보기
-	@GetMapping("/activity-keyword/{recAKeywordId}")
-	public List<RecActivityInfoDTO> keywordFilter(@PathVariable int recAKeywordId) {
-		return getKeywordFilterService.keywordFilterList(recAKeywordId);
+	@GetMapping("/activity-keyword/{recAKeywordId}/{requestPageNo}")
+	public ResponseEntity<List<RecActivityInfoDTO>> keywordFilter(@RequestParam String requestOrderType, @PathVariable int recAKeywordId, @PathVariable int requestPageNo) {
+		
+		int perPagePostCount = 3;
+		int totalCount = getRecKeywordCntService.getRecKeywordCnt(recAKeywordId);
+		List<RecActivityInfoDTO> responseData = postRequestRecKeywordService.postRequestRecKeyword(recAKeywordId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
+		
+		return ResponseEntity.ok(responseData);
 	}
 	//전체 키워드
 	@GetMapping("/activity-keyword")
@@ -144,16 +157,22 @@ public class RecommendationController {
 	public List<RegionSidoDTO> getRegionSidoList() {
 		return getRegionSidoService.getRegionSidoList(); 
 	}
-	//시군구별 추천체험
-	@GetMapping("/activity-sigungu/{sigunguId}")
-	public List<RecActivityInfoDTO> sigunguActivityList(@PathVariable int sigunguId){
-		return getSigunguActivityService.sigunguActivityList(sigunguId);
-	}
 	//시군구 필터
 	@GetMapping("/sido-sigungu/{sidoId}")
 	public List<RegionSidoDTO> sigunguFilter(@PathVariable int sidoId) {
 		return getSigunguFilterService.sigunguFilter(sidoId);
 	}
+	//시군구별 추천체험
+	@GetMapping("/activity-sigungu/{sigunguId}/{requestPageNo}")
+	public ResponseEntity<List<RecActivityInfoDTO>> sigunguActivityList(@PathVariable int sigunguId, @RequestParam String requestOrderType, @PathVariable int requestPageNo){
+		
+		int perPagePostCount = 3;
+		int totalCount = getRecSigunguCntService.getRecSigunguCnt(sigunguId);
+		List<RecActivityInfoDTO> responseData = getSigunguActivityService.sigunguActivityList(sigunguId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
+		
+		return ResponseEntity.ok(responseData);
+	}
+	
 	//마을 제보하기
 	@Transactional
     @PostMapping(value = "/registration",

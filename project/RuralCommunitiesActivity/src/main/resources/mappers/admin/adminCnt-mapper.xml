@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.admin.AdminCntMapper">
+
+	<select id="getAllAdmin" resultType="int">
+	SELECT COUNT(*) FROM ADMIN
+	</select>
+	
+
+	<select id="selectAdminDATECnt"  resultType="int">
+	SELECT COUNT(*) FROM 
+	(SELECT * 
+	FROM ADMIN 
+	WHERE ADMIN_REG_DATE BETWEEN 
+	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+	</select>
+ 
+
+ 	
+	<select id="appAdmin" resultType="int">
+	SELECT COUNT(*) FROM 
+	(SELECT * FROM ADMIN WHERE ADMIN_AUTHORITY_ID IS NULL)
+	</select>
+	
+
+
+</mapper>

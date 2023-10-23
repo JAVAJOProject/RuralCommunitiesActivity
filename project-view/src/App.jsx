@@ -1,6 +1,6 @@
 import './App.css';
 
-import React, { lazy } from 'react';
+import React from 'react';
 import {
   Navigate,
   RouterProvider,
@@ -9,162 +9,51 @@ import {
 import UserInfo from './security/UserInfo';
 import RootLayout from './components/Service/RootLayout';
 import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
-import NotFoundPage from './components/Service/page/errorPage/NotFoundPage';
+import NotFoundPage from './page/Error/NotFoundPage';
 import NotFoundAdmin from './components/Admin/page/errorPage/NotFoundAdmin';
 
-import MainPageContents from './components/Service/page/mainPage/MainPageContents';
+import MainPage from './page/Service/Main/MainPage';
 import MainPageAdmin from './components/Admin/page/mainPage/MainPageAdmin';
-// const MainPageContents = lazy(() =>
-//   import('./components/Service/page/mainPage/MainPageContents')
-// );
-// const MainPageAdmin = lazy(() =>
-//   import('./components/Admin/page/mainPage/MainPageAdmin')
-// );
 
-// const RootLayoutFaq = lazy(() =>
-//   import('./components/Service/page/customerCenterPage/faq/RootLayoutFaq')
-// );
-// const RootLayoutNotice = lazy(() =>
-//   import('./components/Service/page/customerCenterPage/notice/RootLayoutNotice')
-// );
-// const RootLayoutProvider = lazy(() =>
-//   import('./components/Service/page/myPage/Provider/RootLayoutProvider')
-// );
-// const RootLayoutExperiencer = lazy(() =>
-//   import('./components/Service/page/myPage/Experiencer/RootLayoutExperiencer')
-// );
-// const RootLayoutTotalActivity = lazy(() =>
-//   import(
-//     './components/Service/page/totalActivityPage/Nav/RootLayoutTotalActivity'
-//   )
-// );
-// const RootLayoutEventTitle = lazy(() =>
-//   import('./components/Service/page/communityPage/event/RootLayoutEventTitle')
-// );
-// const RootLayoutEventNav = lazy(() =>
-//   import('./components/Service/page/communityPage/event/RootLayoutEventNav')
-// );
-// const RootLayoutRecActKeyword = lazy(() =>
-//   import('./components/Service/page/recActivityPage/RootLayoutRecActKeyword')
-// );
-import RootLayoutFaq from './components/Service/page/customerCenterPage/faq/RootLayoutFaq';
-import RootLayoutNotice from './components/Service/page/customerCenterPage/notice/RootLayoutNotice';
-import RootLayoutProvider from './components/Service/page/myPage/Provider/RootLayoutProvider';
-import RootLayoutExperiencer from './components/Service/page/myPage/Experiencer/RootLayoutExperiencer';
-import RootLayoutTotalActivity from './components/Service/page/totalActivityPage/Nav/RootLayoutTotalActivity';
-import RootLayoutEventTitle from './components/Service/page/communityPage/event/RootLayoutEventTitle';
-import RootLayoutEventNav from './components/Service/page/communityPage/event/RootLayoutEventNav';
-import RootLayoutRecActKeyword from './components/Service/page/recActivityPage/RootLayoutRecActKeyword';
+import RootLayoutFaq from './components/Service/customerCenter/faq/RootLayoutFaq';
+import RootLayoutNotice from './components/Service/customerCenter/notice/RootLayoutNotice';
+import RootLayoutProvider from './components/Service/mypage/Provider/RootLayoutProvider';
+import RootLayoutExperiencer from './components/Service/mypage/Experiencer/RootLayoutExperiencer';
+import RootLayoutTotalActivity from './components/Service/totalActivity/Nav/RootLayoutTotalActivity';
+import RootLayoutEventTitle from './components/Service/community/event/RootLayoutEventTitle';
+import RootLayoutEventNav from './components/Service/community/event/RootLayoutEventNav';
+import RootLayoutRecActKeyword from './components/Service/recActivity/RootLayoutRecActKeyword';
 
-// const EventCardListPage = lazy(() =>
-//   import('./components/Service/page/communityPage/event/EventCardListPage')
-// );
-// const EventTextListPage = lazy(() =>
-//   import('./components/Service/page/communityPage/event/EventTextListPage')
-// );
-// const EventDetailPage = lazy(() =>
-//   import('./components/Service/page/communityPage/event/EventDetailPage')
-// );
-// const ThemeActivityPage = lazy(() =>
-//   import('./components/Service/page/totalActivityPage/Theme/ThemeActivityPage')
-// );
-// const EventRegistrationPage = lazy(() =>
-//   import('./components/Service/page/communityPage/event/EventRegistrationPage')
-// );
-import EventCardListPage from './components/Service/page/communityPage/event/EventCardListPage';
-import EventTextListPage from './components/Service/page/communityPage/event/EventTextListPage';
-import EventDetailPage from './components/Service/page/communityPage/event/EventDetailPage';
-import ThemeActivityPage from './components/Service/page/totalActivityPage/Theme/ThemeActivityPage';
-import EventRegistrationPage from './components/Service/page/communityPage/event/EventRegistrationPage';
+import EventCardListPage from './page/Service/Community/Event/EventCardListPage';
+import EventTextListPage from './page/Service/Community/Event/EventTextListPage';
+import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
+import ThemeActivityPage from './page/Service/TotalActivity/ThemeActivityPage';
+import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
 
-// const TotalActivityInfoListAdmin = lazy(() =>
-//   import(
-//     './components/Admin/page/board/TotalActivityInfoList/TotalActivityInfoListAdmin'
-//   )
-// );
-// const NoticePage = lazy(() =>
-//   import('./components/Service/page/customerCenterPage/faq/FaqPage')
-// );
-// const FaqPage = lazy(() =>
-//   import('./components/Service/page/customerCenterPage/faq/FaqPage')
-// );
-// const NoticeDetailPage = lazy(() =>
-//   import('./components/Service/page/customerCenterPage/notice/NoticeDetailPage')
-// );
-// const MypageSellerPostPage = lazy(() =>
-//   import('./components/Service/page/myPage/Provider/temp/MypageSellerPostPage')
-// );
-// const MypageMemberPostPage = lazy(() =>
-//   import(
-//     './components/Service/page/myPage/Experiencer/temp/MypageMemberPostPage'
-//   )
-// );
-// const MypageSellerServicePage = lazy(() =>
-//   import(
-//     './components/Service/page/myPage/Provider/temp/MypageSellerServicePage'
-//   )
-// );
-// const MypageSellerEventPage = lazy(() =>
-//   import('./components/Service/page/myPage/Provider/temp/MypageSellerEventPage')
-// );
-// const MypageMemberReviewPage = lazy(() =>
-//   import(
-//     './components/Service/page/myPage/Experiencer/temp/MypageMemberReviewPage'
-//   )
-// );
-// const MypageMemberReviewEditPage = lazy(() =>
-//   import(
-//     './components/Service/page/myPage/Experiencer/temp/MypageMemberReviewEditPage'
-//   )
-// );
-// const RuralRatingPage = lazy(() =>
-//   import('./components/Service/page/totalActivityPage/Rating/RuralRatingPage')
-// );
-// const TotalActReviewPage = lazy(() =>
-//   import(
-//     './components/Service/page/totalActivityPage/review/TotalActReviewPage'
-//   )
-// );
-// const TotalActDetailPage = lazy(() =>
-//   import(
-//     './components/Service/page/totalActivityPage/Detail/TotalActDetailPage'
-//   )
-// );
 import TotalActivityInfoListAdmin from './components/Admin/page/board/TotalActivityInfoList/TotalActivityInfoListAdmin';
-import NoticePage from './components/Service/page/customerCenterPage/notice/NoticePage';
-import FaqPage from './components/Service/page/customerCenterPage/faq/FaqPage';
-import NoticeDetailPage from './components/Service/page/customerCenterPage/notice/NoticeDetailPage';
-import MypageSellerPostPage from './components/Service/page/myPage/Provider/temp/MypageSellerPostPage';
-import MypageMemberPostPage from './components/Service/page/myPage/Experiencer/temp/MypageMemberPostPage';
-import MypageSellerServicePage from './components/Service/page/myPage/Provider/temp/MypageSellerServicePage';
-import MypageSellerEventPage from './components/Service/page/myPage/Provider/temp/MypageSellerEventPage';
-import MypageMemberReviewPage from './components/Service/page/myPage/Experiencer/temp/MypageMemberReviewPage';
-import MypageMemberReviewEditPage from './components/Service/page/myPage/Experiencer/temp/MypageMemberReviewEditPage';
-import RuralRatingPage from './components/Service/page/totalActivityPage/Rating/RuralRatingPage';
-import TotalActReviewPage from './components/Service/page/totalActivityPage/review/TotalActReviewPage';
-import TotalActDetailPage from './components/Service/page/totalActivityPage/Detail/TotalActDetailPage';
+import NoticePage from './page/Service/CustomerCenter/Notice/NoticePage';
+import FaqPage from './page/Service/CustomerCenter/FAQ/FaqPage';
+import NoticeDetailPage from './page/Service/CustomerCenter/Notice/NoticeDetailPage';
+import MypageSellerPostPage from './page/Service/Mypage/Seller/MypageSellerPostPage';
+import MypageMemberPostPage from './page/Service/Mypage/Member/MypageMemberPostPage';
+import MypageSellerServicePage from './page/Service/Mypage/Seller/MypageSellerServicePage';
+import MypageSellerEventPage from './page/Service/Mypage/Seller/MypageSellerEventPage';
+import MypageMemberReviewPage from './page/Service/Mypage/Member/MypageMemberReviewPage';
+import MypageMemberReviewEditPage from './page/Service/Mypage/Member/MypageMemberReviewEditPage';
+import RuralRatingPage from './page/Service/TotalActivity/RuralRatingPage';
+import TotalActReviewPage from './page/Service/TotalActivity/TotalActReviewPage';
+import TotalActDetailPage from './page/Service/TotalActivity/TotalActDetailPage';
 
-// const MemberReservationInfoPage = lazy(() =>
-//   import(
-//     './components/Service/page/myPage/Experiencer/MemberReservationInfoPage/MemberReservationInfoPage'
-//   )
-// );
-// const RecActKeywordSelectedPage = lazy(() =>
-//   import('./components/Service/page/recActivityPage/RecActKeywordSelectedPage')
-// );
-// const RecActDetailPage = lazy(() =>
-//   import('./components/Service/page/recActivityPage/RecActDetailPage')
-// );
-// const ExPage = lazy(() => import('./components/Service/page/ExPage'));
-// const LoadingPage = lazy(() =>
-//   import('./components/Intro/loading/LoadingPage')
-// );
-// const = lazy(() => import())
-import MemberReservationInfoPage from './components/Service/page/myPage/Experiencer/MemberReservationInfoPage/MemberReservationInfoPage';
-import RecActKeywordSelectedPage from './components/Service/page/recActivityPage/RecActKeywordSelectedPage';
-import RecActDetailPage from './components/Service/page/recActivityPage/RecActDetailPage';
-import ExPage from './components/Service/page/ExPage';
-import LoadingPage from './components/Intro/loading/LoadingPage';
+import MemberReservationInfoPage from './page/Service/Mypage/Member/MemberReservationInfoPage';
+import RecActKeywordSelectedPage from './page/Service/Recommendation/RecActKeywordSelectedPage';
+import RecActDetailPage from './page/Service/Recommendation/RecActDetailPage';
+import InquiryListPage from './page/Service/CustomerCenter/Inquiry/InquiryListPage';
+import ExPage from './page/ExPage';
+import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDetailPage';
+import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
+import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
+import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
+import TotalActTitleBox from './components/Service/totalActivity/Theme/title/TotalActTitleBox';
 
 const router = createBrowserRouter([
   {
@@ -313,7 +202,7 @@ const router = createBrowserRouter([
           { index: true, path: '*', element: <NotFoundPage /> },
           {
             path: '',
-            element: <MainPageContents />,
+            element: <MainPage />,
           },
           {
             path: 'recommendation',
@@ -367,6 +256,10 @@ const router = createBrowserRouter([
                 ],
               },
               {
+                path: 'region',
+                element: <RegionActivityPage />,
+              },
+              {
                 path: 'detail/:aPostId',
                 element: <RootLayoutTotalActivity />,
                 children: [
@@ -384,7 +277,6 @@ const router = createBrowserRouter([
                   },
                 ],
               },
-              { path: 'region' },
               {
                 path: 'grade',
                 element: <RuralRatingPage />,
@@ -532,6 +424,29 @@ const router = createBrowserRouter([
                   },
                 ],
               },
+              {
+                path: 'inquiry',
+                element: <RootLayoutInquiryTitle />,
+                children: [
+                  {
+                    index: true,
+                    path: '',
+                    element: <Navigate replace to={'list'} />,
+                  },
+                  {
+                    path: 'list',
+                    element: <InquiryListPage />,
+                  },
+                  {
+                    path: 'detail/:inquiryId',
+                    element: <InquiryDetailPage />,
+                  },
+                ],
+              },
+              {
+                path: 'inquiry/post',
+                element: <InquiryPostPage />,
+              },
             ],
           },
           {
@@ -610,8 +525,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'test-ex',
-            // element: <ExPage />,
-            element: <LoadingPage />,
+            element: <ExPage />,
+            // element: <LoadingPage />,
           },
         ],
       },

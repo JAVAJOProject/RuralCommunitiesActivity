@@ -1,0 +1,26 @@
+.inquirySelectBox {
+  width: 6.1875rem;
+  height: 2.75rem;
+  border-radius: 0.5rem;
+  background: #e9e9e9;
+  border-style: none;
+  cursor: pointer;
+
+  color: #474545;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.inquirySelectBox option {
+  color: #474545;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+.inquirySelectBox option:checked,
+.inquirySelectBox option:active {
+  color: #3878ff;
+}

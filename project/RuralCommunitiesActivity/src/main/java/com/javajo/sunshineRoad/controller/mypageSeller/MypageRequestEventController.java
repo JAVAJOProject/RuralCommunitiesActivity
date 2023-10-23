@@ -31,7 +31,6 @@ public class MypageRequestEventController {
 	private final MypageRequestEventService reqEventService;
 	private final GetOneEventService getOneEventService;
 	private final GetOneImgFromPathService getOneImgFromPathService;
-
 	// 전체 리스트
 	@GetMapping("/event/list/{currentPage}")
 	public List<MypageRequestEventDTO> getEventList(@PathVariable("currentPage") int currentPage /* @SessionAttribute("loginSeller") MypageSellerDTO seller */) {
@@ -45,7 +44,6 @@ public class MypageRequestEventController {
 		List<MypageRequestEventDTO> selectEvent = reqEventService.getEventList(sId, pageInfo);
 		return selectEvent;
 	}
-
 	// 등록한 이벤트 이미지처리
     @GetMapping("/event-image/{id}")
     public ResponseEntity<UrlResource> getMainPageEventData(@PathVariable int id) {
@@ -56,8 +54,6 @@ public class MypageRequestEventController {
             return ResponseEntity.badRequest().build();
         }
     }
-
-	
 	// 상세보기
 	// 시향언니꺼 URL 그대로 사용해야함.
 	@GetMapping("/event/{eventId}")
@@ -66,12 +62,10 @@ public class MypageRequestEventController {
 		MypageRequestEventDTO selectEvent = reqEventService.getEventInfo(eventId);
 		return selectEvent;
 	}
-
 	// 이벤트 참여자 명단
 	@GetMapping("/event/participant/list/{eventId}/{currentPage}")
 	public List<MypageEventWinnerDTO> getParticipantList(@PathVariable int eventId, @PathVariable("currentPage") int currentPage) {
 		System.out.println("eventId" + eventId);
-		
 		int participantCount = reqEventService.getEventParticipantCount(eventId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, participantCount, 3);
 		List<MypageEventWinnerDTO> selectParticipant = reqEventService.getParticipantList(eventId, pageInfo);
@@ -87,7 +81,6 @@ public class MypageRequestEventController {
 		List<MypageEventWinnerDTO> selectWinner = reqEventService.getWinnerList(eventId, pageInfo);
 		return selectWinner;
 	}
-	
 	// 요청 이벤트 취소 눌렀을때
 	@DeleteMapping("/event/cancel/{eventId}")
 	public int cancelEventParticipant(@PathVariable int eventId) {
@@ -99,7 +92,6 @@ public class MypageRequestEventController {
 		 */
 		return canceled;
 	}
-
 	// 수정 페이지 가기
 	@GetMapping("/event/modify/{eventId}")
 	public MypageRequestEventDTO getEventModifyInfo(@PathVariable int eventId) {
@@ -107,7 +99,6 @@ public class MypageRequestEventController {
 		MypageRequestEventDTO selectEvent = reqEventService.getEventModifyInfo(eventId);
 		return selectEvent;
 	}
-	
 	// 수정하기
 	@PostMapping("/event/modify")
 	public int modifyEvent(/* @ModelAttribute("event") MypageEventDTO event */ @RequestParam int eventId, @RequestParam String eventName) {
@@ -116,7 +107,6 @@ public class MypageRequestEventController {
 		int selectEvent = reqEventService.modifyEvent(eventId, eventName);
 		return selectEvent;
 	}
-
 	// 이벤트 게재 요청 하기 (관리자한테)
 	@PostMapping("/event/request/{eventId}")
 	public ResponseEntity<MypageRequestEventDTO> getRequestEventInfo(@PathVariable int eventId) {

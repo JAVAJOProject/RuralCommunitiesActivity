@@ -1,0 +1,36 @@
+.inquiryBtn {
+  width: 8.4375rem;
+  height: 2.75rem;
+  border-radius: 0.625rem;
+  background: #000;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inquiryBtn:hover,
+.inquiryBtn:hover > p {
+  color: #474545;
+  background: #e9e9e9;
+}
+
+.inquiryBtn > p {
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.inquiryBtnSub {
+  background: #e9e9e9;
+}
+.inquiryBtnSub > p {
+  color: #474545;
+}
+.inquiryBtnSub:hover,
+.inquiryBtnSub:hover > p {
+  background: #474545;
+  color: #e9e9e9;
+}

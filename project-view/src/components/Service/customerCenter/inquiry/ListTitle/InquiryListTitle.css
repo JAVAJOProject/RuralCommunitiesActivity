@@ -1,0 +1,18 @@
+.inquiryListTitle {
+  margin: 2rem auto 1rem;
+  width: fit-content;
+}
+
+.inquiryListTitle > img {
+  width: 15rem;
+  height: 10.25rem;
+  mix-blend-mode: darken;
+  object-fit: cover;
+}
+
+.inquiryListTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.5rem;
+  font-weight: 400;
+}

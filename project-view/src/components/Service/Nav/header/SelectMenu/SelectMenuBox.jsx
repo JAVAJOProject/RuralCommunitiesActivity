@@ -35,7 +35,7 @@ const detailMenu = {
       { text: '공지사항', link: 'customerService/notice' },
       { text: 'FAQ', link: 'customerService/faq' },
       { text: '문의글 목록', link: 'customerService/inquiry/list' },
-      { text: '1:1 문의', link: 'customerService/inquiry/personal' },
+      { text: '1:1 문의', link: 'customerService/inquiry/post' },
     ],
   },
 };

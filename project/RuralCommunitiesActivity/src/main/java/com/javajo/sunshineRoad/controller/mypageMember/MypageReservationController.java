@@ -1,14 +1,18 @@
 package com.javajo.sunshineRoad.controller.mypageMember;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javajo.sunshineRoad.model.dto.mainPage.MainPageTotalActivityInfoDTO;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageReservationDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 import com.javajo.sunshineRoad.model.service.IService.common.service.GetOneImgFromPathService;
@@ -25,8 +29,6 @@ public class MypageReservationController {
 	private final MypageReservationService reservationService;
 	private final MypageReservationService mypageReservationService;
 	private final GetOneImgFromPathService getOneImgFromPathService;
-	
-   
     private final GetOneTotalActivityService getOneTotalActivityService;
     
 
@@ -63,16 +65,16 @@ public class MypageReservationController {
 	}
 
 	// 예약내역 이미지 처리
-//	 @GetMapping("/total-activity-image/{id}")
-//	    public ResponseEntity<UrlResource> getTotalActivityData(@PathVariable int id) {
-//	        MainPageTotalActivityInfoDTO totalActivityInfoDTO = getOneTotalActivityService.getOneTotalActivityData(id);
-//	        System.out.println(totalActivityInfoDTO.getAThumbnailImg());
-//	        try {
-//	            return getOneImgFromPathService.getOneImgResourceFromPath(totalActivityInfoDTO.getAThumbnailImg());
-//	        } catch (IOException e) {
-//	            return ResponseEntity.badRequest().build();
-//	        }
-//	    }
+	 @GetMapping("/total-activity-image/{id}")
+	    public ResponseEntity<UrlResource> getTotalActivityData(@PathVariable int id) {
+	        MainPageTotalActivityInfoDTO totalActivityInfoDTO = getOneTotalActivityService.getOneTotalActivityData(id);
+	        System.out.println(totalActivityInfoDTO.getAThumbnailImg());
+	        try {
+	            return getOneImgFromPathService.getOneImgResourceFromPath(totalActivityInfoDTO.getAThumbnailImg());
+	        } catch (IOException e) {
+	            return ResponseEntity.badRequest().build();
+	        }
+	    }
 	
 
 	// 다른 사람의 URL 그대로 사용해야함. -> 체험상세보기
