@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 
 import MyPageMemberContentxBox from "../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/ContentsBox/MyPageMemberContentxBox";
-
-import testImg from "../../../../view_img/Service/mainPage/testImg/totalActivityTest1.jpg";
 
 import "../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox.css";
 import MypageReservationContentsBox from "../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox";

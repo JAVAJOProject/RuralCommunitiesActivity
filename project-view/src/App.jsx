@@ -53,7 +53,6 @@ import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDeta
 import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
 import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
 import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
-import TotalActTitleBox from './components/Service/totalActivity/Theme/title/TotalActTitleBox';
 
 const router = createBrowserRouter([
   {

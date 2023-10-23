@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import TotalActTitleBox from "./title/TotalActTitleBox";
+import TotalActTitleBox from "../../../components/Service/totalActivity/Theme/title/TotalActTitleBox";
 
-import tractor from "../../../../../view_img/Service/totalActivity/theme/tractor.png";
-import fishing from "../../../../../view_img/Service/totalActivity/theme/fishing.svg";
-import tradition from "../../../../../view_img/Service/totalActivity/theme/plate.svg";
-import plate from "../../../../../view_img/Service/totalActivity/theme/etcActivity.png";
+import tractor from "../../../view_img/Service/totalActivity/theme/tractor.png";
+import fishing from "../../../view_img/Service/totalActivity/theme/fishing.svg";
+import tradition from "../../../view_img/Service/totalActivity/theme/plate.svg";
+import plate from "../../../view_img/Service/totalActivity/theme/etcActivity.png";
 
-import testImg from "../../../../../view_img/Service/mainPage/testImg/totalActivityTest1.jpg";
-import ThemeCardSet from "./themeCard/ThemeCardSet";
-import { fetchDataGET, fetchImgGET } from "../../../../../config/ApiService";
+import ThemeCardSet from "../../../components/Service/totalActivity/Theme/themeCard/ThemeCardSet";
+import { fetchDataGET, fetchImgGET } from "../../../config/ApiService"
 
 const themeImages = [
   { themeName: "농촌 체험", imgSrc: tractor },

@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../../components/Service/Nav/header/Header';
-import Footer from '../../components/Service/Nav/footer/Footer';
 import '../../components/Service/error/NotFoundPage.css';
 
 export default function NotFoundPage() {
