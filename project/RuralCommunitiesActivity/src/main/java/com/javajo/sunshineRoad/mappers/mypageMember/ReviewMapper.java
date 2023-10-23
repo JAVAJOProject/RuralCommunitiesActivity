@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.mypageMember;
 
 import java.util.List;
 
@@ -12,4 +12,3 @@ public interface ReviewMapper {
 	public int getTotalReviewCountData();
 	public List<ReviewDTO> getRequestPageReviewContentData(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 }
-

@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.common;
 
 import org.apache.ibatis.annotations.Mapper;
 

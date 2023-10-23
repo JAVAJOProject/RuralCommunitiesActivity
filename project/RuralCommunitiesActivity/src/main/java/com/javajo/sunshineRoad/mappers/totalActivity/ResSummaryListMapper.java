@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.totalActivity;
 
 import java.util.List;
 

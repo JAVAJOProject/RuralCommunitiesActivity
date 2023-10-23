@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.security;
 
 import com.javajo.sunshineRoad.model.dto.signUp.SellerAccountInfoDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpMemberDTO;

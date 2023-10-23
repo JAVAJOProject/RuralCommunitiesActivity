@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.admin;;
 
 
 import com.javajo.sunshineRoad.model.dto.admin.board.AEventDTO;

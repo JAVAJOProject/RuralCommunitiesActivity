@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.community;
 
 import com.javajo.sunshineRoad.model.dto.community.SellerCommunityPostDTO;
 import org.apache.ibatis.annotations.Mapper;

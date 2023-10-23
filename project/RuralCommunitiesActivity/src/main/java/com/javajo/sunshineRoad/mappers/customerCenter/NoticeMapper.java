@@ -1,4 +1,4 @@
-package com.javajo.sunshineRoad.mappers;
+package com.javajo.sunshineRoad.mappers.customerCenter;
 
 import java.util.List;
 
@@ -26,4 +26,3 @@ public interface NoticeMapper {
 	public NoticeListInfoDTO getNoticeDetail(int noticeId); 
 
 }
-
