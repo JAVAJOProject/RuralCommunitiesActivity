@@ -8,21 +8,21 @@ export default function RecActOrderText({ order }) {
   const [searchParams, setSearchParams] = useSearchParams();
   const orderUrl = searchParams.get('order');
   const handleUrl = () => {
-    searchParams.set('order', order);
+    searchParams.set('order', order.requestOrderType);
     setSearchParams(searchParams);
   };
 
   return (
     <div
       className={
-        orderUrl === order ? 'recActOrderTextActive' : 'recActOrderText'
+        orderUrl === order.requestOrderType ? 'recActOrderTextActive' : 'recActOrderText'
       }
       onClick={() => {
-        handleOrder(order);
+        handleOrder(order.requestOrderType);
         handleUrl();
       }}
     >
-      <p>{order}</p>
+      <p>{order.text}</p>
     </div>
   );
 }

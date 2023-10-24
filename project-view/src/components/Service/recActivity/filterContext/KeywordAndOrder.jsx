@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import { useImmer } from 'use-immer';
 
 export const KeywordAndOrderContext = createContext({});
-const initialState = { keyword: null, order: '최신순' };
+const initialState = { keyword: null, order: 'date' };
 
 export default function KeywordAndOrder({ children }) {
   const [filterState, updateFilterState] = useImmer(initialState);

@@ -53,8 +53,8 @@ import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDeta
 import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
 import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
 import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
-import TotalActRegistrationPage from "./page/Service/TotalActivity/TotalActRegistrationPage";
-import TotalActReservationPage from "./page/Service/TotalActivity/TotalActReservationPage";
+import TotalActRegistrationPage from './page/Service/TotalActivity/TotalActRegistrationPage';
+import TotalActReservationPage from './page/Service/TotalActivity/TotalActReservationPage';
 
 const router = createBrowserRouter([
   {
@@ -220,7 +220,7 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     path: '',
-                    element: <Navigate replace to={'filter?order=최신순'} />,
+                    element: <Navigate replace to={'filter?order=date'} />,
                   },
                   {
                     path: 'filter',
@@ -280,11 +280,11 @@ const router = createBrowserRouter([
               },
               {
                 path: 'registration',
-                element: <TotalActRegistrationPage />
+                element: <TotalActRegistrationPage />,
               },
               {
                 path: 'reservation',
-                element: <TotalActReservationPage />
+                element: <TotalActReservationPage />,
               },
               {
                 path: 'grade',

@@ -9,7 +9,7 @@ export default function KeywordBox({ keyword }) {
   const keywordUrl = searchParams.get('keyword');
   const handleUrl = (keyword) => {
     if (keyword) {
-      searchParams.set('keyword', keyword);
+      searchParams.set('keyword', keyword.recAKeywordId);
       setSearchParams(searchParams);
     } else {
       searchParams.delete('keyword');
@@ -20,11 +20,11 @@ export default function KeywordBox({ keyword }) {
   return (
     <div
       className={
-        'keywordBox' + (keywordUrl === keyword ? ' keywordBoxActive' : '')
+        'keywordBox' + (keywordUrl === keyword.recAKeywordId ? ' keywordBoxActive' : '')
       }
       onClick={() => {
-        if (keywordUrl !== keyword) {
-          handleKeyword(keyword);
+        if (keywordUrl !== keyword.recAKeywordId) {
+          handleKeyword(keyword.recAKeywordId);
           handleUrl(keyword);
         } else {
           handleKeyword(null);
@@ -33,7 +33,7 @@ export default function KeywordBox({ keyword }) {
       }}
     >
       <p>{'['}</p>
-      <p>{keyword}</p>
+      <p>{keyword.recAKeywordName}</p>
       <p>{']'}</p>
     </div>
   );

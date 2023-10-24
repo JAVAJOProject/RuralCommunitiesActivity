@@ -1,47 +1,50 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import RecGreenBoxCard from '../../../components/Service/recActivity/keywordFiltered/RecGreenBoxCard';
 import RecCardImg from '../../../components/Service/recActivity/keywordFiltered/RecCardImg';
 
-import testImg from '../../../view_img/Service/mainPage/testImg/circleTest3.jpg';
 import RecCardContentsBox from '../../../components/Service/recActivity/keywordFiltered/RecCardContentsBox';
 import { useNavigate } from 'react-router-dom/dist';
-
-const testContents = [
-  {
-    postId: 1,
-    recAId: null,
-    title: '체험 이름',
-    imgSrc: testImg,
-    favoritesNum: 123456,
-    viewNum: 233456,
-    text: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-  },
-  {
-    postId: 2,
-    recAId: null,
-    title: '체험 이름',
-    imgSrc: testImg,
-    favoritesNum: 123456,
-    viewNum: 233456,
-    text: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-  },
-  {
-    postId: 3,
-    recAId: null,
-    title: '체험 이름',
-    imgSrc: testImg,
-    favoritesNum: 123456,
-    viewNum: 233456,
-    text: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-  },
-];
+import { KeywordAndOrderContext } from '../../../components/Service/recActivity/filterContext/KeywordAndOrder';
+import { useImmer } from 'use-immer';
+import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
+import { RecActRequestPageNoContext } from '../../../components/Service/recActivity/RootLayoutRecActKeyword';
 
 export default function RecActKeywordSelectedPage() {
   const navigate = useNavigate();
-  const [contents, setContents] = useState(testContents);
+  const { filterState } = useContext(KeywordAndOrderContext);
+  const { requestPageNo } = useContext(RecActRequestPageNoContext);
+  const [contents, updateContents] = useImmer([]);
+
+  useEffect(() => {
+    async function fetchContents() {
+      let data;
+      if (filterState.keyword) {
+        data = await fetchDataGET(
+          `/recommendation/activity-keyword/${filterState.keyword}/${requestPageNo}?requestOrderType=${filterState.order}`
+        );
+      } else {
+        data = await fetchDataGET(
+          `/recommendation/activity-list/${requestPageNo}?requestOrderType=${filterState.order}`
+        );
+      }
+      const images = await fetchImgGET(
+        data,
+        'recAPostId',
+        '/main/recommendation-activity-image'
+      );
+
+      updateContents((draft) => {
+        draft.length = 0;
+        data.forEach((item, index) => {
+          draft.push({
+            ...item,
+            recAThumbnailImg: images[index],
+          });
+        });
+      });
+    }
+    fetchContents();
+  }, []);
 
   return (
     <>

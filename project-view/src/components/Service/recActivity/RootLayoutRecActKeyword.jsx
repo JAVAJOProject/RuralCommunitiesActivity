@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import KeywordMainTitle from './keyword/KeywordMainTitle';
 
 import keywordImg from '../../../view_img/Service/recActivity/keywordClick.jpg';
@@ -10,6 +10,10 @@ import RecActOrderBox from './order/RecActOrderBox';
 import { Outlet } from 'react-router-dom/dist';
 import KeywordAndOrder from './filterContext/KeywordAndOrder';
 import PageNoBox from '../common/PageNo/PageNoBox';
+import { useImmer } from 'use-immer';
+import { fetchDataGET } from '../../../config/ApiService';
+
+export const RecActRequestPageNoContext = createContext({});
 
 const contents = {
   mainTitle: {
@@ -22,45 +26,60 @@ const contents = {
     imgSrc: subtitleImg,
     circleColor: '#FFAB48',
   },
-  order: ['최신순', '좋아요순', '조회순'],
+  order: [
+    { text: '최신순', requestOrderType: 'date' },
+    { text: '좋아요순', requestOrderType: 'likes' },
+    { text: '조회순', requestOrderType: 'viewCount' },
+  ],
 };
 
-const keywords = [
-  '여름',
-  '드라이브',
-  '계곡',
-  '바다',
-  '버스여행',
-  '방송촬영지',
-  '기차여행',
-  '공원',
-  '숲',
-  '맛집',
-  '자연휴양림',
-  '겨울',
-];
-
 export default function RootLayoutRecActKeyword() {
+  const [keywords, updateKeywords] = useImmer([]);
+  const [totalPostNo, setTotalPostNo] = useState(0);
+  const [totalPageNo, setTotalPageNo] = useState(1);
+  const [requestPageNo, setRequestPageNo] = useState(1);
+
+  useEffect(() => {
+    async function fetchContents() {
+      const keywordList = await fetchDataGET(
+        '/recommendation/activity-keyword'
+      );
+      updateKeywords((draft) => [...keywordList]);
+
+      const [perPagePostCount, totalCount] = await fetchDataGET(
+        '/recommendation/total-count'
+      );
+      setTotalPostNo(+totalCount);
+      setTotalPageNo(Math.ceil(+totalCount / +perPagePostCount));
+    }
+    fetchContents();
+  }, []);
   const { mainTitle, subtitle, order } = contents;
-  subtitle.text = `전체 ${30}건`;
+  subtitle.text = `전체 ${totalPostNo}건`;
 
   return (
-    <KeywordAndOrder>
-      <KeywordMainTitle contents={mainTitle} />
-      <KeywordBoxSet keywords={keywords} />
-      <CardListContentBox>
-        <CardBoxTitleSet
-          imgSrc={subtitle.imgSrc}
-          text={subtitle.text}
-          circleColor={subtitle.circleColor}
-          isDarken={false}
+    <RecActRequestPageNoContext.Provider value={requestPageNo}>
+      <KeywordAndOrder>
+        <KeywordMainTitle contents={mainTitle} />
+        <KeywordBoxSet keywords={keywords} />
+        <CardListContentBox>
+          <CardBoxTitleSet
+            imgSrc={subtitle.imgSrc}
+            text={subtitle.text}
+            circleColor={subtitle.circleColor}
+            isDarken={false}
+          />
+          <RecActOrderBox orders={order} />
+          <div style={{ clear: 'both' }}>
+            <Outlet />
+          </div>
+        </CardListContentBox>
+        <PageNoBox
+          curr={requestPageNo}
+          total={totalPageNo}
+          handlePageNo={setRequestPageNo}
         />
-        <RecActOrderBox orders={order} />
-        <div style={{ clear: 'both' }}>
-          <Outlet />
-        </div>
-      </CardListContentBox>
-      <PageNoBox curr={1} total={6} />
-    </KeywordAndOrder>
+      </KeywordAndOrder>
+    </RecActRequestPageNoContext.Provider>
   );
 }

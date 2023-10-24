@@ -117,6 +117,13 @@ public class RecommendationController {
 
 		return ResponseEntity.ok(responseData);
 	}
+	@GetMapping("/total-count")
+	public List<Integer> totalCount() {
+		int perPagePostCount = 3;
+		int totalCount = getRecActivityInfoService.getAllRecActivityList();
+		return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+	}
+
 	//추천 체험 자세히보기
 	@GetMapping("/activity-list-one/{recAPostId}")
 	public List<RecActivityInfoDTO> getOneRecActivityInfo(@PathVariable int recAPostId) {
