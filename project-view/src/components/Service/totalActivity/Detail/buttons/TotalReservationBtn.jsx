@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './TotalReservationBtn.css'
+import './TotalReservationBtn.css';
 
 export default function TotalReservationBtn({ text, link, imgSrc }) {
   const navigate = useNavigate();
@@ -10,6 +10,7 @@ export default function TotalReservationBtn({ text, link, imgSrc }) {
       className="totalReservationBtn"
       onClick={() => {
         navigate(link);
+        window.scrollTo(0, 0);
       }}
     >
       <img src={imgSrc} alt="" />

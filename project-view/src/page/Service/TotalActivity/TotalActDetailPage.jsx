@@ -90,6 +90,7 @@ export default function TotalActDetailPage() {
       <EventImageBox images={images} />
       <EventContentBox content={contents} />
       <TotalBtnBox
+        postId={aPostId}
         isReservation={true}
         handleNavigate={() => {
           navigate(-1);

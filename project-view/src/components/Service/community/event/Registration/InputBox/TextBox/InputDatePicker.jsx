@@ -30,7 +30,7 @@ export default function InputDatePicker({ inputName, inputId }) {
         minDate={selectedStartDate ? selectedStartDate : new Date()}
         selected={selectedEndDate}
         onChange={(date) => setSelectedEndDate(date)}
-        className="inputDateText"
+        className="inputDateText inputPeriod"
         name={inputName[1]}
         id={inputName[1]}
         placeholderText="끝나는 날짜"

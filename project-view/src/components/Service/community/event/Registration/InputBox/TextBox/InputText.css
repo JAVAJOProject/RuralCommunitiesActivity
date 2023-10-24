@@ -30,6 +30,10 @@
 .inputDate {
   display: flex;
 }
+.inputDate > p {
+  text-align: center;
+  margin-left: -0.5rem;
+}
 
 .inputDateText::placeholder {
   font-style: italic;

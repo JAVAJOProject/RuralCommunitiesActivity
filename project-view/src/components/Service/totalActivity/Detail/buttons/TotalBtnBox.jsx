@@ -9,7 +9,7 @@ import buttonCancel from '../../../../../view_img/Service/community/event/cancel
 const buttons = {
   reservation: {
     text: '예약하기',
-    link: '',
+    link: '/app/activity/reservation/',
     imgSrc: buttonReservation,
   },
   back: {
@@ -18,7 +18,7 @@ const buttons = {
   },
 };
 
-export default function TotalBtnBox({ isReservation, handleNavigate }) {
+export default function TotalBtnBox({ postId, isReservation, handleNavigate }) {
   const { reservation, back } = buttons;
 
   return (
@@ -26,11 +26,15 @@ export default function TotalBtnBox({ isReservation, handleNavigate }) {
       {isReservation && (
         <TotalReservationBtn
           text={reservation.text}
-          link={reservation.link}
+          link={`${reservation.link}${postId}#`}
           imgSrc={reservation.imgSrc}
         />
       )}
-      <TotalBackBtn text={back.text} handleNavigate={handleNavigate} imgSrc={back.imgSrc} />
+      <TotalBackBtn
+        text={back.text}
+        handleNavigate={handleNavigate}
+        imgSrc={back.imgSrc}
+      />
     </div>
   );
 }

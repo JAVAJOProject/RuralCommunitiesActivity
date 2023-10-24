@@ -1,347 +1,347 @@
-import "./App.css";
+import './App.css';
 
-import React from "react";
+import React from 'react';
 import {
   Navigate,
   RouterProvider,
   createBrowserRouter,
-} from "react-router-dom";
-import UserInfo from "./security/UserInfo";
-import RootLayout from "./components/Service/RootLayout";
-import RootLayoutAdmin from "./components/Admin/RootLayoutAdmin";
-import NotFoundPage from "./page/Error/NotFoundPage";
-import NotFoundAdmin from "./components/Admin/page/errorPage/NotFoundAdmin";
+} from 'react-router-dom';
+import UserInfo from './security/UserInfo';
+import RootLayout from './components/Service/RootLayout';
+import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
+import NotFoundPage from './page/Error/NotFoundPage';
+import NotFoundAdmin from './components/Admin/page/errorPage/NotFoundAdmin';
 
-import MainPage from "./page/Service/Main/MainPage";
-import MainPageAdmin from "./components/Admin/page/mainPage/MainPageAdmin";
+import MainPage from './page/Service/Main/MainPage';
+import MainPageAdmin from './components/Admin/page/mainPage/MainPageAdmin';
 
-import RootLayoutFaq from "./components/Service/customerCenter/faq/RootLayoutFaq";
-import RootLayoutNotice from "./components/Service/customerCenter/notice/RootLayoutNotice";
-import RootLayoutProvider from "./components/Service/mypage/Provider/RootLayoutProvider";
-import RootLayoutExperiencer from "./components/Service/mypage/Experiencer/RootLayoutExperiencer";
-import RootLayoutTotalActivity from "./components/Service/totalActivity/Nav/RootLayoutTotalActivity";
-import RootLayoutEventTitle from "./components/Service/community/event/RootLayoutEventTitle";
-import RootLayoutEventNav from "./components/Service/community/event/RootLayoutEventNav";
-import RootLayoutRecActKeyword from "./components/Service/recActivity/RootLayoutRecActKeyword";
+import RootLayoutFaq from './components/Service/customerCenter/faq/RootLayoutFaq';
+import RootLayoutNotice from './components/Service/customerCenter/notice/RootLayoutNotice';
+import RootLayoutProvider from './components/Service/mypage/Provider/RootLayoutProvider';
+import RootLayoutExperiencer from './components/Service/mypage/Experiencer/RootLayoutExperiencer';
+import RootLayoutTotalActivity from './components/Service/totalActivity/Nav/RootLayoutTotalActivity';
+import RootLayoutEventTitle from './components/Service/community/event/RootLayoutEventTitle';
+import RootLayoutEventNav from './components/Service/community/event/RootLayoutEventNav';
+import RootLayoutRecActKeyword from './components/Service/recActivity/RootLayoutRecActKeyword';
 
-import EventCardListPage from "./page/Service/Community/Event/EventCardListPage";
-import EventTextListPage from "./page/Service/Community/Event/EventTextListPage";
-import EventDetailPage from "./page/Service/Community/Event/EventDetailPage";
-import ThemeActivityPage from "./page/Service/TotalActivity/ThemeActivityPage";
-import EventRegistrationPage from "./page/Service/Community/Event/EventRegistrationPage";
+import EventCardListPage from './page/Service/Community/Event/EventCardListPage';
+import EventTextListPage from './page/Service/Community/Event/EventTextListPage';
+import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
+import ThemeActivityPage from './page/Service/TotalActivity/ThemeActivityPage';
+import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
 
-import TotalActivityInfoListAdmin from "./components/Admin/page/board/TotalActivityInfoList/TotalActivityInfoListAdmin";
-import NoticePage from "./page/Service/CustomerCenter/Notice/NoticePage";
-import FaqPage from "./page/Service/CustomerCenter/FAQ/FaqPage";
-import NoticeDetailPage from "./page/Service/CustomerCenter/Notice/NoticeDetailPage";
-import MypageSellerPostPage from "./page/Service/Mypage/Seller/MypageSellerPostPage";
-import MypageMemberPostPage from "./page/Service/Mypage/Member/MypageMemberPostPage";
-import MypageSellerServicePage from "./page/Service/Mypage/Seller/MypageSellerServicePage";
-import MypageSellerEventPage from "./page/Service/Mypage/Seller/MypageSellerEventPage";
-import MypageMemberReviewPage from "./page/Service/Mypage/Member/MypageMemberReviewPage";
-import MypageMemberReviewEditPage from "./page/Service/Mypage/Member/MypageMemberReviewEditPage";
-import RuralRatingPage from "./page/Service/TotalActivity/RuralRatingPage";
-import TotalActReviewPage from "./page/Service/TotalActivity/TotalActReviewPage";
-import TotalActDetailPage from "./page/Service/TotalActivity/TotalActDetailPage";
+import TotalActivityInfoListAdmin from './components/Admin/page/board/TotalActivityInfoList/TotalActivityInfoListAdmin';
+import NoticePage from './page/Service/CustomerCenter/Notice/NoticePage';
+import FaqPage from './page/Service/CustomerCenter/FAQ/FaqPage';
+import NoticeDetailPage from './page/Service/CustomerCenter/Notice/NoticeDetailPage';
+import MypageSellerPostPage from './page/Service/Mypage/Seller/MypageSellerPostPage';
+import MypageMemberPostPage from './page/Service/Mypage/Member/MypageMemberPostPage';
+import MypageSellerServicePage from './page/Service/Mypage/Seller/MypageSellerServicePage';
+import MypageSellerEventPage from './page/Service/Mypage/Seller/MypageSellerEventPage';
+import MypageMemberReviewPage from './page/Service/Mypage/Member/MypageMemberReviewPage';
+import MypageMemberReviewEditPage from './page/Service/Mypage/Member/MypageMemberReviewEditPage';
+import RuralRatingPage from './page/Service/TotalActivity/RuralRatingPage';
+import TotalActReviewPage from './page/Service/TotalActivity/TotalActReviewPage';
+import TotalActDetailPage from './page/Service/TotalActivity/TotalActDetailPage';
 
-import MemberReservationInfoPage from "./page/Service/Mypage/Member/MemberReservationInfoPage";
-import RecActKeywordSelectedPage from "./page/Service/Recommendation/RecActKeywordSelectedPage";
-import RecActDetailPage from "./page/Service/Recommendation/RecActDetailPage";
-import InquiryListPage from "./page/Service/CustomerCenter/Inquiry/InquiryListPage";
-import ExPage from "./page/ExPage";
-import InquiryDetailPage from "./page/Service/CustomerCenter/Inquiry/InquiryDetailPage";
-import RootLayoutInquiryTitle from "./components/Service/customerCenter/inquiry/RootLayoutInquiryTitle";
-import InquiryPostPage from "./page/Service/CustomerCenter/Inquiry/InquiryPostPage";
-import RegionActivityPage from "./page/Service/TotalActivity/RegionActivityPage";
-import TotalActRegistrationPage from "./page/Service/TotalActivity/TotalActRegistrationPage";
-import TotalActReservationPage from "./page/Service/TotalActivity/TotalActReservationPage";
+import MemberReservationInfoPage from './page/Service/Mypage/Member/MemberReservationInfoPage';
+import RecActKeywordSelectedPage from './page/Service/Recommendation/RecActKeywordSelectedPage';
+import RecActDetailPage from './page/Service/Recommendation/RecActDetailPage';
+import InquiryListPage from './page/Service/CustomerCenter/Inquiry/InquiryListPage';
+import ExPage from './page/ExPage';
+import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDetailPage';
+import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
+import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
+import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
+import TotalActRegistrationPage from './page/Service/TotalActivity/TotalActRegistrationPage';
+import TotalActReservationPage from './page/Service/TotalActivity/TotalActReservationPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     errorElement: <Navigate replace to="/app/error" />,
     children: [
-      { index: false, path: "/", element: <Navigate replace to="/app" /> },
+      { index: false, path: '/', element: <Navigate replace to="/app" /> },
       {
-        path: "admin", // 로그인 만들어서 url 매핑해야 함
+        path: 'admin', // 로그인 만들어서 url 매핑해야 함
         element: <RootLayoutAdmin />,
         errorElement: <NotFoundAdmin />,
         children: [
-          { index: true, path: "*", element: <NotFoundAdmin /> },
+          { index: true, path: '*', element: <NotFoundAdmin /> },
           {
-            path: "",
+            path: '',
             element: <MainPageAdmin />,
           },
           {
-            path: "user",
+            path: 'user',
             children: [
               {
-                path: "administrator",
+                path: 'administrator',
                 children: [
                   {
-                    path: "list",
+                    path: 'list',
                   },
                   {
-                    path: "registration",
+                    path: 'registration',
                   },
                 ],
               },
               {
-                path: "experiencer",
+                path: 'experiencer',
                 children: [
                   {
-                    path: "list",
+                    path: 'list',
                   },
                   {
-                    path: "registration",
+                    path: 'registration',
                   },
                 ],
               },
               {
-                path: "provider",
+                path: 'provider',
                 children: [
                   {
-                    path: "list",
+                    path: 'list',
                   },
                   {
-                    path: "registration",
+                    path: 'registration',
                   },
                 ],
               },
               {
-                path: "membershipApproval",
+                path: 'membershipApproval',
               },
             ],
           },
           {
-            path: "board",
+            path: 'board',
             children: [
               {
-                path: "notice",
+                path: 'notice',
               },
               {
-                path: "recommendation",
+                path: 'recommendation',
               },
               {
-                path: "totalActivity",
+                path: 'totalActivity',
                 children: [
                   {
                     index: true,
-                    path: "",
-                    element: <Navigate replace to={"list"} />,
+                    path: '',
+                    element: <Navigate replace to={'list'} />,
                   },
                   {
-                    path: "list",
+                    path: 'list',
                     element: <TotalActivityInfoListAdmin />,
                   },
                 ],
               },
               {
-                path: "community",
+                path: 'community',
                 children: [
                   {
-                    path: "experiencer",
+                    path: 'experiencer',
                   },
                   {
-                    path: "provider",
+                    path: 'provider',
                   },
                 ],
               },
               {
-                path: "event",
+                path: 'event',
                 children: [
                   {
-                    path: "list",
+                    path: 'list',
                   },
                   {
-                    path: "request",
+                    path: 'request',
                   },
                 ],
               },
             ],
           },
           {
-            path: "reservation",
+            path: 'reservation',
             children: [
               {
-                path: "experiencer",
+                path: 'experiencer',
               },
               {
-                path: "provider",
+                path: 'provider',
               },
             ],
           },
           {
-            path: "analytics",
+            path: 'analytics',
             children: [
               {
-                path: "reservation",
+                path: 'reservation',
               },
               {
-                path: "access",
+                path: 'access',
               },
             ],
           },
           {
-            path: "service",
+            path: 'service',
             children: [
               {
-                path: "inquiry",
+                path: 'inquiry',
               },
               {
-                path: "report",
+                path: 'report',
               },
             ],
           },
         ],
       },
       {
-        path: "app", // 로그인 만들어서 url 매핑해야 함
+        path: 'app', // 로그인 만들어서 url 매핑해야 함
         element: <RootLayout />,
         errorElement: <NotFoundPage />,
         children: [
-          { index: true, path: "*", element: <NotFoundPage /> },
+          { index: true, path: '*', element: <NotFoundPage /> },
           {
-            path: "",
+            path: '',
             element: <MainPage />,
           },
           {
-            path: "recommendation",
+            path: 'recommendation',
             children: [
               {
                 index: true,
-                path: "",
-                element: <Navigate replace to={"keywordActivity"} />,
+                path: '',
+                element: <Navigate replace to={'keywordActivity'} />,
               },
               {
-                path: "keywordActivity",
+                path: 'keywordActivity',
                 element: <RootLayoutRecActKeyword />,
                 children: [
                   {
                     index: true,
-                    path: "",
-                    element: <Navigate replace to={"filter?order=date"} />,
+                    path: '',
+                    element: <Navigate replace to={'filter?order=date'} />,
                   },
                   {
-                    path: "filter",
+                    path: 'filter',
                     element: <RecActKeywordSelectedPage />,
                   },
                 ],
               },
               {
-                path: "detail/:recAPostId",
+                path: 'detail/:recAPostId',
                 element: <RecActDetailPage />,
               },
             ],
           },
           {
-            path: "activity",
+            path: 'activity',
             children: [
               {
                 index: true,
-                path: "",
-                element: <Navigate replace to={"theme"} />,
+                path: '',
+                element: <Navigate replace to={'theme'} />,
               },
               {
-                path: "theme",
+                path: 'theme',
                 children: [
                   {
                     index: true,
-                    path: "",
-                    element: <Navigate replace to={"list"} />,
+                    path: '',
+                    element: <Navigate replace to={'list'} />,
                   },
                   {
-                    path: "list",
+                    path: 'list',
                     element: <ThemeActivityPage />,
                   },
                 ],
               },
               {
-                path: "region",
+                path: 'region',
                 element: <RegionActivityPage />,
               },
               {
-                path: "detail/:aPostId",
+                path: 'detail/:aPostId',
                 element: <RootLayoutTotalActivity />,
                 children: [
                   {
-                    path: "",
-                    element: <Navigate replace to={"info"} />,
+                    path: '',
+                    element: <Navigate replace to={'info'} />,
                   },
                   {
-                    path: "info",
+                    path: 'info',
                     element: <TotalActDetailPage />,
                   },
                   {
-                    path: "review",
+                    path: 'review',
                     element: <TotalActReviewPage />,
                   },
                 ],
               },
               {
-                path: "registration",
+                path: 'registration',
                 element: <TotalActRegistrationPage />,
               },
               {
-                path: "reservation",
+                path: 'reservation/:aPostId',
                 element: <TotalActReservationPage />,
               },
               {
-                path: "grade",
+                path: 'grade',
                 element: <RuralRatingPage />,
               },
-              { path: "accommodation" },
+              { path: 'accommodation' },
             ],
           },
           {
-            path: "community",
+            path: 'community',
             children: [
               {
                 index: true,
-                path: "",
-                element: <Navigate replace to={"event"} />,
+                path: '',
+                element: <Navigate replace to={'event'} />,
               },
               {
-                path: "event",
+                path: 'event',
                 children: [
                   {
                     index: true,
-                    element: <Navigate replace to={"board"} />,
+                    element: <Navigate replace to={'board'} />,
                   },
                   {
-                    path: "board",
+                    path: 'board',
                     element: <RootLayoutEventTitle />,
                     children: [
                       {
                         index: true,
-                        element: <Navigate replace to={"list/card"} />,
+                        element: <Navigate replace to={'list/card'} />,
                       },
                       {
-                        path: "list",
+                        path: 'list',
                         element: <RootLayoutEventNav />,
                         children: [
                           {
                             index: true,
-                            element: <Navigate replace to={"card"} />,
+                            element: <Navigate replace to={'card'} />,
                           },
                           {
-                            path: "card",
+                            path: 'card',
                             element: <EventCardListPage />,
                           },
                           {
-                            path: "text",
+                            path: 'text',
                             element: <EventTextListPage />,
                           },
                         ],
                       },
                       {
-                        path: "detail/:eventId",
+                        path: 'detail/:eventId',
                         element: <EventDetailPage />,
                       },
                     ],
                   },
                   {
-                    path: "registration",
+                    path: 'registration',
                     element: <EventRegistrationPage />,
                   },
                 ],
@@ -349,183 +349,183 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: "customerService",
+            path: 'customerService',
             children: [
               {
                 index: true,
-                path: "",
-                element: <Navigate replace to={"notice"} />,
+                path: '',
+                element: <Navigate replace to={'notice'} />,
               },
               {
-                path: "notice",
+                path: 'notice',
                 element: <RootLayoutNotice />,
                 children: [
                   {
                     index: true,
-                    path: "",
+                    path: '',
                     element: (
                       <Navigate
                         replace
-                        to={"completeList"}
+                        to={'completeList'}
                         state={{ selected: 0 }}
                       />
                     ),
                   },
                   {
-                    path: "completeList",
+                    path: 'completeList',
                     element: <NoticePage />,
                   },
                   {
-                    path: "notification",
+                    path: 'notification',
                     element: <NoticePage />,
                   },
                   {
-                    path: "notification/detail/:noticeId",
+                    path: 'notification/detail/:noticeId',
                     element: <NoticeDetailPage />,
                   },
                   {
-                    path: "policy",
+                    path: 'policy',
                     element: <NoticePage />,
                   },
                   {
-                    path: "policy/detail/:noticeId",
+                    path: 'policy/detail/:noticeId',
                     element: <NoticeDetailPage />,
                   },
                   {
-                    path: "event",
+                    path: 'event',
                     element: <NoticePage />,
                   },
                   {
-                    path: "event/detail/:noticeId",
+                    path: 'event/detail/:noticeId',
                     element: <NoticeDetailPage />,
                   },
                 ],
               },
               {
-                path: "faq",
+                path: 'faq',
                 element: <RootLayoutFaq />,
                 children: [
                   {
-                    path: "",
+                    path: '',
                     element: (
                       <Navigate
                         replace
-                        to={"personalInfo"}
+                        to={'personalInfo'}
                         state={{ selected: 0 }}
                       />
                     ),
                   },
                   {
-                    path: "personalInfo",
+                    path: 'personalInfo',
                     element: <FaqPage />,
                   },
                   {
-                    path: "reservation",
+                    path: 'reservation',
                     element: <FaqPage />,
                   },
                   {
-                    path: "event",
+                    path: 'event',
                     element: <FaqPage />,
                   },
                   {
-                    path: "extra",
+                    path: 'extra',
                     element: <FaqPage />,
                   },
                 ],
               },
               {
-                path: "inquiry",
+                path: 'inquiry',
                 element: <RootLayoutInquiryTitle />,
                 children: [
                   {
                     index: true,
-                    path: "",
-                    element: <Navigate replace to={"list"} />,
+                    path: '',
+                    element: <Navigate replace to={'list'} />,
                   },
                   {
-                    path: "list",
+                    path: 'list',
                     element: <InquiryListPage />,
                   },
                   {
-                    path: "detail/:inquiryId",
+                    path: 'detail/:inquiryId',
                     element: <InquiryDetailPage />,
                   },
                 ],
               },
               {
-                path: "inquiry/post",
+                path: 'inquiry/post',
                 element: <InquiryPostPage />,
               },
             ],
           },
           {
-            path: "myInfo",
+            path: 'myInfo',
             children: [
               {
                 index: true,
-                path: "",
-                element: <Navigate replace to={""} />, //TODO: 액터에 따라 다르게 매핑
+                path: '',
+                element: <Navigate replace to={''} />, //TODO: 액터에 따라 다르게 매핑
               },
               {
-                path: "experiencer",
+                path: 'experiencer',
                 element: <RootLayoutExperiencer />,
                 children: [
                   {
                     index: true,
-                    path: "",
-                    element: <Navigate replace to={"personalInfo"} />,
+                    path: '',
+                    element: <Navigate replace to={'personalInfo'} />,
                   },
                   {
-                    path: "personalInfo",
+                    path: 'personalInfo',
                   },
                   {
-                    path: "reservation",
+                    path: 'reservation',
                     element: <MemberReservationInfoPage />,
                   },
                   {
-                    path: "event",
+                    path: 'event',
                   },
                   {
-                    path: "favorites",
+                    path: 'favorites',
                   },
                   {
-                    path: "review",
+                    path: 'review',
                     element: <MypageMemberReviewPage />,
                   },
                   {
-                    path: "review/edit/:reviewId",
+                    path: 'review/edit/:reviewId',
                     element: <MypageMemberReviewEditPage />,
                   },
                   {
-                    path: "post",
+                    path: 'post',
                     element: <MypageMemberPostPage />,
                   },
                 ],
               },
               {
-                path: "provider",
+                path: 'provider',
                 element: <RootLayoutProvider />,
                 children: [
                   {
-                    path: "",
-                    element: <Navigate replace to={"analytics"} />,
+                    path: '',
+                    element: <Navigate replace to={'analytics'} />,
                   },
                   {
-                    path: "analytics",
+                    path: 'analytics',
                   },
                   {
-                    path: "businessInfo",
+                    path: 'businessInfo',
                   },
                   {
-                    path: "myService",
+                    path: 'myService',
                     element: <MypageSellerServicePage />,
                   },
                   {
-                    path: "event",
+                    path: 'event',
                     element: <MypageSellerEventPage />,
                   },
                   {
-                    path: "post",
+                    path: 'post',
                     element: <MypageSellerPostPage />,
                   },
                 ],
@@ -533,7 +533,7 @@ const router = createBrowserRouter([
             ],
           },
           {
-            path: "test-ex",
+            path: 'test-ex',
             element: <ExPage />,
             // element: <LoadingPage />,
           },
