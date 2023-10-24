@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 
-export default function InputDate({ inputName, inputId }) {
+export default function InputDatePicker({ inputName, inputId }) {
   const [selectedStartDate, setSelectedStartDate] = useState();
   const [selectedEndDate, setSelectedEndDate] = useState();
 
@@ -17,10 +17,10 @@ export default function InputDate({ inputName, inputId }) {
         minDate={new Date()}
         selected={selectedStartDate}
         onChange={(date) => setSelectedStartDate(date)}
-        className="inputDateText"
+        className="inputDateText inputPeriod"
         name={inputName[0]}
         id={inputName[0]}
-        placeholderText='시작 날짜'
+        placeholderText="시작 날짜"
       />
       <p> ~ </p>
       <DatePicker
@@ -33,7 +33,7 @@ export default function InputDate({ inputName, inputId }) {
         className="inputDateText"
         name={inputName[1]}
         id={inputName[1]}
-        placeholderText='끝나는 날짜'
+        placeholderText="끝나는 날짜"
       />
     </div>
   );

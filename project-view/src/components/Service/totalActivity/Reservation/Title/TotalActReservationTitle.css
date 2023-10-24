@@ -1,0 +1,19 @@
+.totalActReservationTitle > img {
+  margin: 3rem auto 0.5rem;
+  width: 11.875rem;
+  display: block;
+}
+
+.totalActReservationTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-weight: 400;
+}
+
+.totalActReservationTitle > p:first-of-type {
+  font-size: 2.8125rem;
+}
+.totalActReservationTitle > p:last-of-type {
+  font-size: 1.5625rem;
+  margin: 1.5rem auto;
+}

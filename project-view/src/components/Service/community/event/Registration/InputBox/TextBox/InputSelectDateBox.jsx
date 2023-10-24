@@ -1,9 +1,14 @@
 import React from 'react';
 import LabelBox from '../LabelBox';
-import InputText from './InputText';
 import './InputTextBox.css';
+import InputSelectDate from './InputSelectDate';
 
-export default function InputTextBox({ inputInfo, isReadOnly, defaultValue }) {
+export default function InputSelectDateBox({
+  inputInfo,
+  minDate,
+  maxDate,
+  placeholder,
+}) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -24,11 +29,11 @@ export default function InputTextBox({ inputInfo, isReadOnly, defaultValue }) {
   return (
     <div className="inputTextBox">
       <LabelBox inputId={inputName} labelText={labelText} style={style} />
-      <InputText
+      <InputSelectDate
         inputName={inputName}
-        inputId={inputName}
-        isReadOnly={isReadOnly}
-        defaultValue={defaultValue}
+        minDate={minDate}
+        maxDate={maxDate}
+        placeholder={placeholder}
       />
     </div>
   );

@@ -53,6 +53,8 @@ import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDeta
 import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
 import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
 import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
+import TotalActRegistrationPage from "./page/Service/TotalActivity/TotalActRegistrationPage";
+import TotalActReservationPage from "./page/Service/TotalActivity/TotalActReservationPage";
 
 const router = createBrowserRouter([
   {
@@ -275,6 +277,14 @@ const router = createBrowserRouter([
                     element: <TotalActReviewPage />,
                   },
                 ],
+              },
+              {
+                path: 'registration',
+                element: <TotalActRegistrationPage />
+              },
+              {
+                path: 'reservation',
+                element: <TotalActReservationPage />
               },
               {
                 path: 'grade',

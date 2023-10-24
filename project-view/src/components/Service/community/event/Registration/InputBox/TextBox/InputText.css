@@ -11,6 +11,10 @@
   font-weight: 500;
 }
 
+.inputText > input::placeholder {
+  font-style: italic;
+}
+
 .inputText > p {
   padding: 0.8rem;
 
@@ -27,9 +31,47 @@
   display: flex;
 }
 
+.inputDateText::placeholder {
+  font-style: italic;
+}
+
+.inputPeriod {
+  width: 22.2rem;
+}
+.inputOneDate {
+  width: 46.807rem;
+}
+
+.inputOneDate[type='date']::-webkit-datetime-edit-text {
+  -webkit-appearance: none;
+  display: none;
+}
+.inputOneDate[type='date']::-webkit-datetime-edit-month-field {
+  -webkit-appearance: none;
+  display: none;
+}
+.inputOneDate[type='date']::-webkit-datetime-edit-day-field {
+  -webkit-appearance: none;
+  display: none;
+}
+.inputOneDate[type='date']::-webkit-datetime-edit-year-field {
+  -webkit-appearance: none;
+  display: none;
+}
+
+/* .inputOneDate[type='date']::before {
+  content: attr(data-placeholder);
+  width: 100%;
+  font-style: italic;
+  color: gray;
+}
+.inputOneDate:not(:empty)::before {
+  content: '';
+  display: none;
+} */
+
 .inputDateText,
 .react-datepicker__input-container input {
-  width: 22.2rem;
   height: 3.66531rem;
   border-radius: 0.4375rem;
   border: 0.5px solid #000;

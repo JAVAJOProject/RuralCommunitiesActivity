@@ -1,9 +1,8 @@
 import React from 'react';
 import LabelBox from '../LabelBox';
-import InputText from './InputText';
-import './InputTextBox.css';
+import DetailMapApi from '../../../../../totalActivity/Detail/map/DetailMapApi';
 
-export default function InputTextBox({ inputInfo, isReadOnly, defaultValue }) {
+export default function InputMapBox({ inputInfo, addr, locationName }) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -20,15 +19,15 @@ export default function InputTextBox({ inputInfo, isReadOnly, defaultValue }) {
     case 'thickTextArea':
       style = { height: '21.25rem' };
   }
+  style.marginLeft = '-0.2rem';
 
   return (
     <div className="inputTextBox">
       <LabelBox inputId={inputName} labelText={labelText} style={style} />
-      <InputText
-        inputName={inputName}
-        inputId={inputName}
-        isReadOnly={isReadOnly}
-        defaultValue={defaultValue}
+      <DetailMapApi
+        addr={addr}
+        locationName={locationName}
+        style={{ width: '46.807rem', height: '21.2495rem' }}
       />
     </div>
   );

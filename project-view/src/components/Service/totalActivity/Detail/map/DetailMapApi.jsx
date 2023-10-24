@@ -5,7 +5,7 @@ import pin from '../../../../../view_img/Service/common/locationPin.png';
 
 const { kakao } = window;
 
-export default function DetailMapApi({ addr, locationName }) {
+export default function DetailMapApi({ addr, locationName, style }) {
   useEffect(() => {
     const container = document.getElementById('kakaoMapInActivityDetail');
 
@@ -53,7 +53,11 @@ export default function DetailMapApi({ addr, locationName }) {
   return (
     addr &&
     locationName && (
-      <div className="detailMapApi" id="kakaoMapInActivityDetail"></div>
+      <div
+        className="detailMapApi"
+        id="kakaoMapInActivityDetail"
+        style={style ?? {}}
+      ></div>
     )
   );
 }

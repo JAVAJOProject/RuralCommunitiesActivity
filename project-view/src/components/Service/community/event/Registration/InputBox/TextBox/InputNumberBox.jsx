@@ -3,7 +3,7 @@ import LabelBox from '../LabelBox';
 import InputNumber from './InputNumber';
 import './InputTextBox.css';
 
-export default function InputNumberBox({ inputInfo }) {
+export default function InputNumberBox({ inputInfo, maxValue, placeholder, stateValue, handleStateValue }) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -24,7 +24,14 @@ export default function InputNumberBox({ inputInfo }) {
   return (
     <div className="inputTextBox">
       <LabelBox inputId={inputName} labelText={labelText} style={style} />
-      <InputNumber inputName={inputName} inputId={inputName} />
+      <InputNumber
+        inputName={inputName}
+        inputId={inputName}
+        maxValue={maxValue}
+        placeholder={placeholder}
+        stateValue={stateValue}
+        handleStateValue={handleStateValue}
+      />
     </div>
   );
 }
