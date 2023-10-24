@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.TestMapper">
+
+<!--	Oracle Test-->
+	<select id="getAllTestContents" resultType="Test">
+		SELECT id, content, TO_CHAR(date_created, 'yyyy-MM-dd HH24:MI:SS') FROM test
+	</select>
+
+	<select id="getOneTestContent" resultType="Test" parameterType="int">
+		SELECT id, content, TO_CHAR(date_created, 'yyyy-MM-dd HH24:MI:SS') FROM test WHERE id=#{id}
+	</select>
+
+<!--	MySQL Test-->
+<!--	<select id="getAllTestContents" resultType="Test">-->
+<!--		SELECT id, content, DATE_FORMAT(date_created, 'yyyy-MM-dd HH24:MI:SS') FROM test-->
+<!--	</select>-->
+<!--	<select id="getOneTestContent" resultType="Test" parameterType="int">-->
+<!--		SELECT id, content, DATE_FORMAT(date_created, 'yyyy-MM-dd HH24:MI:SS') FROM test WHERE id=#{id}-->
+<!--	</select>-->
+</mapper>

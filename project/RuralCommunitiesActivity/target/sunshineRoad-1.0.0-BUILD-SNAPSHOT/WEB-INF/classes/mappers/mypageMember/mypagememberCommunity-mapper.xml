@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberCommunityMapper">
+
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT
+		COUNT(*) FROM MEMBER_COMMUNITY WHERE U_ID=#{uId}
+	</select>
+
+	<!-- -->
+	<select id="selectByNo" parameterType="int"
+		resultType="MypageMemberCommunityDTO">
+		SELECT
+		U_COMMUNITY_POST_ID ,
+		U_ID,
+		POST_TYPE_ID ,
+		U_COMMUNITY_IMG_ID ,
+		U_COMMUNITY_CONTENT ,
+		U_COMMUNITY_DATE_CREATED ,
+		COMMUNITY_LIKE_CNT ,
+		COMMUNITY_VIEW_CNT ,
+		COMMUNITY_CUM_CNT
+		FROM
+		(SELECT ROW_NUMBER() OVER(ORDER BY U_COMMUNITY_DATE_CREATED DESC)
+		NUM, C.* FROM MEMBER_COMMUNITY C 
+		WHERE U_ID=#{uId}
+		)
+		WHERE NUM BETWEEN
+		#{start} AND #{end}
+	</select>
+
+	<resultMap id="MemberCommunityPostForClob"
+		type="MemberCommunityPost">
+		<result property="communityPostId" column="community_post_id" />
+		<result property="uId" column="u_id" />
+		<result property="communityImgId" column="community_img_id" />
+		<result property="communityImgName" column="community_img_name" />
+		<result property="uCommunityContent"
+			column="u_community_content" jdbcType="CLOB"
+			javaType="java.lang.String" />
+		<result property="uCommunityDateCreated"
+			column="u_community_date_created" />
+		<result property="uCommunityFavoriteCnt"
+			column="u_community_favorite_cnt" />
+		<result property="uCommunityCumCnt"
+			column="u_community_cum_cnt" />
+	</resultMap>
+
+	<!-- Oracle -->
+	<!-- 아래 오라클 버전 커서 기반 페이징처리 되는지 확인해봐야 함 -->
+<select id="getListInfo" resultMap="MemberCommunityPostForClob" parameterType="int">
+    SELECT
+    post.u_community_post_id,
+    post.u_id,
+    post.community_img_id,
+    img.community_img_name,
+    post.u_community_content,
+    post.u_community_date_created,
+    post.u_community_favorite_cnt,
+    post.u_community_cum_cnt
+    FROM (
+        SELECT
+        post.u_community_post_id,
+        post.u_id,
+        post.community_img_id,
+        img.community_img_name,
+        post.u_community_content,
+        post.u_community_date_created,
+        post.u_community_favorite_cnt,
+        post.u_community_cum_cnt
+        FROM member_community post
+        INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
+        WHERE u_community_post_id > #{postId} ORDER BY post.u_community_date_created DESC
+    )
+    WHERE ROWNUM <![CDATA[<=]]>10
+</select>
+
+<!--게시무ㄹ정보 -->
+	<select id="getOneRequestMemberCommunityPost"
+		resultMap="MemberCommunityPostForClob" parameterType="int">
+		SELECT
+		post.u_community_post_id,
+		post.u_id,
+		post.community_img_id,
+		img.community_img_name,
+		post.u_community_content,
+		post.u_community_date_created,
+		post.u_community_favorite_cnt,
+		post.u_community_cum_cnt
+		FROM
+		member_community post
+		INNER JOIN
+		community_post_img img ON (post.community_img_id =
+		img.community_img_id)
+		WHERE
+		u_community_post_id = #{postId}
+	</select>
+
+	<!-- MySQL -->
+	<!-- <select id="getRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" 
+		parameterType="int"> -->
+	<!-- SELECT -->
+	<!-- post.u_community_post_id, -->
+	<!-- post.u_id, -->
+	<!-- post.community_img_id, -->
+	<!-- img.community_img_name, -->
+	<!-- post.u_community_content, -->
+	<!-- post.u_community_date_created, -->
+	<!-- post.u_community_favorite_cnt, -->
+	<!-- post.u_community_cum_cnt -->
+	<!-- FROM -->
+	<!-- member_community post -->
+	<!-- INNER JOIN -->
+	<!-- community_post_img img ON (post.community_img_id = img.community_img_id) -->
+	<!-- WHERE -->
+	<!-- u_community_post_id > #{postId} -->
+	<!-- LIMIT 10 -->
+	<!-- </select> -->
+
+	<!-- <select id="getOneRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" 
+		parameterType="int"> -->
+	<!-- SELECT -->
+	<!-- post.u_community_post_id, -->
+	<!-- post.u_id, -->
+	<!-- post.community_img_id, -->
+	<!-- img.community_img_name, -->
+	<!-- post.u_community_content, -->
+	<!-- post.u_community_date_created, -->
+	<!-- post.u_community_favorite_cnt, -->
+	<!-- post.u_community_cum_cnt -->
+	<!-- FROM -->
+	<!-- member_community post -->
+	<!-- INNER JOIN -->
+	<!-- community_post_img img ON (post.community_img_id = img.community_img_id) -->
+	<!-- WHERE -->
+	<!-- u_community_post_id = #{postId} -->
+	<!-- </select> -->
+</mapper>

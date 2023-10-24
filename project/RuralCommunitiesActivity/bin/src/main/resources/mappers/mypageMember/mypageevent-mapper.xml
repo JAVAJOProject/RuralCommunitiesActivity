@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageEventMapper">
+
+	<resultMap id="MyPageEventInfoForClob" type="MypageEventDTO">
+		<id property="eventId" column="event_id" />
+		<result property="sId" column="s_id" />
+		<result property="postTypeId" column="post_type_id" />
+		<result property="eventImgId" column="event_img_id" />
+		<result property="sigunguId" column="sigungu_id" />
+		<result property="eventRecruitTypeId"
+			column="event_recruit_typeId" />
+		<result property="eventStatusId" column="event_status_id" />
+		<result property="eventName" column="event_name" />
+		<result property="eventContent" column="event_content" jdbcType="CLOB" />
+		<result property="eventThumbnailImg" column="event_thumbnail_img" />
+		<result property="eventDateCreated" column="event_date_created" />
+		<result property="eventRecruitStartDate"
+			column="event_recruit_start_date" />
+		<result property="eventRecruitEndDate"
+			column="event_recruit_end_date" />
+		<result property="eventStartDate" column="event_start_date" />
+		<result property="eventEndDate" column="event_end_date" />
+		<result property="eventMaxPeople" column="event_max_people" />
+		<result property="eventAddr" column="event_addr" />
+		<result property="eventFavoriteCnt" column="event_favorite_cnt" />
+		<result property="eventViewCnt" column="event_view_cnt" />
+	</resultMap>
+
+	<resultMap type="EventWinner" id="eventWinnerByMember">
+		<id column="event_report_id" property="eventReportId" />
+		<result column="event_id" property="eventId" />
+		<result column="event_progress_status_id"
+			property="eventProgressStatusId" />
+		<result column="event_progress_status"
+			property="eventProgressStatus" />
+
+		<association property="mypageEvent"
+			javaType="MypageEventDTO"> <!-- 아이디, 제목, 대표이미지, 참여시작일, 모집마감일, 참영장소 -->
+			<id column="event_id" property="eventId" />
+			<result column="event_name" property="eventName" />
+			<result column="event_thumbnail_img"
+				property="eventThumbnailImg" />
+			<result column="event_start_date" property="eventStartDate" />
+			<result column="event_recruit_end_date"
+				property="eventRecruitEndDate" />
+			<result column="event_addr" property="eventAddr" />
+		</association>
+	</resultMap>
+	
+	<select id="selectCount" parameterType="int"
+		resultType="int">
+		SELECT
+		COUNT(*)
+		FROM (SELECT * FROM
+		EVENT_WINNER_1 WHERE U_ID = #{uId}) W
+		JOIN
+		EVENT_PROGRESS_STATUS S
+		ON
+		(W.EVENT_PROGRESS_STATUS_ID =
+		S.EVENT_PROGRESS_STATUS_ID)
+		JOIN EVENT E
+		ON (W.EVENT_ID = E.EVENT_ID)
+	</select>
+
+	<select id="selectByMember" parameterType="int"
+		resultMap="eventWinnerByMember">
+		SELECT
+		EVENT_REPORT_ID,
+		EVENT_PROGRESS_STATUS,
+		EVENT_ID,
+		EVENT_NAME,
+		EVENT_THUMBNAIL_IMG,
+		EVENT_ADDR,
+		EVENT_RECRUIT_END_DATE,
+		EVENT_START_DATE
+		FROM
+		(SELECT
+		ROW_NUMBER() OVER(ORDER BY EVENT_REPORT_ID DESC) NUM,
+		W.EVENT_REPORT_ID,
+		S.EVENT_PROGRESS_STATUS,
+		E.EVENT_ID,
+		E.EVENT_NAME,
+		E.EVENT_THUMBNAIL_IMG,
+		E.EVENT_ADDR,
+		E.EVENT_RECRUIT_END_DATE,
+		E.EVENT_START_DATE
+		FROM (SELECT * FROM
+		EVENT_WINNER_1 WHERE U_ID = #{uId}) W
+		JOIN
+		EVENT_PROGRESS_STATUS S
+		ON
+		(W.EVENT_PROGRESS_STATUS_ID =
+		S.EVENT_PROGRESS_STATUS_ID)
+		JOIN EVENT E
+		ON (W.EVENT_ID = E.EVENT_ID))
+		WHERE NUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="selectByNo" parameterType="int"
+		resultType="MypageEventDTO">
+		SELECT *
+		FROM EVENT
+		WHERE EVENT_ID = #{eventId}
+	</select>
+
+	<update id="updateByCancel" parameterType="int">
+		UPDATE EVENT_WINNER_1
+		SET EVENT_PROGRESS_STATUS_ID = 6 WHERE EVENT_REPORT_ID = #{reportId}
+	</update>
+
+	<select id="selectReportByNo" parameterType="int"
+		resultType="EventWinner">
+		SELECT * FROM EVENT_WINNER_1 WHERE event_report_id =
+		#{reportId}
+
+	</select>
+
+	<update id="modifyEvent" parameterType="EventWinner">
+		UPDATE EVENT_WINNER_1 SET EVENT_STORY = #{eventStory} WHERE EVENT_REPORT_ID = #{eventReportId}
+	</update>
+
+</mapper>

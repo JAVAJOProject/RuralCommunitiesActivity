@@ -25,7 +25,7 @@ public class GetSigunguActivityServiceImpl implements GetSigunguActivityService{
         String colName;
 		switch(requestOrderType) {
 			case "date" : colName = "rec_a_date_created"; break;
-			case "viewCount" : colName = "rec_a_view_cnunt"; break;
+			case "viewCount" : colName = "rec_a_view_count"; break;
 			case "likes" : colName = "rec_a_favorite_cnt"; break;
 			default : throw new IllegalArgumentException("잘못된 타입");
 		}

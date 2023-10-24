@@ -1,16 +1,20 @@
-import React from 'react';
-import './KeywordMainTitle.css';
-import { useNavigate } from 'react-router-dom/dist';
+import React, { useContext } from "react";
+import "./KeywordMainTitle.css";
+import { useNavigate } from "react-router-dom/dist";
+import { KeywordAndOrderContext } from "../filterContext/KeywordAndOrder";
 
 export default function KeywordMainTitle({ contents }) {
   const navigate = useNavigate();
+  const { handleKeyword, handleOrder } = useContext(KeywordAndOrderContext);
   const { mainTitle, subtitle, imgSrc } = contents;
 
   return (
     <div
       className="keywordMainTitle"
       onClick={() => {
-        navigate('/app/recommendation/keywordActivity/filter?order=최신순');
+        handleKeyword("");
+        handleOrder("date");
+        navigate("/app/recommendation/keywordActivity/filter?order=date");
       }}
     >
       <p>{mainTitle}</p>

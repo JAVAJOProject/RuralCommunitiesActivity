@@ -1,24 +1,24 @@
-import React from 'react';
-import './RecCardContentsBox.css';
-import RecCardTitle from './RecCardTitle';
-import EventDetailTitleCountBox from '../../community/event/Detail/Title/EventDetailTitleCountBox';
-import RecCardContentsLine from './RecCardContentsLine';
-import RecCardContentsText from './RecCardContentsText';
+import React from "react";
+import "./RecCardContentsBox.css";
+import RecCardTitle from "./RecCardTitle";
+import EventDetailTitleCountBox from "../../community/event/Detail/Title/EventDetailTitleCountBox";
+import RecCardContentsLine from "./RecCardContentsLine";
+import RecCardContentsText from "./RecCardContentsText";
 
 export default function RecCardContentsBox({ contents }) {
-  const { title, favoritesNum, viewNum, text } = contents;
+  const { recATitle, recAFavoriteCnt, recAViewCount, recAContent } = contents;
 
   return (
     <div className="recCardContentsBox">
       <div>
-        <RecCardTitle title={title} />
+        <RecCardTitle title={recATitle} />
         <EventDetailTitleCountBox
-          favoritesNum={favoritesNum}
-          viewNum={viewNum}
+          favoritesNum={recAFavoriteCnt}
+          viewNum={recAViewCount}
         />
       </div>
       <RecCardContentsLine />
-      <RecCardContentsText text={text} />
+      <RecCardContentsText text={recAContent} />
     </div>
   );
 }

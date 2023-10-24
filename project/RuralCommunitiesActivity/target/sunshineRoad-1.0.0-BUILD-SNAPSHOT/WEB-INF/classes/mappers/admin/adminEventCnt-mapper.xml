@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.admin.AdminEventCntMapper">
+
+	<select id="getTotalCount" resultType="int">
+	SELECT COUNT(*) FROM EVENT
+	</select>
+	
+	<select id="selectEventRecruitDateCnt" parameterType="ASearch" resultType="int">
+	SELECT COUNT(*) FROM EVENT
+	WHERE EVENT_RECRUIT_START_DATE BETWEEN 
+    TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+    AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	</select>	
+
+	<select id="selectEventStartDateCnt" parameterType="ASearch" resultType="int">
+	SELECT COUNT(*) FROM EVENT
+            WHERE EVENT_START_DATE BETWEEN 
+            TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+            AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	</select>	
+	
+	<select id="selectEventCreatedDateCnt" parameterType="ASearch" resultType="int">
+	SELECT COUNT(*) FROM EVENT
+            WHERE EVENT_DATE_CREATED BETWEEN 
+            TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+            AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+	</select>		
+		
+	<select id="selectEventCnt" parameterType="ASearch" resultType="int">
+ SELECT COUNT(*) FROM (
+ SELECT E.EVENT_ID, E.S_ID, E.POST_TYPE_ID, 
+ E.EVENT_IMG_ID, E.SIGUNGU_ID, E.EVENT_RECRUIT_TYPE_ID, 
+ E.EVENT_STATUS_ID, E.EVENT_NAME,
+ E.EVENT_THUMBNAIL_IMG, E.EVENT_DATE_CREATED, 
+ E.EVENT_RECRUIT_START_DATE, E.EVENT_RECRUIT_END_DATE, 
+ E.EVENT_START_DATE, E.EVENT_END_DATE,
+ E.EVENT_MAX_PEOPLE, E.EVENT_ADDR, 
+ E.EVENT_FAVORITE_CNT, E.EVENT_VIEW_CNT 
+ FROM EVENT E INNER JOIN event_recruitment_type R
+ ON (E.EVENT_RECRUIT_TYPE_ID = R.EVENT_RECRUIT_TYPE_ID)
+ INNER JOIN event_status S 
+ ON (E.EVENT_STATUS_ID = S.EVENT_STATUS_ID)
+ WHERE E.EVENT_STATUS_ID IN (3,5)
+ AND E.SIGUNGU_ID=#{sigungu}
+ UNION
+ SELECT E.EVENT_ID, E.S_ID, E.POST_TYPE_ID, 
+ E.EVENT_IMG_ID, E.SIGUNGU_ID, E.EVENT_RECRUIT_TYPE_ID, 
+ E.EVENT_STATUS_ID, E.EVENT_NAME,
+ E.EVENT_THUMBNAIL_IMG, E.EVENT_DATE_CREATED, 
+ E.EVENT_RECRUIT_START_DATE, E.EVENT_RECRUIT_END_DATE, 
+ E.EVENT_START_DATE, E.EVENT_END_DATE,
+ E.EVENT_MAX_PEOPLE, E.EVENT_ADDR, 
+ E.EVENT_FAVORITE_CNT, E.EVENT_VIEW_CNT 
+ FROM EVENT E INNER JOIN event_recruitment_type R
+ ON (E.EVENT_RECRUIT_TYPE_ID = R.EVENT_RECRUIT_TYPE_ID)
+ INNER JOIN event_status S 
+ ON (E.EVENT_STATUS_ID = S.EVENT_STATUS_ID)
+ WHERE E.EVENT_STATUS_ID IN (3,5)
+ AND E.EVENT_RECRUIT_TYPE_ID=#{theme}
+ )
+ ORDER BY EVENT_RECRUIT_START_DATE DESC
+	</select>
+				
+</mapper>

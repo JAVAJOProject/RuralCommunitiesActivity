@@ -29,6 +29,7 @@
 		SELECT
 			rec_a_post_id,
 			sigungu_id,
+			rec_a_title,
 			rec_a_img_id,
 			post_type_id,
 			rec_a_keyword_id,
@@ -41,6 +42,7 @@
         	seq,
 			rec_a_post_id,
 			sigungu_id,
+			rec_a_title,
 			rec_a_img_id,
 			post_type_id,
 			rec_a_keyword_id,
@@ -54,6 +56,7 @@
         ROWNUM AS seq,
 			rec_a_post_id,
 			sigungu_id,
+			rec_a_title,
 			rec_a_img_id,
 			post_type_id,
 			rec_a_keyword_id,
@@ -66,6 +69,7 @@
         SELECT 
 			rec_a_post_id,
 			sigungu_id,
+			rec_a_title,
 			rec_a_img_id,
 			post_type_id,
 			rec_a_keyword_id,

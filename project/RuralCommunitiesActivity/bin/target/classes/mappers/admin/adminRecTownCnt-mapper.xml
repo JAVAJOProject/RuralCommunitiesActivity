@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.admin.AdminRecTownCntMapper">
+
+	<select id="getTotalCount" resultType="int">
+	SELECT COUNT(*) FROM REC_TOWN_INFO
+	</select>
+	
+		
+	<select id="selectRecTownCnt" parameterType="ASearch" resultType="int">
+	SELECT COUNT(*) FROM (
+   	SELECT 
+   	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
+   	POST_TYPE_ID, REC_T_TITLE, REC_T_CONTENT,
+   	REC_T_DATE_CREATED, REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
+   	REC_T_SITE, REC_T_THUMBNAIL_IMG
+   	FROM REC_TOWN_INFO
+	)
+	</select>
+				
+</mapper>

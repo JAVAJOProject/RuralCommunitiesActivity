@@ -1,11 +1,10 @@
-import React from 'react';
-import './RecCardTitle.css'
+import React from "react";
+import "./RecCardTitle.css";
 
-export default function RecCardTitle({title}) {
-	return (
-		<div className='recCardTitle'>
-			<p>{title}</p>
-		</div>
-	);
+export default function RecCardTitle({ title }) {
+  return (
+    <div className="recCardTitle">
+      <p>{title}</p>
+    </div>
+  );
 }
-

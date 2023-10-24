@@ -1,8 +1,8 @@
-import React, { createContext } from 'react';
-import { useImmer } from 'use-immer';
+import React, { createContext } from "react";
+import { useImmer } from "use-immer";
 
 export const KeywordAndOrderContext = createContext({});
-const initialState = { keyword: null, order: 'date' };
+const initialState = { keyword: "", order: "date" };
 
 export default function KeywordAndOrder({ children }) {
   const [filterState, updateFilterState] = useImmer(initialState);

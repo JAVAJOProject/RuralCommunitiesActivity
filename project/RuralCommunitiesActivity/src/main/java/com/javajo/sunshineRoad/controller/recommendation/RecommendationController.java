@@ -2,6 +2,10 @@ package com.javajo.sunshineRoad.controller.recommendation;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Arrays;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -153,6 +157,12 @@ public class RecommendationController {
 		List<RecActivityInfoDTO> responseData = postRequestRecKeywordService.postRequestRecKeyword(recAKeywordId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
 		
 		return ResponseEntity.ok(responseData);
+	}
+	@GetMapping("/keyword-count/{recAKeywordId}")
+	public List<Integer> keywordCount(@PathVariable int recAKeywordId) {
+		int perPagePostCount = 3;
+		int totalCount = getRecKeywordCntService.getRecKeywordCnt(recAKeywordId);
+		return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
 	}
 	//전체 키워드
 	@GetMapping("/activity-keyword")

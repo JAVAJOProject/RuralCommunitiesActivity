@@ -2,5 +2,12 @@
   font-family: Jua;
   font-size: 1.375rem;
   font-weight: 400;
-	margin-left: 1rem;
+  margin-left: 1rem;
+
+  display: -webkit-box;
+  width: 19rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

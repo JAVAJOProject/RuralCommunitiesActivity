@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
-import RecGreenBoxCard from '../../../components/Service/recActivity/keywordFiltered/RecGreenBoxCard';
-import RecCardImg from '../../../components/Service/recActivity/keywordFiltered/RecCardImg';
+import React, { useContext, useEffect } from "react";
+import { useImmer } from "use-immer";
+import { useNavigate } from "react-router-dom";
+import { fetchDataGET, fetchImgGET } from "../../../config/ApiService";
 
-import RecCardContentsBox from '../../../components/Service/recActivity/keywordFiltered/RecCardContentsBox';
-import { useNavigate } from 'react-router-dom/dist';
-import { KeywordAndOrderContext } from '../../../components/Service/recActivity/filterContext/KeywordAndOrder';
-import { useImmer } from 'use-immer';
-import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
-import { RecActRequestPageNoContext } from '../../../components/Service/recActivity/RootLayoutRecActKeyword';
+import RecGreenBoxCard from "../../../components/Service/recActivity/keywordFiltered/RecGreenBoxCard";
+import RecCardImg from "../../../components/Service/recActivity/keywordFiltered/RecCardImg";
+import RecCardContentsBox from "../../../components/Service/recActivity/keywordFiltered/RecCardContentsBox";
+import { KeywordAndOrderContext } from "../../../components/Service/recActivity/filterContext/KeywordAndOrder";
+import { RecActRequestPageNoContext } from "../../../components/Service/recActivity/RootLayoutRecActKeyword";
 
 export default function RecActKeywordSelectedPage() {
   const navigate = useNavigate();
@@ -29,8 +29,8 @@ export default function RecActKeywordSelectedPage() {
       }
       const images = await fetchImgGET(
         data,
-        'recAPostId',
-        '/main/recommendation-activity-image'
+        "recAPostId",
+        "/main/recommendation-activity-image"
       );
 
       updateContents((draft) => {
@@ -44,22 +44,23 @@ export default function RecActKeywordSelectedPage() {
       });
     }
     fetchContents();
-  }, []);
+  }, [filterState, requestPageNo]);
 
   return (
     <>
-      {contents.map((item, index) => (
-        <RecGreenBoxCard
-          key={item.postId}
-          style={{ display: 'flex', position: 'relative' }}
-          handleClick={() => {
-            navigate(`/app/recommendation/detail/${item.postId}`);
-          }}
-        >
-          <RecCardImg imgSrc={item.imgSrc} isLeft={index !== 1} />
-          <RecCardContentsBox contents={item} isLeft={index !== 1} />
-        </RecGreenBoxCard>
-      ))}
+      {contents.length > 0 &&
+        contents.map((item, index) => (
+          <RecGreenBoxCard
+            key={item.recAPostId}
+            style={{ display: "flex", position: "relative" }}
+            handleClick={() => {
+              navigate(`/app/recommendation/detail/${item.recAPostId}`);
+            }}
+          >
+            <RecCardImg imgSrc={item.recAThumbnailImg} isLeft={index !== 1} />
+            <RecCardContentsBox contents={item} isLeft={index !== 1} />
+          </RecGreenBoxCard>
+        ))}
     </>
   );
 }
