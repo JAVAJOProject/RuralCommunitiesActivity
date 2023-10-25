@@ -1095,6 +1095,7 @@ INSERT INTO rec_activity_keyword VALUES(rec_activity_keyword_seq.NEXTVAL,'맛집')
 INSERT INTO rec_activity_keyword VALUES(rec_activity_keyword_seq.NEXTVAL,'자연휴양림');
 INSERT INTO rec_activity_keyword VALUES(rec_activity_keyword_seq.NEXTVAL,'공원');
 INSERT INTO rec_activity_keyword VALUES(rec_activity_keyword_seq.NEXTVAL,'방송촬영지');
+INSERT INTO rec_activity_keyword VALUES(rec_activity_keyword_seq.NEXTVAL,'기차여행');
 
 INSERT INTO rec_images VALUES(rec_images_seq.NEXTVAL,'recommendation_img/activity/activity_1/rec_a_img1_1.png','recommendation_img/activity/activity_1/rec_a_img1_2.png','recommendation_img/activity/activity_1/rec_a_img1_3.png','recommendation_img/activity/activity_1/rec_a_img1_4.png',NULL);
 INSERT INTO rec_images VALUES(rec_images_seq.NEXTVAL,'recommendation_img/activity/activity_2/rec_a_img2_1.png','recommendation_img/activity/activity_2/rec_a_img2_2.png','recommendation_img/activity/activity_2/rec_a_img2_3.png','recommendation_img/activity/activity_2/rec_a_img2_4.png',NULL);

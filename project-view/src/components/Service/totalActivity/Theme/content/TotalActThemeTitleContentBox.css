@@ -10,7 +10,7 @@
   height: fit-content;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-start;
+  justify-content: start;
   align-items: center;
   padding-left: 0.5rem;
   padding-bottom: 1rem;

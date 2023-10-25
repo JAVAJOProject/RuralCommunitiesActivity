@@ -1,7 +1,6 @@
 import React from "react";
 import TotalActThemeTitleContentSet from "./TotalActThemeTitleContentSet";
 import "./TotalActThemeTitleContentBox.css";
-import tractor from "../../../../../view_img/Service/totalActivity/theme/tractor.png";
 import TotalActThemeTitleImg from "./TotalActThemeTitleImg";
 
 export default function TotalActThemeTitleContentBox({ contents, isLeft }) {
@@ -28,4 +27,3 @@ export default function TotalActThemeTitleContentBox({ contents, isLeft }) {
     </div>
   );
 }
-// 뭔가 적용이 안돼서 div로 여러번 감싼것(헷갈리지말기)

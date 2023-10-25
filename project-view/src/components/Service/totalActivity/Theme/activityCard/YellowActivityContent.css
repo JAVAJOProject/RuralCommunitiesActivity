@@ -3,4 +3,11 @@
   font-size: 0.9375rem;
   font-weight: 400;
   margin-top: 0.5rem;
+
+  display: -webkit-box;
+  width: 13.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

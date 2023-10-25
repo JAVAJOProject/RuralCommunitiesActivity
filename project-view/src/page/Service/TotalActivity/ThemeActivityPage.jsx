@@ -7,7 +7,8 @@ import tradition from "../../../view_img/Service/totalActivity/theme/plate.svg";
 import plate from "../../../view_img/Service/totalActivity/theme/etcActivity.png";
 
 import ThemeCardSet from "../../../components/Service/totalActivity/Theme/themeCard/ThemeCardSet";
-import { fetchDataGET, fetchImgGET } from "../../../config/ApiService"
+import { fetchDataGET, fetchImgGET } from "../../../config/ApiService";
+import { useImmer } from "use-immer";
 
 const themeImages = [
   { themeName: "농촌 체험", imgSrc: tractor },
@@ -16,63 +17,60 @@ const themeImages = [
   { themeName: "기타 체험", imgSrc: plate },
 ];
 
-const testDBContents = [
-  { activityId: 1 },
-  { activityId: 2 },
-  { activityId: 3 },
-  { activityId: 4 },
-  { activityId: 5 },
-  { activityId: 6 },
-  { activityId: 7 },
-  { activityId: 8 },
-  { activityId: 9 },
-  { activityId: 10 },
-  { activityId: 11 },
-  { activityId: 12 },
-  { activityId: 13 },
-  { activityId: 14 },
-  { activityId: 15 },
-  { activityId: 16 },
-];
-
 export default function ThemeActivityPage() {
-  const [contents, setContents] = useState([]);
+  const [contents, updateContents] = useImmer([]);
+  const [requestPageNoFarm, setRequestPageNoFarm] = useState(1);
+  const [requestPageNoFish, setRequestPageNoFish] = useState(1);
+  const [requestPageNoTrad, setRequestPageNoTrad] = useState(1);
+  const [requestPageNoEtc, setRequestPageNoEtc] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const contentsArr = [];
+        const themePage = [
+          requestPageNoFarm,
+          requestPageNoFish,
+          requestPageNoTrad,
+          requestPageNoEtc,
+        ];
 
-        // Fetch data for each theme
         for (let themeId = 1; themeId <= 4; themeId++) {
           const activity = await fetchDataGET(
-            `/totalActivity/byThemeList/card/${themeId}/${1}`
+            `/totalActivity/byThemeList/card/${themeId}/${
+              themePage[themeId - 1]
+            }`
           );
-          contentsArr.push(activity);
+
+          const activityImg = await fetchImgGET(
+            activity,
+            "aId",
+            "/img/totalActivityImage/one"
+          );
+
+          const activityData = activity.map((item, index) => ({
+            ...item,
+            aThumbnailImg: activityImg[index],
+          }));
+
+          contentsArr.push(activityData);
         }
 
-        const activityImg = await fetchImgGET(
-          testDBContents,
-          "activityId",
-          "/img/totalActivityImage/one"
-        );
-
-        const combinedData = contentsArr.map((activity, index) => {
-          return activity.map((item, itemIndex) => {
-            return {
-              ...item,
-              aThumbnailImg: activityImg[index * 4 + itemIndex],
-            };
-          });
+        updateContents((draft) => {
+          draft.length = 0;
+          draft.push(...contentsArr);
         });
-
-        setContents(combinedData);
       } catch (error) {
         console.error(error);
       }
     }
     fetchData();
-  }, []);
+  }, [
+    requestPageNoFarm,
+    requestPageNoFish,
+    requestPageNoTrad,
+    requestPageNoEtc,
+  ]);
 
   return (
     <>
