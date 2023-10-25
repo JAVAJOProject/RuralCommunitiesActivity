@@ -10,65 +10,60 @@ const defaultContents = {
     subtitle: '* 등록 내역은 마이페이지에서 확인하실 수 있습니다. *',
     imgSrc: registrationImg,
   },
-	inputContents: {
-		title: {
-			labelText: '체험명',
-			type: 'thin',
-			inputName: 'aName'
-		},
-		oneLiner: {
-			labelText: '한 줄 소개',
-			type: 'thin',
-			inputName: 'aOneLiner'
-		},
-		themeType: {
-			labelText: '테마 선택',
-			type: 'thin',
-			inputName: 'aTypeId',
+  inputContents: {
+    title: {
+      labelText: '체험명',
+      type: 'thin',
+      inputName: 'aName',
+    },
+    oneLiner: {
+      labelText: '한 줄 소개',
+      type: 'thin',
+      inputName: 'aOneLiner',
+    },
+    themeType: {
+      labelText: '테마 선택',
+      type: 'thin',
+      inputName: 'aTypeId',
       inputValue: [1, 2, 3, 4],
-      inputLabel: [
-        '농촌',
-        '어촌',
-        '전통',
-        '기타',
-      ],
-		},
-		price: {
-			labelText: '체험 금액',
-			type: 'thin',
-			inputName: 'aPrice'
-		},
-		period: {
-			labelText: '체험 기간',
-			type: 'thin',
-			inputName: ['startDate', 'endDate'],
-		},
-		reservationPeriod: {
-			labelText: '예약 기간',
-			type: 'thin',
-			inputName: ['recruitStartDate', 'recruitEndDate']
-		},
-		minPeople: {
-			labelText: '예약 최소 인원',
-			type: 'thin',
-			inputName: 'minPeople'
-		},
-		maxPeople: {
-			labelText: '예약 최대 인원',
-			type: 'thin',
-			inputName: 'maxPeople'
-		},
-		addr: {
-			labelText: '체험 주소',
-			type: 'thin',
-			inputName: 'addr'
-		},
-		region: {
-			labelText: '지역 선택',
-			type: 'thin',
-			inputName: ['sido', 'sigungu']
-		},
-		images: {
+      inputLabel: ['농촌', '어촌', '전통', '기타'],
+    },
+    price: {
+      labelText: '체험 금액',
+      type: 'thin',
+      inputName: 'aPrice',
+    },
+    period: {
+      labelText: '체험 기간',
+      type: 'thin',
+      inputName: ['startDate', 'endDate'],
+    },
+    reservationPeriod: {
+      labelText: '예약 기간',
+      type: 'thin',
+      inputName: ['recruitStartDate', 'recruitEndDate'],
+    },
+    minPeople: {
+      labelText: '예약 최소 인원',
+      type: 'thin',
+      inputName: 'minPeople',
+    },
+    maxPeople: {
+      labelText: '예약 최대 인원',
+      type: 'thin',
+      inputName: 'maxPeople',
+    },
+    addr: {
+      labelText: '체험 주소',
+      type: 'image',
+      inputName: 'addr',
+    },
+    region: {
+      labelText: '지역 선택',
+      type: 'thin',
+      inputName: ['sido', 'sigungu'],
+    },
+    images: {
       labelText: ['이미지\n\n(첫번째 이미지가\n대표이미지가 됩니다.)'],
       type: 'image',
       inputName: 'files',
@@ -85,7 +80,7 @@ const defaultContents = {
       submit: { text: '체험 등록하기', type: 'button' },
       cancel: { text: '입력 취소', type: 'reset' },
     },
-	}
+  },
 };
 
 export default function TotalActRegistrationPage() {
@@ -98,7 +93,11 @@ export default function TotalActRegistrationPage() {
         mainTitle={titles.mainTitle}
         subtitle={titles.subtitle}
       />
-			<TotalActRegistrationContents labelTexts={inputContents} api={''} method='post' />
+      <TotalActRegistrationContents
+        labelTexts={inputContents}
+        api={''}
+        method="post"
+      />
     </div>
   );
 }

@@ -9,10 +9,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class ReservationContentDAO {
-	private final SqlSessionTemplate sqlSession;
+   private final SqlSessionTemplate sqlSession;
 
-    public ReservationContentDTO getReservationContent(int rId) {
-    	ReservationContentMapper mapper = sqlSession.getMapper(ReservationContentMapper.class);
-    	return mapper.getReservationContentData(rId);
-    }
+   public ReservationContentDTO getReservationContent(int rId) {
+      ReservationContentMapper mapper = sqlSession.getMapper(ReservationContentMapper.class);
+      return mapper.getReservationContentData(rId);
+   }
+   
+   public int getReservationPeople(int aId) {
+      ReservationContentMapper mapper = sqlSession.getMapper(ReservationContentMapper.class);
+      return mapper.getReservationPeopleData(aId);
+   }
 }

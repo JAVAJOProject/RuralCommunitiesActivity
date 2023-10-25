@@ -7,6 +7,8 @@ import InputDateBox from '../../community/event/Registration/InputBox/TextBox/In
 import InputAttachBox from '../../community/event/Registration/InputBox/TextBox/InputAttachBox';
 import InputTextAreaBox from '../../community/event/Registration/InputBox/TextBox/InputTextAreaBox';
 import InputBtnBox from '../../community/event/Registration/InputBtn/InputBtnBox';
+import AddressInputApi from '../../community/event/Registration/InputBox/AddressApi/AddressInputApi';
+import AddressInputApiBox from '../../community/event/Registration/InputBox/AddressApi/AddressInputApiBox';
 
 export default function TotalActRegistrationContents({
   labelTexts,
@@ -42,7 +44,7 @@ export default function TotalActRegistrationContents({
       <InputDateBox inputInfo={reservationPeriod} />
       <InputNumberBox inputInfo={minPeople} />
       <InputNumberBox inputInfo={maxPeople} />
-      {/* 주소 api 가져오기 */}
+      <AddressInputApiBox inputInfo={addr} />
       {/* 지역 시도, 시군구로 선택할 수 있게 하기 */}
       <InputAttachBox
         inputInfo={images}

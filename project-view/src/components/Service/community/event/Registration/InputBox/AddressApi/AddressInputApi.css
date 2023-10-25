@@ -1,0 +1,65 @@
+.addressInputApi > div {
+  display: flex;
+}
+
+.addressInputApi input {
+  border-radius: 0.4375rem;
+  border: 0.5px solid #000;
+  background: rgba(231, 231, 231, 0.1);
+  padding: 0.3rem;
+
+  overflow: hidden;
+  color: #484848;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.addressInputApi button {
+  border-radius: 0.4375rem;
+  background: #484848;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+.addressInputApi button:hover {
+  background: #484848a7;
+}
+.addressInputApi button:active {
+  background: rgba(231, 231, 231, 0.1);
+  color: #484848;
+  border: 0.1rem solid #484848;
+}
+
+.addressInputApi input,
+.addressInputApi button {
+  height: 3.6875rem;
+  margin: 0.5rem;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+}
+
+.addressInputApi > div > input:first-of-type,
+.addressInputApi > div > input:nth-of-type(odd) {
+  margin-left: 0;
+}
+.addressInputApi > div > input:nth-of-type(even) {
+  margin-right: 0;
+}
+
+.addressInputApi > div:first-of-type input,
+.addressInputApi > div:first-of-type button {
+  width: 11.1195rem;
+  margin-top: 0;
+}
+
+.addressInputApi > div:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  width: 46.807rem;
+}
+.addressInputApi > div:last-of-type input {
+  width: 22.8rem;
+}

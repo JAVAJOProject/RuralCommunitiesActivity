@@ -16,6 +16,10 @@
   font-family: SUITE Variable;
   font-size: 1.125rem;
   font-weight: 600;
+  cursor: pointer;
+}
+.inputAttachBtn:hover {
+  background: #484848a7;
 }
 .inputAttachBtn:active {
   background-color: #a7a7a7;
