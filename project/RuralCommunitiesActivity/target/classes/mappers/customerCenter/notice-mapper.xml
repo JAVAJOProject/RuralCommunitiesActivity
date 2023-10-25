@@ -20,17 +20,18 @@
 	
 
 	
-	<!-- Oracle -->
+	<!-- Oracle --> <!-- 전체 공지글 개수 --> 
 	<select id="getNoticeListCount" resultType="int">
 		SELECT COUNT(*) FROM notice
 	</select>
-	<!-- 아래 쿼리문 동적으로 어케하나요,,?-->
+	<!-- 카테고리별 공지글 개수 -->
 	<select id="getNoticeListCountCount" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM notice
 		WHERE notice_type_id = #{noticeTypeId}
 	</select>
 	<!--NOTICE notice noti, notice_type type, notice_images noim-->
-	<!-- 아래 두개 파라미터값만 다른데 이렇게 적는거 맞나요?-->
+	
+	<!-- 전체 공지글 내용 -->
 	<select id="getRequestPageNoticeList" resultMap="NoticeListInfoDTOForClob">
 		SELECT 
 			 notice_id, 
@@ -72,7 +73,7 @@
 				        )
 				 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
-	
+	<!-- 카테고리별 공지글 내용 -->
 	<select id="getRequestPageNoticeListList" resultMap="NoticeListInfoDTOForClob">
 			SELECT 
 			notice_id, 
@@ -117,8 +118,8 @@
 				        WHERE seq <![CDATA[>=]]> #{startPostNo}
 				        )
 				 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
-	</select> <!--이부분에 where 쓰는거 맞는지 확인-->
-	
+	</select> 
+	<!--  공지글 상세페이지 내용 -->
 	<select id="getNoticeDetail" resultMap="NoticeListInfoDTOForClob" parameterType="int">
 	
 					SELECT  
@@ -144,5 +145,19 @@
 				        
 				      
 	</select>
+	<!--  공지글 상세페이지 이미지 삽입 -->
+	<select id="getNoticeImagesByImgId" parameterType="int" resultType="NoticeImg">
+        SELECT
+            notice_img_id,
+            notice_img_1,
+            notice_img_2,
+            notice_img_3,
+            notice_img_4,
+            notice_img_5
+        FROM
+            notice_images
+        WHERE
+            notice_img_id = #{noticeImgId}
+    </select>
 	
 </mapper>

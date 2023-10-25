@@ -1,22 +1,34 @@
-import React from 'react';
-import './NoticeListBar.css';
-import NoticeListBarCategory from './NoticeListBarCategory';
-import NoticeListBarTitle from './NoticeListBarTitle';
-import NoticeListBarDate from './NoticeListBarDate';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./NoticeListBar.css";
+import NoticeListBarCategory from "./NoticeListBarCategory";
+import NoticeListBarTitle from "./NoticeListBarTitle";
+import NoticeListBarDate from "./NoticeListBarDate";
+import { useNavigate } from "react-router-dom";
 
 export default function NoticeListBar({ noticeId, type, title, dateCreated }) {
   const navigate = useNavigate();
 
   let firstText;
-  if (type === '분류') {
-    firstText = type;
-  } else {
-    firstText = `[${type}]`;
+  switch (type) {
+    case "분류":
+      firstText = type;
+      break;
+    case 1:
+      firstText = "[공지]";
+      break;
+    case 2:
+      firstText = "[정책]";
+      break;
+    case 3:
+      firstText = "[행사]";
+      break;
+    default:
+      firstText = "";
+      break;
   }
 
   let lastText;
-  if (dateCreated === '작성일') {
+  if (dateCreated === "작성일") {
     lastText = dateCreated;
   } else {
     const dateT = new Date(dateCreated);
@@ -27,14 +39,14 @@ export default function NoticeListBar({ noticeId, type, title, dateCreated }) {
 
   let categoryType;
   switch (type) {
-    case '공지':
-      categoryType = 'notification';
+    case 1:
+      categoryType = "notification";
       break;
-    case '정책':
-      categoryType = 'policy';
+    case 2:
+      categoryType = "policy";
       break;
-    case '행사':
-      categoryType = 'event';
+    case 3:
+      categoryType = "event";
   }
 
   return (
@@ -44,7 +56,7 @@ export default function NoticeListBar({ noticeId, type, title, dateCreated }) {
         navigate(
           `/app/customerService/notice/${categoryType}/detail/${noticeId}`,
           {
-            state: { boardType: 'list' },
+            state: { boardType: "list" },
           }
         );
       }}
@@ -52,7 +64,7 @@ export default function NoticeListBar({ noticeId, type, title, dateCreated }) {
       <NoticeListBarCategory text={firstText} />
       <NoticeListBarTitle
         text={title}
-        style={title === '제목' ? { textAlign: 'center' } : {}}
+        style={title === "제목" ? { textAlign: "center" } : {}}
       />
       <NoticeListBarDate text={lastText} />
     </div>
