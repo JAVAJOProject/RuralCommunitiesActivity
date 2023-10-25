@@ -24,7 +24,8 @@ public class InquiryInfoDTO {
 	private String inquiryContent;
 	private String inquiryDateCreated;
 	private String inquiryA;
-	private String name;
+	private String uName;
+	private String sName;
 	private String inquiryStatus;
 	
 }

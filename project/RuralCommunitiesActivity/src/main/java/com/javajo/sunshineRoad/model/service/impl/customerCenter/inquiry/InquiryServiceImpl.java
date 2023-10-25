@@ -18,19 +18,18 @@ public class InquiryServiceImpl implements InquiryService {
 	private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 
 	@Override
-	public int getInquiryListCount(int inquiryTypeId) {
+	public int getInquiryListCount() {
 		
-		return inquiryDAO.getInquiryListCount(inquiryTypeId);
+		return inquiryDAO.getInquiryListCount();
 	}
 
 	@Override
-	public List<InquiryInfoDTO> getRequestPageInquiryList(int totalCount, int perPagePostCount, int requestPageNo,
-			int inquiryTypeId) {
+	public List<InquiryInfoDTO> getRequestPageInquiryList(int totalCount, int perPagePostCount, int requestPageNo) {
 		
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
 	    int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 	    
-	    return inquiryDAO.getRequestPageInquiryList(startPostNo, endPostNo, inquiryTypeId);
+	    return inquiryDAO.getRequestPageInquiryList(startPostNo, endPostNo);
 	}
 
 	@Override
@@ -57,6 +56,49 @@ public class InquiryServiceImpl implements InquiryService {
 
 		inquiryDAO.inquiryInsert(inquiryInfoDTO);
 		
+	}
+	
+	@Override
+	public List<InquiryInfoDTO> searchInquiryAll(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword) {
+	    return inquiryDAO.searchInquiryAll(keyword);
+	}
+
+	@Override
+	public List<InquiryInfoDTO> searchInquiryByTitle(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword) {
+	    return inquiryDAO.searchInquiryByTitle(keyword);
+	}
+
+	@Override
+	public List<InquiryInfoDTO> searchInquiryByContent(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword) {
+	    return inquiryDAO.searchInquiryByContent(keyword);
+	}
+	@Override
+	public int getSearchInquiryAllCount(String keyword) {
+	    return inquiryDAO.getSearchInquiryAllCount(keyword);
+	}
+	@Override
+	public int getSearchInquiryTitleCount(String keyword) {
+	    return inquiryDAO.getSearchInquiryTitleCount(keyword);
+	}
+	@Override
+	public int getSearchInquiryContentCount(String keyword) {
+	    return inquiryDAO.getSearchInquiryContentCount(keyword);
+	}
+
+	@Override
+	public List<InquiryInfoDTO> getRequestPageSearchInquiryList(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId, String keyword) {
+	    int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+	    int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+
+	    if (searchingTypeId == 0) {
+	    	return inquiryDAO.getRequestPageSearchInquiryList(startPostNo, endPostNo);
+	    } else {
+	    	return inquiryDAO.getRequestPageSearchInquiryListList(startPostNo, endPostNo, searchingTypeId, keyword);
+	    }
+	}
+	@Override
+	public InquiryInfoDTO getMyInquiryDetail(int inquiryId) {
+	    return inquiryDAO.getMyInquiryDetail(inquiryId);
 	}
 
 }

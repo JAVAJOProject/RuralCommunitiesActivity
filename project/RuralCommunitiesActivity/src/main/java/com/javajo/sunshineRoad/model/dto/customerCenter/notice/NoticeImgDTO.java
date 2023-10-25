@@ -12,11 +12,11 @@ import lombok.Setter;
 @Builder
 
 public class NoticeImgDTO {
-	
-	private String notice_img_id;
-	private String notice_img_1;
-	private String notice_img_2;
-	private String notice_img_3;
-	private String notice_img_4;
-	private String notice_img_5;
+   
+   private int noticeImgId;
+   private String noticeImg1;
+   private String noticeImg2;
+   private String noticeImg3;
+   private String noticeImg4;
+   private String noticeImg5;
 }

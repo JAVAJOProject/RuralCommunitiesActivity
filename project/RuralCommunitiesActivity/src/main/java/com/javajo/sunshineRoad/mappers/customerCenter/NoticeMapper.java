@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-
+import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeImgDTO;
 import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeListInfoDTO;
 
 @Mapper
@@ -25,4 +25,8 @@ public interface NoticeMapper {
 	// noticeDetail에 관련된 함수 작성.
 	public NoticeListInfoDTO getNoticeDetail(int noticeId); 
 
+	// noticeDetail에 관련된 함수 작성.
+
+		public NoticeImgDTO getNoticeImagesByImgId(int noticeImgId);
 }
+

@@ -1,12 +1,15 @@
 package com.javajo.sunshineRoad.model.dao.customerCenter.notice;
 
-import com.javajo.sunshineRoad.mappers.customerCenter.NoticeMapper;
-import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeListInfoDTO;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.javajo.sunshineRoad.mappers.customerCenter.NoticeMapper;
+import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeImgDTO;
+import com.javajo.sunshineRoad.model.dto.customerCenter.notice.NoticeListInfoDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -47,5 +50,10 @@ public class NoticeDAO {
 		System.out.println("getNoticeDetail");
 		NoticeMapper noticeMapper = sqlSession.getMapper(NoticeMapper.class);
 		return noticeMapper.getNoticeDetail(noticeId);
+	}
+	
+	public NoticeImgDTO getNoticeImagesByImgId(int noticeImgId) {
+		NoticeMapper noticeMapper = sqlSession.getMapper(NoticeMapper.class);
+		return noticeMapper.getNoticeImagesByImgId(noticeImgId);
 	}
 }
