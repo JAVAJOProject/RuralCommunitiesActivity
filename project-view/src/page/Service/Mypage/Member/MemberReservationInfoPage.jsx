@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import MyPageMemberContentxBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/ContentsBox/MyPageMemberContentxBox';
+import MyPageMemberContentsBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/ContentsBox/MyPageMemberContentsBox';
 
 import '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox.css';
 import MypageReservationContentsBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox';
@@ -53,7 +53,7 @@ export default function MemberReservationInfoPage() {
 
   return (
     <main className="appMain">
-      <MyPageMemberContentxBox>
+      <MyPageMemberContentsBox>
         <MypageReservationTitleBox imgSrc={receipt} mainTitle={mainTitle} />
         {reservation.map((data) => (
           <MypageReservationContentsBox
@@ -62,7 +62,7 @@ export default function MemberReservationInfoPage() {
             imgSrc={data.aThumbnailImg}
           />
         ))}
-      </MyPageMemberContentxBox>
+      </MyPageMemberContentsBox>
       <PageNoBox
         curr={currentPage}
         total={maxPage}

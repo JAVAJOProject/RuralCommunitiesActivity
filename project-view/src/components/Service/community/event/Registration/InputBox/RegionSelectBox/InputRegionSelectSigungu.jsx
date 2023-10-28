@@ -10,7 +10,11 @@ export default function InputRegionSelectSigungu({ inputName, regionSigungu }) {
   return (
     <div className="inputRegionSelect">
       <p>시군구</p>
-      <select value={selectedSigunguId} onChange={handleSelectedSigunguId}>
+      <select
+        value={selectedSigunguId}
+        onChange={handleSelectedSigunguId}
+        name={inputName}
+      >
         {regionSigungu.length > 0 &&
           regionSigungu.map((sigungu) => (
             <option key={sigungu.typeId} value={sigungu.typeId}>

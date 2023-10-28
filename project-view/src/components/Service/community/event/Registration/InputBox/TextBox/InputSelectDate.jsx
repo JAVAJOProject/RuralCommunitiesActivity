@@ -23,7 +23,9 @@ export default function InputSelectDate({
         }
         maxDate={new Date(maxDate)}
         selected={selectedDate}
-        onChange={(date) => setSelectedDate(date)}
+        onChange={(e) => {
+          setSelectedDate(e.target.value);
+        }}
         className="inputDateText inputOneDate"
         name={inputName}
         id={inputName}

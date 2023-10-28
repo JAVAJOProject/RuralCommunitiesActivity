@@ -14,7 +14,7 @@ export default function InputRegionSelectSido({
   return (
     <div className="inputRegionSelect">
       <p>시도</p>
-      <select value={selectedSidoId} onChange={handleSelectedSidoId}>
+      <select value={selectedSidoId} onChange={handleSelectedSidoId} name={inputName}>
         <option value={0}>{'온라인'}</option>
         {regionSido.map((sido) => (
           <option key={sido.typeId} value={sido.typeId}>

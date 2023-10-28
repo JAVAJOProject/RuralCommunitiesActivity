@@ -5,7 +5,7 @@ import java.util.List;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.javajo.sunshineRoad.mappers.mypageMember.ReviewMapper;
+import com.javajo.sunshineRoad.mappers.totalActivity.ReviewMapper;
 import com.javajo.sunshineRoad.model.dto.review.ReviewDTO;
 
 import lombok.RequiredArgsConstructor;

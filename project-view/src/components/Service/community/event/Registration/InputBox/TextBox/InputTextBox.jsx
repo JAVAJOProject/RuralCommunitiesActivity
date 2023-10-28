@@ -3,7 +3,12 @@ import LabelBox from '../LabelBox';
 import InputText from './InputText';
 import './InputTextBox.css';
 
-export default function InputTextBox({ inputInfo, isReadOnly, value }) {
+export default function InputTextBox({
+  inputInfo,
+  isReadOnly,
+  defaultValue,
+  isCenter,
+}) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -28,7 +33,8 @@ export default function InputTextBox({ inputInfo, isReadOnly, value }) {
         inputName={inputName}
         inputId={inputName}
         isReadOnly={isReadOnly}
-        value={value}
+        value={defaultValue}
+        isCenter={isCenter}
       />
     </div>
   );

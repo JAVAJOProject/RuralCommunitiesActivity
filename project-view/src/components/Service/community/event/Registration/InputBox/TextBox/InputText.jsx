@@ -1,7 +1,13 @@
 import React from 'react';
 import './InputText.css';
 
-export default function InputText({ inputName, inputId, isReadOnly, value }) {
+export default function InputText({
+  inputName,
+  inputId,
+  isReadOnly,
+  value,
+  isCenter,
+}) {
   return (
     <div className="inputText">
       {!!isReadOnly ? (
@@ -11,6 +17,7 @@ export default function InputText({ inputName, inputId, isReadOnly, value }) {
           id={inputId}
           readOnly={!!isReadOnly}
           value={value ?? ''}
+          style={{ textAlign: isCenter ? 'center' : 'justify' }}
         />
       ) : (
         <input type="text" name={inputName} id={inputId} />

@@ -59,6 +59,7 @@ const contents = {
 };
 
 const testContents = {
+  aPostId: 1,
   aName: '전통 요리 체험',
   recruitStartDate: '2023-09-15',
   recruitEndDate: '2023-12-15',
