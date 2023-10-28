@@ -17,9 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class TotalActivityContentController {
     private final GetTotalActivityContentService getTotalActivityContentService;
 
-    @GetMapping("/one/{aId}")
-    public ResponseEntity<TotalActivityContentDTO> totalActivityContent(@PathVariable int aId) {
-        TotalActivityContentDTO result = getTotalActivityContentService.getOneContent(aId);
+    @GetMapping("/one/{aPostId}")
+    public ResponseEntity<TotalActivityContentDTO> totalActivityContent(@PathVariable int aPostId) {
+        TotalActivityContentDTO result = getTotalActivityContentService.getOneContent(aPostId);
 
         return ResponseEntity.ok(result);
     }

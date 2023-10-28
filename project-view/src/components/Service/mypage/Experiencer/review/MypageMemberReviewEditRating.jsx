@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MypageMemberReviewEditRating.css';
 
 export default function MypageMemberReviewEditRating({
   ratingTitle,
   ratingNum,
+  handleReviewContent,
 }) {
-  const [selected, setSelected] = useState(ratingNum);
-  const handleSelected = (e) => {
-    setSelected(e.target.value);
-  };
-
   return (
     <div className="mypageMemberReviewEditRating">
       <label>{ratingTitle} : </label>
-      <select name="" onChange={handleSelected} value={selected}>
+      <select
+        name=""
+        onChange={(e) => {
+          handleReviewContent((draft) => {
+            draft.ratingNum = e.target.value;
+          });
+        }}
+        value={ratingNum}
+      >
         <option value={5}>{5}점</option>
         <option value={4}>{4}점</option>
         <option value={3}>{3}점</option>

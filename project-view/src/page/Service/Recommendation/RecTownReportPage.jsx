@@ -1,68 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import TotalActRegistrationTitle from '../../../components/Service/totalActivity/Registration/TotalActRegistrationTitle';
 
-import registrationImg from '../../../view_img/Service/totalActivity/registration/registration.jpg';
-import TotalActRegistrationContents from '../../../components/Service/totalActivity/Registration/TotalActRegistrationContents';
+import townReportImg from '../../../view_img/Service/recTown/report.jpg';
+import RecTownReportTitle from '../../../components/Service/recTown/reportTitle/RecTownReportTitle';
 import { useImmer } from 'use-immer';
+import RecTownReportContents from '../../../components/Service/recTown/reportContent/RecTownReportContents';
 
 const defaultContents = {
   titles: {
-    mainTitle: '등록하기',
-    subtitle: '* 등록 내역은 마이페이지에서 확인하실 수 있습니다. *',
-    imgSrc: registrationImg,
+    mainTitle: '마을 제보하기',
+    subtitle: '* 추천하고 싶은 마을을 등록해주세요. *',
+    imgSrc: townReportImg,
   },
   inputContents: {
     title: {
-      labelText: '체험명',
+      labelText: '제목',
       type: 'thin',
-      inputName: 'aName',
+      inputName: 'townReportTitle',
     },
-    oneLiner: {
-      labelText: '한 줄 소개',
+    townName: {
+      labelText: '마을 이름',
       type: 'thin',
-      inputName: 'aOneLiner',
-    },
-    themeType: {
-      labelText: '테마 선택',
-      type: 'thin',
-      inputName: 'aTypeId',
-      inputValue: [1, 2, 3, 4],
-      inputLabel: ['농촌', '어촌', '전통', '기타'],
-    },
-    price: {
-      labelText: '체험 금액',
-      type: 'thin',
-      inputName: 'aPrice',
-    },
-    period: {
-      labelText: '체험 기간',
-      type: 'thin',
-      inputName: ['startDate', 'endDate'],
-    },
-    reservationPeriod: {
-      labelText: '예약 기간',
-      type: 'thin',
-      inputName: ['recruitStartDate', 'recruitEndDate'],
-    },
-    minPeople: {
-      labelText: '예약 최소 인원',
-      type: 'thin',
-      inputName: 'minPeople',
-    },
-    maxPeople: {
-      labelText: '예약 최대 인원',
-      type: 'thin',
-      inputName: 'maxPeople',
-    },
-    addr: {
-      labelText: '체험 주소',
-      type: 'image',
-      inputName: 'addr',
+      inputName: 'townName',
     },
     region: {
       labelText: '지역 선택',
-      type: 'thin',
+      thin: 'thin',
       inputName: ['region', 'sido', 'sigungu'],
+    },
+    site: {
+      labelText: '사이트',
+      type: 'thin',
+      inputName: 'townSite',
     },
     images: {
       labelText: ['이미지\n\n(첫번째 이미지가\n대표이미지가 됩니다.)'],
@@ -73,12 +41,12 @@ const defaultContents = {
       fileLimitText: '첨부파일은 500MB 이하의 jpg, png 파일 5개 이하까지 가능',
     },
     detail: {
-      labelText: '체험 내용 작성',
+      labelText: '제보할 내용',
       type: 'thinTextArea',
-      inputName: 'aContent',
+      inputName: 'townReportContent',
     },
     buttons: {
-      submit: { text: '체험 등록하기', type: 'button' },
+      submit: { text: '마을 제보하기', type: 'button' },
       cancel: { text: '입력 취소', type: 'reset' },
     },
   },
@@ -131,7 +99,7 @@ const testRegionSigungu = [
   { text: '마포', typeId: 25 },
 ];
 
-export default function TotalActRegistrationPage() {
+export default function RecTownReportPage() {
   const [regionSido, updateRegionSido] = useImmer(testRegionSido);
   const [regionSigungu, updateRegionSigungu] = useImmer([]);
   const [selectedSidoId, setSelectedSidoId] = useState('');
@@ -150,12 +118,12 @@ export default function TotalActRegistrationPage() {
 
   return (
     <div>
-      <TotalActRegistrationTitle
+      <RecTownReportTitle
         imgSrc={titles.imgSrc}
         mainTitle={titles.mainTitle}
         subtitle={titles.subtitle}
       />
-      <TotalActRegistrationContents
+      <RecTownReportContents
         labelTexts={inputContents}
         api={''}
         method="post"

@@ -8,6 +8,7 @@ import MypageMemberReviewBtnBox from '../../../../components/Service/mypage/Expe
 import MypageMemberReviewEditTitle from '../../../../components/Service/mypage/Experiencer/review/MypageMemberReviewEditTitle';
 import MypageMemberReviewEditLine from '../../../../components/Service/mypage/Experiencer/review/MypageMemberReviewEditLine';
 import MypageMemberReviewTextarea from '../../../../components/Service/mypage/Experiencer/review/MypageMemberReviewTextarea';
+import { useImmer } from 'use-immer';
 
 const titleContent = {
   title: '후기 수정하기',
@@ -22,13 +23,19 @@ const test = {
 };
 
 export default function MypageMemberReviewEditPage() {
+  const [reviewContent, updateReviewContent] = useImmer(test);
   const { title, imgSrc, ratingTitle } = titleContent;
-  const { reviewTitle, ratingNum, content } = test;
+  const { reviewTitle, ratingNum, content } = reviewContent;
 
   return (
     <div>
       <CardListContentBox>
-        <CardBoxTitleSet imgSrc={imgSrc} text={title} circleColor={'#F9DCC1'} />
+        <CardBoxTitleSet
+          imgSrc={imgSrc}
+          text={title}
+          circleColor={'#F9DCC1'}
+          isDarken={true}
+        />
         <YellowBigCardBox
           style={{
             width: '33.6875rem',
@@ -41,9 +48,13 @@ export default function MypageMemberReviewEditPage() {
             reviewTitle={reviewTitle}
             ratingTitle={ratingTitle}
             ratingNum={ratingNum}
+            handleReviewContent={updateReviewContent}
           />
           <MypageMemberReviewEditLine />
-          <MypageMemberReviewTextarea textContent={content} />
+          <MypageMemberReviewTextarea
+            textContent={content}
+            handleReviewContent={updateReviewContent}
+          />
         </YellowBigCardBox>
         <MypageMemberReviewBtnBox />
       </CardListContentBox>

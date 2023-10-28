@@ -37,7 +37,7 @@ public class TotalActivityListController {
 	}
 
 	@GetMapping("/byTotalList/{boardType}/{requestPageNo}")
-	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByThemeList(@PathVariable int requestPageNo,
+	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByTotalList(@PathVariable int requestPageNo,
 			@PathVariable String boardType) {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();

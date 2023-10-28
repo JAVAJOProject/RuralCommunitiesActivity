@@ -20,10 +20,10 @@ public class GetRequestPageReviewListServiceImpl implements GetRequestPageReview
 
 
 	@Override
-	public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int requestPageNo) {
+	public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-        return reviewListDAO.getRequestPageReviewContent(startPostNo, endPostNo);
+        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo, endPostNo);
     }
 }

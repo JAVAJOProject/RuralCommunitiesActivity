@@ -15,6 +15,7 @@ const title = {
 
 const test = [
   {
+    aPostId: 2,
     reviewId: 1,
     title: '체험 후기 제목',
     img: testImg,
@@ -22,6 +23,7 @@ const test = [
     content: `체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체`,
   },
   {
+    aPostId: 5,
     reviewId: 2,
     title: '체험 후기 제목',
     img: testImg,
@@ -36,8 +38,13 @@ export default function MypageMemberReviewPage() {
   return (
     <>
       <CardListContentBox>
-        <CardBoxTitleSet imgSrc={imgSrc} text={text} circleColor={'#F9DCC1'} isDarken={true} />
-        <div className='mypageMemberReviewCardBox'>
+        <CardBoxTitleSet
+          imgSrc={imgSrc}
+          text={text}
+          circleColor={'#F9DCC1'}
+          isDarken={true}
+        />
+        <div className="mypageMemberReviewCardBox">
           {test.map((content) => (
             <MypageMemberReviewCard contents={content} />
           ))}

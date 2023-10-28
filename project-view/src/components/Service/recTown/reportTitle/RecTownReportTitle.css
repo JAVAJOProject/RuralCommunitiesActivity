@@ -1,0 +1,20 @@
+.recTownReportTitle > img {
+  width: 13.375rem;
+  mix-blend-mode: darken;
+  margin: 1rem auto;
+  display: block;
+}
+
+.recTownReportTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-weight: 400;
+}
+
+.recTownReportTitle > p:first-of-type {
+  font-size: 2.8125rem;
+}
+.recTownReportTitle > p:last-of-type {
+  font-size: 1.5625rem;
+  margin: 2rem auto;
+}

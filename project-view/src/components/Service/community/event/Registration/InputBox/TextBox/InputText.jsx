@@ -1,12 +1,7 @@
 import React from 'react';
 import './InputText.css';
 
-export default function InputText({
-  inputName,
-  inputId,
-  isReadOnly,
-  defaultValue,
-}) {
+export default function InputText({ inputName, inputId, isReadOnly, value }) {
   return (
     <div className="inputText">
       {!!isReadOnly ? (
@@ -15,7 +10,7 @@ export default function InputText({
           name={inputName}
           id={inputId}
           readOnly={!!isReadOnly}
-          defaultValue={defaultValue ?? null}
+          value={value ?? ''}
         />
       ) : (
         <input type="text" name={inputName} id={inputId} />

@@ -9,10 +9,9 @@ import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 import YellowActivityCard from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCard';
 import YellowActivityCardImg from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCardImg';
 import YellowActivityText from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityText';
-
+import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
 import titleImg from '../../../view_img/Service/totalActivity/region/title.svg';
 
-import testImg from '../../../view_img/Service/mainPage/testImg/recTown1.jpg';
 import RegionMap from '../../../components/Service/totalActivity/Region/regionMap/RegionMap';
 import { useNavigate } from 'react-router-dom';
 
@@ -77,84 +76,42 @@ const testContents = {
     ],
   },
 };
-const testData = [
-  {
-    aPostId: 1,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 2,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 3,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 4,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 5,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 6,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 7,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-  {
-    aPostId: 8,
-    aName: '체험 이름',
-    aOneLiner: '체험 한 줄 소개',
-    aThumbnailImg: testImg,
-    aFavoriteCnt: 215468,
-  },
-];
 
 export default function RegionActivityPage() {
   const navigate = useNavigate();
   const [selectedRegion, setSelectedRegion] = useState(contents.regionSido);
+  const [requestPageNo, setRequestPageNo] = useState(1);
+  const [totalPageNo, setTotalPageNo] = useState(5); // 총 페이지 수
   const [regionList, updateRegionList] = useImmer([
     ...testContents.region.sido,
   ]);
-  const [totalPost, setTotalPost] = useState(30); // 임시
+  const [totalPost, setTotalPost] = useState(10);
 
   useEffect(() => {
-    if (
-      selectedRegion === '서울' ||
-      testContents.region.seoul.includes(selectedRegion)
-    ) {
-      // 임시
-      updateRegionList([...testContents.region.seoul]);
-    } else {
-      updateRegionList([...testContents.region.sido]);
+    async function fetchContents() {
+      try {
+        // 활동 데이터 가져오기 (예: /api/activities)
+        const activitiesData = await fetchDataGET(
+          `/totalActivity/byTotalList/card/${requestPageNo}`
+        );
+
+        const imageData = await fetchImgGET(
+          activitiesData,
+          'aId',
+          '/img/totalActivityImage/one'
+        );
+        // 데이터와 이미지를 결합
+        return {
+          ...activitiesData,
+          aThumbnailImg: imageData,
+        };
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }, [selectedRegion]);
+
+    fetchContents();
+  }, []);
 
   const { regionSido, subtitle, order } = contents;
   subtitle.text = `전체 ${totalPost}건`;
@@ -186,7 +143,7 @@ export default function RegionActivityPage() {
           isDarken={subtitle.isDarken}
         />
         <div style={{ display: 'flex', flexWrap: 'wrap', width: '71rem' }}>
-          {testData.map((data) => (
+          {regionList.map((data) => (
             <YellowActivityCard
               style={{ margin: '1rem' }}
               onClick={() => {
@@ -202,7 +159,11 @@ export default function RegionActivityPage() {
           ))}
         </div>
       </CardListContentBox>
-      <PageNoBox curr={1} total={6} />
+      <PageNoBox
+        curr={requestPageNo}
+        total={totalPageNo}
+        handlePageNo={setRequestPageNo}
+      />
     </div>
   );
 }

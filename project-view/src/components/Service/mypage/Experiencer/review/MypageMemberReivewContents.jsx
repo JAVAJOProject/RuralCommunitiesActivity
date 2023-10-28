@@ -7,7 +7,7 @@ import MypageMemberReviewContentText from './MypageMemberReviewContentText';
 import MypageMypostBtnBox from '../../Provider/post/MypageMypostBtnBox';
 
 export default function MypageMemberReivewContents({ contents }) {
-  const { reviewId, title, rating, content } = contents;
+  const { aPostId, reviewId, title, rating, content } = contents;
 
   return (
     <div className="mypageMemberReivewContents">
@@ -19,7 +19,11 @@ export default function MypageMemberReivewContents({ contents }) {
       <MypageMemberReviewContentText text={content} />
       <div>
         <MypageMypostBtnBox
-          links={['', `/app/myInfo/experiencer/review/edit/${reviewId}`, '']}
+          links={[
+            `/app/activity/detail/${aPostId}/info`,
+            `/app/myInfo/experiencer/review/edit/${reviewId}`,
+            '',
+          ]}
           type="review"
         />
       </div>

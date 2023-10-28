@@ -4,14 +4,13 @@ import './MyPageNavBox.css';
 
 export default function MyPageNavBox({ text, link }) {
   const [active, setActive] = useState(false);
+  const handleActive = ({ isActive }) => {
+    setActive(isActive);
+  };
 
   return (
     <li className={active ? 'myPageNavBox myPageNavBoxActive' : 'myPageNavBox'}>
-      <NavLink
-        className={({ isActive }) => setActive(isActive)}
-        to={link}
-        text={text}
-      >
+      <NavLink className={handleActive} to={link} text={text}>
         <div
           className={
             active

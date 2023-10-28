@@ -5,6 +5,7 @@ import InputSelectDateBox from '../../../community/event/Registration/InputBox/T
 import InputReadOnlyDateBox from '../../../community/event/Registration/InputBox/TextBox/InputReadOnlyDateBox';
 import InputMapBox from '../../../community/event/Registration/InputBox/TextBox/InputMapBox';
 import InputBtnBox from '../../../community/event/Registration/InputBtn/InputBtnBox';
+import { useImmer } from 'use-immer';
 
 export default function TotalActReservationContentsBoxSet({
   contents,
@@ -12,8 +13,8 @@ export default function TotalActReservationContentsBoxSet({
   method,
   data,
 }) {
-  const [headCountState, setHeadCountState] = useState();
-  const [reservationDate, setReservationDate] = useState();
+  const [headCountState, setHeadCountState] = useState(null);
+  const [reservationContents, updateReservationContents] = useImmer({});
   const {
     title,
     date,
@@ -23,7 +24,7 @@ export default function TotalActReservationContentsBoxSet({
     payment,
     paymentDeadline,
     map,
-    buttons
+    buttons,
   } = contents;
   const {
     aName,
@@ -51,13 +52,13 @@ export default function TotalActReservationContentsBoxSet({
         inputInfo={headCount}
         maxValue={availablePeople}
         placeholder={`최대 ${availablePeople}명까지 예약 가능`}
-        stateValue={headCountState}
+        stateValue={headCountState ?? ''}
         handleStateValue={setHeadCountState}
       />
       <InputTextBox
         inputInfo={payment}
         isReadOnly={true}
-        defaultValue={`${
+        value={`${
           !!headCountState ? headCountState * ratePerPerson : ratePerPerson
         }원`}
       />
