@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class MypageActivityReviewImpl implements MypageActivityReviewService {
 
 	private final MypageActivityReviewDAO aReviewDAO;
-    private final MainPageDAO mainPageDAO;
+	private final MainPageDAO mainPageDAO;
 
 	@Override
 	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo) {
@@ -39,8 +39,19 @@ public class MypageActivityReviewImpl implements MypageActivityReviewService {
 	public int getActivityCount(int uId) {
 		return aReviewDAO.getActivityCount(uId);
 	}
-	 @Override
-	    public MainPageTotalActivityInfoDTO getOneTotalActivityData(int id) {
-	        return mainPageDAO.getOneMainTotalActivityData(id);
-	    }
+
+	@Override
+	public MainPageTotalActivityInfoDTO getOneTotalActivityData(int id) {
+		return mainPageDAO.getOneMainTotalActivityData(id);
 	}
+
+	@Override
+	public int cancel(int revId) {
+		return aReviewDAO.cancel(revId);
+	}
+
+	@Override
+	public MypageActivityReviewDTO getReview(int revId) {
+		return aReviewDAO.getReview(revId);
+	}
+}

@@ -14,4 +14,8 @@ public interface MypageActivityReviewMapper {
 	public int updateRev(MypageActivityReviewDTO rev);
 
 	public int selectCount(int uId);
+
+	public int deleteReview(int revId);
+
+	public MypageActivityReviewDTO selectReview(int revId);
 }

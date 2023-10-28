@@ -21,35 +21,36 @@ export default function MemberReservationInfoPage() {
   const [maxPage, setMaxPage] = useState(1);
   const { mainTitle, subtitles } = contents;
 
-  useEffect(() => {
-    async function fetchContents() {
-      try {
-        const reservation = await fetchDataGET(
-          `/mypage/member/reserve/${currentPage}`
-        );
-        const reservationImg = await fetchImgGET(
-          reservation,
-          'aId',
-          '/main/total-activity-image'
-        );
+  async function fetchContents() {
+    try {
+      const reservation = await fetchDataGET(
+        `/mypage/member/reserve/${currentPage}`
+      );
+      const reservationImg = await fetchImgGET(
+        reservation,
+        'aId',
+        '/main/total-activity-image'
+      );
 
-        updateReservation((draft) => {
-          draft.length = 0;
-          reservation.forEach((item, index) => {
-            draft.push({ ...item, aThumbnailImg: reservationImg[index] });
-          });
+      updateReservation((draft) => {
+        draft.length = 0;
+        reservation.forEach((item, index) => {
+          draft.push({ ...item, aThumbnailImg: reservationImg[index] });
         });
+      });
 
-        const [perPostPageNo, totalPostNo] = fetchDataGET(
-          '/reserve/total-page'
-        );
-        setMaxPage(Math.ceil(+totalPostNo / +perPostPageNo));
-      } catch (error) {
-        console.error(error);
-      }
+      const [perPagePostCount, totalPostNo] = fetchDataGET(
+        '/mypage/member/reserve/total-page'
+      );
+      setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
+    } catch (error) {
+      console.error(error);
     }
+  }
+
+  useEffect(() => {
     fetchContents();
-  }, [currentPage, reservation]);
+  }, [currentPage]);
 
   return (
     <main className="appMain">

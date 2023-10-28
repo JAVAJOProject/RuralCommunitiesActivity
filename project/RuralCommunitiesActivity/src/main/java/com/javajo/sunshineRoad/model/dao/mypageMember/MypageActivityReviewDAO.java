@@ -45,6 +45,18 @@ public class MypageActivityReviewDAO {
 		return aReview.selectCount(uId);
 	}
 
+	public int cancel(int revId) {
+		System.out.println("revId" + revId);
+		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
+		return aReview.deleteReview(revId);
+	}
+
+	public MypageActivityReviewDTO getReview(int revId) {
+		System.out.println("revId" + revId);
+		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
+		return aReview.selectReview(revId);
+	}
+
 
 }
 //

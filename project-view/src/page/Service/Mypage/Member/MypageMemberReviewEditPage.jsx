@@ -9,6 +9,7 @@ import MypageMemberReviewEditTitle from '../../../../components/Service/mypage/E
 import MypageMemberReviewEditLine from '../../../../components/Service/mypage/Experiencer/review/MypageMemberReviewEditLine';
 import MypageMemberReviewTextarea from '../../../../components/Service/mypage/Experiencer/review/MypageMemberReviewTextarea';
 import { useImmer } from 'use-immer';
+import { useParams } from 'react-router-dom';
 
 const titleContent = {
   title: '후기 수정하기',
@@ -23,9 +24,26 @@ const test = {
 };
 
 export default function MypageMemberReviewEditPage() {
-  const [reviewContent, updateReviewContent] = useImmer(test);
+  const { reviewId } = useParams();
   const { title, imgSrc, ratingTitle } = titleContent;
-  const { reviewTitle, ratingNum, content } = reviewContent;
+  const [review, updateReview] = useImmer({});
+
+  async function fetchContents() {
+    try {
+      const review = await fetchDataGET(
+        `/mypage/member/review/activity/${reviewId}`
+      );
+      updateReview(review);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchContents();
+  }, [reviewId]);
+
+  const { rTitle, rStarRating, rContent } = review;
 
   return (
     <div>
@@ -45,15 +63,15 @@ export default function MypageMemberReviewEditPage() {
           }}
         >
           <MypageMemberReviewEditTitle
-            reviewTitle={reviewTitle}
+            reviewTitle={rTitle}
             ratingTitle={ratingTitle}
-            ratingNum={ratingNum}
-            handleReviewContent={updateReviewContent}
+            ratingNum={rStarRating}
+            handleReviewContent={updateReview}
           />
           <MypageMemberReviewEditLine />
           <MypageMemberReviewTextarea
-            textContent={content}
-            handleReviewContent={updateReviewContent}
+            textContent={rContent}
+            handleReviewContent={updateReview}
           />
         </YellowBigCardBox>
         <MypageMemberReviewBtnBox />

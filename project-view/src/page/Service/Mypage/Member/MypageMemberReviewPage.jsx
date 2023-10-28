@@ -6,34 +6,47 @@ import MypageMemberReviewCard from '../../../../components/Service/mypage/Experi
 
 import reviewTitleImg from '../../../../view_img/Service/myPage/experiencer/review.jpg';
 
-import testImg from '../../../../view_img/Service/mainPage/testImg/circleTest3.jpg';
-
 const title = {
   text: '내가 쓴 후기',
   imgSrc: reviewTitleImg,
 };
 
-const test = [
-  {
-    aPostId: 2,
-    reviewId: 1,
-    title: '체험 후기 제목',
-    img: testImg,
-    rating: 5,
-    content: `체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체`,
-  },
-  {
-    aPostId: 5,
-    reviewId: 2,
-    title: '체험 후기 제목',
-    img: testImg,
-    rating: 5,
-    content: `체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체`,
-  },
-];
-
 export default function MypageMemberReviewPage() {
   const { text, imgSrc } = title;
+
+  const [review, updateReview] = useImmer([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+
+  async function fetchContents() {
+    try {
+      const review = await fetchDataGET(
+        `/mypage/member/review/activity/list/${currentPage}`
+      );
+      const reviewImg = await fetchImgGET(
+        review,
+        'aPostId',
+        '/main/total-activity-image'
+      );
+      updateReview((draft) => {
+        draft.length = 0;
+        review.forEach((item, index) => {
+          draft.push({ ...item, aThumbnailImg: reviewImg[index] });
+        });
+      });
+
+      const [perPagePostCount, totalPostNo] = fetchDataGET(
+        '/mypage/member/review/total-page'
+      );
+      setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchContents();
+  }, [currentPage]);
 
   return (
     <>
@@ -45,12 +58,16 @@ export default function MypageMemberReviewPage() {
           isDarken={true}
         />
         <div className="mypageMemberReviewCardBox">
-          {test.map((content) => (
+          {review.map((content) => (
             <MypageMemberReviewCard contents={content} />
           ))}
         </div>
       </CardListContentBox>
-      <PageNoBox curr={1} total={7} />
+      <PageNoBox
+        curr={currentPage}
+        total={maxPage}
+        handlePageNo={setCurrentPage}
+      />
     </>
   );
 }
