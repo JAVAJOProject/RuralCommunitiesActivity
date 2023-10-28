@@ -11,6 +11,7 @@ export default function CardBoxTitleSet({
   isDarken,
   imgHeight,
   borderRadius,
+  isContain,
 }) {
   return (
     <div className="cardBoxTitleSet">
@@ -20,6 +21,7 @@ export default function CardBoxTitleSet({
         isDarken={isDarken}
         imgHeight={imgHeight}
         borderRadius={borderRadius}
+        isContain={isContain}
       />
       <div className="cardBoxTitleTextBarSet">
         <CardBoxTitleText text={text} />

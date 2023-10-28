@@ -1,0 +1,19 @@
+.mypageMemberEventList {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mypageMemberEventList > div {
+  width: 0.625rem;
+  height: 0.625rem;
+  background: #30497a;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+}
+
+.mypageMemberEventList > p {
+  font-family: SUITE Variable;
+  font-size: 0.875rem;
+  font-weight: 400;
+}

@@ -6,16 +6,22 @@ INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,4,4,104,1,TO_DATE('20
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,5,5,105,1,TO_DATE('2023-10-03','YYYY-MM-DD'),TO_DATE('2023-10-20','YYYY-MM-DD'),'충남 당진시 시청1로 1','고추장 담그기','순창 고추장이 유명해지게 된 바로 그 지역! 그 마을! 에서만 경험할 수 있는 최고의 체험',20,40,30000,NULL,NULL,NULL);
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,6,6,106,3,TO_DATE('2023-10-09','YYYY-MM-DD'),TO_DATE('2023-11-23','YYYY-MM-DD'),'경북 의성군 의성읍 군청길 31','약과 만들기','우리나라 전통한과의 대표 음식 중 하나인 약과를 직접 만들어 봄으로써 우리 음식에 대한 사랑과 정성을 느낄 수 있는 체험',30,60,40000,NULL,NULL,TO_DATE('2024-3-31','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,7,7,107,4,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com',TO_DATE('2024-05-30','YYYY-MM-DD'));
-INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,8,8,108,3,TO_DATE('2023-10-05','YYYY-MM-DD'),TO_DATE('2024-10-14','YYYY-MM-DD'),'경남 창원시 성산구 중앙대로 151','허수아비 만들','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,TO_DATE('2024-12-31','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,8,8,108,3,TO_DATE('2023-10-05','YYYY-MM-DD'),TO_DATE('2024-10-14','YYYY-MM-DD'),'경남 창원시 성산구 중앙대로 151','허수아비 만들기','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,TO_DATE('2024-12-31','YYYY-MM-DD'));
 
-INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,9,9,101,2,TO_DATE('2023-9-23','YYYY-MM-DD'),TO_DATE('2023-10-05','YYYY-MM-DD'),'울산 남구 중앙로 201','두부 만들기','두부는 콩으로 만들어집니다',10,30,10000,NULL,'www.doboo.co.kr',TO_DATE('2024-12-25','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,9,9,101,2,TO_DATE('2023-9-23','YYYY-MM-DD'),TO_DATE('2023-10-05','YYYY-MM-DD'),'구룡포읍 호미로426번길 6','패들보트 체험','바다를 가르며 시원한 패들보트를 즐겨보세요',10,30,10000,NULL,'www.doboo.co.kr',TO_DATE('2024-12-25','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,10,10,102,2,TO_DATE('2023-10-08','YYYY-MM-DD'),TO_DATE('2023-10-16','YYYY-MM-DD'),'경남 남해군 남해읍 망운로9번길 12','도자기 만들기','세상에 하나뿐인 도자기를 만들어 보세요',5,40,30000,NULL,'www.dojagi.co.kr',NULL);
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,11,11,103,1,TO_DATE('2023-10-08','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'경북 청도군 화양읍 청화로 70','딸기 따요따요','자연과 숲 체험 농장에서 사과 따기를 경험해 보세요! 직접 사과를 따고 맛도 볼 수 있어요',15,60,10000,NULL,NULL,TO_DATE('2023-10-21','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,12,12,107,4,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com',TO_DATE('2024-05-30','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,13,13,107,4,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com',TO_DATE('2024-05-30','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,14,14,106,3,TO_DATE('2023-10-09','YYYY-MM-DD'),TO_DATE('2023-11-23','YYYY-MM-DD'),'경북 의성군 의성읍 군청길 31','약과 만들기','우리나라 전통한과의 대표 음식 중 하나인 약과를 직접 만들어 봄으로써 우리 음식에 대한 사랑과 정성을 느낄 수 있는 체험',30,60,40000,NULL,NULL,TO_DATE('2024-3-31','YYYY-MM-DD'));
 INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,15,7,107,4,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com',TO_DATE('2024-05-30','YYYY-MM-DD'));
-INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,16,8,108,3,TO_DATE('2023-10-05','YYYY-MM-DD'),TO_DATE('2024-10-14','YYYY-MM-DD'),'경남 창원시 성산구 중앙대로 151','허수아비 만들','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,TO_DATE('2024-12-31','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,16,8,108,3,TO_DATE('2023-10-05','YYYY-MM-DD'),TO_DATE('2024-10-14','YYYY-MM-DD'),'경남 창원시 성산구 중앙대로 151','허수아비 만들기','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,TO_DATE('2024-12-31','YYYY-MM-DD'));
+
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,17,17,108,2,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'경상북도 울진군 북면 나곡리 128-1','조개 줍기','조개를 주우며 즐거운 체험',10,20,10000,NULL,NULL,TO_DATE('2024-05-30','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,18,18,103,2,TO_DATE('2023-10-09','YYYY-MM-DD'),TO_DATE('2023-11-23','YYYY-MM-DD'),'구룡포읍 호미로426번길 6','갯벌 체험','갯벌에서 신나는 추억을 만들어보세요',10,20,10000,NULL,NULL,TO_DATE('2024-3-31','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,21,20,102,1,TO_DATE('2023-10-15','YYYY-MM-DD'),TO_DATE('2023-10-22','YYYY-MM-DD'),'경상북도 청도군 화양읍 청화로 70','호박 따기','맛있는 호박을 따며 즐거운 추억 만들기',10,20,10000,NULL,NULL,TO_DATE('2024-05-30','YYYY-MM-DD'));
+INSERT INTO activity_info VALUES(activity_info_seq.NEXTVAL,19,19,102,2,TO_DATE('2023-10-05','YYYY-MM-DD'),TO_DATE('2024-10-14','YYYY-MM-DD'),'경남 창원시 성산구 중앙대로 151','돌고래 만나기','귀여운 돌고래와 재밌는 체험',10,20,10000,NULL,NULL,TO_DATE('2024-12-31','YYYY-MM-DD'));
+
 
 INSERT INTO activity_theme VALUES(activity_theme_seq.NEXTVAL,'농사');
 INSERT INTO activity_theme VALUES(activity_theme_seq.NEXTVAL,'어촌');
@@ -40,6 +46,10 @@ INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,14,14,'2023-11-26
 INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,15,15,'2023-10-11',TO_CLOB('저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  '),4,'잊을수없는 체험');
 INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,16,16,'2023-10-13',TO_CLOB('저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.'),1,'진짜 황당했습니다');
 
+INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,17,17,'2023-03-02',TO_CLOB('근처에 기차역 버스가 없어서 그런지 정말 멀고 ... 멀었어요.. 지역에 택시도 너무 비싸고,, 그리고 막상 갔는데 생각보다 체험 이 재미가없었어요 좀 힘들구.. 괜히 했나 싶더라구여 그래도 사장님은 친절하십니다. '),2,'좀 힘들구..');
+INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,18,18,'2023-11-26',TO_CLOB('요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서'),5,'정말 다양한 체험이 있더라구요');
+INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,19,19,'2023-10-11',TO_CLOB('저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  '),4,'잊을수없는 체험');
+INSERT INTO activity_review VALUES(activity_review_seq.NEXTVAL,20,20,'2023-10-13',TO_CLOB('저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.'),1,'진짜 황당했습니다');
 
 INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,1,1,TO_CLOB('콩은 ‘밭에서 나는 쇠고기’라 불릴 만큼 단백질 등 각종 영양분이 풍부하다. 두부는 콩으로 만드는 대표적인 음식으로 열량은 낮지만, 수분함량이 높아 먹었을 때 포만감을 준다. 체중조절이 필요한 사람에게 제격인 것. 또 소화 흡수율도 95%로 오히려 콩보다 높다. 이에 우리나라 사람 치고 두부 한번 안 먹어본 이가 드물지만, 정작 어떻게 만들어지는지 아는 사람은 많지 않다. 마침 전국적으로 직접 두부를 만들어볼 수 있는 농촌체험마을이 여러곳에 생겨났다. 특히 콩 주산지로 유명한 경기 북부지역에 많이 있는데, 그중 한곳인 경기 양주시 남면매곡리의 맹골마을을 찾아 콩이 두부로 다시 태어나는 과정을 함께했다.　“두부는 들이는 정성에 따라 맛이 달라져요. 공장에서 찍어낸 두부보다 손두부가 맛있는 것도 같은 이유죠.”　맹골마을에서 ‘콩 박사’로 통하는 백종광씨(46)가 본격적인 체험에 앞서 맛있는 두부 만드는 법을 알려줬다. 백씨는 만들 때 요령을 피우면 맛에 그대로 나타난다고 설명했다.두부를 만드는 첫번째 단계는 질 좋은 콩을 골라 물에 장시간 불려두는 것이다. 그래야 입자가 곱게 갈리기 때문. 물에 담가두는 시간은 적어도 8시간 이상이어야 한다. 콩을 반으로 갈랐을 때 안쪽까지 투명한 빛을 띤다면 두부로 만들기 적합한 상태다. 반면, 노란빛이 남아 있다면 조금 더 불려야 한다.'),0,0,'2023-03-21');
 INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,2,2,TO_CLOB('도자기 1일 클래스는 대게 4~5만원 대로 형성되어 있습니다.
@@ -69,7 +79,7 @@ INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,8,8,TO_CLOB('강동구는
 구는 이날 만든 허수아비와 함께 ‘농작물 지킴이-새줄’, ‘바람개비’를 논 주위에 설치해 공원을 찾는 주민들에게 농촌 들판의 정취를 느낄 수 있도록 할 예정이다.
 '),0,0,'2023-11-22');
 
-INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,9,9,TO_CLOB('콩은 ‘밭에서 나는 쇠고기’라 불릴 만큼 단백질 등 각종 영양분이 풍부하다. 두부는 콩으로 만드는 대표적인 음식으로 열량은 낮지만, 수분함량이 높아 먹었을 때 포만감을 준다. 체중조절이 필요한 사람에게 제격인 것. 또 소화 흡수율도 95%로 오히려 콩보다 높다. 이에 우리나라 사람 치고 두부 한번 안 먹어본 이가 드물지만, 정작 어떻게 만들어지는지 아는 사람은 많지 않다. 마침 전국적으로 직접 두부를 만들어볼 수 있는 농촌체험마을이 여러곳에 생겨났다. 특히 콩 주산지로 유명한 경기 북부지역에 많이 있는데, 그중 한곳인 경기 양주시 남면매곡리의 맹골마을을 찾아 콩이 두부로 다시 태어나는 과정을 함께했다.　“두부는 들이는 정성에 따라 맛이 달라져요. 공장에서 찍어낸 두부보다 손두부가 맛있는 것도 같은 이유죠.”　맹골마을에서 ‘콩 박사’로 통하는 백종광씨(46)가 본격적인 체험에 앞서 맛있는 두부 만드는 법을 알려줬다. 백씨는 만들 때 요령을 피우면 맛에 그대로 나타난다고 설명했다.두부를 만드는 첫번째 단계는 질 좋은 콩을 골라 물에 장시간 불려두는 것이다. 그래야 입자가 곱게 갈리기 때문. 물에 담가두는 시간은 적어도 8시간 이상이어야 한다. 콩을 반으로 갈랐을 때 안쪽까지 투명한 빛을 띤다면 두부로 만들기 적합한 상태다. 반면, 노란빛이 남아 있다면 조금 더 불려야 한다.'),0,0,'2023-03-21');
+INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,9,9,TO_CLOB('SUP이란 스탠드업 패들보드의 약자로, 보드에 서서 패들을 젓는 수상 액티비티에요. 최근 관심도가 높아진 하와이에서 탄생한 뉴 액티비티를 즐겨보세요. 니세코에 위치한 일본을 대표하는 청류 시리베츠가와의 잔잔한 강에서 즐기는 스탠드업 패들보드 체험을 즐겨보세요. 보드 위에 올라서 서서히 나아가므로, 마치 강 위를 걷는 것 같은 기분을 느끼게 해 준답니다. 안정감 있는 롱보드를 이용하므로 만 7세 이상 아동부터 참가 가능하며, 패들보드가 처음인 분도 즐기실 수 있습어요. 래프팅 협회의 인정을 받은 프로 가이드는 니세코 강을 꿰고 있어요. 한국어로 안내해 드리므로 안심하고 즐기시면 됩니다.'),0,0,'2023-03-21');
 INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,10,10,TO_CLOB('도자기 1일 클래스는 대게 4~5만원 대로 형성되어 있습니다.
 이 가격은 서울 문래동 기준입니다. 다른 지역은 더 저렴할 수 있겠죠?
 클래스는 보통 2시간정도 진행되며,
@@ -97,6 +107,11 @@ INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,16,16,TO_CLOB('강동구
 구는 이날 만든 허수아비와 함께 ‘농작물 지킴이-새줄’, ‘바람개비’를 논 주위에 설치해 공원을 찾는 주민들에게 농촌 들판의 정취를 느낄 수 있도록 할 예정이다.
 '),0,0,'2023-11-22');
 
+INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,17,17,TO_CLOB('연천 팩호박은 연천지역에서 투명한 비닐봉지를 씌워 생육단계부터 친환경적으로 재배해 엄격하게 공동 선별 마트에서 판매되는 연천 특허품입니다 . 팩호박은 수정을 시작해 3~4일이 지난후 호박이 약 10cm크기의 상태에서 봉지 안에 넣어져 생육을 지속하다 약 20cm크기 정도가 되면 출하되는데 농약이 묻지 않을뿐만 아니라 재배과정에서 곡과를 방지하는 효과가 있어 반듯하고 예쁜 호박을 생산할 수 있고 유통과정에서는 신선도 유지와 상처예방에도 효과가 있습니다. 특히 호박을 일정한 크기의 봉지안에서 제한해 키우기 때문에 단단하며 맛과 향이 살아있는 것이 특징입니다. 호박따기 체험과 함께하세요!'),0,0,'2022-12-29');
+INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,18,18,TO_CLOB('서해안은 썰물 때 바닷물이 빠져나가면 하루에 두 번씩 육지와 바다 사이에서 넓고 평평한 땅을 드러내는데, 바로 갯벌이라고 합니다. 주로 해안의 경사가 완만하고 밀물과 썰물의 차이가 큰 해안에 나타납니다. 갯벌에는 어류, 게류, 새우류, 조개류 등 많은 해양 생물들이 살고, 산란 및 성장 장소로 이용되고 있으며, 영양분이 풍부하고 육상에서 배출하는 오염물질을 정화하는 기능을 가지고 있는 아주 소중한 곳이죠. 대야도마을 갯벌에는 바지락, 고둥(대야도), 낙지, 돌게(바카지), 소라, 해삼, 굴 등 다양한 해산물이 많이 나오는데, 마을에서 주로 진행하는 체험은 바지락, 고둥잡기와 갯벌 생태 체험입니다. 넓은 갯벌에서 마음껏 뛰어 놀며 갯벌 생태계 공부도 하고 바지락과 고둥도 잡는 시간으로 즐거운 시간이 됩니다. 체험 준비물은 마을에서 준비해요~ 갈아입을 옷만 가지고 물때에 맞추어 오시면 항시 체험 가능합니다.'),0,0,'2023-01-22');
+INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,19,19,TO_CLOB('공수마을은 2001년도에 어촌체험 시범마을로 선정된 후 다양한 프로그램을 진행하고 있습니다. 바닷가에서 양쪽으로 그물을 끌어당겨 물고기를 잡는 후릿그물이라는 전통어법체험, 해녀체험, 조간대 체험 등이 꾸준히 사랑받고 있답니다. 또한 해조류 말리기 체험장, 지압산책로, 물고기 체험장, 나무다리 산책로 등이 설치되어 있어 방문객들의 꾸준한 발걸음이 이어지고 있습니다. 함께 체험하며 소중한 추억을 만들어 보아요'),0,0,'2022-12-29');
+INSERT INTO activity_post VALUES(activity_post_seq.NEXTVAL,20,20,TO_CLOB('연천 팩호박은 연천지역에서 투명한 비닐봉지를 씌워 생육단계부터 친환경적으로 재배해 엄격하게 공동 선별 마트에서 판매되는 연천 특허품입니다 . 팩호박은 수정을 시작해 3~4일이 지난후 호박이 약 10cm크기의 상태에서 봉지 안에 넣어져 생육을 지속하다 약 20cm크기 정도가 되면 출하되는데 농약이 묻지 않을뿐만 아니라 재배과정에서 곡과를 방지하는 효과가 있어 반듯하고 예쁜 호박을 생산할 수 있고 유통과정에서는 신선도 유지와 상처예방에도 효과가 있습니다. 특히 호박을 일정한 크기의 봉지안에서 제한해 키우기 때문에 단단하며 맛과 향이 살아있는 것이 특징입니다. 호박따기 체험과 함께하세요!'),0,0,'2023-11-22');
+
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_1/activity1_img1.jpg','total_activity_img/activity_1/activity1_img2.jpg',NULL,NULL,NULL);
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_2/activity2_img1.jpg',NULL,NULL,NULL,NULL);
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_3/activity3_img1.jpg','total_activity_img/activity_3/activity3_img2.jpg','total_activity_img/activity_3/activity3_img3.jpg','total_activity_img/activity_3/activity3_img4.jpg','total_activity_img/activity_3/activity3_img5.jpg');
@@ -114,6 +129,11 @@ INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_i
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_14/activity14_img1.jpg',NULL,NULL,NULL,NULL);
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_15/activity15_img1.jpg','total_activity_img/activity_15/activity15_img2.jpg','total_activity_img/activity_15/activity15_img3.jpg','total_activity_img/activity_15/activity15_img4.jpg',NULL);
 INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_16/activity16_img1.jpg','total_activity_img/activity_16/activity16_img2.jpg',NULL,NULL,NULL);
+
+INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_17/activity17_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_18/activity18_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_19/activity19_img1.jpg','total_activity_img/activity_19/activity19_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(activity_images_seq.NEXTVAL,'total_activity_img/activity_20/activity20_img1.jpg',NULL,NULL,NULL,NULL);
 
 --규하오빠  끝 -- 
 
@@ -501,6 +521,15 @@ INSERT INTO inquiry_status VALUES(inquiry_status_seq.NEXTVAL,'답변완료');
 
 
 --경미시작 -- 
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'박경민 ','sadfsasd@naver.com','내이름은김길동','1234','01052525252','2023-09-26',1,'F','1997-09-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김현승','skwkdrn@naver.com','내이름은나짱구','15151','01021516161','2023-09-25',1,'M','1991-05-16',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김규하','skdnskn@naver.com','내이름은박미선 ','15164651','01087656756','2023-09-24',1,'F','1995-05-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'이효인','asdgaseer@naver.com','내이름은김코난','718495','01065845676','2023-09-23',0,'M','1998-02-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'이시향','gjhkhjkhg@naver.com','내이름은박경민','459515','01046435343','2023-09-21',1,'F','1997-07-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김태근','yuuiyukj@naver.com','내이름은미란이','412263','01023452534','2023-09-22',1,'F','1993-06-02',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김현숙','fgdfgdgr@naver.com','내이름은신라면','3497885','01026485112','2023-09-28',1,'F','1994-02-14',NULL,NULL,NULL);
+INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김남호','dosajds@naver.com','내이름은너구리','7411111','01071118520','2023-09-01',0,'M','1990-04-08',NULL,NULL,NULL);
+
 INSERT INTO member VALUES(member_seq.NEXTVAL,1,'박경민 ','sadfsasd@naver.com','내이름은김길동','1234','01052525252','2023-09-26',1,'F','1997-09-13',NULL,NULL,NULL);
 INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김현승','skwkdrn@naver.com','내이름은나짱구','15151','01021516161','2023-09-25',1,'M','1991-05-16',NULL,NULL,NULL);
 INSERT INTO member VALUES(member_seq.NEXTVAL,1,'김규하','skdnskn@naver.com','내이름은박미선 ','15164651','01087656756','2023-09-24',1,'F','1995-05-13',NULL,NULL,NULL);

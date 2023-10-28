@@ -7,6 +7,7 @@ export default function TitleCircleImg({
   isDarken,
   imgHeight,
   borderRadius,
+  isContain,
 }) {
   return (
     <div className="titleCircleImg" style={style}>
@@ -18,6 +19,7 @@ export default function TitleCircleImg({
           height: imgHeight ? imgHeight : '4.46038rem',
           width: imgHeight ? 'auto' : '4.46038rem',
           borderRadius: borderRadius ? +borderRadius : 'auto',
+          objectFit: isContain ? 'contain' : 'cover',
         }}
       />
     </div>

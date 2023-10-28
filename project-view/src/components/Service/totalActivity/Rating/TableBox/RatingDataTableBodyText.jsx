@@ -1,5 +1,5 @@
 import React from 'react';
-import './RatingDataTableBodyText.css'
+import './RatingDataTableBodyText.css';
 
 export default function RatingDataTableBodyText({
   regionSido,
@@ -20,10 +20,10 @@ export default function RatingDataTableBodyText({
     }
 
     const sigungu = regionSigungu.substring(0, regionSigungu.length - 1);
-    text = `${sido} ${sigungu}`;
+    text = `${sido} ${sigungu.length === 1 ? sigungu + '(구)' : sigungu}`;
     className = 'ratingDataTableBodyTextNarrow';
   }
-  const classes = ['ratingDataTableBodyText', className].join(' ')
+  const classes = ['ratingDataTableBodyText', className].join(' ');
 
   return (
     <td className={classes}>

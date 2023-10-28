@@ -3,10 +3,10 @@ import React from 'react';
 import titleImg from '../../../../view_img/Service/myPage/experiencer/event.jpg';
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
 import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
-import MypageReservationContentsBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox';
+import MypageMemberEventCard from '../../../../components/Service/mypage/Experiencer/Event/MypageMemberEventCard';
+import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
 
 import testImg from '../../../../view_img/Service/mainPage/testImg/eventPosterEx.jpg';
-import BlueCardBox from '../../../../components/Service/mypage/UI/BlueCardBox';
 
 const defaultContents = {
   titles: {
@@ -61,8 +61,15 @@ export default function MypageMemberEventPage() {
           imgHeight={titles.imgHeight}
           borderRadius="0"
         />
-        <BlueCardBox></BlueCardBox>
+        {testContents.map((item) => (
+          <MypageMemberEventCard
+            key={item.eventId}
+            cardContents={cardContents}
+            contents={item}
+          />
+        ))}
       </CardListContentBox>
+      <PageNoBox curr={1} total={6} />
     </main>
   );
 }

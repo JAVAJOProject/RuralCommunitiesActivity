@@ -1,0 +1,27 @@
+.mypageMemberEventContents > h3 {
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-left: 0.7rem;
+}
+
+.mypageMemberEventContents > hr {
+  width: 33.75rem;
+  border: 0.03rem solid #4777d3;
+  margin: 1.5rem auto;
+}
+
+.mypageMemberEventContents > div:not(.mypageMemberEventButtonSet) {
+  display: flex;
+  margin-left: 1.5rem;
+}
+.mypageMemberEventContents > div > div {
+  margin-right: 7rem;
+}
+
+.mypageMemberEventButtonSet {
+  width: fit-content;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}

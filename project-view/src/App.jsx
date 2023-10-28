@@ -56,6 +56,8 @@ import TotalActRegistrationPage from './page/Service/TotalActivity/TotalActRegis
 import TotalActReservationPage from './page/Service/TotalActivity/TotalActReservationPage';
 import RecTownReportPage from './page/Service/Recommendation/RecTownReportPage';
 import MypageMemberEventPage from './page/Service/Mypage/Member/MypageMemberEventPage';
+import MypageMemberFavoritesPage from './page/Service/Mypage/Member/MypageMemberFavoritesPage';
+import MypageMemberUserInfo from './page/Service/Mypage/Member/MypageMemberUserInfo';
 
 const router = createBrowserRouter([
   {
@@ -482,6 +484,7 @@ const router = createBrowserRouter([
                   },
                   {
                     path: 'personalInfo',
+                    element: <MypageMemberUserInfo />,
                   },
                   {
                     path: 'reservation',
@@ -493,6 +496,7 @@ const router = createBrowserRouter([
                   },
                   {
                     path: 'favorites',
+                    element: <MypageMemberFavoritesPage />,
                   },
                   {
                     path: 'review',

@@ -1,0 +1,13 @@
+.mypageMemberEventImage {
+  width: 18.9375rem;
+  height: 18.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageMemberEventImage > img {
+  width: 15.5rem;
+  height: 14.9375rem;
+  border-radius: 0.625rem;
+}

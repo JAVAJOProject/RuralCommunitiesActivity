@@ -15,41 +15,49 @@ INSERT INTO activity_info VALUES(NULL,6,6,106,3,'2023-10-09','2023-11-23','경�
 INSERT INTO activity_info VALUES(NULL,7,7,107,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
 INSERT INTO activity_info VALUES(NULL,8,8,108,3,'2023-10-05','2024-10-14','경남 창원시 성산구 중앙대로 151','허수아비 만들기','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,'2024-12-31');
 
-INSERT INTO activity_info VALUES(NULL,9,9,101,2,'2023-9-23','2023-10-05','울산 남구 중앙로 201','두부 만들기','두부는 콩으로 만들어집니다',10,30,10000,NULL,'www.doboo.co.kr','2024-12-25');
+INSERT INTO activity_info VALUES(NULL,9,9,101,2,'2023-9-23','2023-10-05','구룡포읍 호미로426번길 6','패들보트 체험','바다를 가르며 시원한 패들보트를 즐겨보세요',10,30,10000,NULL,'www.doboo.co.kr','2024-12-25');
 INSERT INTO activity_info VALUES(NULL,10,10,102,2,'2023-10-08','2023-10-16','경남 남해군 남해읍 망운로9번길 12','도자기 만들기','세상에 하나뿐인 도자기를 만들어 보세요',5,40,30000,NULL,'www.dojagi.co.kr',NULL);
 INSERT INTO activity_info VALUES(NULL,11,11,103,1,'2023-10-08','2023-10-22','경북 청도군 화양읍 청화로 70','딸기 따요따요','자연과 숲 체험 농장에서 사과 따기를 경험해 보세요! 직접 사과를 따고 맛도 볼 수 있어요',15,60,10000,NULL,NULL,'2023-10-21');
-INSERT INTO activity_info VALUES(NULL,12,12,104,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
-INSERT INTO activity_info VALUES(NULL,13,13,105,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
+INSERT INTO activity_info VALUES(NULL,12,12,107,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
+INSERT INTO activity_info VALUES(NULL,13,13,107,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
 INSERT INTO activity_info VALUES(NULL,14,14,106,3,'2023-10-09','2023-11-23','경북 의성군 의성읍 군청길 31','약과 만들기','우리나라 전통한과의 대표 음식 중 하나인 약과를 직접 만들어 봄으로써 우리 음식에 대한 사랑과 정성을 느낄 수 있는 체험',30,60,40000,NULL,NULL,'2024-3-31');
-INSERT INTO activity_info VALUES(NULL,15,15,107,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
-INSERT INTO activity_info VALUES(NULL,16,16,108,3,'2023-10-05','2024-10-14','경남 창원시 성산구 중앙대로 151','허수아비 만들기','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,'2024-12-31');
+INSERT INTO activity_info VALUES(NULL,15,7,107,4,'2023-10-15','2023-10-22','제주특별자치도 제주시 문연로 6','승마 체험','가슴을 쫙 펴고 시원하게 달리는 승마로 활짝 핀 봄을 맞이해 보세요',5,30,50000,NULL,'www.gaja.com','2024-05-30');
+INSERT INTO activity_info VALUES(NULL,16,8,108,3,'2023-10-05','2024-10-14','경남 창원시 성산구 중앙대로 151','허수아비 만들기','짚으로 몸을 만들고 옷을 입혀서 예쁘게 꾸며보는 허수아비 만들기 체험',10,20,10000,NULL,NULL,'2024-12-31');
+
+INSERT INTO activity_info VALUES(NULL,17,17,108,2,'2023-10-15','2023-10-22','경상북도 울진군 북면 나곡리 128-1','조개 줍기','조개를 주우며 즐거운 체험',10,20,10000,NULL,NULL,'2024-05-30');
+INSERT INTO activity_info VALUES(NULL,18,18,103,2,'2023-10-09','2023-11-23','구룡포읍 호미로426번길 6','갯벌 체험','갯벌에서 신나는 추억을 만들어보세요',10,20,10000,NULL,NULL,'2024-3-31');
+INSERT INTO activity_info VALUES(NULL,21,20,102,1,'2023-10-15','2023-10-22','경상북도 청도군 화양읍 청화로 70','호박 따기','맛있는 호박을 따며 즐거운 추억 만들기',10,20,10000,NULL,NULL,'2024-05-30');
+INSERT INTO activity_info VALUES(NULL,19,19,102,2,'2023-10-05','2024-10-14','경남 창원시 성산구 중앙대로 151','돌고래 만나기','귀여운 돌고래와 재밌는 체험',10,20,10000,NULL,NULL,'2024-12-31');
 
 INSERT INTO activity_theme VALUES(NULL,'농사');
 INSERT INTO activity_theme VALUES(NULL,'어촌');
 INSERT INTO activity_theme VALUES(NULL,'전통');
 INSERT INTO activity_theme VALUES(NULL,'기타');
 
-INSERT INTO activity_review VALUES(NULL,1,1,'2023-05-23', '친구들이랑 지역 특산물 체험을 할수있어서 너무 좋았어요 !! 사장님 분들이 너무 친절하게 잘 알려주셨고 꼭 다음에 다시 오고 싶습니다~ 짧은 시간동안 값진 경험을 하게 해주셔서 정말 감사합니다. 집에 가는길에 친구들이랑 내년에 또 가 서 체험하기로 했어요 ~ ㅎㅎ 내년에 뵐게요! 그리고 이 리뷰를 보시고 꼭 체험 해보시길 바래요~ ! 절대 후회 하시지않으실껍니다! ! !',4,'절대 후회 하시지않으실껍니다!');
-INSERT INTO activity_review VALUES(NULL,2,2,'2023-02-13', '날씨 까지 완벽했던 하루 여서 그런지 더욱 특별했어요~ 애들이 너무좋아해서 집에 오는 내내 애들이 다음주에 또 가자 하네요 ㅋㅋㅋ 다음주에는 조카들 까지 데리고 갈려구요~ 사장님도 너무 친절하시구 ㅎㅎ 다음주에 뵐게요 사장님ㅋㅋ',5,'다음주에 뵐게요 사장님ㅋㅋ');
-INSERT INTO activity_review VALUES(NULL,3,3,'2023-04-05', '가격도 보통이었고, 대중교통 까지의 거리도 딱 보통 체험 만족도 보통 정말 딱 보통이었어요 ~이정도면 나쁘지않지의 느낌 ~ 그냥 평균을 원하시면 여기 추천해요~ ',3,'그냥 평균을 원하시면 여기 추천해요~');
+INSERT INTO activity_review VALUES(NULL,1,1,'2023-05-23','친구들이랑 지역 특산물 체험을 할수있어서 너무 좋았어요 !! 사장님 분들이 너무 친절하게 잘 알려주셨고 꼭 다음에 다시 오고 싶습니다~ 짧은 시간동안 값진 경험을 하게 해주셔서 정말 감사합니다. 집에 가는길에 친구들이랑 내년에 또 가 서 체험하기로 했어요 ~ ㅎㅎ 내년에 뵐게요! 그리고 이 리뷰를 보시고 꼭 체험 해보시길 바래요~ ! 절대 후회 하시지않으실껍니다! ! !',4,'절대 후회 하시지않으실껍니다!');
+INSERT INTO activity_review VALUES(NULL,2,2,'2023-02-13','날씨 까지 완벽했던 하루 여서 그런지 더욱 특별했어요~ 애들이 너무좋아해서 집에 오는 내내 애들이 다음주에 또 가자 하네요 ㅋㅋㅋ 다음주에는 조카들 까지 데리고 갈려구요~ 사장님도 너무 친절하시구 ㅎㅎ 다음주에 뵐게요 사장님ㅋㅋ',5,'다음주에 뵐게요 사장님ㅋㅋ');
+INSERT INTO activity_review VALUES(NULL,3,3,'2023-04-05','가격도 보통이었고, 대중교통 까지의 거리도 딱 보통 체험 만족도 보통 정말 딱 보통이었어요 ~이정도면 나쁘지않지의 느낌 ~ 그냥 평균을 원하시면 여기 추천해요~ ',3,'그냥 평균을 원하시면 여기 추천해요~');
 INSERT INTO activity_review VALUES(NULL,4,4,'2023-07-12','치열한 서울생활에 정말 몸도 마음도 지쳤는데 우연히 검색하다가 여기 홈페이지에서 농어촌 체험을 홍보 하는거를 알게 되어 급작스럽게 한번 체험 해봤어요 사실 혼자 하는게 쉽지않았고 솔직히 당일 아침까지도 가지말까.. 하고 고민하다가 에라 모르겠다하고 갔다왔는데 정말 안갔으면 평생 후회했을꺼같네요!! 그만큼 너무 재미있었고 혼자 가서 그런지 사장님이 더욱 신경써주시는거같고 ㅋㅋ 거기서 같이 체험하시는 분 들이랑도 친해져서 기차역까지 차로 데려다 주셨어요 ~ ㅋㅋ 잊을수 없는 추억을 쌓게 해주신 사장님~ 감사합니다! 다음엔 친구들이랑 꼭 갈게요! ',5,'사장님~ 감사합니다!');
 INSERT INTO activity_review VALUES(NULL,5,5,'2023-03-02','근처에 기차역 버스가 없어서 그런지 정말 멀고 ... 멀었어요.. 지역에 택시도 너무 비싸고,, 그리고 막상 갔는데 생각보다 체험 이 재미가없었어요 좀 힘들구.. 괜히 했나 싶더라구여 그래도 사장님은 친절하십니다. ',2,'좀 힘들구..');
-INSERT INTO activity_review VALUES(NULL,6,6,'2023-11-26', '요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서',5,'정말 다양한 체험이 있더라구요');
-INSERT INTO activity_review VALUES(NULL,7,7,'2023-10-11', '저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  ',4,'잊을수없는 체험');
-INSERT INTO activity_review VALUES(NULL,8,8,'2023-10-13', '저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.',1,'진짜 황당했습니다');
+INSERT INTO activity_review VALUES(NULL,6,6,'2023-11-26','요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서',5,'정말 다양한 체험이 있더라구요');
+INSERT INTO activity_review VALUES(NULL,7,7,'2023-10-11','저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  ',4,'잊을수없는 체험');
+INSERT INTO activity_review VALUES(NULL,8,8,'2023-10-13','저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.',1,'진짜 황당했습니다');
 
-INSERT INTO activity_review VALUES(NULL,9,9,'2023-05-23', '친구들이랑 지역 특산물 체험을 할수있어서 너무 좋았어요 !! 사장님 분들이 너무 친절하게 잘 알려주셨고 꼭 다음에 다시 오고 싶습니다~ 짧은 시간동안 값진 경험을 하게 해주셔서 정말 감사합니다. 집에 가는길에 친구들이랑 내년에 또 가 서 체험하기로 했어요 ~ ㅎㅎ 내년에 뵐게요! 그리고 이 리뷰를 보시고 꼭 체험 해보시길 바래요~ ! 절대 후회 하시지않으실껍니다! ! !',4,'절대 후회 하시지않으실껍니다!');
-INSERT INTO activity_review VALUES(NULL,10,10,'2023-02-13', '날씨 까지 완벽했던 하루 여서 그런지 더욱 특별했어요~ 애들이 너무좋아해서 집에 오는 내내 애들이 다음주에 또 가자 하네요 ㅋㅋㅋ 다음주에는 조카들 까지 데리고 갈려구요~ 사장님도 너무 친절하시구 ㅎㅎ 다음주에 뵐게요 사장님ㅋㅋ',5,'다음주에 뵐게요 사장님ㅋㅋ');
-INSERT INTO activity_review VALUES(NULL,11,11,'2023-04-05', '가격도 보통이었고, 대중교통 까지의 거리도 딱 보통 체험 만족도 보통 정말 딱 보통이었어요 ~이정도면 나쁘지않지의 느낌 ~ 그냥 평균을 원하시면 여기 추천해요~ ',3,'그냥 평균을 원하시면 여기 추천해요~');
+INSERT INTO activity_review VALUES(NULL,9,9,'2023-05-23','친구들이랑 지역 특산물 체험을 할수있어서 너무 좋았어요 !! 사장님 분들이 너무 친절하게 잘 알려주셨고 꼭 다음에 다시 오고 싶습니다~ 짧은 시간동안 값진 경험을 하게 해주셔서 정말 감사합니다. 집에 가는길에 친구들이랑 내년에 또 가 서 체험하기로 했어요 ~ ㅎㅎ 내년에 뵐게요! 그리고 이 리뷰를 보시고 꼭 체험 해보시길 바래요~ ! 절대 후회 하시지않으실껍니다! ! !',4,'절대 후회 하시지않으실껍니다!');
+INSERT INTO activity_review VALUES(NULL,10,10,'2023-02-13','날씨 까지 완벽했던 하루 여서 그런지 더욱 특별했어요~ 애들이 너무좋아해서 집에 오는 내내 애들이 다음주에 또 가자 하네요 ㅋㅋㅋ 다음주에는 조카들 까지 데리고 갈려구요~ 사장님도 너무 친절하시구 ㅎㅎ 다음주에 뵐게요 사장님ㅋㅋ',5,'다음주에 뵐게요 사장님ㅋㅋ');
+INSERT INTO activity_review VALUES(NULL,11,11,'2023-04-05','가격도 보통이었고, 대중교통 까지의 거리도 딱 보통 체험 만족도 보통 정말 딱 보통이었어요 ~이정도면 나쁘지않지의 느낌 ~ 그냥 평균을 원하시면 여기 추천해요~ ',3,'그냥 평균을 원하시면 여기 추천해요~');
 INSERT INTO activity_review VALUES(NULL,12,12,'2023-07-12','치열한 서울생활에 정말 몸도 마음도 지쳤는데 우연히 검색하다가 여기 홈페이지에서 농어촌 체험을 홍보 하는거를 알게 되어 급작스럽게 한번 체험 해봤어요 사실 혼자 하는게 쉽지않았고 솔직히 당일 아침까지도 가지말까.. 하고 고민하다가 에라 모르겠다하고 갔다왔는데 정말 안갔으면 평생 후회했을꺼같네요!! 그만큼 너무 재미있었고 혼자 가서 그런지 사장님이 더욱 신경써주시는거같고 ㅋㅋ 거기서 같이 체험하시는 분 들이랑도 친해져서 기차역까지 차로 데려다 주셨어요 ~ ㅋㅋ 잊을수 없는 추억을 쌓게 해주신 사장님~ 감사합니다! 다음엔 친구들이랑 꼭 갈게요! ',5,'사장님~ 감사합니다!');
 INSERT INTO activity_review VALUES(NULL,13,13,'2023-03-02','근처에 기차역 버스가 없어서 그런지 정말 멀고 ... 멀었어요.. 지역에 택시도 너무 비싸고,, 그리고 막상 갔는데 생각보다 체험 이 재미가없었어요 좀 힘들구.. 괜히 했나 싶더라구여 그래도 사장님은 친절하십니다. ',2,'좀 힘들구..');
-INSERT INTO activity_review VALUES(NULL,14,14,'2023-11-26', '요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서',5,'정말 다양한 체험이 있더라구요');
-INSERT INTO activity_review VALUES(NULL,15,15,'2023-10-11', '저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  ',4,'잊을수없는 체험');
-INSERT INTO activity_review VALUES(NULL,16,16,'2023-10-13', '저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.',1,'진짜 황당했습니다');
+INSERT INTO activity_review VALUES(NULL,14,14,'2023-11-26','요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서',5,'정말 다양한 체험이 있더라구요');
+INSERT INTO activity_review VALUES(NULL,15,15,'2023-10-11','저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  ',4,'잊을수없는 체험');
+INSERT INTO activity_review VALUES(NULL,16,16,'2023-10-13','저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.',1,'진짜 황당했습니다');
 
+INSERT INTO activity_review VALUES(NULL,17,17,'2023-03-02','근처에 기차역 버스가 없어서 그런지 정말 멀고 ... 멀었어요.. 지역에 택시도 너무 비싸고,, 그리고 막상 갔는데 생각보다 체험 이 재미가없었어요 좀 힘들구.. 괜히 했나 싶더라구여 그래도 사장님은 친절하십니다. ',2,'좀 힘들구..');
+INSERT INTO activity_review VALUES(NULL,18,18,'2023-11-26','요즘 몸도 마음도 지쳐 한적한 시골마을 가서 살고 싶다라는 생각 하다가, 어디든 좋으니 떠나보자, 마음의 힐링을 해보자 하다가 여기 홈페이지를 알게되었습니다. 정말 다양한 체험이 있더라구요.  오랜만에 시골내려가서',5,'정말 다양한 체험이 있더라구요');
+INSERT INTO activity_review VALUES(NULL,19,19,'2023-10-11','저렴한 가격에 이만한 체험을 할 수 있는거에 정말 놀랐네요 ~! 가격을 더 올리셔야할꺼같아요 사장님 !!! 오랜만에 공기좋은 시골에서 잊을수없는 체험까지 하고 하니 ~ 더욱 기분이 좋네요~  ',4,'잊을수없는 체험');
+INSERT INTO activity_review VALUES(NULL,20,20,'2023-10-13','저는 체험 한 걸집에 가져갈수있는걸로 알고있었고 , 분명 홍보게시판에도 써져있었는데, 갑자기 규정이 변경되었다고 당일에 통보하시더라구요 그러고 사과말씀도 없으셔서 진짜 황당했습니다.',1,'진짜 황당했습니다');
 
 INSERT INTO activity_post VALUES(NULL,1,1,'콩은 ‘밭에서 나는 쇠고기’라 불릴 만큼 단백질 등 각종 영양분이 풍부하다. 두부는 콩으로 만드는 대표적인 음식으로 열량은 낮지만, 수분함량이 높아 먹었을 때 포만감을 준다. 체중조절이 필요한 사람에게 제격인 것. 또 소화 흡수율도 95%로 오히려 콩보다 높다. 이에 우리나라 사람 치고 두부 한번 안 먹어본 이가 드물지만, 정작 어떻게 만들어지는지 아는 사람은 많지 않다. 마침 전국적으로 직접 두부를 만들어볼 수 있는 농촌체험마을이 여러곳에 생겨났다. 특히 콩 주산지로 유명한 경기 북부지역에 많이 있는데, 그중 한곳인 경기 양주시 남면매곡리의 맹골마을을 찾아 콩이 두부로 다시 태어나는 과정을 함께했다.　“두부는 들이는 정성에 따라 맛이 달라져요. 공장에서 찍어낸 두부보다 손두부가 맛있는 것도 같은 이유죠.”　맹골마을에서 ‘콩 박사’로 통하는 백종광씨(46)가 본격적인 체험에 앞서 맛있는 두부 만드는 법을 알려줬다. 백씨는 만들 때 요령을 피우면 맛에 그대로 나타난다고 설명했다.두부를 만드는 첫번째 단계는 질 좋은 콩을 골라 물에 장시간 불려두는 것이다. 그래야 입자가 곱게 갈리기 때문. 물에 담가두는 시간은 적어도 8시간 이상이어야 한다. 콩을 반으로 갈랐을 때 안쪽까지 투명한 빛을 띤다면 두부로 만들기 적합한 상태다. 반면, 노란빛이 남아 있다면 조금 더 불려야 한다.',0,0,'2023-03-21');
-CALL activity_customer_create(1);
 INSERT INTO activity_post VALUES(NULL,2,2,'도자기 1일 클래스는 대게 4~5만원 대로 형성되어 있습니다.
 이 가격은 서울 문래동 기준입니다. 다른 지역은 더 저렴할 수 있겠죠?
 클래스는 보통 2시간정도 진행되며,
@@ -59,33 +67,25 @@ INSERT INTO activity_post VALUES(NULL,2,2,'도자기 1일 클래스는 대게 4~
 초보자들도 쉽게 따라 할 수 있어 도자기 클래스 중에 난이도가 낮습니다.
 저도 처음 해봤는데 쉽게 따라할 수 있었습니다.
 그래서 부담업이 체험형 데이트에 좋습니다.',0,0,'2023-06-01');
-CALL activity_customer_create(2);
 INSERT INTO activity_post VALUES(NULL,3,3,'감은산밭농원은 GAP품질인증과 잔류농약안전 기준을 준수한 우수한 농장으로 2019년 청송사과왕 우수상을 수상하는 쾌거를 이루기도 하였다. 안덕면 해발 350m에 위치한 청정 자연환경에서 사과따기체험과 산나물 캐기 체험, 자두따기 체험, 송이따기 체험 등 다양한 체험을 즐길 수 있는 농장이다. 또한 직접 운영하는 청송민박은 고즈넉하고 맑은 시골의 정취를 마음껏 누리기에 부족함이 없다.',0,0,'2023-01-22');
-CALL activity_customer_create(3);
-INSERT INTO activity_post VALUES(NULL,4,4, '평창고랭지 김장축제는 잊혀져가는 우리의 김장문화를 살리자는 취지와 함께 평창고랭지배추의 우수성을 널리 홍보하고자 2016년 첫회를 시작으로 탄생하였습니다.
+INSERT INTO activity_post VALUES(NULL,4,4,'평창고랭지 김장축제는 잊혀져가는 우리의 김장문화를 살리자는 취지와 함께 평창고랭지배추의 우수성을 널리 홍보하고자 2016년 첫회를 시작으로 탄생하였습니다.
 연인, 가족끼리 편안하게 평창을 찾으셔서 화목한 분위기에서 김장을 즐기며, 평창군에서 준비한 여러 유기농 우수 농산품을 싼 가격에 구입도 가능합니다.
 김장체험 교육도 시행하고 있어, 김장 초보들도 얼마든지 쉽게 김장을 담그실 수 있는 기회를 제공하고 있습니다.
 그 외 각종 공연 및 전통떡메치기 행사등을 통해 풍부한 볼거리, 놀거리를 제공하고 있습니다.
 김장 직후 보쌈 및 두부김치등을 곁들여 가족단위 시식이 가능하며, 담그신 김장은 가져가셔서 올 겨울 푸짐한 상차림 되시길 바랍니다.',0,0,'2023-12-11');
-CALL activity_customer_create(4);
 INSERT INTO activity_post VALUES(NULL,5,5,'엿기름물을 먼저 끓여주다가 찹쌀죽을 혼합하는데 끓이는 동안 거품은 건져내며 눌지 않도록 계속 저어준다. 엿기름물과 찹쌀죽을 혼합할 때도 하나하나 뭉쳐지지 않게 일일이 손으로 풀어주는 과정과 끓이는 동안에 눌지 않도록 계속 지켜보며 살살 저어주는 시간들이 건강한 우리의 전통음식을 만드는 과정임을 새삼 느끼게 되었다. 역시 대한민국 전통식품은 건강한 슬로우 푸드다. 이렇게 끓인 것에 조청을 넣고, 온도 40도 정도로 식힌 후에 체에 한 번 거른 고춧가루를 넣어 섞어준다. 온도가 맞지 않으면 고춧가루가 까맣게 탄 것과 같이 되거나, 또 너무 차가우면 고춧가루가 풀어지지 않는다. 온도까지 적당하게 잘 맞춰야 하는 정성이 필요한 전통 음식이다. 식품명인체험홍보관에서는 체험하기 좋은 상태로 계량해 준비해줘 손쉽게 체험이 가능했다.',0,0,'2023-04-30');
-CALL activity_customer_create(5);
-INSERT INTO activity_post VALUES(NULL,6,6, '유과는 찹쌀가루에 콩물과 술을 넣어 반죽하여 삶아 낸 것을 얇게 밀어서 말렸다가 기름에 튀겨 내어 쌀 고물을 묻힌 우리나라 대표 전통 과자이다. 세종 지역에서 생산되는 한과는 지역특산물인 복숭아를 이용하여 복숭아조청을 만들어 사용하고, 옛날부터 귀한 약재로 쓰이던 울금(강황)과 구절초를 이용한 한방한과를 특화하여 2015년 전통식품 인증과 농촌융복합산업인증을 받았다. 지역 농산물을 재료로 한과를 생산하고 한과체험프로그램도 운영하여 한과가 만들어지는 과정을 이해 할 수 있게 돕기도 한다. [현황(관련 사업 포함)] 세종특별자치시 특산물 복숭아와 지역농산물을 이용한 ‘달콤한-전통 한과 만들기 체험프로그램’을 세종특별자치시 한과업체인 세종한과에서 운영한다. 곡류나 씨앗을 볶아서 조청으로 버무리고 모양을 내어 잘라낸 과자로 입에 들어가 바삭하게 부서지면서 고소하게 씹히는 맛이 일품인 강정 만들기, 바삭하며 입에 사르르 녹는 맛이 일품인 유과 만들기, 볶은 곡물가루나 송홧가루 등을 꿀이나 조청에 반죽해서 찍어 만드는 다식 만들기, 약과 만들기 체험 프로그램이 있다. 세종 지역에서 만드는 다양한 한과는 로컬푸드 매장에서 판매되고 있다.',0,0,'2023-01-22');
-CALL activity_customer_create(6);
+INSERT INTO activity_post VALUES(NULL,6,6,'유과는 찹쌀가루에 콩물과 술을 넣어 반죽하여 삶아 낸 것을 얇게 밀어서 말렸다가 기름에 튀겨 내어 쌀 고물을 묻힌 우리나라 대표 전통 과자이다. 세종 지역에서 생산되는 한과는 지역특산물인 복숭아를 이용하여 복숭아조청을 만들어 사용하고, 옛날부터 귀한 약재로 쓰이던 울금(강황)과 구절초를 이용한 한방한과를 특화하여 2015년 전통식품 인증과 농촌융복합산업인증을 받았다. 지역 농산물을 재료로 한과를 생산하고 한과체험프로그램도 운영하여 한과가 만들어지는 과정을 이해 할 수 있게 돕기도 한다. [현황(관련 사업 포함)] 세종특별자치시 특산물 복숭아와 지역농산물을 이용한 ‘달콤한-전통 한과 만들기 체험프로그램’을 세종특별자치시 한과업체인 세종한과에서 운영한다. 곡류나 씨앗을 볶아서 조청으로 버무리고 모양을 내어 잘라낸 과자로 입에 들어가 바삭하게 부서지면서 고소하게 씹히는 맛이 일품인 강정 만들기, 바삭하며 입에 사르르 녹는 맛이 일품인 유과 만들기, 볶은 곡물가루나 송홧가루 등을 꿀이나 조청에 반죽해서 찍어 만드는 다식 만들기, 약과 만들기 체험 프로그램이 있다. 세종 지역에서 만드는 다양한 한과는 로컬푸드 매장에서 판매되고 있다.',0,0,'2023-01-22');
 INSERT INTO activity_post VALUES(NULL,7,7,'베르아델승마클럽이 위치한 안산시 대부남동 일대는 고려시대부터 왕실과 군에서 이용할 말을 키우고 조련하던 장소로 유명하며 최상등급의 승용마를 조련시키던 곳입니다. 조련마의 역사가 살아 숨쉬는 그곳이 현대 승마의 명소로 재탄생했습니다.
 이곳의 승마역사관에서는 국내외 마구와 말 조각, 고서 등 말과 관련된 많은 역사적인 자료를 보유하고 있으며 승마의 역사를 알 수 있습니다. 또, 사계절 내내 날씨와 상관없이 승마를 즐길 수 있도록 설계된 돔형의 실내 승마장과 넓은 야외 마장이 있어 이곳에 오면 누구나 승마체험을 즐길 수 있습니다.
 해맞이승마클럽은 대부도 안쪽의 야트막한 산 속에 자리 잡은 아담한 승마장입니다. 말을 타고 나가 바다를 끼고 있는 소나무 숲길을 따라 달리다 보면 드넓은 대부도가 온 승마코스인 듯이 느껴집니다. 가족 단위 특히 어린이들이 즐길거리가 다양한데 말들이 자유롭게 뛰어놀게 해주어서 체험객들이 말에게 쉽게 다가가 먹이를 줄 수 있습니다. 승마장 뒤쪽에 마련된 농장에는 토종닭과 토끼, 염소 등을 기르고 있어 아이들이 매우 좋아합니다.',0,0,'2022-12-29');
-CALL activity_customer_create(7);
 INSERT INTO activity_post VALUES(NULL,8,8,'강동구는 ‘허수아비 만들기 체험 행사’를 12일 일자산 자연공원 피크닉장 내 영농체험장에서 개최한다.
 허수아비를 만들 아이들은 관리책임을 맡고 있는 신명초등학교 6학년 학생들이다. 지난 5월에 직접 모내기를 하고 친환경 농법에 따라 우렁이와 지렁이 방사도 하였다. 구와 영농체험장 관리협약을 맺고 있어 가을걷이까지 이들이 책임진다.
 이날은 목재와 헌옷 등을 재활용하여 팀별로 개성을 살린 허수아비를 만들어 논 주위에 설치한다. 본인들이 직접 심은 벼가 잘 자라고 있는지 살펴보고 벼메뚜기를 관찰하는 등 현장농경체험도 한다.
 구 관계자는 “본인들이 직접 심었던 벼의 생육과정을 직접 관찰하고 한 해의 벼농사 과정을 체험함으로써 도심에서 자라나는 아이들에게 산교육의 장이 되고 있다”고 말했다.
 구는 이날 만든 허수아비와 함께 ‘농작물 지킴이-새줄’, ‘바람개비’를 논 주위에 설치해 공원을 찾는 주민들에게 농촌 들판의 정취를 느낄 수 있도록 할 예정이다.
 ',0,0,'2023-11-22');
-CALL activity_customer_create(8);
 
-INSERT INTO activity_post VALUES(NULL,9,9,'콩은 ‘밭에서 나는 쇠고기’라 불릴 만큼 단백질 등 각종 영양분이 풍부하다. 두부는 콩으로 만드는 대표적인 음식으로 열량은 낮지만, 수분함량이 높아 먹었을 때 포만감을 준다. 체중조절이 필요한 사람에게 제격인 것. 또 소화 흡수율도 95%로 오히려 콩보다 높다. 이에 우리나라 사람 치고 두부 한번 안 먹어본 이가 드물지만, 정작 어떻게 만들어지는지 아는 사람은 많지 않다. 마침 전국적으로 직접 두부를 만들어볼 수 있는 농촌체험마을이 여러곳에 생겨났다. 특히 콩 주산지로 유명한 경기 북부지역에 많이 있는데, 그중 한곳인 경기 양주시 남면매곡리의 맹골마을을 찾아 콩이 두부로 다시 태어나는 과정을 함께했다.　“두부는 들이는 정성에 따라 맛이 달라져요. 공장에서 찍어낸 두부보다 손두부가 맛있는 것도 같은 이유죠.”　맹골마을에서 ‘콩 박사’로 통하는 백종광씨(46)가 본격적인 체험에 앞서 맛있는 두부 만드는 법을 알려줬다. 백씨는 만들 때 요령을 피우면 맛에 그대로 나타난다고 설명했다.두부를 만드는 첫번째 단계는 질 좋은 콩을 골라 물에 장시간 불려두는 것이다. 그래야 입자가 곱게 갈리기 때문. 물에 담가두는 시간은 적어도 8시간 이상이어야 한다. 콩을 반으로 갈랐을 때 안쪽까지 투명한 빛을 띤다면 두부로 만들기 적합한 상태다. 반면, 노란빛이 남아 있다면 조금 더 불려야 한다.',0,0,'2023-03-21');
-CALL activity_customer_create(9);
+INSERT INTO activity_post VALUES(NULL,9,9,'SUP이란 스탠드업 패들보드의 약자로, 보드에 서서 패들을 젓는 수상 액티비티에요. 최근 관심도가 높아진 하와이에서 탄생한 뉴 액티비티를 즐겨보세요. 니세코에 위치한 일본을 대표하는 청류 시리베츠가와의 잔잔한 강에서 즐기는 스탠드업 패들보드 체험을 즐겨보세요. 보드 위에 올라서 서서히 나아가므로, 마치 강 위를 걷는 것 같은 기분을 느끼게 해 준답니다. 안정감 있는 롱보드를 이용하므로 만 7세 이상 아동부터 참가 가능하며, 패들보드가 처음인 분도 즐기실 수 있습어요. 래프팅 협회의 인정을 받은 프로 가이드는 니세코 강을 꿰고 있어요. 한국어로 안내해 드리므로 안심하고 즐기시면 됩니다.',0,0,'2023-03-21');
 INSERT INTO activity_post VALUES(NULL,10,10,'도자기 1일 클래스는 대게 4~5만원 대로 형성되어 있습니다.
 이 가격은 서울 문래동 기준입니다. 다른 지역은 더 저렴할 수 있겠죠?
 클래스는 보통 2시간정도 진행되며,
@@ -95,48 +95,52 @@ INSERT INTO activity_post VALUES(NULL,10,10,'도자기 1일 클래스는 대게 
 초보자들도 쉽게 따라 할 수 있어 도자기 클래스 중에 난이도가 낮습니다.
 저도 처음 해봤는데 쉽게 따라할 수 있었습니다.
 그래서 부담업이 체험형 데이트에 좋습니다.',0,0,'2023-06-01');
-CALL activity_customer_create(10);
 INSERT INTO activity_post VALUES(NULL,11,11,'감은산밭농원은 GAP품질인증과 잔류농약안전 기준을 준수한 우수한 농장으로 2019년 청송사과왕 우수상을 수상하는 쾌거를 이루기도 하였다. 안덕면 해발 350m에 위치한 청정 자연환경에서 사과따기체험과 산나물 캐기 체험, 자두따기 체험, 송이따기 체험 등 다양한 체험을 즐길 수 있는 농장이다. 또한 직접 운영하는 청송민박은 고즈넉하고 맑은 시골의 정취를 마음껏 누리기에 부족함이 없다.',0,0,'2023-01-22');
-CALL activity_customer_create(11);
 INSERT INTO activity_post VALUES(NULL,12,12,'베르아델승마클럽이 위치한 안산시 대부남동 일대는 고려시대부터 왕실과 군에서 이용할 말을 키우고 조련하던 장소로 유명하며 최상등급의 승용마를 조련시키던 곳입니다. 조련마의 역사가 살아 숨쉬는 그곳이 현대 승마의 명소로 재탄생했습니다.
 이곳의 승마역사관에서는 국내외 마구와 말 조각, 고서 등 말과 관련된 많은 역사적인 자료를 보유하고 있으며 승마의 역사를 알 수 있습니다. 또, 사계절 내내 날씨와 상관없이 승마를 즐길 수 있도록 설계된 돔형의 실내 승마장과 넓은 야외 마장이 있어 이곳에 오면 누구나 승마체험을 즐길 수 있습니다.
 해맞이승마클럽은 대부도 안쪽의 야트막한 산 속에 자리 잡은 아담한 승마장입니다. 말을 타고 나가 바다를 끼고 있는 소나무 숲길을 따라 달리다 보면 드넓은 대부도가 온 승마코스인 듯이 느껴집니다. 가족 단위 특히 어린이들이 즐길거리가 다양한데 말들이 자유롭게 뛰어놀게 해주어서 체험객들이 말에게 쉽게 다가가 먹이를 줄 수 있습니다. 승마장 뒤쪽에 마련된 농장에는 토종닭과 토끼, 염소 등을 기르고 있어 아이들이 매우 좋아합니다.',0,0,'2022-12-29');
-CALL activity_customer_create(12);
 INSERT INTO activity_post VALUES(NULL,13,13,'베르아델승마클럽이 위치한 안산시 대부남동 일대는 고려시대부터 왕실과 군에서 이용할 말을 키우고 조련하던 장소로 유명하며 최상등급의 승용마를 조련시키던 곳입니다. 조련마의 역사가 살아 숨쉬는 그곳이 현대 승마의 명소로 재탄생했습니다.
 이곳의 승마역사관에서는 국내외 마구와 말 조각, 고서 등 말과 관련된 많은 역사적인 자료를 보유하고 있으며 승마의 역사를 알 수 있습니다. 또, 사계절 내내 날씨와 상관없이 승마를 즐길 수 있도록 설계된 돔형의 실내 승마장과 넓은 야외 마장이 있어 이곳에 오면 누구나 승마체험을 즐길 수 있습니다.
 해맞이승마클럽은 대부도 안쪽의 야트막한 산 속에 자리 잡은 아담한 승마장입니다. 말을 타고 나가 바다를 끼고 있는 소나무 숲길을 따라 달리다 보면 드넓은 대부도가 온 승마코스인 듯이 느껴집니다. 가족 단위 특히 어린이들이 즐길거리가 다양한데 말들이 자유롭게 뛰어놀게 해주어서 체험객들이 말에게 쉽게 다가가 먹이를 줄 수 있습니다. 승마장 뒤쪽에 마련된 농장에는 토종닭과 토끼, 염소 등을 기르고 있어 아이들이 매우 좋아합니다.',0,0,'2022-12-29');
-CALL activity_customer_create(13);
-INSERT INTO activity_post VALUES(NULL,14,14, '유과는 찹쌀가루에 콩물과 술을 넣어 반죽하여 삶아 낸 것을 얇게 밀어서 말렸다가 기름에 튀겨 내어 쌀 고물을 묻힌 우리나라 대표 전통 과자이다. 세종 지역에서 생산되는 한과는 지역특산물인 복숭아를 이용하여 복숭아조청을 만들어 사용하고, 옛날부터 귀한 약재로 쓰이던 울금(강황)과 구절초를 이용한 한방한과를 특화하여 2015년 전통식품 인증과 농촌융복합산업인증을 받았다. 지역 농산물을 재료로 한과를 생산하고 한과체험프로그램도 운영하여 한과가 만들어지는 과정을 이해 할 수 있게 돕기도 한다. [현황(관련 사업 포함)] 세종특별자치시 특산물 복숭아와 지역농산물을 이용한 ‘달콤한-전통 한과 만들기 체험프로그램’을 세종특별자치시 한과업체인 세종한과에서 운영한다. 곡류나 씨앗을 볶아서 조청으로 버무리고 모양을 내어 잘라낸 과자로 입에 들어가 바삭하게 부서지면서 고소하게 씹히는 맛이 일품인 강정 만들기, 바삭하며 입에 사르르 녹는 맛이 일품인 유과 만들기, 볶은 곡물가루나 송홧가루 등을 꿀이나 조청에 반죽해서 찍어 만드는 다식 만들기, 약과 만들기 체험 프로그램이 있다. 세종 지역에서 만드는 다양한 한과는 로컬푸드 매장에서 판매되고 있다.',0,0,'2023-01-22');
-CALL activity_customer_create(14);
+INSERT INTO activity_post VALUES(NULL,14,14,'유과는 찹쌀가루에 콩물과 술을 넣어 반죽하여 삶아 낸 것을 얇게 밀어서 말렸다가 기름에 튀겨 내어 쌀 고물을 묻힌 우리나라 대표 전통 과자이다. 세종 지역에서 생산되는 한과는 지역특산물인 복숭아를 이용하여 복숭아조청을 만들어 사용하고, 옛날부터 귀한 약재로 쓰이던 울금(강황)과 구절초를 이용한 한방한과를 특화하여 2015년 전통식품 인증과 농촌융복합산업인증을 받았다. 지역 농산물을 재료로 한과를 생산하고 한과체험프로그램도 운영하여 한과가 만들어지는 과정을 이해 할 수 있게 돕기도 한다. [현황(관련 사업 포함)] 세종특별자치시 특산물 복숭아와 지역농산물을 이용한 ‘달콤한-전통 한과 만들기 체험프로그램’을 세종특별자치시 한과업체인 세종한과에서 운영한다. 곡류나 씨앗을 볶아서 조청으로 버무리고 모양을 내어 잘라낸 과자로 입에 들어가 바삭하게 부서지면서 고소하게 씹히는 맛이 일품인 강정 만들기, 바삭하며 입에 사르르 녹는 맛이 일품인 유과 만들기, 볶은 곡물가루나 송홧가루 등을 꿀이나 조청에 반죽해서 찍어 만드는 다식 만들기, 약과 만들기 체험 프로그램이 있다. 세종 지역에서 만드는 다양한 한과는 로컬푸드 매장에서 판매되고 있다.',0,0,'2023-01-22');
 INSERT INTO activity_post VALUES(NULL,15,15,'베르아델승마클럽이 위치한 안산시 대부남동 일대는 고려시대부터 왕실과 군에서 이용할 말을 키우고 조련하던 장소로 유명하며 최상등급의 승용마를 조련시키던 곳입니다. 조련마의 역사가 살아 숨쉬는 그곳이 현대 승마의 명소로 재탄생했습니다.
 이곳의 승마역사관에서는 국내외 마구와 말 조각, 고서 등 말과 관련된 많은 역사적인 자료를 보유하고 있으며 승마의 역사를 알 수 있습니다. 또, 사계절 내내 날씨와 상관없이 승마를 즐길 수 있도록 설계된 돔형의 실내 승마장과 넓은 야외 마장이 있어 이곳에 오면 누구나 승마체험을 즐길 수 있습니다.
 해맞이승마클럽은 대부도 안쪽의 야트막한 산 속에 자리 잡은 아담한 승마장입니다. 말을 타고 나가 바다를 끼고 있는 소나무 숲길을 따라 달리다 보면 드넓은 대부도가 온 승마코스인 듯이 느껴집니다. 가족 단위 특히 어린이들이 즐길거리가 다양한데 말들이 자유롭게 뛰어놀게 해주어서 체험객들이 말에게 쉽게 다가가 먹이를 줄 수 있습니다. 승마장 뒤쪽에 마련된 농장에는 토종닭과 토끼, 염소 등을 기르고 있어 아이들이 매우 좋아합니다.',0,0,'2022-12-29');
-CALL activity_customer_create(15);
 INSERT INTO activity_post VALUES(NULL,16,16,'강동구는 ‘허수아비 만들기 체험 행사’를 12일 일자산 자연공원 피크닉장 내 영농체험장에서 개최한다.
 허수아비를 만들 아이들은 관리책임을 맡고 있는 신명초등학교 6학년 학생들이다. 지난 5월에 직접 모내기를 하고 친환경 농법에 따라 우렁이와 지렁이 방사도 하였다. 구와 영농체험장 관리협약을 맺고 있어 가을걷이까지 이들이 책임진다.
 이날은 목재와 헌옷 등을 재활용하여 팀별로 개성을 살린 허수아비를 만들어 논 주위에 설치한다. 본인들이 직접 심은 벼가 잘 자라고 있는지 살펴보고 벼메뚜기를 관찰하는 등 현장농경체험도 한다.
 구 관계자는 “본인들이 직접 심었던 벼의 생육과정을 직접 관찰하고 한 해의 벼농사 과정을 체험함으로써 도심에서 자라나는 아이들에게 산교육의 장이 되고 있다”고 말했다.
 구는 이날 만든 허수아비와 함께 ‘농작물 지킴이-새줄’, ‘바람개비’를 논 주위에 설치해 공원을 찾는 주민들에게 농촌 들판의 정취를 느낄 수 있도록 할 예정이다.
 ',0,0,'2023-11-22');
-CALL activity_customer_create(16);
 
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_1/activity1_img1.jpg','total_activity_img/activity_1/activity1_img2.jpg',NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_2/activity2_img1.jpg',NULL,NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_3/activity3_img1.jpg','total_activity_img/activity_3/activity3_img2.jpg','total_activity_img/activity_3/activity3_img3.jpg','total_activity_img/activity_3/activity3_img4.jpg','total_activity_img/activity_3/activity3_img5.jpg');
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_4/activity4_img1.jpg','total_activity_img/activity_4/activity4_img2.jpg','total_activity_img/activity_4/activity4_img3.jpg',NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_5/activity5_img1.jpg','total_activity_img/activity_5/activity5_img2.jpg',NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_6/activity6_img1.jpg',NULL,NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_7/activity7_img1.jpg','total_activity_img/activity_7/activity7_img2.jpg','total_activity_img/activity_7/activity7_img3.jpg','total_activity_img/activity_7/activity7_img4.jpg',NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_8/activity8_img1.jpg','total_activity_img/activity_8/activity8_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_post VALUES(NULL,17,17,'연천 팩호박은 연천지역에서 투명한 비닐봉지를 씌워 생육단계부터 친환경적으로 재배해 엄격하게 공동 선별 마트에서 판매되는 연천 특허품입니다 . 팩호박은 수정을 시작해 3~4일이 지난후 호박이 약 10cm크기의 상태에서 봉지 안에 넣어져 생육을 지속하다 약 20cm크기 정도가 되면 출하되는데 농약이 묻지 않을뿐만 아니라 재배과정에서 곡과를 방지하는 효과가 있어 반듯하고 예쁜 호박을 생산할 수 있고 유통과정에서는 신선도 유지와 상처예방에도 효과가 있습니다. 특히 호박을 일정한 크기의 봉지안에서 제한해 키우기 때문에 단단하며 맛과 향이 살아있는 것이 특징입니다. 호박따기 체험과 함께하세요!',0,0,'2022-12-29');
+INSERT INTO activity_post VALUES(NULL,18,18,'서해안은 썰물 때 바닷물이 빠져나가면 하루에 두 번씩 육지와 바다 사이에서 넓고 평평한 땅을 드러내는데, 바로 갯벌이라고 합니다. 주로 해안의 경사가 완만하고 밀물과 썰물의 차이가 큰 해안에 나타납니다. 갯벌에는 어류, 게류, 새우류, 조개류 등 많은 해양 생물들이 살고, 산란 및 성장 장소로 이용되고 있으며, 영양분이 풍부하고 육상에서 배출하는 오염물질을 정화하는 기능을 가지고 있는 아주 소중한 곳이죠. 대야도마을 갯벌에는 바지락, 고둥(대야도), 낙지, 돌게(바카지), 소라, 해삼, 굴 등 다양한 해산물이 많이 나오는데, 마을에서 주로 진행하는 체험은 바지락, 고둥잡기와 갯벌 생태 체험입니다. 넓은 갯벌에서 마음껏 뛰어 놀며 갯벌 생태계 공부도 하고 바지락과 고둥도 잡는 시간으로 즐거운 시간이 됩니다. 체험 준비물은 마을에서 준비해요~ 갈아입을 옷만 가지고 물때에 맞추어 오시면 항시 체험 가능합니다.',0,0,'2023-01-22');
+INSERT INTO activity_post VALUES(NULL,19,19,'공수마을은 2001년도에 어촌체험 시범마을로 선정된 후 다양한 프로그램을 진행하고 있습니다. 바닷가에서 양쪽으로 그물을 끌어당겨 물고기를 잡는 후릿그물이라는 전통어법체험, 해녀체험, 조간대 체험 등이 꾸준히 사랑받고 있답니다. 또한 해조류 말리기 체험장, 지압산책로, 물고기 체험장, 나무다리 산책로 등이 설치되어 있어 방문객들의 꾸준한 발걸음이 이어지고 있습니다. 함께 체험하며 소중한 추억을 만들어 보아요',0,0,'2022-12-29');
+INSERT INTO activity_post VALUES(NULL,20,20,'연천 팩호박은 연천지역에서 투명한 비닐봉지를 씌워 생육단계부터 친환경적으로 재배해 엄격하게 공동 선별 마트에서 판매되는 연천 특허품입니다 . 팩호박은 수정을 시작해 3~4일이 지난후 호박이 약 10cm크기의 상태에서 봉지 안에 넣어져 생육을 지속하다 약 20cm크기 정도가 되면 출하되는데 농약이 묻지 않을뿐만 아니라 재배과정에서 곡과를 방지하는 효과가 있어 반듯하고 예쁜 호박을 생산할 수 있고 유통과정에서는 신선도 유지와 상처예방에도 효과가 있습니다. 특히 호박을 일정한 크기의 봉지안에서 제한해 키우기 때문에 단단하며 맛과 향이 살아있는 것이 특징입니다. 호박따기 체험과 함께하세요!',0,0,'2023-11-22');
 
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_9/activity9_img1.jpg','total_activity_img/activity_9/activity9_img2.jpg',NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_10/activity10_img1.jpg',NULL,NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_11/activity11_img1.jpg','total_activity_img/activity_11/activity11_img2.jpg','total_activity_img/activity_11/activity11_img3.jpg','total_activity_img/activity_11/activity11_img4.jpg','total_activity_img/activity_11/activity11_img5.jpg');
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_12/activity12_img1.jpg','total_activity_img/activity_12/activity12_img2.jpg','total_activity_img/activity_12/activity12_img3.jpg',NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_13/activity13_img1.jpg','total_activity_img/activity_13/activity13_img2.jpg',NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_14/activity14_img1.jpg',NULL,NULL,NULL,NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_15/activity15_img1.jpg','total_activity_img/activity_15/activity15_img2.jpg','total_activity_img/activity_15/activity15_img3.jpg','total_activity_img/activity_15/activity15_img4.jpg',NULL);
-INSERT INTO activity_images VALUES(NULL, 'total_activity_img/activity_16/activity16_img1.jpg','total_activity_img/activity_16/activity16_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_1/activity1_img1.jpg','total_activity_img/activity_1/activity1_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_2/activity2_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_3/activity3_img1.jpg','total_activity_img/activity_3/activity3_img2.jpg','total_activity_img/activity_3/activity3_img3.jpg','total_activity_img/activity_3/activity3_img4.jpg','total_activity_img/activity_3/activity3_img5.jpg');
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_4/activity4_img1.jpg','total_activity_img/activity_4/activity4_img2.jpg','total_activity_img/activity_4/activity4_img3.jpg',NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_5/activity5_img1.jpg','total_activity_img/activity_5/activity5_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_6/activity6_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_7/activity7_img1.jpg','total_activity_img/activity_7/activity7_img2.jpg','total_activity_img/activity_7/activity7_img3.jpg','total_activity_img/activity_7/activity7_img4.jpg',NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_8/activity8_img1.jpg','total_activity_img/activity_8/activity8_img2.jpg',NULL,NULL,NULL);
+
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_9/activity9_img1.jpg','total_activity_img/activity_9/activity9_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_10/activity10_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_11/activity11_img1.jpg','total_activity_img/activity_11/activity11_img2.jpg','total_activity_img/activity_11/activity11_img3.jpg','total_activity_img/activity_11/activity11_img4.jpg','total_activity_img/activity_11/activity11_img5.jpg');
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_12/activity12_img1.jpg','total_activity_img/activity_12/activity12_img2.jpg','total_activity_img/activity_12/activity12_img3.jpg',NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_13/activity13_img1.jpg','total_activity_img/activity_13/activity13_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_14/activity14_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_15/activity15_img1.jpg','total_activity_img/activity_15/activity15_img2.jpg','total_activity_img/activity_15/activity15_img3.jpg','total_activity_img/activity_15/activity15_img4.jpg',NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_16/activity16_img1.jpg','total_activity_img/activity_16/activity16_img2.jpg',NULL,NULL,NULL);
+
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_17/activity17_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_18/activity18_img1.jpg',NULL,NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_19/activity19_img1.jpg','total_activity_img/activity_19/activity19_img2.jpg',NULL,NULL,NULL);
+INSERT INTO activity_images VALUES(NULL,'total_activity_img/activity_20/activity20_img1.jpg',NULL,NULL,NULL,NULL);
+
 
 -- 규하오빠  끝 --  
 
@@ -258,6 +262,15 @@ INSERT INTO inquiry_status VALUES(NULL,'답변완료');
 
 
 -- 경미시작 --  
+INSERT INTO member VALUES(NULL,1,'박경민 ','sadfsasd@naver.com','내이름은김길동','1234','01052525252','2023-09-26',1,'F','1997-09-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'김현승','skwkdrn@naver.com','내이름은나짱구','15151','01021516161','2023-09-25',1,'M','1991-05-16',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'김규하','skdnskn@naver.com','내이름은박미선 ','15164651','01087656756','2023-09-24',1,'F','1995-05-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'이효인','asdgaseer@naver.com','내이름은김코난','718495','01065845676','2023-09-23',0,'M','1998-02-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'이시향','gjhkhjkhg@naver.com','내이름은박경민','459515','01046435343','2023-09-21',1,'F','1997-07-13',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'김태근','yuuiyukj@naver.com','내이름은미란이','412263','01023452534','2023-09-22',1,'F','1993-06-02',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'김현숙','fgdfgdgr@naver.com','내이름은신라면','3497885','01026485112','2023-09-28',1,'F','1994-02-14',NULL,NULL,NULL);
+INSERT INTO member VALUES(NULL,1,'김남호','dosajds@naver.com','내이름은너구리','7411111','01071118520','2023-09-01',0,'M','1990-04-08',NULL,NULL,NULL);
+
 INSERT INTO member VALUES(NULL,1,'박경민 ','sadfsasd@naver.com','내이름은김길동','1234','01052525252','2023-09-26',1,'F','1997-09-13',NULL,NULL,NULL);
 INSERT INTO member VALUES(NULL,1,'김현승','skwkdrn@naver.com','내이름은나짱구','15151','01021516161','2023-09-25',1,'M','1991-05-16',NULL,NULL,NULL);
 INSERT INTO member VALUES(NULL,1,'김규하','skdnskn@naver.com','내이름은박미선 ','15164651','01087656756','2023-09-24',1,'F','1995-05-13',NULL,NULL,NULL);

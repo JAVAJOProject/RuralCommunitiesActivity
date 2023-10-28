@@ -1,0 +1,41 @@
+.mypageMemberFavoritesCard {
+  width: 17.5rem;
+  height: 18.8125rem;
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  margin: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mypageMemberFavoritesCard > img {
+  width: 15.4375rem;
+  height: 11.625rem;
+  border-radius: 0.3125rem;
+  object-fit: cover;
+  margin: 1rem auto;
+}
+
+.mypageMemberFavoritesCard h3,
+.mypageMemberFavoritesCard p {
+  font-family: Jua;
+  font-weight: 400;
+
+  display: -webkit-box;
+  width: 13.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mypageMemberFavoritesCard h3 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+.mypageMemberFavoritesCard p {
+  font-size: 0.9375rem;
+  margin-left: -0.3rem;
+}

@@ -1,0 +1,13 @@
+.mypageMemberFavoritesCardBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 62rem;
+  justify-content: center;
+}
+
+.mypageMemberFavoritesPageNoBox {
+  margin-bottom: -3rem;
+}
+.mypageMemberFavoritesPageNoBox > div {
+  margin-bottom: 0rem;
+}
