@@ -1,6 +1,6 @@
-import React from 'react';
-import './MypageMemberReviewEditTitle.css';
-import MypageMemberReviewEditRating from './MypageMemberReviewEditRating';
+import React from "react";
+import "./MypageMemberReviewEditTitle.css";
+import MypageMemberReviewEditRating from "./MypageMemberReviewEditRating";
 
 export default function MypageMemberReviewEditTitle({
   reviewTitle,

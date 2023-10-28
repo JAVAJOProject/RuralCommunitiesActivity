@@ -35,40 +35,28 @@
 	</select>
 
 	<select id="getRequestPageTotalActivityData"
-		resultType="ActSummaryList">
+		resultType="ActSummaryList" parameterType="int">
 		SELECT
 		a_id, a_img_id, a_name, a_one_liner,
-		a_thumbnail_img,
-		a_theme_id, sigungu_id,
+		a_thumbnail_img, a_theme_id, sigungu_id,
 		a_favorite_cnt
 		FROM (
 		SELECT
-		seq,
-		a_id,
-		a_img_id, a_name, a_one_liner,
-		A_thumbnail_img, a_theme_id,
-		sigungu_id,
+		seq, a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
 		a_favorite_cnt
 		FROM (
 		SELECT
-		ROWNUM AS seq,
-		a_id,
-		a_img_id, a_name, a_one_liner,
-		a_thumbnail_img, a_theme_id,
-		sigungu_id,
+		ROWNUM AS seq, a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
 		a_favorite_cnt
 		FROM (
 		SELECT
-		activity_info.a_id,
-		activity_info.a_img_id,
-		activity_info.a_name,
-		activity_info.a_one_liner,
-		activity_info.a_thumbnail_img,
-		activity_info.a_theme_id,
-		activity_info.sigungu_id
-		activity_info.a_favorite_cnt
+		activity_info.a_id, activity_info.a_img_id, activity_info.a_name, activity_info.a_one_liner,
+		activity_info.a_thumbnail_img, activity_info.a_theme_id, activity_info.sigungu_id,
+		activity_post.a_favorite_cnt
 		FROM activity_info 
-		INNER JOIN
+		INNER JOIN 
 		activity_post ON activity_info.a_id = activity_post.a_id
 		ORDER BY activity_info.a_id DESC
 		)
