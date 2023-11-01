@@ -8,6 +8,7 @@ export default function InputNumber({
   placeholder,
   valueState,
   handleValueState,
+  isRequired,
 }) {
   return (
     <div className="inputText inputNumber">
@@ -22,6 +23,7 @@ export default function InputNumber({
         onChange={(e) => {
           handleValueState(e.target.value);
         }}
+        required={isRequired}
       />
     </div>
   );

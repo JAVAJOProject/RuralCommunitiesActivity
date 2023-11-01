@@ -1,0 +1,49 @@
+.appConfirmModal {
+  /* left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(127, 127, 127, 0.58);
+  overflow: hidden; */
+	margin: auto;
+}
+
+.appConfirmModal > div:first-of-type {
+  width: 40rem;
+  margin-top: 0;
+  height: 3.46669rem;
+  border-radius: 1.25rem 1.25rem 0rem 0rem;
+  background: #45451f;
+}
+.appConfirmModal > div:first-of-type > h4 {
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  line-height: 3.46669rem;
+}
+
+.appConfirmModal > div:last-of-type > p {
+  width: 33.125rem;
+  margin: 3rem auto;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.appConfirmModal > div:last-of-type > button {
+  border: none;
+  width: 9.71431rem;
+  height: 2.43813rem;
+  border-radius: 3.125rem;
+  background: #45451f;
+  display: block;
+  margin: 1.5rem auto;
+  cursor: pointer;
+
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+}

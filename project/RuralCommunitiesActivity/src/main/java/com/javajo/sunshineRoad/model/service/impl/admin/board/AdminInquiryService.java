@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.javajo.sunshineRoad.model.dao.admin.board.AFaqCntDAO;
+import com.javajo.sunshineRoad.model.dao.admin.board.AFaqDAO;
 import com.javajo.sunshineRoad.model.dao.admin.board.AInquiryCntDAO;
 import com.javajo.sunshineRoad.model.dao.admin.board.AInquiryDAO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AInquiryDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.service.IService.admin.board.IAdminInquiryService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
-
 import lombok.RequiredArgsConstructor;
 
 @Service

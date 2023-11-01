@@ -1,0 +1,20 @@
+.pageNavigateBtn {
+  width: 7rem;
+  height: 7rem;
+  background: rgba(255, 255, 255, 0.79);
+  border-radius: 50%;
+  opacity: 0%;
+}
+
+.pageNavigateBtn:hover {
+  opacity: 100%;
+}
+
+.pageNavigateBtn > p {
+  color: #979797;
+  text-align: center;
+  font-family: Jua;
+  font-size: 4.5rem;
+  font-weight: 400;
+  line-height: 7rem;
+}

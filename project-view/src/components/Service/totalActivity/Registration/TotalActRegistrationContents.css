@@ -1,0 +1,15 @@
+form.totalActRegistrationContents.was-validated input:invalid,
+form.totalActRegistrationContents.was-validated textarea:invalid,
+form.totalActRegistrationContents.was-validated input:invalid .inputSelect,
+form.totalActRegistrationContents.was-validated select:invalid {
+  border-color: red;
+}
+
+form.totalActRegistrationContents.was-validated
+  .inputAttach:has(input:invalid)
+  input.inputAttachBtn,
+form.totalActRegistrationContents.was-validated
+  .addressInputApi:has(input:invalid)
+  button {
+  background: red;
+}

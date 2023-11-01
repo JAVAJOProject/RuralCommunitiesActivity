@@ -7,6 +7,7 @@ export default function InputText({
   isReadOnly,
   value,
   isCenter,
+  isRequired,
 }) {
   return (
     <div className="inputText">
@@ -20,7 +21,12 @@ export default function InputText({
           style={{ textAlign: isCenter ? 'center' : 'justify' }}
         />
       ) : (
-        <input type="text" name={inputName} id={inputId} />
+        <input
+          type="text"
+          name={inputName}
+          id={inputId}
+          required={isRequired}
+        />
       )}
     </div>
   );

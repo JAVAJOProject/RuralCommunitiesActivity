@@ -10,10 +10,10 @@ import UserInfo from './security/UserInfo';
 import RootLayout from './components/Service/RootLayout';
 import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
 import NotFoundPage from './page/Error/NotFoundPage';
-import NotFoundAdmin from './components/Admin/page/errorPage/NotFoundAdmin';
+import NotFoundAdminPage from "./page/Admin/errorPage/NotFoundAdminPage";
 
 import MainPage from './page/Service/Main/MainPage';
-import MainPageAdmin from './components/Admin/page/mainPage/MainPageAdmin';
+import MainPageAdminPage from "./page/Admin/mainPage/MainPageAdminPage";
 
 import RootLayoutFaq from './components/Service/customerCenter/faq/RootLayoutFaq';
 import RootLayoutNotice from './components/Service/customerCenter/notice/RootLayoutNotice';
@@ -57,7 +57,20 @@ import TotalActReservationPage from './page/Service/TotalActivity/TotalActReserv
 import RecTownReportPage from './page/Service/Recommendation/RecTownReportPage';
 import MypageMemberEventPage from './page/Service/Mypage/Member/MypageMemberEventPage';
 import MypageMemberFavoritesPage from './page/Service/Mypage/Member/MypageMemberFavoritesPage';
-import MypageMemberUserInfo from './page/Service/Mypage/Member/MypageMemberUserInfo';
+import MypageMemberUserInfoPage from './page/Service/Mypage/Member/MypageMemberUserInfoPage';
+import MypageSellerAnalyticsPage from './page/Service/Mypage/Seller/MypageSellerAnalyticsPage';
+import AccommodationInfoPage from './page/Service/TotalActivity/AccommodationInfoPage';
+import RootLayoutTotalActTheme from './components/Service/totalActivity/RootLayoutTotalActTheme';
+import CalendarActivityPage from './page/Service/TotalActivity/CalendarActivityPage';
+import EventApplyPage from './page/Service/Community/Event/EventApplyPage';
+import RecActRegionPage from './page/Service/Recommendation/RecActRegionPage';
+import RecTownRegionPage from './page/Service/Recommendation/RecTownRegionPage';
+
+import TotalActivityInfoListAdminPage from "./page/Admin/board/TotalActivityInfoList/TotalActivityInfoListAdminPage";
+import MemberAdminPage from "./page/Admin/member/MemberAdminPage";
+import MemberDetailAdminPage from "./page/Admin/member/detail/MemberDetailAdminPage";
+import MemberInsertAdminPage from "./page/Admin/member/insert/MemberInsertAdminPage";
+import MemberUpdateAdminPage from "./page/Admin/member/update/MemberUpdateAdminPage";
 
 const router = createBrowserRouter([
   {
@@ -68,134 +81,144 @@ const router = createBrowserRouter([
       {
         path: 'admin', // 로그인 만들어서 url 매핑해야 함
         element: <RootLayoutAdmin />,
-        errorElement: <NotFoundAdmin />,
+        errorElement: <NotFoundAdminPage />,
         children: [
-          { index: true, path: '*', element: <NotFoundAdmin /> },
+          { index: true, path: '*', element: <NotFoundAdminPage /> },
           {
             path: '',
-            element: <MainPageAdmin />,
+            element: <MainPageAdminPage />,
           },
-          //   {
-          //     path: 'user',
-          //     children: [
-          //       {
-          //         path: 'administrator',
-          //         children: [
-          //           {
-          //             path: 'list',
-          //           },
-          //           {
-          //             path: 'registration',
-          //           },
-          //         ],
-          //       },
-          //       {
-          //         path: 'experiencer',
-          //         children: [
-          //           {
-          //             path: 'list',
-          //           },
-          //           {
-          //             path: 'registration',
-          //           },
-          //         ],
-          //       },
-          //       {
-          //         path: 'provider',
-          //         children: [
-          //           {
-          //             path: 'list',
-          //           },
-          //           {
-          //             path: 'registration',
-          //           },
-          //         ],
-          //       },
-          //       {
-          //         path: 'membershipApproval',
-          //       },
-          //     ],
-          //   },
-          //   {
-          //     path: 'board',
-          //     children: [
-          //       {
-          //         path: 'notice',
-          //       },
-          //       {
-          //         path: 'recommendation',
-          //       },
-          //       {
-          //         path: 'totalActivity',
-          //         children: [
-          //           {
-          //             index: true,
-          //             path: '',
-          //             element: <Navigate replace to={'list'} />,
-          //           },
-          //           {
-          //             path: 'list',
-          //             element: <TotalActivityInfoListAdmin />,
-          //           },
-          //         ],
-          //       },
-          //       {
-          //         path: 'community',
-          //         children: [
-          //           {
-          //             path: 'experiencer',
-          //           },
-          //           {
-          //             path: 'provider',
-          //           },
-          //         ],
-          //       },
-          //       {
-          //         path: 'event',
-          //         children: [
-          //           {
-          //             path: 'list',
-          //           },
-          //           {
-          //             path: 'request',
-          //           },
-          //         ],
-          //       },
-          //     ],
-          //   },
-          //   {
-          //     path: 'reservation',
-          //     children: [
-          //       {
-          //         path: 'experiencer',
-          //       },
-          //       {
-          //         path: 'provider',
-          //       },
-          //     ],
-          //   },
-          //   {
-          //     path: 'analytics',
-          //     children: [
-          //       {
-          //         path: 'reservation',
-          //       },
-          //       {
-          //         path: 'access',
-          //       },
-          //     ],
-          //   },
-          //   {
-          //     path: 'service',
-          //     children: [
-          //       {
-          //         path: 'inquiry',
-          //       },
-          //       {
-          //         path: 'report',
-          //       },
-          //     ],
-          //   },
+            {
+              path: 'user',
+              children: [
+                {
+                  path: 'administrator',
+                  children: [
+                    {
+                      path: 'list',
+                    },
+                    {
+                      path: 'registration',
+                    },
+                  ],
+                },
+                {
+                  path: 'experiencer',
+                  children: [
+                    {
+                      path: 'list',
+                      element: <MemberAdminPage />
+                    },
+                    {
+                      path: 'detail/:id',
+                      element: <MemberDetailAdminPage/>
+                    },
+                    {
+                      path: 'update/:id',
+                      element: <MemberUpdateAdminPage/>
+                    },
+                    {
+                      path: 'registration',
+                      element: <MemberInsertAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'provider',
+                  children: [
+                    {
+                      path: 'list',
+                    },
+                    {
+                      path: 'registration',
+                    },
+                  ],
+                },
+                {
+                  path: 'membershipApproval',
+                },
+              ],
+            },
+            {
+              path: 'board',
+              children: [
+                {
+                  path: 'notice',
+                },
+                {
+                  path: 'recommendation',
+                },
+                {
+                  path: 'totalActivity',
+                  children: [
+                    {
+                      index: true,
+                      path: '',
+                      element: <Navigate replace to={'list'} />,
+                    },
+                    {
+                      path: 'list',
+                      element: <TotalActivityInfoListAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'community',
+                  children: [
+                    {
+                      path: 'experiencer',
+                    },
+                    {
+                      path: 'provider',
+                    },
+                  ],
+                },
+                {
+                  path: 'event',
+                  children: [
+                    {
+                      path: 'list',
+                    },
+                    {
+                      path: 'request',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              path: 'reservation',
+              children: [
+                {
+                  path: 'experiencer',
+                },
+                {
+                  path: 'provider',
+                },
+              ],
+            },
+            {
+              path: 'analytics',
+              children: [
+                {
+                  path: 'reservation',
+                },
+                {
+                  path: 'access',
+                },
+              ],
+            },
+            {
+              path: 'service',
+              children: [
+                {
+                  path: 'inquiry',
+                },
+                {
+                  path: 'report',
+                },
+              ],
+            },
         ],
       },
       {
@@ -232,12 +255,50 @@ const router = createBrowserRouter([
                 ],
               },
               {
+                path: 'region',
+                children: [
+                  {
+                    index: true,
+                    path: '',
+                    element: <Navigate replace to={'filter?order=date'} />,
+                  },
+                  {
+                    path: 'filter',
+                    element: <RecActRegionPage />,
+                  },
+                ],
+              },
+              {
                 path: 'detail/:recAPostId',
                 element: <RecActDetailPage />,
               },
               {
-                path: 'town/report',
-                element: <RecTownReportPage />,
+                path: 'villageGuide',
+                children: [
+                  {
+                    index: true,
+                    path: '',
+                    element: <Navigate replace to={'region'} />,
+                  },
+                  {
+                    path: 'region',
+                    children: [
+                      {
+                        index: true,
+                        path: '',
+                        element: <Navigate replace to={'filter?order=date'} />,
+                      },
+                      {
+                        path: 'filter',
+                        element: <RecTownRegionPage />,
+                      },
+                    ],
+                  },
+                  {
+                    path: 'report',
+                    element: <RecTownReportPage />,
+                  },
+                ],
               },
             ],
           },
@@ -251,15 +312,20 @@ const router = createBrowserRouter([
               },
               {
                 path: 'theme',
+                element: <RootLayoutTotalActTheme />,
                 children: [
                   {
                     index: true,
                     path: '',
-                    element: <Navigate replace to={'list'} />,
+                    element: <Navigate replace to={'category'} />,
                   },
                   {
-                    path: 'list',
+                    path: 'category',
                     element: <ThemeActivityPage />,
+                  },
+                  {
+                    path: 'calendar',
+                    element: <CalendarActivityPage />,
                   },
                 ],
               },
@@ -297,7 +363,10 @@ const router = createBrowserRouter([
                 path: 'grade',
                 element: <RuralRatingPage />,
               },
-              { path: 'accommodation' },
+              {
+                path: 'accommodation',
+                element: <AccommodationInfoPage />,
+              },
             ],
           },
           {
@@ -350,6 +419,10 @@ const router = createBrowserRouter([
                   {
                     path: 'registration',
                     element: <EventRegistrationPage />,
+                  },
+                  {
+                    path: 'apply/:eventId',
+                    element: <EventApplyPage />,
                   },
                 ],
               },
@@ -484,7 +557,7 @@ const router = createBrowserRouter([
                   },
                   {
                     path: 'personalInfo',
-                    element: <MypageMemberUserInfo />,
+                    element: <MypageMemberUserInfoPage />,
                   },
                   {
                     path: 'reservation',
@@ -522,6 +595,7 @@ const router = createBrowserRouter([
                   },
                   {
                     path: 'analytics',
+                    element: <MypageSellerAnalyticsPage />,
                   },
                   {
                     path: 'businessInfo',
@@ -545,7 +619,6 @@ const router = createBrowserRouter([
           {
             path: 'test-ex',
             element: <ExPage />,
-            // element: <LoadingPage />,
           },
         ],
       },

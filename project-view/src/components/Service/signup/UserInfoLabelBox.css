@@ -1,0 +1,11 @@
+.userInfoLabelBox {
+  width: 10rem;
+  margin-right: 1.5rem;
+}
+
+.userInfoLabelBox > label {
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: left;
+}

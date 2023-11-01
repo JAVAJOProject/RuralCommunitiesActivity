@@ -5,8 +5,8 @@ import './RatingCategoryBoxSet.css';
 export default function RatingCategoryBoxSet({ categoryCircleImg }) {
   return (
     <div className="ratingCategoryBoxSet">
-      {categoryCircleImg.map((img) => (
-        <RatingCategoryBox categoryCircleImg={img} />
+      {categoryCircleImg.map((img, index) => (
+        <RatingCategoryBox key={index} categoryCircleImg={img} />
       ))}
     </div>
   );

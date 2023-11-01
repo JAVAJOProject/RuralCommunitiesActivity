@@ -1,13 +1,16 @@
 package com.javajo.sunshineRoad.model.dao.admin.members;
 
-import com.javajo.sunshineRoad.mappers.admin.AdminMemberMapper;
+import com.javajo.sunshineRoad.mappers.admin.member.AdminMemberMapper;
 import com.javajo.sunshineRoad.model.dto.admin.board.AMCommunityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminMemberDTO;
 import lombok.RequiredArgsConstructor;
+
+import org.apache.ibatis.annotations.Param;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -29,11 +32,11 @@ public class AdminMemberDAO {
 
 
 	//회원선택 조회      아이디
-	public List<AdminMemberDTO> selectMemberID(int uId) {
+	public List<AdminMemberDTO> selectMemberID(ASearchDTO searchDTO) {
 		System.out.println("[AdminMemberDAO] selectMemberID()");
 
 		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
-		return memberMapper.selectMemberID(uId);
+		return memberMapper.selectMemberID(searchDTO);
 
 
 	}
@@ -43,12 +46,20 @@ public class AdminMemberDAO {
 		System.out.println("[AdminMemberDAO] selectMemberDATE()");
 
 		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
-		//List<AdminMemberDTO> memberList =
+
 		return memberMapper.selectMemberDATE(searchDTO,startPostNo,endPostNo);
 
 	}
 
+	//회원 선택 조회   아이디 + 기간
+	public List<AdminMemberDTO> selectMember(ASearchDTO searchDTO,int startPostNo, int endPostNo){
+		System.out.println("[AdminMemberDAO] selectMember()");
 
+		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
+
+		return memberMapper.selectMember(searchDTO,startPostNo,endPostNo);
+		
+    }
 
 
 

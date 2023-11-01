@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.totalActivity.ReviewMapper">
+<resultMap id="ReviewDTO" type="ReviewList">
+    <result property="revId" column="rev_id" />
+    <result property="uId" column="u_id" />
+    <result property="aPostId" column="a_post_id" />
+    <result property="rDateCreated" column="r_date_created" />
+    <result property="rContent" column="r_content" />
+    <result property="rStarRating" column="r_star_rating" />
+    <result property="rTitle" column="r_title" />
+    <result property="uNick" column="u_nick" />
+    
+</resultMap>
+   <select id="getTotalReviewCountData" resultType="int">
+      SELECT COUNT(*) 
+      FROM activity_review
+      WHERE a_post_id = #{aPostId}
+   </select>
+   <select id="getRequestPageReviewContentData" resultType="ReviewList">
+      SELECT
+      rev_id, u_id, a_post_id, r_date_created,
+      r_content, r_star_rating, r_title, u_nick
+      FROM (SELECT
+      seq,
+      rev_id, u_id, a_post_id, r_date_created,
+      r_content, r_star_rating, r_title, u_nick
+      FROM (SELECT
+      ROWNUM AS seq,
+      rev_id, u_id, a_post_id, r_date_created,
+      r_content, r_star_rating, r_title, u_nick
+      FROM (SELECT
+      activity_review.rev_id,
+      activity_review.u_id,
+      activity_review.a_post_id,
+      activity_review.r_date_created,
+      activity_review.r_content,
+      activity_review.r_star_rating,
+      activity_review.r_title,
+      member.u_nick
+      from activity_review
+      inner join member on activity_review.u_id = member.u_id
+      where activity_review.a_post_id = #{aPostId}
+      order by r_date_created DESC)
+      )
+      WHERE seq <![CDATA[>=]]>
+      #{startPostNo}
+      )
+      WHERE ROWNUM <![CDATA[<=]]>
+      #{endPostNo}
+   </select>
+</mapper>

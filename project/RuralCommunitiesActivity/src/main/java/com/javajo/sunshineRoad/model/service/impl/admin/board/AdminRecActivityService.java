@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.javajo.sunshineRoad.model.dao.admin.board.ARecActivityDAO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ARecActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.service.IService.admin.board.IAdminRecActivityService;

@@ -2,6 +2,7 @@ package com.javajo.sunshineRoad.model.service.IService.admin.board;
 
 import java.util.List;
 
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ARecActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 

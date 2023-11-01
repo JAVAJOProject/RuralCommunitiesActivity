@@ -9,6 +9,7 @@ export default function InputSelectDate({
   minDate,
   maxDate,
   placeholder,
+  isRequired,
 }) {
   const [selectedDate, setSelectedDate] = useState();
 
@@ -23,13 +24,14 @@ export default function InputSelectDate({
         }
         maxDate={new Date(maxDate)}
         selected={selectedDate}
-        onChange={(e) => {
-          setSelectedDate(e.target.value);
+        onChange={(date) => {
+          setSelectedDate(date);
         }}
         className="inputDateText inputOneDate"
         name={inputName}
         id={inputName}
         placeholderText={placeholder}
+        required={isRequired}
       />
     </div>
   );

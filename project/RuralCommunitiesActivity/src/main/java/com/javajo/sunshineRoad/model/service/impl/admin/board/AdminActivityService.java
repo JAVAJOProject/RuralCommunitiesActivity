@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.javajo.sunshineRoad.model.dao.admin.board.AActivityDAO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import com.javajo.sunshineRoad.model.service.IService.admin.board.IAdminActivityCntService;
 import com.javajo.sunshineRoad.model.service.IService.admin.board.IAdminActivityService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
 
@@ -29,11 +30,10 @@ public class AdminActivityService implements IAdminActivityService {
 	@Override
 	public List<AActivityDTO> getAllActivity(int requestPageNo, int perPagePostCount) {
 		System.out.println("[ActivityService] getAllActivity()");
+				
+		int totalCount = activityCntService.getTotalCount();
 		
-		int totalCount = 0;
-		
-		totalCount = activityCntService.getTotalCount();
-		
+		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 		
@@ -88,23 +88,24 @@ public class AdminActivityService implements IAdminActivityService {
 	public List<AActivityDTO> selectActivity(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
 		System.out.println("[ActivityService] selectActivity()");
 		
-		int totalCount = 0;
-		int startPostNo = 0;
-		int endPostNo = 0;
+//		int totalCount = 0;
+//		int startPostNo = 0;
+//		int endPostNo = 0;
 		
 		//예약금액이 0인경우 다른 쿼리에 영향 없도록
-		if(searchDTO.getCharge() == 0) {
-			searchDTO.setCharge(100000);
-		}
+//		if(searchDTO.getCharge() == 0) {
+//			searchDTO.setCharge(100000);
+//		}
 		//키워드가 없는경우 다른 쿼리에 영향 없도록
-		if(searchDTO.getKeyword() == null || searchDTO.getKeyword().isEmpty() || searchDTO.getKeyword().equals("")) {
-			searchDTO.setKeyword("%나다%");
-		}
+//		if(searchDTO.getKeyword() == null || searchDTO.getKeyword().isEmpty() || searchDTO.getKeyword().equals("")) {
+//			searchDTO.setKeyword("%나다%");
+//		}
+//		
 		
-		
-		totalCount = activityCntService.selectActivityCnt(searchDTO);
-		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-		endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+		int totalCount = activityCntService.selectActivityCnt(searchDTO);
+		System.out.println(totalCount);
+		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+		int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 		return activityDAO.selectActivity(searchDTO,startPostNo,endPostNo);
 	}
 

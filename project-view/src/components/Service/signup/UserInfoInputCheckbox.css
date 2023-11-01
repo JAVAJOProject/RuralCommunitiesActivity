@@ -1,0 +1,26 @@
+.userInfoInputCheckbox {
+  height: 4rem;
+  line-height: 4rem;
+}
+
+.userInfoInputCheckbox label {
+  display: flex;
+  align-items: center;
+}
+
+.userInfoInputCheckbox p {
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.userInfoInputCheckbox img,
+.userInfoInputCheckbox p {
+  display: block;
+}
+.userInfoInputCheckbox input {
+  appearance: none;
+}
+.userInfoInputCheckbox img {
+  margin: auto 1.5rem;
+}

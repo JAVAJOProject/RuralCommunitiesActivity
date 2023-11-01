@@ -3,7 +3,7 @@ import LabelBox from '../LabelBox';
 import InputDatePicker from './InputDatePicker';
 import './InputTextBox.css';
 
-export default function InputDateBox({ inputInfo }) {
+export default function InputDateBox({ inputInfo, isReadOnly, defaultValue, isRequired }) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -24,7 +24,13 @@ export default function InputDateBox({ inputInfo }) {
   return (
     <div className="inputTextBox">
       <LabelBox inputId={inputName} labelText={labelText} style={style} />
-      <InputDatePicker inputName={inputName} inputId={inputName} />
+      <InputDatePicker
+        inputName={inputName}
+        inputId={inputName}
+        isReadOnly={isReadOnly}
+        defaultValue={defaultValue}
+        isRequired={isRequired}
+      />
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import React from 'react';
-import './SearchingBox.css'
+import './SearchingBox.css';
 
 import readingGlasses from '../../../../../view_img/Service/common/readingGlasses.svg';
 
-export default function SearchingBox() {
+export default function SearchingBox({ className, style }) {
+  const classes = ['searchingBox', className].join(' ');
+
   return (
-    <div className='searchingBox'>
+    <div className={classes} style={style}>
       <input type="text" />
       <img src={readingGlasses} alt="" />
     </div>

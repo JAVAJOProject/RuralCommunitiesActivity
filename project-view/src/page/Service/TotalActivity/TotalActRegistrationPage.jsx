@@ -1,9 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom';
+import { fetchDataAndImgPOST } from '../../../config/ApiService';
+
 import TotalActRegistrationTitle from '../../../components/Service/totalActivity/Registration/TotalActRegistrationTitle';
+import TotalActRegistrationContents from '../../../components/Service/totalActivity/Registration/TotalActRegistrationContents';
+import AppConfirmModal from '../../../components/Service/common/Modal/AppConfirmModal';
+import AppYNModal from '../../../components/Service/common/Modal/AppYNModal';
 
 import registrationImg from '../../../view_img/Service/totalActivity/registration/registration.jpg';
-import TotalActRegistrationContents from '../../../components/Service/totalActivity/Registration/TotalActRegistrationContents';
-import { useImmer } from 'use-immer';
+
+const totalActivityRegistrationApi = '/regActivity/add';
+
+const modalConfirmContents = {
+  success: {
+    titleText: '체험 등록 성공',
+    contentText: '체험이 성공적으로 등록되었습니다.',
+  },
+  failure: {
+    titleText: '체험 등록 실패',
+    contentText: '체험 등록을 실패하였습니다.',
+  },
+  invalidValueMissing: {
+    titleText: '체험 등록 실패',
+    contentText: '필수 항목을 입력하지 않으셨습니다.',
+  },
+  invalidPatternMismatch: {
+    titleText: '체험 등록 실패',
+    contentText: '항목을 잘못 입력하셨습니다.',
+  },
+};
+const modalYNContents = {
+  titleText: '체험 등록 취소',
+  contentText:
+    '정말로 작성을 취소하시겠습니까? 작성 중인 내용은 저장되지 않습니다.',
+  yesText: '작성 취소',
+};
 
 const defaultContents = {
   titles: {
@@ -25,44 +57,44 @@ const defaultContents = {
     themeType: {
       labelText: '테마 선택',
       type: 'thin',
-      inputName: 'aTypeId',
+      inputName: 'aThemeId',
       inputValue: [1, 2, 3, 4],
       inputLabel: ['농촌', '어촌', '전통', '기타'],
     },
     price: {
       labelText: '체험 금액',
       type: 'thin',
-      inputName: 'aPrice',
+      inputName: 'aCharge',
     },
     period: {
       labelText: '체험 기간',
       type: 'thin',
-      inputName: ['startDate', 'endDate'],
+      inputName: ['aStartDate', 'aEndDate'],
     },
     reservationPeriod: {
       labelText: '예약 기간',
       type: 'thin',
-      inputName: ['recruitStartDate', 'recruitEndDate'],
+      inputName: ['aReservationStartDate', 'aReservationDeadline'],
     },
     minPeople: {
       labelText: '예약 최소 인원',
       type: 'thin',
-      inputName: 'minPeople',
+      inputName: 'aMinPeople',
     },
     maxPeople: {
       labelText: '예약 최대 인원',
       type: 'thin',
-      inputName: 'maxPeople',
+      inputName: 'aMaxPeople',
     },
     addr: {
       labelText: '체험 주소',
       type: 'image',
-      inputName: 'addr',
+      inputName: 'aAddr',
     },
     region: {
       labelText: '지역 선택',
       type: 'thin',
-      inputName: ['region', 'sido', 'sigungu'],
+      inputName: ['region', 'sidoId', 'sigunguId'],
     },
     images: {
       labelText: ['이미지\n\n(첫번째 이미지가\n대표이미지가 됩니다.)'],
@@ -75,66 +107,132 @@ const defaultContents = {
     detail: {
       labelText: '체험 내용 작성',
       type: 'thinTextArea',
-      inputName: 'aContent',
+      inputName: 'aPostContent',
     },
     buttons: {
-      submit: { text: '체험 등록하기', type: 'button' },
-      cancel: { text: '입력 취소', type: 'reset' },
+      submit: {
+        text: '체험 등록하기',
+        type: 'button',
+        async submit(
+          e,
+          handleModalOpen,
+          handleModalTexts,
+          handleModalBtn,
+          formRef,
+          handleWasValidated
+        ) {
+          e.preventDefault();
+
+          handleWasValidated(true);
+
+          const inputs = Array.from(
+            formRef.current.querySelectorAll(
+              '.totalActRegistrationContents input, .totalActRegistrationContents textarea, .totalActRegistrationContents select'
+            )
+          );
+
+          const valueMissing = inputs.some(
+            (item) => item.validity.valueMissing
+          );
+          if (valueMissing) {
+            handleModalTexts(modalConfirmContents.invalidValueMissing);
+            handleModalOpen(true);
+            return;
+          }
+
+          const patternMismatch = inputs.some(
+            (item) => item.validity.patternMismatch
+          );
+          if (patternMismatch) {
+            handleModalTexts(modalConfirmContents.invalidPatternMismatch);
+            handleModalOpen(true);
+            return;
+          }
+
+          try {
+            const result = await fetchDataAndImgPOST(
+              totalActivityRegistrationApi,
+              formRef
+            );
+
+            if (result.resultMsg && result.resultMsg === '이미지 등록 완료!') {
+              handleModalTexts(modalConfirmContents.success);
+              handleModalBtn(true);
+              handleModalOpen(true);
+            } else {
+              handleModalOpen(true);
+            }
+          } catch (error) {
+            console.error(error);
+            handleModalOpen(true);
+          }
+        },
+      },
+      cancel: {
+        text: '입력 취소',
+        type: 'reset',
+        cancel(e, handleModalOpen) {
+          e.preventDefault();
+
+          handleModalOpen(true);
+        },
+      },
     },
   },
 };
 
 const testRegionSido = [
-  { text: '서울', typeId: 1 },
-  { text: '경기', typeId: 2 },
-  { text: '인천', typeId: 3 },
-  { text: '충북', typeId: 4 },
-  { text: '세종', typeId: 5 },
-  { text: '대전', typeId: 6 },
-  { text: '충남', typeId: 7 },
-  { text: '전북', typeId: 8 },
-  { text: '전남', typeId: 9 },
-  { text: '광주', typeId: 10 },
-  { text: '강원', typeId: 11 },
-  { text: '경북', typeId: 12 },
-  { text: '대구', typeId: 13 },
-  { text: '경남', typeId: 14 },
-  { text: '부산', typeId: 15 },
-  { text: '울산', typeId: 16 },
-  { text: '제주', typeId: 17 },
+  { sidoName: '서울', sidoId: 1 },
+  { sidoName: '경기', sidoId: 2 },
+  { sidoName: '인천', sidoId: 3 },
+  { sidoName: '충북', sidoId: 4 },
+  { sidoName: '세종', sidoId: 5 },
+  { sidoName: '대전', sidoId: 6 },
+  { sidoName: '충남', sidoId: 7 },
+  { sidoName: '전북', sidoId: 8 },
+  { sidoName: '전남', sidoId: 9 },
+  { sidoName: '광주', sidoId: 10 },
+  { sidoName: '강원', sidoId: 11 },
+  { sidoName: '경북', sidoId: 12 },
+  { sidoName: '대구', sidoId: 13 },
+  { sidoName: '경남', sidoId: 14 },
+  { sidoName: '부산', sidoId: 15 },
+  { sidoName: '울산', sidoId: 16 },
+  { sidoName: '제주', sidoId: 17 },
 ];
 const testRegionSigungu = [
-  { text: '도봉', typeId: 1 },
-  { text: '노원', typeId: 2 },
-  { text: '강북', typeId: 3 },
-  { text: '중랑', typeId: 4 },
-  { text: '성북', typeId: 5 },
-  { text: '종로', typeId: 6 },
-  { text: '동대문', typeId: 7 },
-  { text: '은평', typeId: 8 },
-  { text: '서대문', typeId: 9 },
-  { text: '용산', typeId: 10 },
-  { text: '중(구)', typeId: 11 },
-  { text: '성동', typeId: 12 },
-  { text: '광진', typeId: 13 },
-  { text: '강동', typeId: 14 },
-  { text: '송파', typeId: 15 },
-  { text: '강남', typeId: 16 },
-  { text: '서초', typeId: 17 },
-  { text: '관악', typeId: 18 },
-  { text: '동작', typeId: 19 },
-  { text: '금천', typeId: 20 },
-  { text: '영등포', typeId: 21 },
-  { text: '양천', typeId: 22 },
-  { text: '구로', typeId: 23 },
-  { text: '강서', typeId: 24 },
-  { text: '마포', typeId: 25 },
+  { sidoId: 1, sigunguName: '도봉', sigunguId: 1 },
+  { sidoId: 1, sigunguName: '노원', sigunguId: 2 },
+  { sidoId: 1, sigunguName: '강북', sigunguId: 3 },
+  { sidoId: 1, sigunguName: '중랑', sigunguId: 4 },
+  { sidoId: 1, sigunguName: '성북', sigunguId: 5 },
+  { sidoId: 1, sigunguName: '종로', sigunguId: 6 },
+  { sidoId: 1, sigunguName: '동대문', sigunguId: 7 },
+  { sidoId: 1, sigunguName: '은평', sigunguId: 8 },
+  { sidoId: 1, sigunguName: '서대문', sigunguId: 9 },
+  { sidoId: 1, sigunguName: '용산', sigunguId: 10 },
+  { sidoId: 1, sigunguName: '중(구)', sigunguId: 11 },
+  { sidoId: 1, sigunguName: '성동', sigunguId: 12 },
+  { sidoId: 1, sigunguName: '광진', sigunguId: 13 },
+  { sidoId: 1, sigunguName: '강동', sigunguId: 14 },
+  { sidoId: 1, sigunguName: '송파', sigunguId: 15 },
+  { sidoId: 1, sigunguName: '강남', sigunguId: 16 },
+  { sidoId: 1, sigunguName: '서초', sigunguId: 17 },
+  { sidoId: 1, sigunguName: '관악', sigunguId: 18 },
+  { sidoId: 1, sigunguName: '동작', sigunguId: 19 },
+  { sidoId: 1, sigunguName: '금천', sigunguId: 20 },
+  { sidoId: 1, sigunguName: '영등포', sigunguId: 21 },
+  { sidoId: 1, sigunguName: '양천', sigunguId: 22 },
+  { sidoId: 1, sigunguName: '구로', sigunguId: 23 },
+  { sidoId: 1, sigunguName: '강서', sigunguId: 24 },
+  { sidoId: 1, sigunguName: '마포', sigunguId: 25 },
 ];
 
 export default function TotalActRegistrationPage() {
   const [regionSido, updateRegionSido] = useImmer(testRegionSido);
   const [regionSigungu, updateRegionSigungu] = useImmer([]);
   const [selectedSidoId, setSelectedSidoId] = useState('');
+
   useEffect(() => {
     if (selectedSidoId === '1') {
       updateRegionSigungu((draft) => {
@@ -146,23 +244,61 @@ export default function TotalActRegistrationPage() {
     }
   }, [selectedSidoId]);
 
+  const [modalConfirmOpen, setModalConfirmOpen] = useState(false);
+  const [modalConfirmTexts, setModalConfirmTexts] = useState(
+    modalConfirmContents.failure
+  );
+  const [modalConfirmSuccess, setModalConfirmSuccess] = useState(false);
+  const [modalYNOpen, setModalYNOpen] = useState(false);
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(-1);
+  };
+
   const { titles, inputContents } = defaultContents;
 
   return (
-    <div>
-      <TotalActRegistrationTitle
-        imgSrc={titles.imgSrc}
-        mainTitle={titles.mainTitle}
-        subtitle={titles.subtitle}
+    <>
+      <div>
+        <TotalActRegistrationTitle
+          imgSrc={titles.imgSrc}
+          mainTitle={titles.mainTitle}
+          subtitle={titles.subtitle}
+        />
+        <TotalActRegistrationContents
+          labelTexts={inputContents}
+          regionSido={regionSido}
+          regionSigungu={regionSigungu}
+          selectedSido={[selectedSidoId, setSelectedSidoId]}
+          handleConfirmModalSet={{
+            handleOpen: setModalConfirmOpen,
+            handleTexts: setModalConfirmTexts,
+            handleBtn: setModalConfirmSuccess,
+          }}
+          handleYNModalSet={{ handleOpen: setModalYNOpen }}
+        />
+      </div>
+
+      <AppConfirmModal
+        texts={modalConfirmTexts}
+        isOpen={modalConfirmOpen}
+        confirmModal={
+          modalConfirmSuccess
+            ? handleNavigate
+            : () => {
+                setModalConfirmOpen(false);
+                setModalConfirmTexts(modalConfirmContents.failure);
+              }
+        }
       />
-      <TotalActRegistrationContents
-        labelTexts={inputContents}
-        api={''}
-        method="post"
-        regionSido={regionSido}
-        regionSigungu={regionSigungu}
-        selectedSido={[selectedSidoId, setSelectedSidoId]}
+      <AppYNModal
+        texts={modalYNContents}
+        isOpen={modalYNOpen}
+        yesAction={handleNavigate}
+        noAction={() => {
+          setModalYNOpen(false);
+        }}
       />
-    </div>
+    </>
   );
 }

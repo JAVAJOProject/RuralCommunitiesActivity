@@ -1,0 +1,40 @@
+.totalActivityCalendarDate {
+  width: 5.4375rem;
+  height: 4.4375rem;
+  border-radius: 0.9375rem;
+  background: #fff;
+  position: relative;
+  padding-top: 1.5rem;
+  margin: 0 0.5rem 1rem;
+}
+
+.totalActivityCalendarDate > p {
+  color: #525252;
+  text-align: right;
+  font-family: Jua;
+  font-size: 1.3rem;
+  font-weight: 400;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.5rem;
+}
+
+.totalActivityCalendarDate > div {
+  width: 2.51781rem;
+  height: 2.51781rem;
+  background: rgba(251, 198, 95, 0.35);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0.2rem;
+  margin: auto;
+  cursor: pointer;
+}
+.totalActivityCalendarDate > div > p {
+  color: #ff6b00;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+}

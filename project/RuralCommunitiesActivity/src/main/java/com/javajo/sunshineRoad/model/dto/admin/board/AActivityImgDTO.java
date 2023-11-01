@@ -1,7 +1,7 @@
 package com.javajo.sunshineRoad.model.dto.admin.board;
 
 import org.apache.ibatis.type.Alias;
-
+import com.javajo.sunshineRoad.model.dto.event.EventImagesDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

@@ -2,6 +2,7 @@ package com.javajo.sunshineRoad.model.dto.admin;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter

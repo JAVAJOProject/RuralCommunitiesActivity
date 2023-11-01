@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { useImmer } from 'use-immer';
+import './TotalActRegistrationContents.css';
+
 import InputTextBox from '../../community/event/Registration/InputBox/TextBox/InputTextBox';
 import InputSelectBox from '../../community/event/Registration/InputBox/TextBox/InputSelectBox';
 import InputNumberBox from '../../community/event/Registration/InputBox/TextBox/InputNumberBox';
@@ -12,14 +14,19 @@ import InputRegionSelectBox from '../../community/event/Registration/InputBox/Re
 
 export default function TotalActRegistrationContents({
   labelTexts,
-  api,
-  method,
   regionSido,
   regionSigungu,
   selectedSido,
+  handleConfirmModalSet,
+  handleYNModalSet,
 }) {
-  const [inputDataJson, updateInputDataJson] = useImmer({});
   const [inputDataFiles, updateInputDataFiles] = useImmer([]);
+  const formRef = useRef(null);
+  const [wasValidated, setWasValidated] = useState(false);
+
+  const [priceState, setPriceState] = useState();
+  const [minPeopleState, setMinPeopleState] = useState();
+  const [maxPeopleState, setMaxPeopleState] = useState();
 
   const {
     title,
@@ -38,29 +45,58 @@ export default function TotalActRegistrationContents({
   } = labelTexts;
 
   return (
-    <form action={api} method={method} encType="multipart/form-data">
-      <InputTextBox inputInfo={title} />
-      <InputTextBox inputInfo={oneLiner} />
-      <InputSelectBox inputInfo={themeType} />
-      <InputNumberBox inputInfo={price} />
-      <InputDateBox inputInfo={period} />
-      <InputDateBox inputInfo={reservationPeriod} />
-      <InputNumberBox inputInfo={minPeople} />
-      <InputNumberBox inputInfo={maxPeople} />
-      <AddressInputApiBox inputInfo={addr} />
+    <form
+      ref={formRef}
+      encType="multipart/form-data"
+      name="data"
+      className={
+        'totalActRegistrationContents' + (wasValidated ? ' was-validated' : '')
+      }
+    >
+      <InputTextBox inputInfo={title} isRequired={true} />
+      <InputTextBox inputInfo={oneLiner} isRequired={true} />
+      <InputSelectBox inputInfo={themeType} isRequired={true} />
+      <InputNumberBox
+        inputInfo={price}
+        valueState={priceState}
+        handleValueState={setPriceState}
+        isRequired={true}
+      />
+      <InputDateBox inputInfo={period} isRequired={true} />
+      <InputDateBox inputInfo={reservationPeriod} isRequired={true} />
+      <InputNumberBox
+        inputInfo={minPeople}
+        valueState={minPeopleState}
+        handleValueState={setMinPeopleState}
+        isRequired={true}
+      />
+      <InputNumberBox
+        inputInfo={maxPeople}
+        valueState={maxPeopleState}
+        handleValueState={setMaxPeopleState}
+        isRequired={true}
+      />
+      <AddressInputApiBox inputInfo={addr} isRequired={true} />
       <InputRegionSelectBox
         inputInfo={region}
         regionSido={regionSido}
         regionSigungu={regionSigungu}
         selectedSido={selectedSido}
+        isRequired={true}
       />
       <InputAttachBox
         inputInfo={images}
         inputDataFiles={inputDataFiles}
         updateInputDataFiles={updateInputDataFiles}
       />
-      <InputTextAreaBox inputInfo={detail} />
-      <InputBtnBox inputInfo={buttons} />
+      <InputTextAreaBox inputInfo={detail} isRequired={true} />
+      <InputBtnBox
+        inputInfo={buttons}
+        formRef={formRef}
+        handleConfirmModalSet={handleConfirmModalSet}
+        handleYNModalSet={handleYNModalSet}
+        handleWasValidated={setWasValidated}
+      />
     </form>
   );
 }

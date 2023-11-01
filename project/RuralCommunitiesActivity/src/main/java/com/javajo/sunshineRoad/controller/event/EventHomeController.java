@@ -143,10 +143,10 @@ public class EventHomeController {
         }
 
 //            return ResponseEntity.created(URI.create("내역조회할수있는URI api")).body("등록 완료");
-            ResponseDTO response = ResponseDTO.builder().resultMsg("등록 완료").build();
+            ResponseDTO response = ResponseDTO.builder().resultMsg("succeeded").build();
             return ResponseEntity.ok(response);
         } catch (IOException e) {
-            ResponseDTO response = ResponseDTO.builder().errorMsg("등록 실패").build();
+            ResponseDTO response = ResponseDTO.builder().errorMsg("failed").build();
             return ResponseEntity.unprocessableEntity().body(response);
         }
     }

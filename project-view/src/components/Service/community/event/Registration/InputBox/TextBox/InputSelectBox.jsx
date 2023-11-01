@@ -3,7 +3,7 @@ import InputSelect from './InputSelect';
 import NotLabelBox from '../NotLabelBox';
 import './InputSelectBox.css';
 
-export default function InputSelectBox({ inputInfo }) {
+export default function InputSelectBox({ inputInfo, isRequired }) {
   const [checkedValue, setCheckedValue] = useState(1);
   const { inputName, inputValue, inputLabel, labelText, type } = inputInfo;
 

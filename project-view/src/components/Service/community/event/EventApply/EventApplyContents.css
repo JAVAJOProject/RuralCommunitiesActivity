@@ -1,0 +1,5 @@
+form.eventApplyContents.was-validated input:invalid,
+form.eventApplyContents.was-validated textarea:invalid,
+form.eventApplyContents.was-validated input:invalid .inputSelect {
+  border-color: red;
+}

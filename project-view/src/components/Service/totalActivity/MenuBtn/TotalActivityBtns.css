@@ -1,0 +1,14 @@
+.totalActivityBtns {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 14rem;
+}
+
+.totalActivityBtns div {
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.totalActivityBtns div > svg {
+  padding: 0;
+}

@@ -16,37 +16,36 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AActivityDTO {
 
-	@JsonProperty
+	@JsonProperty("a_id")
 	private int aId;//체험 서비스
-	@JsonProperty
+	@JsonProperty("s_id")
 	private int sId;
-	@JsonProperty
 	private int sigunguId;//지역
-	@JsonProperty
+	@JsonProperty("a_theme_id")
 	private int aThemeId;//테마
-	@JsonProperty
+	@JsonProperty("a_start_date")
 	private String aStartDate;
-	@JsonProperty
+	@JsonProperty("a_end_date")
 	private String aEndDate;
-	@JsonProperty
+	@JsonProperty("a_addr")
 	private String aAddr;
-	@JsonProperty
+	@JsonProperty("a_name")
 	private String aName;
-	@JsonProperty
+	@JsonProperty("a_one_liner")
 	private String aOneLiner;//한줄
-	@JsonProperty
+	@JsonProperty("a_min_people")
 	private String aMinPeople;
-	@JsonProperty
+	@JsonProperty("a_max_people")
 	private String aMaxPeople;
-	@JsonProperty
+	@JsonProperty("a_charge")
 	private String aCharge;
-	@JsonProperty
+	@JsonProperty("a_thumbnail_img")
 	private String aThumbnailImg;//이미지 blob
-	@JsonProperty
+	@JsonProperty("a_site")
 	private String sSite;
-	@JsonProperty
+	@JsonProperty("a_reservation_deadline")
 	private String aReservationDeadline;//마감일
-	@JsonProperty
+	@JsonProperty("a_img_id")
 	private int aImgId;
 	
 }

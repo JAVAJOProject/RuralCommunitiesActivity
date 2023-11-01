@@ -1,0 +1,13 @@
+.mypageMemberUserInfoContents {
+  margin-top: 2rem;
+}
+
+.mypageMemberUserInfoContents > div:not(.userInfoInputLastBtnBox) {
+  margin-left: 0;
+}
+
+.mypageMemberUserInfoContents .userInfoHasBtn {
+  display: flex;
+  align-items: center;
+  margin: -1rem 0;
+}

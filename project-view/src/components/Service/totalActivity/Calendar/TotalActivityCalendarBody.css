@@ -1,0 +1,12 @@
+.totalActivityCalendarBody {
+  width: 46.125rem;
+  border-radius: 0rem 0rem 1.875rem 1.875rem;
+  background: rgba(217, 217, 217, 0.31);
+  margin: 0 auto 2rem;
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,11 @@
+.userInfoInputEmailBox {
+  display: flex;
+  align-items: center;
+}
+
+.userInfoInputEmailBox > p {
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin: auto 1rem;
+}

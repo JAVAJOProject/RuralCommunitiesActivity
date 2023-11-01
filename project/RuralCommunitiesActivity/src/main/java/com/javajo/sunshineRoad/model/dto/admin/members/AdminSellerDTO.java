@@ -17,29 +17,29 @@ import lombok.Setter;
 @Alias("ASeller")
 public class AdminSellerDTO {
 
-	@JsonProperty
+	@JsonProperty("s_id")
 	private int sId;
 	private int accountInfoId;//??
 	private String memTypeId;//제공자2
-	@JsonProperty
+	@JsonProperty("s_email")
 	private String sEmail;
-	@JsonProperty
+	@JsonProperty("s_com_name")
 	private String sComName;//상호
-	@JsonProperty
+	@JsonProperty("s_pw")
 	private String sPw;
-	@JsonProperty
+	@JsonProperty("s_tel")
 	private String sTel;
-	@JsonProperty
+	@JsonProperty("s_reg_date")
 	private String sRegDate;//가입일
-	@JsonProperty
+	@JsonProperty("s_addr")
 	private String sAddr;//시
-	@JsonProperty
+	@JsonProperty("s_reg_num")
 	private String sRegNum;//사업자등록번호
-	@JsonProperty
-	private String sMargetingConsent;//마케팅?
-	@JsonProperty
+	@JsonProperty("s_marketing_consent")
+	private String sMarketingConsent;//마케팅?
+	@JsonProperty("s_approval")
 	private String sApproval;//승인여부
-	@JsonProperty
+	@JsonProperty("s_rep_name")
 	private String sRepName;//대표자
 
 

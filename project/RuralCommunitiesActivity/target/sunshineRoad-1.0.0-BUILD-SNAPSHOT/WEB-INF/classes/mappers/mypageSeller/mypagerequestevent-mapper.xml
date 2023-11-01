@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageRequestEventMapper">
+
+	<resultMap id="RequestEventInfoForClob"
+		type="RequestEventDTO">
+		<id property="eventId" column="event_id" />
+		<result property="sId" column="s_id" />
+		<result property="postTypeId" column="post_type_id" />
+		<result property="eventImgId" column="event_img_id" />
+		<result property="sigunguId" column="sigungu_id" />
+		<result property="eventRecruitTypeId"
+			column="event_recruit_typeId" />
+		<result property="eventStatusId" column="event_status_id" />
+		<result property="eventName" column="event_name" />
+		<result property="eventContent" column="event_content"
+			jdbcType="CLOB" />
+		<result property="eventThumbnailImg"
+			column="event_thumbnail_img" />
+		<result property="eventDateCreated" column="event_date_created" />
+		<result property="eventRecruitStartDate"
+			column="event_recruit_start_date" />
+		<result property="eventRecruitEndDate"
+			column="event_recruit_end_date" />
+		<result property="eventStartDate" column="event_start_date" />
+		<result property="eventEndDate" column="event_end_date" />
+		<result property="eventMaxPeople" column="event_max_people" />
+		<result property="eventAddr" column="event_addr" />
+		<result property="eventFavoriteCnt" column="event_favorite_cnt" />
+		<result property="eventViewCnt" column="event_view_cnt" />
+		<result property="eventStatus" column="event_status" />
+	</resultMap>
+
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT
+		COUNT(*) FROM EVENT WHERE S_ID = #{sId}
+	</select>
+
+	<select id="getEventInfo" parameterType="int"
+		resultType="RequestEventDTO">
+		SELECT
+		EVENT_ID ,
+		S_ID ,
+		POST_TYPE_ID ,
+		EVENT_IMG_ID ,
+		SIGUNGU_ID ,
+		EVENT_RECRUIT_TYPE_ID ,
+		EVENT_STATUS_ID ,
+		EVENT_NAME ,
+		EVENT_CONTENT ,
+		EVENT_THUMBNAIL_IMG ,
+		EVENT_DATE_CREATED ,
+		EVENT_RECRUIT_START_DATE ,
+		EVENT_RECRUIT_END_DATE ,
+		EVENT_START_DATE ,
+		EVENT_END_DATE ,
+		EVENT_MAX_PEOPLE ,
+		EVENT_ADDR ,
+		EVENT_FAVORITE_CNT ,
+		EVENT_VIEW_CNT
+		FROM
+		(SELECT ROW_NUMBER() OVER(ORDER BY
+		EVENT_DATE_CREATED DESC) NUM, E.* FROM
+		EVENT E WHERE S_ID = #{sId})
+		WHERE NUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="selectByNo" parameterType="int"
+		resultType="RequestEventDTO">
+		SELECT *
+		FROM EVENT
+		WHERE EVENT_ID = #{eventId}
+	</select>
+
+	<select id="selectParticipantCount" parameterType="int"
+		resultType="int">
+		SELECT COUNT(*) FROM EVENT_WINNER_1 WHERE EVENT_ID =
+		#{eventId}
+	</select>
+
+	<select id="selectParticipantByNo" parameterType="int"
+		resultType="EventWinner">
+		SELECT
+		EVENT_REPORT_ID ,
+		U_ID ,
+		EVENT_ID ,
+		EVENT_PROGRESS_STATUS_ID ,
+		EVENT_STORY
+		FROM
+		(SELECT ROW_NUMBER()
+		OVER(ORDER BY
+		EVENT_REPORT_ID DESC) NUM, W.* FROM
+		EVENT_WINNER_1 W WHERE
+		EVENT_ID = #{eventId})
+		WHERE NUM BETWEEN #{start}
+		AND #{end}
+	</select>
+
+	<select id="selectWinnerCount" parameterType="int"
+		resultType="int">
+		SELECT COUNT(*) FROM EVENT_WINNER_1 WHERE EVENT_ID =
+		#{eventId}
+		AND EVENT_PROGRESS_STATUS_ID = 3
+	</select>
+
+	<select id="selectWinnerByNo" parameterType="int"
+		resultType="EventWinner">
+		SELECT
+		EVENT_REPORT_ID ,
+		U_ID ,
+		EVENT_ID ,
+		EVENT_PROGRESS_STATUS_ID ,
+		EVENT_STORY
+		FROM
+		(SELECT ROW_NUMBER()
+		OVER(ORDER BY
+		EVENT_REPORT_ID DESC)
+		NUM, W.* FROM
+		EVENT_WINNER_1 W WHERE
+		EVENT_ID = #{eventId}
+		AND
+		EVENT_PROGRESS_STATUS_ID
+		= 3)
+		WHERE NUM BETWEEN
+		#{start} AND #{end}
+	</select>
+
+	<update id="updateByEvent" parameterType="map"> <!-- map : key,value / param으로 이루어진, 각자각자의 param(키)을 한개이상씩담아둔거 2개이상일때 map을해줌 -->
+		UPDATE EVENT SET EVENT_NAME = #{eventName} WHERE EVENT_ID = #{eventId}
+	</update>
+
+	<update id="updateByCancel" parameterType="int">
+		update event set
+		event_status_id = 5 where event_id = #{eventId}
+	</update>
+</mapper>

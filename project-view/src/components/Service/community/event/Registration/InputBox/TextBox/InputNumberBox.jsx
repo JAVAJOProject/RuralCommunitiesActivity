@@ -9,6 +9,7 @@ export default function InputNumberBox({
   placeholder,
   valueState,
   handleValueState,
+  isRequired,
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -37,6 +38,7 @@ export default function InputNumberBox({
         placeholder={placeholder}
         valueState={valueState}
         handleValueState={handleValueState}
+        isRequired={isRequired}
       />
     </div>
   );

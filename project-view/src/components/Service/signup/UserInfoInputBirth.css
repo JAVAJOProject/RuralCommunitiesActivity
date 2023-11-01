@@ -1,0 +1,13 @@
+.userInfoInputBirth,
+.userInfoInputBirth .react-datepicker__input-container input {
+  width: 29.5rem;
+  height: 4rem;
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  border: none;
+  padding: 0.7rem;
+
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

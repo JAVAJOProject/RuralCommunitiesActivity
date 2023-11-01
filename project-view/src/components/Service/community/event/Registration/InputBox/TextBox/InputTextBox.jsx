@@ -8,6 +8,7 @@ export default function InputTextBox({
   isReadOnly,
   defaultValue,
   isCenter,
+  isRequired,
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -35,6 +36,7 @@ export default function InputTextBox({
         isReadOnly={isReadOnly}
         value={defaultValue}
         isCenter={isCenter}
+        isRequired={isRequired}
       />
     </div>
   );

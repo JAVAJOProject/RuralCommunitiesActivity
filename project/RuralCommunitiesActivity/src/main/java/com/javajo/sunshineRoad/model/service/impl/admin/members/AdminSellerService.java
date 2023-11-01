@@ -1,15 +1,20 @@
 package com.javajo.sunshineRoad.model.service.impl.admin.members;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.javajo.sunshineRoad.model.dao.admin.members.AdminSellerCntDAO;
 import com.javajo.sunshineRoad.model.dao.admin.members.AdminSellerDAO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ASCommunityDTO;
+
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminSellerDTO;
 import com.javajo.sunshineRoad.model.service.IService.admin.members.IAdminSellerService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityCntService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,6 +44,17 @@ public class AdminSellerService implements IAdminSellerService {
 		return adminSellerDAO.getAllSeller(startPostNo,endPostNo);
 	}
 
+	
+	// total Count
+	public Integer totalCountSeller() {
+		System.out.println("[SellerService] totalCountSeller()");
+		int totalCount = 0;
+		totalCount = adminSellerCntDAO.getTotalCount();
+		return totalCount;
+	}
+	
+	
+	
 	// 아이디 조회
 	@Override
 	public List<AdminSellerDTO> selectSellerID(int sId) {
@@ -48,20 +64,30 @@ public class AdminSellerService implements IAdminSellerService {
 
 	// 가입일 기간 조회
 	@Override
-	public List<AdminSellerDTO> selectSellerDATE(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+
+	public List<AdminSellerDTO> selectSellerDate(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+
 		System.out.println("[SellerService] selectSellerDATE(map)");
 		
 		int totalCount = 0;
-		
 		totalCount = adminSellerCntDAO.selectSellerDATECnt(searchDTO);
-		
+
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-
-
         return adminSellerDAO.selectSellerDATE(searchDTO,startPostNo,endPostNo);
 	}
 
+	// 가입일 조회 total Count
+	public Integer selectSellerDateTotalCount(ASearchDTO searchDTO) {
+		System.out.println("[SellerService] selectSellerDateTotalCount()");
+		
+		int totalCount = 0;
+		totalCount = adminSellerCntDAO.selectSellerDATECnt(searchDTO);
+		return totalCount;
+	}	
+	
+	
+	
 	// 수정
 	@Override
 	public void updateSeller(AdminSellerDTO adminSellerDTO) throws Exception {
@@ -90,6 +116,17 @@ public class AdminSellerService implements IAdminSellerService {
 
         return adminSellerDAO.appSeller(startPostNo,endPostNo);
 	}
+	
+	// 가입승인 조회 total Count
+	public Integer appSellerTotalCount() {
+		System.out.println("[SellerService] appSellerTotalCount()");
+		
+		int totalCount = 0;
+		totalCount = adminSellerCntDAO.appSellerCnt();
+		return totalCount;
+	}		
+	
+	
 
 	//가입승인하기
 	public void updateApp(int sId) {
@@ -99,18 +136,28 @@ public class AdminSellerService implements IAdminSellerService {
 
 	//작성한글 보기
 	@Override
+
 	public List<AdminSellerDTO> wrotePost(int id,int requestPageNo, int perPagePostCount) {
+
 		System.out.println("[SellerService] wrotePost()");
 		
 		int totalCount = 0;
-		
 		totalCount = adminSellerCntDAO.wrotePostCnt(id);
 		
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);      
 
-        
         return adminSellerDAO.wrotePost(id,startPostNo,endPostNo);
 	}
+	
+	// 작성한글 조회 total Count
+	public Integer wrotePostTotalCount(int id) {
+		System.out.println("[SellerService] appSellerTotalCount()");
+		
+		int totalCount = 0;
+		totalCount = adminSellerCntDAO.wrotePostCnt(id);
+		return totalCount;
+	}		
+		
 	
 }

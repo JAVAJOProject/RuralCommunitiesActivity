@@ -73,6 +73,7 @@ export default function RootLayoutRecActKeyword() {
     }
     fetchContents();
   }, [keywordUrl]);
+
   const { mainTitle, subtitle, orders } = contents;
   subtitle.text = `전체 ${totalPostNo}건`;
 

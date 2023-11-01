@@ -1,25 +1,19 @@
 package com.javajo.sunshineRoad.controller.admin.member;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AEmailDTO;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminEmailService;
+import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminMemberService;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminSellerService;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminService;
-
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin/memberService")
@@ -52,7 +46,29 @@ public class AdminMemberServiceController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	// 가입승인요청건 조회하기 필터링
+	@Transactional
+	@GetMapping("/checkApprovalTotalCount/{memType}/{requestPageNo}")
+	public List<Integer> checkApprovalTotalCount(@PathVariable int requestPageNo, @PathVariable int memType) {
 
+		int perPagePostCount = 8;
+		int totalPostNo = 0;
+		try {
+			if (memType == 2) {
+				totalPostNo = sellerService.appSellerTotalCount();
+			} else if (memType == 3) {
+				totalPostNo = adminService.appAdminTotalCount();
+			} else {
+				totalPostNo = 1;
+			}
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		}
+	}
+	
+	
 	// 가입승인요청건 승인하기
 	@Transactional
 	@GetMapping("updateApproval/{memType}/{id}")

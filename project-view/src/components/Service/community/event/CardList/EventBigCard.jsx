@@ -23,6 +23,7 @@ export default function EventBigCard({ contents }) {
         navigate(`/app/community/event/board/detail/${eventId}`, {
           state: { boardType: 'card' },
         });
+        window.scrollTo(0, 0);
       }}
     >
       <EventBigCardImg

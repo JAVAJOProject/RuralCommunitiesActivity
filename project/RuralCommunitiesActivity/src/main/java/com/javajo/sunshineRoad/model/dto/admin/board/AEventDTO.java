@@ -20,7 +20,7 @@ public class AEventDTO {
 
 	
 	private int eventId;
-	@JsonProperty
+	@JsonProperty("s_id")
 	private int sId;
 	private int postTypeId;
 	private int eventImgId;

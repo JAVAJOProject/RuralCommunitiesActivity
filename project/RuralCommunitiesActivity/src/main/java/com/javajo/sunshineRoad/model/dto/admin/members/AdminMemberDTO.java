@@ -19,33 +19,33 @@ import lombok.Setter;
 @Alias("AMember")
 public class AdminMemberDTO {
 
-	@JsonProperty
+	@JsonProperty("u_id")
 	private int uId;
 	private int memTypeId;//1
-	@JsonProperty
+	@JsonProperty("u_name")
 	private String uName;
-	@JsonProperty
+	@JsonProperty("u_email")
 	private String uEmail;
-	@JsonProperty
+	@JsonProperty("u_nick")
 	private String uNick;
-	@JsonProperty
+	@JsonProperty("u_pw")
 	private String uPw;
-	@JsonProperty
+	@JsonProperty("u_tel")
 	private String uTel;
-	@JsonProperty
+	@JsonProperty("u_reg_date")
 	private String uRegDate;
-	@JsonProperty
+	@JsonProperty("u_marketing")
 	private int uMarketing;
-	@JsonProperty
+	@JsonProperty("u_gender")
 	private String uGender;
-	@JsonProperty
+	@JsonProperty("u_birth")
 	private String uBirth;
-	@JsonProperty
+	@JsonProperty("u_google")
 	private String uGoogle;
-	@JsonProperty
-	private String uNaver_login;
-	@JsonProperty
-	private String uKakao_login;
+	@JsonProperty("u_naver_login")
+	private String uNaverLogin;
+	@JsonProperty("u_kakao_login")
+	private String uKakaoLogin;
 	
 
 	

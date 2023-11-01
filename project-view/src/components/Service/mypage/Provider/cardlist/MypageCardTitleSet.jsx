@@ -24,6 +24,7 @@ export default function MypageCardTitleSet({
         eventStatus={eventStatus}
       />
       <MypageListBtn imgSrc={listBtn.imgSrc} text={listBtnText} />
+      {/*//TODO: 이벤트 상태에 따라 조건부 렌더링*/}
     </div>
   );
 }

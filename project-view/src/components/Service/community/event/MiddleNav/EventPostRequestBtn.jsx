@@ -3,9 +3,9 @@ import './EventPostRequestBtn.css';
 
 const text = '이벤트 게재 요청하기';
 
-export default function EventPostRequestBtn() {
+export default function EventPostRequestBtn({ handleClick }) {
   return (
-    <button className="eventPostRequestBtn">
+    <button className="eventPostRequestBtn" onClick={handleClick}>
       <p>{text}</p>
     </button>
   );

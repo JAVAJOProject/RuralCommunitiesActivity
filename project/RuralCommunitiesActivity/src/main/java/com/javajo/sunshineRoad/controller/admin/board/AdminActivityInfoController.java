@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -23,7 +24,13 @@ import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityCntService;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminEventService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminMCommunityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecActivityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecTownService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminSCommunityService;
 
 
 @RestController
@@ -58,6 +65,7 @@ public class AdminActivityInfoController {
 	@GetMapping("/getAll/{requestPageNo}")
 	public ResponseEntity<List<AActivityDTO>> getAllActivity(@PathVariable int requestPageNo) {
 
+
 		List<AActivityDTO> result = new ArrayList<>();
 		try {
 			int perPagePostCount = 8;
@@ -80,18 +88,14 @@ public class AdminActivityInfoController {
 
 		int perPagePostCount = 8;
 		
-		
 		List<AActivityDTO> result = new ArrayList<>();
 		try {
-			
 			if(searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {
 				result.addAll(activityService.selectDateActivity(searchDTO,requestPageNo,perPagePostCount));
 			}else {
 				result.addAll(activityService.selectActivity(searchDTO,requestPageNo,perPagePostCount));
 			}
-			
 			return new ResponseEntity<>(result, HttpStatus.OK);
-			
 		}catch(Exception e) {
 			return ResponseEntity.badRequest().build();
 		}
@@ -102,7 +106,6 @@ public class AdminActivityInfoController {
 	@Transactional
 	@GetMapping("detail/{aId}")
 	public List<AActivityDTO> detailActivity (@PathVariable int aId){
-		System.out.println("detailActivity");
 		return activityService.detailActivity(aId);
 	}
 	
@@ -120,7 +123,6 @@ public class AdminActivityInfoController {
             @RequestPart(value = "data") AActivityDTO activityDTO ){
 		
 		
-		System.out.println("됫나");
 		//이미지 5개가 넘는경우
 		if(imgFiles.size() > 5) {
 			AdminResponseDTO response = AdminResponseDTO.builder().errorMsg("이미지는 5개까지 업로드 가능").build();
@@ -128,17 +130,13 @@ public class AdminActivityInfoController {
 		}
 		try {
 			//파일이 없는 경우
-			System.out.println("객체저장");
 			activityService.registrationActivity(activityDTO);
 		
 		if(!imgFiles.isEmpty()) {
 			//파일이 있는경우
 			String requestPostType = "totalActivity";
-			System.out.println("파일저장");
-			
 			storeRequestImagesService.storeRequestImages(requestPostType, adminActivityImageUploadMarker, imgFiles);
 			}
-		
 		AdminResponseDTO response = AdminResponseDTO.builder().resultMsg("체험서비스 등록 완료").build();
 		return ResponseEntity.ok(response);
 			
@@ -151,7 +149,7 @@ public class AdminActivityInfoController {
 	
 	// 수정하기 update
 	@Transactional
-    @PostMapping(value = "/modify",
+    @PutMapping(value = "/modify",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {"application/json; charset=utf-8"})
 	public ResponseEntity<AdminResponseDTO> modifyActivity(
@@ -159,8 +157,6 @@ public class AdminActivityInfoController {
             @RequestPart(value = "data") AActivityDTO activityDTO ){
 		
 		try {
-			
-			System.out.println("객체수정");
 			activityService.modifyActivityPost(activityDTO);
 			
 			if(!imgFiles.isEmpty()) {
@@ -169,7 +165,6 @@ public class AdminActivityInfoController {
 				
 				System.out.println(result);
 				String requestPostType = "totalActivity";
-				System.out.println("파일재저장");//마커 메소드에 수정할 이미지 아이디 찾기 만들어서 store서비스에서 그거 요청해서 저장하는 메서드를 만들어야 할듯 시향이에게 물어보깅
 				storeRequestImagesService.storeRequestImages(requestPostType, adminActivityImageUploadMarker, imgFiles);
 			}
 			AdminResponseDTO response = AdminResponseDTO.builder().resultMsg("체험서비스 수정 완료").build();

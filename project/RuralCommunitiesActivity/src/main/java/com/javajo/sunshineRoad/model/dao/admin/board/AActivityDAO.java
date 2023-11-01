@@ -1,14 +1,17 @@
 package com.javajo.sunshineRoad.model.dao.admin.board;
 
-import com.javajo.sunshineRoad.mappers.admin.AdminActivityMapper;
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityImgDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.javajo.sunshineRoad.mappers.admin.board.AdminActivityCntMapper;
+import com.javajo.sunshineRoad.mappers.admin.board.AdminActivityMapper;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityImgDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -52,55 +55,6 @@ public class AActivityDAO {
 		
 		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
 		return activityMapper.selectDateReservation(searchDTO,startPostNo,endPostNo);
-	}
-	
-	//시도 조회
-	public List<AActivityDTO> selectSIDO(int sido){
-		
-		System.out.println("[ActivityDAO] selectSIDO()");				
-		
-		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
-		return activityMapper.selectSIDO(sido);
-	}	
-	
-	//지역 조회
-	public List<AActivityDTO> selectRegion(int sigungu){
-		
-		System.out.println("[ActivityDAO] selectRegion()");
-		
-		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
-		return activityMapper.selectRegion(sigungu);
-	}
-
-
-	//체험명조회
-	public List<AActivityDTO> selectName(String keyword){
-		
-		System.out.println("[ActivityDAO] selectName()");
-		
-		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
-		return activityMapper.selectName(keyword);
-	}
-
-
-	//예약금액 조회
-	public List<AActivityDTO> selectCharge(int charge){
-		
-		System.out.println("[ActivityDAO] selectCharge()");
-		
-		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
-		return activityMapper.selectCharge(charge);
-	}
-
-
-	//테마별 조회
-	public List<AActivityDTO> selectTheme(int theme){
-		
-		System.out.println("[ActivityDAO] selectTheme()");
-		
-		theme += 10;//db수정되면 이코드는 지워도됨
-		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
-		return activityMapper.selectTheme(theme);
 	}
 
 

@@ -1,0 +1,28 @@
+.recTownGuideTitle {
+  margin: 3rem auto 2rem;
+}
+
+.recTownGuideTitle > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recTownGuideTitle > div > img {
+  width: 9.25rem;
+  margin-left: -1.5rem;
+  margin-right: 1.5rem;
+}
+.recTownGuideTitle > div > h2 {
+  text-align: center;
+  font-family: Jua;
+  font-size: 2.8125rem;
+  font-weight: 400;
+}
+
+.recTownGuideTitle > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+}

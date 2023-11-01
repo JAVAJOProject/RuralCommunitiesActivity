@@ -1,0 +1,12 @@
+form.recTownReportContents.was-validated input:invalid,
+form.recTownReportContents.was-validated textarea:invalid,
+form.recTownReportContents.was-validated input:invalid .inputSelect,
+form.recTownReportContents.was-validated select:invalid {
+  border-color: red;
+}
+
+form.recTownReportContents.was-validated
+  .inputAttach:has(input:invalid)
+  input.inputAttachBtn {
+  background: red;
+}

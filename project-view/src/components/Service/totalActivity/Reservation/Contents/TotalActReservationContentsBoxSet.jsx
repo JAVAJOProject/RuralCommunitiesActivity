@@ -1,22 +1,27 @@
-import React, { useContext, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import './TotalActReservationContentsBoxSet.css'
+
 import InputTextBox from '../../../community/event/Registration/InputBox/TextBox/InputTextBox';
 import InputNumberBox from '../../../community/event/Registration/InputBox/TextBox/InputNumberBox';
 import InputSelectDateBox from '../../../community/event/Registration/InputBox/TextBox/InputSelectDateBox';
 import InputReadOnlyDateBox from '../../../community/event/Registration/InputBox/TextBox/InputReadOnlyDateBox';
 import InputMapBox from '../../../community/event/Registration/InputBox/TextBox/InputMapBox';
 import InputBtnBox from '../../../community/event/Registration/InputBtn/InputBtnBox';
-import { useImmer } from 'use-immer';
-import { UserInfoContext } from '../../../../../security/UserInfo';
+import InputHidden from '../../../community/event/Registration/InputBox/TextBox/InputHidden';
 
 export default function TotalActReservationContentsBoxSet({
   contents,
-  api,
-  method,
   data,
+  handleConfirmModalSet,
+  handleYNModalSet,
 }) {
-  const { userInfo } = useContext(UserInfoContext);
   const [headCountState, setHeadCountState] = useState(null);
+
+  const formRef = useRef(null);
+  const [wasValidated, setWasValidated] = useState(false);
+
   const {
+    postId,
     title,
     date,
     actAddr,
@@ -27,23 +32,13 @@ export default function TotalActReservationContentsBoxSet({
     map,
     buttons,
   } = contents;
-  const {
-    aPostId,
-    aName,
-    recruitStartDate,
-    recruitEndDate,
-    startDate,
-    endDate,
-    addr,
-    availablePeople,
-    ratePerPerson,
-  } = data;
-
-  const tempUId = 1; // temp
-  const tempUName = '김경미'; // temp, 백에서 조회해서 이름 알아왔다고 가정, 1번이 다른 이름일수도 있음
+  const { aId, aName, aStartDate, aEndDate, aAddr, aCharge, availablePeople } =
+    data;
+  postId.value = aId;
 
   return (
-    <form action={api} method={method}>
+    <form ref={formRef} name="data" className={'totalActReservationContentsBoxSet' + (wasValidated ? ' was-validated' : '')}>
+      <InputHidden inputInfo={postId} />
       <InputTextBox
         inputInfo={title}
         isReadOnly={true}
@@ -52,20 +47,21 @@ export default function TotalActReservationContentsBoxSet({
       />
       <InputSelectDateBox
         inputInfo={date}
-        minDate={startDate}
-        maxDate={endDate}
+        minDate={aStartDate}
+        maxDate={aEndDate}
         placeholder="예약할 날짜 선택"
+        isRequired={true}
       />
       <InputTextBox
         inputInfo={actAddr}
         isReadOnly={true}
-        defaultValue={addr}
+        defaultValue={aAddr}
         isCenter={true}
       />
       <InputTextBox
         inputInfo={participant}
         isReadOnly={true}
-        defaultValue={tempUName}
+        defaultValue={participant.value}
         isCenter={true}
       />
       <InputNumberBox
@@ -74,12 +70,13 @@ export default function TotalActReservationContentsBoxSet({
         placeholder={`최대 ${availablePeople}명까지 예약 가능`}
         valueState={headCountState}
         handleValueState={setHeadCountState}
+        isRequired={true}
       />
       <InputTextBox
         inputInfo={payment}
         isReadOnly={true}
         defaultValue={`${
-          !!headCountState ? headCountState * ratePerPerson : ratePerPerson
+          !!headCountState ? headCountState * aCharge : aCharge
         }원`}
         isCenter={true}
       />
@@ -87,8 +84,14 @@ export default function TotalActReservationContentsBoxSet({
         inputInfo={paymentDeadline}
         // placeholder="예약일로부터 7일 이내"
       />
-      <InputMapBox inputInfo={map} addr={addr} locationName={aName} />
-      <InputBtnBox inputInfo={buttons} />
+      <InputMapBox inputInfo={map} addr={aAddr} locationName={aName} />
+      <InputBtnBox
+        inputInfo={buttons}
+        formRef={formRef}
+        handleConfirmModalSet={handleConfirmModalSet}
+        handleYNModalSet={handleYNModalSet}
+        handleWasValidated={setWasValidated}
+      />
     </form>
   );
 }

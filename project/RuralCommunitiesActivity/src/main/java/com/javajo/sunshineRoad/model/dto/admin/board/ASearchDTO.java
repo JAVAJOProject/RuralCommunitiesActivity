@@ -16,13 +16,14 @@ import lombok.Setter;
 @Data
 public class ASearchDTO {
 
-	private int postType = 0;//게시판 타입
+	private int id;
+	private int memTypeId = 0;
 	private String startDate = "1900-01-01";
 	private String endDate = "9999-01-01";
 	private int dateType = 0;//체험 서비스 1시작 2종료 3예약일? , 이벤트 1응모일 2시작일 3작성일
 	private int sido = 0;
 	private int sigungu = 0;
-	private String keyword = "";
+	private String keyword = "ㅇㄹ어이ㅏㅇ닌";
 	private int charge = 0;
 	private int theme = 0;//체험 서비스 테마 ,  이벤트 모집방식
 	private int status = 0;//이벤트 상태

@@ -1,12 +1,16 @@
 package com.javajo.sunshineRoad.model.dao.admin.board;
 
-import com.javajo.sunshineRoad.mappers.admin.AdminMCommunityMapper;
-import com.javajo.sunshineRoad.model.dto.admin.board.AMCommunityDTO;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.javajo.sunshineRoad.mappers.admin.board.AdminActivityMapper;
+import com.javajo.sunshineRoad.mappers.admin.board.AdminMCommunityMapper;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AMCommunityDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor

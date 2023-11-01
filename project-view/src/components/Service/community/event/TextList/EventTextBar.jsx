@@ -48,7 +48,11 @@ export default function TextBar({ contents }) {
       <EventTextContent
         text={{ title: contentType.maxPeople, maxPeople: eventMaxPeople }}
       />
-      <EventApplyBtn size="small" type={eventRecruitTypeId} />
+      <EventApplyBtn
+        size="small"
+        type={eventRecruitTypeId}
+        link={`/app/community/event/apply/${eventId}`}
+      />
     </div>
   );
 }

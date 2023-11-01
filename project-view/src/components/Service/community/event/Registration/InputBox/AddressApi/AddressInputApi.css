@@ -5,7 +5,7 @@
 .addressInputApi input {
   border-radius: 0.4375rem;
   border: 0.5px solid #000;
-  background: rgba(231, 231, 231, 0.1);
+  background: #fff;
   padding: 0.3rem;
 
   overflow: hidden;
@@ -61,5 +61,5 @@
   width: 46.807rem;
 }
 .addressInputApi > div:last-of-type input {
-  width: 22.8rem;
+  width: 22.9rem;
 }

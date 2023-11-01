@@ -39,7 +39,11 @@ export default function EventSmallCardText({
           content={[eventMaxPeople]}
         />
       </ul>
-      <EventApplyBtn size={'small'} type={type} postId={eventId} />
+      <EventApplyBtn
+        size={'small'}
+        type={type}
+        link={`/app/community/event/apply/${eventId}`}
+      />
     </div>
   );
 }

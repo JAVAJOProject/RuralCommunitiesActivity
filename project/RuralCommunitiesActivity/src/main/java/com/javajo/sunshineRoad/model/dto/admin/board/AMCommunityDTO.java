@@ -19,7 +19,7 @@ import lombok.Setter;
 public class AMCommunityDTO {
 
 	private int communityPostId;
-	@JsonProperty
+	@JsonProperty("u_id")
 	private int uId;
 	private int postTypeId;
 	private int communityImgId;

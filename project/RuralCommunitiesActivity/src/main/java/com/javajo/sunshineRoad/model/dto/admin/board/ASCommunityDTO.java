@@ -18,7 +18,7 @@ import lombok.Setter;
 @Alias("ASCommunity")
 public class ASCommunityDTO {
 	private int sellerCommunityPostId;
-	@JsonProperty
+	@JsonProperty("s_id")
 	private int sId;
 	private int postTypeId;
 	private String sellerCommunityContent;

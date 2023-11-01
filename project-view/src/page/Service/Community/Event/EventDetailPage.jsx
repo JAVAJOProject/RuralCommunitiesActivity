@@ -64,7 +64,10 @@ export default function EventDetailPage() {
       <EventFirstBox defaultContents={defaultContents} data={eventContents} />
       <EventImageBox images={eventImages} />
       <EventContentBox content={eventContents} />
-      <ApplyBtnSet content={eventContents} />
+      <ApplyBtnSet
+        content={eventContents}
+        applyLink={`/app/community/event/apply/${eventId}`}
+      />
     </div>
   );
 }

@@ -1,12 +1,13 @@
 package com.javajo.sunshineRoad.model.dao.admin.members;
 
-import com.javajo.sunshineRoad.mappers.admin.AdminMapper;
+import com.javajo.sunshineRoad.mappers.admin.member.AdminMapper;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository

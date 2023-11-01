@@ -1,0 +1,51 @@
+.accommodationBanner {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 22.99981rem;
+  position: relative;
+
+  margin: 5rem auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 1.5rem;
+
+}
+
+.accommodationBanner > img {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  height: 22.99981rem;
+  position: absolute;
+  object-fit: cover;
+}
+
+.accommodationBannerMini {
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+.accommodationBannerMini > img {
+  width: 2.60794rem;
+  object-fit: contain;
+  margin-right: 0.4rem;
+}
+
+.accommodationBanner h2,
+.accommodationBanner h4 {
+  color: #22af96;
+  font-family: Jua;
+  font-weight: 400;
+}
+
+.accommodationBanner h2 {
+  font-size: 1.875rem;
+  margin: 1rem 1.5rem 1.5rem;
+}
+.accommodationBanner h4 {
+  font-size: 1.25rem;
+}

@@ -1,18 +1,36 @@
 package com.javajo.sunshineRoad.controller.admin.board;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AMCommunityDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASCommunityDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
+import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityCntService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminEventService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminMCommunityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecActivityService;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecTownService;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminSCommunityService;
 
 

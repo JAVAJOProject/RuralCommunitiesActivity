@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.javajo.sunshineRoad.model.dao.admin.board.AActivityDAO;
 import com.javajo.sunshineRoad.model.dao.admin.board.ARecTownDAO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ARecTownDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ARecTownImgDTO;

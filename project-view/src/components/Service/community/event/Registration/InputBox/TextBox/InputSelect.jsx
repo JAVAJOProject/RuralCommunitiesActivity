@@ -27,6 +27,9 @@ export default function InputSelect({
           value={inputValue}
           name={inputName}
           checked={inputValue === +checkedValue}
+          onChange={() => {
+            handleCheckedValue(inputValue);
+          }}
         />
         <p>{inputLabel}</p>
       </div>

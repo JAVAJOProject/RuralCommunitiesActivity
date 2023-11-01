@@ -1,8 +1,9 @@
 package com.javajo.sunshineRoad.controller.admin.board;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AEventDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AFaqDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeImgDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityService;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminFaqService;
 
 @RestController

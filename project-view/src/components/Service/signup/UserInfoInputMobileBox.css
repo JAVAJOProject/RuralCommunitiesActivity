@@ -1,0 +1,12 @@
+.userInfoInputMobileBox {
+  display: flex;
+  align-items: center;
+  margin: 1rem auto;
+}
+
+.userInfoInputMobileBox > p {
+  margin: 1rem;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

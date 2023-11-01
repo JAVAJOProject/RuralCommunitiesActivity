@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeImgDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ARecActivityDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminNoticeService;

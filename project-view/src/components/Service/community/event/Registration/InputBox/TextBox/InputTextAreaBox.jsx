@@ -3,7 +3,7 @@ import LabelBox from '../LabelBox';
 import InputTextArea from './InputTextArea';
 import './InputTextBox.css';
 
-export default function InputTextAreaBox({ inputInfo }) {
+export default function InputTextAreaBox({ inputInfo, isRequired }) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -28,6 +28,7 @@ export default function InputTextAreaBox({ inputInfo }) {
         inputName={inputName}
         inputId={inputName}
         style={{ ...style, width: '46.807rem' }}
+        isRequired={isRequired}
       />
     </div>
   );

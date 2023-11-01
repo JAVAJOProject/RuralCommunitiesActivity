@@ -1,0 +1,11 @@
+
+
+.inputInfoBox > input {
+    width: 18rem;
+    height: 2.1rem;
+    background: #FFFFFF;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    float: right;
+    margin-bottom: 0.96rem;
+}

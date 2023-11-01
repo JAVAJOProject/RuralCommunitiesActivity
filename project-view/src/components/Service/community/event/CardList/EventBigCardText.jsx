@@ -36,7 +36,11 @@ export default function EventBigCardText({
         />
         <EventBigCardTextList title={listTitle[2]} content={[eventMaxPeople]} />
       </ul>
-      <EventApplyBtn size={'big'} type={type} postId={eventId} />
+      <EventApplyBtn
+        size={'big'}
+        type={type}
+        link={`/app/community/event/apply/${eventId}`}
+      />
     </div>
   );
 }

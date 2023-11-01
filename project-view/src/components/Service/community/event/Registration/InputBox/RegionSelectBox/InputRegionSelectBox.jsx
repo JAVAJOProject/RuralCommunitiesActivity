@@ -8,6 +8,7 @@ export default function InputRegionSelectBox({
   regionSido,
   regionSigungu,
   selectedSido,
+  isRequired,
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -33,10 +34,13 @@ export default function InputRegionSelectBox({
         inputName={inputName[1]}
         regionSido={regionSido}
         selectedSido={selectedSido}
+        isOnlyRegion={true}
+        isRequired={isRequired}
       />
       <InputRegionSelectSigungu
         inputName={inputName[2]}
         regionSigungu={regionSigungu}
+        isRequired={isRequired}
       />
     </div>
   );

@@ -1,0 +1,9 @@
+form.eventRegistrationSet.was-validated input:invalid,
+form.eventRegistrationSet.was-validated textarea:invalid,
+form.eventRegistrationSet.was-validated input:invalid .inputSelect {
+  border-color: red;
+}
+
+form.eventRegistrationSet.was-validated .inputAttach:has(input:invalid) input.inputAttachBtn {
+  background: red;
+}

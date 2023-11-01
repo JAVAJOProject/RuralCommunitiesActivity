@@ -1,0 +1,7 @@
+form.totalActReservationContentsBoxSet.was-validated input:invalid,
+form.totalActReservationContentsBoxSet.was-validated textarea:invalid,
+form.totalActReservationContentsBoxSet.was-validated input:invalid .inputSelect,
+form.totalActReservationContentsBoxSet.was-validated
+  input.inputOneDate:invalid {
+  border-color: red;
+}

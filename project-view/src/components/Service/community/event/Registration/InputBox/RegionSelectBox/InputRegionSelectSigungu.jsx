@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './InputRegionSelect.css';
 
-export default function InputRegionSelectSigungu({ inputName, regionSigungu }) {
+export default function InputRegionSelectSigungu({ inputName, regionSigungu, isRequired }) {
   const [selectedSigunguId, setSelectedSigunguId] = useState('');
   const handleSelectedSigunguId = (e) => {
     setSelectedSigunguId(e.target.value);
@@ -14,11 +14,12 @@ export default function InputRegionSelectSigungu({ inputName, regionSigungu }) {
         value={selectedSigunguId}
         onChange={handleSelectedSigunguId}
         name={inputName}
+        isRequired={isRequired}
       >
         {regionSigungu.length > 0 &&
           regionSigungu.map((sigungu) => (
-            <option key={sigungu.typeId} value={sigungu.typeId}>
-              {sigungu.text}
+            <option key={sigungu.sigunguId} value={sigungu.sigunguId}>
+              {sigungu.sigunguName}
             </option>
           ))}
       </select>

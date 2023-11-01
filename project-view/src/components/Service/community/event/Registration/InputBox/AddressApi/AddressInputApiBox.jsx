@@ -3,7 +3,7 @@ import '../TextBox/InputTextBox.css';
 import LabelBox from '../LabelBox';
 import AddressInputApi from './AddressInputApi';
 
-export default function AddressInputApiBox({ inputInfo }) {
+export default function AddressInputApiBox({ inputInfo, isRequired }) {
   const { inputName, labelText, type } = inputInfo;
 
   let style;
@@ -24,7 +24,7 @@ export default function AddressInputApiBox({ inputInfo }) {
   return (
     <div className="inputTextBox">
       <LabelBox inputId={inputName} labelText={labelText} style={style} />
-      <AddressInputApi />
+      <AddressInputApi inputName={inputName} isRequired={isRequired} />
     </div>
   );
 }

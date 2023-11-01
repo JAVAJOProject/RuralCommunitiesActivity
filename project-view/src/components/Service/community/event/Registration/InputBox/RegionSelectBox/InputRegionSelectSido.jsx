@@ -5,6 +5,8 @@ export default function InputRegionSelectSido({
   inputName,
   regionSido,
   selectedSido,
+  isOnlyRegion,
+  isRequired,
 }) {
   const [selectedSidoId, setSelectedSidoId] = selectedSido;
   const handleSelectedSidoId = (e) => {
@@ -14,11 +16,16 @@ export default function InputRegionSelectSido({
   return (
     <div className="inputRegionSelect">
       <p>시도</p>
-      <select value={selectedSidoId} onChange={handleSelectedSidoId} name={inputName}>
-        <option value={0}>{'온라인'}</option>
+      <select
+        value={selectedSidoId}
+        onChange={handleSelectedSidoId}
+        name={inputName}
+        isRequired={isRequired}
+      >
+        {!isOnlyRegion && <option value={0}>{'온라인'}</option>}
         {regionSido.map((sido) => (
-          <option key={sido.typeId} value={sido.typeId}>
-            {sido.text}
+          <option key={sido.sidoId} value={sido.sidoId}>
+            {sido.sidoName}
           </option>
         ))}
       </select>

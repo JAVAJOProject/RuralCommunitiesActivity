@@ -1,0 +1,17 @@
+.accommodationTable {
+  margin: auto;
+  margin-bottom: 2rem;
+}
+
+.accommodationTable tr th,
+.accommodationTable tr td {
+  border: 0.2rem solid white;
+}
+
+.accommodationTable tr:nth-of-type(odd) td {
+  background-color: rgba(255, 213, 106, 0.11);
+}
+
+.accommodationTable tr:nth-of-type(even) td {
+  background-color: rgba(151, 221, 62, 0.1);
+}

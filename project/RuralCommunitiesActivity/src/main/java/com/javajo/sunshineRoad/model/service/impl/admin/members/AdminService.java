@@ -1,5 +1,6 @@
 package com.javajo.sunshineRoad.model.service.impl.admin.members;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminDTO;
 import com.javajo.sunshineRoad.model.service.IService.admin.members.IAdminService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
+import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityCntService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -39,7 +41,17 @@ public class AdminService implements IAdminService {
 		return adminDAO.getAllAdmin(startPostNo,endPostNo);
 	}
 	
-
+	// total Count
+	public Integer totalCountAdmin() {
+		System.out.println("[AdminService] totalCountAdmin()");
+		int totalCount = 0;
+		
+		totalCount = adminCntDAO.getTotalCount();
+		return totalCount;
+	}
+	
+	
+	
 	// 아이디 조회
 	@Override
 	public List<AdminDTO> selectAdminID(int adminId) {
@@ -49,19 +61,31 @@ public class AdminService implements IAdminService {
 
 	// 가입일 기간 조회
 	@Override
-	public List<AdminDTO> selectAdminDATE(ASearchDTO searchDTO,int requestPageNo,int perPagePostCount) {
-		System.out.println("[AdminService] selectAdminDATE(map)");
+
+	public List<AdminDTO> selectAdminDate(ASearchDTO searchDTO,int requestPageNo,int perPagePostCount) {
+
+		System.out.println("[AdminService] selectAdminDATE()");
 
 		int totalCount = 0;
-		
 		totalCount = adminCntDAO.selectAdminDATECnt(searchDTO);
-		
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
         return adminDAO.selectAdminDATE(searchDTO,startPostNo,endPostNo);
 	}
 
+	//가입일 기간 조회 필터링
+	public Integer selectAdminDateCount(ASearchDTO searchDTO) {
+
+		System.out.println("[AdminService] selectAdminDateCount()");
+
+		int totalCount = 0;
+		totalCount = adminCntDAO.selectAdminDATECnt(searchDTO);
+
+        return totalCount;
+	}
+	
+	
 	// 수정
 	@Override
 	public void updateAdmin(AdminDTO adminDTO) throws Exception {
@@ -88,10 +112,21 @@ public class AdminService implements IAdminService {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-
         return adminDAO.appAdmin(startPostNo,endPostNo);
 	}
 
+	// 승인조회 필터링
+	@Override
+	public Integer appAdminTotalCount() {
+		System.out.println("[AdminService] appAdminTotalCount()");
+		int totalCount = 0;
+		
+		totalCount = adminCntDAO.appAdminCnt();	
+        return totalCount;
+	}
+	
+	
+	
 	//승인하기
 	@Override
 	public void updateApp(int adminId) {

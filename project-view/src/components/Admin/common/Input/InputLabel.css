@@ -1,0 +1,17 @@
+.inputLabelBoxA {
+    /* display: inline-block; */
+    float: left;
+}
+
+.inputLabelA > li{
+    list-style: none;
+    /* box-sizing: border-box; */
+    width: 8rem;
+    background: #F3F6FF;
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+}

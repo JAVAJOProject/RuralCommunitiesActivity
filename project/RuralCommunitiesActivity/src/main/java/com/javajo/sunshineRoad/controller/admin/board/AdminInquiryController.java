@@ -2,7 +2,6 @@ package com.javajo.sunshineRoad.controller.admin.board;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AFaqDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AInquiryDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminInquiryService;

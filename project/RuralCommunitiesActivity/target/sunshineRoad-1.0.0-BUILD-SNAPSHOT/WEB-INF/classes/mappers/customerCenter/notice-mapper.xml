@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.customerCenter.NoticeMapper">
+  
+	<resultMap id="NoticeListInfoDTOForClob" type="NoticeListInfo">
+		<result property="noticeId" column="notice_id" />
+		<result property="noticeImgId" column="notice_img_id" />
+		<result property="noticeTypeId" column="notice_type_id" />
+		<result property="noticeTitle" column="notice_title" />
+		<result property="noticeContent" column="notice_content" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="noticeDateCreated" column="notice_date_created" />
+		<result property="noticeImg1" column="notice_img_1" />
+		<result property="noticeImg2" column="notice_img_2" />
+		<result property="noticeImg3" column="notice_img_3" />
+		<result property="noticeImg4" column="notice_img_4" />
+		<result property="noticeImg5" column="notice_img_5" />
+	</resultMap>
+	
+
+	
+	<!-- Oracle --> <!-- 전체 공지글 개수 --> 
+	<select id="getNoticeListCount" resultType="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	<!-- 카테고리별 공지글 개수 -->
+	<select id="getNoticeListCountCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM notice
+		WHERE notice_type_id = #{noticeTypeId}
+	</select>
+	<!--NOTICE notice noti, notice_type type, notice_images noim-->
+	
+	<!-- 전체 공지글 내용 -->
+	<select id="getRequestPageNoticeList" resultMap="NoticeListInfoDTOForClob">
+		SELECT 
+			 notice_id, 
+			NOTICE_IMG_ID, 
+			NOTICE_TYPE_ID,
+			notice_type_name,
+			notice_title, 
+			notice_date_created 
+		FROM (
+			SELECT seq,
+				notice_id, 
+				NOTICE_IMG_ID, 
+				NOTICE_TYPE_ID,
+				notice_type_name,
+				notice_title,
+				notice_date_created 
+			FROM (
+				SELECT ROWNUM AS seq,
+					notice_id, 
+					NOTICE_IMG_ID, 
+					NOTICE_TYPE_ID,
+					notice_type_name,
+					notice_title,
+					notice_date_created 
+				FROM (
+					SELECT  
+							noti.notice_id, 
+							noti.NOTICE_IMG_ID, 
+							noti.NOTICE_TYPE_ID,
+							type.notice_type_name,
+							noti.notice_title, 
+							noti.notice_date_created 
+					FROM 
+						notice noti
+				 			LEFT OUTER JOIN notice_type type ON (noti.notice_type_id = type.notice_type_id)
+						ORDER BY noti.notice_date_created DESC )			        
+				        )
+				        WHERE seq <![CDATA[>=]]> #{startPostNo}
+				        )
+				 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	</select>
+	<!-- 카테고리별 공지글 내용 -->
+	<select id="getRequestPageNoticeListList" resultMap="NoticeListInfoDTOForClob">
+			SELECT 
+			notice_id, 
+			NOTICE_IMG_ID, 
+			NOTICE_TYPE_ID,
+			notice_type_name,
+			notice_title,
+			notice_date_created 
+			FROM (
+				SELECT 
+				seq,
+				notice_id, 
+				NOTICE_IMG_ID, 
+				NOTICE_TYPE_ID,
+				notice_type_name,
+				notice_title,
+				notice_date_created 
+				FROM (
+					SELECT 
+					ROWNUM AS seq,
+					notice_id, 
+					NOTICE_IMG_ID, 
+					NOTICE_TYPE_ID,
+					notice_type_name,
+					notice_title,
+					notice_date_created 
+					FROM (
+					SELECT  
+							noti.notice_id, 
+							noti.NOTICE_IMG_ID, 
+							noti.NOTICE_TYPE_ID,
+							type.notice_type_name,
+							noti.notice_title,
+							noti.notice_date_created 
+						FROM notice noti
+				 			LEFT OUTER JOIN 
+						notice_type type 
+						ON (noti.notice_type_id = type.notice_type_id)
+						WHERE noti.notice_type_id=#{noticeTypeId}
+						ORDER BY noti.notice_date_created DESC)				        
+				        )
+				        WHERE seq <![CDATA[>=]]> #{startPostNo}
+				        )
+				 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	</select> 
+	<!--  공지글 상세페이지 내용 -->
+	<select id="getNoticeDetail" resultMap="NoticeListInfoDTOForClob" parameterType="int">
+	
+					SELECT  
+							noti.notice_id, 
+							noim.NOTICE_IMG_ID, 
+							noti.NOTICE_TYPE_ID,
+							type.notice_type_name,
+							noti.notice_title,
+							noti.notice_content, 
+							noti.notice_date_created,
+							noim.notice_img_1,
+							noim.notice_img_2,
+							noim.notice_img_3,
+							noim.notice_img_4,
+							noim.notice_img_5
+					FROM 
+						notice noti
+				 			LEFT OUTER JOIN 
+						notice_type type ON (noti.notice_type_id = type.notice_type_id)
+							LEFT OUTER JOIN
+						notice_images noim ON (noti.notice_img_id = noim.notice_img_id)
+					WHERE noti.notice_id = #{noticeId}
+				        
+				      
+	</select>
+	<!--  공지글 상세페이지 이미지 삽입 -->
+	<select id="getNoticeImagesByImgId" parameterType="int" resultType="NoticeImg">
+        SELECT
+            notice_img_id,
+            notice_img_1,
+            notice_img_2,
+            notice_img_3,
+            notice_img_4,
+            notice_img_5
+        FROM
+            notice_images
+        WHERE
+            notice_img_id = #{noticeImgId}
+    </select>
+	
+</mapper>

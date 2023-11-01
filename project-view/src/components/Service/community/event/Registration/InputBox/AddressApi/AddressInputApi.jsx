@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './AddressInputApi.css';
+import InputHidden from '../TextBox/InputHidden';
 
 const { daum } = window;
 
-export default function AddressInputApi() {
+export default function AddressInputApi({ inputName, isRequired }) {
+  const [detailAddress, setDetailAddress] = useState('');
+
   const [postcode, setPostcode] = useState('');
   const [roadAddress, setRoadAddress] = useState('');
   const [jibunAddress, setJibunAddress] = useState('');
@@ -50,18 +53,66 @@ export default function AddressInputApi() {
   return (
     <div className="addressInputApi">
       <div>
-        <input type="text" value={postcode} placeholder="우편번호" />
+        <input
+          type="text"
+          value={postcode}
+          placeholder="우편번호"
+          onChange={(e) => {
+            setPostcode(e.target.value);
+          }}
+          readOnly
+          required={isRequired}
+        />
         <button onClick={sample4_execDaumPostcode}>우편번호 찾기</button>
       </div>
       <div>
-        <input type="text" value={roadAddress} placeholder="도로명주소" />
-        <input type="text" value={jibunAddress} placeholder="지번주소" />
+        <input
+          type="text"
+          value={roadAddress}
+          placeholder="도로명주소"
+          onChange={(e) => {
+            setRoadAddress(e.target.value);
+          }}
+          readOnly
+          required={isRequired}
+        />
+        <input
+          type="text"
+          value={jibunAddress}
+          placeholder="지번주소"
+          onChange={(e) => {
+            setJibunAddress(e.target.value);
+          }}
+          readOnly
+          required={isRequired}
+        />
         <span style={{ color: '#999', display: guide ? 'block' : 'none' }}>
           {guide}
         </span>
-        <input type="text" placeholder="상세주소" />
-        <input type="text" value={extraAddress} placeholder="참고항목" />
+        <input
+          type="text"
+          value={detailAddress}
+          placeholder="상세주소"
+          onChange={(e) => {
+            setDetailAddress(e.target.value);
+          }}
+          required={isRequired}
+        />
+        <input
+          type="text"
+          value={extraAddress}
+          placeholder="참고항목"
+          onChange={(e) => {
+            setExtraAddress(e.target.value);
+          }}
+          readOnly
+        />
       </div>
+      <span>
+        <InputHidden
+          inputInfo={{ inputName, value: `${roadAddress} ${detailAddress}` }}
+        />
+      </span>
     </div>
   );
 }

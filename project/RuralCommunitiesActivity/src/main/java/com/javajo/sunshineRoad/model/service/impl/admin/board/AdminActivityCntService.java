@@ -16,11 +16,14 @@ public class AdminActivityCntService implements IAdminActivityCntService {
 	
 	@Override
 	public int getTotalCount() {
+		System.out.println("AdminActivityCntService");
+		
 		return activityCntDAO.getTotalCount();
 	}
 	
 	@Override
 	public int selectStartDateActivityCnt(ASearchDTO searchDTO) {
+		System.out.println("AdminActivityCntService");
 		return activityCntDAO.selectStartDateActivityCnt(searchDTO);
 	}
 
@@ -36,7 +39,8 @@ public class AdminActivityCntService implements IAdminActivityCntService {
 
 	@Override
 	public int selectActivityCnt(ASearchDTO searchDTO) {
-		return activityCntDAO.SelectActivityCnt(searchDTO);
+		System.out.println("AdminActivityCntService");
+		return activityCntDAO.selectActivityCnt(searchDTO);
 	}
 
 

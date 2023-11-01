@@ -1,6 +1,6 @@
 import { API_BASE_URL } from './api-config';
 
-async function networkCall(api, method, requestBody) {
+async function networkCall(api, method, requestBody, isTextResult) {
   let options = {
     headers: new Headers({
       // 'X-AUTH-TOKEN': token,
@@ -18,7 +18,9 @@ async function networkCall(api, method, requestBody) {
   return fetch(options.url, options)
     .then((response) => {
       if (response.ok) {
-        return response.json();
+        return isTextResult ? response.text() : response.json();
+      } else {
+        return isTextResult ? response.text() : response.json();
       }
     })
     .catch((error) => {
@@ -29,7 +31,7 @@ async function networkCall(api, method, requestBody) {
 
 export async function fetchOneContentGET(api) {
   try {
-    const data = await networkCall(api, 'GET', null);
+    const data = await networkCall(api, 'GET');
     return data;
   } catch (error) {
     console.error(error);
@@ -38,25 +40,7 @@ export async function fetchOneContentGET(api) {
 
 export async function fetchDataGET(api) {
   try {
-    const dataPromise = await networkCall(api, 'GET', null);
-    const data = await Promise.all(dataPromise);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-export async function fetchDataPOST(api, requestBody) {
-  try {
-    const dataPromise = await networkCall(api, 'POST', requestBody);
-    const data = await networkCall(dataPromise);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}
-export async function fetchDataETC(api, method, requestBody) {
-  try {
-    const dataPromise = await networkCall(api, method, requestBody);
+    const dataPromise = await networkCall(api, 'GET');
     const data = await Promise.all(dataPromise);
     return data;
   } catch (error) {
@@ -64,11 +48,124 @@ export async function fetchDataETC(api, method, requestBody) {
   }
 }
 
+// post or so + obj
+export async function fetchDataPOSTAndArr(api, requestBody, isTextResult) {
+  try {
+    const dataPromise = await networkCall(
+      api,
+      'POST',
+      requestBody,
+      isTextResult
+    );
+    const data = await Promise.all(dataPromise);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function fetchDataPOSTAndObj(api, requestBody, isTextResult) {
+  try {
+    const data = await networkCall(api, 'POST', requestBody, isTextResult);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function fetchDataETCAndObj(
+  api,
+  method,
+  requestBody,
+  isTextResult
+) {
+  try {
+    const data = await networkCall(api, method, requestBody, isTextResult);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// post or so + form
+async function networkCallForm(api, method, formRef, isTextResult) {
+  const formData = new FormData(formRef);
+  const objData = {};
+  formData.forEach((value, key) => {
+    objData[key] = value;
+  });
+  const jsonData = JSON.stringify(objData);
+
+  let options = {
+    headers: new Headers({
+      // 'X-AUTH-TOKEN': token,
+      'Content-Type': 'application/json',
+      credentials: 'include',
+    }),
+    url: API_BASE_URL + api,
+    method: method,
+    body: jsonData,
+  };
+
+  return fetch(options.url, options)
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return isTextResult ? response.text() : response.json();
+      } else {
+        console.log(response.status);
+        return isTextResult ? response.text() : response.json();
+      }
+    })
+    .catch((error) => {
+      console.log('http error');
+      console.log(error);
+    });
+}
+
+export async function fetchFormPOSTAndArr(api, formRef, isTextResult) {
+  try {
+    const dataPromise = await networkCallForm(
+      api,
+      'POST',
+      formRef.current,
+      isTextResult
+    );
+    const data = await Promise.all(dataPromise);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function fetchFormPOSTAndObj(api, formRef, isTextResult) {
+  try {
+    const data = await networkCallForm(
+      api,
+      'POST',
+      formRef.current,
+      isTextResult
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function fetchFormETCAndObj(api, method, formRef, isTextResult) {
+  try {
+    const data = await networkCallForm(
+      api,
+      method,
+      formRef.current,
+      isTextResult
+    );
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// image + get
 async function networkImgCall(api, method, requestBody) {
   let options = {
     headers: new Headers({
       // 'X-AUTH-TOKEN': token,
-      // 'Content-Type': 'image/',
       credentials: 'include',
     }),
     url: API_BASE_URL + api,
@@ -107,18 +204,25 @@ export async function fetchImgGET(fullData, idName, api) {
   return data;
 }
 
-async function networkPOSTImgCall(api, method, requestData, requestFiles) {
+// image + post + form
+async function networkPOSTImgCall(api, method, formRef, isTextResult) {
   const formData = new FormData();
+
+  const requestFiles = new FormData(formRef).getAll('files');
   requestFiles.forEach((file) => formData.append('files', file));
+
+  const requestBody = new FormData(formRef);
+  requestBody.delete('files');
   formData.append(
     'data',
-    new Blob([JSON.stringify(requestData)], { type: 'application/json' })
+    new Blob([JSON.stringify(Object.fromEntries(requestBody.entries()))], {
+      type: 'application/json',
+    })
   );
 
   let options = {
     headers: new Headers({
       // 'X-AUTH-TOKEN': token,
-      'Content-Type': 'multipart/form-data',
       credentials: 'include',
     }),
     url: API_BASE_URL + api,
@@ -129,7 +233,10 @@ async function networkPOSTImgCall(api, method, requestData, requestFiles) {
   return fetch(options.url, options)
     .then((response) => {
       if (response.status >= 200 && response.status < 300) {
-        return response.json();
+        return isTextResult ? response.text() : response.json();
+      } else {
+        console.log(response.status);
+        return isTextResult ? response.text() : response.json();
       }
     })
     .catch((error) => {
@@ -138,13 +245,12 @@ async function networkPOSTImgCall(api, method, requestData, requestFiles) {
     });
 }
 
-export async function fetchDataAndImgPOST(api, requestData, requestFiles) {
-  const dataPromise = await networkPOSTImgCall(
+export async function fetchDataAndImgPOST(api, formRef, isTextResult) {
+  const data = await networkPOSTImgCall(
     api,
     'POST',
-    requestData,
-    requestFiles
+    formRef.current,
+    isTextResult
   );
-  const data = await Promise.all(dataPromise);
   return data;
 }

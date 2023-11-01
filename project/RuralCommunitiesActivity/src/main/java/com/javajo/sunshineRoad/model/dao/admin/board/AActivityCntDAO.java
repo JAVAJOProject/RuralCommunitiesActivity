@@ -1,10 +1,12 @@
 package com.javajo.sunshineRoad.model.dao.admin.board;
 
-import com.javajo.sunshineRoad.mappers.admin.AdminActivityCntMapper;
-import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
-import lombok.RequiredArgsConstructor;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+
+import com.javajo.sunshineRoad.mappers.admin.board.AdminActivityCntMapper;
+import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
@@ -17,6 +19,8 @@ public class AActivityCntDAO {
 	
 	//전체카운트
 	public int getTotalCount() {
+		System.out.println("AActivityCntDAO");
+		
 		AdminActivityCntMapper activityCntMapper = sqlSession.getMapper(AdminActivityCntMapper.class);
 		return activityCntMapper.getTotalCount();
 	}
@@ -37,7 +41,9 @@ public class AActivityCntDAO {
 	}
 	
 	
-	public int SelectActivityCnt(ASearchDTO searchDTO) {
+	public int selectActivityCnt(ASearchDTO searchDTO) {
+		System.out.println("AActivityCntDAO");
+		
 		AdminActivityCntMapper activityCntMapper = sqlSession.getMapper(AdminActivityCntMapper.class);
 		int totalCnt = activityCntMapper.selectActivityCnt(searchDTO);
 		System.out.println(totalCnt);

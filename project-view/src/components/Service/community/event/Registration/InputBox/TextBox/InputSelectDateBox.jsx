@@ -8,6 +8,7 @@ export default function InputSelectDateBox({
   minDate,
   maxDate,
   placeholder,
+  isRequired
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -34,6 +35,7 @@ export default function InputSelectDateBox({
         minDate={minDate}
         maxDate={maxDate}
         placeholder={placeholder}
+        isRequired={isRequired}
       />
     </div>
   );
