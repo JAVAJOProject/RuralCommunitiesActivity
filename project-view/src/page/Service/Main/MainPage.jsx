@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import ContentBox from '../../../components/Service/main/ContentBox';
 import { useImmer } from 'use-immer';
 import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
+
+import ContentBox from '../../../components/Service/main/ContentBox';
 
 let initialContents = {
   recActivity: {

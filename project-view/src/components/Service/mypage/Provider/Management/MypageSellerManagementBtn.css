@@ -1,0 +1,28 @@
+.mypageSellerManagementBtn {
+  width: fit-content;
+}
+
+.mypageSellerManagementBtn > button {
+  height: 3rem;
+  border-radius: 0.625rem;
+  background: #000;
+  border: none;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+
+  color: #fff;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.mypageSellerManagementBtn > button:active {
+  background: none;
+  color: #000;
+  border: 0.1rem solid black;
+}
+.mypageSellerManagementBtn > button:disabled {
+  background: #b7b7b7;
+  color: #fff;
+}

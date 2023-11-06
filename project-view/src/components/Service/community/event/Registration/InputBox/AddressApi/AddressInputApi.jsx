@@ -4,7 +4,7 @@ import InputHidden from '../TextBox/InputHidden';
 
 const { daum } = window;
 
-export default function AddressInputApi({ inputName, isRequired }) {
+export default function AddressInputApi({ inputName, isRequired, className }) {
   const [detailAddress, setDetailAddress] = useState('');
 
   const [postcode, setPostcode] = useState('');
@@ -51,7 +51,7 @@ export default function AddressInputApi({ inputName, isRequired }) {
   }
 
   return (
-    <div className="addressInputApi">
+    <div className={className ? className : 'addressInputApi'}>
       <div>
         <input
           type="text"
@@ -63,7 +63,7 @@ export default function AddressInputApi({ inputName, isRequired }) {
           readOnly
           required={isRequired}
         />
-        <button onClick={sample4_execDaumPostcode}>우편번호 찾기</button>
+        <button onClick={sample4_execDaumPostcode}>주소 찾기</button>
       </div>
       <div>
         <input

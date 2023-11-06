@@ -1,11 +1,17 @@
 import React from 'react';
-import './InquirySearchingBox.css'
+import './InquirySearchingBox.css';
 
-export default function InquirySearchingBox({ imgSrc }) {
+export default function InquirySearchingBox({
+  imgSrc,
+  register,
+  searchingRef,
+}) {
   return (
-    <div className='inquirySearchingBox'>
-      <input type="text" />
-      <img src={imgSrc} alt="" />
+    <div className="inquirySearchingBox">
+      <input type="text" {...register('keyword')} />
+      <button type="submit" ref={searchingRef}>
+        <img src={imgSrc} alt="" />
+      </button>
     </div>
   );
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useImmer } from "use-immer";
+import { fetchDataGET } from "../../../../config/ApiService";
+
 import NoticeListBar from "../../../../components/Service/customerCenter/notice/NoticeListBar/NoticeListBar";
 import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
-import { fetchDataGET } from "../../../../config/ApiService";
 
 export default function NoticePage() {
   const location = useLocation();

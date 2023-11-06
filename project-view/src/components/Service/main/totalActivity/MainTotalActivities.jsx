@@ -6,6 +6,7 @@ import MainBigImg from './MainBigImg';
 import MainSmallCard from './MainSmallCard';
 import MainSmallImg from './MainSmallImg';
 import NationalMapCard from './NationalMapCard';
+import NationalMapImg from './NationalMapImg';
 
 export default function MainTotalActivities({ contents }) {
   const { bigImg, smallImgs } = contents;
@@ -37,15 +38,7 @@ export default function MainTotalActivities({ contents }) {
       </div>
       <div className="mainMapCard">
         <NationalMapCard>
-          <p
-            style={{
-              textAlign: 'center',
-              height: '25.2rem',
-              lineHeight: '25.2rem',
-            }}
-          >
-            '지도가 들어갈 곳입니다.'
-          </p>
+          <NationalMapImg />
         </NationalMapCard>
       </div>
     </div>

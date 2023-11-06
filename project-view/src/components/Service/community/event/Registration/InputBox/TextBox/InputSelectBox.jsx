@@ -3,8 +3,12 @@ import InputSelect from './InputSelect';
 import NotLabelBox from '../NotLabelBox';
 import './InputSelectBox.css';
 
-export default function InputSelectBox({ inputInfo, isRequired }) {
-  const [checkedValue, setCheckedValue] = useState(1);
+export default function InputSelectBox({
+  inputInfo,
+  isRequired,
+  defaultValue,
+}) {
+  const [checkedValue, setCheckedValue] = useState(defaultValue ?? 1);
   const { inputName, inputValue, inputLabel, labelText, type } = inputInfo;
 
   let style = { marginRight: '0.87rem', marginLeft: '0.3rem' };

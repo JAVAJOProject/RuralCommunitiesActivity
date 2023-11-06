@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './UserInfoInputRadioBox.css';
 import UserInfoLabelBox from './UserInfoLabelBox';
 import UserInfoInputRadio from './UserInfoInputRadio';
 
 export default function UserInfoInputRadioBox({ inputTexts, defaultValue }) {
+  const [value, setValue] = useState(defaultValue);
   const { inputName, labelText, inputType, valueRange, inputRange, radioImg } =
     inputTexts;
 
@@ -16,7 +17,8 @@ export default function UserInfoInputRadioBox({ inputTexts, defaultValue }) {
         inputType={inputType}
         value={valueRange[0]}
         text={inputRange[0]}
-        defaultValue={defaultValue}
+        defaultValue={value}
+        handleValue={setValue}
       />
       <UserInfoInputRadio
         images={radioImg}
@@ -24,7 +26,8 @@ export default function UserInfoInputRadioBox({ inputTexts, defaultValue }) {
         inputType={inputType}
         value={valueRange[1]}
         text={inputRange[1]}
-        defaultValue={defaultValue}
+        defaultValue={value}
+        handleValue={setValue}
       />
     </div>
   );

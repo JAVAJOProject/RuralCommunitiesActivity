@@ -1,5 +1,6 @@
 import React from 'react';
 import { useImmer } from 'use-immer';
+
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
 import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
 import MypageMemberUserInfoContents from '../../../../components/Service/mypage/Experiencer/UserInfoManagement/MypageMemberUserInfoContents';
@@ -16,7 +17,7 @@ const defaultContents = {
   },
   inputContents: {
     memberEmail: {
-      inputName: 'memberEmail',
+      inputName: 'uEmail',
       labelText: '이메일',
       inputType: 'text',
       inputPattern: [
@@ -25,7 +26,7 @@ const defaultContents = {
       ],
     },
     password: {
-      inputName: 'password',
+      inputName: 'uPw',
       labelText: '비밀번호',
       inputType: 'password',
       inputPattern:
@@ -39,24 +40,24 @@ const defaultContents = {
         '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/',
     },
     memberName: {
-      inputName: 'memberName',
+      inputName: 'uName',
       labelText: '이름',
       inputType: 'text',
     },
     nickName: {
-      inputName: 'nickName',
+      inputName: 'uNick',
       labelText: '닉네임',
       inputType: 'text',
     },
     mobile: {
-      inputName: 'memberMobile',
+      inputName: 'uTel',
       labelText: '전화번호',
       inputType: 'text',
       inputPattern: ['/^01d{1}$/', '/^d{3,4}$/', '/^d{4}$/'],
       btnText: '전화번호 인증',
     },
     gender: {
-      inputName: 'gender',
+      inputName: 'uGender',
       labelText: '성별',
       inputType: 'radio',
       valueRange: ['M', 'F'],
@@ -64,13 +65,13 @@ const defaultContents = {
       radioImg: [uncheckedImg, checkedImg],
     },
     birthInfo: {
-      inputName: 'birthInfo',
+      inputName: 'uBirth',
       labelText: '생년월일',
       inputType: 'date',
       inputRange: [new Date('1900-01-01'), new Date()],
     },
     marketing: {
-      inputName: 'marketing',
+      inputName: 'uMarketingConsent',
       labelText: '마케팅 수신 동의',
       inputType: 'checkbox',
       text: '마케팅 수신에 동의합니다.',
@@ -81,19 +82,19 @@ const defaultContents = {
         colorType: 'black',
         inputType: 'button',
         btnText: '수정하기',
-        handleClick: '',
+        handleClick(e, formRef) {},
       },
       {
         colorType: 'gray',
         inputType: 'reset',
         btnText: '입력 취소',
-        handleClick: '',
+        handleClick(e) {},
       },
       {
         colorType: 'gray',
         inputType: 'button',
         btnText: '탈퇴하기',
-        handleClick: '',
+        handleClick(e) {},
       },
     ],
   },
@@ -109,7 +110,7 @@ const testContents = {
   uTel: '01000000000',
   uBirth: '2023-08-07',
   uGender: 'F',
-  uMarketing: 1,
+  uMarketingConsent: 1,
   uGoogleLogin: null,
   uNaverLogin: null,
   uKakaoLogin: null,
@@ -130,7 +131,6 @@ export default function MypageMemberUserInfoPage() {
       <MypageMemberUserInfoContents
         inputContents={inputContents}
         userInfoData={userInfoData}
-        handleUserInfoData={updateUserInfoData}
       />
     </CardListContentBox>
   );

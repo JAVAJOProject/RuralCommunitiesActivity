@@ -1,0 +1,30 @@
+.mypageSellerEventManagementParticipation {
+  width: fit-content;
+  height: 3.8125rem;
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.mypageSellerEventManagementParticipation > p {
+  font-family: SUITE Variable;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-align: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mypageSellerEventManagementParticipation > p:first-of-type {
+  display: -webkit-box;
+}
+.mypageSellerEventManagementParticipation > p:nth-of-type(4) {
+  display: block;
+}

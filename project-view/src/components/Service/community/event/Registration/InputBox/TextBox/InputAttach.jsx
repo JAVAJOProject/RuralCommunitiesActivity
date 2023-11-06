@@ -13,7 +13,7 @@ export default function InputAttach({
 }) {
   const fileRef = useRef(null);
   const fileBtnRef = useRef(null);
-  const handleClick = (e) => {
+  const handleClick = () => {
     if (inputDataFiles.length < 5) {
       fileRef?.current?.click();
     }
@@ -68,6 +68,7 @@ export default function InputAttach({
           required={isRequired}
           onChange={handleChange}
           style={{ display: 'none' }}
+          value={inputDataFiles.map((item) => item.file)}
           multiple
         />
         <p>{fileLimitText}</p>

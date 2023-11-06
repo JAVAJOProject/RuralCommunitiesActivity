@@ -1,0 +1,49 @@
+.userInfoInputFileBtn {
+  display: flex;
+  align-items: center;
+}
+
+.userInfoInputFileBtn > input[type='button'] {
+  height: 4rem;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.625rem;
+  background: none;
+  border: 1px solid #000;
+  cursor: pointer;
+  margin: 1rem;
+
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.userInfoInputFileBtn > input[type='button']:active {
+  background: #000;
+  color: #fff;
+}
+
+.userInfoInputFileBtn > p {
+  width: 10.8rem;
+  color: #636363;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+.userInfoInputFileBtn > p > div {
+  margin-left: 0.3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.3rem;
+  text-align: center;
+  background: #484848;
+  border-radius: 0.2rem;
+  color: #eaeaea;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 400;
+  cursor: pointer;
+}

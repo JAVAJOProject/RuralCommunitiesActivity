@@ -9,6 +9,7 @@ export default function InputTextBox({
   defaultValue,
   isCenter,
   isRequired,
+  inputStyle,
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -37,6 +38,7 @@ export default function InputTextBox({
         value={defaultValue}
         isCenter={isCenter}
         isRequired={isRequired}
+        inputStyle={inputStyle ?? {}}
       />
     </div>
   );

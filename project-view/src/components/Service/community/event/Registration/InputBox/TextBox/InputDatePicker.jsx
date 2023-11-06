@@ -11,8 +11,12 @@ export default function InputDatePicker({
   defaultValue,
   isRequired,
 }) {
-  const [selectedStartDate, setSelectedStartDate] = useState();
-  const [selectedEndDate, setSelectedEndDate] = useState();
+  const [selectedStartDate, setSelectedStartDate] = useState(
+    defaultValue[0] ? new Date(defaultValue[0]) : ''
+  );
+  const [selectedEndDate, setSelectedEndDate] = useState(
+    defaultValue[1] ? new Date(defaultValue[1]) : ''
+  );
 
   if (isReadOnly) {
     return (

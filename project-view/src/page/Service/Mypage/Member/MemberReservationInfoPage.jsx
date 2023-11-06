@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useImmer } from 'use-immer';
+import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
+import '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox.css';
 
 import MyPageMemberContentsBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/ContentsBox/MyPageMemberContentsBox';
-
-import '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox.css';
 import MypageReservationContentsBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/MypageReservationContentsBox';
 import MypageReservationTitleBox from '../../../../components/Service/mypage/Experiencer/MemberReservationInfoPage/MypageReservationCard/title/MypageReservationTitleBox';
-import receipt from '../../../../view_img/Service/myPage/experiencer/receipt.svg';
 import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
-import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
-import { useImmer } from 'use-immer';
+
+import receipt from '../../../../view_img/Service/myPage/experiencer/receipt.svg';
 
 const contents = {
   mainTitle: '예약/결제 내역 ',

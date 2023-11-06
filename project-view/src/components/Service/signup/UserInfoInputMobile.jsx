@@ -2,18 +2,20 @@ import React from 'react';
 import './UserInfoInputMobile.css';
 
 export default function UserInfoInputMobile({
-  inputName,
   inputType,
   inputPattern,
   defaultValue,
+  handleChange,
 }) {
   return (
     <input
       className="userInfoInputMobile"
       type={inputType}
-      name={inputName}
       pattern={inputPattern ?? null}
       defaultValue={defaultValue}
+      onChange={(e) => {
+        handleChange(e.target.value);
+      }}
     />
   );
 }

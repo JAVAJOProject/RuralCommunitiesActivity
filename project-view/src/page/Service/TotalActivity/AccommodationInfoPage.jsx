@@ -1,8 +1,11 @@
 import React from 'react';
+import { useImmer } from 'use-immer';
+
 import AccommodationBanner from '../../../components/Service/totalActivity/Accommodation/AccommodationBanner';
 import RatingMiddleBox from '../../../components/Service/totalActivity/Rating/MiddleBox/RatingMiddleBox';
 import RatingCategoryBoxSet from '../../../components/Service/totalActivity/Rating/CategoryBox/RatingCategoryBoxSet';
 import AccommodationTable from '../../../components/Service/totalActivity/Accommodation/AccommodationTable';
+import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 
 import bannerImg from '../../../view_img/Service/totalActivity/accommodation/banner.svg';
 import paperPlaneImg from '../../../view_img/Service/totalActivity/accommodation/paperPlane.png';
@@ -11,9 +14,6 @@ import typeRegion from '../../../view_img/Service/totalActivity/accommodation/re
 import typeBrunch from '../../../view_img/Service/totalActivity/accommodation/brunch.svg';
 import typeInternet from '../../../view_img/Service/totalActivity/accommodation/internet.jpg';
 import typePayment from '../../../view_img/Service/totalActivity/accommodation/paymentCard.svg';
-import { useImmer } from 'use-immer';
-import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
-import PageNavigateBtn from '../../../components/Service/common/PageNavigateBtn/PageNavigateBtn';
 
 const defaultContents = {
   banner: {

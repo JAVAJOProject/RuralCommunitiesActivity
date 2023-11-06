@@ -1,0 +1,50 @@
+.communityRuleBoard {
+  width: 59.3125rem;
+  height: fit-content;
+  border-radius: 0.625rem;
+  background: #e3e3e3;
+  margin: auto;
+  padding-top: 1.5rem;
+}
+
+.communityRuleBoard > div:first-of-type {
+  margin: auto;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.communityRuleBoard > div > img {
+  width: 3.625rem;
+  border-radius: 50%;
+}
+
+.communityRuleBoard > div > div > h2 {
+  margin-left: 0.6rem;
+  color: #000;
+  font-family: Jua;
+  font-size: 1.6875rem;
+  font-weight: 400;
+}
+
+.communityRuleBoard > div > div > hr {
+  margin-left: 0.2rem;
+  width: 12.25rem;
+  height: 0.03rem;
+  border: 0.03rem solid #a82738;
+}
+
+.communityRuleBoard > div:last-of-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 59.3125rem;
+}
+.communityRuleBoard > div > p {
+  margin: 1.5rem 3rem;
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.4375rem;
+  font-weight: 400;
+}

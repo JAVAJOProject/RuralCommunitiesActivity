@@ -1,0 +1,31 @@
+.mypageSellerAnalyticsPieBox {
+  width: 30.5625rem;
+  height: 26.125rem;
+  border-radius: 1.25rem;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.mypageSellerAnalyticsPieBox > div {
+  width: fit-content;
+  height: fit-content;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageSellerAnalyticsPieBox > div > h2 {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+}
+
+.mypageSellerAnalyticsPieBox > div > div > div {
+  display: flex;
+  justify-content: center;
+}

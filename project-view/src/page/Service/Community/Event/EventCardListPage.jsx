@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useImmer } from "use-immer";
+import { fetchDataGET, fetchImgGET } from "../../../../config/ApiService";
+
+import { EventNavContext } from "../../../../components/Service/community/event/MiddleNav/EventNavContext/EventNav";
 import EventBigCards from "../../../../components/Service/community/event/CardList/EventBigCards";
 import EventSmallCards from "../../../../components/Service/community/event/CardList/EventSmallCards";
-import { fetchDataGET, fetchImgGET } from "../../../../config/ApiService";
-import { EventNavContext } from "../../../../components/Service/community/event/MiddleNav/EventNavContext/EventNav";
 import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
 
 export default function EventCardListPage() {

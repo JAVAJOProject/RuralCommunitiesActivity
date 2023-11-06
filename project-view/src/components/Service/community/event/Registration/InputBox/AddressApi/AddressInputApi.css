@@ -1,5 +1,6 @@
 .addressInputApi > div {
   display: flex;
+  width: fit-content;
 }
 
 .addressInputApi input {

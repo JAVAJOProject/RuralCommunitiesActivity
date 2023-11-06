@@ -1,0 +1,15 @@
+.mypageSellerAnalyticsCalendarDate {
+  width: 1.92031rem;
+  height: 1.92031rem;
+  background: #eeeeee;
+  border-radius: 50%;
+  margin: 0.35rem;
+}
+
+.mypageSellerAnalyticsCalendarDate > p {
+  text-align: center;
+  line-height: 1.92031rem;
+  font-family: Jua;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}

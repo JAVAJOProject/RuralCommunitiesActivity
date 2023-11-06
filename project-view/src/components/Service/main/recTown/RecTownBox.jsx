@@ -17,7 +17,7 @@ export default function RecTownBox({ contents }) {
             0,
             ('' + town1.sigunguName).length
           )}`}
-          favoritesNum={town1.recTFavoriteCnt}
+          likesNum={town1.recTFavoriteCnt}
         />
       </RecTownCard>
       <RecTownCard imgSrc={town2.recTThumbnailImg} CardNo={2}>
@@ -28,7 +28,7 @@ export default function RecTownBox({ contents }) {
             0,
             ('' + town2.sigunguName).length
           )}`}
-          favoritesNum={town2.recTFavoriteCnt}
+          likesNum={town2.recTFavoriteCnt}
         />
       </RecTownCard>
     </div>

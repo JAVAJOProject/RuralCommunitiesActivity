@@ -1,0 +1,25 @@
+.communityWritingBtn {
+  width: 7.625rem;
+  height: 2.5rem;
+  border-radius: 12.5rem;
+  background: #d9d9d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: auto;
+}
+
+.communityWritingBtn > img {
+  width: 1.625rem;
+  mix-blend-mode: darken;
+  display: block;
+  margin-left: -0.3rem;
+  margin-right: 0.5rem;
+}
+.communityWritingBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

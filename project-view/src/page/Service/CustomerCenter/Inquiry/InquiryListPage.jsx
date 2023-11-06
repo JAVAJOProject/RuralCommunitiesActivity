@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import InquiryListBar from '../../../../components/Service/customerCenter/inquiry/ListBar/InquiryListBar';
 import InquirySearchingBoxSet from '../../../../components/Service/customerCenter/inquiry/inquirySearchingBox/InquirySearchingBoxSet';
 import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
 
 import lockImg from '../../../../view_img/Service/customerService/lock.png';
 import readGlassesImg from '../../../../view_img/Service/customerService/readGlasses.png';
+import { useImmer } from 'use-immer';
 
 const contents = {
   list: {
-    postNo: '번호',
-    title: '제목',
-    status: '상태',
+    inquiryId: '번호',
+    inquiryTitle: '제목',
+    inquiryStatus: '상태',
     author: '작성자',
-    dateCreated: '작성일',
+    inquiryDateCreated: '작성일',
   },
   lock: lockImg,
   button: '문의하기',
@@ -26,89 +28,183 @@ const contents = {
 
 const testContents = [
   {
-    postNo: 1,
-    title: '댓글 기능 추가해주세요!',
-    status: '답변대기',
-    author: '김**',
-    dateCreated: '2023-08-30',
+    inquiryId: 1,
+    inquiryTitle: '댓글 기능 추가해주세요!',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '프레첼',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-08-30',
   },
   {
-    postNo: 2,
-    title:
+    inquiryId: 2,
+    inquiryTitle:
       '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    status: '답변대기',
-    author: '박***',
-    dateCreated: '2023-09-05',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: null,
+      memTypeId: 2,
+      uName: null,
+      uNick: null,
+      sId: 5,
+      sComName: '박***',
+    },
+    inquiryDateCreated: '2023-09-05',
   },
   {
-    postNo: 1,
-    title: '댓글 기능 추가해주세요!',
-    status: '답변대기',
-    author: '김**',
-    dateCreated: '2023-08-30',
+    inquiryId: 1,
+    inquiryTitle: '댓글 기능 추가해주세요!',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '김**',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-08-30',
   },
   {
-    postNo: 2,
-    title:
+    inquiryId: 2,
+    inquiryTitle:
       '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    status: '답변대기',
-    author: '박***',
-    dateCreated: '2023-09-05',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: null,
+      memTypeId: 2,
+      uName: null,
+      uNick: null,
+      sId: 5,
+      sComName: '박***',
+    },
+    inquiryDateCreated: '2023-09-05',
   },
   {
-    postNo: 1,
-    title: '댓글 기능 추가해주세요!',
-    status: '답변대기',
-    author: '김**',
-    dateCreated: '2023-08-30',
+    inquiryId: 1,
+    inquiryTitle: '댓글 기능 추가해주세요!',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '프레첼',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-08-30',
   },
   {
-    postNo: 2,
-    title:
+    inquiryId: 2,
+    inquiryTitle:
       '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    status: '답변대기',
-    author: '박***',
-    dateCreated: '2023-09-05',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '프레첼',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-09-05',
   },
   {
-    postNo: 1,
-    title: '댓글 기능 추가해주세요!',
-    status: '답변대기',
-    author: '김**',
-    dateCreated: '2023-08-30',
+    inquiryId: 1,
+    inquiryTitle: '댓글 기능 추가해주세요!',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '프레첼',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-08-30',
   },
   {
-    postNo: 2,
-    title:
+    inquiryId: 2,
+    inquiryTitle:
       '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    status: '답변대기',
-    author: '박***',
-    dateCreated: '2023-09-05',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: null,
+      memTypeId: 2,
+      uName: null,
+      uNick: null,
+      sId: 5,
+      sComName: '박***',
+    },
+    inquiryDateCreated: '2023-09-05',
   },
   {
-    postNo: 1,
-    title: '댓글 기능 추가해주세요!',
-    status: '답변대기',
-    author: '김**',
-    dateCreated: '2023-08-30',
+    inquiryId: 1,
+    inquiryTitle: '댓글 기능 추가해주세요!',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: 3,
+      memTypeId: 1,
+      uName: '이름임',
+      uNick: '프레첼',
+      sId: null,
+      sComName: null,
+    },
+    inquiryDateCreated: '2023-08-30',
   },
   {
-    postNo: 2,
-    title:
+    inquiryId: 2,
+    inquiryTitle:
       '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    status: '답변대기',
-    author: '박***',
-    dateCreated: '2023-09-05',
+    inquiryStatus: '답변대기',
+    memId: 1,
+    userInfo: {
+      uId: null,
+      memTypeId: 2,
+      uName: null,
+      uNick: null,
+      sId: 5,
+      sComName: '박***',
+    },
+    inquiryDateCreated: '2023-09-05',
   },
 ];
 
 export default function InquiryListPage() {
+  const [dbContents, updateDbContents] = useImmer([]);
+  const [requestPageNo, setRequestPageNo] = useState(1);
+  const [totalPageNo, setTotalPageNo] = useState(1);
+  const [searchMode, setSearchMode] = useState(false);
+  const searchingRef = useRef(null);
+
+  useEffect(() => {
+    if (!searchMode) {
+      updateDbContents(testContents);
+    } else {
+      searchingRef.current.click();
+    }
+  }, [requestPageNo]);
+
   const { list, lock, button, searchingImg, searching } = contents;
 
   return (
     <div>
       <InquiryListBar content={list} type="title" lock={lock} />
-      {testContents.map((content) => (
+      {dbContents.map((content) => (
         <InquiryListBar content={content} lock={lock} />
       ))}
       <div style={{ margin: '2rem auto' }}>
@@ -117,8 +213,17 @@ export default function InquiryListPage() {
           btnText={button}
           optContents={searching}
           readGlasses={searchingImg}
+          updateDbContents={updateDbContents}
+          requestPageNo={requestPageNo}
+          setTotalPageNo={setTotalPageNo}
+          setSearchMode={setSearchMode}
+          searchingRef={searchingRef}
         />
-        <PageNoBox curr={1} total={6} />
+        <PageNoBox
+          curr={requestPageNo}
+          total={totalPageNo}
+          handlePageNo={setRequestPageNo}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,15 @@
+.nationalMapImg {
+  position: relative;
+}
+
+.nationalMapImg img,
+.nationalMapImg map {
+  margin: auto;
+  display: block;
+  mix-blend-mode: darken;
+  width: 26rem;
+  object-fit: cover;
+  position: absolute;
+  top: -2rem;
+  left: -2.5rem;
+}

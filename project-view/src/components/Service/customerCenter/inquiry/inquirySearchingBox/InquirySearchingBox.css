@@ -12,7 +12,6 @@
 .inquirySearchingBox > input {
   width: 12.5rem;
   height: 1.5rem;
-  border-style: none;
 
   color: #474545;
   font-family: SUITE Variable;
@@ -20,8 +19,21 @@
   font-weight: 600;
   padding-left: 0.4rem;
 }
+.inquirySearchingBox > input,
+.inquirySearchingBox > input:hover,
+.inquirySearchingBox > input:active,
+.inquirySearchingBox > input:focus {
+  border: none;
+  outline: none;
+}
 
-.inquirySearchingBox > img {
-  margin-left: 0.3rem;
+.inquirySearchingBox button {
+  border: none;
+  background: none;
+  width: fit-content;
+  height: fit-content;
   cursor: pointer;
+}
+.inquirySearchingBox img {
+  margin-left: 0.3rem;
 }

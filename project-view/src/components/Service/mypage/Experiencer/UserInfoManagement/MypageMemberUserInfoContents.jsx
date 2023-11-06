@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './MypageMemberUserInfoContents.css';
+
 import UserInfoInputDefaultBox from '../../../signup/UserInfoInputDefaultBox';
 import UserInfoInputEmailBox from '../../../signup/UserInfoInputEmailBox';
 import UserInfoInputMobileBox from '../../../signup/UserInfoInputMobileBox';
@@ -12,8 +13,9 @@ import UserInfoInputLastBtnBox from '../../../signup/UserInfoInputLastBtnBox';
 export default function MypageMemberUserInfoContents({
   inputContents,
   userInfoData,
-  handleUserInfoData,
 }) {
+  const formRef = useRef(null);
+
   const {
     memberEmail,
     password,
@@ -28,7 +30,7 @@ export default function MypageMemberUserInfoContents({
   } = inputContents;
 
   return (
-    <div className="mypageMemberUserInfoContents">
+    <form ref={formRef} name="data" className="mypageMemberUserInfoContents">
       <UserInfoInputEmailBox
         inputTexts={memberEmail}
         defaultValue={userInfoData.uEmail}
@@ -60,9 +62,9 @@ export default function MypageMemberUserInfoContents({
       />
       <UserInfoInputCheckeboxBox
         inputTexts={marketing}
-        defaultValue={userInfoData.uMarketing}
+        defaultValue={userInfoData.uMarketingConsent}
       />
       <UserInfoInputLastBtnBox inputTexts={buttons} />
-    </div>
+    </form>
   );
 }

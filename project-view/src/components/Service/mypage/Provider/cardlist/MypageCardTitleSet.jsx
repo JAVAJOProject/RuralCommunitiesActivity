@@ -1,19 +1,36 @@
 import React from 'react';
+import './MypageCardTitleSet.css';
+
 import MypageServiceTitle from './MypageServiceTitle';
 import MypageListBtn from './MypageListBtn';
-import './MypageCardTitleSet.css';
 
 export default function MypageCardTitleSet({
   titleText,
   listBtn,
   type,
   eventStatus,
+  link,
+  listType,
+  eventStatusId,
 }) {
-  let listBtnText;
+  let listBtnText = '';
   if (type === 'activity') {
     listBtnText = listBtn.text.participantList;
   } else if (type === 'event') {
-    listBtnText = listBtn.text.participantList; //조건:participantList, winnerList, storyDraw, winnerDraw
+    switch (listType) {
+      case 'participate':
+        listBtnText = listBtn.text.participantList;
+        break;
+      case 'win':
+        listBtnText = listBtn.text.winnerList;
+        break;
+      case 'apply':
+        listBtnText = listBtn.text.winnerDraw;
+        break;
+      case 'story':
+        listBtnText = listBtn.text.storyDraw;
+        break;
+    }
   }
 
   return (
@@ -23,8 +40,9 @@ export default function MypageCardTitleSet({
         type={type}
         eventStatus={eventStatus}
       />
-      <MypageListBtn imgSrc={listBtn.imgSrc} text={listBtnText} />
-      {/*//TODO: 이벤트 상태에 따라 조건부 렌더링*/}
+      {eventStatusId && +eventStatusId === 3 && (
+        <MypageListBtn imgSrc={listBtn.imgSrc} text={listBtnText} link={link} />
+      )}
     </div>
   );
 }

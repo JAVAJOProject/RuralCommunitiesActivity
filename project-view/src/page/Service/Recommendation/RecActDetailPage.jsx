@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useImmer } from "use-immer";
-import EventFirstBox from "../../../components/Service/community/event/Detail/FirstBox/EventFirstBox";
+import { useNavigate } from "react-router-dom/dist";
+
 import EventDetailTitle from "../../../components/Service/community/event/Detail/Title/EventDetailTitle";
 import EventImageBox from "../../../components/Service/community/event/Detail/ImageBox/EventImageBox";
 import EventContentBox from "../../../components/Service/community/event/Detail/ContentBox/EventContentBox";
@@ -10,14 +11,13 @@ import recruitImg from "../../../view_img/Service/common/recruit.jpg";
 import participateImg from "../../../view_img/Service/common/participate.jpg";
 import maxPeopleImg from "../../../view_img/Service/common/headCount.jpg";
 import placeImg from "../../../view_img/Service/common/locationPin.png";
+import TotalBtnBox from "../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox";
+import RecActSellerInfoBox from "../../../components/Service/recActivity/Detail/RecActSellerInfoBox";
+import DetailMapApi from "../../../components/Service/totalActivity/Detail/map/DetailMapApi";
 
 import testImg1 from "../../../view_img/Service/mainPage/testImg/totalActivityTest1.jpg";
 import testImg2 from "../../../view_img/Service/mainPage/testImg/totalActivityTest2.jpg";
 import testImg3 from "../../../view_img/Service/mainPage/testImg/totalActivityTest3.jpg";
-import TotalBtnBox from "../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox";
-import { useNavigate } from "react-router-dom/dist";
-import RecActSellerInfoBox from "../../../components/Service/recActivity/Detail/RecActSellerInfoBox";
-import DetailMapApi from "../../../components/Service/totalActivity/Detail/map/DetailMapApi";
 
 const defaultContents = {
   firstBox: [

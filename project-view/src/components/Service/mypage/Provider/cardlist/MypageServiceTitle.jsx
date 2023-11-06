@@ -7,7 +7,9 @@ export default function MypageServiceTitle({ text, type, eventStatus }) {
     <div className="mypageServiceTitle">
       <p>{text}</p>
       <div>
-        {type === 'event' && <MypageSellerEventStatusBar text={eventStatus} />}
+        {type === 'event' && eventStatus && (
+          <MypageSellerEventStatusBar text={eventStatus} />
+        )}
       </div>
     </div>
   );

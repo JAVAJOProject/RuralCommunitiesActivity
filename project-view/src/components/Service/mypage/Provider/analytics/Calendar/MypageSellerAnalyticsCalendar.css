@@ -1,0 +1,38 @@
+.mypageSellerAnalyticsCalendar {
+  width: 19.47225rem;
+  min-height: 13.82644rem;
+  border-radius: 1.25rem;
+  border: 1px solid #000;
+}
+
+.mypageSellerAnalyticsCalendarHead {
+  width: 100%;
+  height: 3.14938rem;
+  border-radius: 1.215rem 1.215rem 0rem 0rem;
+  background: #ff7575;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.mypageSellerAnalyticsCalendarHead > div {
+  margin-right: 0.5rem;
+  width: 2.45806rem;
+  height: 2.45806rem;
+  border-radius: 50%;
+  background: #ff0000;
+}
+.mypageSellerAnalyticsCalendarHead > div > h4 {
+  text-align: center;
+  line-height: 2.45806rem;
+  color: #fff;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.mypageSellerAnalyticsCalendarBody {
+  display: flex;
+  flex-wrap: wrap;
+  width: 18.5rem;
+  margin: 0.5rem auto;
+}

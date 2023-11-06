@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+
 import RatingTopBanner from '../../../components/Service/totalActivity/Rating/TopBanner/RatingTopBanner';
 import RatingMiddleBox from '../../../components/Service/totalActivity/Rating/MiddleBox/RatingMiddleBox';
 import RatingCategoryBoxSet from '../../../components/Service/totalActivity/Rating/CategoryBox/RatingCategoryBoxSet';
 import RatingDataTable from '../../../components/Service/totalActivity/Rating/TableBox/RatingDataTable';
 import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
+
 import activityImg from '../../../view_img/Service/totalActivity/rating/activityImg.jpg';
 import foodImg from '../../../view_img/Service/totalActivity/rating/food.svg';
 import accommodationImg from '../../../view_img/Service/totalActivity/rating/accommodation.jpg';

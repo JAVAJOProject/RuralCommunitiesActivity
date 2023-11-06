@@ -1,0 +1,66 @@
+.mypageAddressInputApi > div {
+  display: flex;
+}
+
+.mypageAddressInputApi input {
+  border-radius: 0.625rem;
+  border: none;
+  background: rgba(104, 159, 240, 0.24);
+  padding: 0.3rem;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.mypageAddressInputApi button {
+  border-radius: 0.625rem;
+  background: none;
+  border: 1px solid #000;
+  font-weight: 600;
+  cursor: pointer;
+  height: 4rem;
+}
+.mypageAddressInputApi button:hover {
+  background: #b7b7b7;
+  color: #fff;
+  border: none;
+}
+.mypageAddressInputApi button:active {
+  background: #000;
+  color: #fff;
+  border: none;
+}
+
+.mypageAddressInputApi input,
+.mypageAddressInputApi button {
+  height: 4rem;
+  margin: 0.5rem;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+}
+
+.mypageAddressInputApi > div > input:first-of-type,
+.mypageAddressInputApi > div > input:nth-of-type(odd) {
+  margin-left: 0;
+}
+.mypageAddressInputApi > div > input:nth-of-type(even) {
+  margin-right: 0;
+}
+
+.mypageAddressInputApi > div:first-of-type input,
+.mypageAddressInputApi > div:first-of-type button {
+  width: 11.1195rem;
+  margin-top: 0;
+}
+
+.mypageAddressInputApi > div:last-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  width: 46.807rem;
+}
+.mypageAddressInputApi > div:last-of-type input {
+  width: 22.9rem;
+}

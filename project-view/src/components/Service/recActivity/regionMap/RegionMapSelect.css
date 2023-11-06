@@ -1,0 +1,12 @@
+.regionPolygonMap {
+  width: 35.28563rem;
+  height: 41.28219rem;
+  border-radius: 0 0 0.9375rem 0.9375rem;
+}
+
+.regionSidoPolygonMapName {
+  color: #306962;
+  font-family: Jua;
+  font-size: 0.8125rem;
+  font-weight: 400;
+}

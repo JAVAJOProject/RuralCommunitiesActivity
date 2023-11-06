@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom/dist';
 import { fetchDataGET, fetchOneContentGET } from '../../../config/ApiService';
+
 import EventFirstBox from '../../../components/Service/community/event/Detail/FirstBox/EventFirstBox';
 import EventDetailTitle from '../../../components/Service/community/event/Detail/Title/EventDetailTitle';
 import EventImageBox from '../../../components/Service/community/event/Detail/ImageBox/EventImageBox';
 import EventContentBox from '../../../components/Service/community/event/Detail/ContentBox/EventContentBox';
+import TotalBtnBox from '../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox';
+import DetailMapApi from '../../../components/Service/totalActivity/Detail/map/DetailMapApi';
 
 import recruitImg from '../../../view_img/Service/common/recruit.jpg';
 import participateImg from '../../../view_img/Service/common/participate.jpg';
 import placeImg from '../../../view_img/Service/common/locationPin.png';
 import maxPeopleImg from '../../../view_img/Service/common/headCount.jpg';
-
-import TotalBtnBox from '../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox';
-import DetailMapApi from '../../../components/Service/totalActivity/Detail/map/DetailMapApi';
-import { useNavigate } from 'react-router-dom/dist';
 
 const defaultContents = [
   { title: '모집기간', imgSrc: recruitImg },

@@ -1,0 +1,6 @@
+form.mypageSellerEventEditContents.was-validated input:invalid,
+form.mypageSellerEventEditContents.was-validated textarea:invalid,
+form.mypageSellerEventEditContents.was-validated input:invalid .inputSelect,
+form.mypageSellerEventEditContents.was-validated select:invalid {
+  border-color: red;
+}

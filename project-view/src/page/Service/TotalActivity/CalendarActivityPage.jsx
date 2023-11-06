@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import TotalActivityCalendar from '../../../components/Service/totalActivity/Calendar/TotalActivityCalendar';
 import { useImmer } from 'use-immer';
+
+import TotalActivityCalendar from '../../../components/Service/totalActivity/Calendar/TotalActivityCalendar';
 import TotalActivityCalendarContents from '../../../components/Service/totalActivity/Calendar/TotalActivityCalendarContents';
+import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 
 import testImg from '../../../view_img/Service/mainPage/testImg/circleTest5.jpg';
-import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 
 const testDateContents = [
   { day: 1, count: 5 },

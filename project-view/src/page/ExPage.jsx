@@ -1,33 +1,33 @@
-import React, { useState } from 'react';
-import AppYNModal from '../components/Service/common/Modal/AppYNModal';
+import React from 'react';
+import { useImmer } from 'use-immer';
+
+import RegionMapSidoSelect from '../components/Service/recActivity/regionMap/RegionMapSidoSelect';
+import RegionMapSigunguSelect from '../components/Service/recActivity/regionMap/RegionMapSigunguSelect';
 
 export default function ExPage() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const modalOpen = () => {
-    setModalIsOpen(true);
-  };
-  const modalClose = () => {
-    setModalIsOpen(false);
-  };
-  const contents = {
-    titleText: '게시글 등록',
-    contentText:
-      '게시글이 등록되었습니다. 게시글이 등록되었습니다. 게시글이 등록되었습니다. 게시글이 등록되었습니다. 게시글이 등록되었습니다. 게시글이 등록되었습니다.',
-    // yesText: null,
-    yesText: '작성 취소',
-  };
+  const [selectedRegionSido, updateSelectedRegionSido] = useImmer({
+    regionId: '',
+    LatLng: '',
+  });
+  const [selectedRegionSigungu, updateSelectedRegionSigungu] = useImmer({
+    regionId: '',
+  });
+
   return (
     <>
       <main className="appMain">
-        <button onClick={modalOpen}>테스트 버튼</button>
+        <div style={{ display: 'flex' }}>
+          <RegionMapSidoSelect
+            selectedRegion={selectedRegionSido}
+            updateSelectedRegion={updateSelectedRegionSido}
+          />
+          <RegionMapSigunguSelect
+            sidoInfo={selectedRegionSido}
+            selectedRegion={selectedRegionSigungu}
+            updateSelectedRegion={updateSelectedRegionSigungu}
+          />
+        </div>
       </main>
-
-      <AppYNModal
-        isOpen={modalIsOpen}
-        texts={contents}
-        yesAction={modalClose}
-        noAction={modalClose}
-      />
     </>
   );
 }

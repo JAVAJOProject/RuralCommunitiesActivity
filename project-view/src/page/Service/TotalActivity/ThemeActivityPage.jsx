@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
+import { useImmer } from 'use-immer';
+
+import ThemeCardSet from '../../../components/Service/totalActivity/Theme/themeCard/ThemeCardSet';
 
 import tractor from '../../../view_img/Service/totalActivity/theme/tractor.png';
 import fishing from '../../../view_img/Service/totalActivity/theme/fishing.svg';
 import tradition from '../../../view_img/Service/totalActivity/theme/plate.svg';
 import plate from '../../../view_img/Service/totalActivity/theme/etcActivity.png';
-
-import ThemeCardSet from '../../../components/Service/totalActivity/Theme/themeCard/ThemeCardSet';
-import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
-import { useImmer } from 'use-immer';
 
 const themeImages = [
   { themeName: '농촌 체험', imgSrc: tractor },

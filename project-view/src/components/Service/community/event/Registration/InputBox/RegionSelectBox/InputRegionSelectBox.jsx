@@ -9,6 +9,7 @@ export default function InputRegionSelectBox({
   regionSigungu,
   selectedSido,
   isRequired,
+  defaultSigunguId
 }) {
   const { inputName, labelText, type } = inputInfo;
 
@@ -41,6 +42,7 @@ export default function InputRegionSelectBox({
         inputName={inputName[2]}
         regionSigungu={regionSigungu}
         isRequired={isRequired}
+        defaultValue={defaultSigunguId}
       />
     </div>
   );

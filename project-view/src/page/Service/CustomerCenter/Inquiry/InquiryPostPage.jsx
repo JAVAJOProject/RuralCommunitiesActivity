@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-
-import InquiryPostTitle from '../../../../components/Service/customerCenter/inquiry/inquiryPost/title/InquiryPostTitle';
-import InquiryPostContent from '../../../../components/Service/customerCenter/inquiry/inquiryPost/content/InquiryPostContent';
-
-import titleImg from '../../../../view_img/Service/customerService/inquiryPost.svg';
 import { useNavigate } from 'react-router-dom';
 import { fetchFormPOSTAndObj } from '../../../../config/ApiService';
 
+import InquiryPostTitle from '../../../../components/Service/customerCenter/inquiry/inquiryPost/title/InquiryPostTitle';
+import InquiryPostContent from '../../../../components/Service/customerCenter/inquiry/inquiryPost/content/InquiryPostContent';
 import AppConfirmModal from '../../../../components/Service/common/Modal/AppConfirmModal';
 import AppYNModal from '../../../../components/Service/common/Modal/AppYNModal';
+
+import titleImg from '../../../../view_img/Service/customerService/inquiryPost.svg';
 
 const inquiryRegistrationApi = '/inquiry/detail/insert';
 

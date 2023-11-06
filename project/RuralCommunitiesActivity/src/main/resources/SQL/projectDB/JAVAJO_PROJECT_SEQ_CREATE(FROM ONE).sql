@@ -427,6 +427,7 @@ CREATE SEQUENCE event_progress_status_seq INCREMENT BY 1
     NOCYCLE;
 
 -- 1부터 시작하는 트리거 + 프로시저
+/*
 -- 체험 서비스 명단 테이블 생성 + 트리거 등록
 CREATE OR REPLACE PROCEDURE activity_customer_create(act_info_id IN NUMBER)
 IS
@@ -592,3 +593,5 @@ END;
 --	END IF;
 --END;
 --/
+
+*/

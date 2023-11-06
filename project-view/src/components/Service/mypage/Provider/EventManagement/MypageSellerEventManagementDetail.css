@@ -1,0 +1,20 @@
+.mypageSellerEventManagementDetail {
+  width: 50rem;
+  height: fit-content;
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.mypageSellerEventManagementDetail > p {
+  font-family: SUITE Variable;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  text-align: justify;
+  line-height: 1.8rem;
+  white-space: pre-line;
+  padding: 2rem;
+}

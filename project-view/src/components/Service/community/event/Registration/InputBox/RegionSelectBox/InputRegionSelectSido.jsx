@@ -20,7 +20,7 @@ export default function InputRegionSelectSido({
         value={selectedSidoId}
         onChange={handleSelectedSidoId}
         name={inputName}
-        isRequired={isRequired}
+        required={isRequired}
       >
         {!isOnlyRegion && <option value={0}>{'온라인'}</option>}
         {regionSido.map((sido) => (

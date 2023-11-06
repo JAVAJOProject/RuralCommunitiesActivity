@@ -1,7 +1,8 @@
 .userInfoInputMobileBox {
   display: flex;
   align-items: center;
-  margin: 1rem auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .userInfoInputMobileBox > p {

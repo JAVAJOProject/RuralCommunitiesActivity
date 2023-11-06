@@ -1,14 +1,14 @@
 import React from 'react';
 import LocationPin from '../../common/LocationPin';
 import './RecTownContent.css';
-import Favorites from '../../common/Favorite/Favorites';
+import Likes from '../../common/Like/Likes';
 
 export default function RecTownContent({
   title,
   content,
   locationName,
-  favorites,
-  favoritesNum,
+  likes,
+  likesNum,
 }) {
   const text = '' + content;
 
@@ -17,9 +17,9 @@ export default function RecTownContent({
       <h3>{title}</h3>
       <div className="mainRecTownContentLocation">
         <LocationPin locationName={locationName} />
-        <Favorites
-          on={favorites}
-          favoritesNum={(+favoritesNum).toLocaleString()}
+        <Likes
+          on={likes}
+          likesNum={(+likesNum).toLocaleString()}
           style={{ height: '2.7rem' }}
         />
       </div>

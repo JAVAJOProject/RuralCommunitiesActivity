@@ -8,19 +8,23 @@ export default function UserInfoInputRadio({
   value,
   defaultValue,
   text,
+  handleValue,
 }) {
-  const isChecked = value === defaultValue;
-  const checkedImgIdx = isChecked ? 1 : 0;
-
   return (
     <div className="userInfoInputRadio">
       <label htmlFor={`${inputName}_${value}`}>
-        <img src={images[checkedImgIdx]} alt="" />
+        <img
+          src={images[value === defaultValue ? 1 : 0]}
+          alt=""
+          onClick={() => {
+            handleValue(value);
+          }}
+        />
         <input
           type={inputType}
           name={inputName}
           value={value}
-          checked={isChecked}
+          checked={value === defaultValue}
         />
         <p>{text}</p>
       </label>

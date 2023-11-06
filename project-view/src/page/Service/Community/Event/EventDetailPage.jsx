@@ -5,6 +5,7 @@ import {
   fetchDataGET,
   fetchOneContentGET,
 } from '../../../../config/ApiService';
+
 import EventFirstBox from '../../../../components/Service/community/event/Detail/FirstBox/EventFirstBox';
 import EventDetailTitle from '../../../../components/Service/community/event/Detail/Title/EventDetailTitle';
 import EventImageBox from '../../../../components/Service/community/event/Detail/ImageBox/EventImageBox';

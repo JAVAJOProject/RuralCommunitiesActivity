@@ -1,0 +1,19 @@
+.mypageSellerManagementTitle {
+  width: fit-content;
+  height: 3.8125rem;
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+.mypageSellerManagementTitle > p {
+  font-family: Jua;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+}

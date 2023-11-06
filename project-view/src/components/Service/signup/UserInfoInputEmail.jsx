@@ -3,16 +3,18 @@ import './UserInfoInputEmail.css';
 
 export default function UserInfoInputEmail({
   inputType,
-  inputName,
   inputPattern,
   defaultValue,
+  handleChange,
 }) {
   return (
     <input
       type={inputType}
-      name={inputName}
       pattern={inputPattern}
       defaultValue={defaultValue}
+      onChange={(e) => {
+        handleChange(e.target.value);
+      }}
       className="userInfoInputEmail"
       readOnly
     />

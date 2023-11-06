@@ -1,7 +1,8 @@
 import React from 'react';
+import './MypageServiceCard.css';
+
 import BlueCardBox from '../../UI/BlueCardBox';
 import MypageCardRectImg from './MypageCardRectImg';
-import './MypageServiceCard.css';
 import MypageServiceBar from './MypageServiceBar';
 import MypageCardTitleSet from './MypageCardTitleSet';
 import MypageCardDetailList from './MypageCardDetailList';
@@ -15,6 +16,12 @@ export default function MypageServiceCard({
   detailListContent,
   type,
   eventStatus,
+  detailLink,
+  editLink,
+  handleDelete,
+  listLink,
+  listType,
+  eventStatusId
 }) {
   return (
     <BlueCardBox>
@@ -25,7 +32,10 @@ export default function MypageServiceCard({
             titleText={title}
             listBtn={listBtn}
             type={type}
-            eventStatus={eventStatus}
+            eventStatus={eventStatus ?? ''}
+            link={listLink}
+            listType={listType ?? ''}
+            eventStatusId={eventStatusId ?? ''}
           />
           <MypageServiceBar />
           <ul className="mypageServiceCardUl">
@@ -45,16 +55,15 @@ export default function MypageServiceCard({
                 .map((item, index) => (
                   <MypageCardDetailList
                     title={item}
-                    content={detailListContent[index]}
+                    content={detailListContent[index + 2]}
                   />
                 ))}
             </div>
           </ul>
-          {
-            <MypageMypostBtnBox
-              links={['', '', '']}
-            /> /* //TODO: 링크도 넣고 이벤트별 렌더링 조건도 넣기 */
-          }
+          <MypageMypostBtnBox
+            links={[detailLink, editLink]}
+            handleDelete={handleDelete}
+          />
         </div>
       </div>
     </BlueCardBox>

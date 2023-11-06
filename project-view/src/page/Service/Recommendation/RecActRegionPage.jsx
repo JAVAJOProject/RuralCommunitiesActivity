@@ -13,6 +13,7 @@ import RecActOrderBox from '../../../components/Service/recActivity/order/RecAct
 import RecCardContentsBox from '../../../components/Service/recActivity/keywordFiltered/RecCardContentsBox';
 import RecCardImg from '../../../components/Service/recActivity/keywordFiltered/RecCardImg';
 import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
+import RegionMapInfo from '../../../components/Service/recActivity/regionMap/RegionMapInfoContext';
 
 import mapClickImg from '../../../view_img/Service/recActivity/mapClick.jpg';
 import mapTitleImg from '../../../view_img/Service/recActivity/title.svg';
@@ -69,8 +70,11 @@ const testContents = [
 ];
 
 export default function RecActRegionPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, _] = useSearchParams();
   const orderUrl = searchParams.get('order');
+
+  const sidoUrl = searchParams.get('sido');
+  const sigunguUrl = searchParams.get('sigungu');
 
   const navigate = useNavigate();
   const [dbContents, updateDbContents] = useImmer([]);
@@ -101,7 +105,7 @@ export default function RecActRegionPage() {
     // });
 
     setTotalPostNo(30);
-  }, []);
+  }, [sidoUrl, sigunguUrl, orderUrl]);
 
   const { titles, contentsTitle, orders } = defaultContents;
   contentsTitle.title = `전체 ${totalPostNo}건`;
@@ -113,7 +117,9 @@ export default function RecActRegionPage() {
         subtitle={titles.subtitle}
         imgSrc={titles.imgSrc}
       />
-      <RecActRegionMapSet regionSido={''} regionSigungu={''} />
+      <RegionMapInfo>
+        <RecActRegionMapSet sidoId={sidoUrl} sigunguId={sigunguUrl} />
+      </RegionMapInfo>
       <SearchingBox style={{ margin: '3rem auto' }} />
       <CardListContentBox>
         <CardBoxTitleSet

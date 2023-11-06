@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom';
+import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
+
 import TotalActTitleBox from '../../../components/Service/totalActivity/Theme/title/TotalActTitleBox';
 import ActivityRegionBoxSet from '../../../components/Service/totalActivity/Region/regionBox/ActivityRegionBoxSet';
-import { useImmer } from 'use-immer';
 import SearchingBox from '../../../components/Service/common/UI/SearchingBox/SearchingBox';
 import CardListContentBox from '../../../components/Service/common/UI/CardListContentBox';
 import CardBoxTitleSet from '../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
@@ -9,11 +12,9 @@ import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 import YellowActivityCard from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCard';
 import YellowActivityCardImg from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCardImg';
 import YellowActivityText from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityText';
-import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
-import titleImg from '../../../view_img/Service/totalActivity/region/title.svg';
-
 import RegionMap from '../../../components/Service/totalActivity/Region/regionMap/RegionMap';
-import { useNavigate } from 'react-router-dom';
+
+import titleImg from '../../../view_img/Service/totalActivity/region/title.svg';
 
 const contents = {
   regionSido: '전체',

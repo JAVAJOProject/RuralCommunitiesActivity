@@ -1,0 +1,44 @@
+.mypageSellerAnalyticsPie {
+  margin: 1.5rem;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageSellerAnalyticsPie > div {
+  width: 7.125rem;
+  height: 7.1875rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.mypageSellerAnalyticsPie > div > p {
+  width: 3.5rem;
+  height: fit-content;
+  line-height: 3.5rem;
+  margin: auto;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.mypageSellerAnalyticsPie p {
+  width: fit-content;
+  text-align: center;
+  font-family: Jua;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.mypageSellerAnalyticsPie > div > p {
+  font-size: 1.1rem;
+}
+.mypageSellerAnalyticsPie > p {
+  font-size: 1.15rem;
+  margin-top: 1rem;
+}

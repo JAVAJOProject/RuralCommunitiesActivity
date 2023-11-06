@@ -28,7 +28,7 @@ export default function InputDateBox({ inputInfo, isReadOnly, defaultValue, isRe
         inputName={inputName}
         inputId={inputName}
         isReadOnly={isReadOnly}
-        defaultValue={defaultValue}
+        defaultValue={defaultValue ?? ''}
         isRequired={isRequired}
       />
     </div>

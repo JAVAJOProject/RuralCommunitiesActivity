@@ -1,0 +1,40 @@
+form.mypageSellerActivityEditContents.was-validated input:invalid,
+form.mypageSellerActivityEditContents.was-validated textarea:invalid,
+form.mypageSellerActivityEditContents.was-validated input:invalid .inputSelect,
+form.mypageSellerActivityEditContents.was-validated select:invalid {
+  border-color: red;
+}
+
+form.mypageSellerActivityEditContents.was-validated
+  .addressInputApi:has(input:invalid)
+  button {
+  background: red;
+}
+
+.mypageSellerActivityEditContents .mypageSellerActivityEditAddrEditBtn,
+.mypageSellerActivityEditContents .mypageSellerActivityEditAddrEditBtnApi {
+  border: none;
+  background: #484848;
+  color: #fff;
+  height: 3.6875rem;
+  width: fit-content;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  border-radius: 0.4375rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+.mypageSellerActivityEditContents .mypageSellerActivityEditAddrEditBtn:active {
+  background: none;
+  border: 0.08rem solid #484848;
+  color: #484848;
+}
+
+.mypageSellerActivityEditContents .mypageSellerActivityEditAddrEditBtnApi {
+  position: absolute;
+  right: 0;
+  margin-top: 0.5rem;
+}

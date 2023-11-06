@@ -1,0 +1,42 @@
+.mypageSellerAnalyticsBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypageSellerAnalyticsBar > p {
+  font-family: SUITE Variable;
+  font-size: 0.8rem;
+  font-weight: 400;
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.mypageSellerAnalyticsBar > div {
+  width: 18rem;
+  height: 1.45944rem;
+  border-radius: 1.25rem;
+  border: 1px solid #dfff9a;
+  background: #f6ffe2;
+  margin: 0.7rem auto;
+  position: relative;
+}
+
+.mypageSellerAnalyticsBar > div > p {
+  width: 18rem;
+  line-height: 1.45944rem;
+  position: absolute;
+  font-family: Jua;
+  font-size: 0.8rem;
+  font-weight: 400;
+  text-align: center;
+  margin: auto;
+}
+
+.mypageSellerAnalyticsBar > div > div {
+  height: 100%;
+  border-radius: 1.25rem;
+  background: #dfff9a;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+}

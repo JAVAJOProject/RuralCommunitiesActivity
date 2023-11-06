@@ -6,6 +6,7 @@ export default function InputTextArea({
   inputId,
   style,
   isRequired,
+  defaultValue
 }) {
   return (
     <div className="inputText">
@@ -14,6 +15,7 @@ export default function InputTextArea({
         id={inputId}
         style={style}
         required={isRequired}
+        defaultValue={defaultValue}
       />
     </div>
   );

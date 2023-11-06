@@ -9,7 +9,14 @@ export default function EventDetailTitle({ contents }) {
   return (
     <div className="eventDetailTitle">
       <EventDetailTitleText text={postTitle} />
-      <EventDetailTitleCountBox favoritesNum={favoriteCnt} viewNum={viewCnt} />
+      {+postTypeId === 4 || +postTypeId === 6 ? (
+        <EventDetailTitleCountBox
+          favoritesNum={favoriteCnt}
+          viewNum={viewCnt}
+        />
+      ) : (
+        <EventDetailTitleCountBox likesNum={favoriteCnt} viewNum={viewCnt} />
+      )}
     </div>
   );
 }

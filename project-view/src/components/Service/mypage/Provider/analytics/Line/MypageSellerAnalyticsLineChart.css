@@ -1,0 +1,21 @@
+.mypageSellerAnalyticsLineChart {
+  width: 33.5rem;
+  height: 26.0625rem;
+  border-radius: 1.25rem;
+  border: 1px solid #000;
+  margin: 1rem;
+}
+
+.mypageSellerAnalyticsLineChart > h2 {
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 2.5rem;
+}
+
+.mypageSellerAnalyticsLineChart > div {
+  margin-top: -2rem;
+  width: 33.5rem;
+  height: 20rem;
+}

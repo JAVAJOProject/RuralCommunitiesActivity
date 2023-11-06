@@ -426,6 +426,7 @@ CREATE SEQUENCE event_progress_status_seq INCREMENT BY 1
     NOCYCLE;
 
 -- 0          ϴ  Ʈ     +    ν   
+/*
 -- ü                ̺       + Ʈ        
 CREATE OR REPLACE PROCEDURE activity_customer_create(act_info_id IN NUMBER)
 IS
@@ -591,3 +592,4 @@ END;
 --	END IF;
 --END;
 --/
+*/

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import NoticeListBar from '../../../../components/Service/customerCenter/notice/NoticeListBar/NoticeListBar';
 import NoticeContent from '../../../../components/Service/customerCenter/notice/NoticeContent/NoticeContent';
 import BackBtn from '../../../../components/Service/community/event/Buttons/BackBtn';

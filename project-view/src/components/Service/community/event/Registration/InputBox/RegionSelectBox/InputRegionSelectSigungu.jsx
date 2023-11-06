@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import './InputRegionSelect.css';
 
-export default function InputRegionSelectSigungu({ inputName, regionSigungu, isRequired }) {
-  const [selectedSigunguId, setSelectedSigunguId] = useState('');
+export default function InputRegionSelectSigungu({
+  inputName,
+  regionSigungu,
+  isRequired,
+  defaultValue,
+}) {
+  const [selectedSigunguId, setSelectedSigunguId] = useState(
+    defaultValue ?? ''
+  );
   const handleSelectedSigunguId = (e) => {
     setSelectedSigunguId(e.target.value);
   };
@@ -14,7 +21,7 @@ export default function InputRegionSelectSigungu({ inputName, regionSigungu, isR
         value={selectedSigunguId}
         onChange={handleSelectedSigunguId}
         name={inputName}
-        isRequired={isRequired}
+        required={isRequired}
       >
         {regionSigungu.length > 0 &&
           regionSigungu.map((sigungu) => (

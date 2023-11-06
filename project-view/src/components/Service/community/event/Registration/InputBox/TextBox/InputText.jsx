@@ -8,7 +8,11 @@ export default function InputText({
   value,
   isCenter,
   isRequired,
+  inputStyle,
 }) {
+  const styles = { ...inputStyle };
+  styles.textAlign = isCenter ? 'center' : 'justify';
+
   return (
     <div className="inputText">
       {!!isReadOnly ? (
@@ -18,7 +22,7 @@ export default function InputText({
           id={inputId}
           readOnly={!!isReadOnly}
           value={value ?? ''}
-          style={{ textAlign: isCenter ? 'center' : 'justify' }}
+          style={styles}
         />
       ) : (
         <input
@@ -26,6 +30,7 @@ export default function InputText({
           name={inputName}
           id={inputId}
           required={isRequired}
+          defaultValue={value ?? null}
         />
       )}
     </div>

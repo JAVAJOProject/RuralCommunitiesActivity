@@ -8,7 +8,7 @@ export default function MypageMemberReviewTextarea({
   return (
     <div className="mypageMemberReviewTextarea">
       <textarea
-        value={textContent}
+        defaultValue={textContent}
         onChange={(e) => {
           handleReviewContent((draft) => {
             draft.content = e.target.value;

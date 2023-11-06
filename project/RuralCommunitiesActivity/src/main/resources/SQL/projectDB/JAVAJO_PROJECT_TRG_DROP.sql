@@ -39,6 +39,7 @@ DROP TRIGGER trg_community_cum_update;
 DROP TRIGGER trg_community_cum_delete;
 
 -- 시퀀스 쪽에 있는 트리거, 프로시저
+/*
 DROP TRIGGER trg_activity_customer_create;
 DROP PROCEDURE activity_customer_create;
 DROP TRIGGER trg_activity_customer_drop;
@@ -50,3 +51,4 @@ DROP TRIGGER trg_event_winner_create_update;
 DROP PROCEDURE event_winner_create;
 DROP TRIGGER trg_event_winner_drop;
 DROP PROCEDURE event_winner_drop;
+*/

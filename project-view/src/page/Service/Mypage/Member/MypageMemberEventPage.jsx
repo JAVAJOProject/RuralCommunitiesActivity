@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useImmer } from 'use-immer';
+import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
 
-import titleImg from '../../../../view_img/Service/myPage/experiencer/event.jpg';
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
 import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
 import MypageMemberEventCard from '../../../../components/Service/mypage/Experiencer/Event/MypageMemberEventCard';
 import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
 
-import testImg from '../../../../view_img/Service/mainPage/testImg/eventPosterEx.jpg';
+import titleImg from '../../../../view_img/Service/myPage/experiencer/event.jpg';
 
 const defaultContents = {
   titles: {
@@ -18,38 +19,39 @@ const defaultContents = {
   cardContents: ['참여일', '참여 장소', '모집 마감', '응모 결과'],
 };
 
-const testContents = [
-  {
-    eventId: 1,
-    eventName: '참여한 이벤트 이름',
-    eventDate: '2023-10-20',
-    recruitEndDate: '2023-10-10',
-    addr: '경기 고양',
-    eventThumbnailImg: testImg,
-    result: '참여 예정',
-  },
-  {
-    eventId: 2,
-    eventName: '참여한 이벤트 이름',
-    eventDate: '2023-10-20',
-    recruitEndDate: '2023-10-10',
-    addr: '경기 고양',
-    eventThumbnailImg: testImg,
-    result: '결과 대기',
-  },
-  {
-    eventId: 3,
-    eventName: '참여한 이벤트 이름',
-    eventDate: '2023-10-20',
-    recruitEndDate: '2023-10-10',
-    addr: '경기 고양',
-    eventThumbnailImg: testImg,
-    result: '참여 예정',
-  },
-];
-
 export default function MypageMemberEventPage() {
+  const [event, updateEvent] = useImmer([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState(1);
+
   const { titles, cardContents } = defaultContents;
+
+  async function fetchContents() {
+    try {
+      const eventData = await fetchDataGET(`/mypage/member/event/list`);
+      const eventImg = await fetchImgGET(
+        eventData,
+        'eventId',
+        '/main/event-image'
+      );
+
+      updateEvent((draft) => {
+        draft.length = 0;
+        eventData.forEach((item, index) => {
+          draft.push({ ...item, eventThumbnailImg: eventImg[index] });
+        });
+      });
+      const [perPagePostCount, totalPostNo] = fetchDataGET(
+        '/mypage/member/event/total-page'
+      );
+      setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  useEffect(() => {
+    fetchContents();
+  }, [currentPage]);
 
   return (
     <main className="appMain">
@@ -61,15 +63,20 @@ export default function MypageMemberEventPage() {
           imgHeight={titles.imgHeight}
           borderRadius="0"
         />
-        {testContents.map((item) => (
-          <MypageMemberEventCard
-            key={item.eventId}
-            cardContents={cardContents}
-            contents={item}
-          />
-        ))}
+        {event.length > 0 &&
+          event.map((item) => (
+            <MypageMemberEventCard
+              key={item.eventId}
+              cardContents={cardContents}
+              contents={item}
+            />
+          ))}
       </CardListContentBox>
-      <PageNoBox curr={1} total={6} />
+      <PageNoBox
+        curr={currentPage}
+        total={maxPage}
+        handlePageNo={setCurrentPage}
+      />
     </main>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './UserInfoInputCheckbox.css';
 
 export default function UserInfoInputCheckbox({
@@ -8,18 +8,19 @@ export default function UserInfoInputCheckbox({
   text,
   defaultValue,
 }) {
-  const checkedImgIdx = !!defaultValue ? 1 : 0;
+  const [value, setValue] = useState(!!defaultValue);
 
   return (
-    <div className='userInfoInputCheckbox'>
+    <div className="userInfoInputCheckbox">
       <label htmlFor={inputName}>
-        <img src={images[checkedImgIdx]} alt="" />
-        <input
-          type={inputType}
-          name={inputName}
-          id={inputName}
-          defaultValue={!!defaultValue}
+        <img
+          src={images[value ? 1 : 0]}
+          alt=""
+          onClick={() => {
+            setValue((prev) => !prev);
+          }}
         />
+        <input type={inputType} name={inputName} id={inputName} value={value} />
         <p>{text}</p>
       </label>
     </div>

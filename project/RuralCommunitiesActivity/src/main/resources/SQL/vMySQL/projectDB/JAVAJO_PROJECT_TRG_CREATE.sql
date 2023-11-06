@@ -383,6 +383,7 @@ DELIMITER ;
 -- DELIMITER ;
 
 -- 체험서비스/이벤트 게시글 추가시 명단 테이블 생성(MySQL은 프로시저만)
+/*
 DELIMITER $$
 	CREATE PROCEDURE activity_customer_create(IN act_info_id INT)
     BEGIN
@@ -423,6 +424,7 @@ DELIMITER $$
         DEALLOCATE PREPARE stmt;
 	END $$
 DELIMITER ;
+*/
 
 -- 신고수 동기화 트리거
 DELIMITER $$

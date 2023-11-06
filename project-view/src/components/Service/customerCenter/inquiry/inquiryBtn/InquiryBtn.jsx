@@ -2,7 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './InquiryBtn.css';
 
-export default function InquiryBtn({ btnText, type, link }) {
+export default function InquiryBtn({
+  btnText,
+  type,
+  handleClick,
+}) {
   const navigate = useNavigate();
   const classes = ['inquiryBtn'];
   if (type === 'sub') {
@@ -13,11 +17,12 @@ export default function InquiryBtn({ btnText, type, link }) {
     <div
       className={classes.join(' ')}
       onClick={
-        typeof link === 'string'
+        typeof handleClick === 'string'
           ? () => {
-              navigate(link);
+              navigate(handleClick);
+              window.scrollTo(0, 0);
             }
-          : link
+          : handleClick
       }
     >
       <p>{btnText}</p>

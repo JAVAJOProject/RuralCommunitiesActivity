@@ -7,7 +7,11 @@ const buttons = {
   review: ['체험 상세보기', '수정하기', '삭제하기'],
 };
 
-export default function MypageMypostBtnBox({ links, type }) {
+export default function MypageMypostBtnBox({
+  links,
+  type,
+  handleDelete,
+}) {
   let texts;
   if (type && type === 'review') {
     texts = buttons.review;
@@ -17,9 +21,12 @@ export default function MypageMypostBtnBox({ links, type }) {
 
   return (
     <div className="mypageMypostBtnBox">
-      {texts.map((item, index) => (
-        <MypageBtn text={item} link={links[index]} />
-      ))}
+      <MypageBtn text={texts[0]} link={links[0]} />
+      <MypageBtn text={texts[1]} link={links[1]} />
+      <MypageBtn
+        text={texts[2]}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }

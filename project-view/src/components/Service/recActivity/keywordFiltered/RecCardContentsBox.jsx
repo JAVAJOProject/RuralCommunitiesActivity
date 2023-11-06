@@ -14,7 +14,7 @@ export default function RecCardContentsBox({ contents }) {
       <div>
         <RecCardTitle title={title} />
         <EventDetailTitleCountBox
-          favoritesNum={likesCnt}
+          likesNum={likesCnt}
           viewNum={viewCnt}
         />
       </div>

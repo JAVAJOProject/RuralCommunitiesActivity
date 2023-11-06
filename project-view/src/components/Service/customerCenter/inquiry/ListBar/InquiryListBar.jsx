@@ -4,43 +4,51 @@ import { useNavigate } from 'react-router-dom';
 
 export default function InquiryListBar({ content, type, lock }) {
   const navigate = useNavigate();
-  const { postNo, title, status, author, dateCreated } = content;
+  const { inquiryId, inquiryTitle, inquiryStatus, author, inquiryDateCreated } =
+    content;
+  const uNick = content?.userInfo?.uNick;
+  const sComName = content?.userInfo?.sComName;
+
   let classes = ['inquiryListBar'];
   if (type) {
     classes.push('inquiryListBarTitle');
   }
 
   let titleText;
-  if (title && title.length > 37) {
-    titleText = title.substr(0, 37) + '...';
+  if (inquiryTitle && inquiryTitle.length > 37) {
+    titleText = inquiryTitle.substr(0, 37) + '...';
   } else {
-    titleText = title;
+    titleText = inquiryTitle;
   }
 
   let dateText;
-  if (type !== 'title' && dateCreated) {
-    let dateT = new Date(dateCreated);
+  if (type !== 'title' && inquiryDateCreated) {
+    let dateT = new Date(inquiryDateCreated);
     dateText = `${dateT.getFullYear()}-${
       dateT.getMonth() + 1
     }-${dateT.getDate()}`;
   } else {
-    dateText = dateCreated;
+    dateText = inquiryDateCreated;
   }
 
   return (
     <div
       className={classes.join(' ')}
       onClick={() => {
-        navigate(`/app/customerService/inquiry/detail/${postNo}`);
+        navigate(
+          type !== 'title'
+            ? `/app/customerService/inquiry/detail/${inquiryId}`
+            : ''
+        );
       }}
     >
-      <p>{postNo}</p>
+      <p>{inquiryId}</p>
       <div>
         <p>{titleText}</p>
         {type !== 'title' && <img src={lock} alt="" />}
       </div>
-      <p>{status}</p>
-      <p>{author}</p>
+      <p>{inquiryStatus}</p>
+      <p>{author ? author : uNick ? uNick : sComName}</p>
       <p>{dateText}</p>
     </div>
   );

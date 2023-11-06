@@ -34,4 +34,5 @@
   font-weight: 400;
   margin-left: 0.3rem;
   margin-right: 0.3rem;
+  white-space: nowrap;
 }

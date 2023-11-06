@@ -1,6 +1,6 @@
-import React from "react";
-import "./MypageMemberReviewEditTitle.css";
-import MypageMemberReviewEditRating from "./MypageMemberReviewEditRating";
+import React from 'react';
+import './MypageMemberReviewEditTitle.css';
+import MypageMemberReviewEditRating from './MypageMemberReviewEditRating';
 
 export default function MypageMemberReviewEditTitle({
   reviewTitle,
@@ -17,7 +17,7 @@ export default function MypageMemberReviewEditTitle({
       />
       <input
         type="text"
-        value={reviewTitle}
+        defaultValue={reviewTitle}
         onChange={(e) => {
           handleReviewContent((draft) => {
             draft.reviewTitle = e.target.value;
