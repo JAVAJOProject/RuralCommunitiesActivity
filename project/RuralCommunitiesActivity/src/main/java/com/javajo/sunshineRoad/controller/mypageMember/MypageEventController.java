@@ -30,18 +30,19 @@ public class MypageEventController {
 	private final MypageEventService eventService;
     private final GetOneEventService getOneEventService;
     private final GetOneImgFromPathService getOneImgFromPathService;
-	@GetMapping("/event/list/{currentPage}")
-	public List<MypageEventWinnerDTO> getEventList(@PathVariable int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
+    
+	@GetMapping("/event/list/page/{currentPage}")
+	public List<MypageEventDTO> getEventList(@PathVariable int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
 //		int uId = member.getUId();
 		System.out.println("--------------");
 		int uId = 1;
 		int eventCount = eventService.getEventCount(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, eventCount, 3);
-		List<MypageEventWinnerDTO> eventpageList = eventService.getEventList(uId, pageInfo);
+		List<MypageEventDTO> eventpageList = eventService.getEventList(uId, pageInfo);
 		return eventpageList;
 	}
 	// 이벤트 목록 
-	@GetMapping("/event/list")
+	@GetMapping("/event/list/all")
 	public List<MypageEventDTO> getInfo(/* @SessionAttribute("loginMember") MemberDTO member */) {
 //		int uId = member.getUId();
 		int eventId = 1;

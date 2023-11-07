@@ -19,7 +19,7 @@ public class MypageEventImpl implements MypageEventService {
 	private final MypageEventDAO eventDAO;
 
 	@Override
-	public List<MypageEventWinnerDTO> getEventList(int uId, PageInfo pageInfo) {
+	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
 		return eventDAO.getEventList(uId, pageInfo);
 	}
 

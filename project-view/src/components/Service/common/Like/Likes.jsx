@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import LikeMiniBox from './LikeMiniBox';
+import React, { useState } from "react";
+import "./Likes.css";
 
-import fullHeart from '../../../../view_img/Service/common/fullHeart.jpg';
-import emptyHeart from '../../../../view_img/Service/common/emptyHeart.jpg';
-import './Likes.css';
+import LikeMiniBox from "./LikeMiniBox";
+import fullHeart from "../../../../view_img/Service/common/fullHeart.jpg";
+import emptyHeart from "../../../../view_img/Service/common/emptyHeart.jpg";
 
 export default function Likes({
   on,

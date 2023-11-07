@@ -2,6 +2,8 @@ package com.javajo.sunshineRoad.model.dto.mypageSeller;
 
 import org.apache.ibatis.type.Alias;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MypageRequestEventDTO {
 	private int eventId;
+	@JsonProperty
 	private String sId;//null 값떄문에
 	private int postTypeId;
 	private int eventImgId;
@@ -36,7 +39,10 @@ public class MypageRequestEventDTO {
 	private int eventViewCnt;
 	private String eventStatus;
 
-	private int aCutomerId;
+	@JsonProperty
+	private int aCustomerId;
+	@JsonProperty
 	private int aPostId;
+	@JsonProperty
 	private int uId;
 }

@@ -41,10 +41,11 @@
 			column="seller_community_content" />
 		<result property="sellerCommunityDateCreated"
 			column="seller_community_date_created" />
-		<result property="sellerCommunityLikeCnt"
-			column="seller_community_like_cnt" />
-		<result property="sellerCommunityCumCnt"
-			column="seller_community_cum_cnt" />
+		<result property="communityLikeCnt"
+			column="community_like_cnt" />
+		<result property="communityViewCnt" column="community_view_cnt" />
+		<result property="communityCumCnt"
+			column="community_cum_cnt" />
 
 	</resultMap>
 

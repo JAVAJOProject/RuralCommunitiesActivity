@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useImmer } from 'use-immer';
-import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
+import React, { useState, useEffect } from "react";
+import { useImmer } from "use-immer";
+import { fetchDataGET, fetchImgGET } from "../../../../config/ApiService";
 
-import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
-import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
-import MypageMemberEventCard from '../../../../components/Service/mypage/Experiencer/Event/MypageMemberEventCard';
-import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
+import CardListContentBox from "../../../../components/Service/common/UI/CardListContentBox";
+import CardBoxTitleSet from "../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet";
+import MypageMemberEventCard from "../../../../components/Service/mypage/Experiencer/Event/MypageMemberEventCard";
+import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
 
-import titleImg from '../../../../view_img/Service/myPage/experiencer/event.jpg';
+import titleImg from "../../../../view_img/Service/myPage/experiencer/event.jpg";
 
 const defaultContents = {
   titles: {
-    title: '이벤트 참여 목록',
+    title: "이벤트 참여 목록",
     imgSrc: titleImg,
-    backgroundColor: '#EAD8CE',
-    imgHeight: '3.2rem',
+    backgroundColor: "#EAD8CE",
+    imgHeight: "3.2rem",
   },
-  cardContents: ['참여일', '참여 장소', '모집 마감', '응모 결과'],
+  cardContents: ["참여일", "참여 장소", "모집 마감", "응모 결과"],
 };
 
 export default function MypageMemberEventPage() {
@@ -28,11 +28,13 @@ export default function MypageMemberEventPage() {
 
   async function fetchContents() {
     try {
-      const eventData = await fetchDataGET(`/mypage/member/event/list`);
+      const eventData = await fetchDataGET(
+        `/mypage/member/event/list/page/${currentPage}`
+      );
       const eventImg = await fetchImgGET(
         eventData,
-        'eventId',
-        '/main/event-image'
+        "eventId",
+        "/main/event-image"
       );
 
       updateEvent((draft) => {
@@ -42,7 +44,7 @@ export default function MypageMemberEventPage() {
         });
       });
       const [perPagePostCount, totalPostNo] = fetchDataGET(
-        '/mypage/member/event/total-page'
+        "/mypage/member/event/total-page"
       );
       setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
     } catch (error) {

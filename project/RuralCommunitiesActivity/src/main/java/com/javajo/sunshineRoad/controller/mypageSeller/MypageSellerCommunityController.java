@@ -1,5 +1,7 @@
 package com.javajo.sunshineRoad.controller.mypageSeller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,5 +33,14 @@ public class MypageSellerCommunityController {
 		
 		List<MypageSellerCommunityDTO> selectSeller = sellerCommunityService.getInfo(sId, pageInfo);
 		return selectSeller;
+	}
+	
+	@GetMapping("/community/total-page")
+	public List<Integer> totalPage() {
+		int sId = 1;
+		int communityCount = sellerCommunityService.getCommunityCount(sId);
+		int perPagePostNo = 3;
+		
+		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, communityCount));
 	}
 }

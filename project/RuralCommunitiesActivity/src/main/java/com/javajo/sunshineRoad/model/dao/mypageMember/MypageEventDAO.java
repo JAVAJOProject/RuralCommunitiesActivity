@@ -21,7 +21,7 @@ public class MypageEventDAO {
 	private final SqlSessionTemplate sqlSession;
 
 	// 이벤트 참여 내역
-	public List<MypageEventWinnerDTO> getEventList(int uId, PageInfo pageInfo) {
+	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
 		int start = pageInfo.getStartList();
 		int end = pageInfo.getEndList();
 		System.out.println("uId" + uId);

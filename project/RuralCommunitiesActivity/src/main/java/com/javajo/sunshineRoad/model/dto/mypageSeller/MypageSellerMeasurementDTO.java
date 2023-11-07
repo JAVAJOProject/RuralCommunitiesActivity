@@ -2,6 +2,7 @@ package com.javajo.sunshineRoad.model.dto.mypageSeller;
 
 import org.apache.ibatis.type.Alias;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageMemberDTO;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypagePaymentInfoDTO;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageReservationDTO;
@@ -41,6 +42,7 @@ public class MypageSellerMeasurementDTO {
 	private double reviewRatio;
 
 	private String ageRange; // 나이대
+	@JsonProperty
 	private int uBirth; // member의 birth 의 생년월일
 	private int memberCount; // 나이 대의 예약수
 

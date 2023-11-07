@@ -2,6 +2,8 @@ package com.javajo.sunshineRoad.model.dto.mypageSeller;
 
 import org.apache.ibatis.type.Alias;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,11 +19,13 @@ import lombok.Setter;
 public class MypageSellerCommunityDTO {
 
 	private int sellerCommunityPostId;
+	@JsonProperty
 	private int sId;
 	private int postTypeId;
 	private String sellerCommunityContent; //clob 
 	private String sellerCommunityDateCreated;
-	private int sellerCommunityLikeCnt;
-	private int sellerCommunityCumCnt;
+	private int communityLikeCnt;
+	private int communityViewCnt;
+	private int communityCumCnt;
 
 }

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useImmer } from 'use-immer';
-import { fetchDataGET } from '../../../../config/ApiService';
+import React, { useState, useEffect } from "react";
+import { useImmer } from "use-immer";
+import { fetchDataGET } from "../../../../config/ApiService";
 
-import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
-import GreenCardBox from '../../../../components/Service/mypage/UI/GreenCardBox';
-import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
-import MypageMiniBoxSet from '../../../../components/Service/mypage/UI/MypageMiniBoxSet';
-import MypageMypost from '../../../../components/Service/mypage/Provider/post/MypageMypost';
-import MypageMypostBtnBox from '../../../../components/Service/mypage/Provider/post/MypageMypostBtnBox';
-import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
+import CardListContentBox from "../../../../components/Service/common/UI/CardListContentBox";
+import GreenCardBox from "../../../../components/Service/mypage/UI/GreenCardBox";
+import CardBoxTitleSet from "../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet";
+import MypageMiniBoxSet from "../../../../components/Service/mypage/UI/MypageMiniBoxSet";
+import MypageMypost from "../../../../components/Service/mypage/Provider/post/MypageMypost";
+import MypageMypostBtnBox from "../../../../components/Service/mypage/Provider/post/MypageMypostBtnBox";
+import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
 
-import sellerPostImg from '../../../../view_img/Service/myPage/provider/mypost.jpg';
+import sellerPostImg from "../../../../view_img/Service/myPage/provider/mypost.jpg";
 
-const title = { text: '내가 쓴 글', imgSrc: sellerPostImg };
+const title = { text: "내가 쓴 글", imgSrc: sellerPostImg };
 
 export default function MypageSellerPostPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,8 +27,8 @@ export default function MypageSellerPostPage() {
         `/mypage/seller/community/info/${currentPage}`
       );
       setData(response);
-      const [perPagePostCount, totalPostNo] = fetchDataGET(
-        '/mypage/seller/community/info/total-page'
+      const [perPagePostCount, totalPostNo] = await fetchDataGET(
+        "/mypage/seller/community/total-page"
       );
       setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
     } catch (error) {
@@ -43,7 +43,7 @@ export default function MypageSellerPostPage() {
 
   return (
     <>
-      <CardListContentBox style={{ paddingBottom: '1rem' }}>
+      <CardListContentBox style={{ paddingBottom: "1rem" }}>
         <CardBoxTitleSet
           imgSrc={imgSrc}
           text={text}
@@ -70,7 +70,7 @@ export default function MypageSellerPostPage() {
                   viewingsNum={+communityViewCnt}
                 />
                 <MypageMypost text={sellerCommunityContent} />
-                <MypageMypostBtnBox links={['', '', '']} />
+                <MypageMypostBtnBox links={["", "", ""]} />
               </GreenCardBox>
             );
           })}

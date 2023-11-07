@@ -1,5 +1,7 @@
 package com.javajo.sunshineRoad.controller.mypageMember;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,16 @@ public class MypageMemberCommunityController {
 		List<MypageMemberCommunityDTO> selectmemCommunity = memCommunityService.getInfo(uId, pageInfo);
 	    return selectmemCommunity;
 	}
+	
+	@GetMapping("/community/total-page")
+	public List<Integer> totalPage() {
+		int uId = 1;
+		int communityCount = memCommunityService.getActivityCount(uId);
+		int perPagePostNo = 3;
+		
+		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, communityCount));
+	}
+	
 //	// 내가 쓴글 목록 불러오기  소통공간 
 //	@GetMapping("/community/info")
 //	public List<MypageMemberCommunityDTO>  getInfo( /* @SessionAttribute("loginMember") MypageMemberDTO member */ ) {

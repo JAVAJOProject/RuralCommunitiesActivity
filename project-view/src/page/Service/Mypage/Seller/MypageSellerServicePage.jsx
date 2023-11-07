@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useImmer } from 'use-immer';
+import React, { useState, useEffect } from "react";
+import { useImmer } from "use-immer";
 import {
   fetchDataETCAndObj,
   fetchDataGET,
   fetchImgGET,
-} from '../../../../config/ApiService';
+} from "../../../../config/ApiService";
 
-import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
-import CardBoxTitleSet from '../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
-import MypageBtn from '../../../../components/Service/mypage/UI/MypageBtn';
-import MypageServiceCard from '../../../../components/Service/mypage/Provider/cardlist/MypageServiceCard';
-import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
+import CardListContentBox from "../../../../components/Service/common/UI/CardListContentBox";
+import CardBoxTitleSet from "../../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet";
+import MypageBtn from "../../../../components/Service/mypage/UI/MypageBtn";
+import MypageServiceCard from "../../../../components/Service/mypage/Provider/cardlist/MypageServiceCard";
+import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
 
-import sellerServiceImg from '../../../../view_img/Service/myPage/provider/serviceTitle.svg';
-import listViewImg from '../../../../view_img/Service/myPage/provider/listview.jpg';
+import sellerServiceImg from "../../../../view_img/Service/myPage/provider/serviceTitle.svg";
+import listViewImg from "../../../../view_img/Service/myPage/provider/listview.jpg";
 
-const deleteActivityApi = '';
+const deleteActivityApi = "";
 
 const title = {
   titleImg: sellerServiceImg,
-  titleText: '등록한 체험 목록',
-  buttonText: '체험 등록하기',
+  titleText: "등록한 체험 목록",
+  buttonText: "체험 등록하기",
   listBtn: {
     imgSrc: listViewImg,
     text: {
-      participantList: '참여자 명단',
+      participantList: "참여자 명단",
     },
   },
-  detailListTitle: ['참여일', '참여인원', '모집 마감', '참여장소'],
+  detailListTitle: ["참여일", "참여인원", "모집 마감", "참여장소"],
 };
 const deleteBtn = async (id) => {
-  await fetchDataETCAndObj(deleteActivityApi, 'DELETE', { aId: id });
+  await fetchDataETCAndObj(deleteActivityApi, "DELETE", { aId: id });
 };
 
 export default function MypageSellerServicePage() {
@@ -46,8 +46,8 @@ export default function MypageSellerServicePage() {
       );
       const reservationImg = await fetchImgGET(
         serviceData,
-        'sId',
-        '/main/total-service-image'
+        "aPostId",
+        "/main/total-activity-image"
       );
       updateService((draft) => {
         draft.length = 0;
@@ -56,7 +56,7 @@ export default function MypageSellerServicePage() {
         });
       });
       const [perPagePostCount, totalPostNo] = fetchDataGET(
-        '/mypage/member/reserve/total-page'
+        "/mypage/member/reserve/total-page"
       );
       setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
     } catch (error) {
@@ -71,7 +71,7 @@ export default function MypageSellerServicePage() {
   return (
     <>
       <CardListContentBox
-        style={{ width: service.length > 0 ? 'fit-content' : '47rem' }}
+        style={{ width: service.length > 0 ? "fit-content" : "47rem" }}
       >
         <CardBoxTitleSet
           imgSrc={titleImg}
@@ -81,33 +81,33 @@ export default function MypageSellerServicePage() {
         <MypageBtn
           type="regist"
           text={buttonText}
-          link={'/app/activity/registration'}
+          link={"/app/activity/registration"}
         />
         <div>
           {service.length > 0 &&
             service.map((item) => {
               const {
                 aPostId,
-                imgSrc,
+                aThumbnailImg,
                 reservationDate,
-                maxPeople,
-                deadline,
-                place,
-                title,
+                reservationHeadcount,
+                paymentDeadline,
+                aAddr,
+                aName,
               } = item;
               return (
                 <MypageServiceCard
                   key={aPostId}
                   type="activity"
-                  imgSrc={imgSrc}
-                  title={title}
+                  imgSrc={aThumbnailImg}
+                  title={aName}
                   listBtn={listBtn}
                   detailListTitle={detailListTitle}
                   detailListContent={[
                     reservationDate,
-                    maxPeople,
-                    deadline,
-                    place,
+                    reservationHeadcount,
+                    paymentDeadline,
+                    aAddr,
                   ]}
                   detailLink={`/app/activity/detail/${aPostId}/info`}
                   editLink={`/app/myInfo/provider/myService/edit/${aPostId}`}
