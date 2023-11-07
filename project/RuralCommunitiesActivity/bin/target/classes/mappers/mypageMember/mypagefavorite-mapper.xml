@@ -1,87 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC
-"-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageFavoriteMapper">
+		namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageFavoriteMapper">
 
+	<!-- 	<resultMap type="MypageFavoriteDTO" id="favoriteByMember">
+            <id column="f_id" property="fId" />
+            <result column="board_id" property="boardId" />
+            <association property="activityInfo"
+                javaType="MypageActivityInfoDTO">
+                <result column="a_name" property="aName" />
+                <result column="a_one_liner" property="aOneLiner" />
+                <result column="a_thumbnail_img" property="aThumbnailImg" />
+            </association>
+            <association property="mypageEvent"
+                javaType="MypageEventDTO">
+                <result column="event_name" property="eventName" />
+                <result column="event_thumbnail_img"
+                    property="eventThumbnailImg" />
+                <result column="event_addr" property="eventAddr" />
+            </association>
+        </resultMap> -->
 	<resultMap type="MypageFavoriteDTO" id="favoriteByMember">
-		<id column="f_id" property="fId" />
-		<result column="board_id" property="boardId" />
-		<association property="activityInfo"
-			javaType="MypageActivityInfoDTO">
-			<result column="a_name" property="aName" />
-			<result column="a_one_liner" property="aOneLiner" />
-			<result column="a_thumbnail_img" property="aThumbnailImg" />
-		</association>
-		<association property="mypageEvent"
-			javaType="MypageEventDTO">
-			<result column="event_name" property="eventName" />
-			<result column="event_thumbnail_img"
-				property="eventThumbnailImg" />
-			<result column="event_addr" property="eventAddr" />
-		</association>
+		<result property="fId" column="f_id" />
+		<result property="uId" column="u_id" />
+		<result property="boardId" column="board_id" />
+		<result property="postTypeId" column="post_type_id" />
+
+		<result property="eventId" column="event_id" />
+		<result property="eventImgId" column="event_img_id" />
+		<result property="eventName" column="event_name" />
+		<result property="eventContent" column="event_content" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="eventThumbnailImg" column="event_thumbnail_img" />
+
+		<result property="aId" column="a_id" />
+		<result property="aPostId" column="a_post_id" />
+		<result property="aName" column="a_name" />
+		<result property="aOneLiner" column="a_one_liner" />
+		<result property="aThumbnailImg" column="a_thumbnail_img" />
 	</resultMap>
 
-	<select id="selectCount" parameterType="int"
-		resultType="int">
+	<select id="selectCountEvent" parameterType="int"
+			resultType="int">
 		SELECT
-		COUNT(*)
+			COUNT(*)
 		FROM
-		(SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
-		JOIN
-		BOARD_LIST B ON (F.BOARD_ID = B.BOARD_ID)
-		LEFT JOIN ACTIVITY_POST P ON
-		(B.A_POST_ID = P.A_POST_ID)
-		LEFT JOIN ACTIVITY_INFO I ON (P.A_ID =
-		I.A_ID)
-		LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+				(SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+					JOIN
+				(SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+					LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
 	</select>
-	
-	
-	<select id="selectByFavoriteList" parameterType="int"
-		resultType="int">
+
+	<!--
+		SELECT
+		F_ID,
+		U_ID,
+		BOARD_ID,
+		EVENT_ID,
+		EVENT_ADDR,
+		EVENT_NAME,
+		EVENT_THUMBNAIL_IMG,
+		EVENT_CONTENT,
+		FROM
+		(SELECT ROW_NUMBER() OVER(ORDER BY F_ID DESC)
+		NUM
+		, E.* FROM (
 		SELECT
 		F.F_ID,
+		F.U_ID,
 		F.BOARD_ID,
-		I.A_NAME,
-		I.A_ONE_LINER,
-		I.A_THUMBNAIL_IMG,
+		E.EVENT_ID,
 		E.EVENT_ADDR,
 		E.EVENT_NAME,
-		E.EVENT_THUMBNAIL_IMG
+		E.EVENT_THUMBNAIL_IMG,
+		E.EVENT_CONTENT
 		FROM
-		(SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+		(SELECT F_ID, BOARD_ID, U_ID FROM FAVORITE WHERE U_ID = #{uId}) F
 		JOIN
-		BOARD_LIST B ON (F.BOARD_ID = B.BOARD_ID)
-		LEFT JOIN ACTIVITY_POST P ON
-		(B.A_POST_ID = P.A_POST_ID)
-		LEFT JOIN ACTIVITY_INFO I ON (P.A_ID =
-		I.A_ID)
+		(SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
 		LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
-	</select>
-	
-
-	<select id="selectByMember" parameterType="int"
-		resultMap="favoriteByMember">
+		) E)
+		WHERE NUM BETWEEN
+		#{start}
+		AND #{end}
+		-->
+	<select id="selectByFavoriteListEvent" parameterType="int"
+			resultMap="favoriteByMember">
 		SELECT
-		F.F_ID,
-		F.BOARD_ID,
-		I.A_NAME,
-		I.A_ONE_LINER,
-		I.A_THUMBNAIL_IMG,
-		E.EVENT_ADDR, 
-		E.EVENT_NAME,
-		E.EVENT_THUMBNAIL_IMG
-		FROM
-		(SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
-		JOIN
-		BOARD_LIST B ON (F.BOARD_ID = B.BOARD_ID)
-		LEFT JOIN ACTIVITY_POST P ON
-		(B.A_POST_ID = P.A_POST_ID)
-		LEFT JOIN ACTIVITY_INFO I ON (P.A_ID =
-		I.A_ID)
-		LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+			F_ID,
+			U_ID,
+			BOARD_ID,
+			EVENT_ID,
+			EVENT_ADDR,
+			EVENT_NAME,
+			EVENT_THUMBNAIL_IMG,
+			EVENT_CONTENT
+		FROM (SELECT
+				  seq,
+				  F_ID,
+				  U_ID,
+				  BOARD_ID,
+				  EVENT_ID,
+				  EVENT_ADDR,
+				  EVENT_NAME,
+				  EVENT_THUMBNAIL_IMG,
+				  EVENT_CONTENT
+			  FROM (
+					   SELECT
+						   ROWNUM AS seq,
+						   F_ID,
+						   U_ID,
+						   BOARD_ID,
+						   EVENT_ID,
+						   EVENT_ADDR,
+						   EVENT_NAME,
+						   EVENT_THUMBNAIL_IMG,
+						   EVENT_CONTENT
+					   FROM (
+								SELECT
+									F.F_ID,
+									F.U_ID,
+									F.BOARD_ID,
+									E.EVENT_ID,
+									E.EVENT_ADDR,
+									E.EVENT_NAME,
+									E.EVENT_THUMBNAIL_IMG,
+									E.EVENT_CONTENT
+								FROM (
+										 SELECT F_ID, BOARD_ID, U_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+										 JOIN (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+										 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+							))
+			  WHERE seq <![CDATA[>=]]> #{start}
+			 )
+		WHERE ROWNUM <![CDATA[<=]]> #{end}
 	</select>
 
+
+	<select id="selectByMemberEvent" parameterType="int"
+			resultMap="favoriteByMember">
+		SELECT
+			F_ID,
+			U_ID,
+			BOARD_ID,
+			EVENT_ID,
+			EVENT_ADDR,
+			EVENT_NAME,
+			EVENT_THUMBNAIL_IMG,
+			EVENT_CONTENT
+		FROM (SELECT
+				  seq,
+				  F_ID,
+				  U_ID,
+				  BOARD_ID,
+				  EVENT_ID,
+				  EVENT_ADDR,
+				  EVENT_NAME,
+				  EVENT_THUMBNAIL_IMG,
+				  EVENT_CONTENT
+			  FROM (
+					   SELECT
+						   ROWNUM AS seq,
+						   F_ID,
+						   U_ID,
+						   BOARD_ID,
+						   EVENT_ID,
+						   EVENT_ADDR,
+						   EVENT_NAME,
+						   EVENT_THUMBNAIL_IMG,
+						   EVENT_CONTENT
+					   FROM (
+								SELECT
+									F.F_ID,
+									F.U_ID,
+									F.BOARD_ID,
+									E.EVENT_ID,
+									E.EVENT_ADDR,
+									E.EVENT_NAME,
+									E.EVENT_THUMBNAIL_IMG,
+									E.EVENT_CONTENT
+								FROM
+										(SELECT F_ID, BOARD_ID, U_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+											JOIN (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+											LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+							))
+			  WHERE seq <![CDATA[>=]]> #{start}
+			 )
+		WHERE ROWNUM <![CDATA[<=]]> #{end}
+	</select>
 </mapper>

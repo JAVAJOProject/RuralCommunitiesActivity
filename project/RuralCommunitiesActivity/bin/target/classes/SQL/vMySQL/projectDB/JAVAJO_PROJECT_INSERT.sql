@@ -582,6 +582,116 @@ INSERT INTO event_images VALUES(NULL,'event_img/event_11/event11_img1.jpg',NULL,
 INSERT INTO event_images VALUES(NULL,'event_img/event_12/event12_img1.PNG',NULL,NULL,NULL,NULL);
 INSERT INTO event_images VALUES(NULL,'event_img/event_13/event13_img1.jpg',NULL,NULL,NULL,NULL);
 
+INSERT INTO favorite VALUES (NULL, 1, 1, 1);
+INSERT INTO favorite VALUES (NULL, 1, 2, 1);
+INSERT INTO favorite VALUES (NULL, 1, 3, 1);
+INSERT INTO favorite VALUES (NULL, 1, 4, 1);
+INSERT INTO favorite VALUES (NULL, 1, 5, 1);
+INSERT INTO favorite VALUES (NULL, 1, 6, 1);
+INSERT INTO favorite VALUES (NULL, 1, 7, 1);
+INSERT INTO favorite VALUES (NULL, 1, 8, 1);
+INSERT INTO favorite VALUES (NULL, 1, 9, 1);
+
+INSERT INTO favorite VALUES (NULL, 2, 1, 1);
+INSERT INTO favorite VALUES (NULL, 2, 2, 1);
+INSERT INTO favorite VALUES (NULL, 5, 3, 1);
+INSERT INTO favorite VALUES (NULL, 6, 4, 1);
+INSERT INTO favorite VALUES (NULL, 3, 5, 1);
+INSERT INTO favorite VALUES (NULL, 7, 6, 1);
+INSERT INTO favorite VALUES (NULL, 2, 7, 1);
+INSERT INTO favorite VALUES (NULL, 3, 8, 1);
+INSERT INTO favorite VALUES (NULL, 5, 9, 1);
+
+INSERT INTO favorite VALUES (NULL, 1, 55, 4);
+INSERT INTO favorite VALUES (NULL, 1, 56, 4);
+INSERT INTO favorite VALUES (NULL, 1, 57, 4);
+INSERT INTO favorite VALUES (NULL, 1, 58, 4);
+INSERT INTO favorite VALUES (NULL, 1, 59, 4);
+INSERT INTO favorite VALUES (NULL, 1, 60, 4);
+INSERT INTO favorite VALUES (NULL, 1, 61, 4);
+INSERT INTO favorite VALUES (NULL, 1, 62, 4);
+INSERT INTO favorite VALUES (NULL, 1, 63, 4);
+
+INSERT INTO favorite VALUES (NULL, 2, 55, 4);
+INSERT INTO favorite VALUES (NULL, 7, 56, 4);
+INSERT INTO favorite VALUES (NULL, 5, 57, 4);
+INSERT INTO favorite VALUES (NULL, 4, 58, 4);
+INSERT INTO favorite VALUES (NULL, 3, 59, 4);
+INSERT INTO favorite VALUES (NULL, 4, 60, 4);
+INSERT INTO favorite VALUES (NULL, 5, 61, 4);
+INSERT INTO favorite VALUES (NULL, 5, 62, 4);
+INSERT INTO favorite VALUES (NULL, 6, 63, 4);
+
+INSERT INTO post_likes VALUES (NULL, 1, 68, 2);
+INSERT INTO post_likes VALUES (NULL, 1, 69, 2);
+INSERT INTO post_likes VALUES (NULL, 1, 70, 2);
+INSERT INTO post_likes VALUES (NULL, 1, 71, 2);
+INSERT INTO post_likes VALUES (NULL, 1, 72, 2);
+
+INSERT INTO post_likes VALUES (NULL, 2, 68, 2);
+INSERT INTO post_likes VALUES (NULL, 3, 69, 2);
+INSERT INTO post_likes VALUES (NULL, 4, 70, 2);
+INSERT INTO post_likes VALUES (NULL, 6, 71, 2);
+INSERT INTO post_likes VALUES (NULL, 7, 72, 2);
+
+INSERT INTO post_likes VALUES (NULL, 1, 73, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 74, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 75, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 76, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 77, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 78, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 79, 3);
+INSERT INTO post_likes VALUES (NULL, 1, 80, 3);
+
+INSERT INTO post_likes VALUES (NULL, 2, 73, 3);
+INSERT INTO post_likes VALUES (NULL, 5, 74, 3);
+INSERT INTO post_likes VALUES (NULL, 5, 75, 3);
+INSERT INTO post_likes VALUES (NULL, 5, 76, 3);
+INSERT INTO post_likes VALUES (NULL, 6, 77, 3);
+INSERT INTO post_likes VALUES (NULL, 3, 78, 3);
+INSERT INTO post_likes VALUES (NULL, 4, 79, 3);
+INSERT INTO post_likes VALUES (NULL, 5, 80, 3);
+
+INSERT INTO post_likes VALUES (NULL, 1, 17, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 18, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 19, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 20, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 21, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 22, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 23, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 24, 5);
+INSERT INTO post_likes VALUES (NULL, 1, 25, 5);
+
+INSERT INTO post_likes VALUES (NULL, 2, 17, 5);
+INSERT INTO post_likes VALUES (NULL, 3, 18, 5);
+INSERT INTO post_likes VALUES (NULL, 4, 19, 5);
+INSERT INTO post_likes VALUES (NULL, 5, 20, 5);
+INSERT INTO post_likes VALUES (NULL, 6, 21, 5);
+INSERT INTO post_likes VALUES (NULL, 5, 22, 5);
+INSERT INTO post_likes VALUES (NULL, 5, 23, 5);
+INSERT INTO post_likes VALUES (NULL, 3, 24, 5);
+INSERT INTO post_likes VALUES (NULL, 2, 25, 5);
+
+INSERT INTO post_likes VALUES (NULL, 1, 36, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 37, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 38, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 39, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 40, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 41, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 42, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 43, 6);
+INSERT INTO post_likes VALUES (NULL, 1, 44, 6);
+
+INSERT INTO post_likes VALUES (NULL, 2, 36, 6);
+INSERT INTO post_likes VALUES (NULL, 5, 37, 6);
+INSERT INTO post_likes VALUES (NULL, 6, 38, 6);
+INSERT INTO post_likes VALUES (NULL, 3, 39, 6);
+INSERT INTO post_likes VALUES (NULL, 7, 40, 6);
+INSERT INTO post_likes VALUES (NULL, 2, 41, 6);
+INSERT INTO post_likes VALUES (NULL, 4, 42, 6);
+INSERT INTO post_likes VALUES (NULL, 3, 43, 6);
+INSERT INTO post_likes VALUES (NULL, 3, 44, 6);
+
 --  시향언니 끝 --  
 
 -- 남호오빠 시작 --  
@@ -839,10 +949,14 @@ INSERT INTO region_sigungu VALUES(NULL,15,'양양군');
 INSERT INTO region_sigungu VALUES(NULL,15,'화천군');
 INSERT INTO region_sigungu VALUES(NULL,15,'양구군');
 INSERT INTO region_sigungu VALUES(NULL,16,'제주시');
-INSERT INTO region_sigungu VALUES(NULL,4,'광화군');
+INSERT INTO region_sigungu VALUES(NULL,4,'강화군');
 INSERT INTO region_sigungu VALUES(NULL,4,'옹진군');
 INSERT INTO region_sigungu VALUES(NULL,16,'서귀포시');
-
+INSERT INTO region_sigungu VALUES(NULL, 3, '군위군');
+INSERT INTO region_sigungu VALUES(NULL, 3, '달성군');
+INSERT INTO region_sigungu VALUES(NULL, 2, '기장군');
+INSERT INTO region_sigungu VALUES(NULL, 17, '세종특별자치시');
+INSERT INTO region_sigungu VALUES (NULL, 7, '울주군');
 
 INSERT INTO region_town VALUES(NULL,222,'화문석마을');
 INSERT INTO region_town VALUES(NULL,164,'세심마을');

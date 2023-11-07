@@ -66,7 +66,7 @@
 		WHERE seq <![CDATA[>=]]>
 		#{startPostNo}
 		)
-		WHERE ROWNUM <![CDATA[<=]]>
+		WHERE seq <![CDATA[<=]]>
 		#{endPostNo}
 	</select>
 

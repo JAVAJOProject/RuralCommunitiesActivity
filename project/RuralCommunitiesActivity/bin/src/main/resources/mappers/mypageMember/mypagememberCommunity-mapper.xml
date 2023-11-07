@@ -17,7 +17,6 @@
 		U_COMMUNITY_POST_ID ,
 		U_ID,
 		POST_TYPE_ID ,
-		U_COMMUNITY_IMG_ID ,
 		U_COMMUNITY_CONTENT ,
 		U_COMMUNITY_DATE_CREATED ,
 		COMMUNITY_LIKE_CNT ,
@@ -34,19 +33,18 @@
 
 	<resultMap id="MemberCommunityPostForClob"
 		type="MemberCommunityPost">
-		<result property="communityPostId" column="community_post_id" />
+		<result property="uCommunityPostId" column="u_community_post_id" />
 		<result property="uId" column="u_id" />
-		<result property="communityImgId" column="community_img_id" />
-		<result property="communityImgName" column="community_img_name" />
 		<result property="uCommunityContent"
 			column="u_community_content" jdbcType="CLOB"
 			javaType="java.lang.String" />
 		<result property="uCommunityDateCreated"
 			column="u_community_date_created" />
-		<result property="uCommunityFavoriteCnt"
-			column="u_community_favorite_cnt" />
-		<result property="uCommunityCumCnt"
-			column="u_community_cum_cnt" />
+		<result property="communityFavoriteCnt"
+			column="community_favorite_cnt" />
+		<result property="communityViewCnt" column="community_view_cnt" />
+		<result property="communityCumCnt"
+			column="community_cum_cnt" />
 	</resultMap>
 
 	<!-- Oracle -->
@@ -55,22 +53,20 @@
     SELECT
     post.u_community_post_id,
     post.u_id,
-    post.community_img_id,
-    img.community_img_name,
     post.u_community_content,
     post.u_community_date_created,
-    post.u_community_favorite_cnt,
-    post.u_community_cum_cnt
+    post.community_favorite_cnt,
+    post.community_view_cnt,
+    post.community_cum_cnt
     FROM (
         SELECT
         post.u_community_post_id,
         post.u_id,
-        post.community_img_id,
-        img.community_img_name,
         post.u_community_content,
         post.u_community_date_created,
-        post.u_community_favorite_cnt,
-        post.u_community_cum_cnt
+        post.community_favorite_cnt,
+        post.community_view_cnt,
+        post.community_cum_cnt
         FROM member_community post
         INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
         WHERE u_community_post_id > #{postId} ORDER BY post.u_community_date_created DESC
@@ -82,60 +78,16 @@
 	<select id="getOneRequestMemberCommunityPost"
 		resultMap="MemberCommunityPostForClob" parameterType="int">
 		SELECT
-		post.u_community_post_id,
-		post.u_id,
-		post.community_img_id,
-		img.community_img_name,
-		post.u_community_content,
-		post.u_community_date_created,
-		post.u_community_favorite_cnt,
-		post.u_community_cum_cnt
+		u_community_post_id,
+		u_id,
+		u_community_content,
+		u_community_date_created,
+		community_favorite_cnt,
+		community_view_cnt,
+		community_cum_cnt
 		FROM
-		member_community post
-		INNER JOIN
-		community_post_img img ON (post.community_img_id =
-		img.community_img_id)
+		member_community
 		WHERE
 		u_community_post_id = #{postId}
 	</select>
-
-	<!-- MySQL -->
-	<!-- <select id="getRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" 
-		parameterType="int"> -->
-	<!-- SELECT -->
-	<!-- post.u_community_post_id, -->
-	<!-- post.u_id, -->
-	<!-- post.community_img_id, -->
-	<!-- img.community_img_name, -->
-	<!-- post.u_community_content, -->
-	<!-- post.u_community_date_created, -->
-	<!-- post.u_community_favorite_cnt, -->
-	<!-- post.u_community_cum_cnt -->
-	<!-- FROM -->
-	<!-- member_community post -->
-	<!-- INNER JOIN -->
-	<!-- community_post_img img ON (post.community_img_id = img.community_img_id) -->
-	<!-- WHERE -->
-	<!-- u_community_post_id > #{postId} -->
-	<!-- LIMIT 10 -->
-	<!-- </select> -->
-
-	<!-- <select id="getOneRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" 
-		parameterType="int"> -->
-	<!-- SELECT -->
-	<!-- post.u_community_post_id, -->
-	<!-- post.u_id, -->
-	<!-- post.community_img_id, -->
-	<!-- img.community_img_name, -->
-	<!-- post.u_community_content, -->
-	<!-- post.u_community_date_created, -->
-	<!-- post.u_community_favorite_cnt, -->
-	<!-- post.u_community_cum_cnt -->
-	<!-- FROM -->
-	<!-- member_community post -->
-	<!-- INNER JOIN -->
-	<!-- community_post_img img ON (post.community_img_id = img.community_img_id) -->
-	<!-- WHERE -->
-	<!-- u_community_post_id = #{postId} -->
-	<!-- </select> -->
 </mapper>

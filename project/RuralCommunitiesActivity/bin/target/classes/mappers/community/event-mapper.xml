@@ -29,402 +29,229 @@
     </resultMap>
 
     <!-- Oracle -->
-<!--    <select id="getTotalActiveEventCount" resultType="int">-->
-<!--        SELECT COUNT(*) FROM event WHERE event_status_id IN (3, 5)-->
-<!--    </select>-->
-
-<!--    <select id="getRequestPageEventContent" resultMap="EventDTOForClob">-->
-<!--        SELECT-->
-<!--        event_id,-->
-<!--        s_id,-->
-<!--        post_type_id,-->
-<!--        event_img_id,-->
-<!--        sigungu_id,-->
-<!--        event_recruit_type_id,-->
-<!--        event_recruit_type,-->
-<!--        event_status_id,-->
-<!--        event_status,-->
-<!--        event_name,-->
-<!--        event_content,-->
-<!--        event_thumbnail_img,-->
-<!--        event_date_created,-->
-<!--        event_recruit_start_date,-->
-<!--        event_recruit_end_date,-->
-<!--        event_start_date,-->
-<!--        event_end_date,-->
-<!--        event_max_people,-->
-<!--        event_addr,-->
-<!--        event_favorite_cnt,-->
-<!--        event_view_cnt-->
-<!--        FROM (SELECT-->
-<!--        seq,-->
-<!--        event_id,-->
-<!--        s_id,-->
-<!--        post_type_id,-->
-<!--        event_img_id,-->
-<!--        sigungu_id,-->
-<!--        event_recruit_type_id,-->
-<!--        event_recruit_type,-->
-<!--        event_status_id,-->
-<!--        event_status,-->
-<!--        event_name,-->
-<!--        event_content,-->
-<!--        event_thumbnail_img,-->
-<!--        event_date_created,-->
-<!--        event_recruit_start_date,-->
-<!--        event_recruit_end_date,-->
-<!--        event_start_date,-->
-<!--        event_end_date,-->
-<!--        event_max_people,-->
-<!--        event_addr,-->
-<!--        event_favorite_cnt,-->
-<!--        event_view_cnt-->
-<!--        FROM (-->
-<!--        SELECT-->
-<!--        ROWNUM AS seq,-->
-<!--        event_id,-->
-<!--        s_id,-->
-<!--        post_type_id,-->
-<!--        event_img_id,-->
-<!--        sigungu_id,-->
-<!--        event_recruit_type_id,-->
-<!--        event_recruit_type,-->
-<!--        event_status_id,-->
-<!--        event_status,-->
-<!--        event_name,-->
-<!--        event_content,-->
-<!--        event_thumbnail_img,-->
-<!--        event_date_created,-->
-<!--        event_recruit_start_date,-->
-<!--        event_recruit_end_date,-->
-<!--        event_start_date,-->
-<!--        event_end_date,-->
-<!--        event_max_people,-->
-<!--        event_addr,-->
-<!--        event_favorite_cnt,-->
-<!--        event_view_cnt-->
-<!--        FROM (-->
-<!--        SELECT-->
-<!--        event.event_id,-->
-<!--        event.s_id,-->
-<!--        event.post_type_id,-->
-<!--        event.event_img_id,-->
-<!--        event.sigungu_id,-->
-<!--        event.event_recruit_type_id,-->
-<!--        recruit_type.event_recruit_type,-->
-<!--        event.event_status_id,-->
-<!--        status.event_status,-->
-<!--        event.event_name,-->
-<!--        event.event_content,-->
-<!--        event.event_thumbnail_img,-->
-<!--        event.event_date_created,-->
-<!--        event.event_recruit_start_date,-->
-<!--        event.event_recruit_end_date,-->
-<!--        event.event_start_date,-->
-<!--        event.event_end_date,-->
-<!--        event.event_max_people,-->
-<!--        event.event_addr,-->
-<!--        event.event_favorite_cnt,-->
-<!--        event.event_view_cnt-->
-<!--        FROM event-->
-<!--        INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
-<!--        INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)-->
-<!--        WHERE event.event_status_id IN (3, 5)-->
-<!--        ORDER BY event.event_date_created DESC)-->
-<!--        )-->
-<!--        WHERE seq <![CDATA[>=]]> #{startPostNo}-->
-<!--        )-->
-<!--        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}-->
-<!--    </select>-->
-
-<!--    <select id="getRecruitingActiveEventOnlyCount" resultType="int">-->
-<!--        SELECT COUNT(*)-->
-<!--        FROM event-->
-<!--            WHERE event_status_id IN (3, 5)-->
-<!--              AND event.event_recruit_end_date >= SYSTIMESTAMP-->
-<!--    </select>-->
-
-<!--    <select id="getRequestPageRecruitingEventDataOnly" resultMap="EventDTOForClob">-->
-<!--        SELECT-->
-<!--            event_id,-->
-<!--            s_id,-->
-<!--            post_type_id,-->
-<!--            event_img_id,-->
-<!--            sigungu_id,-->
-<!--            event_recruit_type_id,-->
-<!--            event_recruit_type,-->
-<!--            event_status_id,-->
-<!--            event_status,-->
-<!--            event_name,-->
-<!--            event_content,-->
-<!--            event_thumbnail_img,-->
-<!--            event_date_created,-->
-<!--            event_recruit_start_date,-->
-<!--            event_recruit_end_date,-->
-<!--            event_start_date,-->
-<!--            event_end_date,-->
-<!--            event_max_people,-->
-<!--            event_addr,-->
-<!--            event_favorite_cnt,-->
-<!--            event_view_cnt-->
-<!--        FROM (SELECT-->
-<!--                  seq,-->
-<!--                  event_id,-->
-<!--                  s_id,-->
-<!--                  post_type_id,-->
-<!--                  event_img_id,-->
-<!--                  sigungu_id,-->
-<!--                  event_recruit_type_id,-->
-<!--                  event_recruit_type,-->
-<!--                  event_status_id,-->
-<!--                  event_status,-->
-<!--                  event_name,-->
-<!--                  event_content,-->
-<!--                  event_thumbnail_img,-->
-<!--                  event_date_created,-->
-<!--                  event_recruit_start_date,-->
-<!--                  event_recruit_end_date,-->
-<!--                  event_start_date,-->
-<!--                  event_end_date,-->
-<!--                  event_max_people,-->
-<!--                  event_addr,-->
-<!--                  event_favorite_cnt,-->
-<!--                  event_view_cnt-->
-<!--              FROM (-->
-<!--                       SELECT-->
-<!--                           ROWNUM AS seq,-->
-<!--                           event_id,-->
-<!--                           s_id,-->
-<!--                           post_type_id,-->
-<!--                           event_img_id,-->
-<!--                           sigungu_id,-->
-<!--                           event_recruit_type_id,-->
-<!--                           event_recruit_type,-->
-<!--                           event_status_id,-->
-<!--                           event_status,-->
-<!--                           event_name,-->
-<!--                           event_content,-->
-<!--                           event_thumbnail_img,-->
-<!--                           event_date_created,-->
-<!--                           event_recruit_start_date,-->
-<!--                           event_recruit_end_date,-->
-<!--                           event_start_date,-->
-<!--                           event_end_date,-->
-<!--                           event_max_people,-->
-<!--                           event_addr,-->
-<!--                           event_favorite_cnt,-->
-<!--                           event_view_cnt-->
-<!--                       FROM (-->
-<!--                                SELECT-->
-<!--                                    event.event_id,-->
-<!--                                    event.s_id,-->
-<!--                                    event.post_type_id,-->
-<!--                                    event.event_img_id,-->
-<!--                                    event.sigungu_id,-->
-<!--                                    event.event_recruit_type_id,-->
-<!--                                    recruit_type.event_recruit_type,-->
-<!--                                    event.event_status_id,-->
-<!--                                    status.event_status,-->
-<!--                                    event.event_name,-->
-<!--                                    event.event_content,-->
-<!--                                    event.event_thumbnail_img,-->
-<!--                                    event.event_date_created,-->
-<!--                                    event.event_recruit_start_date,-->
-<!--                                    event.event_recruit_end_date,-->
-<!--                                    event.event_start_date,-->
-<!--                                    event.event_end_date,-->
-<!--                                    event.event_max_people,-->
-<!--                                    event.event_addr,-->
-<!--                                    event.event_favorite_cnt,-->
-<!--                                    event.event_view_cnt-->
-<!--                                FROM event-->
-<!--                                         INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
-<!--                                         INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)-->
-<!--                                WHERE event.event_status_id IN (3, 5)-->
-<!--                                  AND event.event_recruit_end_date >= SYSTIMESTAMP-->
-<!--                                ORDER BY event.event_date_created DESC)-->
-<!--                   )-->
-<!--              WHERE seq <![CDATA[>=]]> #{startPostNo}-->
-<!--             )-->
-<!--        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}-->
-<!--    </select>-->
-
-<!--    <insert id="postRequestEventPost" parameterType="Event">-->
-<!--        INSERT INTO event(event_id, s_id, post_type_id, event_img_id, sigungu_id, event_recruit_type_id, event_status_id, event_name, event_content, event_thumbnail_img, event_date_created, event_recruit_start_date, event_recruit_end_date, event_start_date, event_end_date, event_max_people, event_addr, event_favorite_cnt, event_view_cnt)-->
-<!--        VALUES (event_seq.NEXTVAL,-->
-<!--                #{sId},-->
-<!--                DEFAULT,-->
-<!--                NULL,-->
-<!--                #{sigunguId},-->
-<!--                #{eventRecruitTypeId},-->
-<!--                DEFAULT,-->
-<!--                #{eventName},-->
-<!--                #{eventContent},-->
-<!--                NULL,-->
-<!--                SYSTIMESTAMP,-->
-<!--                TO_DATE(#{eventRecruitStartDate}, 'YYYY-MM-DD HH24:MI:SS'),-->
-<!--                TO_DATE(#{eventRecruitEndDate}, 'YYYY-MM-DD HH24:MI:SS'),-->
-<!--                TO_DATE(#{eventStartDate}, 'YYYY-MM-DD HH24:MI:SS'),-->
-<!--                TO_DATE(#{eventEndDate}, 'YYYY-MM-DD HH24:MI:SS'),-->
-<!--                #{eventMaxPeople},-->
-<!--                #{eventAddr},-->
-<!--                DEFAULT,-->
-<!--                DEFAULT)-->
-<!--    </insert>-->
-
-<!--    <select id="getEventPostCurrentId" resultType="int">-->
-<!--        SELECT MAX(event_id) FROM event-->
-<!--    </select>-->
-
-<!--    <select id="getEventImgCurrentId" resultType="int">-->
-<!--        SELECT MAX(event_img_id) FROM event_images-->
-<!--    </select>-->
-
-<!--    <insert id="postEventImagesValues" parameterType="EventImages">-->
-<!--        INSERT INTO event_images-->
-<!--        VALUES (event_images_seq.NEXTVAL, #{eventImg1}, #{eventImg2}, #{eventImg3}, #{eventImg4}, #{eventImg5})-->
-<!--    </insert>-->
-
-<!--    <update id="updateEventImgIdToEvent" parameterType="Event">-->
-<!--        UPDATE event SET event_img_id = #{eventImgId} WHERE event_id = #{eventId}-->
-<!--    </update>-->
-
-<!--    <select id="getEventRecruitTypeId" parameterType="int" resultType="int">-->
-<!--        SELECT event_recruit_type_id FROM event WHERE event_id = #{eventId}-->
-<!--    </select>-->
-
-<!--    <insert id="postEventStoryRequest" parameterType="EventStory">-->
-<!--        INSERT INTO event_winner_${eventId}-->
-<!--        VALUES (event_winner_${eventId}_seq.NEXTVAL, #{uId}, #{eventId}, #{eventProgressStatusId}, #{eventStory})-->
-<!--    </insert>-->
-
-<!--    <select id="getEventFromEventId" resultMap="EventDTOForClob" parameterType="int">-->
-<!--        SELECT-->
-<!--            event.event_id,-->
-<!--            event.s_id,-->
-<!--            event.post_type_id,-->
-<!--            event.event_img_id,-->
-<!--            event.sigungu_id,-->
-<!--            event.event_recruit_type_id,-->
-<!--            recruit_type.event_recruit_type,-->
-<!--            event.event_status_id,-->
-<!--            status.event_status,-->
-<!--            event.event_name,-->
-<!--            event.event_content,-->
-<!--            event.event_thumbnail_img,-->
-<!--            event.event_recruit_start_date,-->
-<!--            event.event_recruit_end_date,-->
-<!--            event.event_start_date,-->
-<!--            event.event_end_date,-->
-<!--            event.event_max_people,-->
-<!--            event.event_addr,-->
-<!--            event.event_favorite_cnt,-->
-<!--            event.event_view_cnt-->
-<!--        FROM-->
-<!--            event-->
-<!--                INNER JOIN-->
-<!--            event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
-<!--                INNER JOIN-->
-<!--            event_status status ON (event.event_status_id = status.event_status_id)-->
-<!--        WHERE-->
-<!--            event.event_id = #{eventId}-->
-<!--    </select>-->
-
-<!--    <select id="getEventImagesByImgId" parameterType="int" resultType="EventImages">-->
-<!--        SELECT-->
-<!--            event_img_id,-->
-<!--            event_img_1,-->
-<!--            event_img_2,-->
-<!--            event_img_3,-->
-<!--            event_img_4,-->
-<!--            event_img_5-->
-<!--        FROM-->
-<!--            event_images-->
-<!--        WHERE-->
-<!--            event_img_id = #{eventImgId}-->
-<!--    </select>-->
-
-    <!-- MySQL -->
     <select id="getTotalActiveEventCount" resultType="int">
         SELECT COUNT(*) FROM event WHERE event_status_id IN (3, 5)
     </select>
 
     <select id="getRequestPageEventContent" resultMap="EventDTOForClob">
         SELECT
-            event.event_id,
-            event.s_id,
-            event.post_type_id,
-            event.event_img_id,
-            event.sigungu_id,
-            event.event_recruit_type_id,
-            recruit_type.event_recruit_type,
-            event.event_status_id,
-            status.event_status,
-            event.event_name,
-            event.event_content,
-            event.event_thumbnail_img,
-            event.event_recruit_start_date,
-            event.event_recruit_end_date,
-            event.event_start_date,
-            event.event_end_date,
-            event.event_max_people,
-            event.event_addr,
-            event.event_favorite_cnt,
-            event.event_view_cnt
-        FROM
-            event
-                INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)
-                INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)
+        event_id,
+        s_id,
+        post_type_id,
+        event_img_id,
+        sigungu_id,
+        event_recruit_type_id,
+        event_recruit_type,
+        event_status_id,
+        event_status,
+        event_name,
+        event_content,
+        event_thumbnail_img,
+        event_date_created,
+        event_recruit_start_date,
+        event_recruit_end_date,
+        event_start_date,
+        event_end_date,
+        event_max_people,
+        event_addr,
+        event_favorite_cnt,
+        event_view_cnt
+        FROM (SELECT
+        seq,
+        event_id,
+        s_id,
+        post_type_id,
+        event_img_id,
+        sigungu_id,
+        event_recruit_type_id,
+        event_recruit_type,
+        event_status_id,
+        event_status,
+        event_name,
+        event_content,
+        event_thumbnail_img,
+        event_date_created,
+        event_recruit_start_date,
+        event_recruit_end_date,
+        event_start_date,
+        event_end_date,
+        event_max_people,
+        event_addr,
+        event_favorite_cnt,
+        event_view_cnt
+        FROM (
+        SELECT
+        ROWNUM AS seq,
+        event_id,
+        s_id,
+        post_type_id,
+        event_img_id,
+        sigungu_id,
+        event_recruit_type_id,
+        event_recruit_type,
+        event_status_id,
+        event_status,
+        event_name,
+        event_content,
+        event_thumbnail_img,
+        event_date_created,
+        event_recruit_start_date,
+        event_recruit_end_date,
+        event_start_date,
+        event_end_date,
+        event_max_people,
+        event_addr,
+        event_favorite_cnt,
+        event_view_cnt
+        FROM (
+        SELECT
+        event.event_id,
+        event.s_id,
+        event.post_type_id,
+        event.event_img_id,
+        event.sigungu_id,
+        event.event_recruit_type_id,
+        recruit_type.event_recruit_type,
+        event.event_status_id,
+        status.event_status,
+        event.event_name,
+        event.event_content,
+        event.event_thumbnail_img,
+        event.event_date_created,
+        event.event_recruit_start_date,
+        event.event_recruit_end_date,
+        event.event_start_date,
+        event.event_end_date,
+        event.event_max_people,
+        event.event_addr,
+        event.event_favorite_cnt,
+        event.event_view_cnt
+        FROM event
+        INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)
+        INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)
         WHERE event.event_status_id IN (3, 5)
-        ORDER BY event.event_date_created DESC
-            LIMIT #{perPagePostCount} OFFSET #{startPostNo}
+        ORDER BY event.event_date_created DESC)
+        )
+        WHERE seq <![CDATA[>=]]> #{startPostNo}
+        )
+        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
     </select>
 
     <select id="getRecruitingActiveEventOnlyCount" resultType="int">
         SELECT COUNT(*)
         FROM event
             WHERE event_status_id IN (3, 5)
-              AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
+              AND event.event_recruit_end_date >= SYSTIMESTAMP
     </select>
 
     <select id="getRequestPageRecruitingEventDataOnly" resultMap="EventDTOForClob">
         SELECT
-            event.event_id,
-            event.s_id,
-            event.post_type_id,
-            event.event_img_id,
-            event.sigungu_id,
-            event.event_recruit_type_id,
-            recruit_type.event_recruit_type,
-            event.event_status_id,
-            status.event_status,
-            event.event_name,
-            event.event_content,
-            event.event_thumbnail_img,
-            event.event_recruit_start_date,
-            event.event_recruit_end_date,
-            event.event_start_date,
-            event.event_end_date,
-            event.event_max_people,
-            event.event_addr,
-            event.event_favorite_cnt,
-            event.event_view_cnt
-        FROM
-            event
-                INNER JOIN
-            event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)
-                INNER JOIN
-            event_status status ON (event.event_status_id = status.event_status_id)
-        WHERE
-            event.event_status_id IN (3 , 5)
-          AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
-        ORDER BY event.event_date_created DESC
-            LIMIT #{perPagePostCount} OFFSET #{startPostNo}
+            event_id,
+            s_id,
+            post_type_id,
+            event_img_id,
+            sigungu_id,
+            event_recruit_type_id,
+            event_recruit_type,
+            event_status_id,
+            event_status,
+            event_name,
+            event_content,
+            event_thumbnail_img,
+            event_date_created,
+            event_recruit_start_date,
+            event_recruit_end_date,
+            event_start_date,
+            event_end_date,
+            event_max_people,
+            event_addr,
+            event_favorite_cnt,
+            event_view_cnt
+        FROM (SELECT
+                  seq,
+                  event_id,
+                  s_id,
+                  post_type_id,
+                  event_img_id,
+                  sigungu_id,
+                  event_recruit_type_id,
+                  event_recruit_type,
+                  event_status_id,
+                  event_status,
+                  event_name,
+                  event_content,
+                  event_thumbnail_img,
+                  event_date_created,
+                  event_recruit_start_date,
+                  event_recruit_end_date,
+                  event_start_date,
+                  event_end_date,
+                  event_max_people,
+                  event_addr,
+                  event_favorite_cnt,
+                  event_view_cnt
+              FROM (
+                       SELECT
+                           ROWNUM AS seq,
+                           event_id,
+                           s_id,
+                           post_type_id,
+                           event_img_id,
+                           sigungu_id,
+                           event_recruit_type_id,
+                           event_recruit_type,
+                           event_status_id,
+                           event_status,
+                           event_name,
+                           event_content,
+                           event_thumbnail_img,
+                           event_date_created,
+                           event_recruit_start_date,
+                           event_recruit_end_date,
+                           event_start_date,
+                           event_end_date,
+                           event_max_people,
+                           event_addr,
+                           event_favorite_cnt,
+                           event_view_cnt
+                       FROM (
+                                SELECT
+                                    event.event_id,
+                                    event.s_id,
+                                    event.post_type_id,
+                                    event.event_img_id,
+                                    event.sigungu_id,
+                                    event.event_recruit_type_id,
+                                    recruit_type.event_recruit_type,
+                                    event.event_status_id,
+                                    status.event_status,
+                                    event.event_name,
+                                    event.event_content,
+                                    event.event_thumbnail_img,
+                                    event.event_date_created,
+                                    event.event_recruit_start_date,
+                                    event.event_recruit_end_date,
+                                    event.event_start_date,
+                                    event.event_end_date,
+                                    event.event_max_people,
+                                    event.event_addr,
+                                    event.event_favorite_cnt,
+                                    event.event_view_cnt
+                                FROM event
+                                         INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)
+                                         INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)
+                                WHERE event.event_status_id IN (3, 5)
+                                  AND event.event_recruit_end_date >= SYSTIMESTAMP
+                                ORDER BY event.event_date_created DESC)
+                   )
+              WHERE seq <![CDATA[>=]]> #{startPostNo}
+             )
+        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
     </select>
 
     <insert id="postRequestEventPost" parameterType="Event">
         INSERT INTO event(event_id, s_id, post_type_id, event_img_id, sigungu_id, event_recruit_type_id, event_status_id, event_name, event_content, event_thumbnail_img, event_date_created, event_recruit_start_date, event_recruit_end_date, event_start_date, event_end_date, event_max_people, event_addr, event_favorite_cnt, event_view_cnt)
-        VALUES (NULL,
+        VALUES (event_seq.NEXTVAL,
                 #{sId},
                 DEFAULT,
                 NULL,
@@ -434,11 +261,11 @@
                 #{eventName},
                 #{eventContent},
                 NULL,
-                CURRENT_TIMESTAMP,
-                #{eventRecruitStartDate},
-                #{eventRecruitEndDate},
-                #{eventStartDate},
-                #{eventEndDate},
+                SYSTIMESTAMP,
+                TO_DATE(#{eventRecruitStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+                TO_DATE(#{eventRecruitEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
+                TO_DATE(#{eventStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+                TO_DATE(#{eventEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
                 #{eventMaxPeople},
                 #{eventAddr},
                 DEFAULT,
@@ -455,20 +282,20 @@
 
     <insert id="postEventImagesValues" parameterType="EventImages">
         INSERT INTO event_images
-        VALUES (NULL, #{eventImg1}, #{eventImg2}, #{eventImg3}, #{eventImg4}, #{eventImg5})
+        VALUES (event_images_seq.NEXTVAL, #{eventImg1}, #{eventImg2}, #{eventImg3}, #{eventImg4}, #{eventImg5})
     </insert>
 
     <update id="updateEventImgIdToEvent" parameterType="Event">
         UPDATE event SET event_img_id = #{eventImgId} WHERE event_id = #{eventId}
     </update>
 
-    <select id="getEventRecruitTypeId" parameterType="int">
+    <select id="getEventRecruitTypeId" parameterType="int" resultType="int">
         SELECT event_recruit_type_id FROM event WHERE event_id = #{eventId}
     </select>
 
     <insert id="postEventStoryRequest" parameterType="EventStory">
         INSERT INTO event_winner_${eventId}
-        VALUES (NULL, #{uId}, #{eventId}, #{eventProgressStatusId}, #{eventStory})
+        VALUES (event_winner_${eventId}_seq.NEXTVAL, #{uId}, #{eventId}, #{eventProgressStatusId}, #{eventStory})
     </insert>
 
     <select id="getEventFromEventId" resultMap="EventDTOForClob" parameterType="int">
@@ -516,4 +343,177 @@
         WHERE
             event_img_id = #{eventImgId}
     </select>
+
+    <!-- MySQL -->
+<!--    <select id="getTotalActiveEventCount" resultType="int">-->
+<!--        SELECT COUNT(*) FROM event WHERE event_status_id IN (3, 5)-->
+<!--    </select>-->
+
+<!--    <select id="getRequestPageEventContent" resultMap="EventDTOForClob">-->
+<!--        SELECT-->
+<!--            event.event_id,-->
+<!--            event.s_id,-->
+<!--            event.post_type_id,-->
+<!--            event.event_img_id,-->
+<!--            event.sigungu_id,-->
+<!--            event.event_recruit_type_id,-->
+<!--            recruit_type.event_recruit_type,-->
+<!--            event.event_status_id,-->
+<!--            status.event_status,-->
+<!--            event.event_name,-->
+<!--            event.event_content,-->
+<!--            event.event_thumbnail_img,-->
+<!--            event.event_recruit_start_date,-->
+<!--            event.event_recruit_end_date,-->
+<!--            event.event_start_date,-->
+<!--            event.event_end_date,-->
+<!--            event.event_max_people,-->
+<!--            event.event_addr,-->
+<!--            event.event_favorite_cnt,-->
+<!--            event.event_view_cnt-->
+<!--        FROM-->
+<!--            event-->
+<!--                INNER JOIN event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
+<!--                INNER JOIN event_status status ON (event.event_status_id = status.event_status_id)-->
+<!--        WHERE event.event_status_id IN (3, 5)-->
+<!--        ORDER BY event.event_date_created DESC-->
+<!--            LIMIT #{perPagePostCount} OFFSET #{startPostNo}-->
+<!--    </select>-->
+
+<!--    <select id="getRecruitingActiveEventOnlyCount" resultType="int">-->
+<!--        SELECT COUNT(*)-->
+<!--        FROM event-->
+<!--            WHERE event_status_id IN (3, 5)-->
+<!--              AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP-->
+<!--    </select>-->
+
+<!--    <select id="getRequestPageRecruitingEventDataOnly" resultMap="EventDTOForClob">-->
+<!--        SELECT-->
+<!--            event.event_id,-->
+<!--            event.s_id,-->
+<!--            event.post_type_id,-->
+<!--            event.event_img_id,-->
+<!--            event.sigungu_id,-->
+<!--            event.event_recruit_type_id,-->
+<!--            recruit_type.event_recruit_type,-->
+<!--            event.event_status_id,-->
+<!--            status.event_status,-->
+<!--            event.event_name,-->
+<!--            event.event_content,-->
+<!--            event.event_thumbnail_img,-->
+<!--            event.event_recruit_start_date,-->
+<!--            event.event_recruit_end_date,-->
+<!--            event.event_start_date,-->
+<!--            event.event_end_date,-->
+<!--            event.event_max_people,-->
+<!--            event.event_addr,-->
+<!--            event.event_favorite_cnt,-->
+<!--            event.event_view_cnt-->
+<!--        FROM-->
+<!--            event-->
+<!--                INNER JOIN-->
+<!--            event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
+<!--                INNER JOIN-->
+<!--            event_status status ON (event.event_status_id = status.event_status_id)-->
+<!--        WHERE-->
+<!--            event.event_status_id IN (3 , 5)-->
+<!--          AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP-->
+<!--        ORDER BY event.event_date_created DESC-->
+<!--            LIMIT #{perPagePostCount} OFFSET #{startPostNo}-->
+<!--    </select>-->
+
+<!--    <insert id="postRequestEventPost" parameterType="Event">-->
+<!--        INSERT INTO event(event_id, s_id, post_type_id, event_img_id, sigungu_id, event_recruit_type_id, event_status_id, event_name, event_content, event_thumbnail_img, event_date_created, event_recruit_start_date, event_recruit_end_date, event_start_date, event_end_date, event_max_people, event_addr, event_favorite_cnt, event_view_cnt)-->
+<!--        VALUES (NULL,-->
+<!--                #{sId},-->
+<!--                DEFAULT,-->
+<!--                NULL,-->
+<!--                #{sigunguId},-->
+<!--                #{eventRecruitTypeId},-->
+<!--                DEFAULT,-->
+<!--                #{eventName},-->
+<!--                #{eventContent},-->
+<!--                NULL,-->
+<!--                CURRENT_TIMESTAMP,-->
+<!--                #{eventRecruitStartDate},-->
+<!--                #{eventRecruitEndDate},-->
+<!--                #{eventStartDate},-->
+<!--                #{eventEndDate},-->
+<!--                #{eventMaxPeople},-->
+<!--                #{eventAddr},-->
+<!--                DEFAULT,-->
+<!--                DEFAULT)-->
+<!--    </insert>-->
+
+<!--    <select id="getEventPostCurrentId" resultType="int">-->
+<!--        SELECT MAX(event_id) FROM event-->
+<!--    </select>-->
+
+<!--    <select id="getEventImgCurrentId" resultType="int">-->
+<!--        SELECT MAX(event_img_id) FROM event_images-->
+<!--    </select>-->
+
+<!--    <insert id="postEventImagesValues" parameterType="EventImages">-->
+<!--        INSERT INTO event_images-->
+<!--        VALUES (NULL, #{eventImg1}, #{eventImg2}, #{eventImg3}, #{eventImg4}, #{eventImg5})-->
+<!--    </insert>-->
+
+<!--    <update id="updateEventImgIdToEvent" parameterType="Event">-->
+<!--        UPDATE event SET event_img_id = #{eventImgId} WHERE event_id = #{eventId}-->
+<!--    </update>-->
+
+<!--    <select id="getEventRecruitTypeId" parameterType="int">-->
+<!--        SELECT event_recruit_type_id FROM event WHERE event_id = #{eventId}-->
+<!--    </select>-->
+
+<!--    <insert id="postEventStoryRequest" parameterType="EventStory">-->
+<!--        INSERT INTO event_winner_${eventId}-->
+<!--        VALUES (NULL, #{uId}, #{eventId}, #{eventProgressStatusId}, #{eventStory})-->
+<!--    </insert>-->
+
+<!--    <select id="getEventFromEventId" resultMap="EventDTOForClob" parameterType="int">-->
+<!--        SELECT-->
+<!--            event.event_id,-->
+<!--            event.s_id,-->
+<!--            event.post_type_id,-->
+<!--            event.event_img_id,-->
+<!--            event.sigungu_id,-->
+<!--            event.event_recruit_type_id,-->
+<!--            recruit_type.event_recruit_type,-->
+<!--            event.event_status_id,-->
+<!--            status.event_status,-->
+<!--            event.event_name,-->
+<!--            event.event_content,-->
+<!--            event.event_thumbnail_img,-->
+<!--            event.event_recruit_start_date,-->
+<!--            event.event_recruit_end_date,-->
+<!--            event.event_start_date,-->
+<!--            event.event_end_date,-->
+<!--            event.event_max_people,-->
+<!--            event.event_addr,-->
+<!--            event.event_favorite_cnt,-->
+<!--            event.event_view_cnt-->
+<!--        FROM-->
+<!--            event-->
+<!--                INNER JOIN-->
+<!--            event_recruitment_type recruit_type ON (event.event_recruit_type_id = recruit_type.event_recruit_type_id)-->
+<!--                INNER JOIN-->
+<!--            event_status status ON (event.event_status_id = status.event_status_id)-->
+<!--        WHERE-->
+<!--            event.event_id = #{eventId}-->
+<!--    </select>-->
+
+<!--    <select id="getEventImagesByImgId" parameterType="int" resultType="EventImages">-->
+<!--        SELECT-->
+<!--            event_img_id,-->
+<!--            event_img_1,-->
+<!--            event_img_2,-->
+<!--            event_img_3,-->
+<!--            event_img_4,-->
+<!--            event_img_5-->
+<!--        FROM-->
+<!--            event_images-->
+<!--        WHERE-->
+<!--            event_img_id = #{eventImgId}-->
+<!--    </select>-->
 </mapper>
