@@ -3,12 +3,11 @@ import { Outlet } from 'react-router-dom';
 
 import CommunityMainTitle from './community/maintitle/CommunityMainTitle';
 import CommunityRuleBoard from './community/communityRules/CommunityRuleBoard';
-import CommunityWritingBtn from './community/buttons/CommunityWritingBtn';
 import CommunityListBtnSet from './community/buttons/CommunityListBtnSet';
 
 import titleImg from '../../../view_img/Service/community/community/sellerTitle.jpg';
 import speakerImg from '../../../view_img/Service/community/community/speaker.svg';
-import noteImg from '../../../view_img/Service/community/community/note.svg';
+import pickRed from '../../../view_img/Service/community/community/communityRed.png';
 
 const defaultContents = {
   titles: {
@@ -18,6 +17,7 @@ const defaultContents = {
   },
   ruleBoard: {
     imgSrc: speakerImg,
+    imgPick: pickRed,
     title: '소통공간 이용수칙',
     rules: [
       '욕설 X',
@@ -28,14 +28,11 @@ const defaultContents = {
       '스팸 및 사이트와 관련없는 광고 X',
     ],
   },
-  writingBtn: {
-    text: '글쓰기',
-    imgSrc: noteImg,
-  },
 };
 
 export default function RootLayoutCommunity() {
-  const { titles, ruleBoard, writingBtn } = defaultContents;
+  const { titles, ruleBoard } = defaultContents;
+
   return (
     <main className="appMain">
       <CommunityMainTitle
@@ -47,24 +44,21 @@ export default function RootLayoutCommunity() {
         style={{
           backgroundColor: 'rgba(190, 190, 190, 0.17)',
           width: '100%',
-          height: 'max-content;',
+          height: 'max-content',
         }}
       >
         <div style={{ paddingTop: '3rem', paddingBottom: '2rem' }}>
           <CommunityRuleBoard
+            imgPick={ruleBoard.imgPick}
             imgSrc={ruleBoard.imgSrc}
             title={ruleBoard.title}
             rules={ruleBoard.rules}
           />
         </div>
-        <div style={{ width: '59.3125rem', margin: 'auto' }}>
-          <CommunityWritingBtn
-            imgSrc={writingBtn.imgSrc}
-            text={writingBtn.text}
-          />
+        <div style={{ width: '48rem', margin: 'auto' }}>
           <CommunityListBtnSet />
         </div>
-        <div style={{ clear: 'both' }}>
+        <div style={{ clear: 'both', marginTop: '5rem' }}>
           <Outlet />
         </div>
       </div>

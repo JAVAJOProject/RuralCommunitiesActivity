@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: center;
   padding: 0.9rem;
-  
+  z-index: 1000;
+  position: relative;
+
   float: right;
 }

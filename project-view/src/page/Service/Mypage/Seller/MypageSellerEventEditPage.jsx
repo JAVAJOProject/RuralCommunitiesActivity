@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useImmer } from 'use-immer';
 import { useNavigate } from 'react-router-dom';
-import {
-  fetchFormETCAndObj,
-} from '../../../../config/ApiService';
+import { fetchFormETCAndObj } from '../../../../config/ApiService';
 
 import EventRegistrationTitles from '../../../../components/Service/community/event/Registration/Title/EventRegistrationTitles';
 import MypageSellerEventEditContents from '../../../../components/Service/mypage/Provider/EventEdit/MypageSellerEventEditContents';

@@ -32,6 +32,7 @@ export default function MypageSellerPostPage() {
       );
       setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
     } catch (error) {
+      setData([]);
       console.error(error);
     }
   }
@@ -53,16 +54,20 @@ export default function MypageSellerPostPage() {
           data.map((item) => {
             const {
               sellerCommunityPostId,
+              postTypeId,
               sellerCommunityContent,
-              sellerCommunityLikeCnt,
+              communityLikeCnt,
               communityViewCnt,
             } = item;
 
             return (
               <GreenCardBox key={sellerCommunityPostId}>
                 <MypageMiniBoxSet
-                  likesNum={sellerCommunityLikeCnt}
-                  viewingsNum={communityViewCnt}
+                  on={false}
+                  postId={+sellerCommunityPostId}
+                  postTypeId={+postTypeId}
+                  likesNum={+communityLikeCnt}
+                  viewingsNum={+communityViewCnt}
                 />
                 <MypageMypost text={sellerCommunityContent} />
                 <MypageMypostBtnBox links={['', '', '']} />

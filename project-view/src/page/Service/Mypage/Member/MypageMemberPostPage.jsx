@@ -33,6 +33,7 @@ export default function MypageMemberPostPage() {
       );
       setMaxPage(Math.ceil(+totalPostNo / +perPagePostCount));
     } catch (error) {
+      setData([]);
       console.error(error);
     }
   }
@@ -48,16 +49,20 @@ export default function MypageMemberPostPage() {
           data.map((item) => {
             const {
               uCommunityPostId,
+              postTypeId,
               ucommunityContent,
-              ucommunityLikeCnt,
+              communityLikeCnt,
               communityViewCnt,
             } = item;
 
             return (
               <GreenCardBox key={uCommunityPostId}>
                 <MypageMiniBoxSet
-                  likesNum={ucommunityLikeCnt}
-                  viewingsNum={communityViewCnt}
+                  on={false}
+                  postId={+uCommunityPostId}
+                  postTypeId={+postTypeId}
+                  likesNum={+communityLikeCnt}
+                  viewingsNum={+communityViewCnt}
                 />
                 <MypageMypost text={ucommunityContent} />
                 <MypageMypostBtnBox links={['', '', '']} />

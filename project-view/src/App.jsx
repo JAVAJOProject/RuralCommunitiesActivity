@@ -82,6 +82,9 @@ import MypageSellerEventEditPage from './page/Service/Mypage/Seller/MypageSeller
 import MypageSellerEventStoryDetailPage from './page/Service/Mypage/Seller/MypageSellerEventStoryDetailPage';
 import InquiryEditPage from './page/Service/CustomerCenter/Inquiry/InquiryEditPage';
 import RootLayoutCommunity from './components/Service/community/RootLayoutCommunity';
+import CommunitySellerCardListPage from './page/Service/Community/SellerCommunity/CommunitySellerCardListPage';
+import CommunitySellerTextListPage from './page/Service/Community/SellerCommunity/CommunitySellerTextListPage';
+import CommunitySellerDetailPage from './page/Service/Community/SellerCommunity/CommunitySellerDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -465,9 +468,15 @@ const router = createBrowserRouter([
                   },
                   {
                     path: 'card',
+                    element: <CommunitySellerCardListPage />,
                   },
                   {
                     path: 'list',
+                    element: <CommunitySellerTextListPage />,
+                  },
+                  {
+                    path: 'detail/:sellerCommunityPostId',
+                    element: <CommunitySellerDetailPage />,
                   },
                 ],
               },

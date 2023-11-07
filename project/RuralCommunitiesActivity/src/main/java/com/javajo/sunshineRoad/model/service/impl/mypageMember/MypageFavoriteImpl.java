@@ -18,17 +18,17 @@ public class MypageFavoriteImpl implements MypageFavoriteService {
 	private final MypageFavoriteDAO favoriteDAO;
 
 	@Override
-	public List<MypageFavoriteDTO> getInfo(int uId, PageInfo pageInfo) {
-		return favoriteDAO.getInfo(uId, pageInfo);
+	public List<MypageFavoriteDTO> getInfoEvent(int uId, PageInfo pageInfo) {
+		return favoriteDAO.getInfoEvent(uId, pageInfo);
 	}
 
 	@Override
-	public int getActivityCount(int uId) {
-		return favoriteDAO.getActivityCount(uId);
+	public int getActivityCountEvent(int uId) {
+		return favoriteDAO.getActivityCountEvent(uId);
 	}
 
 	@Override
-	public List<MypageFavoriteDTO> getListInfo(int uId) {
-		return favoriteDAO.getListInfo(uId);
+	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo) {
+		return favoriteDAO.getListInfoEvent(uId, pageInfo);
 	}
 }

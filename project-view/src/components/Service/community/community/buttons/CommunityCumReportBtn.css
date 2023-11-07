@@ -1,0 +1,28 @@
+.communityCumReportBtn {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  z-index: 600;
+  cursor: pointer;
+  position: absolute;
+  top: -1.925rem;
+  left: 10rem;
+}
+
+.communityCumReportBtn > div {
+  width: 3rem;
+}
+.communityCumReportBtn > div > img {
+  height: 2.125rem;
+  mix-blend-mode: darken;
+}
+
+.communityCumReportBtn > p {
+  color: rgba(0, 0, 0, 0.62);
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding-top: 0.3rem;
+}

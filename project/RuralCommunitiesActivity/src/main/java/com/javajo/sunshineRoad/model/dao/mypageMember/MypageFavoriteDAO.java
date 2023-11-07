@@ -9,33 +9,36 @@ import org.springframework.stereotype.Repository;
 import com.javajo.sunshineRoad.mappers.mypageMember.MypageFavoriteMapper;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageFavoriteDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
+import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
 
 import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
 public class MypageFavoriteDAO {
-	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
 	// 로그인한 회원
-	public List<MypageFavoriteDTO> getInfo(int uId, PageInfo pageInfo) {
+	public List<MypageFavoriteDTO> getInfoEvent(int uId, PageInfo pageInfo) {
+		System.out.println("FavoriteDAO " + uId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+
+		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+		return favoritemapper.selectByMemberEvent(uId, start, end);
+	}
+
+	public int getActivityCountEvent(int uId) {
+		System.out.println("uId " + uId);
+		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+		return favoritemapper.selectCountEvent(uId);
+	}
+
+	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo) {
 		System.out.println("FavoriteDAO " + uId);
 		int start = pageInfo.getStartList();
 		int end = pageInfo.getEndList();
 		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoritemapper.selectByMember(uId, start, end);
-	}
-
-	public int getActivityCount(int uId) {
-		System.out.println("uId " + uId);
-		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoritemapper.selectCount(uId);
-	}
-
-	public List<MypageFavoriteDTO> getListInfo(int uId) {
-		System.out.println("FavoriteDAO " + uId);
-		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoritemapper.selectByFavoriteList(uId);
+		return favoritemapper.selectByFavoriteListEvent(uId, start, end);
 	}
 }

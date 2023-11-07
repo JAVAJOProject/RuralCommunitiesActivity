@@ -74,9 +74,9 @@ const defaultContents = {
       inputType: 'text',
       inputPattern: '/^d*$/',
       subInput: {
-				accountInfoId:{
-					inputName: 'accountInfoId',
-				},
+        accountInfoId: {
+          inputName: 'accountInfoId',
+        },
         bank: {
           inputName: 'accountName',
           inputText: '은행 선택',

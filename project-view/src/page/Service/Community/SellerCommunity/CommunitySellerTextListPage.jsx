@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useImmer } from 'use-immer';
 
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
 import CommunityPickImages from '../../../../components/Service/community/community/pickImg/CommunityPickImages';
+import CommunityListBar from '../../../../components/Service/community/community/listBar/CommunityListBar';
 import CommunityPageBtn from '../../../../components/Service/community/community/buttons/CommunityPageBtn';
-import CommunitySellerCard from '../../../../components/Service/community/sellerCommunity/CommunitySellerCard';
 import CommunityWritingBtn from '../../../../components/Service/community/community/buttons/CommunityWritingBtn';
 
 import noteImg from '../../../../view_img/Service/community/community/note.svg';
@@ -160,7 +160,7 @@ const testContents = [
   },
 ];
 
-export default function CommunitySellerCardListPage() {
+export default function CommunitySellerTextListPage() {
   const [dbContents, updateDbContents] = useImmer([]);
   const [currentPos, setCurrentPos] = useState(0);
   const [totalPostNo, setTotalPostNo] = useState(0);
@@ -206,30 +206,21 @@ export default function CommunitySellerCardListPage() {
           width: '68.5rem',
           paddingLeft: 0,
           paddingRight: 0,
+          paddingBottom: '2.5rem',
           marginBottom: 0,
         }}
       >
-        <div
-          style={{
-            width: '62rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            margin: 'auto',
-          }}
-        >
-          {dbContents.length > 0 &&
-            dbContents.map((item) => (
-              <CommunitySellerCard
-                key={item.sellerCommunityPostId}
-                postId={item.sellerCommunityPostId}
-                postTypeId={item.postTypeId}
-                content={item.sellerCommunityContent}
-                author={item.sComName}
-                dateCreated={item.sellerCommunityDateCreated}
-                likesNum={item.communityLikeCnt}
-              />
-            ))}
-        </div>
+        {dbContents.length > 0 &&
+          dbContents.map((item) => (
+            <CommunityListBar
+              postId={item.sellerCommunityPostId}
+              postTypeId={item.postTypeId}
+              likesNum={item.communityLikeCnt}
+              content={item.sellerCommunityContent}
+              author={item.sComName}
+              dateCreated={item.sellerCommunityDateCreated}
+            />
+          ))}
       </CardListContentBox>
       <div
         style={{

@@ -6,9 +6,9 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageFavoriteDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageFavoriteService {
-    public List<MypageFavoriteDTO> getInfo(int uId, PageInfo pageInfo);
+	public List<MypageFavoriteDTO> getInfoEvent(int uId, PageInfo pageInfo);
 
-	public int getActivityCount(int uId);
+	public int getActivityCountEvent(int uId);
 
-	public List<MypageFavoriteDTO> getListInfo(int uId);
+	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo);
 }

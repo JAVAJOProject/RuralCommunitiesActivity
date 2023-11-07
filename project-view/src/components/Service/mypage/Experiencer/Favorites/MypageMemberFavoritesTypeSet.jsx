@@ -28,7 +28,7 @@ export default function MypageMemberFavoritesTypeSet({
             key={item.postId}
             imgSrc={item.thumbnailImg}
             title={item.postTitle}
-            oneLiner={item.oneLiner}
+            oneLiner={item.oneLiner ? item.oneLiner : '-'}
           />
         ))}
       </div>

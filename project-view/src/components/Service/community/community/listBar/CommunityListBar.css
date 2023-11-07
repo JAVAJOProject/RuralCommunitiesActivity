@@ -1,0 +1,46 @@
+.communityListBar {
+  width: 60rem;
+  height: 4.1875rem;
+  border-radius: 0.9375rem;
+  background: rgba(211, 196, 118, 0.17);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto;
+}
+
+.communityListBar > div:first-of-type {
+  width: 8rem;
+}
+.communityListBar > p:nth-of-type(1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+  width: 35rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.communityListBar > p:nth-of-type(2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+  width: 8.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.communityListBar > p:nth-of-type(3) {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+  white-space: nowrap;
+  width: 7rem;
+}

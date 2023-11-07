@@ -5,6 +5,14 @@
   background: #e3e3e3;
   margin: auto;
   padding-top: 1.5rem;
+  position: relative;
+}
+
+.communityRuleBoard > img {
+  position: absolute;
+  width: 6.8125rem;
+  top: -3.5rem;
+  left: 3rem;
 }
 
 .communityRuleBoard > div:first-of-type {

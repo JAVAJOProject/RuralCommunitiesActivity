@@ -45,7 +45,7 @@ const defaultContents = {
   },
   inputContents: {
     postId: {
-      inputName: 'aId'
+      inputName: 'aId',
     },
     title: {
       labelText: '체험명',

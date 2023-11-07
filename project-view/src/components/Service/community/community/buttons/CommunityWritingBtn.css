@@ -8,6 +8,9 @@
   justify-content: center;
   cursor: pointer;
   margin: auto;
+  position: absolute;
+  top: -5rem;
+  left: calc(50% - 3.8125rem);
 }
 
 .communityWritingBtn > img {
