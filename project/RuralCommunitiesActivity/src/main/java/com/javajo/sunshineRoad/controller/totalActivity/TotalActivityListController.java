@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListDTO;
+import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListOfSidoDTO;
 import com.javajo.sunshineRoad.model.service.IService.totalActivity.GetRequestPageTotalActivityListService;
 import com.javajo.sunshineRoad.model.service.IService.totalActivity.GetTotalActivityCountService;
 
@@ -30,7 +31,12 @@ public class TotalActivityListController {
 	public int getTotalActivityCountByTheme(@PathVariable int tId) {
 		return getTotalActivityCountService.getTotalActivityCountByTheme(tId);
 	}
-
+	
+	@GetMapping("/countByRegionOfSido/{sidoId}")
+	public int getTotalActivityCountByRegionOfSido(@PathVariable int sidoId) {
+		return getTotalActivityCountService.getTotalActivityCountByRegionOfSido(sidoId);
+	}
+	
 	@GetMapping("/countByRegion/{sId}")
 	public int getTotalActivityCountByRegion(@PathVariable int sId) {
 		return getTotalActivityCountService.getTotalActivityCountByRegion(sId);
@@ -42,7 +48,7 @@ public class TotalActivityListController {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();
 		}
-		int perPagePostCount = 6;
+		int perPagePostCount = 8;
 
 		List<ActSummaryListDTO> activityList = null;
 		int totalCount = getTotalActivityCountService.getTotalActivityCount();
@@ -67,14 +73,28 @@ public class TotalActivityListController {
 
 		return ResponseEntity.ok(byThemeList);
 	}
+	@GetMapping("/byRegionListOfSido/{boardType}/{sidoId}/{requestPageNo}")
+	public ResponseEntity<List<ActSummaryListOfSidoDTO>> totalActivityByRegionListOfSido(@PathVariable int sidoId,
+			@PathVariable int requestPageNo, @PathVariable String boardType) {
+		if (!boardType.equals("card") && !boardType.equals("list")) {
+			return ResponseEntity.badRequest().build();
+		}
+		int perPagePostCount = 8;
 
-	@GetMapping("/byRegionList/{boardType}/{sId}/{requestPageNo}")
+		List<ActSummaryListOfSidoDTO> byRegionList = null;
+
+		int byRegionOfSidoCount = getTotalActivityCountService.getTotalActivityCountByRegionOfSido(sidoId);
+		byRegionList = getRequestPageTotalActivityListService.getByRegionListOfSido(sidoId, byRegionOfSidoCount, perPagePostCount,
+				requestPageNo);
+		return ResponseEntity.ok(byRegionList);
+	}
+	@GetMapping("/byRegionListOfSigungu/{boardType}/{sId}/{requestPageNo}")
 	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByRegionList(@PathVariable int sId,
 			@PathVariable int requestPageNo, @PathVariable String boardType) {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();
 		}
-		int perPagePostCount = 4;
+		int perPagePostCount = 8;
 
 		List<ActSummaryListDTO> byRegionList = null;
 

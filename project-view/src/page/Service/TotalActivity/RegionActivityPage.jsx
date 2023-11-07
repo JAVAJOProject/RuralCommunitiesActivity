@@ -80,52 +80,126 @@ const testContents = {
 
 export default function RegionActivityPage() {
   const navigate = useNavigate();
-  const [selectedRegion, setSelectedRegion] = useState(contents.regionSido);
+  const [selectedRegion, setSelectedRegion] = useState('전체');
+  const [selectedSigungu, setSelectedSigungu] = useState('전체');
   const [requestPageNo, setRequestPageNo] = useState(1);
-  const [totalPageNo, setTotalPageNo] = useState(5); // 총 페이지 수
-  const [regionList, updateRegionList] = useImmer([
-    ...testContents.region.sido,
-  ]);
-  const [totalPost, setTotalPost] = useState(10);
+  const [totalPageNo, setTotalPageNo] = useState(1);
+
+  const [totalActivityCount, setTotalActivityCount] = useState(0);
+  const [activityData, setActivityData] = useState([]);
+  const [sidoData, setSidoData] = useState([]);
+  const [sigunguData, setSigunguData] = useState([]);
+  const [loadingSigungu, setLoadingSigungu] = useState(false);
 
   useEffect(() => {
-    async function fetchContents() {
+    async function fetchSidoData() {
       try {
-        // 활동 데이터 가져오기 (예: /api/activities)
-        const activitiesData = await fetchDataGET(
-          `/totalActivity/byTotalList/card/${requestPageNo}`
-        );
-
-        const imageData = await fetchImgGET(
-          activitiesData,
-          'aId',
-          '/img/totalActivityImage/one'
-        );
-        // 데이터와 이미지를 결합
-        return {
-          ...activitiesData,
-          aThumbnailImg: imageData,
-        };
+        const response = await fetchDataGET(`/recommendation/sido`);
+        setSidoData(response);
       } catch (error) {
         console.error(error);
       }
     }
 
-    fetchContents();
+    fetchSidoData();
   }, []);
 
-  const { regionSido, subtitle, order } = contents;
-  subtitle.text = `전체 ${totalPost}건`;
+  useEffect(() => {
+    async function fetchSigunguData(selectedSido) {
+      try {
+        if (selectedSido === '전체' || selectedSido === '세종') {
+          setSigunguData([]);
+        } else {
+          setLoadingSigungu(true);
+          const selectedSidoInfo = sidoData.find(
+            (sido) => sido.sidoName === selectedSido
+          );
+          if (selectedSidoInfo) {
+            const response = await fetchDataGET(
+              `/recommendation/sido-sigungu/${selectedSidoInfo.sidoId}`
+            );
+            setSigunguData(Array.isArray(response) ? response : [response]);
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoadingSigungu(false);
+      }
+    }
+
+    fetchSigunguData(selectedRegion);
+  }, [selectedRegion, sidoData]);
+
+  const fetchActivityData = async (page) => {
+    try {
+      let endpoint;
+      if (selectedRegion === '전체') {
+        endpoint = `/totalActivity/byTotalList/card/${page}`;
+      } else {
+        if (selectedSigungu === '전체') {
+          endpoint = `/totalActivity/byTotalList/card/${page}`;
+        } else {
+          const sigunguInfo = sigunguData.find(
+            (s) => s && s.sigunguName === selectedSigungu
+          );
+          if (sigunguInfo) {
+            endpoint = `/totalActivity/byRegionList/card/${sigunguInfo.sigunguId}/${page}`;
+          }
+        }
+      }
+
+      if (selectedRegion === '세종') {
+        endpoint = `/totalActivity/byTotalList/card/${page}`;
+      }
+
+      const totalActNum = await fetchOneContentGET(`/totalActivity/totalCount`);
+      setTotalActivityCount(totalActNum);
+
+      const activitiesData = await fetchDataGET(endpoint);
+
+      const perPagePostCount = 8;
+      setTotalPageNo(Math.ceil(totalActivityCount / perPagePostCount));
+
+      const imageData = await fetchImgGET(
+        activitiesData,
+        'aId',
+        '/img/totalActivityImage/one'
+      );
+
+      const activityList = activitiesData.map((activity, index) => ({
+        ...activity,
+        aThumbnailImg: imageData[index],
+      }));
+
+      setActivityData(activityList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchActivityData(requestPageNo);
+  }, [requestPageNo, selectedRegion, selectedSigungu, sigunguData]);
+
+  const subtitle = {
+    text: `전체 ${totalActivityCount}건`,
+    titleImg: titleImg,
+    circleColor: '#FFAB48',
+    isDarken: false,
+  };
 
   return (
     <div>
       <TotalActTitleBox />
       <RegionMap addr={selectedRegion} />
       <ActivityRegionBoxSet
-        total={regionSido}
+        total="전체"
         selected={selectedRegion}
-        regionList={regionList}
+        regionList={sidoData.map((sido) => sido.sidoName)}
+        sigunguList={sigunguData.map((sigungu) => sigungu.sigunguName)}
         handleSelectedRegion={setSelectedRegion}
+        handleSelectedSigungu={setSelectedSigungu}
       />
       <div
         style={{
@@ -144,11 +218,11 @@ export default function RegionActivityPage() {
           isDarken={subtitle.isDarken}
         />
         <div style={{ display: 'flex', flexWrap: 'wrap', width: '71rem' }}>
-          {regionList.map((data) => (
+          {activityData.map((data) => (
             <YellowActivityCard
               style={{ margin: '1rem' }}
               onClick={() => {
-                navigate(`/app/activity/detail/${data.aPostId}/info`);
+                navigate(`/app/activity/detail/${data.aId}/info`);
               }}
             >
               <YellowActivityCardImg

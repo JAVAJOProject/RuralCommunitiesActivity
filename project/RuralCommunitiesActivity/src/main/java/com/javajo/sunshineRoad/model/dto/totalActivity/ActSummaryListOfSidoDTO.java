@@ -4,15 +4,19 @@ import org.apache.ibatis.type.Alias;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Alias("ActSummaryList")
+@Alias("ActSummaryListOfSido")
 @Builder
 @Getter
 @Setter
-public class ActSummaryListDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ActSummaryListOfSidoDTO {
 	@JsonProperty
 	private int aId;
 	@JsonProperty
@@ -28,5 +32,6 @@ public class ActSummaryListDTO {
 	private String aThumbnailImg;
 	@JsonProperty
 	private int aFavoriteCnt;
+	private int sidoId;
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.javajo.sunshineRoad.model.dao.totalActivity.TotalActivityListDAO;
 import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListDTO;
+import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListOfSidoDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.OffSetBasedPaginationUtils;
 import com.javajo.sunshineRoad.model.service.IService.totalActivity.GetRequestPageTotalActivityListService;
 
@@ -32,6 +33,13 @@ public class GetRequestPageTotalActivityListServiceImpl implements GetRequestPag
         int endPostNo = offSetBasedPaginationUtils.findEndPostNo(byThemeCount, perPagePostCount, requestPageNo);
 
         return totalActivityListDAO.getRequestPageTotalActivityByThemeList(tId, startPostNo, endPostNo);
+	}
+	@Override
+	public List<ActSummaryListOfSidoDTO> getByRegionListOfSido(int sidoId, int byRegionOfSidoCount, int perPagePostCount, int requestPageNo) {
+		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(byRegionOfSidoCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(byRegionOfSidoCount, perPagePostCount, requestPageNo);
+
+        return totalActivityListDAO.getRequestPageTotalActivityByRegionOfSidoList(sidoId, startPostNo, endPostNo);
 	}
 	@Override
 	public List<ActSummaryListDTO> getByRegionList(int sId, int byRegionCount, int perPagePostCount, int requestPageNo) {

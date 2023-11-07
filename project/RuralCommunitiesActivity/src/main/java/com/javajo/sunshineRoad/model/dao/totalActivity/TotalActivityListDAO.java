@@ -1,7 +1,10 @@
 package com.javajo.sunshineRoad.model.dao.totalActivity;
 
 import com.javajo.sunshineRoad.mappers.totalActivity.TotalActivityListMapper;
+import com.javajo.sunshineRoad.mappers.totalActivity.TotalActivityListOfSidoMapper;
 import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListDTO;
+import com.javajo.sunshineRoad.model.dto.totalActivity.ActSummaryListOfSidoDTO;
+
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -22,6 +25,10 @@ public class TotalActivityListDAO {
 		TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
         return mapper.getTotalActivityCountByThemeData(tId);
     }
+	public int getTotalActivityCountByRegionOfSido(int sidoId) {
+		TotalActivityListOfSidoMapper mapper = sqlSession.getMapper(TotalActivityListOfSidoMapper.class);
+        return mapper.getTotalActivityCountByRegionOfSidoData(sidoId);
+    }
 	public int getTotalActivityCountByRegion(int sId) {
 		TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
         return mapper.getTotalActivityCountByRegionData(sId);
@@ -36,7 +43,10 @@ public class TotalActivityListDAO {
     	TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
     	return mapper.getRequestPageTotalActivityByThemeListData(tId, startPostNo, endPostNo);
     }
-    
+    public List<ActSummaryListOfSidoDTO> getRequestPageTotalActivityByRegionOfSidoList(int sidoId, int startPostNo, int endPostNo) {
+    	TotalActivityListOfSidoMapper mapper = sqlSession.getMapper(TotalActivityListOfSidoMapper.class);
+    	return mapper.getRequestPageTotalActivityByRegionOfSidoListData(sidoId, startPostNo, endPostNo);
+    } 
     public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionList(int sId, int startPostNo, int endPostNo) {
     	TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
     	return mapper.getRequestPageTotalActivityByRegionListData(sId, startPostNo, endPostNo);

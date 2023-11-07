@@ -9,18 +9,26 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class GetTotalActivityCountServiceImpl implements GetTotalActivityCountService{
+public class GetTotalActivityCountServiceImpl implements GetTotalActivityCountService {
 	private final TotalActivityListDAO totalActivityDAO;
-	
+
 	@Override
-    public int getTotalActivityCount() {
-        return totalActivityDAO.getTotalActivityCount();
-    }
+	public int getTotalActivityCount() {
+		return totalActivityDAO.getTotalActivityCount();
+	}
+
 	@Override
-    public int getTotalActivityCountByTheme(int tId) {
-        return totalActivityDAO.getTotalActivityCountByTheme(tId);
-    }@Override
-    public int getTotalActivityCountByRegion(int sId) {
-        return totalActivityDAO.getTotalActivityCountByRegion(sId);
-    }
+	public int getTotalActivityCountByTheme(int tId) {
+		return totalActivityDAO.getTotalActivityCountByTheme(tId);
+	}
+
+	@Override
+	public int getTotalActivityCountByRegionOfSido(int sidoId) {
+		return totalActivityDAO.getTotalActivityCountByRegionOfSido(sidoId);
+	}
+
+	@Override
+	public int getTotalActivityCountByRegion(int sId) {
+		return totalActivityDAO.getTotalActivityCountByRegion(sId);
+	}
 }
