@@ -1,5 +1,6 @@
 .faqTitleText {
   width: 43rem;
+  height: fit-content;
 }
 
 .faqTitleText > p {
@@ -9,6 +10,16 @@
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.faqTitleTextDropdown {
+  margin-top: 0.5rem;
+}
+.faqTitleTextDropdown > p {
+  height: fit-content;
+  width: 43rem;
   font-family: Jua;
   font-size: 1.25rem;
   font-weight: 400;

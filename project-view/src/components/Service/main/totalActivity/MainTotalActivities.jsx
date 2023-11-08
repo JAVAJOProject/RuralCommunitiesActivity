@@ -1,12 +1,12 @@
-import React from 'react';
-import './MainTotalActivities.css';
+import React from "react";
+import "./MainTotalActivities.css";
 
-import MainBigCard from './MainBigCard';
-import MainBigImg from './MainBigImg';
-import MainSmallCard from './MainSmallCard';
-import MainSmallImg from './MainSmallImg';
-import NationalMapCard from './NationalMapCard';
-import NationalMapImg from './NationalMapImg';
+import MainBigCard from "./MainBigCard";
+import MainBigImg from "./MainBigImg";
+import MainSmallCard from "./MainSmallCard";
+import MainSmallImg from "./MainSmallImg";
+import NationalMapCard from "./NationalMapCard";
+import NationalMapImg from "./NationalMapImg";
 
 export default function MainTotalActivities({ contents }) {
   const { bigImg, smallImgs } = contents;
@@ -25,9 +25,8 @@ export default function MainTotalActivities({ contents }) {
       </div>
       <div className="mainSmallCard">
         {smallImgs.map((small) => (
-          <MainSmallCard>
+          <MainSmallCard key={small.aPostId}>
             <MainSmallImg
-              key={small.aPostId}
               imgSrc={small.aThumbnailImg}
               title={small.aName}
               sido={small.sidoName}

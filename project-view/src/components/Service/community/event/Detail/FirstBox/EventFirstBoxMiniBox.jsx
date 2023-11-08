@@ -1,7 +1,7 @@
-import React from 'react';
-import EventFirstBoxCircleImg from './EventFirstBoxCircleImg';
-import EventFirstBoxText from './EventFirstBoxText';
-import './EventFirstBoxMiniBox.css';
+import React from "react";
+import EventFirstBoxCircleImg from "./EventFirstBoxCircleImg";
+import EventFirstBoxText from "./EventFirstBoxText";
+import "./EventFirstBoxMiniBox.css";
 
 export default function EventFirstBoxMiniBox({ imgSrc, title, content, type }) {
   const {
@@ -14,34 +14,34 @@ export default function EventFirstBoxMiniBox({ imgSrc, title, content, type }) {
   } = content;
 
   let text;
-  if (type === 'recruitDate' && (recruitStartDate || recruitEndDate)) {
-    const startDateT = new Date(recruitStartDate);
-    const endDateT = new Date(recruitEndDate);
+  if (type === "recruitDate" && (recruitStartDate || recruitEndDate)) {
+    const startDateT = recruitStartDate ? new Date(recruitStartDate) : "";
+    const endDateT = recruitEndDate ? new Date(recruitEndDate) : "";
 
     const startDateText = startDateT
       ? `${startDateT.getMonth() + 1}/${startDateT.getDate()}`
-      : '';
+      : "";
     const endDateText = endDateT
       ? `${endDateT.getMonth() + 1}/${endDateT.getDate()}`
-      : '';
+      : "";
     text = `${startDateText} ~ ${endDateText}`;
-  } else if (type === 'date' && (startDate || endDate)) {
-    const startDateT = new Date(startDate);
-    const endDateT = new Date(endDate);
+  } else if (type === "date" && (startDate || endDate)) {
+    const startDateT = startDate ? new Date(startDate) : "";
+    const endDateT = endDate ? new Date(endDate) : "";
 
     const startDateText = startDateT
       ? `${startDateT.getMonth() + 1}/${startDateT.getDate()}`
-      : '';
+      : "";
     const endDateText = endDateT
       ? `${endDateT.getMonth() + 1}/${endDateT.getDate()}`
-      : '';
+      : "";
     text = `${startDateText} ~ ${endDateText}`;
-  } else if (type === 'maxPeople' && !Number.isNaN(maxPeople)) {
-    text = +maxPeople ? `${maxPeople}명` : '-';
-  } else if (type === 'addr' && addr) {
-    text = addr ? addr : '-';
+  } else if (type === "maxPeople" && !Number.isNaN(maxPeople)) {
+    text = +maxPeople ? `${maxPeople}명` : "-";
+  } else if (type === "addr" && addr) {
+    text = addr ? addr : "-";
   } else {
-    text = '';
+    text = "";
   }
 
   return (

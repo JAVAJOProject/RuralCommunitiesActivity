@@ -1,12 +1,12 @@
-import React from 'react';
-import './NationalMapImg.css';
+import React from "react";
+import "./NationalMapImg.css";
 
-import koreaAddVer from '../../../../view_img/Service/mainPage/koreaAddVer.svg';
+import koreaAddVer from "../../../../view_img/Service/mainPage/koreaAddVer.svg";
 
 export default function NationalMapImg() {
   return (
     <div className="nationalMapImg">
-      <img src={koreaAddVer} usemap="#image-map" />
+      <img src={koreaAddVer} useMap="#image-map" />
 
       <map name="image-map">
         <area

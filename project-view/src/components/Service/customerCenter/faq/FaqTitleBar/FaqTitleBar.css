@@ -12,13 +12,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 4.0625rem;
+  min-height: 4.0625rem;
 }
 
 .faqTitleBarAnswer > hr {
   width: 50.05269rem;
   border: #316dc6 0.01rem solid;
-  margin: auto;
+  margin: 1rem auto;
 }
 
 .faqTitleBarAnswerContent {

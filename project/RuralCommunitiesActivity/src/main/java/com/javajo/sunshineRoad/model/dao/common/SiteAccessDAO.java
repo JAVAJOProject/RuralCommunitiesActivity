@@ -12,6 +12,6 @@ public class SiteAccessDAO {
 
     public void recordVisitation() {
         SiteAccessMapper mapper = sqlSession.getMapper(SiteAccessMapper.class);
-        mapper.getTotalCount();
+        mapper.recordVisitation();
     }
 }

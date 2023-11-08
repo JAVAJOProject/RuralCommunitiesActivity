@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import './FaqTitleBar.css';
-import FaqCircle from './FaqCircle';
-import FaqTitleText from './FaqTitleText';
-import DropDownBtn from '../../../common/DropDownBtn';
+import React, { useState } from "react";
+import "./FaqTitleBar.css";
+import FaqCircle from "./FaqCircle";
+import FaqTitleText from "./FaqTitleText";
+import DropDownBtn from "../../../common/DropDownBtn";
 
 export default function FaqTitleBar({ title, content }) {
   const [dropdown, setDropdown] = useState(false);
@@ -11,19 +11,17 @@ export default function FaqTitleBar({ title, content }) {
   };
 
   return (
-    <div
-      className={'faqTitleBar' + (dropdown ? ' faqTitleBarActive' : '')}
-    >
+    <div className={"faqTitleBar" + (dropdown ? " faqTitleBarActive" : "")}>
       <div className="faqTitleBarQuestion">
-        <FaqCircle text={'Q'} />
-        <FaqTitleText title={title} />
+        <FaqCircle text={"Q"} />
+        <FaqTitleText dropdown={dropdown} title={title} />
         <DropDownBtn dropdown={dropdown} handleDropdown={handleDropdown} />
       </div>
       {dropdown && (
         <div className="faqTitleBarAnswer">
           <hr />
           <div className="faqTitleBarAnswerContent">
-            <FaqCircle text={'A'} />
+            <FaqCircle text={"A"} />
             <p>{content}</p>
           </div>
         </div>

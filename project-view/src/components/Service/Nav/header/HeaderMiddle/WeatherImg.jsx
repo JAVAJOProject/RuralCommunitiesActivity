@@ -1,11 +1,22 @@
-import React from 'react';
-import weatherImg from '../../../../../view_img/Service/mainPage/weather.jpg';
-import './WeatherImg.css';
+import React from "react";
+import "./WeatherImg.css";
 
-export default function WeatherImg() {
+import weatherImg from "../../../../../view_img/Service/mainPage/weather.jpg";
+
+export default function WeatherImg({ imgIndex }) {
+  const weathers = [
+    weatherImg,
+    weatherImg,
+    weatherImg,
+    weatherImg,
+    weatherImg,
+    weatherImg,
+    weatherImg,
+  ];
+
   return (
     <>
-      <img className="weatherImg" src={weatherImg} />
+      <img className="weatherImg" src={weathers[imgIndex]} />
     </>
   );
 }

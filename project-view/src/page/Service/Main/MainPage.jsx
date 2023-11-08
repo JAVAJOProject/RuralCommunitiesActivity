@@ -1,20 +1,24 @@
-import React, { useEffect } from 'react';
-import { useImmer } from 'use-immer';
-import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
+import React, { useEffect } from "react";
+import { useImmer } from "use-immer";
+import {
+  fetchDataGET,
+  fetchImgGET,
+  fetchOneContentGET,
+} from "../../../config/ApiService";
 
-import ContentBox from '../../../components/Service/main/ContentBox';
+import ContentBox from "../../../components/Service/main/ContentBox";
 
 let initialContents = {
   recActivity: {
-    mainTitle: '추천 체험',
-    subtitle: ['농촌빛길이 직접 추천하는 멋진 체험들 어떠세요?'],
+    mainTitle: "추천 체험",
+    subtitle: ["농촌빛길이 직접 추천하는 멋진 체험들 어떠세요?"],
     images: [],
   },
   totalActivity: {
-    mainTitle: '참여 가능한 체험 바로 확인!',
+    mainTitle: "참여 가능한 체험 바로 확인!",
     subtitle: [
-      '얼마 남지 않았어요! 참여하러 달려가요!',
-      '지역별 체험 장소 보기',
+      "얼마 남지 않았어요! 참여하러 달려가요!",
+      "지역별 체험 장소 보기",
     ],
     contents: {
       bigImg: {},
@@ -22,19 +26,19 @@ let initialContents = {
     },
   },
   recTown: {
-    mainTitle: '추천 마을',
-    subtitle: ['생소한 자연마을경험! 농촌빛길에서 신나고 재밌게 즐겨보자~!'],
+    mainTitle: "추천 마을",
+    subtitle: ["생소한 자연마을경험! 농촌빛길에서 신나고 재밌게 즐겨보자~!"],
     contents: {
       town1: {},
       town2: {},
     },
   },
   event: {
-    title: '이벤트',
+    title: "이벤트",
     eventThumbnailImg: null,
   },
   notice: {
-    title: '공지사항',
+    title: "공지사항",
     data: [],
   },
 };
@@ -45,12 +49,12 @@ export default function MainPage() {
     async function fetchContents() {
       try {
         const recActivity = await fetchDataGET(
-          '/main/recommendation-activity-text'
+          "/main/recommendation-activity-text"
         );
         const recActivityImages = await fetchImgGET(
           recActivity,
-          'recAPostId',
-          '/main/recommendation-activity-image'
+          "recAPostId",
+          "/main/recommendation-activity-image"
         );
 
         updateContents((draft) => {
@@ -62,11 +66,11 @@ export default function MainPage() {
           });
         });
 
-        const activity = await fetchDataGET('/main/total-activity-text');
+        const activity = await fetchDataGET("/main/total-activity-text");
         const activityImages = await fetchImgGET(
           activity,
-          'aPostId',
-          '/main/total-activity-image'
+          "aPostId",
+          "/main/total-activity-image"
         );
 
         updateContents((draft) => {
@@ -86,11 +90,11 @@ export default function MainPage() {
             });
         });
 
-        const recTown = await fetchDataGET('/main/recommendation-town-text');
+        const recTown = await fetchDataGET("/main/recommendation-town-text");
         const recTownImages = await fetchImgGET(
           recTown,
-          'recTId',
-          '/main/recommendation-town-image'
+          "recTId",
+          "/main/recommendation-town-image"
         );
 
         updateContents((draft) => {
@@ -104,18 +108,18 @@ export default function MainPage() {
           };
         });
 
-        const event = await fetchDataGET('/main/event-info');
+        const event = await fetchDataGET("/main/event-info");
         const eventImages = await fetchImgGET(
           event,
-          'eventId',
-          '/main/event-image'
+          "eventId",
+          "/main/event-image"
         );
 
         updateContents((draft) => {
-          draft.event.eventThumbnailImg = eventImages;
+          draft.event.eventThumbnailImg = eventImages[eventImages.length - 1];
         });
 
-        const notice = await fetchDataGET('/main/notice-info');
+        const notice = await fetchDataGET("/main/notice-info");
 
         updateContents((draft) => {
           draft.notice.data = notice.map((item) => ({
@@ -124,7 +128,7 @@ export default function MainPage() {
           }));
         });
 
-        await fetchDataGET('/site/access/visitor/record');
+        await fetchOneContentGET("/site/access/visitor/record", true);
       } catch (error) {
         console.error(error);
       }

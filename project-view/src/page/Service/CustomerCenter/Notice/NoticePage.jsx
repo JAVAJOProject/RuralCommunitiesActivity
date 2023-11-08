@@ -8,7 +8,7 @@ import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
 
 export default function NoticePage() {
   const location = useLocation();
-  const noticeTypeState = location.state.selected;
+  const noticeTypeState = location?.state?.selected;
   const [dbContents, updateDbContents] = useImmer([]);
   const [requestPageNo, setRequestPageNo] = useState(1);
   const [totalPageNo, setTotalPageNo] = useState(1);
@@ -19,12 +19,7 @@ export default function NoticePage() {
         const noticeList = await fetchDataGET(
           `/notice/list/${noticeTypeState}/${requestPageNo}`
         );
-        updateDbContents((draft) => {
-          draft.length = 0;
-          noticeList.forEach((item) => {
-            draft.push({ ...item });
-          });
-        });
+        updateDbContents(noticeList);
 
         const [perPagePostCount, totalCount] = await fetchDataGET(
           `/notice/total-count?noticeTypeId=${noticeTypeState}`
@@ -41,19 +36,20 @@ export default function NoticePage() {
     <>
       <div className="noticeMainContent">
         <NoticeListBar type="분류" title="제목" dateCreated="작성일" />
-        {dbContents.map((content) => {
-          const { noticeId, noticeTypeId, noticeTitle, noticeDateCreated } =
-            content;
-          return (
-            <NoticeListBar
-              key={noticeId}
-              noticeId={noticeId}
-              type={noticeTypeId}
-              title={noticeTitle}
-              dateCreated={noticeDateCreated}
-            />
-          );
-        })}
+        {dbContents.length > 0 &&
+          dbContents.map((content) => {
+            const { noticeId, noticeTypeId, noticeTitle, noticeDateCreated } =
+              content;
+            return (
+              <NoticeListBar
+                key={noticeId}
+                noticeId={noticeId}
+                type={noticeTypeId}
+                title={noticeTitle}
+                dateCreated={noticeDateCreated}
+              />
+            );
+          })}
       </div>
       <PageNoBox
         curr={requestPageNo}

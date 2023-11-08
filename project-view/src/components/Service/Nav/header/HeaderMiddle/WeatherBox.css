@@ -32,7 +32,7 @@
 
 @media all and (min-width: 1501px) {
   .weatherBox {
-    margin-right: 10rem;
+    margin-right: 9.3rem;
   }
   .weatherTitle {
     font-size: 1.125rem;
@@ -45,6 +45,7 @@
   .weatherBox {
     width: 13.3125rem;
     height: 6.5rem;
+    margin-right: 1rem;
   }
   .weatherTitle {
     font-size: 1.125rem;
@@ -57,6 +58,7 @@
   .weatherBox {
     width: 7rem;
     height: 4rem;
+    margin-right: 2rem;
   }
   .weatherTitle {
     font-size: 0.8rem;
