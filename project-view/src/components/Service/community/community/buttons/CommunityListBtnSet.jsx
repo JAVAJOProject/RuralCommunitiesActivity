@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './CommunityListBtnSet.css';
 
 import CommunityCardListBtn from './CommunityCardListBtn';
@@ -9,11 +9,15 @@ export default function CommunityListBtnSet() {
   const [isCardActive, setIsCardActive] = useState(true);
   const [isListActive, setIsListActive] = useState(false);
 
+  const location = useLocation();
+  const boardType = location?.pathname.split('/').pop();
+
   return (
-    (isCardActive || isListActive) && (
+    boardType &&
+    (boardType === 'card' || boardType === 'list') && (
       <div className="communityListBtnSet">
         <NavLink
-          to={'card'}
+          to={'/app/community/news/board/card'}
           className={({ isActive }) => {
             setIsCardActive(isActive);
           }}
@@ -21,7 +25,7 @@ export default function CommunityListBtnSet() {
           <CommunityCardListBtn active={isCardActive} />
         </NavLink>
         <NavLink
-          to={'list'}
+          to={'/app/community/news/board/list'}
           className={({ isActive }) => {
             setIsListActive(isActive);
           }}

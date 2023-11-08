@@ -9,6 +9,7 @@
   align-items: center;
   margin: 1rem;
   padding: 1rem;
+  cursor: pointer;
 }
 
 .communitySellerCard > p {

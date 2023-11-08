@@ -192,10 +192,13 @@ export default function CommunitySellerTextListPage() {
           zIndex: '550',
         }}
       >
-        <CommunityWritingBtn
-          imgSrc={writingBtn.imgSrc}
-          text={writingBtn.text}
-        />
+        {true && (
+          <CommunityWritingBtn
+            link={'/app/community/news/registration'}
+            imgSrc={writingBtn.imgSrc}
+            text={writingBtn.text}
+          />
+        )}
       </div>
       <CommunityPickImages
         imgPickLeft={pickImages.yellow}

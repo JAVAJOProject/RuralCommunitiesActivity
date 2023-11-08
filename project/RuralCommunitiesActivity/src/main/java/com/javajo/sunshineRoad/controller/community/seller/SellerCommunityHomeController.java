@@ -43,7 +43,7 @@ public class SellerCommunityHomeController {
     }
 
 //    테스트용
-//    { "sId": 3, "sellerCommunityImgId": 2, "sellerCommunityContent": "엥 되나" }
+//    { "sId": 3, "sellerCommunityContent": "엥 되나" }
     @PostMapping("/post/upload")
     public ResponseEntity<ResponseDTO> postRequestSellerCommunityPost(@RequestBody SellerCommunityPostDTO sellerCommunityPostDTO) {
         sellerCommunityPostRequestPostService.postRequestSellerCommunityPost(sellerCommunityPostDTO);
@@ -51,8 +51,8 @@ public class SellerCommunityHomeController {
         return ResponseEntity.ok(response);
     }
 
-    // { "sId": 3, "sellerCommunityImgId": 7, "sellerCommunityContent": "음 업데이트 확인쓰", "sellerCommunityPostId": 1 }
-    // { "sId": 3, "sellerCommunityImgId": 7, "sellerCommunityContent": "음 업데이트 확인쓰", "sellerCommunityPostId": 9 }
+    // { "sId": 3, "sellerCommunityContent": "음 업데이트 확인쓰", "sellerCommunityPostId": 1 }
+    // { "sId": 3, "sellerCommunityContent": "음 업데이트 확인쓰", "sellerCommunityPostId": 9 }
     @PatchMapping(value = "/post/update", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseDTO> updateRequestSellerCommunityPost(@RequestBody SellerCommunityPostDTO sellerCommunityPost) {
         boolean isValidUser = sellerCommunityCheckAuthorBeforeUpdatingOrDeletingPostService.checkAuthorBeforeUpdatingOrDeletingPost(sellerCommunityPost);

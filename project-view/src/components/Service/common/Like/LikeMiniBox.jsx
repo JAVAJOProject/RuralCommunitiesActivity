@@ -21,7 +21,7 @@ export default function LikeMiniBox({
         src={imgSrc}
         style={{ cursor: 'pointer' }}
       />
-      <p style={{ fontSize }}>{(+content).toLocaleString()}</p>
+      <p style={{ fontSize, cursor: 'auto' }}>{(+content).toLocaleString()}</p>
     </div>
   );
 }

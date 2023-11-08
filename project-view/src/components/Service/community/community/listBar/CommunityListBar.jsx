@@ -2,6 +2,7 @@ import React from 'react';
 import './CommunityListBar.css';
 
 import Likes from '../../../common/Like/Likes';
+import { useNavigate } from 'react-router-dom';
 
 export default function CommunityListBar({
   postId,
@@ -11,13 +12,24 @@ export default function CommunityListBar({
   author,
   dateCreated,
 }) {
+  const navigate = useNavigate();
+
   const dateT = new Date(dateCreated);
   const dateText = `${dateT.getFullYear()}-${
     dateT.getMonth() + 1
   }-${dateT.getDate()}`;
   return (
-    <div className="communityListBar">
-      <div>
+    <div
+      className="communityListBar"
+      onClick={() => {
+        navigate(`../../detail/${postId}`);
+      }}
+    >
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Likes
           on={false}
           postId={postId}

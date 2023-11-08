@@ -1,0 +1,19 @@
+.communityEditBtn {
+  border: none;
+  background: none;
+  margin: 1.3rem;
+  z-index: 650;
+  cursor: pointer;
+  outline: none;
+}
+
+.communityEditBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #9f9f9f;
+}
+.communityEditBtn:hover > p {
+  color: rgba(0, 0, 0, 0.62);
+}

@@ -1,0 +1,19 @@
+.communityListBackBtn {
+  height: 2.5rem;
+  width: 7.625rem;
+  border-radius: 12.5rem;
+  background: #d9d9d9;
+  border: none;
+  cursor: pointer;
+  margin: auto;
+  position: absolute;
+  top: -5rem;
+  left: calc(50% - 3.8125rem);
+}
+
+.communityListBackBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

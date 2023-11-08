@@ -1,0 +1,21 @@
+.communityMiddleBtn {
+  height: 2.5rem;
+  width: 7.625rem;
+  border-radius: 12.5rem;
+  background: #d9d9d9;
+  border: none;
+  cursor: pointer;
+  display: block;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  /* position: absolute;
+  top: -5rem; */
+  /* left: calc(50% - 3.8125rem); */
+}
+
+.communityMiddleBtn > p {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}

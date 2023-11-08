@@ -2,6 +2,7 @@ import React from 'react';
 import './CommunitySellerCard.css';
 
 import Likes from '../../common/Like/Likes';
+import { useNavigate } from 'react-router-dom';
 
 export default function CommunitySellerCard({
   postId,
@@ -11,10 +12,21 @@ export default function CommunitySellerCard({
   dateCreated,
   likesNum,
 }) {
+  const navigate = useNavigate();
+
   return (
-    <div className="communitySellerCard">
+    <div
+      className="communitySellerCard"
+      onClick={() => {
+        navigate(`../../detail/${postId}`);
+      }}
+    >
       <p>{content}</p>
-      <div>
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         <Likes
           on={false}
           postId={postId}

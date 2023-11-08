@@ -85,6 +85,8 @@ import RootLayoutCommunity from './components/Service/community/RootLayoutCommun
 import CommunitySellerCardListPage from './page/Service/Community/SellerCommunity/CommunitySellerCardListPage';
 import CommunitySellerTextListPage from './page/Service/Community/SellerCommunity/CommunitySellerTextListPage';
 import CommunitySellerDetailPage from './page/Service/Community/SellerCommunity/CommunitySellerDetailPage';
+import CommunitySellerRegistrationPage from './page/Service/Community/SellerCommunity/CommunitySellerRegistrationPage';
+import CommunitySellerEditPage from './page/Service/Community/SellerCommunity/CommunitySellerEditPage';
 
 const router = createBrowserRouter([
   {
@@ -447,7 +449,7 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     path: '',
-                    element: <Navigate replate to={'card'} />,
+                    element: <Navigate replace to={'card'} />,
                   },
                   {
                     path: 'card',
@@ -464,19 +466,32 @@ const router = createBrowserRouter([
                   {
                     index: true,
                     path: '',
-                    element: <Navigate replate to={'card'} />,
+                    element: <Navigate replace to={'board/card'} />,
                   },
                   {
-                    path: 'card',
-                    element: <CommunitySellerCardListPage />,
-                  },
-                  {
-                    path: 'list',
-                    element: <CommunitySellerTextListPage />,
+                    path: 'board',
+                    children: [
+                      {
+                        path: 'card',
+                        element: <CommunitySellerCardListPage />,
+                      },
+                      {
+                        path: 'list',
+                        element: <CommunitySellerTextListPage />,
+                      },
+                    ],
                   },
                   {
                     path: 'detail/:sellerCommunityPostId',
                     element: <CommunitySellerDetailPage />,
+                  },
+                  {
+                    path: 'registration',
+                    element: <CommunitySellerRegistrationPage />,
+                  },
+                  {
+                    path: 'edit/:sellerCommunityPostId',
+                    element: <CommunitySellerEditPage />,
                   },
                 ],
               },

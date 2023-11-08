@@ -1,0 +1,32 @@
+.communityInputContent,
+.communityInputContent > textarea {
+  width: 57.5625rem;
+  min-height: 35.0625rem;
+  height: fit-content;
+  border-radius: 0.625rem;
+  display: block;
+  margin: auto;
+
+  border: none;
+  outline: none;
+  resize: none;
+}
+.communityInputContent {
+  background: rgba(227, 227, 227, 0.4);
+  padding: 0;
+}
+.communityInputContent > textarea {
+  background: none;
+  padding: 3.5rem 4.5rem;
+  color: #898989;
+  font-family: Jua;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.communityInputContent > textarea::placeholder {
+  color: #9f9f9f;
+}
+
+.communityInputContent.was-validated > textarea:invalid::placeholder {
+  color: red;
+}
