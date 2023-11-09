@@ -4,7 +4,7 @@ import './MypageSellerUserInfoContents.css';
 import UserInfoInputEmailBox from '../../../signup/UserInfoInputEmailBox';
 import UserInfoInputDefaultBox from '../../../signup/UserInfoInputDefaultBox';
 import UserInfoInputMobileBox from '../../../signup/UserInfoInputMobileBox';
-import UserInfoInputCheckeboxBox from '../../../signup/UserInfoInputCheckeboxBox';
+import UserInfoInputCheckboxBox from '../../../signup/UserInfoInputCheckboxBox';
 import UserInfoInputLastBtnBox from '../../../signup/UserInfoInputLastBtnBox';
 import UserInfoInputBtn from '../../../signup/UserInfoInputBtn';
 import UserInfoInputFileBtn from '../../../signup/UserInfoInputFileBtn';
@@ -98,7 +98,7 @@ export default function MypageSellerUserInfoContents({
         bankList={bankList}
         isRequired={true}
       />
-      <UserInfoInputCheckeboxBox
+      <UserInfoInputCheckboxBox
         inputTexts={marketing}
         defaultValue={userInfoData.sMarketingConsent}
       />

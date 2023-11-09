@@ -19,6 +19,7 @@ export default function CommunitySellerCard({
       className="communitySellerCard"
       onClick={() => {
         navigate(`../../detail/${postId}`);
+        window.scrollTo(0, 0);
       }}
     >
       <p>{content}</p>

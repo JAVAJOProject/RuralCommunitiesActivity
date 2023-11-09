@@ -10,17 +10,12 @@ export default function UserInfoInputAccountInfoBox({
   bankList,
   isRequired,
 }) {
-  const [selectedBank, setSelectedBank] = useState(defaultValue.bankInfoId);
+  const [selectedBank, setSelectedBank] = useState(
+    defaultValue?.bankInfoId ?? 0
+  );
 
   const { inputName, labelText, inputType, inputPattern, subInput } =
     inputTexts;
-  const {
-    accountInfoId,
-    bankInfoId,
-    accountNumber,
-    accountHolder,
-    accountName,
-  } = defaultValue;
 
   return (
     <div className="userInfoInputAccountInfoBox">
@@ -30,20 +25,20 @@ export default function UserInfoInputAccountInfoBox({
           <InputHidden
             inputInfo={{
               inputName: subInput.accountInfoId.inputName,
-              value: accountInfoId,
+              value: defaultValue?.accountInfoId ?? 0,
             }}
           />
           <InputHidden
             inputInfo={{
               inputName: subInput.bankInfoId.inputName,
-              value: bankInfoId,
+              value: defaultValue?.bankInfoId ?? 0,
             }}
           />
           <UserInfoInputDefault
             inputType={inputType}
             inputName={inputName}
             inputPattern={inputPattern}
-            defaultValue={accountNumber}
+            defaultValue={defaultValue?.accountNumber ?? ''}
           />
         </div>
         <div>
@@ -60,11 +55,12 @@ export default function UserInfoInputAccountInfoBox({
               id={subInput.bank.inputName}
               required={isRequired}
             >
-              {bankList.map((bank) => (
-                <option key={bank.bankInfoId} value={bank.bankInfoId}>
-                  {bank.bankName}
-                </option>
-              ))}
+              {bankList?.length > 0 &&
+                bankList.map((bank) => (
+                  <option key={bank?.bankInfoId} value={bank?.bankInfoId}>
+                    {bank?.bankName}
+                  </option>
+                ))}
             </select>
           </div>
           <div>
@@ -73,7 +69,7 @@ export default function UserInfoInputAccountInfoBox({
             </label>
             <input
               type="text"
-              defaultValue={accountHolder}
+              defaultValue={defaultValue?.accountHolder ?? ''}
               name={subInput.accountHolder.inputName}
               id={subInput.accountHolder.inputName}
             />

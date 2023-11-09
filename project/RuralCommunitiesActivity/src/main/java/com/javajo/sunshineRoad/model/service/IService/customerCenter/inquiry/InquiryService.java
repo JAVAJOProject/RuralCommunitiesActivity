@@ -48,6 +48,6 @@ public interface InquiryService {
 	public int getSearchInquiryContentCount(String keyword);
 
 	//내가 쓴 글 보기
-	public InquiryInfoDTO getMyInquiryDetail(int inquiryId);
+	public List<InquiryInfoDTO> getMyInquiryDetail(int memId);
 
 }

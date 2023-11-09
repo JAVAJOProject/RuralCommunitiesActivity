@@ -1,76 +1,40 @@
-import './App.css';
-
 import React from 'react';
 import {
   Navigate,
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
+import './App.css';
+
 import UserInfo from './security/UserInfo';
 import RootLayout from './components/Service/RootLayout';
-import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
-import NotFoundPage from './page/Error/NotFoundPage';
-import NotFoundAdminPage from './page/Admin/errorPage/NotFoundAdminPage';
 
+// 메인 페이지
 import MainPage from './page/Service/Main/MainPage';
-import MainPageAdminPage from './page/Admin/mainPage/MainPageAdminPage';
 
-import RootLayoutFaq from './components/Service/customerCenter/faq/RootLayoutFaq';
-import RootLayoutNotice from './components/Service/customerCenter/notice/RootLayoutNotice';
-import RootLayoutProvider from './components/Service/mypage/Provider/RootLayoutProvider';
+// 에러 페이지
+import NotFoundPage from './page/Error/NotFoundPage';
+
+// 회원가입/약관
+import SignUpMemberPage from './page/Service/Common/SignUpMemberPage';
+import SignUpSellerPage from './page/Service/Common/SignUpSellerPage';
+
+// 마이페이지 - 서비스 이용자
 import RootLayoutExperiencer from './components/Service/mypage/Experiencer/RootLayoutExperiencer';
-import RootLayoutTotalActivity from './components/Service/totalActivity/Nav/RootLayoutTotalActivity';
-import RootLayoutEventTitle from './components/Service/community/event/RootLayoutEventTitle';
-import RootLayoutEventNav from './components/Service/community/event/RootLayoutEventNav';
-import RootLayoutRecActKeyword from './components/Service/recActivity/RootLayoutRecActKeyword';
-
-import EventCardListPage from './page/Service/Community/Event/EventCardListPage';
-import EventTextListPage from './page/Service/Community/Event/EventTextListPage';
-import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
-import ThemeActivityPage from './page/Service/TotalActivity/ThemeActivityPage';
-import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
-
-import NoticePage from './page/Service/CustomerCenter/Notice/NoticePage';
-import FaqPage from './page/Service/CustomerCenter/FAQ/FaqPage';
-import NoticeDetailPage from './page/Service/CustomerCenter/Notice/NoticeDetailPage';
-import MypageSellerPostPage from './page/Service/Mypage/Seller/MypageSellerPostPage';
 import MypageMemberPostPage from './page/Service/Mypage/Member/MypageMemberPostPage';
-import MypageSellerServicePage from './page/Service/Mypage/Seller/MypageSellerServicePage';
-import MypageSellerEventPage from './page/Service/Mypage/Seller/MypageSellerEventPage';
 import MypageMemberReviewPage from './page/Service/Mypage/Member/MypageMemberReviewPage';
 import MypageMemberReviewEditPage from './page/Service/Mypage/Member/MypageMemberReviewEditPage';
-import RuralRatingPage from './page/Service/TotalActivity/RuralRatingPage';
-import TotalActReviewPage from './page/Service/TotalActivity/TotalActReviewPage';
-import TotalActDetailPage from './page/Service/TotalActivity/TotalActDetailPage';
-
 import MemberReservationInfoPage from './page/Service/Mypage/Member/MemberReservationInfoPage';
-import RecActKeywordSelectedPage from './page/Service/Recommendation/RecActKeywordSelectedPage';
-import RecActDetailPage from './page/Service/Recommendation/RecActDetailPage';
-import InquiryListPage from './page/Service/CustomerCenter/Inquiry/InquiryListPage';
-import ExPage from './page/ExPage';
-import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDetailPage';
-import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
-import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
-import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
-import TotalActRegistrationPage from './page/Service/TotalActivity/TotalActRegistrationPage';
-import TotalActReservationPage from './page/Service/TotalActivity/TotalActReservationPage';
-import RecTownReportPage from './page/Service/Recommendation/RecTownReportPage';
 import MypageMemberEventPage from './page/Service/Mypage/Member/MypageMemberEventPage';
 import MypageMemberFavoritesPage from './page/Service/Mypage/Member/MypageMemberFavoritesPage';
 import MypageMemberUserInfoPage from './page/Service/Mypage/Member/MypageMemberUserInfoPage';
 import MypageSellerAnalyticsPage from './page/Service/Mypage/Seller/MypageSellerAnalyticsPage';
-import AccommodationInfoPage from './page/Service/TotalActivity/AccommodationInfoPage';
-import RootLayoutTotalActTheme from './components/Service/totalActivity/RootLayoutTotalActTheme';
-import CalendarActivityPage from './page/Service/TotalActivity/CalendarActivityPage';
-import EventApplyPage from './page/Service/Community/Event/EventApplyPage';
-import RecActRegionPage from './page/Service/Recommendation/RecActRegionPage';
-import RecTownRegionPage from './page/Service/Recommendation/RecTownRegionPage';
 
-import TotalActivityInfoListAdminPage from './page/Admin/board/TotalActivityInfoList/TotalActivityInfoListAdminPage';
-import MemberAdminPage from './page/Admin/member/MemberAdminPage';
-import MemberDetailAdminPage from './page/Admin/member/detail/MemberDetailAdminPage';
-import MemberInsertAdminPage from './page/Admin/member/insert/MemberInsertAdminPage';
-import MemberUpdateAdminPage from './page/Admin/member/update/MemberUpdateAdminPage';
+// 마이페이지 - 서비스 제공자
+import RootLayoutProvider from './components/Service/mypage/Provider/RootLayoutProvider';
+import MypageSellerPostPage from './page/Service/Mypage/Seller/MypageSellerPostPage';
+import MypageSellerServicePage from './page/Service/Mypage/Seller/MypageSellerServicePage';
+import MypageSellerEventPage from './page/Service/Mypage/Seller/MypageSellerEventPage';
 import MypageSellerUserInfoPage from './page/Service/Mypage/Seller/MypageSellerUserInfoPage';
 import MypageSellerActivityManagementPage from './page/Service/Mypage/Seller/MypageSellerActivityManagementPage';
 import MypageSellerEventParticipateManagementPage from './page/Service/Mypage/Seller/MypageSellerEventParticipateManagementPage';
@@ -80,13 +44,72 @@ import MypageSellerEventStoryManagementPage from './page/Service/Mypage/Seller/M
 import MypageSellerActivityEditPage from './page/Service/Mypage/Seller/MypageSellerActivityEditPage';
 import MypageSellerEventEditPage from './page/Service/Mypage/Seller/MypageSellerEventEditPage';
 import MypageSellerEventStoryDetailPage from './page/Service/Mypage/Seller/MypageSellerEventStoryDetailPage';
-import InquiryEditPage from './page/Service/CustomerCenter/Inquiry/InquiryEditPage';
-import RootLayoutCommunity from './components/Service/community/RootLayoutCommunity';
+
+// 추천 체험
+import RootLayoutRecActKeyword from './components/Service/recActivity/RootLayoutRecActKeyword';
+import RecActKeywordSelectedPage from './page/Service/Recommendation/RecActKeywordSelectedPage';
+import RecActDetailPage from './page/Service/Recommendation/RecActDetailPage';
+import RecActRegionPage from './page/Service/Recommendation/RecActRegionPage';
+import RecTownRegionPage from './page/Service/Recommendation/RecTownRegionPage';
+import RecTownReportPage from './page/Service/Recommendation/RecTownReportPage';
+
+// 전체 체험
+import RootLayoutTotalActivity from './components/Service/totalActivity/Nav/RootLayoutTotalActivity';
+import RootLayoutTotalActTheme from './components/Service/totalActivity/RootLayoutTotalActTheme';
+import ThemeActivityPage from './page/Service/TotalActivity/ThemeActivityPage';
+import RegionActivityPage from './page/Service/TotalActivity/RegionActivityPage';
+import CalendarActivityPage from './page/Service/TotalActivity/CalendarActivityPage';
+import TotalActReviewPage from './page/Service/TotalActivity/TotalActReviewPage';
+import TotalActDetailPage from './page/Service/TotalActivity/TotalActDetailPage';
+import TotalActRegistrationPage from './page/Service/TotalActivity/TotalActRegistrationPage';
+import TotalActReservationPage from './page/Service/TotalActivity/TotalActReservationPage';
+import RuralRatingPage from './page/Service/TotalActivity/RuralRatingPage';
+import AccommodationInfoPage from './page/Service/TotalActivity/AccommodationInfoPage';
+
+// 커뮤니티
+import RootLayoutEventTitle from './components/Service/community/event/RootLayoutEventTitle';
+import RootLayoutEventNav from './components/Service/community/event/RootLayoutEventNav';
+import EventCardListPage from './page/Service/Community/Event/EventCardListPage';
+import EventTextListPage from './page/Service/Community/Event/EventTextListPage';
+import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
+import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
+import EventApplyPage from './page/Service/Community/Event/EventApplyPage';
+import RootLayoutMemberCommunity from './components/Service/community/memberCommunity/RootLayoutMemberCommunity';
+import CommunityMemberTextListPage from './page/Service/Community/MemberCommunity/CommunityMemberTextListPage';
+import CommunityMemberDetailPage from './page/Service/Community/MemberCommunity/CommunityMemberDetailPage';
+import CommunityMemberEditPage from './page/Service/Community/MemberCommunity/CommunityMemberEditPage';
+import CommunityMemberRegistrationPage from './page/Service/Community/MemberCommunity/CommunityMemberRegistrationPage';
+import RootLayoutSellerCommunity from './components/Service/community/sellerCommunity/RootLayoutSellerCommunity';
 import CommunitySellerCardListPage from './page/Service/Community/SellerCommunity/CommunitySellerCardListPage';
 import CommunitySellerTextListPage from './page/Service/Community/SellerCommunity/CommunitySellerTextListPage';
 import CommunitySellerDetailPage from './page/Service/Community/SellerCommunity/CommunitySellerDetailPage';
 import CommunitySellerRegistrationPage from './page/Service/Community/SellerCommunity/CommunitySellerRegistrationPage';
 import CommunitySellerEditPage from './page/Service/Community/SellerCommunity/CommunitySellerEditPage';
+
+// 고객센터
+import RootLayoutNotice from './components/Service/customerCenter/notice/RootLayoutNotice';
+import NoticePage from './page/Service/CustomerCenter/Notice/NoticePage';
+import NoticeDetailPage from './page/Service/CustomerCenter/Notice/NoticeDetailPage';
+import RootLayoutFaq from './components/Service/customerCenter/faq/RootLayoutFaq';
+import FaqPage from './page/Service/CustomerCenter/FAQ/FaqPage';
+import RootLayoutInquiryTitle from './components/Service/customerCenter/inquiry/RootLayoutInquiryTitle';
+import InquiryListPage from './page/Service/CustomerCenter/Inquiry/InquiryListPage';
+import InquiryDetailPage from './page/Service/CustomerCenter/Inquiry/InquiryDetailPage';
+import InquiryPostPage from './page/Service/CustomerCenter/Inquiry/InquiryPostPage';
+import InquiryEditPage from './page/Service/CustomerCenter/Inquiry/InquiryEditPage';
+
+// 관리자 페이지
+import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
+import MainPageAdminPage from './page/Admin/mainPage/MainPageAdminPage';
+import NotFoundAdminPage from './page/Admin/errorPage/NotFoundAdminPage';
+import TotalActivityInfoListAdminPage from './page/Admin/board/TotalActivityInfoList/TotalActivityInfoListAdminPage';
+import MemberAdminPage from './page/Admin/member/MemberAdminPage';
+import MemberDetailAdminPage from './page/Admin/member/detail/MemberDetailAdminPage';
+import MemberInsertAdminPage from './page/Admin/member/insert/MemberInsertAdminPage';
+import MemberUpdateAdminPage from './page/Admin/member/update/MemberUpdateAdminPage';
+
+import ExPage from './page/ExPage';
+import SignUpMemberAgreementPage from './page/Service/Common/SignUpMemberAgreementPage';
 
 const router = createBrowserRouter([
   {
@@ -246,6 +269,21 @@ const router = createBrowserRouter([
           {
             path: '',
             element: <MainPage />,
+          },
+          {
+            path: 'agreement/member',
+            element: <SignUpMemberAgreementPage />,
+          },
+          {
+            path: 'agreement/seller',
+          },
+          {
+            path: 'signUp/member',
+            element: <SignUpMemberPage />,
+          },
+          {
+            path: 'signUp/seller',
+            element: <SignUpSellerPage />,
           },
           {
             path: 'recommendation',
@@ -443,25 +481,43 @@ const router = createBrowserRouter([
                 ],
               },
               {
-                path: 'board',
-                element: <RootLayoutCommunity />,
+                path: 'bulletinBoard',
+                element: <RootLayoutMemberCommunity />,
                 children: [
                   {
                     index: true,
                     path: '',
-                    element: <Navigate replace to={'card'} />,
+                    element: <Navigate replace to={'board/card'} />,
                   },
                   {
-                    path: 'card',
+                    path: 'board',
+                    children: [
+                      {
+                        path: 'card',
+                      },
+                      {
+                        path: 'list',
+                        element: <CommunityMemberTextListPage />,
+                      },
+                    ],
                   },
                   {
-                    path: 'list',
+                    path: 'detail/:uCommunityPostId',
+                    element: <CommunityMemberDetailPage />,
+                  },
+                  {
+                    path: 'registration',
+                    element: <CommunityMemberRegistrationPage />,
+                  },
+                  {
+                    path: 'edit/:uCommunityPostId',
+                    element: <CommunityMemberEditPage />,
                   },
                 ],
               },
               {
                 path: 'news',
-                element: <RootLayoutCommunity />,
+                element: <RootLayoutSellerCommunity />,
                 children: [
                   {
                     index: true,

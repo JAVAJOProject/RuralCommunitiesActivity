@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useImmer } from 'use-immer';
 
 import AccommodationBanner from '../../../components/Service/totalActivity/Accommodation/AccommodationBanner';
@@ -148,7 +148,15 @@ const testContents = [
 ];
 
 export default function AccommodationInfoPage() {
-  const [contents, updateContents] = useImmer(testContents);
+  const [contents, updateContents] = useImmer([]);
+  const [requestPageNo, setRequestPageNo] = useState(1);
+  const [totalPageNo, setTotalPageNo] = useState(1);
+
+  useEffect(() => {
+    updateContents(testContents);
+    setTotalPageNo(1);
+  }, [requestPageNo]);
+
   const { banner, categoryCircleImg, tableContents } = defaultContents;
 
   return (
@@ -158,7 +166,11 @@ export default function AccommodationInfoPage() {
       <RatingCategoryBoxSet categoryCircleImg={categoryCircleImg} />
       <AccommodationTable theadText={tableContents} tbodyData={contents} />
       <div style={{ marginTop: '3.5rem', marginBottom: '2rem' }}>
-        <PageNoBox curr={1} total={6} />
+        <PageNoBox
+          curr={requestPageNo}
+          total={totalPageNo}
+          handlePageNo={setRequestPageNo}
+        />
       </div>
     </main>
   );

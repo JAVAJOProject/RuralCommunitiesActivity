@@ -2,6 +2,8 @@ package com.javajo.sunshineRoad.model.dto.customerCenter.inquiry;
 
 import org.apache.ibatis.type.Alias;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,8 +26,13 @@ public class InquiryInfoDTO {
 	private String inquiryContent;
 	private String inquiryDateCreated;
 	private String inquiryA;
-	private String uName;
-	private String sName;
+	@JsonProperty
+	private int uId;
+	@JsonProperty
+	private String uNick;
 	private String inquiryStatus;
-	
+	@JsonProperty
+	private int sId;
+	@JsonProperty
+	private String sComName;
 }

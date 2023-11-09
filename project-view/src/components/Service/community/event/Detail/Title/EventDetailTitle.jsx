@@ -4,7 +4,9 @@ import EventDetailTitleCountBox from './EventDetailTitleCountBox';
 import './EventDetailTitle.css';
 
 export default function EventDetailTitle({ contents }) {
-  const { postTitle, favoriteCnt, viewCnt, postId, postTypeId } = contents;
+  const { postTitle, postId, viewCnt, postTypeId } = contents;
+  const favoriteCnt = contents?.favoriteCnt;
+  const likeCnt = contents?.likeCnt;
 
   return (
     <div className="eventDetailTitle">
@@ -15,7 +17,7 @@ export default function EventDetailTitle({ contents }) {
           viewNum={viewCnt}
         />
       ) : (
-        <EventDetailTitleCountBox likesNum={favoriteCnt} viewNum={viewCnt} />
+        <EventDetailTitleCountBox likesNum={likeCnt} viewNum={viewCnt} />
       )}
     </div>
   );

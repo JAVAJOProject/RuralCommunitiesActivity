@@ -7,6 +7,8 @@ export default function UserInfoInputLastBtnBox({ inputTexts }) {
     <div className="userInfoInputLastBtnBox">
       {inputTexts.map((btn) => {
         const { colorType, inputType, btnText, handleClick } = btn;
+        const disabled = btn?.disabled;
+
         return (
           <UserInfoInputLastBtn
             key={btnText}
@@ -14,6 +16,7 @@ export default function UserInfoInputLastBtnBox({ inputTexts }) {
             inputType={inputType}
             btnText={btnText}
             handleClick={handleClick}
+            disabled={!!disabled}
           />
         );
       })}

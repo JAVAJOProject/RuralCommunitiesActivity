@@ -5,6 +5,8 @@ export default function CommunityInputContent({
   defaultValue,
   textareaRef,
   wasValidated,
+  inputName,
+  placeholderText,
 }) {
   return (
     <div
@@ -15,7 +17,8 @@ export default function CommunityInputContent({
       <textarea
         ref={textareaRef}
         defaultValue={defaultValue ?? ''}
-        placeholder="내용을 입력하세요."
+        placeholder={placeholderText}
+        name={inputName}
         required
       />
     </div>

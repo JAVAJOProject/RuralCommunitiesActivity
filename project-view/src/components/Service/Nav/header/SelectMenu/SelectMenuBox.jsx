@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import './SelectMenuBox.css';
 import MenuSetBox from './MenuSetBox';
 import { ToggleContext } from '../../toggleMenuContext/ToggleMenu';
+import { TopMenuPosContext } from '../HeaderMiddle/TopMenuPos';
 
 const detailMenu = {
   recActivity: {
@@ -25,7 +26,7 @@ const detailMenu = {
     id: 3,
     content: [
       { text: '이벤트', link: 'community/event' },
-      { text: '소통 공간', link: 'community/board' },
+      { text: '소통 공간', link: 'community/bulletinBoard' },
       { text: '마을 소식', link: 'community/news' },
     ],
   },
@@ -41,6 +42,8 @@ const detailMenu = {
 };
 
 export default function SelectMenuBox() {
+  const { topMenuPos } = useContext(TopMenuPosContext);
+
   const { visibleAll, updateVisibleAll } = useContext(ToggleContext);
   const { visible, pointInTop, pointInMiddle } = visibleAll;
   const { recActivity, totalActivity, community, customerCenter } = detailMenu;
@@ -72,13 +75,11 @@ export default function SelectMenuBox() {
           });
         }}
       >
-        <div className="MenuSetBoxList">
-          <div className="divForSpaceLeft" />
+        <div className="MenuSetBoxList" style={{ left: topMenuPos }}>
           <MenuSetBox detailMenu={recActivity} />
           <MenuSetBox detailMenu={totalActivity} />
           <MenuSetBox detailMenu={community} />
           <MenuSetBox detailMenu={customerCenter} />
-          <div className="divForSpaceRight" />
         </div>
       </div>
     )

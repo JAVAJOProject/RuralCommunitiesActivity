@@ -6,10 +6,10 @@ import InputHidden from '../community/event/Registration/InputBox/TextBox/InputH
 
 export default function UserInfoInputEmailBox({ inputTexts, defaultValue }) {
   const [memberId, setMemberId] = useState(
-    defaultValue.substring(0, defaultValue.lastIndexOf('@'))
+    defaultValue?.substring(0, defaultValue?.lastIndexOf('@')) ?? ''
   );
   const [memberMail, setMemberMail] = useState(
-    defaultValue.substring(defaultValue.lastIndexOf('@') + 1)
+    defaultValue?.substring(defaultValue?.lastIndexOf('@') + 1) ?? ''
   );
 
   const { inputName, labelText, inputType, inputPattern } = inputTexts;

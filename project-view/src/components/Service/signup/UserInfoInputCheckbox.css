@@ -23,4 +23,5 @@
 }
 .userInfoInputCheckbox img {
   margin: auto 1.5rem;
+  cursor: pointer;
 }

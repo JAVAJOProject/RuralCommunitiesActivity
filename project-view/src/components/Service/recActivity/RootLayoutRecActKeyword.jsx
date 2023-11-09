@@ -39,7 +39,7 @@ export default function RootLayoutRecActKeyword() {
   const [totalPageNo, setTotalPageNo] = useState(1);
   const [requestPageNo, setRequestPageNo] = useState(1);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, _] = useSearchParams();
   const keywordUrl = searchParams.get('keyword');
 
   useEffect(() => {
@@ -48,7 +48,7 @@ export default function RootLayoutRecActKeyword() {
         const keywordList = await fetchDataGET(
           '/recommendation/activity-keyword'
         );
-        updateKeywords((draft) => [...keywordList]);
+        updateKeywords(keywordList);
 
         if (keywordUrl) {
           const [perPagePostCount, totalCount] = await fetchDataGET(
@@ -69,6 +69,10 @@ export default function RootLayoutRecActKeyword() {
         }
       } catch (error) {
         console.error(error);
+        updateKeywords([]);
+        setTotalPostNo(0);
+        setRequestPageNo(1);
+        setTotalPageNo(1);
       }
     }
     fetchContents();

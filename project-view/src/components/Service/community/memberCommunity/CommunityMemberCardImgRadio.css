@@ -1,0 +1,40 @@
+.communityMemberCardImgRadio {
+  width: 68.5rem;
+  width: 57.5625rem;
+  position: relative;
+  margin: auto;
+}
+
+.communityMemberCardImgRadio > p {
+  margin: 2rem auto;
+  text-align: center;
+  color: #868686;
+  font-family: Jua;
+  font-size: 1.875rem;
+  font-weight: 400;
+}
+
+.slice-slice {
+  width: 57.5625rem;
+}
+label.sliderMemoLabel {
+  width: fit-content;
+  height: fit-content;
+  display: block;
+}
+input.sliderMemoInput {
+  display: none;
+}
+label.sliderMemoLabel:has(input.sliderMemoInput:checked) {
+  border-radius: 0.625rem;
+  border: 0.3rem solid #faa;
+  outline: 0.3rem solid 7px;
+  position: relative;
+  z-index: 100;
+}
+img.sliderMemoImg {
+  width: 11.65rem;
+  height: 11rem;
+  border-radius: 0.625rem;
+  object-fit: cover;
+}

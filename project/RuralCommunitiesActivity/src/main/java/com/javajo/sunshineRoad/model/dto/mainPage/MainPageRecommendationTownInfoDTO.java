@@ -17,5 +17,5 @@ public class MainPageRecommendationTownInfoDTO {
     private String sidoName;
     private String recTTitle;
     private String recTContent;
-    private int recTFavoriteCnt;
+    private int recTLikeCnt;
 }

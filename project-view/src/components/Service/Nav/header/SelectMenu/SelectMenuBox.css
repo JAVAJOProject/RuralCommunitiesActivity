@@ -6,23 +6,15 @@
   top: 9.2rem;
   display: flex;
   flex-wrap: nowrap;
-  justify-content: flex-end;
 }
 
 .MenuSetBoxList {
   flex-shrink: 1;
   display: flex;
-  justify-content: flex-start;
   flex-wrap: nowrap;
+  padding-left: 0;
   flex-basis: 40rem;
-}
-
-.divForSpaceLeft {
-  width: 18rem;
-  margin-left: 3.7rem;
-}
-.divForSpaceRight {
-  margin-left: 1rem;
+  position: absolute;
 }
 
 @media all and (min-width: 1501px) {

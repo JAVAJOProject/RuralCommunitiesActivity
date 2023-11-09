@@ -92,8 +92,8 @@ public class InquiryDAO {
 		return inquiryMapper.getRequestPageSearchInquiryListList(startPostNo, endPostNo, searchingTypeId, keyword);
 	}
 	
-	public InquiryInfoDTO getMyInquiryDetail(int inquiryId) {
+	public List<InquiryInfoDTO> getMyInquiryDetail(int memId) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.getMyInquiryDetail(inquiryId);
+		return inquiryMapper.getMyInquiryDetail(memId);
 	}
 }

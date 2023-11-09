@@ -6,7 +6,7 @@ import UserInfoInputEmailBox from '../../../signup/UserInfoInputEmailBox';
 import UserInfoInputMobileBox from '../../../signup/UserInfoInputMobileBox';
 import UserInfoInputRadioBox from '../../../signup/UserInfoInputRadioBox';
 import UserInfoInputBirthBox from '../../../signup/UserInfoInputBirthBox';
-import UserInfoInputCheckeboxBox from '../../../signup/UserInfoInputCheckeboxBox';
+import UserInfoInputCheckboxBox from '../../../signup/UserInfoInputCheckboxBox';
 import UserInfoInputBtn from '../../../signup/UserInfoInputBtn';
 import UserInfoInputLastBtnBox from '../../../signup/UserInfoInputLastBtnBox';
 
@@ -60,7 +60,7 @@ export default function MypageMemberUserInfoContents({
         inputTexts={birthInfo}
         defaultValue={userInfoData.uBirth}
       />
-      <UserInfoInputCheckeboxBox
+      <UserInfoInputCheckboxBox
         inputTexts={marketing}
         defaultValue={userInfoData.uMarketingConsent}
       />

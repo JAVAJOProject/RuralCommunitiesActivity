@@ -6,7 +6,7 @@ export default function MainEventPoster({ imgSrc, className }) {
 
   return (
     <div className={classes}>
-      <img src={imgSrc} />
+      <img src={imgSrc[0]} />
     </div>
   );
 }

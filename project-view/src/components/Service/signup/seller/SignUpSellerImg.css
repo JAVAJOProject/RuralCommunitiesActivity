@@ -1,0 +1,8 @@
+.signUpSellerImg {
+  margin-top: -53rem;
+  margin-left: -20rem;
+}
+.signUpSellerImg > img {
+  width: 35rem;
+  mix-blend-mode: darken;
+}

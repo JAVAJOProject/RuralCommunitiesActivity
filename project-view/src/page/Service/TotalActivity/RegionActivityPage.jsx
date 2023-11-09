@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useImmer } from "use-immer";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchDataGET,
   fetchImgGET,
   fetchOneContentGET,
-} from "../../../config/ApiService";
+} from '../../../config/ApiService';
 
-import TotalActTitleBox from "../../../components/Service/totalActivity/Theme/title/TotalActTitleBox";
-import ActivityRegionBoxSet from "../../../components/Service/totalActivity/Region/regionBox/ActivityRegionBoxSet";
-import SearchingBox from "../../../components/Service/common/UI/SearchingBox/SearchingBox";
-import CardListContentBox from "../../../components/Service/common/UI/CardListContentBox";
-import CardBoxTitleSet from "../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet";
-import PageNoBox from "../../../components/Service/common/PageNo/PageNoBox";
-import YellowActivityCard from "../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCard";
-import YellowActivityCardImg from "../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCardImg";
-import YellowActivityText from "../../../components/Service/totalActivity/Theme/activityCard/YellowActivityText";
-import RegionMap from "../../../components/Service/totalActivity/Region/regionMap/RegionMap";
+import TotalActTitleBox from '../../../components/Service/totalActivity/Theme/title/TotalActTitleBox';
+import ActivityRegionBoxSet from '../../../components/Service/totalActivity/Region/regionBox/ActivityRegionBoxSet';
+import SearchingBox from '../../../components/Service/common/UI/SearchingBox/SearchingBox';
+import CardListContentBox from '../../../components/Service/common/UI/CardListContentBox';
+import CardBoxTitleSet from '../../../components/Service/common/UI/CardBoxTitleSet/CardBoxTitleSet';
+import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
+import YellowActivityCard from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCard';
+import YellowActivityCardImg from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityCardImg';
+import YellowActivityText from '../../../components/Service/totalActivity/Theme/activityCard/YellowActivityText';
+import RegionMap from '../../../components/Service/totalActivity/Region/regionMap/RegionMap';
 
-import titleImg from "../../../view_img/Service/totalActivity/region/title.svg";
+import titleImg from '../../../view_img/Service/totalActivity/region/title.svg';
 
 export default function RegionActivityPage() {
   const navigate = useNavigate();
-  const [selectedRegion, setSelectedRegion] = useState("전체");
-  const [selectedSigungu, setSelectedSigungu] = useState("전체");
+  const [selectedRegion, setSelectedRegion] = useState('전체');
+  const [selectedSigungu, setSelectedSigungu] = useState('전체');
   const [requestPageNo, setRequestPageNo] = useState(1);
   const [totalPageNo, setTotalPageNo] = useState(1);
 
@@ -49,7 +49,7 @@ export default function RegionActivityPage() {
   useEffect(() => {
     async function fetchSigunguData(selectedSido) {
       try {
-        if (selectedSido === "전체" || selectedSido === "세종") {
+        if (selectedSido === '전체' || selectedSido === '세종') {
           setSigunguData([]);
         } else {
           setLoadingSigungu(true);
@@ -76,10 +76,10 @@ export default function RegionActivityPage() {
   const fetchActivityData = async (page) => {
     try {
       let endpoint;
-      if (selectedRegion === "전체") {
+      if (selectedRegion === '전체') {
         endpoint = `/totalActivity/byTotalList/card/${page}`;
       } else {
-        if (selectedSigungu === "전체") {
+        if (selectedSigungu === '전체') {
           endpoint = `/totalActivity/byTotalList/card/${page}`;
         } else {
           const sigunguInfo = sigunguData.find(
@@ -91,7 +91,7 @@ export default function RegionActivityPage() {
         }
       }
 
-      if (selectedRegion === "세종") {
+      if (selectedRegion === '세종') {
         endpoint = `/totalActivity/byTotalList/card/${page}`;
       }
 
@@ -105,8 +105,8 @@ export default function RegionActivityPage() {
 
       const imageData = await fetchImgGET(
         activitiesData,
-        "aId",
-        "/img/totalActivityImage/one"
+        'aId',
+        '/img/totalActivityImage/one'
       );
 
       const activityList = activitiesData.map((activity, index) => ({
@@ -125,9 +125,9 @@ export default function RegionActivityPage() {
   }, [requestPageNo, selectedRegion, selectedSigungu, sigunguData]);
 
   const subtitle = {
-    text: `전체 ${totalActivityCount}건`,
+    text: `전체 ${totalActivityCount ?? 0}건`,
     titleImg: titleImg,
-    circleColor: "#FFAB48",
+    circleColor: '#FFAB48',
     isDarken: false,
   };
 
@@ -135,19 +135,21 @@ export default function RegionActivityPage() {
     <div>
       <TotalActTitleBox />
       <RegionMap addr={selectedRegion} />
-      <ActivityRegionBoxSet
-        total="전체"
-        selected={selectedRegion}
-        regionList={sidoData.map((sido) => sido.sidoName)}
-        sigunguList={sigunguData.map((sigungu) => sigungu.sigunguName)}
-        handleSelectedRegion={setSelectedRegion}
-        handleSelectedSigungu={setSelectedSigungu}
-      />
+      {sidoData?.length > 0 && (
+        <ActivityRegionBoxSet
+          total="전체"
+          selected={selectedRegion}
+          regionList={sidoData.map((sido) => sido.sidoName)}
+          sigunguList={sigunguData.map((sigungu) => sigungu.sigunguName)}
+          handleSelectedRegion={setSelectedRegion}
+          handleSelectedSigungu={setSelectedSigungu}
+        />
+      )}
       <div
         style={{
-          margin: "1rem auto",
-          width: "fit-content",
-          marginBottom: "3rem",
+          margin: '1rem auto',
+          width: 'fit-content',
+          marginBottom: '3rem',
         }}
       >
         <SearchingBox />
@@ -159,21 +161,22 @@ export default function RegionActivityPage() {
           circleColor={subtitle.circleColor}
           isDarken={subtitle.isDarken}
         />
-        <div style={{ display: "flex", flexWrap: "wrap", width: "71rem" }}>
-          {activityData.map((data) => (
-            <YellowActivityCard
-              style={{ margin: "1rem" }}
-              onClick={() => {
-                navigate(`/app/activity/detail/${data.aId}/info`);
-              }}
-            >
-              <YellowActivityCardImg
-                imgSrc={data.aThumbnailImg}
-                favoritesNum={+data.aFavoriteCnt}
-              />
-              <YellowActivityText title={data.aName} text={data.aOneLiner} />
-            </YellowActivityCard>
-          ))}
+        <div style={{ display: 'flex', flexWrap: 'wrap', width: '71rem' }}>
+          {activityData?.length > 0 &&
+            activityData.map((data) => (
+              <YellowActivityCard
+                style={{ margin: '1rem' }}
+                onClick={() => {
+                  navigate(`/app/activity/detail/${data.aId}/info`);
+                }}
+              >
+                <YellowActivityCardImg
+                  imgSrc={data.aThumbnailImg}
+                  favoritesNum={+data.aFavoriteCnt}
+                />
+                <YellowActivityText title={data.aName} text={data.aOneLiner} />
+              </YellowActivityCard>
+            ))}
         </div>
       </CardListContentBox>
       <PageNoBox

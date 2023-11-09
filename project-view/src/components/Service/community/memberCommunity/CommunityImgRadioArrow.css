@@ -1,0 +1,19 @@
+button.communityImgRadioArrow {
+  color: #7e7e7e;
+  font-family: Jua;
+  font-size: 2.5rem;
+  font-weight: 400;
+  width: fit-content;
+}
+button.communityImgRadioArrow:hover {
+  color: #a2a2a2;
+}
+button.communityImgRadioArrow:disabled,
+button.communityImgRadioArrow:disabled:hover {
+  display: none;
+}
+
+button.slick-arrow.slick-prev::before,
+button.slick-arrow.slick-next::before {
+  display: none;
+}

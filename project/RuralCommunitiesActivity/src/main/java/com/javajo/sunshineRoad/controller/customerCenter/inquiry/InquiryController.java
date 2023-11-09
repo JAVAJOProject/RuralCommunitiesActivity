@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javajo.sunshineRoad.model.dto.customerCenter.inquiry.InquiryInfoDTO;
+import com.javajo.sunshineRoad.model.service.IService.common.memInfoToSearch.SearchMemIdByUserIdService;
 import com.javajo.sunshineRoad.model.service.IService.customerCenter.inquiry.InquiryService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,8 +24,9 @@ import lombok.RequiredArgsConstructor;
 public class InquiryController {
 	
 	private final InquiryService inquiryService;
+	private final SearchMemIdByUserIdService searchMemIdByUserIdService;
 
-		
+	
 	@GetMapping("/list/{requestPageNo}")
 	public ResponseEntity<List<InquiryInfoDTO>> inquiryList(@PathVariable("requestPageNo") int requsetPageNo){
 		int perPagePostCount = 3; // 페이지 당 표시할 항목 수
@@ -108,16 +110,43 @@ public class InquiryController {
 	}
 	
 	@PostMapping("/detail/insert")
-	public void inquiryInsert(InquiryInfoDTO inquiryInfoDTO) {
-		inquiryService.inquiryInsert(inquiryInfoDTO);
+	public ResponseEntity<String> inquiryInsert(InquiryInfoDTO inquiryInfoDTO, @RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
+		int memId = 0;
+		try {
+			memId = getMemId(memTypeId, uId, sId);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().body("잘못된 요청");
+		}
 		
+		inquiryInfoDTO.setMemId(memId);
+		inquiryService.inquiryInsert(inquiryInfoDTO);
+		return ResponseEntity.ok("등록 완료");
 	}
 	//내가 쓴 글 보기
-	@GetMapping("/view/{inquiryId}")
-	public ResponseEntity<InquiryInfoDTO> viewInquiry(@PathVariable int inquiryId) {
-	    InquiryInfoDTO inquiry = inquiryService.getInquiryDetail(inquiryId);
+	@GetMapping("/view")
+	public ResponseEntity<List<InquiryInfoDTO>> viewInquiry(@RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
+		int memId = 0;
+		try {
+			memId = getMemId(memTypeId, uId, sId);
+		} catch (IllegalArgumentException e) {
+			return ResponseEntity.badRequest().build();
+		}
+		
+		List<InquiryInfoDTO> inquiry = inquiryService.getMyInquiryDetail(memId);
 	    return ResponseEntity.ok(inquiry);
 	}
 
-	
+	private int getMemId(int memTypeId, Integer uId, Integer sId) throws IllegalArgumentException {
+		int userId;
+		if (uId == null || uId < 1) {
+		    userId = sId;
+		} else if (sId == null || sId < 1) {
+		    userId = uId;
+		} else {
+		    throw new IllegalArgumentException("잘못된 인자");
+		}
+
+		
+		return searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
+	}
 }

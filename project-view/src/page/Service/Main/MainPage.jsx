@@ -81,7 +81,7 @@ export default function MainPage() {
         });
         updateContents((draft) => {
           draft.totalActivity.contents.smallImgs = activity
-            .filter((item, index) => index !== 0)
+            .filter((_, index) => index !== 0)
             .map((item, index) => {
               return {
                 ...item,
@@ -116,7 +116,7 @@ export default function MainPage() {
         );
 
         updateContents((draft) => {
-          draft.event.eventThumbnailImg = eventImages[eventImages.length - 1];
+          draft.event.eventThumbnailImg = eventImages;
         });
 
         const notice = await fetchDataGET("/main/notice-info");

@@ -95,7 +95,7 @@ export default function RuralRatingPage() {
   const { tableHead, tableBody } = tableContents;
   const [ratingData, setRatingData] = useState([]);
   const [requestPageNo, setRequestPageNo] = useState(1);
-  const [totalPageNo, _] = useState(778 / 10);
+  const [totalPageNo, setTotalPageNo] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -103,6 +103,7 @@ export default function RuralRatingPage() {
         const response = await fetch(`/rating/getData/${requestPageNo}`);
         const data = await response.json();
         setRatingData(data);
+        setTotalPageNo(778 / 10);
       } catch (error) {
         console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
       }

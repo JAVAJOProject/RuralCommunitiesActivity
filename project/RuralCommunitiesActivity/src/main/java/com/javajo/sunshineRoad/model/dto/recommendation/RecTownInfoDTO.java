@@ -23,7 +23,7 @@ public class RecTownInfoDTO {
 	private String recTContent;//내용
 	private String recTDateCreated;//작성일
 	private int recTViewCnt;//좋아요 수
-	private int recTFavoriteCnt;//찜 개수
+	private int recTLikeCnt;//찜 개수
 	private String recTSite;	// 사이트
 	private String recTThumbnailImg;//대표 이미지
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useImmer } from "use-immer";
-import { fetchDataGET } from "../../../../config/ApiService";
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useImmer } from 'use-immer';
+import { fetchDataGET } from '../../../../config/ApiService';
 
-import NoticeListBar from "../../../../components/Service/customerCenter/notice/NoticeListBar/NoticeListBar";
-import PageNoBox from "../../../../components/Service/common/PageNo/PageNoBox";
+import NoticeListBar from '../../../../components/Service/customerCenter/notice/NoticeListBar/NoticeListBar';
+import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
 
 export default function NoticePage() {
   const location = useLocation();
@@ -36,7 +36,7 @@ export default function NoticePage() {
     <>
       <div className="noticeMainContent">
         <NoticeListBar type="분류" title="제목" dateCreated="작성일" />
-        {dbContents.length > 0 &&
+        {dbContents?.length > 0 &&
           dbContents.map((content) => {
             const { noticeId, noticeTypeId, noticeTitle, noticeDateCreated } =
               content;

@@ -45,6 +45,7 @@ export default function RecActKeywordSelectedPage() {
         });
       } catch (error) {
         console.error(error);
+        updateContents([]);
       }
     }
     fetchContents();

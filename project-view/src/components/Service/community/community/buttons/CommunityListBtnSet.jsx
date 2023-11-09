@@ -17,7 +17,7 @@ export default function CommunityListBtnSet() {
     (boardType === 'card' || boardType === 'list') && (
       <div className="communityListBtnSet">
         <NavLink
-          to={'/app/community/news/board/card'}
+          to={'board/card'}
           className={({ isActive }) => {
             setIsCardActive(isActive);
           }}
@@ -25,7 +25,7 @@ export default function CommunityListBtnSet() {
           <CommunityCardListBtn active={isCardActive} />
         </NavLink>
         <NavLink
-          to={'/app/community/news/board/list'}
+          to={'board/list'}
           className={({ isActive }) => {
             setIsListActive(isActive);
           }}

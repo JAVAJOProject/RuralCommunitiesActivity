@@ -116,7 +116,7 @@ public class WeatherController {
             return WeatherDTO.builder()
                 .weatherConditionId(1)
                 .weatherCondition("맑음")
-                .temperature(99.9)
+                .temperature(100.0)
                 .build();
         }
 

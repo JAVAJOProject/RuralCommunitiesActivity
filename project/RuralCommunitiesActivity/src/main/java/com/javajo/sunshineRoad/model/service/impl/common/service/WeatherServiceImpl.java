@@ -22,7 +22,8 @@ import lombok.RequiredArgsConstructor;
 public class WeatherServiceImpl implements WeatherService {
 
     private static final String SERVICE_KEY = "il6BL4VoFPfexL8o4dmXlEeTT%2FF%2FwtpCMCNKG01b%2FRUz2Jq2%2BytqnSO7n%2FPNOMj%2FLu%2BIUn6qimQzNIsOClwHyw%3D%3D";
-    private static final String SERVICE_URL = "﻿http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst";
+    private static final String SERVICE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtFcst";
+
 
     private final RestTemplate restTemplate;
 
@@ -37,7 +38,7 @@ public class WeatherServiceImpl implements WeatherService {
                 "dataType=" + "JSON" + "&" +
                 "base_date=" + baseDate + "&" +
                 "base_time=" + baseTime + "&" +
-                "numOfRows=" + 10 + "&" +
+                "numOfRows=" + 60 + "&" +
                 "nx=" + nx + "&" +
                 "ny=" + ny;
         

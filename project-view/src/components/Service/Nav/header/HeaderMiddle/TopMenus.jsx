@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import TopMenu from './TopMenu';
 import './TopMenus.css';
 import { ToggleContext } from '../../toggleMenuContext/ToggleMenu';
+import { TopMenuPosContext } from './TopMenuPos';
 
 const menuContents = {
   recActivity: { name: '추천 체험', link: 'recommendation' },
@@ -11,6 +12,15 @@ const menuContents = {
 };
 
 export default function TopMenus() {
+  const topMenusRef = useRef(null);
+  const { setTopMenuPos } = useContext(TopMenuPosContext);
+  useEffect(() => {
+    if (topMenusRef?.current) {
+      const topMenuPos = topMenusRef.current.getBoundingClientRect().x;
+      setTopMenuPos(topMenuPos);
+    }
+  }, [topMenusRef, topMenusRef?.current?.getBoundingClientRect().x]);
+
   const { visibleAll, updateVisibleAll } = useContext(ToggleContext);
   useContext(ToggleContext);
   const { visible, pointInTop, pointInMiddle } = visibleAll;
@@ -31,12 +41,8 @@ export default function TopMenus() {
 
   return (
     <ul
+      ref={topMenusRef}
       className="menuListUl"
-      // onClick={() => {
-      //   updateVisibleAll((draft) => {
-      //     draft.pointInTop = !draft.pointInTop;
-      //   });
-      // }}
       onPointerOver={() => {
         updateVisibleAll((draft) => {
           draft.pointInTop = true;

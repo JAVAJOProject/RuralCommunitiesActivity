@@ -6,6 +6,7 @@ export default function UserInfoInputLastBtn({
   inputType,
   btnText,
   handleClick,
+  disabled,
 }) {
   const classType = ['userInfoInputLastBtn'];
   if (colorType === 'black') {
@@ -20,6 +21,7 @@ export default function UserInfoInputLastBtn({
       onClick={handleClick}
       className={classType.join(' ')}
       value={btnText}
+      disabled={disabled}
     />
   );
 }

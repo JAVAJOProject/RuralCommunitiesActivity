@@ -97,8 +97,8 @@ public class InquiryServiceImpl implements InquiryService {
 	    }
 	}
 	@Override
-	public InquiryInfoDTO getMyInquiryDetail(int inquiryId) {
-	    return inquiryDAO.getMyInquiryDetail(inquiryId);
+	public List<InquiryInfoDTO> getMyInquiryDetail(int memId) {
+	    return inquiryDAO.getMyInquiryDetail(memId);
 	}
 
 }

@@ -24,7 +24,7 @@ public class RecActivityInfoDTO {
 	private String recATitle;//제목
 	private String recAContent;//내용
 	private String recADateCreated;//작성일
-	private int recAViewCount;//좋아요 수
-	private int recAFavoriteCnt;//찜 갯수
+	private int recAViewCnt;//좋아요 수
+	private int recALikeCnt;//찜 갯수
 	private String recAThumbnailImg;//대표이미지
 }

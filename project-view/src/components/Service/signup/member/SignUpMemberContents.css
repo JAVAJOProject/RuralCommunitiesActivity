@@ -1,0 +1,12 @@
+.signUpMemberContents {
+  margin-left: 2rem;
+}
+.signUpMemberContents .signUpHasBtn {
+  display: flex;
+  align-items: center;
+  margin: -1rem 0;
+}
+.signUpMemberContents .signUpLastBtn {
+  width: 148%;
+  margin-bottom: 5rem;
+}

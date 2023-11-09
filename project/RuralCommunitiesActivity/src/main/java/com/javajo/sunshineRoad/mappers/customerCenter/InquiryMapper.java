@@ -34,5 +34,5 @@ public interface InquiryMapper {
 	public List<InquiryInfoDTO> getRequestPageSearchInquiryListList(int startPostNo, int endPostNo, int searchingTypeId, String keyword);
 	
 	
-	public InquiryInfoDTO getMyInquiryDetail(int inquiryId);
+	public List<InquiryInfoDTO> getMyInquiryDetail(int memId);
 }

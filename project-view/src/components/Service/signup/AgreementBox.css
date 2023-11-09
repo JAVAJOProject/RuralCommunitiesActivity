@@ -1,0 +1,40 @@
+.agreementBox > h2 {
+  text-align: center;
+  font-family: Jua;
+  font-size: 1.5625rem;
+  font-weight: 400;
+  margin: 1.5rem auto 0.5rem;
+}
+
+.agreementBox > textarea {
+  border-radius: 0.625rem;
+  background: rgba(104, 159, 240, 0.24);
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 1rem;
+  display: block;
+  margin: auto;
+  width: 40rem;
+  height: 20rem;
+  white-space: pre-line;
+
+  font-family: SUITE Variable;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.agreementBox > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto 2rem;
+}
+.agreementBox > div > p {
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+}
+.agreementBox > div input {
+  display: none;
+}

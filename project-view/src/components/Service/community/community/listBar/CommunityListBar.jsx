@@ -23,6 +23,7 @@ export default function CommunityListBar({
       className="communityListBar"
       onClick={() => {
         navigate(`../../detail/${postId}`);
+        window.scrollTo(0, 0);
       }}
     >
       <div
