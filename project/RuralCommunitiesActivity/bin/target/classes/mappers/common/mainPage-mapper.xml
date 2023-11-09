@@ -133,8 +133,6 @@
                   event_id, event_thumbnail_img
               FROM
                   event
-              WHERE
-                  event_recruit_end_date >= SYSTIMESTAMP
               ORDER BY event_recruit_end_date ASC)
             WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
@@ -272,8 +270,6 @@
 <!--            event_id, event_thumbnail_img-->
 <!--        FROM-->
 <!--            event-->
-<!--        WHERE-->
-<!--            event_recruit_end_date >= CURRENT_TIMESTAMP-->
 <!--        ORDER BY event_recruit_end_date ASC-->
 <!--            LIMIT 5-->
 <!--    </select>-->

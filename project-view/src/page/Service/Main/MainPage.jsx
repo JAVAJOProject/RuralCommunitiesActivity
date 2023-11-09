@@ -116,7 +116,7 @@ export default function MainPage() {
         );
 
         updateContents((draft) => {
-          draft.event.eventThumbnailImg = eventImages;
+          draft.event.eventThumbnailImg = eventImages[0];
         });
 
         const notice = await fetchDataGET("/main/notice-info");

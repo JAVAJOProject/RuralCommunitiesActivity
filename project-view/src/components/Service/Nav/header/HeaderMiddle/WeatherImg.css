@@ -1,5 +1,6 @@
 .weatherImg {
   object-fit: contain;
+  height: 5rem;
 }
 
 @media all and (min-width: 1101px) {

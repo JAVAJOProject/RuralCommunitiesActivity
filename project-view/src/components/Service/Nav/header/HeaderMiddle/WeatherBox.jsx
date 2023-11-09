@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import './WeatherBox.css';
-import { useImmer } from 'use-immer';
-import { fetchOneContentGET } from '../../../../../config/ApiService';
+import React, { useEffect } from "react";
+import "./WeatherBox.css";
+import { useImmer } from "use-immer";
+import { fetchOneContentGET } from "../../../../../config/ApiService";
 
-import WeatherImg from './WeatherImg';
+import WeatherImg from "./WeatherImg";
 
 const weatherContents = {
-  weatherTitle: '오늘 날씨',
+  weatherTitle: "오늘 날씨",
 };
 
 export default function WeatherBox() {
@@ -15,12 +15,12 @@ export default function WeatherBox() {
     async function fetchContents() {
       try {
         const currTime = `${new Date().getHours()}${new Date().getMinutes()}`;
-        const timeText = +currTime < 1230 && +currTime >= 30 ? '0030' : '1230';
+        const timeText = +currTime < 1230 && +currTime >= 30 ? "0030" : "1230";
         const dateT =
           +currTime < 30 ? new Date().getDate() - 1 : new Date().getDate();
         const dateText = `${new Date().getFullYear()}${String(
           new Date().getMonth() + 1
-        ).padStart(2, '0')}${String(dateT).padStart(2, '0')}`;
+        ).padStart(2, "0")}${String(dateT).padStart(2, "0")}`;
 
         const weather = await fetchOneContentGET(
           `/weather/getWeatherData?baseDate=${dateText}&baseTime=${timeText}`
@@ -34,7 +34,7 @@ export default function WeatherBox() {
         updateWeatherData({
           temperature: -99.9,
           weatherConditionId: 9,
-          weatherCondition: '네트워크통신오류',
+          weatherCondition: "네트워크통신오류",
         });
       }
     }

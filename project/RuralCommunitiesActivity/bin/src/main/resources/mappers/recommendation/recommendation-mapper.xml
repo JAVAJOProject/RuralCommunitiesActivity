@@ -14,8 +14,8 @@
 		<result property="recATitle" column="rec_a_title" />
 		<result property="recAContent" column="rec_a_content" jdbcType="CLOB" javaType="java.lang.String" />
 		<result property="recADateCreated" column="rec_a_date_created" />
-		<result property="recAViewCount" column="rec_a_view_count" />
-		<result property="recAFavoriteCnt" column="rec_a_favorite_cnt" />
+		<result property="recAViewCnt" column="rec_a_view_cnt" />
+		<result property="recALikeCnt" column="rec_a_like_cnt" />
 		<result property="recAThumbnailImg" column="rec_a_thumbnail_img" />
 	</resultMap>  -->
 	
@@ -36,7 +36,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (SELECT
         	seq,
@@ -49,7 +49,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
         SELECT
@@ -63,7 +63,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
         SELECT 
@@ -76,7 +76,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
 		ORDER BY ${colName} DESC)
@@ -94,7 +94,7 @@
 			A.rec_a_title,
 			A.rec_a_content,
 			A.rec_a_view_count,
-			A.rec_a_favorite_cnt,
+			A.rec_a_like_cnt,
 			B.sigungu_name,
 			C.sido_name,
 			D.rec_a_img1,
@@ -128,7 +128,7 @@
 			rec_t_content,
 			rec_t_date_created,
 			rec_t_view_cnt,
-			rec_t_favorite_cnt,
+			rec_a_like_cnt,
 			rec_t_thumbnail_img
         FROM (SELECT
         	seq,
@@ -140,7 +140,7 @@
 			rec_t_content,
 			rec_t_date_created,
 			rec_t_view_cnt,
-			rec_t_favorite_cnt,
+			rec_a_like_cnt,
 			rec_t_thumbnail_img
         FROM (
         SELECT
@@ -153,7 +153,7 @@
 			rec_t_content,
 			rec_t_date_created,
 			rec_t_view_cnt,
-			rec_t_favorite_cnt,
+			rec_a_like_cnt,
 			rec_t_thumbnail_img
         FROM (
         SELECT 
@@ -165,7 +165,7 @@
 			rec_t_content,
 			rec_t_date_created,
 			rec_t_view_cnt,
-			rec_t_favorite_cnt,
+			rec_a_like_cnt,
 			rec_t_thumbnail_img
 		FROM rec_town_info
 		ORDER BY ${colName} DESC )
@@ -180,7 +180,7 @@
 		FROM rec_town_info
 		WHERE rec_t_id = #{recTId}
 	</select>
-	<!-- 전제 키워드 -->
+	<!-- 전체 키워드 -->
 	<select id="getAllKeywordData" resultType="RecKeyword">
 		SELECT *
 		FROM rec_activity_keyword
@@ -211,7 +211,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (SELECT
         	seq,
@@ -225,7 +225,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
         SELECT
@@ -240,7 +240,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
         SELECT 
@@ -254,7 +254,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
 		WHERE rec_a_keyword_id = #{recAKeywordId}
@@ -296,7 +296,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (SELECT
         	seq,
@@ -310,7 +310,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (
         SELECT
@@ -325,7 +325,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (
         SELECT 
@@ -339,7 +339,7 @@
 			rec_a_content,
 			rec_a_date_created,
 			rec_a_view_count,
-			rec_a_favorite_cnt,
+			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
 		WHERE sigungu_id = #{sigunguId}

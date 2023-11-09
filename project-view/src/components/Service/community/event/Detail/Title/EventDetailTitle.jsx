@@ -1,7 +1,7 @@
-import React from 'react';
-import EventDetailTitleText from './EventDetailTitleText';
-import EventDetailTitleCountBox from './EventDetailTitleCountBox';
-import './EventDetailTitle.css';
+import React from "react";
+import EventDetailTitleText from "./EventDetailTitleText";
+import EventDetailTitleCountBox from "./EventDetailTitleCountBox";
+import "./EventDetailTitle.css";
 
 export default function EventDetailTitle({ contents }) {
   const { postTitle, postId, viewCnt, postTypeId } = contents;
@@ -13,11 +13,11 @@ export default function EventDetailTitle({ contents }) {
       <EventDetailTitleText text={postTitle} />
       {+postTypeId === 4 || +postTypeId === 6 ? (
         <EventDetailTitleCountBox
-          favoritesNum={favoriteCnt}
-          viewNum={viewCnt}
+          favoritesNum={+favoriteCnt}
+          viewNum={+viewCnt}
         />
       ) : (
-        <EventDetailTitleCountBox likesNum={likeCnt} viewNum={viewCnt} />
+        <EventDetailTitleCountBox likesNum={+likeCnt} viewNum={+viewCnt} />
       )}
     </div>
   );

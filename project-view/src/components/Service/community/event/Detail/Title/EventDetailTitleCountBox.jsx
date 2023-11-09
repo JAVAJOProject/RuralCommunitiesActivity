@@ -1,9 +1,9 @@
-import React from 'react';
-import './EventDetailTitleCountBox.css';
+import React from "react";
+import "./EventDetailTitleCountBox.css";
 
-import Favorites from '../../../../common/Favorite/Favorites';
-import Likes from '../../../../common/Like/Likes';
-import Viewings from '../../../../common/Viewings';
+import Favorites from "../../../../common/Favorite/Favorites";
+import Likes from "../../../../common/Like/Likes";
+import Viewings from "../../../../common/Viewings";
 
 export default function EventDetailTitleCountBox({
   eventId,
@@ -14,25 +14,25 @@ export default function EventDetailTitleCountBox({
 }) {
   return (
     <div className="eventDetailTitleCountBox">
-      {favoritesNum && (
+      {(favoritesNum === 0 || favoritesNum) && (
         <Favorites
           favoritesNum={favoritesNum}
           postId={eventId}
           postTypeId={postTypeId}
-          style={{ fontFamily: 'SUITE Variable', fontSize: '0.9375rem' }}
+          style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
         />
       )}
-      {likesNum && (
+      {(likesNum === 0 || likesNum) && (
         <Likes
           likesNum={likesNum}
           postId={eventId}
           postTypeId={postTypeId}
-          style={{ fontFamily: 'SUITE Variable', fontSize: '0.9375rem' }}
+          style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
         />
       )}
       <Viewings
         viewings={viewNum}
-        style={{ fontFamily: 'SUITE Variable', fontSize: '0.9375rem' }}
+        style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
       />
     </div>
   );

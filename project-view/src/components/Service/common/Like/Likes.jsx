@@ -17,7 +17,10 @@ export default function Likes({
 
   return (
     <LikeMiniBox
-      onClick={() => setTemp((show) => !show)}
+      onClick={(e) => {
+        setTemp((show) => !show);
+        e.stopPropagation();
+      }}
       // imgSrc={on ? fullHeart : emptyHeart}
       imgSrc={temp ? fullHeart : emptyHeart}
       content={likesNum}

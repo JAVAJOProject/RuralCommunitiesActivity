@@ -13,10 +13,7 @@ export default function RecCardContentsBox({ contents }) {
     <div className="recCardContentsBox">
       <div>
         <RecCardTitle title={title} />
-        <EventDetailTitleCountBox
-          likesNum={likesCnt}
-          viewNum={viewCnt}
-        />
+        <EventDetailTitleCountBox likesNum={+likesCnt} viewNum={+viewCnt} />
       </div>
       <RecCardContentsLine />
       <RecCardContentsText text={textContents} />

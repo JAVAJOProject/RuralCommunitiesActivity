@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import fullHeart from '../../../../view_img/Service/common/fullHeart.jpg';
-import emptyHeart from '../../../../view_img/Service/common/emptyHeart.jpg';
-import FavoriteMiniBox from './FavoriteMiniBox';
-import './Favorites.css';
+import React, { useState } from "react";
+import fullHeart from "../../../../view_img/Service/common/fullHeart.jpg";
+import emptyHeart from "../../../../view_img/Service/common/emptyHeart.jpg";
+import FavoriteMiniBox from "./FavoriteMiniBox";
+import "./Favorites.css";
 
 export default function Favorites({
   on,
@@ -15,7 +15,10 @@ export default function Favorites({
 
   return (
     <FavoriteMiniBox
-      onClick={() => setTemp((show) => !show)}
+      onClick={(e) => {
+        setTemp((show) => !show);
+        e.stopPropagation();
+      }}
       // imgSrc={on ? fullHeart : emptyHeart}
       imgSrc={temp ? fullHeart : emptyHeart}
       content={favoritesNum}
