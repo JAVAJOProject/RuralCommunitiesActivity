@@ -6,7 +6,7 @@ const contents = [
   `본사 : 서울 강남구 테헤란로`,
   `고객지원 : 문의 게시판 또는 1:1 문의`,
   `회사 소개  |  이용약관  |  개인정보처리방침`,
-  `Made by ♥ Wooril Javazo Corp.`,
+  `Made by ♥ Wooril Javajo Corp.`,
 ];
 
 export default function Footer() {

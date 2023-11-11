@@ -1,0 +1,87 @@
+.appSiteMapModal .appSiteMapModalClose {
+  padding: 2.5rem 5rem 1rem;
+}
+.appSiteMapModal .appSiteMapModalClose > button {
+  border: none;
+  outline: none;
+  border-radius: 0.25rem;
+  background-color: #484848;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 0;
+  margin-left: auto;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.appSiteMapModal .appSiteMapModalClose > button > p {
+  margin-top: -0.4rem;
+  color: #fff;
+  font-family: SUITE Variable;
+  font-size: 1.5625rem;
+  font-weight: 600;
+}
+.appSiteMapModal .appSiteMapModalMenus {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 60rem;
+  height: 18rem;
+}
+.appSiteMapModal .appSiteMapModalMenus > div {
+  width: 12rem;
+}
+.appSiteMapModal .appSiteMapModalMenus h3 {
+  font-size: 1.5625rem;
+  font-weight: 600;
+  margin: 1.5rem auto;
+}
+.appSiteMapModal .appSiteMapModalMenus p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 1rem auto;
+}
+.appSiteMapModal .appSiteMapModalMenus h3,
+.appSiteMapModal .appSiteMapModalMenus p {
+  text-align: center;
+  font-family: SUITE Variable;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
+}
+.appSiteMapModal .appSiteMapModalMenus h3:hover,
+.appSiteMapModal .appSiteMapModalMenus p:hover {
+  color: #ffb800;
+}
+
+.appSiteMapModal .navigateToAdmin {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 4rem;
+}
+.appSiteMapModal .navigateToAdmin > p {
+  font-family: SUITE Variable;
+  width: 10.89rem;
+  font-size: 1.1rem;
+  text-align: center;
+  cursor: pointer;
+}
+.appSiteMapModal .navigateToAdmin > p:hover {
+  color: #4777d3;
+  font-weight: 650;
+}
+.appSiteMapModal .navigateToAdmin > img {
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
+  mix-blend-mode: darken;
+  display: block;
+  margin-right: 7rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+}

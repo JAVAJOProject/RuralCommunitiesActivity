@@ -17,7 +17,9 @@ import NotFoundPage from './page/Error/NotFoundPage';
 
 // 회원가입/약관
 import SignUpMemberPage from './page/Service/Common/SignUpMemberPage';
+import SignUpMemberAgreementPage from './page/Service/Common/SignUpMemberAgreementPage';
 import SignUpSellerPage from './page/Service/Common/SignUpSellerPage';
+import SignUpSellerAgreementPage from './page/Service/Common/SignUpSellerAgreementPage';
 
 // 마이페이지 - 서비스 이용자
 import RootLayoutExperiencer from './components/Service/mypage/Experiencer/RootLayoutExperiencer';
@@ -75,6 +77,7 @@ import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
 import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
 import EventApplyPage from './page/Service/Community/Event/EventApplyPage';
 import RootLayoutMemberCommunity from './components/Service/community/memberCommunity/RootLayoutMemberCommunity';
+import CommunityMemberCardListPage from './page/Service/Community/MemberCommunity/CommunityMemberCardListPage';
 import CommunityMemberTextListPage from './page/Service/Community/MemberCommunity/CommunityMemberTextListPage';
 import CommunityMemberDetailPage from './page/Service/Community/MemberCommunity/CommunityMemberDetailPage';
 import CommunityMemberEditPage from './page/Service/Community/MemberCommunity/CommunityMemberEditPage';
@@ -109,7 +112,6 @@ import MemberInsertAdminPage from './page/Admin/member/insert/MemberInsertAdminP
 import MemberUpdateAdminPage from './page/Admin/member/update/MemberUpdateAdminPage';
 
 import ExPage from './page/ExPage';
-import SignUpMemberAgreementPage from './page/Service/Common/SignUpMemberAgreementPage';
 
 const router = createBrowserRouter([
   {
@@ -276,6 +278,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'agreement/seller',
+            element: <SignUpSellerAgreementPage />,
           },
           {
             path: 'signUp/member',
@@ -494,6 +497,7 @@ const router = createBrowserRouter([
                     children: [
                       {
                         path: 'card',
+                        element: <CommunityMemberCardListPage />
                       },
                       {
                         path: 'list',

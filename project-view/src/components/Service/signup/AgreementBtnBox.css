@@ -1,0 +1,44 @@
+.agreementBtnBox {
+  width: fit-content;
+  margin: 3rem auto -1rem;
+}
+
+.agreementBtn {
+  height: 3.4375rem;
+  border-radius: 0.625rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 0.5rem;
+
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.agreementBtn,
+.agreementBtn:active {
+  border: none;
+}
+
+.agreementBtnBlack {
+  background: #000;
+}
+.agreementBtnBlack:active {
+  background: rgba(72, 72, 72, 0.33);
+}
+.agreementBtnBlack:disabled {
+  display: none;
+}
+.agreementBtnBlack:active,
+.agreementBtnBlack:enabled {
+  display: inline;
+}
+
+.agreementBtnGray {
+  background: rgba(72, 72, 72, 0.33);
+}
+.agreementBtnGray:active {
+  background: #000;
+}

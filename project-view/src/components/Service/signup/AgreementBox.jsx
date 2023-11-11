@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './AgreementBox.css';
 
 export default function AgreementBox({
@@ -9,26 +9,20 @@ export default function AgreementBox({
   inputName,
   inputId,
   register,
-  watch,
-  index,
+  watchedValue,
 }) {
-  const [val, setVal] = useState(false);
-  useEffect(() => {
-    setVal((prev) => !prev);
-  }, [watch(inputName[index])]);
-
   return (
     <div className="agreementBox">
       <h2>{title}</h2>
       <textarea value={agreeContent} readOnly />
       <div>
         <label htmlFor={inputId}>
-          <img src={images[+val]} alt="" />
+          <img src={images[+!!watchedValue]} alt="" />
           <input
             type="checkbox"
             name={inputName}
             id={inputId}
-            {...register(inputName[index])}
+            {...register}
           />
         </label>
         <p>{agreeText}</p>

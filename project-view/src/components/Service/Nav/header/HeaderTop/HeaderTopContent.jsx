@@ -4,12 +4,12 @@ import './HeaderTopContent.css';
 export default function HeaderTopContent({
   className,
   linkName,
-  linkParam,
-  tempOnClick,
+  handleClick,
 }) {
   const classes = [className, 'contentBox'].join(' ');
+
   return (
-    <div className={classes} onClick={tempOnClick}>
+    <div className={classes} onClick={handleClick}>
       <p>{linkName}</p>
     </div>
   );

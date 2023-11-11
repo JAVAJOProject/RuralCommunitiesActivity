@@ -1,0 +1,50 @@
+.communityMemberCard {
+  cursor: pointer;
+  background-size: cover;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.communityMemberCard > p {
+  width: 10rem;
+  font-family: Jua;
+  font-size: 1.125rem;
+  font-weight: 400;
+  white-space: pre-line;
+  text-align: justify;
+  letter-spacing: 0.005rem;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.communityMemberCard > div {
+  display: flex;
+  align-items: center;
+  margin-top: 1.3rem;
+}
+.communityMemberCard > div > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 0.8rem;
+}
+.communityMemberCard > div > div:last-of-type > p {
+  text-align: right;
+  font-family: Jua;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+.communityMemberCard > div > div:last-of-type > p:first-of-type {
+  width: 4.75rem;
+  white-space: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

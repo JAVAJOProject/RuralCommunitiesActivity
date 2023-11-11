@@ -1,5 +1,6 @@
 .weatherBox {
   display: flex;
+  align-items: center;
   margin-left: 1rem;
   margin-bottom: 0.3rem;
 }

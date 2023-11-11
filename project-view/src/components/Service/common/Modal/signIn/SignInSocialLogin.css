@@ -1,0 +1,36 @@
+.signInSocialLogin {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  padding-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  border: none;
+  outline: none;
+  margin: 0.5rem auto;
+  border-radius: 0.2rem;
+  cursor: pointer;
+}
+.signInSocialLogin > img,
+.signInSocialLogin > p {
+  display: block;
+}
+
+.signInSocialLogin > img {
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  object-fit: cover;
+  border-radius: 0.2rem;
+}
+.signInSocialLogin > p {
+  margin: 0;
+  width: 15rem;
+  color: #fff;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: 500;
+}

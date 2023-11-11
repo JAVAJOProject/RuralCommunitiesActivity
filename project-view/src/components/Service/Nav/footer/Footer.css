@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  transform: translateY(calc(100%-15rem));
+  /* transform: translateY(calc(100% - 15rem)); */
 }
 
 .footer p {

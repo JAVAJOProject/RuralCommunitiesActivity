@@ -1,8 +1,8 @@
 import React from 'react';
 import './CommunitySellerCard.css';
+import { useNavigate } from 'react-router-dom';
 
 import Likes from '../../common/Like/Likes';
-import { useNavigate } from 'react-router-dom';
 
 export default function CommunitySellerCard({
   postId,

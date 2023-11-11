@@ -1,10 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './HeaderTop.css';
-import HeaderTopContent from './HeaderTopContent';
-import sitemap from '../../../../../view_img/Service/mainPage/sitemap.png';
-import SiteMap from './SiteMap';
+import { useNavigate } from 'react-router-dom';
+
 import { UserInfoContext } from '../../../../../security/UserInfo';
-import { useNavigate } from 'react-router-dom/dist';
+import HeaderTopContent from './HeaderTopContent';
+import SiteMap from './SiteMap';
+import AppSignInModal from '../../../common/Modal/AppSignInModal';
+import AppSiteMap from '../../../common/Modal/AppSiteMap';
+
+import sitemap from '../../../../../view_img/Service/mainPage/sitemap.png';
 
 const content = {
   projectIntro: '프로젝트 소개',
@@ -16,46 +20,73 @@ const content = {
 
 export default function HeaderTop() {
   const { userInfo, tempChangeUser } = useContext(UserInfoContext);
+
+  const [modalSiteMapOpen, setModalSiteMapOpen] = useState(false);
+  const [modalLoginOpen, setModalLoginOpen] = useState(false);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (userInfo.userRole === 'ADMIN') {
-      navigate('/admin');
-    }
-  }, [userInfo.userRole]);
 
   const { projectIntro, login, siteMap, logout, mypage } = content;
 
   return (
-    <div className="headerTop">
-      <HeaderTopContent
-        className="projectIntro"
-        linkName={projectIntro}
-        linkParam={'#Top'}
-      />
-      {userInfo.userRole === 'GUEST' && (
+    <>
+      <div className="headerTop">
         <HeaderTopContent
-          className="login"
-          linkName={login}
-          linkParam={'#'}
-          tempOnClick={tempChangeUser}
+          className="projectIntro"
+          linkName={projectIntro}
+          handleClick={() => {}}
         />
-      )}
-      {['MEMBER', 'SELLER'].includes(userInfo.userRole) && (
-        <>
+        {userInfo.userRole === 'GUEST' && (
           <HeaderTopContent
-            className="logout"
-            linkName={logout}
-            linkParam={'#'}
-            tempOnClick={tempChangeUser}
+            className="login"
+            linkName={login}
+            handleClick={() => {
+              setModalLoginOpen(true);
+            }}
           />
-          <HeaderTopContent
-            className="mypage"
-            linkName={mypage}
-            linkParam={'#'}
-          />
-        </>
-      )}
-      <SiteMap className="siteMap" linkPath={siteMap} />
-    </div>
+        )}
+        {['MEMBER', 'SELLER'].includes(userInfo.userRole) && (
+          <>
+            <HeaderTopContent
+              className="logout"
+              linkName={logout}
+              handleClick={tempChangeUser}
+            />
+            <HeaderTopContent
+              className="mypage"
+              linkName={mypage}
+              handleClick={() => {
+                navigate(
+                  userInfo.userRole === 'MEMBER'
+                    ? '/app/myInfo/experiencer'
+                    : userInfo.userRole === 'SELLER'
+                    ? '/app/myInfo/provider'
+                    : '/error'
+                );
+              }}
+            />
+          </>
+        )}
+        <SiteMap
+          className="siteMap"
+          linkPath={siteMap}
+          handleClick={() => {
+            setModalSiteMapOpen(true);
+          }}
+        />
+      </div>
+
+      <AppSiteMap
+        isOpen={modalSiteMapOpen}
+        closeModal={() => {
+          setModalSiteMapOpen(false);
+        }}
+      />
+      <AppSignInModal
+        isOpen={modalLoginOpen}
+        closeModal={() => {
+          setModalLoginOpen(false);
+        }}
+      />
+    </>
   );
 }

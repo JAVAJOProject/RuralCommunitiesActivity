@@ -1,0 +1,49 @@
+.signInUserTypeSelect {
+  width: 16.38094rem;
+  height: 4.57144rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.7rem;
+  cursor: pointer;
+  border-radius: 0.625rem;
+  background: #dfdfdf;
+}
+.signInUserTypeSelect > div {
+  width: 5.4095rem;
+  height: 3.58094rem;
+}
+.signInUserTypeSelect > div > img {
+  width: 5.4095rem;
+  height: 3.58094rem;
+  mix-blend-mode: darken;
+  object-fit: cover;
+}
+.signInUserTypeSelect > p {
+  color: #6d6d6d;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.375rem;
+  font-weight: 700;
+  width: 10rem;
+}
+
+.signInUserTypeSelectMemberActive,
+.signInUserTypeSelectSellerActive {
+  background: none;
+}
+.signInUserTypeSelectMemberActive > p,
+.signInUserTypeSelectSellerActive > p {
+  color: #000;
+}
+.signInUserTypeSelectSellerActive > div > img {
+  background: #e9f3e8;
+}
+
+.signInUserTypeSelectMemberActive {
+  border: 4px solid #ff7171;
+}
+
+.signInUserTypeSelectSellerActive {
+  border: 4px solid #76a062;
+}

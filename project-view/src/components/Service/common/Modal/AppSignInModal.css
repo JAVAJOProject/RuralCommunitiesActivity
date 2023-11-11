@@ -1,0 +1,26 @@
+.appSignInModal {
+  margin: auto;
+}
+
+.appSignInModal > div:first-of-type {
+  width: 40rem;
+  margin-top: 0;
+  height: 3.46669rem;
+  border-radius: 1.25rem 1.25rem 0rem 0rem;
+  background: #45451f;
+}
+.appSignInModal > div:first-of-type > h4 {
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  line-height: 3.46669rem;
+}
+
+.appSignInModal .appSignInModalUserTypeBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto;
+}

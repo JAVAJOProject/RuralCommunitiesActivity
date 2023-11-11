@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import range from '../../../utils/range';
 
 import SignUpMainTitle from '../../../components/Service/signup/mainTitle/SignUpMainTitle';
 import AgreementBox from '../../../components/Service/signup/AgreementBox';
-import UserInfoInputLastBtnBox from '../../../components/Service/signup/UserInfoInputLastBtnBox';
+import AgreementBtnBox from '../../../components/Service/signup/AgreementBtnBox';
+import AppYNModal from '../../../components/Service/common/Modal/AppYNModal';
 
 import titleImg from '../../../view_img/Service/common/signUpMember.jpg';
 import uncheckedImg from '../../../view_img/Service/common/emptyCheckBox.svg';
 import checkedImg from '../../../view_img/Service/common/fullCheckBox.svg';
+
+const modalYNContents = {
+  titleText: '뒤로가기',
+  contentText: '가입 진행을 취소하고 뒤로가시겠습니까?',
+  yesText: '뒤로가기',
+  noText: '가입 진행하기',
+};
 
 const defaultContents = {
   titles: {
@@ -20,22 +30,16 @@ const defaultContents = {
     images: [uncheckedImg, checkedImg],
     inputName: 'agreement',
   },
-  buttons: [
-    {
-      colorType: 'black',
-      inputType: 'button',
+  buttons: {
+    submit: {
+      inputType: 'submit',
       btnText: '가입하기',
-      disabled: true,
-      handleClick(e, formRef) {},
     },
-    {
-      colorType: 'gray',
+    cancel: {
       inputType: 'reset',
-      btnText: '취소',
-      disabled: false,
-      handleClick(e) {},
+      btnText: '뒤로가기',
     },
-  ],
+  },
 };
 
 const testContents = [
@@ -61,19 +65,27 @@ const testContents = [
 ];
 
 export default function SignUpMemberAgreementPage() {
-  const [dbContents, updateDbContents] = useImmer([]);
+  const [dbContents, updateDbContents] = useImmer({});
   const { register, watch, handleSubmit } = useForm();
-  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     updateDbContents(testContents);
   }, []);
-  useEffect(() => {
-    if (document?.forms?.agreement?.agreement) {
-      const isDisabled = Object.values(watch()).some(Boolean);
-      setDisabled(isDisabled);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
+  defaultContents.buttons.submit.handleClick = () => {
+    navigate('/app/signUp/member');
+    window.scrollTo(0, 0);
+  };
+  defaultContents.buttons.cancel.handleClick = () => {
+    if (modalOpen) {
+      setModalOpen(false);
+      navigate(-1);
+    } else {
+      setModalOpen(true);
     }
-  }, [watch]);
+  };
 
   const { titles, agreement, buttons } = defaultContents;
 
@@ -82,36 +94,50 @@ export default function SignUpMemberAgreementPage() {
       <SignUpMainTitle imgSrc={titles.imgSrc} title={titles.text} />
       <form
         onSubmit={handleSubmit((data) => {
-          alert(data);
+          console.log(data);
         })}
-        name="agreement"
+        name="agreementForm"
       >
         {dbContents?.length > 0 &&
-          dbContents.map((item, index) => (
-            <AgreementBox
-              title={item.title}
-              agreeContent={item.content}
-              agreeText={agreement.text}
-              images={agreement.images}
-              inputName={agreement.inputName}
-              inputId={item.inputId}
-              register={register}
-              watch={watch}
-              index={index}
-            />
-          ))}
+          dbContents.map((item, index) => {
+            const { title, content, inputId } = item;
+            const { text, images, inputName } = agreement;
+
+            return (
+              <AgreementBox
+                title={title}
+                agreeContent={content}
+                agreeText={text}
+                images={images}
+                inputName={inputName}
+                inputId={inputId}
+                register={register(`${inputName}[${index}]`)}
+                watchedValue={watch(`${inputName}[${index}]`)}
+                index={index}
+              />
+            );
+          })}
         <div style={{ marginTop: '-1rem', marginBottom: '3rem' }}>
-          <UserInfoInputLastBtnBox
-            inputTexts={[
-              {
-                ...buttons[0],
-                disabled: disabled, // disabled가 아직 안먹힘
-              },
-              buttons[1],
-            ]}
+          <AgreementBtnBox
+            inputTextsSubmit={buttons.submit}
+            isSubmitDisabled={
+              !range(dbContents?.length, 0)
+                .map((idx) => watch(`${agreement.inputName}[${idx}]`))
+                .every((val) => val)
+            }
+            inputTextsCancel={buttons.cancel}
           />
         </div>
       </form>
+
+      <AppYNModal
+        texts={modalYNContents}
+        isOpen={modalOpen}
+        yesAction={buttons.cancel.handleClick}
+        noAction={() => {
+          setModalOpen(false);
+        }}
+      ></AppYNModal>
     </main>
   );
 }

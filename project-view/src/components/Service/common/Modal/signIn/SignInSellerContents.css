@@ -1,0 +1,81 @@
+.signInSellerContents > label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.7rem auto;
+}
+.signInSellerContents > label > p {
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: left;
+  min-width: 4.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-right: 1rem;
+}
+.signInSellerContents > label > input {
+  width: 13rem;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.3rem solid black;
+
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+.signInSellerContents > label > input,
+.signInSellerContents > label > input:active {
+  outline: none;
+}
+
+.signInSellerContents > div:first-of-type {
+  margin: 1rem auto;
+  text-align: center;
+}
+.signInSellerContents > div:first-of-type > button {
+  border: none;
+  outline: none;
+  background: none;
+  margin: 0.5rem 1rem;
+  cursor: pointer;
+
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.signInSellerContents .tempPw {
+  margin-bottom: 2rem;
+}
+.signInSellerContents > div:last-of-type {
+  margin: -1rem auto 0.5rem;
+  text-align: center;
+}
+.signInSellerContents > div:last-of-type > button {
+  min-width: 9.6875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 2.4375rem;
+  border-radius: 3.125rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.signInSellerContents > div:last-of-type > button[type='submit'] {
+  background: #45451f;
+}
+.signInSellerContents > div:last-of-type > button[type='button'] {
+  background: #ccc;
+}
