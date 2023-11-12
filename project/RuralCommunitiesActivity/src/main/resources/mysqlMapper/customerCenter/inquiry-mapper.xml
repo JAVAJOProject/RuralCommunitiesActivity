@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.customerCenter.InquiryMapper">
+
+	<resultMap id="InquiryInfoDTOForClob" type="InquiryInfo">
+		<result property="inquiryId" column="inquiry_id"/>
+		<result property="inquiryStatusId" column="inquiry_status_id"/>
+		<result property="inquiryStatus" column="inquiry_status"/>
+		<result property="inquiryTypeId" column="inquiry_type_id"/>
+		<result property="memId" column="mem_id"/>
+		<result property="inquiryTitle" column="inquiry_title"/>
+		<result property="inquiryContent" column="inquiry_content" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="inquiryDateCreated" column="inquiry_date_created"/>
+		<result property="inquiryA" column="inquiry_a" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="uId" column="u_id"/>
+		<result property="uNick" column="u_nick"/>
+		<result property="sId" column="s_id"/>
+		<result property="sComName" column="s_com_name"/>
+	</resultMap>
+
+	<!-- MySQL -->
+	<!-- 전체 문의 목록 개수 -->
+	<select id="getInquiryListCount" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM inquiry
+	</select>
+	
+	<!-- 문의 목록 페이지 요청 -->
+	<select id="getRequestPageInquiryList" resultMap="InquiryInfoDTOForClob">
+		SELECT I.INQUIRY_ID,
+			   I.INQUIRY_TITLE,
+			   IST.INQUIRY_STATUS,
+			   I.INQUIRY_DATE_CREATED,
+			   M.U_NICK,
+			   S.S_COM_NAME
+		FROM INQUIRY I
+				 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+				 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+				 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+		ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
+			LIMIT #{perPagePostCount}
+		OFFSET #{startPostNo}
+		</select>
+	
+	<!--문의글 상세보기 -->
+	<select id="getInquiryDetail" resultMap="InquiryInfoDTOForClob" parameterType="int">
+		SELECT
+			I.INQUIRY_ID,
+			I.INQUIRY_TITLE,
+			IST.INQUIRY_STATUS,
+			DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+			M.U_NICK,
+			S.S_COM_NAME,
+			I.INQUIRY_CONTENT
+		FROM INQUIRY I
+				 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+				 LEFT OUTER JOIN MEMBER M ON(ML.U_ID  = M.U_ID)
+				 LEFT OUTER JOIN SELLER S ON(ML.S_ID = S.S_ID)
+		WHERE I.INQUIRY_ID = #{inquiryId}
+	</select>
+	
+	<!-- 문의글 업데이트 -->
+	<update id="inquiryUpdate" parameterType="InquiryInfo">
+		UPDATE INQUIRY SET 
+				INQUIRY_TYPE_ID = #{inquiryTypeId},
+				INQUIRY_TITLE = #{inquiryTitle},
+				INQUIRY_CONTENT = #{inquiryContent}
+		WHERE INQUIRY_ID = #{inquiryId}
+	</update>
+	
+	<!-- 문의글 삭제 -->
+	<delete id="inquiryDelete" parameterType="InquiryInfo">
+		DELETE FROM INQUIRY WHERE INQUIRY_ID = #{inquiryId}
+	</delete>
+	
+	<!-- 문의글 추가 -->
+	<insert id="inquiryInsert" parameterType="InquiryInfo">
+		INSERT INTO INQUIRY
+		VALUES (NULL,
+				DEFAULT,
+				#{inquiryTypeId},
+				#{memId},
+				#{inquiryTitle},
+				#{inquiryContent},
+				CURRENT_TIMESTAMP,
+				NULL)
+	</insert>
+
+	<!-- 아래부터는 검색기능 -->
+	<!-- 문의글 모든 개수 찾기 -->
+	<select id="getSearchInquiryAllCount" resultType="int" parameterType="string">
+		SELECT COUNT(*)
+		FROM INQUIRY I
+				 INNER JOIN
+			 INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+				 INNER JOIN
+			 MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+				 LEFT OUTER JOIN
+			 MEMBER M ON (ML.U_ID = M.U_ID)
+				 LEFT OUTER JOIN
+			 SELLER S ON (ML.S_ID = S.S_ID)
+		WHERE UPPER(I.INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+		   OR UPPER(I.INQUIRY_CONTENT) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+	</select>
+
+	<!-- 문의글 제목 개수 찾기 -->
+<select id="getSearchInquiryTitleCount" resultType="int" parameterType="string">
+	SELECT COUNT(*)
+	FROM INQUIRY I
+			 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+			 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+			 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+			 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+	WHERE UPPER(I.INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+</select>
+
+	<!-- 문의글 내용 개수 찾기 -->
+<select id="getSearchInquiryContentCount" resultType="int" parameterType="string">
+	SELECT COUNT(*)
+	FROM INQUIRY I
+			 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+			 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+			 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+			 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+	WHERE UPPER(I.INQUIRY_CONTENT) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+</select>
+
+	<!-- 모든 문의글 찾기 -->
+<select id="searchInquiryAll" resultMap="InquiryInfoDTOForClob">
+	SELECT I.INQUIRY_ID,
+		   I.INQUIRY_TITLE,
+		   IST.INQUIRY_STATUS,
+		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+		   M.U_NICK,
+		   S.S_COM_NAME,
+		   I.INQUIRY_CONTENT
+	FROM INQUIRY I
+			 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+			 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+			 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+			 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+	WHERE UPPER(I.INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+	   OR UPPER(I.INQUIRY_CONTENT) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+	ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
+		LIMIT #{perPagePostCount}
+	OFFSET #{startPostNo}
+</select>
+
+	<!-- 제목으로 문의글 찾기 -->
+<select id="searchInquiryByTitle" resultMap="InquiryInfoDTOForClob" parameterType="map">
+	SELECT I.INQUIRY_ID,
+		   I.INQUIRY_TITLE,
+		   IST.INQUIRY_STATUS,
+		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+		   M.U_NICK,
+		   S.S_COM_NAME,
+		   I.INQUIRY_CONTENT
+	FROM INQUIRY I
+			 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+			 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+			 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+			 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+	WHERE UPPER(INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
+	ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
+		LIMIT #{perPagePostCount}
+	OFFSET #{startPostNo}
+</select>
+
+	<!-- 내용으로 문의글 찾기 -->
+<select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob" parameterType="map">
+    SELECT INQUIRY_ID,
+           INQUIRY_TITLE,
+           IST.INQUIRY_STATUS,
+		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+           M.U_NAME AS NAME,
+           I.INQUIRY_CONTENT
+    FROM INQUIRY I
+         INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+         INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+         INNER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+    WHERE UPPER(I.INQUIRY_CONTENT) LIKE UPPER('%' || #{keyword} || '%')
+    ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
+		LIMIT #{perPagePostCount}
+	OFFSET #{startPostNo}
+</select>
+
+<!-- 내가 쓴 글 보기 -->
+	<select id="getMyInquiryCount" resultType="int" parameterType="int">
+		SELECT count(*)
+		FROM INQUIRY I
+				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+				 LEFT JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+				 LEFT JOIN SELLER S ON (ML.S_ID = S.S_ID)
+		WHERE I.MEM_ID = #{memId}
+	</select>
+	<select id="getMyInquiryDetail" resultMap="InquiryInfoDTOForClob" parameterType="int">
+		SELECT I.INQUIRY_ID,
+			   I.INQUIRY_TITLE,
+			   IST.INQUIRY_STATUS,
+			   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+			   I.MEM_ID,
+			   M.U_ID,
+			   M.U_NICK,
+			   S.S_ID,
+			   S.S_COM_NAME,
+			   I.INQUIRY_CONTENT
+		FROM INQUIRY I
+				 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
+				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
+				 LEFT JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+				 LEFT JOIN SELLER S ON (ML.S_ID = S.S_ID)
+		WHERE I.MEM_ID = #{memId} LIMIT #{perPagePostCount}
+		OFFSET #{startPostNo}
+	</select>
+</mapper>

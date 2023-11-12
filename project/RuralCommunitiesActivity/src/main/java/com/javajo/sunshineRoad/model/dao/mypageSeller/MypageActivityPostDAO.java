@@ -19,24 +19,6 @@ public class MypageActivityPostDAO {
 	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
-	// 체험 전체 내역
-	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo) {
-		System.out.println("ActivityInfoDAO" + sId);
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
-		return activityInfoMapper.selectByNo(sId, start, end);
-	}
-
-	// 체험명단 리스트 로 member에서
-	public List<MypageMemberDTO> getList(int postId, PageInfo pageInfo) {
-		System.out.println("postId" + postId);
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
-		return activityInfoMapper.selectInfoByPostId(postId, start, end);
-	}
-
 	public int getActivityParticipantCount(int postId) {
 		System.out.println("postId" + postId);
 		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
@@ -49,4 +31,41 @@ public class MypageActivityPostDAO {
 		return activityInfoMapper.selectCount(sId);
 	}
 
+
+
+//	Oracle
+//	// 체험 전체 내역
+	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo) {
+		System.out.println("ActivityInfoDAO" + sId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
+		return activityInfoMapper.selectByNo(sId, start, end);
+	}
+
+//	// 체험명단 리스트로 member에서
+	public List<MypageMemberDTO> getList(int postId, PageInfo pageInfo) {
+		System.out.println("postId" + postId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
+		return activityInfoMapper.selectInfoByPostId(postId, start, end);
+	}
+
+
+//	MySQL
+//	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo) {
+//		System.out.println("ActivityInfoDAO" + sId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
+//		return activityInfoMapper.selectByNo(sId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageMemberDTO> getList(int postId, PageInfo pageInfo) {
+//		System.out.println("postId" + postId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageActivityPostMapper activityInfoMapper = sqlSession.getMapper(MypageActivityPostMapper.class);
+//		return activityInfoMapper.selectInfoByPostId(postId, start - 1, perPagePostNo);
+//	}
 }

@@ -18,15 +18,6 @@ public class MypageActivityReviewDAO {
 	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
-	// 로그인한 회원
-	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo) {
-		System.out.println("uId" + uId);
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
-		return aReview.selectByNo(uId, start, end);
-	}
-
 	public void writeRev(MypageActivityReviewDTO rev) {
 		System.out.println("ActivityReviewDAO" + rev);
 		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
@@ -58,7 +49,29 @@ public class MypageActivityReviewDAO {
 	}
 
 
+	// 로그인한 회원
+//	Oracle
+	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo) {
+		System.out.println("uId" + uId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
+		return aReview.selectByNo(uId, start, end);
+	}
+
+
+//	MySQL
+//	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo) {
+//		System.out.println("uId" + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
+//		return aReview.selectByNo(uId, start - 1, perPagePostNo);
+//	}
 }
+
+
+
 //
 //		public List<ActivityReviewDTO> getReviewDetail(int revId) {
 //	        ActivityReviewMapper aReview = sqlSession.getMapper(ActivityReviewMapper.class);

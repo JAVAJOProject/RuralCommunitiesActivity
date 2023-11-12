@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageReservationMapper">
+
+	<resultMap type="Reservation" id="selectByReservation">
+		<id column="reservation_id" property="reservationId" />
+		<result column="payment_id" property="paymentId" />
+		<result column="a_id" property="aId" />
+		<result column="u_id" property="uId" />
+		<result column="reservation_date" property="reservationDate" />
+		<result column="reservation_headcount"
+			property="reservationHeadCount" />
+		<result column="review_status" property="reviewStatus" />
+		<result column="reservation_status"
+			property="reservationStatus" />
+		<result column="payment_status_id" property="paymentStatusId" />
+		<association property="paymentInfo" javaType="PaymentInfo">
+			<result column="payment_amount" property="paymentAmount" />
+			<result column="payment_deadline" property="paymentDeadline" />
+		</association>
+		<association property="activityInfo"
+			javaType="MypageActivityInfoDTO">
+			<result column="a_name" property="aName" />
+			<result column="a_thumbnail_img" property="aThumbnailImg" />
+		</association>
+	</resultMap>
+
+<!--	MySQL-->
+	<select id="selectByNo" parameterType="int"
+		resultMap="selectByReservation">
+		SELECT R.RESERVATION_ID,
+			   R.PAYMENT_ID,
+			   R.A_ID,
+			   R.U_ID,
+			   R.RESERVATION_HEADCOUNT,
+			   R.REVIEW_STATUS,
+			   R.RESERVATION_STATUS,
+			   R.RESERVATION_DATE,
+			   P.PAYMENT_STATUS_ID,
+			   A.A_NAME,
+			   P.PAYMENT_AMOUNT,
+			   P.PAYMENT_DEADLINE,
+			   A.A_THUMBNAIL_IMG
+		FROM RESERVATION R
+				 LEFT JOIN PAYMENT_INFO P ON (R.PAYMENT_ID = P.PAYMENT_ID)
+				 LEFT JOIN ACTIVITY_INFO A ON (R.A_ID = A.A_ID)
+		WHERE U_ID = #{uId} AND RESERVATION_STATUS != '예약취소'
+LIMIT #{perPagePostNo} OFFSET #{start}
+	</select>
+
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE U_ID = #{uId}
+		  AND RESERVATION_STATUS != '예약취소'
+	</select>
+</mapper>

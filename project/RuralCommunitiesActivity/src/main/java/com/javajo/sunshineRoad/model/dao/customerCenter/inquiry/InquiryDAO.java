@@ -47,27 +47,28 @@ public class InquiryDAO {
 		inquiryMapper.inquiryInsert(inquiryInfoDTO);
 	}
 	
-	public List<InquiryInfoDTO> searchInquiryAll(String keyword) {
+	public List<InquiryInfoDTO> searchInquiryAll(int startPostNo, int endPostNo, String keyword) {
 	    // 전체 검색 구현 (예: 제목 또는 내용에 키워드가 포함되는 모든 문의 검색)
 	    // SQL 쿼리를 작성하여 keyword를 포함하는 결과를 반환
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.searchInquiryAll(keyword);
+		return inquiryMapper.searchInquiryAll(startPostNo, endPostNo, keyword);
 	}
 
-	public List<InquiryInfoDTO> searchInquiryByTitle(String keyword) {
+	public List<InquiryInfoDTO> searchInquiryByTitle(int startPostNo, int endPostNo, String keyword) {
 	    // 제목 검색 구현 (예: 제목에 키워드가 포함된 문의 검색)
 	    // SQL 쿼리를 작성하여 keyword를 포함하는 제목을 가진 결과를 반환
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.searchInquiryByTitle(keyword);
+		return inquiryMapper.searchInquiryByTitle(startPostNo, endPostNo, keyword);
 		
 	}
 
-	public List<InquiryInfoDTO> searchInquiryByContent(String keyword) {
+	public List<InquiryInfoDTO> searchInquiryByContent(int startPostNo, int endPostNo, String keyword) {
 	    // 내용 검색 구현 (예: 내용에 키워드가 포함된 문의 검색)
 	    // SQL 쿼리를 작성하여 keyword를 포함하는 내용을 가진 결과를 반환
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.searchInquiryByContent(keyword);
+		return inquiryMapper.searchInquiryByContent(startPostNo, endPostNo, keyword);
 	}
+
 	public int getSearchInquiryAllCount(String keyword) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
 	    return inquiryMapper.getSearchInquiryAllCount(keyword);
@@ -80,20 +81,13 @@ public class InquiryDAO {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
 	    return inquiryMapper.getSearchInquiryContentCount(keyword);
 	}
-	
-	public List<InquiryInfoDTO> getRequestPageSearchInquiryList( int startPostNo, int endPostNo) {
-		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		List<InquiryInfoDTO> result = inquiryMapper.getRequestPageSearchInquiryList(startPostNo,endPostNo);
-		return result;
-	}
 
-	public List<InquiryInfoDTO> getRequestPageSearchInquiryListList(int startPostNo, int endPostNo, int searchingTypeId, String keyword) {
+	public int getMyInquiryCount(int memId) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.getRequestPageSearchInquiryListList(startPostNo, endPostNo, searchingTypeId, keyword);
+		return inquiryMapper.getMyInquiryCount(memId);
 	}
-	
-	public List<InquiryInfoDTO> getMyInquiryDetail(int memId) {
+	public List<InquiryInfoDTO> getMyInquiryDetail(int startPostNo, int endPostNo, int memId) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
-		return inquiryMapper.getMyInquiryDetail(memId);
+		return inquiryMapper.getMyInquiryDetail(startPostNo, endPostNo, memId);
 	}
 }

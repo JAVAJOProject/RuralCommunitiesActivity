@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.security.SignUpMapper">
-    
+
+<!--	Oracle-->
     <select id="isMemberData" parameterType="String" resultType="int">
         SELECT COUNT(*)
 		FROM member
@@ -39,18 +40,16 @@
     <select id="isSellerData" parameterType="String" resultType="int">
 		SELECT COUNT(*)
 		FROM seller
-		WHERE s_email = #{email}    
+		WHERE s_email = #{email}
 	</select>
 
 	<insert id="insertAccountInfoData" parameterType="SellerAccountInfo">
 		INSERT INTO account_info
-		VALUES (
-				   account_info_seq.NEXTVAL,
-				   #{bank_info_id},
-				   #{account_number},
-				   #{account_holder},
-				   #{account_name}
-                   }
+		VALUES (account_info_seq.NEXTVAL,
+				#{bank_info_id},
+				#{account_number},
+				#{account_holder},
+				#{account_name})
 	</insert>
 
 	<select id="getAccountInfoId" resultType="int">
@@ -88,4 +87,8 @@
 			#{sRepName}
 		)
 	</insert>
+
+	<select id="getBankList" resultType="BankList">
+		SELECT bank_info_id, bank_name FROM bank_request_info
+	</select>
 </mapper>

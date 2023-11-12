@@ -40,7 +40,7 @@ public class MypageMemberController { // 수정 , 입력취소, 탈퇴하기
 		System.out.println("uName" + uName);
 		int uId = 1;
 //		int uId = member.getUId();
-		int result = memberService.changeInfo(uName);
+		int result = memberService.changeInfo(uName, uId);
 
 		return result;
 	}

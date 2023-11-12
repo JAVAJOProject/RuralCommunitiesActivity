@@ -128,6 +128,14 @@ export default function MypageSellerEventPage() {
                   }
                   break;
               }
+              const eventStartDateT = new Date(eventStartDate);
+              const eventStartDateText = `${eventStartDateT.getFullYear()}-${
+                eventStartDateT.getMonth() + 1
+              }-${eventStartDateT.getDate()}`;
+              const eventRecruitEndDateT = new Date(eventRecruitEndDate);
+              const eventRecruitEndDateText = `${eventRecruitEndDateT.getFullYear()}-${
+                eventRecruitEndDateT.getMonth() + 1
+              }-${eventRecruitEndDateT.getDate()}`;
               return (
                 <MypageServiceCard
                   key={eventId}
@@ -138,10 +146,10 @@ export default function MypageSellerEventPage() {
                   eventStatus={eventStatus}
                   detailListTitle={detailListTitle}
                   detailListContent={[
-                    new Date(eventStartDate).toLocaleDateString(),
-                    eventMaxPeople,
-                    new Date(eventRecruitEndDate).toLocaleDateString(),
-                    eventAddr,
+                    eventStartDateText,
+                    eventMaxPeople ?? '-',
+                    eventRecruitEndDateText,
+                    eventAddr ?? '-',
                   ]}
                   detailLink={`/app/community/event/board/detail/${eventId}`}
                   editLink={`/app/myInfo/provider/event/edit/${eventId}`}

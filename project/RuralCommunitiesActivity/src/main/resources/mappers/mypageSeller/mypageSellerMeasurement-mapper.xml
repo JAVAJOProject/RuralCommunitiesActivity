@@ -96,7 +96,7 @@
 		END AS review_ratio
 		FROM reservation
 		WHERE reservation_status = '예약완료'
-		AND reservation_date  <![CDATA[< SYSDATE]]>
+		AND reservation_date  <![CDATA[<]]> SYSDATE
 
 	</select>
 

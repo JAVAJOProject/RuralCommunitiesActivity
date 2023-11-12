@@ -20,6 +20,7 @@ public class GetRequestPageTotalActivityListServiceImpl implements GetRequestPag
 	private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 	
 
+//	Oracle
 	@Override
 	public List<ActSummaryListDTO> getAllSummaryList(int totalCount, int perPagePostCount, int requestPageNo) {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
@@ -48,5 +49,31 @@ public class GetRequestPageTotalActivityListServiceImpl implements GetRequestPag
 
         return totalActivityListDAO.getRequestPageTotalActivityByRegionList(sId, startPostNo, endPostNo);
 	}
-	
+
+
+//	MySQL
+//	@Override
+//	public List<ActSummaryListDTO> getAllSummaryList(int totalCount, int perPagePostCount, int requestPageNo) {
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return totalActivityListDAO.getTotalActivitySummaryList(startPostNo - 1, perPagePostCount);
+//	}
+//	@Override
+//	public List<ActSummaryListDTO> getByThemeList(int tId, int byThemeCount, int perPagePostCount, int requestPageNo) {
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(byThemeCount, perPagePostCount, requestPageNo);
+//
+//		return totalActivityListDAO.getRequestPageTotalActivityByThemeList(tId, startPostNo - 1, perPagePostCount);
+//	}
+//	@Override
+//	public List<ActSummaryListOfSidoDTO> getByRegionListOfSido(int sidoId, int byRegionOfSidoCount, int perPagePostCount, int requestPageNo) {
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(byRegionOfSidoCount, perPagePostCount, requestPageNo);
+//
+//		return totalActivityListDAO.getRequestPageTotalActivityByRegionOfSidoList(sidoId, startPostNo - 1, perPagePostCount);
+//	}
+//	@Override
+//	public List<ActSummaryListDTO> getByRegionList(int sId, int byRegionCount, int perPagePostCount, int requestPageNo) {
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(byRegionCount, perPagePostCount, requestPageNo);
+//
+//		return totalActivityListDAO.getRequestPageTotalActivityByRegionList(sId, startPostNo - 1, perPagePostCount);
+//	}
 }

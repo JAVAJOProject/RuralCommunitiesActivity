@@ -19,6 +19,7 @@ public class GetRequestPageReviewListServiceImpl implements GetRequestPageReview
     private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 
 
+//    Oracle
 	@Override
 	public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
@@ -26,4 +27,12 @@ public class GetRequestPageReviewListServiceImpl implements GetRequestPageReview
 
         return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo, endPostNo);
     }
+
+//    MySQL
+//    @Override
+//    public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo - 1, perPagePostCount);
+//    }
 }

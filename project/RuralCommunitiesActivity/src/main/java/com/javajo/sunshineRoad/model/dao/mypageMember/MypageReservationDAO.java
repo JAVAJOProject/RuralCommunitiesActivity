@@ -18,15 +18,6 @@ public class MypageReservationDAO {
 
 	@Autowired
 	 private final SqlSessionTemplate sqlSession;	
-	 
-	//로그인한 회원 의 예약 내역 조회
-	public List<MypageReservationDTO> getListInfo(int uId, PageInfo pageInfo) {
-	    System.out.println("pageInfo" + pageInfo);
-	    int start = pageInfo.getStartList();
-	    int end = pageInfo.getEndList();
-	    MypageReservationMapper reservationMapper = sqlSession.getMapper(MypageReservationMapper.class);
-	    return reservationMapper.selectByNo(uId, start, end);
-	}
 
 	public int getReserveCount(int uId) {
 		System.out.println("uId" + uId);
@@ -40,11 +31,32 @@ public class MypageReservationDAO {
 	    return reservationMapper.movepage(reservationId);
 	}
 
-//	//로그인한 회원의 예약 내역 조회 --->  체험상세보기 page 로 가기 
+//	//로그인한 회원의 예약 내역 조회 --->  체험상세보기 page 로 가기
 //	public ActivityInfoDTO getInfo(int reservationId) {
 //	    System.out.println("ReservationDAO" + reservationId);
 //	    ReservationMapper reservationMapper = sqlSession.getMapper(ReservationMapper.class);
 //	    return reservationMapper.selectByRes(reservationId);
 //	}
 
+
+
+	//로그인한 회원 의 예약 내역 조회
+//	Oracle
+	public List<MypageReservationDTO> getListInfo(int uId, PageInfo pageInfo) {
+	    System.out.println("pageInfo" + pageInfo);
+	    int start = pageInfo.getStartList();
+	    int end = pageInfo.getEndList();
+	    MypageReservationMapper reservationMapper = sqlSession.getMapper(MypageReservationMapper.class);
+	    return reservationMapper.selectByNo(uId, start, end);
+	}
+
+//	MySQL
+//	public List<MypageReservationDTO> getListInfo(int uId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageReservationMapper reservationMapper = sqlSession.getMapper(MypageReservationMapper.class);
+//		return reservationMapper.selectByNo(uId, start - 1, perPagePostNo);
+//	}
 }

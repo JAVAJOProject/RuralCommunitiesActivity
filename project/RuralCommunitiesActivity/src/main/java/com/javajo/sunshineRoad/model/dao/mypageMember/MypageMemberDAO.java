@@ -22,10 +22,10 @@ public class MypageMemberDAO {
 		return memMapper.selectByNo(uId);
 	}
 
-	public int changeInfo(String uName) {
+	public int changeInfo(String uName, int uId) {
 		System.out.println("uName" + uName);
 		MypageMemberMapper memMapper = sqlSession.getMapper(MypageMemberMapper.class);
-		return memMapper.updateByName(uName);
+		return memMapper.updateByName(uName, uId);
 	}
 
 	public boolean changeInfo(int uId) {
@@ -50,4 +50,3 @@ public class MypageMemberDAO {
 //	// return sqlSession.delete("memberMapper.delMember", uId);
 //	// 회원 정보 한 줄(row) 만 가져오니까 selectOne
 	}
-

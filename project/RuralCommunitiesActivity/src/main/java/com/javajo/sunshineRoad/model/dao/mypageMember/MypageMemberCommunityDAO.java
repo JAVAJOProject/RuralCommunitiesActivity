@@ -18,14 +18,6 @@ public class MypageMemberCommunityDAO {
 	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
-	public List<MypageMemberCommunityDTO> getInfo(int uId, PageInfo pageInfo) {
-		System.out.println("uId" + uId);
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
-		return memCommunityMapper.selectByNo(uId, start, end);
-	}
-
 //	public List<MypageMemberCommunityDTO> getActivityCount(int uId) {
 //		System.out.println("uId" + uId);
 //		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
@@ -45,11 +37,33 @@ public class MypageMemberCommunityDAO {
 		return memCommunityMapper.selectCount(uId);
 	}
 
-//	//로그인한 회원의 예약 내역 조회 --->  체험상세보기 page 로 가기 
+//	//로그인한 회원의 예약 내역 조회 --->  체험상세보기 page 로 가기
 //	public ActivityInfoDTO getInfo(int reservationId) {
 //	    System.out.println("ReservationDAO" + reservationId);
 //	    ReservationMapper reservationMapper = sqlSession.getMapper(ReservationMapper.class);
 //	    return reservationMapper.selectByRes(reservationId);
 //	}
 
+
+
+
+//	Oracle
+	public List<MypageMemberCommunityDTO> getInfo(int uId, PageInfo pageInfo) {
+		System.out.println("uId" + uId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
+		return memCommunityMapper.selectByNo(uId, start, end);
+	}
+
+
+//	MySQL
+//	public List<MypageMemberCommunityDTO> getInfo(int uId, PageInfo pageInfo) {
+//		System.out.println("uId" + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
+//		return memCommunityMapper.selectByNo(uId, start - 1, perPagePostNo);
+//	}
 }

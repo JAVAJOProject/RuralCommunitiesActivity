@@ -30,4 +30,8 @@ public class TownReportDTO {
 	private String tRContent;//내용
 	@JsonProperty
 	private String tRDateCreated;//작성일
+
+
+	private String townName;
+	private int sigunguId;
 }

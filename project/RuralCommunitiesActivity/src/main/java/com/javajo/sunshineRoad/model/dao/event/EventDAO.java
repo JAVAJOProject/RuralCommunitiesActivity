@@ -62,7 +62,6 @@ public class EventDAO {
         return mapper.getEventImagesByImgId(eventImgId);
     }
 
-    // Oracle
     public List<EventDTO> getRequestPageEventContent(int startPostNo, int endPostNo) {
         EventMapper mapper = sqlSession.getMapper(EventMapper.class);
         return mapper.getRequestPageEventContent(startPostNo, endPostNo);
@@ -71,14 +70,4 @@ public class EventDAO {
         EventMapper mapper = sqlSession.getMapper(EventMapper.class);
         return mapper.getRequestPageRecruitingEventDataOnly(startPostNo, endPostNo);
     }
-
-    // MySQL
-//    public List<EventDTO> getRequestPageEventContent(int startPostNo, int perPagePostCount) {
-//        EventMapper mapper = sqlSession.getMapper(EventMapper.class);
-//        return mapper.getRequestPageEventContent(startPostNo, perPagePostCount);
-//    }
-//    public List<EventDTO> getRequestPageRecruitingEventDataOnly(int startPostNo, int perPagePostCount) {
-//        EventMapper mapper = sqlSession.getMapper(EventMapper.class);
-//        return mapper.getRequestPageRecruitingEventDataOnly(startPostNo, perPagePostCount);
-//    }
 }

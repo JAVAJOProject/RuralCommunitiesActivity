@@ -50,19 +50,18 @@ public class InquiryController {
 			@RequestParam String keyword,
 			@PathVariable int requestPageNo) {
 		int perPagePostCount = 3; // 페이지 당 표시할 항목 수
-		
-		
+
 		if (searchingTypeId == 0) { // 전체 검색
 			int totalCount = inquiryService.getSearchInquiryAllCount(keyword);
-			List<InquiryInfoDTO> lists = inquiryService.searchInquiryAll(totalCount,  perPagePostCount,  requestPageNo,  searchingTypeId, keyword);
+			List<InquiryInfoDTO> lists = inquiryService.searchInquiryAll(totalCount,  perPagePostCount, requestPageNo, keyword);
 			return ResponseEntity.ok(lists);
 		} else if (searchingTypeId == 1) { // 제목 검색
 			int totalCount = inquiryService.getSearchInquiryTitleCount(keyword);
-			List<InquiryInfoDTO> lists = inquiryService.searchInquiryByTitle(totalCount,  perPagePostCount,  requestPageNo,  searchingTypeId, keyword);
+			List<InquiryInfoDTO> lists = inquiryService.searchInquiryByTitle(totalCount,  perPagePostCount, requestPageNo, keyword);
 			return ResponseEntity.ok(lists);
 		} else if (searchingTypeId == 2) { // 내용 검색
 			int totalCount = inquiryService.getSearchInquiryContentCount(keyword);
-			List<InquiryInfoDTO> lists = inquiryService.searchInquiryByContent(totalCount,  perPagePostCount,  requestPageNo,  searchingTypeId, keyword);
+			List<InquiryInfoDTO> lists = inquiryService.searchInquiryByContent(totalCount,  perPagePostCount, requestPageNo, keyword);
 			return ResponseEntity.ok(lists);
 		} else {
 			// 검색 타입이 올바르지 않을 경우 처리
@@ -122,17 +121,20 @@ public class InquiryController {
 		inquiryService.inquiryInsert(inquiryInfoDTO);
 		return ResponseEntity.ok("등록 완료");
 	}
+
 	//내가 쓴 글 보기
-	@GetMapping("/view")
-	public ResponseEntity<List<InquiryInfoDTO>> viewInquiry(@RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
+	@GetMapping("/view/{requestPageNo}")
+	public ResponseEntity<List<InquiryInfoDTO>> viewInquiry(@PathVariable int requestPageNo, @RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
 		int memId = 0;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.badRequest().build();
 		}
-		
-		List<InquiryInfoDTO> inquiry = inquiryService.getMyInquiryDetail(memId);
+
+		int perPagePostCount = 3; // 페이지 당 표시할 항목 수
+		int totalCount = inquiryService.getMyInquiryCount(memId);
+		List<InquiryInfoDTO> inquiry = inquiryService.getMyInquiryDetail(totalCount, perPagePostCount, requestPageNo, memId);
 	    return ResponseEntity.ok(inquiry);
 	}
 
@@ -145,7 +147,6 @@ public class InquiryController {
 		} else {
 		    throw new IllegalArgumentException("잘못된 인자");
 		}
-
 		
 		return searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
 	}

@@ -17,7 +17,7 @@ export default function ThemeCardSet({ titles, isLeft, contents }) {
         <div className="themeActivityBox">
           {contents &&
             contents.map((item) => {
-              const { aId, aFavoriteCnt, aName, aOneLiner, aThumbnailImg } =
+              const { aId, postTypeId, aFavoriteCnt, aName, aOneLiner, aThumbnailImg } =
                 item;
               return (
                 <YellowActivityCard
@@ -27,6 +27,9 @@ export default function ThemeCardSet({ titles, isLeft, contents }) {
                   }}
                 >
                   <YellowActivityCardImg
+                    on={false}
+                    postId={+aId}
+                    postTypeId={+postTypeId}
                     imgSrc={aThumbnailImg}
                     favoritesNum={+aFavoriteCnt}
                   />

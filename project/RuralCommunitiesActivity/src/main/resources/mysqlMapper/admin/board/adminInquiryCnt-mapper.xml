@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminInquiryCntMapper">
+
+	<select id="getAllInquiryCnt" resultType="int">
+	SELECT COUNT(*) FROM INQUIRY
+	</select>
+	
+	<select id="selectInquiryStatusCnt" parameterType="ASearch" resultType="int">
+SELECT COUNT(*) FROM (
+SELECT 
+    		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
+    		F.FAQ_Q, F.FAQ_A
+    		FROM FAQ F INNER JOIN FAQ_TYPE T
+    		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+    		WHERE F.FAQ_TYPE_ID=#{theme})
+	</select>
+
+	<select id="selectInquiryTypesCnt" parameterType="ASearch" resultType="int">
+SELECT COUNT(*) FROM (
+SELECT 
+    		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
+    		F.FAQ_Q, F.FAQ_A
+    		FROM FAQ F INNER JOIN FAQ_TYPE T
+    		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+    		WHERE F.FAQ_TYPE_ID=#{theme})
+	</select>
+	
+	<select id="UnansweredInquiryCnt" resultType="int">
+SELECT COUNT(*) FROM (
+SELECT 
+    		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
+    		F.FAQ_Q, F.FAQ_A
+    		FROM FAQ F INNER JOIN FAQ_TYPE T
+    		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+    		WHERE F.FAQ_TYPE_ID=#{theme})
+	</select>
+						
+</mapper>

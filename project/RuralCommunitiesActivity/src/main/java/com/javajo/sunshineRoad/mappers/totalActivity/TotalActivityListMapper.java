@@ -13,10 +13,19 @@ public interface TotalActivityListMapper {
 	public int getTotalActivityCountData();
 	public int getTotalActivityCountByThemeData(int tId);	
 	public int getTotalActivityCountByRegionData(int sId);	
+
+//	public TotalActivityContentDTO getOneActivityData(int aId);
+	//public List<TotalActivityContentDTO> getAllActivityData();
+
+
+//	Oracle
 	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId")int tId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId")int sId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-	
-//	public TotalActivityContentDTO getOneActivityData(int aId);
-	//public List<TotalActivityContentDTO> getAllActivityData();
+
+
+//	MySQL
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId")int tId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId")int sId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
 }

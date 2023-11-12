@@ -39,12 +39,12 @@ public class RegReservationController {
       try {
          int success = regReservationService.addReservation(reservationContentDTO);
          if (success == 1) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful");
+            return ResponseEntity.status(HttpStatus.CREATED).body("Reservation successful");
          } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed register request");
          }
       } catch (Exception e) {
-         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed Registration request " + e.getMessage());
+         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed Reservation request " + e.getMessage());
       }
    }
 

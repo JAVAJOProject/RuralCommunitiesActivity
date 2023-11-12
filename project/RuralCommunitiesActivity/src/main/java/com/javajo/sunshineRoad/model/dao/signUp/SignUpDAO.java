@@ -1,12 +1,15 @@
 package com.javajo.sunshineRoad.model.dao.signUp;
 
 import com.javajo.sunshineRoad.mappers.security.SignUpMapper;
+import com.javajo.sunshineRoad.model.dto.signUp.BankListDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SellerAccountInfoDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpMemberDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpSellerDTO;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -41,6 +44,11 @@ public class SignUpDAO {
     public void insertSeller(SignUpSellerDTO signUpSellerDTO) {
     	SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
     	mapper.insertSellerData(signUpSellerDTO);
+    }
 
+
+    public List<BankListDTO> getBankList() {
+        SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
+        return mapper.getBankList();
     }
 }

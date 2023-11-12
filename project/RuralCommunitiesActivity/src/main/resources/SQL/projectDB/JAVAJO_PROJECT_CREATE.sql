@@ -57,9 +57,18 @@ CREATE TABLE reservation (
                              a_id   NUMBER(3)      NOT NULL,
                              u_id   NUMBER(10)      NOT NULL,
                              reservation_headcount   NUMBER(5)      NOT NULL,
-                             review_status   NUMBER(10)      NOT NULL,
-                             reservation_status   VARCHAR2(20)      NOT NULL,
-                             reservation_date   DATE      NOT NULL
+                             review_status   NUMBER(10)   DEFAULT 0    NOT NULL,
+                             reservation_status   VARCHAR2(20)   DEFAULT '예약대기'     NOT NULL,
+                             reservation_date   TIMESTAMP     NOT NULL
+);
+
+CREATE TABLE review_status (
+                             review_status   NUMBER(10)      NOT NULL PRIMARY KEY,
+                             review_status_name VARCHAR2(100)
+);
+CREATE TABLE reservation_status (
+                             reservation_status_id   NUMBER(20)   NOT NULL PRIMARY KEY,
+                             reservation_status   VARCHAR2(20)  NOT NULL
 );
 
 CREATE TABLE rec_activity_info (
@@ -188,6 +197,7 @@ CREATE TABLE member_type (
 CREATE TABLE activity_post (
                                a_post_id   NUMBER(10)      NOT NULL PRIMARY KEY,
                                a_id   NUMBER(3)      NOT NULL,
+                               post_type_id   NUMBER(3)   DEFAULT 1   NOT NULL,
                                a_img_id   NUMBER(5)      NOT NULL,
                                a_post_content   CLOB      NOT NULL,
                                a_view_cnt   NUMBER(10)   DEFAULT 0    NOT NULL,
@@ -274,14 +284,14 @@ CREATE TABLE seller_community (
 
 CREATE TABLE payment_info (
                               payment_id   NUMBER(10)      NOT NULL PRIMARY KEY,
-                              payment_status_id   NUMBER(10)      NOT NULL,
+                              payment_status_id   NUMBER(10)  DEFAULT 1     NOT NULL,
                               payment_amount   NUMBER(10)      NOT NULL,
                               payment_deadline   TIMESTAMP      NOT NULL
 );
 
 CREATE TABLE payment_status (
                                 payment_status_id   NUMBER(10)      NOT NULL PRIMARY KEY,
-                                payment_status   NUMBER(10)      NOT NULL
+                                payment_status  VARCHAR2(50)      NOT NULL
 );
 
 CREATE TABLE behavior_info (
@@ -363,7 +373,7 @@ CREATE TABLE admin_authority (
 
 CREATE TABLE inquiry (
                          inquiry_id   NUMBER(10)      NOT NULL PRIMARY KEY,
-                         inquiry_status_id   NUMBER(10)      NOT NULL,
+                         inquiry_status_id   NUMBER(10)  DEFAULT 1    NOT NULL,
                          inquiry_type_id   NUMBER(10)      NOT NULL,
                          mem_id   NUMBER(38)      NOT NULL,
                          inquiry_title   VARCHAR2(100)      NOT NULL,

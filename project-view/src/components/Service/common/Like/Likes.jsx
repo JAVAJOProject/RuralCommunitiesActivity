@@ -23,7 +23,7 @@ export default function Likes({
       }}
       // imgSrc={on ? fullHeart : emptyHeart}
       imgSrc={temp ? fullHeart : emptyHeart}
-      content={likesNum}
+      content={(+likesNum).toLocaleString()}
       imgClassName="like"
       style={style}
       fontSize={fontSize}

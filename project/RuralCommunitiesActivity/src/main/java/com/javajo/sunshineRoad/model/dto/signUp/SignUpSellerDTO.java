@@ -18,9 +18,7 @@ import lombok.Setter;
 public class SignUpSellerDTO {
 	@JsonProperty
 	private Integer sId;
-	@JsonProperty
 	private String accountInfoId;
-	@JsonProperty
 	private int memTypeId;
 	@JsonProperty
 	private String sEmail;

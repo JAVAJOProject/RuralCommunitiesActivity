@@ -13,7 +13,7 @@
 		A.a_charge,
 		A.a_thumbnail_img,
 		A.s_site, A.a_reservation_deadline,
-		B.a_post_id,
+		B.a_post_id, B.post_type_id,
 		B.a_img_id,
 		B.a_post_content, B.a_view_cnt,
 		B.a_favorite_cnt,
@@ -53,14 +53,14 @@
 		INSERT
 		INTO activity_post (
 		a_post_id, 
-		a_id, a_img_id,
+		a_id, post_type_id, a_img_id,
 		a_post_content, 
 		a_view_cnt, a_favorite_cnt, 
 		a_post_date_created
 		)
 		VALUES (
 		activity_post_seq.NEXTVAL,
-		#{aId}, #{aImgId}, 
+		#{aId}, DEFAULT, #{aImgId},
 		#{aPostContent},
 		#{aViewCnt}, #{aFavoriteCnt},
 		SYSTIMESTAMP

@@ -15,7 +15,6 @@
       <result property="reservationDate" column="reservation_date" />
    </resultMap>
 
-   
    <select id="getReservationContentData"
       resultType="ReservationContent" parameterType="int">
       SELECT

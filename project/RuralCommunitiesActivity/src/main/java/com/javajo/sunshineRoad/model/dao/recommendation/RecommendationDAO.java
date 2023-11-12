@@ -116,4 +116,19 @@ public class RecommendationDAO {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getRecTownImagesByImgId(recTownImgId);
 	}
+
+
+
+	public RegionTownDTO getTownInfoBySigunguIdAndTownName(RegionTownDTO regionTown) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.getTownInfoBySigunguIdAndTownName(regionTown);
+	}
+	public void createRegionTownInfo(RegionTownDTO regionTown) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		mapper.createRegionTownInfo(regionTown);
+	}
+	public RecActSellerInfoDTO getSellerInfoByRecAId(int recAId) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.getSellerInfoByRecAId(recAId);
+	}
 }

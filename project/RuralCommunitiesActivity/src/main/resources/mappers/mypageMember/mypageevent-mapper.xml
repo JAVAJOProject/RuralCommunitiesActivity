@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC
-        "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+		"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper
-	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageEventMapper">
+		namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageEventMapper">
 
 	<resultMap id="MyPageEventInfoForClob" type="MypageEventDTO">
 		<id property="eventId" column="event_id" />
@@ -25,7 +25,7 @@
 		<result property="eventAddr" column="event_addr" />
 		<result property="eventFavoriteCnt" column="event_favorite_cnt" />
 		<result property="eventViewCnt" column="event_view_cnt" />
-		
+
 		<result column="event_progress_status_id" property="eventProgressStatusId" />
 		<result column="event_progress_status" property="eventProgressStatus" />
 		<result column="event_report_id" property="eventReportId" />
@@ -38,37 +38,37 @@
 		<result column="event_progress_status" property="eventProgressStatus" />
 
 		<association property="mypageEvent"
-			javaType="MypageEventDTO"> <!-- 아이디, 제목, 대표이미지, 참여시작일, 모집마감일, 참영장소 -->
+					 javaType="MypageEventDTO"> <!-- 아이디, 제목, 대표이미지, 참여시작일, 모집마감일, 참영장소 -->
 			<id column="event_id" property="eventId" />
 			<result column="event_name" property="eventName" />
 			<result column="event_thumbnail_img"
-				property="eventThumbnailImg" />
+					property="eventThumbnailImg" />
 			<result column="event_start_date" property="eventStartDate" />
 			<result column="event_recruit_end_date"
-				property="eventRecruitEndDate" />
+					property="eventRecruitEndDate" />
 			<result column="event_addr" property="eventAddr" />
 		</association>
 	</resultMap>
-	
+
 	<select id="selectCount" parameterType="int"
-		resultType="int">
+			resultType="int">
 		SELECT
-		COUNT(*)
+			COUNT(*)
 		FROM (SELECT * FROM
-		EVENT_WINNER_1 WHERE U_ID = #{uId}) W
-		JOIN
-		EVENT_PROGRESS_STATUS S
-		ON
-		(W.EVENT_PROGRESS_STATUS_ID =
-		S.EVENT_PROGRESS_STATUS_ID)
-		JOIN EVENT E
-		ON (W.EVENT_ID = E.EVENT_ID)
+			EVENT_WINNER_1 WHERE U_ID = #{uId}) W
+				 JOIN
+			 EVENT_PROGRESS_STATUS S
+			 ON
+				 (W.EVENT_PROGRESS_STATUS_ID =
+				  S.EVENT_PROGRESS_STATUS_ID)
+				 JOIN EVENT E
+					  ON (W.EVENT_ID = E.EVENT_ID)
 	</select>
 
 	<select id="selectByMember" resultMap="MyPageEventInfoForClob">
 		SELECT
-		  	ROWNUM AS seq,
-		  	EVENT_REPORT_ID,
+			ROWNUM AS seq,
+			EVENT_REPORT_ID,
 			EVENT_PROGRESS_STATUS,
 			EVENT_ID,
 			EVENT_NAME,
@@ -76,28 +76,28 @@
 			EVENT_ADDR,
 			EVENT_RECRUIT_END_DATE,
 			EVENT_START_DATE
-		  FROM (SELECT
-				seq,
-			  	ROWNUM AS seq,
-			  	EVENT_REPORT_ID,
-				EVENT_PROGRESS_STATUS,
-				EVENT_ID,
-				EVENT_NAME,
-				EVENT_THUMBNAIL_IMG,
-				EVENT_ADDR,
-				EVENT_RECRUIT_END_DATE,
-				EVENT_START_DATE
+		FROM (SELECT
+				  seq,
+				  ROWNUM AS seq,
+				  EVENT_REPORT_ID,
+				  EVENT_PROGRESS_STATUS,
+				  EVENT_ID,
+				  EVENT_NAME,
+				  EVENT_THUMBNAIL_IMG,
+				  EVENT_ADDR,
+				  EVENT_RECRUIT_END_DATE,
+				  EVENT_START_DATE
 			  FROM (
 					   SELECT
-						  	ROWNUM AS seq,
-						  	EVENT_REPORT_ID,
-							EVENT_PROGRESS_STATUS,
-							EVENT_ID,
-							EVENT_NAME,
-							EVENT_THUMBNAIL_IMG,
-							EVENT_ADDR,
-							EVENT_RECRUIT_END_DATE,
-							EVENT_START_DATE
+						   ROWNUM AS seq,
+						   EVENT_REPORT_ID,
+						   EVENT_PROGRESS_STATUS,
+						   EVENT_ID,
+						   EVENT_NAME,
+						   EVENT_THUMBNAIL_IMG,
+						   EVENT_ADDR,
+						   EVENT_RECRUIT_END_DATE,
+						   EVENT_START_DATE
 					   FROM (
 								SELECT
 									W.EVENT_REPORT_ID,
@@ -110,15 +110,15 @@
 									E.EVENT_START_DATE
 								FROM (SELECT * FROM
 									EVENT_WINNER_1 WHERE U_ID = #{uId}) W
-								JOIN EVENT_PROGRESS_STATUS S ON (W.EVENT_PROGRESS_STATUS_ID = S.EVENT_PROGRESS_STATUS_ID)
-								JOIN EVENT E ON (W.EVENT_ID = E.EVENT_ID)
+										 JOIN EVENT_PROGRESS_STATUS S ON (W.EVENT_PROGRESS_STATUS_ID = S.EVENT_PROGRESS_STATUS_ID)
+										 JOIN EVENT E ON (W.EVENT_ID = E.EVENT_ID)
 							))
-					  WHERE seq <![CDATA[>=]]> #{start})
-				WHERE ROWNUM <![CDATA[<=]]> #{end}
+			  WHERE seq <![CDATA[>=]]> #{start})
+		WHERE ROWNUM <![CDATA[<=]]> #{end}
 	</select>
 
 	<select id="selectByNo" parameterType="int"
-		resultType="MypageEventDTO">
+			resultType="MypageEventDTO">
 		SELECT *
 		FROM EVENT
 		WHERE EVENT_ID = #{eventId}
@@ -130,9 +130,9 @@
 	</update>
 
 	<select id="selectReportByNo" parameterType="int"
-		resultType="EventWinner">
+			resultType="EventWinner">
 		SELECT * FROM EVENT_WINNER_1 WHERE event_report_id =
-		#{reportId}
+										   #{reportId}
 
 	</select>
 

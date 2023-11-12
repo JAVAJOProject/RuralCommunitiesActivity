@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.totalActivity.TotalActivityListMapper">
+	<resultMap id="ActSummaryListDTO" type="ActSummaryList">
+		<result property="aId" column="a_id" />
+		<result property="aImgId" column="a_img_id" />
+		<result property="aName" column="a_name" />
+		<result property="aOneLiner" column="a_one_liner" />
+		<result property="aThumbnailImg" column="a_thumbnail_img" />
+		<result property="aThemeId" column="a_theme_id" />
+		<result property="sigunguId" column="sigungu_id" />
+		<result property="aFavoriteCnt" column="a_favorite_cnt" />
+	</resultMap>	
+
+	<select id="getTotalActivityCountData" resultType="int">
+		SELECT
+		COUNT(*) FROM activity_info
+	</select>
+	<select id="getTotalActivityCountByThemeData" resultType="int"
+		parameterType="int">
+		SELECT
+		COUNT(*) FROM activity_info
+		WHERE a_theme_id =
+		#{tId}
+	</select>
+	<select id="getTotalActivityCountByRegionData" resultType="int"
+		parameterType="int">
+		SELECT
+		COUNT(*) FROM activity_info
+		WHERE sigungu_id =
+		#{sId}
+	</select>
+
+	<select id="getRequestPageTotalActivityData"
+		resultType="ActSummaryList" parameterType="int">
+		SELECT
+		a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id,
+		sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		seq, a_id, a_img_id, a_name,
+		a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		ROWNUM AS seq, a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		activity_info.a_id, activity_info.a_img_id, activity_info.a_name,
+		activity_info.a_one_liner,
+		activity_info.a_thumbnail_img,
+		activity_info.a_theme_id, activity_info.sigungu_id,
+		activity_post.a_favorite_cnt
+		FROM activity_info
+		INNER JOIN
+		activity_post ON activity_info.a_id = activity_post.a_id
+		ORDER BY activity_info.a_id
+		DESC
+		)
+		)
+		WHERE seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE seq <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+
+	<select id="getRequestPageTotalActivityByThemeListData"
+		resultType="ActSummaryList" parameterType="int">
+		SELECT
+		a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id,
+		sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		seq, a_id, a_img_id, a_name,
+		a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		ROWNUM AS seq, a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		activity_info.a_id, activity_info.a_img_id, activity_info.a_name,
+		activity_info.a_one_liner,
+		activity_info.a_thumbnail_img,
+		activity_info.a_theme_id, activity_info.sigungu_id,
+		activity_post.a_favorite_cnt
+		FROM activity_info
+		INNER JOIN
+		activity_post ON activity_info.a_id = activity_post.a_id
+		WHERE
+		activity_info.a_theme_id = #{tId}
+		ORDER BY activity_info.a_id DESC
+		)
+		)
+		WHERE seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE seq <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+
+	
+	<select id="getRequestPageTotalActivityByRegionListData"
+		resultType="ActSummaryList" parameterType="int">
+		SELECT
+		a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id,
+		sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		seq, a_id, a_img_id, a_name,
+		a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		ROWNUM AS seq, a_id, a_img_id, a_name, a_one_liner,
+		a_thumbnail_img, a_theme_id, sigungu_id,
+		a_favorite_cnt
+		FROM (
+		SELECT
+		activity_info.a_id, activity_info.a_img_id, activity_info.a_name,
+		activity_info.a_one_liner,
+		activity_info.a_thumbnail_img,
+		activity_info.a_theme_id, activity_info.sigungu_id,
+		activity_post.a_favorite_cnt
+		FROM activity_info
+		INNER JOIN
+		activity_post ON activity_info.a_id = activity_post.a_id
+		WHERE
+		activity_info.sigungu_id = #{sId}
+		ORDER BY activity_info.a_id DESC
+		)
+		)
+		WHERE seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE seq <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+
+	<!-- 쓰이는 데는 없지만 카드형 전체리스트 <select id="getAllActivitySummaryData" resultType="ActSummaryList"> 
+		SELECT a_id, a_name, a_one_liner, a_thumbnail_img, a_theme_id, sigungu_id 
+		FROM activity_info </select> -->
+	<!-- 쓰이는 데는 없지만 모든 정보 --><!-- <select id="getAllActivityData" resultType="TotalActivityContent"> 
+		SELECT A.a_id, A.s_id, A.sigungu_id, A.a_theme_id, A.a_start_date, A.a_end_date, 
+		A.a_addr, A.a_name, A.a_one_liner, A.a_min_people, A.a_max_people, A.a_charge, 
+		A.a_thumbnail_img, A.s_site, A.a_reservation_deadline, B.a_post_id, B.a_img_id, 
+		B.a_post_content, B.a_view_cnt, B.a_favorite_cnt, B.a_post_date_created, 
+		C.a_img1, C.a_img2, C.a_img3, C.a_img4, C.a_img5 FROM activity_info A LEFT 
+		OUTER JOIN activity_post B ON A.a_id = B.a_id LEFT OUTER JOIN activity_images 
+		C ON B.a_img_id = C.a_img_id </select> -->
+
+</mapper>

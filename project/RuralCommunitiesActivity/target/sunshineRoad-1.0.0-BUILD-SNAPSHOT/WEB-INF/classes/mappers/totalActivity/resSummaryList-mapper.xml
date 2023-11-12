@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.totalActivity.ResSummaryListMapper">
+	<resultMap id="ResSummaryListDTO" type="ResSummaryList">
+		<result property="reservationId" column="reservation_id" />
+		<result property="aId" column="a_id" />
+		<result property="uId" column="u_id" />
+		<result property="reservationStatus"
+			column="reservation_status" />
+		<result property="reservationDate" column="reservation_date" />
+	</resultMap>
+
+	<select id="getReservationCountData" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM reservation
+	</select>
+	
+	<select id="getMyReservationCountData" resultType="int" parameterType="int">
+		SELECT
+		COUNT(*)
+		FROM reservation
+		WHERE u_id = #{uId}
+	</select>
+	
+	<select id="getMyServiceReservationCountData" resultType="int" parameterType="int">
+		SELECT
+		COUNT(*)
+		FROM reservation
+		WHERE a_id = #{aId}
+	</select>
+
+	<select id="getRequestPageReservationListData"
+		resultType="ResSummaryList">
+		SELECT
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		ROWNUM AS seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		reservation.reservation_id,
+		reservation.u_id,
+		reservation.a_id,
+		reservation.reservation_status,
+		reservation.reservation_date
+		FROM
+		reservation
+		ORDER BY reservation_date DESC
+		)
+		)
+		WHERE seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE seq <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+
+	<select id="getRequestPageMyReservationListData"
+		resultType="ResSummaryList" parameterType="int">
+		SELECT
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		ROWNUM AS seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		reservation.reservation_id,
+		reservation.u_id,
+		reservation.a_id,
+		reservation.reservation_status,
+		reservation.reservation_date
+		FROM
+		reservation
+		WHERE u_id = #{uId}
+
+		ORDER BY reservation_date DESC
+		)
+		)
+		WHERE
+		seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE ROWNUM <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+
+	<select id="getRequestPageMyServiceReservationListData"
+		resultType="ResSummaryList" parameterType="int">
+		SELECT
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		ROWNUM AS seq,
+		reservation_id, u_id, a_id,
+		reservation_status,
+		reservation_date
+		FROM (
+		SELECT
+		reservation.reservation_id,
+		reservation.u_id,
+		reservation.a_id,
+		reservation.reservation_status,
+		reservation.reservation_date
+		FROM
+		reservation
+		WHERE a_id = #{aId}
+
+		ORDER BY reservation_date DESC
+		)
+		)
+		WHERE
+		seq <![CDATA[>=]]>
+		#{startPostNo}
+		)
+		WHERE ROWNUM <![CDATA[<=]]>
+		#{endPostNo}
+	</select>
+</mapper>

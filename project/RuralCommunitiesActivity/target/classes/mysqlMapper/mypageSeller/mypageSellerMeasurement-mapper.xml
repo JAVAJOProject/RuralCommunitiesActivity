@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerMeasurementMapper">
+
+	<resultMap id="measurementResultMap"
+		type="MypageSellerMeasurementDTO">
+		<!-- <result column="month" property="month" /> <result column="total_reservations" 
+			property="totalReservations" /> <result column="canceled_reservations" property="canceledReservations" 
+			/> <result column="reservation_Count" property="reservationCount" /> -->
+		<result column="reservation_date" property="reservationDate" />
+		<result column="total_counts" property="totalCount" />
+		<result column="canceled_count" property="canceledCount" />
+	</resultMap>
+
+<!--	MySQL-->
+	<!-- 월별 예약자수 대비 취소자수 -->
+	<select id="getMeasurementData" parameterType="int"
+		resultMap="measurementResultMap">
+		SELECT DATE_FORMAT(months.month, '%Y-%m') AS month,
+    IFNULL(COUNT(r.reservation_date), 0) AS total_reservations,
+    IFNULL(SUM(CASE WHEN r.reservation_status = '예약취소' THEN 1 ELSE 0 END), 0) AS canceled_reservations
+		FROM
+			(SELECT DATE_SUB(CURDATE(), INTERVAL 6 MONTH) + INTERVAL (a.a + (10 * b.a) - 1) MONTH AS month
+			FROM (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9) a
+			CROSS JOIN (SELECT 0 AS a UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4) b) months
+			LEFT JOIN reservation r
+		ON DATE_FORMAT(r.reservation_date, '%Y-%m') = DATE_FORMAT(months.month, '%Y-%m')
+		WHERE months.month BETWEEN DATE_SUB(CURDATE(), INTERVAL 6 MONTH) AND DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
+		GROUP BY DATE_FORMAT(months.month, '%Y-%m')
+		ORDER BY month
+	</select>
+
+	<!-- 별점개수 별 리뷰 -->
+	<resultMap id="reviewRatingResultMap"
+		type="MypageSellerMeasurementDTO">
+		<result column="rating" property="rating" />
+		<result column="count" property="count" />
+	</resultMap>
+	<!-- 별점 갯수 -->
+	<select id="getReviewRatings" resultMap="reviewRatingResultMap">
+		SELECT r_star_rating AS
+				   rating,
+			   COUNT(*) AS count
+		FROM
+			activity_review
+		WHERE
+			r_star_rating IN (5
+			, 4
+			, 3
+			, 2
+			, 1)
+		GROUP BY
+			r_star_rating
+		ORDER BY
+			rating DESC
+	</select>
+
+	<!-- 성별 각 예약 cnt -->
+	<resultMap id="genderResultMap"
+		type="MypageSellerMeasurementDTO">
+		<result column="gender" property="gender" />
+		<result column="gender_count" property="genderCount" />
+	</resultMap>
+	<select id="getGenderReservationData" parameterType="int"
+		resultMap="genderResultMap">
+		SELECT
+		m.u_gender AS gender,
+		COUNT(*) AS reservation_count
+		FROM
+		reservation r
+		JOIN
+		member m ON r.u_id = m.u_id
+		GROUP BY
+		m.u_gender
+	</select>
+
+	<!-- 과거의 시간이면서 예약완료 인 사람 -->
+	<resultMap id="ReviewRatioMap"
+		type="MypageSellerMeasurementDTO">
+		<result column="review_written_count"
+			property="reviewWrittenCount" />
+		<result column="total_visitors_count"
+			property="totalVisitorsCount" />
+	</resultMap>
+	<select id="getReviewRatio" resultMap="ReviewRatioMap">
+		SELECT
+		COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) AS review_written_count,
+		COUNT(*) AS total_visitors_count,
+		CASE
+		WHEN COUNT(*) = 0 THEN 0
+		ELSE COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) / COUNT(*)
+		END AS review_ratio
+		FROM reservation
+		WHERE reservation_status = '예약완료'
+		AND reservation_date <![CDATA[<]]> CURRENT_DATE
+	</select>
+
+	<!-- 나이대별 -->
+	<resultMap id="MeasurementByAgeMap"
+		type="MypageSellerMeasurementDTO">
+		<result column="age_range" property="ageRange" />
+		<result column="member_count" property="memberCount" />
+	</resultMap>
+	<select id="getReservationsByAge"
+		resultMap="MeasurementByAgeMap">
+		SELECT '1-10' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 9 YEAR), '%Y-01-01') AND DATE_FORMAT(NOW(),
+		'%Y-12-31')
+		UNION ALL
+		SELECT '11-20' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 19 YEAR), '%Y-01-01') AND
+		DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 10 YEAR), '%Y-12-31')
+		UNION ALL
+		SELECT '21-30' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 29 YEAR), '%Y-01-01') AND
+		DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 20 YEAR), '%Y-12-31')
+		UNION ALL
+		SELECT '31-40' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 39 YEAR), '%Y-01-01') AND
+		DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 30 YEAR), '%Y-12-31')
+		UNION ALL
+		SELECT '41-50' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 49 YEAR), '%Y-01-01') AND
+		DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 40 YEAR), '%Y-12-31')
+		UNION ALL
+		SELECT '51+' AS age_range, COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth <![CDATA[<]]> DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 50 YEAR), '%Y-12-31')
+	</select>
+</mapper>

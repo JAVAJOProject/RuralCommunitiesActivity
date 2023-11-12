@@ -20,8 +20,8 @@ public class MypageMemberImpl implements MypageMemberService {
 	}
 
 	@Override
-	public int changeInfo(String uName) {
-		return memberDAO.changeInfo(uName);
+	public int changeInfo(String uName, int uId) {
+		return memberDAO.changeInfo(uName, uId);
 	}
 
 	@Override
@@ -34,5 +34,3 @@ public class MypageMemberImpl implements MypageMemberService {
 		return memberDAO.changeInfo(uId);
 	}
 }
-
-

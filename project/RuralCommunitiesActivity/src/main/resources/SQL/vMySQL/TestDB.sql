@@ -19,7 +19,7 @@ CREATE TABLE test(
 id INT PRIMARY KEY,
 content VARCHAR(100),
 date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+) default charset = 'utf8';
 
 INSERT INTO TEST(ID, CONTENT) VALUES (1, 'This is a test content1.');
 INSERT INTO TEST(ID, CONTENT) VALUES (2, 'This is a test content2.');

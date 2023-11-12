@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.common.MainPageMapper">
+    
+    <resultMap id="MainPageRecommendationTownInfoForClob" type="MainPageRecommendationTownInfo">
+        <result property="recTId" column="rec_t_id" />
+        <result property="townName" column="town_name" />
+        <result property="recTThumbnailImg" column="rec_t_thumbnail_img" />
+        <result property="sigunguName" column="sigungu_name" />
+        <result property="sidoName" column="sido_name" />
+        <result property="recTTitle" column="rec_t_title" />
+        <result property="recTContent" column="rec_t_content" jdbcType="CLOB" javaType="java.lang.String" />
+        <result property="recTLikeCnt" column="rec_t_like_cnt" />
+    </resultMap>
+
+    <!--	Oracle -->
+    <select id="getMainPageRecommendationActivityData" resultType="MainPageRecommendationActivityInfo">
+        SELECT
+            rec_a_post_id, rec_a_title, rec_a_thumbnail_img
+        FROM (SELECT
+                     rec_a_post_id, rec_a_title, rec_a_thumbnail_img
+                 FROM
+                     rec_activity_info
+                 ORDER BY rec_a_date_created DESC)
+        WHERE ROWNUM <![CDATA[<=]]> 5
+    </select>
+
+    <select id="getOneRecommendationActivityData" resultType="MainPageRecommendationActivityInfo" parameterType="int">
+        SELECT
+            rec_a_post_id, rec_a_title, rec_a_thumbnail_img
+        FROM
+            rec_activity_info
+        WHERE
+            rec_a_post_id = #{id}
+    </select>
+
+    <select id="getMainPageTotalActivityData" resultType="MainPageTotalActivityInfo">
+        SELECT
+            s_id, a_post_id, a_name, a_one_liner, a_thumbnail_img, sigungu_name, sido_name
+        FROM
+            (SELECT
+                 info.s_id,
+                 post.a_post_id,
+                 info.a_name,
+                 info.a_one_liner,
+                 info.a_thumbnail_img,
+                 sigungu.sigungu_name,
+                 sido.sido_name
+             FROM
+                 activity_info info
+                     INNER JOIN activity_post post ON (info.a_id = post.a_id)
+                         INNER JOIN region_sigungu sigungu ON (info.sigungu_id = sigungu.sigungu_id)
+                         INNER JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
+             WHERE
+                 a_reservation_deadline >= SYSTIMESTAMP
+             ORDER BY info.a_reservation_deadline ASC)
+        WHERE ROWNUM <![CDATA[<=]]> 3
+    </select>
+
+    <select id="getOneTotalActivityData" resultType="MainPageTotalActivityInfo" parameterType="int">
+        SELECT
+            info.s_id,
+            post.a_post_id,
+            info.a_name,
+            info.a_one_liner,
+            info.a_thumbnail_img
+        FROM
+            activity_info info
+                INNER JOIN activity_post post ON (info.a_id = post.a_id)
+        WHERE
+            info.a_id = #{id}
+    </select>
+
+    <select id="getMainPageRecTownData" resultMap="MainPageRecommendationTownInfoForClob">
+        SELECT
+            rec_t_id,
+            town_name,
+            rec_t_thumbnail_img,
+            sigungu_name,
+            sido_name,
+            rec_t_title,
+            rec_t_content,
+            rec_t_like_cnt
+        FROM (SELECT
+                  rinfo.rec_t_id,
+                  rtown.town_name,
+                  rinfo.rec_t_thumbnail_img,
+                  rsigungu.sigungu_name,
+                  rsido.sido_name,
+                  rinfo.rec_t_title,
+                  rinfo.rec_t_content,
+                  rinfo.rec_t_like_cnt
+              FROM
+                  region_town rtown
+                      INNER JOIN
+                  region_sigungu rsigungu ON (rtown.sigungu_id = rsigungu.sigungu_id)
+                      INNER JOIN
+                  region_sido rsido ON (rsigungu.sido_id = rsido.sido_id)
+                      INNER JOIN
+                  rec_town_info rinfo ON (rtown.town_id = rinfo.rec_t_id)
+              ORDER BY rec_t_date_created DESC)
+            WHERE ROWNUM <![CDATA[<=]]> 2
+    </select>
+
+    <select id="getOneRecommendationTownData" resultMap="MainPageRecommendationTownInfoForClob" parameterType="int">
+        SELECT
+            rinfo.rec_t_id,
+            rtown.town_name,
+            rinfo.rec_t_thumbnail_img,
+            rsigungu.sigungu_name,
+            rsido.sido_name,
+            rinfo.rec_t_title,
+            rinfo.rec_t_content,
+            rinfo.rec_t_like_cnt
+        FROM
+            region_town rtown
+                INNER JOIN
+            region_sigungu rsigungu ON (rtown.sigungu_id = rsigungu.sigungu_id)
+                INNER JOIN
+            region_sido rsido ON (rsigungu.sido_id = rsido.sido_id)
+                INNER JOIN
+            rec_town_info rinfo ON (rtown.town_id = rinfo.rec_t_id)
+        WHERE
+            rec_t_id = #{id}
+    </select>
+
+    <select id="getMainPageEventData" resultType="MainPageEventInfo">
+        SELECT
+            event_id, event_thumbnail_img
+        FROM (SELECT
+                  event_id, event_thumbnail_img
+              FROM
+                  event
+              ORDER BY event_recruit_end_date ASC)
+            WHERE ROWNUM <![CDATA[<=]]> 5
+    </select>
+
+    <select id="getOneEventData" resultType="MainPageEventInfo" parameterType="int">
+        SELECT
+            event_id, event_thumbnail_img
+        FROM
+            event
+        WHERE
+            event_id = #{id}
+    </select>
+
+    <select id="getMainPageNoticeData" resultType="MainPageNoticeInfo">
+        SELECT
+            notice_id,
+            notice_type_name,
+            notice_title,
+            notice_date_created
+        FROM (SELECT
+                  board.notice_id,
+                  type.notice_type_name,
+                  board.notice_title,
+                  board.notice_date_created
+              FROM
+                  notice board
+                      INNER JOIN
+                  notice_type type ON (board.notice_type_id = type.notice_type_id)
+              ORDER BY notice_date_created DESC)
+        WHERE ROWNUM <![CDATA[<=]]> 4
+    </select>
+
+    <!-- MySQL -->
+<!--    <select id="getMainPageRecommendationActivityData" resultType="MainPageRecommendationActivityInfo">-->
+<!--        SELECT-->
+<!--            rec_a_post_id, rec_a_title, rec_a_thumbnail_img-->
+<!--        FROM-->
+<!--            rec_activity_info-->
+<!--        ORDER BY rec_a_date_created DESC-->
+<!--            LIMIT 5;-->
+<!--    </select>-->
+
+<!--    <select id="getOneRecommendationActivityData" resultType="MainPageRecommendationActivityInfo" parameterType="int">-->
+<!--        SELECT-->
+<!--            rec_a_post_id, rec_a_title, rec_a_thumbnail_img-->
+<!--        FROM-->
+<!--            rec_activity_info-->
+<!--        WHERE-->
+<!--            rec_a_post_id = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="getMainPageTotalActivityData" resultType="MainPageTotalActivityInfo">-->
+<!--        SELECT-->
+<!--            s_id, a_post_id, a_name, a_one_liner, a_thumbnail_img, sigungu_name, sido_name-->
+<!--        FROM-->
+<!--            (SELECT-->
+<!--                 info.s_id,-->
+<!--                 post.a_post_id,-->
+<!--                 info.a_name,-->
+<!--                 info.a_one_liner,-->
+<!--                 info.a_thumbnail_img,-->
+<!--                 sigungu.sigungu_name,-->
+<!--                 sido.sido_name-->
+<!--             FROM-->
+<!--                 activity_info info-->
+<!--                     INNER JOIN activity_post post ON (info.a_id = post.a_id)-->
+<!--                     INNER JOIN region_sigungu sigungu ON (info.sigungu_id = sigungu.sigungu_id)-->
+<!--                     INNER JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)-->
+<!--             WHERE-->
+<!--                 a_reservation_deadline >= CURRENT_TIMESTAMP-->
+<!--             ORDER BY info.a_reservation_deadline ASC) activity_info_post-->
+<!--            LIMIT 3-->
+<!--    </select>-->
+
+<!--    <select id="getOneTotalActivityData" resultType="MainPageTotalActivityInfo" parameterType="int">-->
+<!--        SELECT-->
+<!--            info.s_id,-->
+<!--            post.a_post_id,-->
+<!--            info.a_name,-->
+<!--            info.a_one_liner,-->
+<!--            info.a_thumbnail_img-->
+<!--        FROM-->
+<!--            activity_info info-->
+<!--                INNER JOIN activity_post post ON (info.a_id = post.a_id)-->
+<!--        WHERE-->
+<!--            info.a_id = #{id};-->
+<!--    </select>-->
+
+<!--    <select id="getMainPageRecTownData" resultMap="MainPageRecommendationTownInfoForClob">-->
+<!--        SELECT-->
+<!--            rinfo.rec_t_id,-->
+<!--            rtown.town_name,-->
+<!--            rinfo.rec_t_thumbnail_img,-->
+<!--            rsigungu.sigungu_name,-->
+<!--            rsido.sido_name,-->
+<!--            rinfo.rec_t_title,-->
+<!--            rinfo.rec_t_content,-->
+<!--            rinfo.rec_t_like_cnt-->
+<!--        FROM-->
+<!--            region_town rtown-->
+<!--                INNER JOIN-->
+<!--            region_sigungu rsigungu ON (rtown.sigungu_id = rsigungu.sigungu_id)-->
+<!--                INNER JOIN-->
+<!--            region_sido rsido ON (rsigungu.sido_id = rsido.sido_id)-->
+<!--                INNER JOIN-->
+<!--            rec_town_info rinfo ON (rtown.town_id = rinfo.rec_t_id)-->
+<!--        ORDER BY rec_t_date_created DESC-->
+<!--            LIMIT 2-->
+<!--    </select>-->
+
+<!--    <select id="getOneRecommendationTownData" resultMap="MainPageRecommendationTownInfoForClob" parameterType="int">-->
+<!--        SELECT-->
+<!--            rinfo.rec_t_id,-->
+<!--            rtown.town_name,-->
+<!--            rinfo.rec_t_thumbnail_img,-->
+<!--            rsigungu.sigungu_name,-->
+<!--            rsido.sido_name,-->
+<!--            rinfo.rec_t_title,-->
+<!--            rinfo.rec_t_content,-->
+<!--            rinfo.rec_t_like_cnt-->
+<!--        FROM-->
+<!--            region_town rtown-->
+<!--                INNER JOIN-->
+<!--            region_sigungu rsigungu ON (rtown.sigungu_id = rsigungu.sigungu_id)-->
+<!--                INNER JOIN-->
+<!--            region_sido rsido ON (rsigungu.sido_id = rsido.sido_id)-->
+<!--                INNER JOIN-->
+<!--            rec_town_info rinfo ON (rtown.town_id = rinfo.rec_t_id)-->
+<!--        WHERE-->
+<!--            rec_t_id = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="getMainPageEventData" resultType="MainPageEventInfo">-->
+<!--        SELECT-->
+<!--            event_id, event_thumbnail_img-->
+<!--        FROM-->
+<!--            event-->
+<!--        ORDER BY event_recruit_end_date ASC-->
+<!--            LIMIT 5-->
+<!--    </select>-->
+
+<!--    <select id="getOneEventData" resultType="MainPageEventInfo" parameterType="int">-->
+<!--        SELECT-->
+<!--            event_id, event_thumbnail_img-->
+<!--        FROM-->
+<!--            event-->
+<!--        WHERE-->
+<!--            event_id = #{id}-->
+<!--    </select>-->
+
+<!--    <select id="getMainPageNoticeData" resultType="MainPageNoticeInfo">-->
+<!--        SELECT-->
+<!--            board.notice_id,-->
+<!--            type.notice_type_name,-->
+<!--            board.notice_title,-->
+<!--            board.notice_date_created-->
+<!--        FROM-->
+<!--            notice board-->
+<!--                INNER JOIN-->
+<!--            notice_type type ON (board.notice_type_id = type.notice_type_id)-->
+<!--        ORDER BY notice_date_created DESC-->
+<!--            LIMIT 4-->
+<!--    </select>-->
+</mapper>

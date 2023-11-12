@@ -11,7 +11,16 @@ import org.springframework.stereotype.Repository;
 public class RegReservationDAO {
 	
 	private final SqlSessionTemplate sqlSession;
-    
+
+	public void addPaymentData(ReservationContentDTO reservationContentDTO) {
+		RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
+		mapper.addPaymentData(reservationContentDTO);
+	}
+	public int getPaymentId() {
+		RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
+		return mapper.getPaymentId();
+	}
+
 	public int addReservation(ReservationContentDTO reservationContentDTO) {
         RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
         return mapper.addReservationData(reservationContentDTO);

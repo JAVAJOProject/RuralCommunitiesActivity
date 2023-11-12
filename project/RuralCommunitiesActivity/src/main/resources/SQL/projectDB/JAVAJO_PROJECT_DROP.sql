@@ -5,6 +5,8 @@ DROP  TABLE  activity_info;
 DROP  TABLE  activity_review;
 DROP  TABLE  favorite;
 DROP  TABLE  reservation;
+DROP  TABLE  review_status;
+DROP  TABLE  reservation_status;
 DROP  TABLE  rec_activity_info;
 DROP  TABLE  notice;
 DROP  TABLE  rec_town_info;

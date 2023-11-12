@@ -154,7 +154,7 @@ export default function RegionActivityPage() {
       >
         <SearchingBox />
       </div>
-      <CardListContentBox>
+      <CardListContentBox style={{ marginBottom: '3rem' }}>
         <CardBoxTitleSet
           imgSrc={subtitle.titleImg}
           text={subtitle.text}
@@ -172,6 +172,9 @@ export default function RegionActivityPage() {
               >
                 <YellowActivityCardImg
                   imgSrc={data.aThumbnailImg}
+                  on={false}
+                  postId={+data.aId}
+                  postTypeId={+data.postTypeId}
                   favoritesNum={+data.aFavoriteCnt}
                 />
                 <YellowActivityText title={data.aName} text={data.aOneLiner} />

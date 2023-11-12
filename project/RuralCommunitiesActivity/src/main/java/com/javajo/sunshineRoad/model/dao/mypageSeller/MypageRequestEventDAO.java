@@ -20,7 +20,50 @@ public class MypageRequestEventDAO {
 	@Autowired
 	 private final SqlSessionTemplate sqlSession;	
 	 
-	//요청한 이벤트 내역
+	// 이벤트 상세보기  ===> 시향언니
+	public MypageRequestEventDTO getEventInfo(int eventId) {
+		System.out.println("eventId" + eventId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectByNo(eventId);
+	}
+	// 이벤트 취소
+	public int cancelEventParticipant(int eventId) {
+		System.out.println("eventId" + eventId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.updateByCancel(eventId);
+	}
+	// 이벤트 수정페이지 가기
+	public MypageRequestEventDTO getEventModifyInfo(int eventId) {
+		System.out.println("eventId" + eventId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectByNo(eventId);
+	}
+	public int modifyEvent(int eventId, String eventName) {
+		System.out.println("eventName" + eventName);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.updateByEvent(eventId, eventName);
+	}
+	public int getEventCount(int sId) {
+		System.out.println("sId" + sId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectCount(sId);
+	}
+	public int getEventParticipantCount(int eventId) {
+		System.out.println("eventId" + eventId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectParticipantCount(eventId);
+	}
+
+	public int getEventWinnerCount(int eventId) {
+		System.out.println("eventId" + eventId);
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectWinnerCount(eventId);
+	}
+
+
+
+//	Oracle
+//	//요청한 이벤트 내역
 	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
 	    System.out.println("pageInfo" + pageInfo);
 	    int start = pageInfo.getStartList();
@@ -28,61 +71,44 @@ public class MypageRequestEventDAO {
 	    MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
 	    return requestEventMapper.getEventInfo(sId, start, end);
 	}
-	// 이벤트 상세보기  ===> 시향언니 
-	public MypageRequestEventDTO getEventInfo(int eventId) {
-		System.out.println("eventId" + eventId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectByNo(eventId);
-	}
-	// 이벤트 취소  
-	public int cancelEventParticipant(int eventId) {
-		System.out.println("eventId" + eventId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.updateByCancel(eventId);
-	}
-	// 이벤트 수정페이지 가기
-	public MypageRequestEventDTO getEventModifyInfo(int eventId) {
-		System.out.println("eventId" + eventId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectByNo(eventId);
-	}
 	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
-		System.out.println("pageInfo" + pageInfo);	
+		System.out.println("pageInfo" + pageInfo);
 		int start = pageInfo.getStartList();
 	    int end = pageInfo.getEndList();
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
 		return requestEventMapper.selectParticipantByNo(eventId, start, end);
 	}
 	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
-		System.out.println("pageInfo" + pageInfo);	
+		System.out.println("pageInfo" + pageInfo);
 		int start = pageInfo.getStartList();
 	    int end = pageInfo.getEndList();
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
 		return requestEventMapper.selectWinnerByNo(eventId, start, end);
 	}
-	public int modifyEvent(int eventId, String eventName) {
-		System.out.println("eventName" + eventName);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.updateByEvent(eventId, eventName);
-	}
-	public int getEventCount(int sId) {
-		System.out.println("sId" + sId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectCount(sId);
-	}
-	public int getEventParticipantCount(int eventId) {
-		System.out.println("eventId" + eventId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectParticipantCount(eventId);
-	}
-	
-	public int getEventWinnerCount(int eventId) {
-		System.out.println("eventId" + eventId);	
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectWinnerCount(eventId);
-	}
-	
-	
+
+
+//	MySQL
+//	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.getEventInfo(sId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.selectParticipantByNo(eventId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.selectWinnerByNo(eventId, start - 1, perPagePostNo);
+//	}
 }
 	
 		//return selectMember;
@@ -100,6 +126,3 @@ public class MypageRequestEventDAO {
 
 	    //return sqlSession.delete("memberMapper.delMember", uId);
 		// 회원 정보 한 줄(row) 만 가져오니까 selectOne
-				
-
-	

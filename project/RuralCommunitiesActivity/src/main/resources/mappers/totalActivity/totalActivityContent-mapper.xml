@@ -14,7 +14,7 @@
 		A.a_name, A.a_one_liner, A.a_min_people, A.a_max_people,
 		A.a_charge,
 		A.a_thumbnail_img, A.s_site, A.a_reservation_deadline,
-		B.a_post_id,
+		B.a_post_id, B.post_type_id,
 		B.a_img_id, B.a_post_content, B.a_view_cnt,
 		B.a_favorite_cnt,
 		B.a_post_date_created,

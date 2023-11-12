@@ -1,6 +1,7 @@
 package com.javajo.sunshineRoad.controller.signUp;
 
 import com.javajo.sunshineRoad.model.dto.common.ResponseDTO;
+import com.javajo.sunshineRoad.model.dto.signUp.BankListDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SellerAccountInfoDTO;
 import com.javajo.sunshineRoad.model.service.IService.signUp.*;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpMemberDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpSellerDTO;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/signUp")
@@ -18,6 +21,9 @@ public class SignUpController {
     private final CheckIsSellerService checkIsSellerService;
     private final RegisterSellerAccountInfoService registerSellerAccountInfoService;
     private final RegisterSellerService registerSellerService;
+
+
+    private final GetBankListService getBankListService;
 
     @PostMapping("/check/member")
     public ResponseEntity<String> checkMember(@RequestBody SignUpMemberDTO signUpMember) {
@@ -77,5 +83,11 @@ public class SignUpController {
 
         registerSellerService.registerSeller(signUpSellerDTO);
         return ResponseEntity.ok("Seller registered successfully");
+    }
+
+    @GetMapping("/bank-list")
+    public ResponseEntity<List<BankListDTO>> getBankList() {
+        List<BankListDTO> bankList = getBankListService.getBankList();
+        return ResponseEntity.ok(bankList);
     }
 }

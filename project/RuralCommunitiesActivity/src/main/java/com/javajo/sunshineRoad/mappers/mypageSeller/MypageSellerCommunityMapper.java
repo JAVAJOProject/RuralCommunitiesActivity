@@ -7,7 +7,13 @@ import org.apache.ibatis.annotations.Param;
 import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageSellerCommunityDTO;
 
 public interface MypageSellerCommunityMapper {
+	public int selectCount(int sId);
+
+
+//    Oracle
     public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") int sId, @Param("start") int start, @Param("end") int end);
 
-	public int selectCount(int sId);
+
+//    MySQL
+//    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") int sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

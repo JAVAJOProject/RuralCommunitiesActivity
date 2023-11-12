@@ -3,6 +3,7 @@ import Favorites from '../../../common/Favorite/Favorites';
 import './EventSmallCardImg.css';
 
 export default function EventSmallCardImg({
+  on,
   imgSrc,
   favoritesNum,
   eventId,
@@ -12,10 +13,10 @@ export default function EventSmallCardImg({
     <div className="eventSmallCardImgBox">
       <img src={imgSrc} className="eventSmallCardImg" />
       <Favorites
-        on={true}
-        postId={eventId}
-        postTypeId={postTypeId}
-        favoritesNum={favoritesNum}
+        on={on}
+        postId={+eventId}
+        postTypeId={+postTypeId}
+        favoritesNum={+favoritesNum}
         style={{
           position: 'absolute',
           left: '0.4rem',

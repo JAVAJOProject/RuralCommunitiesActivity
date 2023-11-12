@@ -11,22 +11,28 @@ export default function RecTownBox({ contents }) {
     <div className="recTownBox">
       <RecTownCard imgSrc={town1.recTThumbnailImg} CardNo={1}>
         <RecTownContent
+          on={false}
+          postId={town1.recTId}
+          postTypeId={town1.postTypeId}
           title={town1.recTTitle}
           content={town1.recTContent}
           locationName={`${town1.sidoName} ${(
             ' ' + town1.sigunguName
           ).substring(0, ('' + town1.sigunguName).length)}`}
-          likesNum={town1.recTLikeCnt}
+          likesNum={+town1.recTLikeCnt}
         />
       </RecTownCard>
       <RecTownCard imgSrc={town2.recTThumbnailImg} CardNo={2}>
         <RecTownContent
+          on={false}
+          postId={town2.recTId}
+          postTypeId={town2.postTypeId}
           title={town2.recTTitle}
           content={town2.recTContent}
           locationName={`${town2.sidoName} ${(
             ' ' + town2.sigunguName
           ).substring(0, ('' + town2.sigunguName).length)}`}
-          likesNum={town2.recTLikeCnt}
+          likesNum={+town2.recTLikeCnt}
         />
       </RecTownCard>
     </div>

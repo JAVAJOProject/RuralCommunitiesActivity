@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useImmer } from "use-immer";
-import { useNavigate } from "react-router-dom/dist";
-import { fetchDataGET, fetchOneContentGET } from "../../../config/ApiService";
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useImmer } from 'use-immer';
+import { useNavigate } from 'react-router-dom/dist';
+import { fetchDataGET, fetchOneContentGET } from '../../../config/ApiService';
 
-import EventFirstBox from "../../../components/Service/community/event/Detail/FirstBox/EventFirstBox";
-import EventDetailTitle from "../../../components/Service/community/event/Detail/Title/EventDetailTitle";
-import EventImageBox from "../../../components/Service/community/event/Detail/ImageBox/EventImageBox";
-import EventContentBox from "../../../components/Service/community/event/Detail/ContentBox/EventContentBox";
-import TotalBtnBox from "../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox";
-import DetailMapApi from "../../../components/Service/totalActivity/Detail/map/DetailMapApi";
+import EventFirstBox from '../../../components/Service/community/event/Detail/FirstBox/EventFirstBox';
+import EventDetailTitle from '../../../components/Service/community/event/Detail/Title/EventDetailTitle';
+import EventImageBox from '../../../components/Service/community/event/Detail/ImageBox/EventImageBox';
+import EventContentBox from '../../../components/Service/community/event/Detail/ContentBox/EventContentBox';
+import TotalBtnBox from '../../../components/Service/totalActivity/Detail/buttons/TotalBtnBox';
+import DetailMapApi from '../../../components/Service/totalActivity/Detail/map/DetailMapApi';
 
-import recruitImg from "../../../view_img/Service/common/recruit.jpg";
-import participateImg from "../../../view_img/Service/common/participate.jpg";
-import placeImg from "../../../view_img/Service/common/locationPin.png";
-import maxPeopleImg from "../../../view_img/Service/common/headCount.jpg";
+import recruitImg from '../../../view_img/Service/common/recruit.jpg';
+import participateImg from '../../../view_img/Service/common/participate.jpg';
+import placeImg from '../../../view_img/Service/common/locationPin.png';
+import maxPeopleImg from '../../../view_img/Service/common/headCount.jpg';
 
 const defaultContents = [
-  { title: "모집기간", imgSrc: recruitImg },
-  { title: "참여기간", imgSrc: participateImg },
-  { title: "인원", imgSrc: maxPeopleImg },
-  { title: "장소", imgSrc: placeImg },
+  { title: '모집기간', imgSrc: recruitImg },
+  { title: '참여기간', imgSrc: participateImg },
+  { title: '인원', imgSrc: maxPeopleImg },
+  { title: '장소', imgSrc: placeImg },
 ];
 
 export default function TotalActDetailPage() {
@@ -40,9 +40,10 @@ export default function TotalActDetailPage() {
         );
         updateActivityContents((draft) => {
           draft.postId = data.aId;
+          draft.postTypeId = data.postTypeId;
           draft.addr = data.aAddr;
           draft.postTitle = data.aName;
-          draft.recruitStartDate = "";
+          draft.recruitStartDate = '';
           draft.recruitEndDate = data.aReservationDeadline;
           draft.startDate = data.aStartDate;
           draft.endDate = data.aEndDate;

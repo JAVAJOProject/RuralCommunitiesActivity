@@ -7,8 +7,10 @@ export default function RecTownContent({
   title,
   content,
   locationName,
-  likes,
+  on,
   likesNum,
+  postId,
+  postTypeId
 }) {
   const text = '' + content;
 
@@ -18,8 +20,10 @@ export default function RecTownContent({
       <div className="mainRecTownContentLocation">
         <LocationPin locationName={locationName} />
         <Likes
-          on={likes}
-          likesNum={(+likesNum).toLocaleString()}
+          on={on}
+          postId={+postId}
+          postTypeId={+postTypeId}
+          likesNum={+likesNum}
           style={{ height: '2.7rem' }}
         />
       </div>

@@ -39,6 +39,12 @@ export default function RecActKeywordSelectedPage() {
           data.forEach((item, index) => {
             draft.push({
               ...item,
+              postId:item.recAPostId,
+              postTypeId:item.postTypeId,
+              title:item.recATitle,
+              likesCnt:item.recALikeCnt,
+              viewCnt:item.recAViewCnt,
+              textContents:item.recAContent,
               recAThumbnailImg: images[index],
             });
           });

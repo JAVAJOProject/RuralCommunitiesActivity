@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+   namespace="com.javajo.sunshineRoad.mappers.totalActivity.TotalActivityListOfSidoMapper">
+
+   <resultMap id="ActSummaryListOfSidoDTO" type="ActSummaryListOfSido">
+      <result property="aId" column="a_id" />
+      <result property="aImgId" column="a_img_id" />
+      <result property="aName" column="a_name" />
+      <result property="aOneLiner" column="a_one_liner" />
+      <result property="aThumbnailImg" column="a_thumbnail_img" />
+      <result property="aThemeId" column="a_theme_id" />
+      <result property="sigunguId" column="sigungu_id" />
+      <result property="aFavoriteCnt" column="a_favorite_cnt" />
+      <result property="sidoId" column="sido_id" />
+   </resultMap>
+
+<!--    MySQL-->
+   <select id="getTotalActivityCountByRegionOfSidoData"
+      resultType="int" parameterType="int">
+      select count(*)
+      from activity_info
+              inner join
+           region_sigungu ON (activity_info.sigungu_id = region_sigungu.sigungu_id)
+      where sido_id = #{sidoId}
+   </select>
+   
+   <select id="getRequestPageTotalActivityByRegionOfSidoListData"
+      resultType="ActSummaryListOfSido" parameterType="int">
+      SELECT activity_info.a_id,
+             activity_info.a_img_id,
+             activity_info.a_name,
+             activity_info.a_one_liner,
+             activity_info.a_thumbnail_img,
+             activity_info.a_theme_id,
+             activity_info.sigungu_id,
+             activity_post.a_favorite_cnt,
+             region_sigungu.sido_id
+      FROM activity_info
+              inner join activity_post
+                         ON activity_info.a_id = activity_post.a_id
+              inner join region_sigungu
+                         ON activity_info.sigungu_id = region_sigungu.sigungu_id
+      WHERE region_sigungu.sido_id = #{sidoId}
+      ORDER BY activity_info.a_id DESC
+         LIMIT #{perPagePostNo}
+      OFFSET #{startPostNo}
+   </select>
+   </mapper>

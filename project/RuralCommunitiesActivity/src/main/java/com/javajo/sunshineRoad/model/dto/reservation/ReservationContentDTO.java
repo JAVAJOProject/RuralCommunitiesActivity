@@ -1,5 +1,6 @@
 package com.javajo.sunshineRoad.model.dto.reservation;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.ibatis.type.Alias;
 
 import lombok.AllArgsConstructor;
@@ -14,11 +15,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ReservationContentDTO {
 	private int reservationId;
-	private int paymentId;
+	@JsonProperty
 	private int aId;
+	@JsonProperty
 	private int uId;
 	private int reservationHeadcount;
 	private int reviewStatus;
 	private String reservationStatus;
 	private String reservationDate;
+
+
+	private int paymentId;
+	private int paymentStatusId;
+	private int paymentAmount;
+	private String paymentDeadline;
 }

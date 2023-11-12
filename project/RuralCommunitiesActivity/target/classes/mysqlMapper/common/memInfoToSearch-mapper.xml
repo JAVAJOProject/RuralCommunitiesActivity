@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.common.MemInfoToSearchMapper">
+    <!--    MySQL-->
+        <select id="searchMemIdByUserId" resultType="int" parameterType="map">
+            SELECT
+                mem_id
+            FROM
+                member_list
+            WHERE
+                ${memInfo.memIdCol} = #{userId}
+              AND
+                mem_type_id = #{memInfo.memTypeId}
+        </select>
+
+        <select id="searchUserIdAndMemTypeByMemId" resultType="MemInfoToSearch" parameterType="int">
+            SELECT
+                mem_type_id,
+                u_id,
+                s_id
+            FROM
+                member_list
+            WHERE
+                mem_id = #{memId}
+        </select>
+</mapper>

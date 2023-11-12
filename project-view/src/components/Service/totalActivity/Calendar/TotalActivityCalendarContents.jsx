@@ -27,6 +27,9 @@ export default function TotalActivityCalendarContents({ dataList }) {
         >
           <YellowActivityCardImg
             imgSrc={data.aThumbnailImg}
+            on={false}
+            postId={+data.aPostId}
+            postTypeId={+data.postTypeId}
             favoritesNum={+data.aFavoriteCnt}
           />
           <YellowActivityText title={data.aName} text={data.aOneLiner} />

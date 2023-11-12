@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Arrays;
 import java.util.List;
 
+import com.javajo.sunshineRoad.model.dto.recommendation.*;
+import com.javajo.sunshineRoad.model.service.IService.recommendation.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,32 +23,9 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.javajo.sunshineRoad.model.dto.recommendation.RecActivityInfoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecActivityKeywordDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecImagesDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecTownImagesDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RecTownInfoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.RegionSidoDTO;
-import com.javajo.sunshineRoad.model.dto.recommendation.TownReportDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.service.ImgPathToBase64Service;
 import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetOneRecActivityInfoService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetOneRecTownInfoService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecActivityInfoService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecActivityKeywordService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecImagesByImgIdService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecKeywordCntService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecSigunguCntService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecTownImagesByImgIdService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRecTownInfoService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetRegionSidoService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetSigunguActivityService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.GetSigunguFilterService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.InsertTownReportService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecActivityService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecKeywordService;
-import com.javajo.sunshineRoad.model.service.IService.recommendation.PostRequestRecTownService;
 
 @RestController
 @RequestMapping("/recommendation")
@@ -71,6 +50,11 @@ public class RecommendationController {
 	private final StoreRequestImagesService storeRequestImagesService;
 	private final ImageInfoUploadMarker recTownReportImageInfoUploadMarker;
 	private final ImgPathToBase64Service imgPathToBase64Service;
+
+
+	private final GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService;
+	private final InsertRegionTownInfoService insertRegionTownInfoService;
+	private final GetSellerInfoByRecAIdService getSellerInfoByRecAIdService;
 	
 	
 	public RecommendationController(GetRecActivityInfoService getRecActivityInfoService,
@@ -84,7 +68,7 @@ public class RecommendationController {
 			@Qualifier("RecTownReportImageInfoUploader") ImageInfoUploadMarker recTownReportImageInfoUploadMarker,
 			ImgPathToBase64Service imgPathToBase64Service, GetRecImagesByImgIdService getRecImagesByImgIdService,
 			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService, GetRecKeywordCntService getRecKeywordCntService,
-			GetRecSigunguCntService getRecSigunguCntService) {
+			GetRecSigunguCntService getRecSigunguCntService, GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService, InsertRegionTownInfoService insertRegionTownInfoService, GetSellerInfoByRecAIdService getSellerInfoByRecAIdService) {
 		super();
 		this.getRecActivityInfoService = getRecActivityInfoService;
 		this.getRecTownInfoService = getRecTownInfoService;
@@ -105,6 +89,10 @@ public class RecommendationController {
 		this.getRecKeywordCntService = getRecKeywordCntService;
 		this.postRequestRecKeywordService = postRequestRecKeywordService;
 		this.getRecSigunguCntService = getRecSigunguCntService;
+
+		this.getTownInfoBySigunguIdAndTownNameService = getTownInfoBySigunguIdAndTownNameService;
+		this.insertRegionTownInfoService = insertRegionTownInfoService;
+		this.getSellerInfoByRecAIdService = getSellerInfoByRecAIdService;
 	}
 	
 	
@@ -195,16 +183,27 @@ public class RecommendationController {
     @PostMapping(value = "/registration",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
             produces = {"application/json; charset=utf-8"})
-	public void insertTownReport(
+	public ResponseEntity<String> insertTownReport(
             @RequestPart(value = "files", required = false) List<MultipartFile> imgFiles,
             @RequestPart(value = "data") TownReportDTO town) {
 		try {
-				insertTownReportService.insertTownReport(town);		
+				RegionTownDTO regionTownToSearch = RegionTownDTO.builder().townName(town.getTownName()).sigunguId(town.getSigunguId()).build();
+				RegionTownDTO regionTownResult = getTownInfoBySigunguIdAndTownNameService.getTownInfoBySigunguIdAndTownName(regionTownToSearch);
+				if (regionTownResult != null) {
+					town.setTownId(regionTownResult.getTownId());
+				} else {
+					insertRegionTownInfoService.createRegionTownInfo(regionTownToSearch);
+					RegionTownDTO regionTownNew = getTownInfoBySigunguIdAndTownNameService.getTownInfoBySigunguIdAndTownName(regionTownToSearch);
+					town.setTownId(regionTownNew.getTownId());
+				}
+
+				insertTownReportService.insertTownReport(town);
 				
 				String requestPostType = "recTownReport";
 				storeRequestImagesService.storeRequestImages(requestPostType, recTownReportImageInfoUploadMarker, imgFiles);
+				return ResponseEntity.ok("success");
 		} catch (IOException e) {
-			e.printStackTrace();
+			return ResponseEntity.badRequest().body("failed");
 		}
 	}
 	
@@ -263,4 +262,10 @@ public class RecommendationController {
 	        }
 
 	    }
+
+	@GetMapping("/seller/{recAId}")
+	public ResponseEntity<RecActSellerInfoDTO> getSellerInfoByRecAId(@PathVariable int recAId) {
+		RecActSellerInfoDTO sellerInfo = getSellerInfoByRecAIdService.getSellerInfoByRecAId(recAId);
+		return ResponseEntity.ok(sellerInfo);
+	}
 }

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+		"-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+		namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageFavoriteMapper">
+
+	<!-- 	<resultMap type="MypageFavoriteDTO" id="favoriteByMember">
+            <id column="f_id" property="fId" />
+            <result column="board_id" property="boardId" />
+            <association property="activityInfo"
+                javaType="MypageActivityInfoDTO">
+                <result column="a_name" property="aName" />
+                <result column="a_one_liner" property="aOneLiner" />
+                <result column="a_thumbnail_img" property="aThumbnailImg" />
+            </association>
+            <association property="mypageEvent"
+                javaType="MypageEventDTO">
+                <result column="event_name" property="eventName" />
+                <result column="event_thumbnail_img"
+                    property="eventThumbnailImg" />
+                <result column="event_addr" property="eventAddr" />
+            </association>
+        </resultMap> -->
+	<resultMap type="MypageFavoriteDTO" id="favoriteByMember">
+		<result property="fId" column="f_id" />
+		<result property="uId" column="u_id" />
+		<result property="boardId" column="board_id" />
+		<result property="postTypeId" column="post_type_id" />
+
+		<result property="eventId" column="event_id" />
+		<result property="eventImgId" column="event_img_id" />
+		<result property="eventName" column="event_name" />
+		<result property="eventContent" column="event_content" jdbcType="CLOB" javaType="java.lang.String" />
+		<result property="eventThumbnailImg" column="event_thumbnail_img" />
+
+		<result property="aId" column="a_id" />
+		<result property="aPostId" column="a_post_id" />
+		<result property="aName" column="a_name" />
+		<result property="aOneLiner" column="a_one_liner" />
+		<result property="aThumbnailImg" column="a_thumbnail_img" />
+	</resultMap>
+
+<!--	MySQL-->
+	<select id="selectCountEvent" parameterType="int"
+			resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+				 JOIN
+				 (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+				 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+	</select>
+
+	<select id="selectByFavoriteListEvent" parameterType="int"
+			resultMap="favoriteByMember">
+		SELECT F.F_ID,
+			   F.U_ID,
+			   F.BOARD_ID,
+			   E.EVENT_ID,
+			   E.EVENT_ADDR,
+			   E.EVENT_NAME,
+			   E.EVENT_THUMBNAIL_IMG,
+			   E.EVENT_CONTENT
+		FROM (SELECT F_ID, BOARD_ID, U_ID
+			  FROM FAVORITE
+			  WHERE U_ID = #{uId}) F
+				 JOIN (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+				 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+			LIMIT #{perPagePostNo}
+		OFFSET #{start}
+	</select>
+
+	<select id="selectByMemberEvent" parameterType="int"
+			resultMap="favoriteByMember">
+		SELECT F.F_ID,
+			   F.U_ID,
+			   F.BOARD_ID,
+			   E.EVENT_ID,
+			   E.EVENT_ADDR,
+			   E.EVENT_NAME,
+			   E.EVENT_THUMBNAIL_IMG,
+			   E.EVENT_CONTENT
+		FROM (SELECT F_ID, BOARD_ID, U_ID FROM FAVORITE WHERE U_ID = #{uId}) F
+				 JOIN (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
+				 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+			LIMIT #{perPagePostNo}
+		OFFSET #{start}
+	</select>
+</mapper>

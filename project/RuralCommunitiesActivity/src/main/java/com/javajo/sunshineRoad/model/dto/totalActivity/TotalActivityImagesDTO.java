@@ -13,6 +13,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class TotalActivityImagesDTO {
+    @JsonProperty
     private int aImgId;
 	@JsonProperty
     private String aImg1;

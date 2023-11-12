@@ -19,6 +19,8 @@ private final ReservationListDAO reservationListDAO;
 	
     private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 
+
+//    Oracle
 	@Override
 	public List<ResSummaryListDTO> getRequestPageReservitionList(int totalCount, int perPagePostCount, int requestPageNo) {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
@@ -41,4 +43,24 @@ private final ReservationListDAO reservationListDAO;
         return reservationListDAO.getRequestPageMyServiceReservitionList(aId, startPostNo, endPostNo);
     }
 
+
+//    MySQL
+//    @Override
+//    public List<ResSummaryListDTO> getRequestPageReservitionList(int totalCount, int perPagePostCount, int requestPageNo) {
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return reservationListDAO.getRequestPageReservationList(startPostNo - 1, perPagePostCount);
+//    }
+//    @Override
+//    public List<ResSummaryListDTO> getRequestPageMyReservitionList(int uId, int totalCount, int perPagePostCount, int requestPageNo) {
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return reservationListDAO.getRequestPageMyReservitionList(uId, startPostNo - 1, perPagePostCount);
+//    }
+//    @Override
+//    public List<ResSummaryListDTO> getRequestPageMyServiceReservitionList(int aId, int totalCount, int perPagePostCount, int requestPageNo) {
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return reservationListDAO.getRequestPageMyServiceReservitionList(aId, startPostNo - 1, perPagePostCount);
+//    }
 }

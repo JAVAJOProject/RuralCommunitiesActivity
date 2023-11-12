@@ -6,6 +6,8 @@ DROP TABLE IF EXISTS activity_info;
 DROP TABLE IF EXISTS activity_review;
 DROP TABLE IF EXISTS favorite;
 DROP TABLE IF EXISTS reservation;
+DROP TABLE IF EXISTS review_status;
+DROP TABLE IF EXISTS reservation_status;
 DROP TABLE IF EXISTS rec_activity_info;
 DROP TABLE IF EXISTS notice;
 DROP TABLE IF EXISTS rec_town_info;

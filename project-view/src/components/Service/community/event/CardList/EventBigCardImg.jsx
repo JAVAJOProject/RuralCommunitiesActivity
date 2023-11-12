@@ -3,6 +3,7 @@ import Favorites from '../../../common/Favorite/Favorites';
 import './EventBigCardImg.css';
 
 export default function EventBigCardImg({
+  on,
   imgSrc,
   favoritesNum,
   eventId,
@@ -12,10 +13,10 @@ export default function EventBigCardImg({
     <div className="eventBigCardImgBox">
       <img src={imgSrc} className="eventBigCardImg" />
       <Favorites
-        on={true}
-        postId={eventId}
-        postTypeId={postTypeId}
-        favoritesNum={favoritesNum}
+        on={on}
+        postId={+eventId}
+        postTypeId={+postTypeId}
+        favoritesNum={+favoritesNum}
         style={{
           position: 'absolute',
           left: '0.4rem',

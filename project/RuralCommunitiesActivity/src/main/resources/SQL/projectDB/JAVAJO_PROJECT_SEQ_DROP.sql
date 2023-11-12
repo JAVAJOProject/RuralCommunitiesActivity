@@ -3,6 +3,7 @@ DROP  SEQUENCE activity_info_seq;
 DROP  SEQUENCE activity_review_seq;
 DROP  SEQUENCE favorite_seq;
 DROP  SEQUENCE reservation_seq;
+DROP  SEQUENCE reservation_status_seq;
 DROP  SEQUENCE rec_activity_info_seq;
 DROP  SEQUENCE notice_seq;
 DROP  SEQUENCE rec_town_info_seq;

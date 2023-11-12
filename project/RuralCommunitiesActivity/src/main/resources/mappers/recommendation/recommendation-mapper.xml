@@ -48,7 +48,7 @@
 			rec_a_keyword_id,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
@@ -62,7 +62,7 @@
 			rec_a_keyword_id,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
@@ -75,7 +75,7 @@
 			rec_a_keyword_id,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
@@ -93,7 +93,7 @@
 			A.rec_a_img_id,
 			A.rec_a_title,
 			A.rec_a_content,
-			A.rec_a_view_count,
+			A.rec_a_view_cnt,
 			A.rec_a_like_cnt,
 			B.sigungu_name,
 			C.sido_name,
@@ -199,7 +199,7 @@
 		WHERE rec_a_keyword_id = #{recAKeywordId}
 	</select>
 	<!-- 키워드 필터 -->
-	<select id="keywordFilter" resultType="RecActivity" parameterType="int">
+	<select id="keywordFilter" resultType="RecActivity">
 		SELECT
 			rec_a_post_id,
 			sigungu_id,
@@ -210,7 +210,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (SELECT
@@ -224,7 +224,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
@@ -239,7 +239,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
         FROM (
@@ -253,7 +253,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
@@ -284,7 +284,7 @@
 		WHERE sigungu_id = #{sigunguId}
 	</select>
 	<!-- 시군구별 추천 체험 -->
-	<select id="sigunguActivity" resultType="RecActivity" parameterType="int">
+	<select id="sigunguActivity" resultType="RecActivity">
 		SELECT
 			rec_a_post_id,
 			sigungu_id,
@@ -295,7 +295,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (SELECT
@@ -309,7 +309,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (
@@ -324,7 +324,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img	
         FROM (
@@ -338,7 +338,7 @@
 			rec_a_title,
 			rec_a_content,
 			rec_a_date_created,
-			rec_a_view_count,
+			rec_a_view_cnt,
 			rec_a_like_cnt,
 			rec_a_thumbnail_img
 		FROM rec_activity_info
@@ -355,12 +355,12 @@
 			mem_id, town_id, t_r_title, t_r_content, t_r_date_created)
 		VALUES (
 			town_report_seq.NEXTVAL,
-			#{tRImgId},
+			NULL,
 			#{memId},
 			#{townId},
 			#{tRTitle},
-			#{tRContent},
-			to_timestamp(#{tRDateCreated}, 'YYYY-MM-DD HH24:MI:SS')
+			TO_CLOB(#{tRContent}),
+			SYSTIMESTAMP
 		)
 	</insert>
 	
@@ -410,4 +410,26 @@
         WHERE
             rec_town_img_id = #{recTownImgId}
     </select>
+
+
+
+
+	<select id="getTownInfoBySigunguIdAndTownName" parameterType="RegionTownInfo" resultType="RegionTownInfo">
+		SELECT town_id, sigungu_id, town_name
+		FROM region_town
+		WHERE sigungu_id = #{sigunguId}
+		  AND #{townName}
+	</select>
+
+	<insert id="createRegionTownInfo" parameterType="RegionTownInfo">
+		INSERT INTO region_town
+		VALUES (region_town_seq.NEXTVAL, #{sigunguId}, #{townName})
+	</insert>
+
+	<select id="getSellerInfoByRecAId" parameterType="int" resultType="RecActSellerInfo">
+		SELECT s.s_id, s.s_tel, s.s_addr, info.s_site, info.a_id
+		FROM seller s
+				 JOIN activity_info INFO ON (s.s_id = info.s_id)
+		WHERE info.a_id = #{recAId}
+	</select>
 </mapper>

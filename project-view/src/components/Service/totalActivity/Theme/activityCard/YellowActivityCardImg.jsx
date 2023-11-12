@@ -2,12 +2,15 @@ import React from "react";
 import "./YellowActivityCardImg.css";
 import Favorites from "../../../common/Favorite/Favorites";
 
-export default function YellowActivityCardImg({ imgSrc, favoritesNum }) {
+export default function YellowActivityCardImg({ imgSrc, on, postId, postTypeId, favoritesNum }) {
   return (
     <div className="yellowActivityCardImg">
       <img src={imgSrc} alt="" />
       <Favorites
-        favoritesNum={favoritesNum}
+        on={on}
+        postId={+postId}
+        postTypeId={+postTypeId}
+        favoritesNum={+favoritesNum}
         style={{
           position: "absolute",
           bottom: "1rem",

@@ -58,9 +58,19 @@ CREATE TABLE reservation (
  a_id INT NOT NULL,
  u_id INT NOT NULL,
  reservation_headcount INT NOT NULL,
- review_status INT NOT NULL,
- reservation_status VARCHAR(20) NOT NULL,
- reservation_date DATE NOT NULL
+ review_status INT DEFAULT 0 NOT NULL,
+ reservation_status VARCHAR(20) DEFAULT '예약대기' NOT NULL,
+ reservation_date TIMESTAMP NOT NULL
+);
+
+CREATE TABLE review_status (
+ review_status INT NOT NULL PRIMARY KEY,
+ review_status_name VARCHAR(100)
+);
+
+CREATE TABLE reservation_status (
+                             reservation_status_id   INT   NOT NULL  PRIMARY KEY AUTO_INCREMENT,
+                             reservation_status   VARCHAR(20)  NOT NULL
 );
 
 CREATE TABLE rec_activity_info (
@@ -189,6 +199,7 @@ CREATE TABLE member_type (
 CREATE TABLE activity_post (
  a_post_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  a_id INT NOT NULL,
+ post_type_id INT DEFAULT 1 NOT NULL,
  a_img_id INT NOT NULL,
  a_post_content TEXT NOT NULL,
  a_view_cnt INT DEFAULT 0 NOT NULL,
@@ -275,14 +286,14 @@ CREATE TABLE seller_community (
 
 CREATE TABLE payment_info (
  payment_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
- payment_status_id INT NOT NULL,
+ payment_status_id INT DEFAULT 1 NOT NULL,
  payment_amount INT NOT NULL,
  payment_deadline TIMESTAMP NOT NULL
 );
 
 CREATE TABLE payment_status (
  payment_status_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
- payment_status INT NOT NULL
+ payment_status VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE behavior_info (
@@ -364,7 +375,7 @@ CREATE TABLE admin_authority (
 
 CREATE TABLE inquiry (
  inquiry_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
- inquiry_status_id INT NOT NULL,
+ inquiry_status_id INT DEFAULT 1 NOT NULL,
  inquiry_type_id INT NOT NULL,
  mem_id INT NOT NULL,
  inquiry_title VARCHAR(100) NOT NULL,

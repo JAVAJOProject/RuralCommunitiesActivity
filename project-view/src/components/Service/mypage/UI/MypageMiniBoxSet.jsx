@@ -16,10 +16,10 @@ export default function MypageMiniBoxSet({
   return (
     <div className="mypageMiniBoxSet">
       {(favoriteNum === 0 || favoriteNum) && (
-        <Favorites favoritesNum={+favoriteNum} style={{ fontFamily: "Jua" }} />
+        <Favorites on={on} postId={+postId} postTypeId={+postTypeId} favoritesNum={+favoriteNum} style={{ fontFamily: "Jua" }} />
       )}
       {(likesNum === 0 || likesNum) && (
-        <Likes likesNum={+likesNum} style={{ fontFamily: "Jua" }} />
+        <Likes on={on} postId={+postId} postTypeId={+postTypeId} likesNum={+likesNum} style={{ fontFamily: "Jua" }} />
       )}
       <Viewings viewings={+viewingsNum} style={{ fontFamily: "Jua" }} />
     </div>

@@ -4,7 +4,7 @@ import MypageMemberEventList from "./MypageMemberEventList";
 import MypageMemberEventBtn from "./MypageMemberEventBtn";
 
 export default function MypageMemberEventContents({ cardContents, contents }) {
-  const [paticipateDate, place, deadline, applyResult] = cardContents;
+  const [participateDate, place, deadline, applyResult] = cardContents;
   const {
     eventName,
     eventStartDate,
@@ -22,7 +22,7 @@ export default function MypageMemberEventContents({ cardContents, contents }) {
         <div>
           <MypageMemberEventList
             type="date"
-            title={paticipateDate}
+            title={participateDate}
             content={eventStartDate}
           />
           <MypageMemberEventList title={place} content={eventAddr} />

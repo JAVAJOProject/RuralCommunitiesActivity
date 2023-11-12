@@ -26,17 +26,13 @@ public interface InquiryService {
   //public List<InquiryInfoDTO> searchInquiry(int searchingTypeId, String keyword);
 	
 	//문의글 '전체'로 검색
-	public List<InquiryInfoDTO> searchInquiryAll(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword);
+	public List<InquiryInfoDTO> searchInquiryAll(int totalCount, int perPagePostCount, int requestPageNo, String keyword);
 	
 	//문의글 '제목'으로 검색
-	public List<InquiryInfoDTO> searchInquiryByTitle(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword);
+	public List<InquiryInfoDTO> searchInquiryByTitle(int totalCount, int perPagePostCount, int requestPageNo, String keyword);
 	
 	//문의글 '내용'으로 검색
-	public List<InquiryInfoDTO> searchInquiryByContent(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId,String keyword);
-	
-	//문의글 검색 후 페이지 처리
-	public List<InquiryInfoDTO> getRequestPageSearchInquiryList(int totalCount, int perPagePostCount, int requestPageNo, int searchingTypeId, String keyword);
-	
+	public List<InquiryInfoDTO> searchInquiryByContent(int totalCount, int perPagePostCount, int requestPageNo, String keyword);
 	
 	//문의글 전체 개수
 	public int getSearchInquiryAllCount(String keyword);
@@ -47,7 +43,9 @@ public interface InquiryService {
 	//문의글 내용 개수
 	public int getSearchInquiryContentCount(String keyword);
 
+	//내가 쓴 글 개수
+	public int getMyInquiryCount(int memId);
 	//내가 쓴 글 보기
-	public List<InquiryInfoDTO> getMyInquiryDetail(int memId);
+	public List<InquiryInfoDTO> getMyInquiryDetail(int totalCount, int perPagePostCount, int requestPageNo, int memId);
 
 }

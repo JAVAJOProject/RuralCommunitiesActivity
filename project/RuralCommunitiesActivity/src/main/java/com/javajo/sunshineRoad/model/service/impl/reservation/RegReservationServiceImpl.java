@@ -16,6 +16,10 @@ public class RegReservationServiceImpl implements RegReservationService {
     public int addReservation(ReservationContentDTO reservationContentDTO) {
         int success = 0;
 
+        regReservationDAO.addPaymentData(reservationContentDTO);
+        int paymentId = regReservationDAO.getPaymentId();
+        reservationContentDTO.setPaymentId(paymentId);
+
         success = regReservationDAO.addReservation(reservationContentDTO);
 
         if (success < 1) {

@@ -14,7 +14,7 @@ export default function MiniBox({
   const classes = [className, 'miniBox'].join(' ');
 
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={style} onClick={(e)=>{e.stopPropagation()}}>
       <img
         onClick={onClick}
         className={imgClassName}

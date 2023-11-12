@@ -20,15 +20,6 @@ public class MypageEventDAO {
 	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
-	// 이벤트 참여 내역
-	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		System.out.println("uId" + uId);
-		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
-		return eventmapper.selectByMember(uId, start, end);
-	}
-
 	public int cancelEvent(int reportId) {
 		System.out.println("reportId" + reportId);
 		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
@@ -59,10 +50,32 @@ public class MypageEventDAO {
 //		return eventmapper.selectByNo(eventId);
 //	}
 
-	
+
 	public List<MypageEventDTO> getInfo(int eventId) {
 		System.out.println("eventId" + eventId);
 		 MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
 		return eventmapper.selectByNo(eventId);
 	}
+
+
+
+	// 이벤트 참여 내역
+//	Oracle
+	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		System.out.println("uId" + uId);
+		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+		return eventmapper.selectByMember(uId, start, end);
+	}
+
+
+//	MySQL
+//	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		System.out.println("uId" + uId);
+//		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+//		return eventmapper.selectByMember(uId, start - 1, perPagePostNo);
+//	}
 }

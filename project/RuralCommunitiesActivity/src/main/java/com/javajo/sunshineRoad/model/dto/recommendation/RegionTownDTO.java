@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.ibatis.type.Alias;
 
+@Alias("RegionTownInfo")
 @Builder
 @Getter
 @Setter

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberCommunityMapper">
+
+<!--	MySQL-->
+	<select id="selectCount" parameterType="int" resultType="int">
+		SELECT COUNT(*)
+		FROM MEMBER_COMMUNITY
+		WHERE U_ID = #{uId}
+	</select>
+
+	<select id="selectByNo" parameterType="int"
+		resultType="MypageMemberCommunityDTO">
+		SELECT U_COMMUNITY_POST_ID,
+			   U_ID,
+			   POST_TYPE_ID,
+			   U_COMMUNITY_CONTENT,
+			   U_COMMUNITY_DATE_CREATED,
+			   COMMUNITY_LIKE_CNT,
+			   COMMUNITY_VIEW_CNT,
+			   COMMUNITY_CUM_CNT
+		FROM MEMBER_COMMUNITY
+		WHERE U_ID = #{uId}
+		ORDER BY U_COMMUNITY_DATE_CREATED DESC
+			LIMIT #{perPagePostNo}
+		OFFSET #{start}
+	</select>
+
+	<resultMap id="MemberCommunityPostForClob"
+		type="MemberCommunityPost">
+		<result property="uCommunityPostId" column="u_community_post_id" />
+		<result property="uId" column="u_id" />
+		<result property="uCommunityContent"
+			column="u_community_content" jdbcType="CLOB"
+			javaType="java.lang.String" />
+		<result property="uCommunityDateCreated"
+			column="u_community_date_created" />
+		<result property="communityFavoriteCnt"
+			column="community_favorite_cnt" />
+		<result property="communityViewCnt" column="community_view_cnt" />
+		<result property="communityCumCnt"
+			column="community_cum_cnt" />
+	</resultMap>
+
+	<!-- MySQL -->
+<select id="getListInfo" resultMap="MemberCommunityPostForClob" parameterType="int">
+	SELECT post.u_community_post_id,
+		   post.u_id,
+		   post.u_community_content,
+		   post.u_community_date_created,
+		   post.community_favorite_cnt,
+		   post.community_view_cnt,
+		   post.community_cum_cnt
+	FROM member_community post
+			 INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
+	WHERE u_community_post_id > #{postId}
+	ORDER BY post.u_community_date_created DESC LIMIT 10
+</select>
+
+<!--게시물 정보 -->
+	<select id="getOneRequestMemberCommunityPost"
+		resultMap="MemberCommunityPostForClob" parameterType="int">
+		SELECT u_community_post_id,
+			   u_id,
+			   u_community_content,
+			   u_community_date_created,
+			   community_favorite_cnt,
+			   community_view_cnt,
+			   community_cum_cnt
+		FROM member_community
+		WHERE u_community_post_id = #{postId}
+	</select>
+</mapper>

@@ -27,16 +27,17 @@ export default function EventBigCard({ contents }) {
       }}
     >
       <EventBigCardImg
+        on={false}
         imgSrc={eventThumbnailImg}
-        favoritesNum={eventFavoriteCnt}
-        eventId={eventId}
-        postTypeId={postTypeId}
+        favoritesNum={+eventFavoriteCnt}
+        eventId={+eventId}
+        postTypeId={+postTypeId}
       />
       <EventBigCardText
         eventTitle={eventName}
         eventContents={rest}
         type={eventRecruitTypeId}
-        eventId={eventId}
+        eventId={+eventId}
       />
     </div>
   );

@@ -10,7 +10,6 @@
 		COUNT(*) FROM MEMBER_COMMUNITY WHERE U_ID=#{uId}
 	</select>
 
-	<!-- -->
 	<select id="selectByNo" parameterType="int"
 		resultType="MypageMemberCommunityDTO">
 		SELECT
@@ -48,7 +47,6 @@
 	</resultMap>
 
 	<!-- Oracle -->
-	<!-- 아래 오라클 버전 커서 기반 페이징처리 되는지 확인해봐야 함 -->
 <select id="getListInfo" resultMap="MemberCommunityPostForClob" parameterType="int">
     SELECT
     post.u_community_post_id,
@@ -71,10 +69,10 @@
         INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
         WHERE u_community_post_id > #{postId} ORDER BY post.u_community_date_created DESC
     )
-    WHERE ROWNUM <![CDATA[<=]]>10
+    WHERE ROWNUM <![CDATA[<=]]> 10
 </select>
 
-<!--게시무ㄹ정보 -->
+<!--게시물 정보 -->
 	<select id="getOneRequestMemberCommunityPost"
 		resultMap="MemberCommunityPostForClob" parameterType="int">
 		SELECT

@@ -13,7 +13,7 @@ const contentType = {
   maxPeople: '인원',
 };
 
-export default function TextBar({ contents }) {
+export default function EventTextBar({ contents }) {
   const navigate = useNavigate();
   const {
     eventId,
@@ -24,6 +24,7 @@ export default function TextBar({ contents }) {
     eventRecruitStartDate,
     eventRecruitEndDate,
     eventMaxPeople,
+    eventFavoriteCnt
   } = contents;
 
   return (
@@ -35,7 +36,7 @@ export default function TextBar({ contents }) {
         });
       }}
     >
-      <OnlyFavoritesImg postId={eventId} postTypeId={postTypeId} />
+      <OnlyFavoritesImg on={false} postId={+eventId} postTypeId={+postTypeId} favoritesNum={+eventFavoriteCnt} />
       <EventTextBarImg imgSrc={eventThumbnailImg} />
       <EventTextTitle text={eventName} />
       <EventTextContent

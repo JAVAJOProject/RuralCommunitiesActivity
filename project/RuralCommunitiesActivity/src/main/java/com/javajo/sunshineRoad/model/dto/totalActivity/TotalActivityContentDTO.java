@@ -48,6 +48,7 @@ public class TotalActivityContentDTO {
 	private String aReservationDeadline;
 	@JsonProperty
 	private int aPostId;
+	private int postTypeId;
 	@JsonProperty
 	private int aImgId;
 	@JsonProperty

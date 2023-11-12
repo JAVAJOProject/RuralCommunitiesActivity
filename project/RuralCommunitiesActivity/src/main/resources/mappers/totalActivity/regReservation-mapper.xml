@@ -25,10 +25,17 @@
 		VALUES (
 		reservation_seq.NEXTVAL,
 		#{paymentId}, #{aId}, #{uId},
-		#{reservationHeadcount}, #{reviewStatus}, #{reservationStatus},
+		#{reservationHeadcount}, DEFAULT, DEFAULT,
 		TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS')
 		)
 	</insert>
+
+	<insert id="addPaymentData" parameterType="ReservationContent">
+		INSERT INTO payment_info VALUES (payment_info_seq.NEXTVAL, DEFAULT, #{paymentAmount}, SYSDATE + 7)
+	</insert>
+	<select id="getPaymentId" resultType="int">
+		SELECT MAX(payment_id) FROM payment_info
+	</select>
 	
 	<update id="updateReservationData"
 		parameterType="ReservationContent">

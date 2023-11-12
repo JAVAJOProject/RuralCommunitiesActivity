@@ -54,13 +54,13 @@
 		resultType="int">
 		SELECT
 		COUNT(*)
-		FROM (SELECT U_ID, ACT_CUS_CNT FROM
-		ACTIVITY_CUSTOMER_1 WHERE A_POST_ID = #{POSTID}) A
+		FROM (SELECT * FROM
+		ACTIVITY_CUSTOMER_1 WHERE A_ID = #{postId}) A
 		JOIN MEMBER M ON
 		(A.U_ID = M.U_ID)
 		JOIN RESERVATION R ON (R.U_ID = M.U_ID)
 		WHERE R.A_ID =
-		${POSTID}
+		#{postId}
 	</select>
 
 	<!-- 체험 게시글에서 멤버 정보 가져오기 -->

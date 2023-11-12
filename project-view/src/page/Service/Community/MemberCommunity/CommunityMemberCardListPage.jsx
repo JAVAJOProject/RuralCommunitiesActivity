@@ -3,13 +3,13 @@ import { useImmer } from 'use-immer';
 
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
 import CommunityPickImages from '../../../../components/Service/community/community/pickImg/CommunityPickImages';
+import CommunityMemberCard from '../../../../components/Service/community/memberCommunity/CommunityMemberCard';
 import CommunityPageBtn from '../../../../components/Service/community/community/buttons/CommunityPageBtn';
 import CommunityWritingBtn from '../../../../components/Service/community/community/buttons/CommunityWritingBtn';
 
 import noteImg from '../../../../view_img/Service/community/community/note.svg';
 import pickYellow from '../../../../view_img/Service/community/community/communityYellow.png';
 import pickGreen from '../../../../view_img/Service/community/community/communityGreen.png';
-import CommunityMemberCard from '../../../../components/Service/community/memberCommunity/CommunityMemberCard';
 
 const defaultContents = {
   pickImages: {

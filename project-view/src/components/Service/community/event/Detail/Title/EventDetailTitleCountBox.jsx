@@ -6,7 +6,8 @@ import Likes from "../../../../common/Like/Likes";
 import Viewings from "../../../../common/Viewings";
 
 export default function EventDetailTitleCountBox({
-  eventId,
+  on,
+  postId,
   postTypeId,
   favoritesNum,
   likesNum,
@@ -16,22 +17,24 @@ export default function EventDetailTitleCountBox({
     <div className="eventDetailTitleCountBox">
       {(favoritesNum === 0 || favoritesNum) && (
         <Favorites
-          favoritesNum={favoritesNum}
-          postId={eventId}
-          postTypeId={postTypeId}
+          on={on}
+          postId={+postId}
+          postTypeId={+postTypeId}
+          favoritesNum={+favoritesNum}
           style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
         />
       )}
       {(likesNum === 0 || likesNum) && (
         <Likes
-          likesNum={likesNum}
-          postId={eventId}
-          postTypeId={postTypeId}
+          on={on}
+          postId={+postId}
+          postTypeId={+postTypeId}
+          likesNum={+likesNum}
           style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
         />
       )}
       <Viewings
-        viewings={viewNum}
+        viewings={+viewNum}
         style={{ fontFamily: "SUITE Variable", fontSize: "0.9375rem" }}
       />
     </div>

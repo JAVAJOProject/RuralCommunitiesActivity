@@ -40,11 +40,7 @@ public class NoticeDAO {
 		NoticeMapper noticeMapper = sqlSession.getMapper(NoticeMapper.class);
 		List<NoticeListInfoDTO> result =  noticeMapper.getRequestPageNoticeListList(startPostNo, endPostNo, noticeTypeId);
 		System.out.println(result.get(noticeTypeId));
-		System.out.println("나왔니");
 		return result;
-		
-		
-		
 	}
 	public NoticeListInfoDTO getNoticeDetail(int noticeId) {
 		System.out.println("getNoticeDetail");
