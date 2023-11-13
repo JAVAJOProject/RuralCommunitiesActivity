@@ -2,6 +2,7 @@ package com.javajo.sunshineRoad.controller.mypageMember;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,6 +69,15 @@ public class MypageFavoriteController {
 
 
 
+	@GetMapping("/favorite/list/event/total-count")
+	public List<Integer> getEventTotalCount() {
+		int uId = 1;
+
+		int perPagePostNo = 6;
+		int totalCount = favoriteService.getActivityCountEvent(uId);
+
+		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, totalCount));
+	}
 	//페이징처리
 	@GetMapping("/favorite/list/event/{currentPage}")
 	public List<MypageFavoriteDTO> getInfoEvent(
@@ -103,6 +113,27 @@ public class MypageFavoriteController {
 	}
 
 
+	@GetMapping("/favorite/list/activity/total-count")
+	public List<Integer> getActivityTotalCount() {
+		int uId = 1;
+
+		int perPagePostNo = 6;
+		int totalCount = favoriteService.getActivityCountActivity(uId);
+
+		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, totalCount));
+	}
+	// 체험 페이징처리
+	@GetMapping("/favorite/list/activity/{currentPage}")
+	public List<MypageFavoriteDTO> getInfoActivity(
+			@PathVariable int currentPage /* @SessionAttribute("loginMember") MypageMemberDTO member */) {
+		int uId = 1;
+//			int uId = member.getUId();
+		System.out.println("favoriteActivity " + uId);
+		int favoriteCount = favoriteService.getActivityCountActivity(uId);
+		PageInfo pageInfo = new PageInfo(currentPage, 5, favoriteCount, 6);
+		List<MypageFavoriteDTO> favoriteMember = favoriteService.getInfoActivity(uId, pageInfo);
+		return favoriteMember;
+	}
 
 
 	// 찜 이미지 처리

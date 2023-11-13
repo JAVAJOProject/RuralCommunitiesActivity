@@ -11,4 +11,14 @@ public interface MypageFavoriteService {
 	public int getActivityCountEvent(int uId);
 
 	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo);
+
+	public int getActivityCountActivity(int uId);
+
+	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo);
+
+//	public List<MypageFavoriteDTO> getListInfoActivity(int uId, PageInfo pageInfo);
+//
+//	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo);
+//
+//	public MypageFavoriteDTO getActivityCountActivity(int uId);
 }

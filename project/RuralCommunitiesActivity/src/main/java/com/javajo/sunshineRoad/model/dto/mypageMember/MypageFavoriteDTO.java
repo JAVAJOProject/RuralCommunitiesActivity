@@ -42,6 +42,6 @@ public class MypageFavoriteDTO {
 	@JsonProperty
 	private String aThumbnailImg;
 
-	private MypageActivityInfoDTO activityInfo;
-	private MypageEventDTO mypageEvent;
+//	private MypageActivityInfoDTO activityInfo;
+//	private MypageEventDTO mypageEvent;
 }

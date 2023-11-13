@@ -69,6 +69,29 @@
 			LIMIT #{perPagePostNo}
 		OFFSET #{start}
 	</select>
+	<select id="selectByFavoriteListActivity" parameterType="int"
+			resultMap="favoriteByMember">
+		SELECT F.F_ID,
+			   F.U_ID,
+			   F.BOARD_ID,
+			   A.A_ID,
+			   A.A_ADDR,
+			   A.A_NAME,
+			   A.A_THUMBNAIL_IMG,
+			   A.A_ONE_LINER
+		FROM (SELECT F_ID, BOARD_ID, U_ID
+			  FROM FAVORITE
+			  WHERE U_ID = #{uId}) F
+				 JOIN (SELECT *
+					   FROM BOARD_LIST
+					   WHERE POST_TYPE_ID =
+							 1) B ON (F.BOARD_ID =
+									  B.BOARD_ID)
+				 LEFT JOIN ACTIVITY_INFO A ON
+			(B.BOARD_ID = A.A_ID)
+						  LIMIT #{perPagePostNo}
+		OFFSET #{start}
+	</select>
 
 	<select id="selectByMemberEvent" parameterType="int"
 			resultMap="favoriteByMember">
@@ -83,6 +106,28 @@
 		FROM (SELECT F_ID, BOARD_ID, U_ID FROM FAVORITE WHERE U_ID = #{uId}) F
 				 JOIN (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
 				 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+			LIMIT #{perPagePostNo}
+		OFFSET #{start}
+	</select>
+	<select id="selectByActivity" parameterType="int"
+			resultMap="favoriteByMember">
+		SELECT F.F_ID,
+			   F.U_ID,
+			   F.BOARD_ID,
+			   E.EVENT_ID,
+			   E.EVENT_ADDR,
+			   E.EVENT_NAME,
+			   E.EVENT_THUMBNAIL_IMG,
+			   E.EVENT_CONTENT
+		FROM (SELECT F_ID, BOARD_ID, U_ID
+			  FROM FAVORITE
+			  WHERE U_ID = #{uId}) F
+				 JOIN (SELECT *
+					   FROM BOARD_LIST
+					   WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID =
+													 B.BOARD_ID)
+				 LEFT JOIN EVENT E
+						   ON (B.EVENT_ID = E.EVENT_ID)
 			LIMIT #{perPagePostNo}
 		OFFSET #{start}
 	</select>

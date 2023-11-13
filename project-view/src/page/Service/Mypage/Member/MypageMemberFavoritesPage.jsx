@@ -7,8 +7,6 @@ import favoritesEventImg from '../../../../view_img/Service/myPage/experiencer/f
 
 import testImg from '../../../../view_img/Service/mainPage/testImg/totalActivityTest1.jpg';
 import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
-import PageNoBox from '../../../../components/Service/common/PageNo/PageNoBox';
-import titleImg from '../../../../view_img/Service/myPage/experiencer/event.jpg';
 import { useImmer } from 'use-immer';
 
 const defaultContents = {
@@ -24,45 +22,6 @@ const defaultContents = {
   },
 };
 
-const testContents = [
-  {
-    postId: 1,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-  {
-    postId: 2,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-  {
-    postId: 3,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-  {
-    postId: 4,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-  {
-    postId: 5,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-  {
-    postId: 6,
-    thumbnailImg: testImg,
-    postTitle: '체험 이름',
-    oneLiner: '체험 한줄 소개 체험 한줄 소개 체험 한줄 소개',
-  },
-];
-
 export default function MypageMemberFavoritesPage() {
   const [requestPageNoActivity, setRequestPageNoActivity] = useState(1);
   const [totalPageNoActivity, setTotalPageNoActivity] = useState(1);
@@ -70,7 +29,39 @@ export default function MypageMemberFavoritesPage() {
   const [totalPageNoEvent, setTotalPageNoEvent] = useState(1);
 
   const [favoriteEvent, updateFavoriteEvent] = useImmer([]);
+  const [favoriteActivity, updateFavoriteActivity] = useImmer([]);
   const { activityTitle, eventTitle } = defaultContents;
+
+  async function fetchActivityContents() {
+    try {
+      const favoriteActivityData = await fetchDataGET(
+        `/mypage/member/favorite/list/activity/${requestPageNoActivity}`
+      );
+      const favoriteActivityImg = await fetchImgGET(
+        favoriteActivityData,
+        'aId',
+        '/main/total-activity-image'
+      );
+      updateFavoriteActivity((draft) => {
+        draft.length = 0;
+        favoriteActivityData.forEach((item, index) => {
+          draft.push({
+            ...item,
+            postId: item.aId,
+            postTitle: item.aName,
+            oneLiner: item.aOneLiner,
+            thumbnailImg: favoriteActivityImg[index],
+          });
+        });
+      });
+      const [perPagePostCountActivity, totalPostNoActivity] = await fetchDataGET("/mypage/member/favorite/list/activity/total-count");
+      setTotalPageNoActivity(
+        Math.ceil(+totalPostNoActivity / +perPagePostCountActivity)
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function fetchEventContents() {
     try {
@@ -80,7 +71,7 @@ export default function MypageMemberFavoritesPage() {
       const favoriteEventImg = await fetchImgGET(
         favoriteEventData,
         'eventId',
-        `/main/event-image`
+        '/main/event-image'
       );
       updateFavoriteEvent((draft) => {
         draft.length = 0;
@@ -94,8 +85,7 @@ export default function MypageMemberFavoritesPage() {
           });
         });
       });
-      // const [perPagePostCountEvent, totalPostNoEvent] = fetchDataGET("/mypage/member/favorites/total-page");
-      const [perPagePostCountEvent, totalPostNoEvent] = [6, 9];
+      const [perPagePostCountEvent, totalPostNoEvent] = await fetchDataGET("/mypage/member/favorite/list/event/total-count");
       setTotalPageNoEvent(
         Math.ceil(+totalPostNoEvent / +perPagePostCountEvent)
       );
@@ -104,6 +94,9 @@ export default function MypageMemberFavoritesPage() {
     }
   }
   useEffect(() => {
+    fetchActivityContents();
+  }, [requestPageNoActivity]);
+  useEffect(() => {
     fetchEventContents();
   }, [requestPageNoEvent]);
 
@@ -111,7 +104,7 @@ export default function MypageMemberFavoritesPage() {
     <main className="appMain">
       <MypageMemberFavoritesTypeSet
         defaultContents={activityTitle}
-        dbContents={testContents}
+        dbContents={favoriteActivity}
         requestPageNo={requestPageNoActivity}
         totalPageNo={totalPageNoActivity}
         handleRequestPageNo={setRequestPageNoActivity}

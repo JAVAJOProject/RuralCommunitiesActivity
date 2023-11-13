@@ -41,6 +41,13 @@ public class MypageFavoriteDAO {
 		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
 		return favoritemapper.selectByFavoriteListEvent(uId, start, end);
 	}
+	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo) {
+		System.out.println("FavoriteDAO " + uId);
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+		return favoritemapper.selectByFavoriteListActivity(uId, start, end);
+	}
 
 
 //	MySQL
@@ -59,5 +66,13 @@ public class MypageFavoriteDAO {
 //
 //		MypageFavoriteMapper favoriteMapper = sqlSession.getMapper(MypageFavoriteMapper.class);
 //		return favoriteMapper.selectByFavoriteListEvent(uId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo) {
+//		System.out.println("FavoriteDAO " + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+//		return favoritemapper.selectByFavoriteListActivity(uId, start - 1, perPagePostNo);
 //	}
 }

@@ -31,4 +31,29 @@ public class MypageFavoriteImpl implements MypageFavoriteService {
 	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo) {
 		return favoriteDAO.getListInfoEvent(uId, pageInfo);
 	}
+
+	@Override
+	public int getActivityCountActivity(int uId) {
+		return favoriteDAO.getActivityCountEvent(uId);
+	}
+
+	@Override
+	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo) {
+		return favoriteDAO.getInfoActivity(uId, pageInfo);
+	}
+
+//	@Override
+//	public List<MypageFavoriteDTO> getListInfoActivity(int uId, PageInfo pageInfo) {
+//		return favoriteDAO.getListInfoEvent(uId, pageInfo);
+//	}
+//
+//	@Override
+//	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo) {
+//		return favoriteDAO.getInfoActivity(uId, pageInfo);
+//	}
+//
+//	@Override
+//	public MypageFavoriteDTO getActivityCountActivity(int uId) {
+//		return favoriteDAO.getActivityCountActivity(uId);
+//	}
 }
