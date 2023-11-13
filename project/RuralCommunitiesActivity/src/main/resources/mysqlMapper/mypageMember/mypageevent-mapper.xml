@@ -55,7 +55,7 @@
 			resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT *
-			  FROM EVENT_WINNER_1
+			  FROM EVENT_WINNER
 			  WHERE U_ID = #{uId}) W
 				 JOIN
 			 EVENT_PROGRESS_STATUS S
@@ -76,7 +76,7 @@
 			   E.EVENT_RECRUIT_END_DATE,
 			   E.EVENT_START_DATE
 		FROM (SELECT *
-			  FROM EVENT_WINNER_1
+			  FROM EVENT_WINNER
 			  WHERE U_ID = #{uId}) W
 				 JOIN EVENT_PROGRESS_STATUS S ON (W.EVENT_PROGRESS_STATUS_ID = S.EVENT_PROGRESS_STATUS_ID)
 				 JOIN EVENT E ON (W.EVENT_ID = E.EVENT_ID)
@@ -92,7 +92,7 @@
 	</select>
 
 	<update id="updateByCancel" parameterType="int">
-		UPDATE EVENT_WINNER_1
+		UPDATE EVENT_WINNER
 		SET EVENT_PROGRESS_STATUS_ID = 6
 		WHERE EVENT_REPORT_ID = #{reportId}
 	</update>
@@ -100,13 +100,13 @@
 	<select id="selectReportByNo" parameterType="int"
 			resultType="EventWinner">
 		SELECT *
-		FROM EVENT_WINNER_1
+		FROM EVENT_WINNER
 		WHERE event_report_id =
 			  #{reportId}
 	</select>
 
 	<update id="modifyEvent" parameterType="EventWinner">
-		UPDATE EVENT_WINNER_1
+		UPDATE EVENT_WINNER
 		SET EVENT_STORY = #{eventStory}
 		WHERE EVENT_REPORT_ID = #{eventReportId}
 	</update>

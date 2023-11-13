@@ -151,7 +151,7 @@
     </select>
 
     <insert id="postEventStoryRequest" parameterType="EventStory">
-        INSERT INTO event_winner_${eventId}
+        INSERT INTO event_winner
         VALUES (NULL, #{uId}, #{eventId}, #{eventProgressStatusId}, #{eventStory})
     </insert>
 

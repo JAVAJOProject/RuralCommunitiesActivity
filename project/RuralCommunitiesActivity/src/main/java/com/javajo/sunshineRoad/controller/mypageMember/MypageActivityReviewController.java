@@ -58,25 +58,26 @@ public class MypageActivityReviewController {
 	}
 
 	// 후기쓰러가기 누르면 가는 페이지 -> 게시글 번호 필요
-	@GetMapping("/activity/write/{postId}")
-	public String writeRev(@PathVariable int postId) {
-		System.out.println("postId" + postId);
-		return "";
-	}
+//	@GetMapping("/activity/write/{postId}")
+//	public String writeRev(@PathVariable int postId) {
+//		System.out.println("postId" + postId);
+//		return "";
+//	}
 
 	// 후기 작성하기 누르면 폼 내용 받는 -> 게시글 번호, 멤버번호(작성자) 필요
-	@PostMapping("/activity/write/{postId}")
-	public int writeRev(@PathVariable int postId, @RequestParam("rContent") String rContent
+	@PostMapping("/activity/write/{reservationId}")
+	public int writeRev(@PathVariable int reservationId, MypageActivityReviewDTO review
 			/*@SessionAttribute("loginMember") MemberDTO member*/) {
-		System.out.println("rContent" + rContent);
+		System.out.println("rContent" + review.getRContent());
 //		int uId = member.getUId();
 		int uId = 1;
-		MypageActivityReviewDTO rev = MypageActivityReviewDTO.builder().rContent(rContent).uId(uId).aPostId(postId).rStarRating(5).rTitle("제목").build();
+		review.setUId(uId);
+		review.setReservationId(reservationId);
 		/*
 		 * 아래와 같은 코드 ActivityReviewDTO rev = new ActivityReviewDTO();
 		 * rev.setRContent(rContent); rev.setUid(uId);
 		 */
-		aReviewService.writeRev(rev);
+		aReviewService.writeRev(review);
 		return 1;
 	}
 
@@ -101,11 +102,12 @@ public class MypageActivityReviewController {
 	}
 	
 	@DeleteMapping("/cancel/{revId}")
-	public ResponseEntity<String> cancelReview(@PathVariable int revId) {
+	public ResponseEntity<String> cancelReview(@PathVariable int revId, @RequestParam int reservationId) {
 	    // 여기에서 예약 취소 로직을 수행
 	    // 취소가 성공적으로 이루어졌다고 가정하고 메시지를 반환
 		String message;
-		if(aReviewService.cancel(revId) == 1) {
+		int result = aReviewService.cancel(revId, reservationId);
+		if(result == 1) {
 			message = "삭제하였습니다.";
 		} else {
 			message = "삭제에 실패하였습니다.";

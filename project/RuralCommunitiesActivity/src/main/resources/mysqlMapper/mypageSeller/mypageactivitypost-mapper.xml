@@ -51,7 +51,7 @@
 			resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT *
-			  FROM ACTIVITY_CUSTOMER_1
+			  FROM ACTIVITY_CUSTOMER
 			  WHERE A_ID = #{postId}) A
 				 JOIN MEMBER M ON
 			(A.U_ID = M.U_ID)
@@ -70,7 +70,7 @@
 			R.RESERVATION_STATUS
 		FROM
 			(SELECT * FROM
-				ACTIVITY_CUSTOMER_1 WHERE A_ID = #{postId}) A
+				ACTIVITY_CUSTOMER WHERE A_ID = #{postId}) A
 				JOIN MEMBER M ON (A.U_ID = M.U_ID)
 				JOIN RESERVATION R ON (R.U_ID = M.U_ID)
 		WHERE R.A_ID = #{postId}

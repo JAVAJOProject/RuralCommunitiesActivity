@@ -46,6 +46,9 @@
 		VALUES(ACTIVITY_REVIEW_SEQ.NEXTVAL, #{uId}, #{aPostId}, SYSDATE,
 			   #{rContent}, #{rStarRating}, #{rTitle})
 	</select>
+	<update id="updateRevStatus" parameterType="int">
+		UPDATE reservation SET review_status = 1 WHERE reservation_id = #{reservationId}
+	</update>
 	<!-- # 으로 변경 해야함 -->
 
 	<update id="updateRev" parameterType="ActivityReviewDTO">
@@ -56,4 +59,7 @@
 	<delete id="deleteReview" parameterType="int">
 		DELETE FROM ACTIVITY_REVIEW WHERE REV_ID = ${revId}
 	</delete>
+	<update id="deleteRevStatus" parameterType="int">
+		UPDATE reservation SET review_status = 0 WHERE reservation_id = #{reservationId}
+	</update>
 </mapper>

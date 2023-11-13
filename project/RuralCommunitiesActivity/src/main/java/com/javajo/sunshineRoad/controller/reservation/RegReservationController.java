@@ -2,14 +2,8 @@ package com.javajo.sunshineRoad.controller.reservation;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 
 import com.javajo.sunshineRoad.model.dto.reservation.ReservationContentDTO;
 import com.javajo.sunshineRoad.model.service.IService.reservation.CheckReservationPeopleService;
@@ -34,6 +28,7 @@ public class RegReservationController {
         }
     }
 
+   @Transactional
    @PostMapping("/add")
    public ResponseEntity<String> addReservation(@RequestBody ReservationContentDTO reservationContentDTO) {
       try {
@@ -62,10 +57,12 @@ public class RegReservationController {
       }
    }
 
-   @DeleteMapping("/delete/{rId}")
-   public ResponseEntity<String> deleteReservation(@PathVariable int rId) {
+   @Transactional
+   @DeleteMapping("/delete")
+   public ResponseEntity<String> deleteReservation(@RequestParam int rId, @RequestParam int aPostId, @RequestParam int uId) {
       try {
-         int success = regReservationService.deleteReservation(rId);
+         ReservationContentDTO resContent = ReservationContentDTO.builder().reservationId(rId).aPostId(aPostId).uId(uId).build();
+         int success = regReservationService.deleteReservation(resContent);
          if (success == 1) {
             return ResponseEntity.ok("Delete successful");
          } else {

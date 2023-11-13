@@ -5,6 +5,7 @@ import com.javajo.sunshineRoad.model.dao.reservation.RegReservationDAO;
 import com.javajo.sunshineRoad.model.dto.reservation.ReservationContentDTO;
 import com.javajo.sunshineRoad.model.service.IService.reservation.RegReservationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -21,11 +22,12 @@ public class RegReservationServiceImpl implements RegReservationService {
         reservationContentDTO.setPaymentId(paymentId);
 
         success = regReservationDAO.addReservation(reservationContentDTO);
+        int result = regReservationDAO.addToActivityCustomerList(reservationContentDTO);
 
-        if (success < 1) {
+        if (success * result == 1) {
         	return success;
         }
-        return success;
+        return success * result;
     }
 
     @Override
@@ -39,16 +41,17 @@ public class RegReservationServiceImpl implements RegReservationService {
         }
         return success;
     }
-    
+
     @Override
-    public int deleteReservation(int rId) {
+    public int deleteReservation(ReservationContentDTO reservationContentDTO) {
     	int success = 0;
 
-        success = regReservationDAO.deleteReservation(rId);
+        success = regReservationDAO.deleteReservation(reservationContentDTO.getReservationId());
+        int result = regReservationDAO.deleteFromActivityCustomerList(reservationContentDTO);
   
-        if (success < 1) {
+        if (success * result == 1) {
             return success;
         }
-        return success;
+        return success * result;
     }
 }

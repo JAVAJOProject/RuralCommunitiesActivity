@@ -22,6 +22,7 @@ public class MypageActivityReviewDAO {
 		System.out.println("ActivityReviewDAO" + rev);
 		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
 		aReview.insertRev(rev);
+		aReview.updateRevStatus(rev.getReservationId());
 	}
 
 	public int updateRev(MypageActivityReviewDTO rev) {
@@ -36,9 +37,10 @@ public class MypageActivityReviewDAO {
 		return aReview.selectCount(uId);
 	}
 
-	public int cancel(int revId) {
+	public int cancel(int revId, int reservationId) {
 		System.out.println("revId" + revId);
 		MypageActivityReviewMapper aReview = sqlSession.getMapper(MypageActivityReviewMapper.class);
+		aReview.deleteRevStatus(reservationId);
 		return aReview.deleteReview(revId);
 	}
 

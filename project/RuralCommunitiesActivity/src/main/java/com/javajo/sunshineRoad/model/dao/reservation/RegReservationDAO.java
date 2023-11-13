@@ -25,6 +25,10 @@ public class RegReservationDAO {
         RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
         return mapper.addReservationData(reservationContentDTO);
     }
+	public int addToActivityCustomerList(ReservationContentDTO reservationContentDTO) {
+		RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
+		return mapper.addToActivityCustomerList(reservationContentDTO);
+	}
 	 public int updateReservation(ReservationContentDTO reservationContentDTO) {
 	        RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
 	        return mapper.updateReservationData(reservationContentDTO);
@@ -33,4 +37,8 @@ public class RegReservationDAO {
 	        RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
 	        return mapper.deleteReservationData(rId);
 	    }
+	public int deleteFromActivityCustomerList(ReservationContentDTO reservationContentDTO) {
+			RegReservationMapper mapper = sqlSession.getMapper(RegReservationMapper.class);
+			return mapper.deleteFromActivityCustomerList(reservationContentDTO);
+	}
 }

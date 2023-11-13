@@ -5,12 +5,7 @@ import java.util.List;
 
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.javajo.sunshineRoad.model.dto.mainPage.MainPageEventInfoDTO;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventDTO;
@@ -70,7 +65,7 @@ public class MypageEventController {
 	
 	//이벤트 사연 수정 페이지 가기
 	@GetMapping("/event/modify/{reportId}")
-	public MypageEventWinnerDTO getReport(@PathVariable int reportId ) {
+	public MypageEventWinnerDTO getReport(@PathVariable int reportId) {
 		System.out.println("reportId" + reportId);
 		MypageEventWinnerDTO selectEvent = eventService.getReport(reportId);
 		return selectEvent;

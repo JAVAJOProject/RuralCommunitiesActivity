@@ -46,8 +46,8 @@ public class MypageActivityReviewImpl implements MypageActivityReviewService {
 	}
 
 	@Override
-	public int cancel(int revId) {
-		return aReviewDAO.cancel(revId);
+	public int cancel(int revId, int reservationId) {
+		return aReviewDAO.cancel(revId, reservationId);
 	}
 
 	@Override

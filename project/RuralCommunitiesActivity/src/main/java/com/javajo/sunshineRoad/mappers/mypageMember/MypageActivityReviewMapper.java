@@ -9,12 +9,14 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageActivityReviewDTO;
 public interface MypageActivityReviewMapper {
 
 	public void insertRev(MypageActivityReviewDTO rev);
+	public void updateRevStatus(int reservationId);
 
 	public int updateRev(MypageActivityReviewDTO rev);
 
 	public int selectCount(int uId);
 
 	public int deleteReview(int revId);
+	public void deleteRevStatus(int reservationId);
 
 	public MypageActivityReviewDTO selectReview(int revId);
 

@@ -17,7 +17,7 @@ public interface MypageActivityReviewService {
 
 	MainPageTotalActivityInfoDTO getOneTotalActivityData(int id);
 
-	public int cancel(int revId);
+	public int cancel(int revId, int reservationId);
 
 	public MypageActivityReviewDTO getReview(int revId);
 

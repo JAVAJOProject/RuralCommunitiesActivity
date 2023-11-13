@@ -9,6 +9,8 @@ public interface RegReservationMapper {
 	public void addPaymentData(ReservationContentDTO reservationContentDTO);
 	public int getPaymentId();
 	public int addReservationData(ReservationContentDTO reservationContentDTO);
+	public int addToActivityCustomerList(ReservationContentDTO reservationContentDTO);
 	public int updateReservationData(ReservationContentDTO reservationContentDTO);
 	public int deleteReservationData(int rId);
+	public int deleteFromActivityCustomerList(ReservationContentDTO reservationContentDTO);
 }

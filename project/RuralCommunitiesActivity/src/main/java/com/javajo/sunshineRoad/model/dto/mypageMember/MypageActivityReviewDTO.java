@@ -30,4 +30,7 @@ public class MypageActivityReviewDTO {
 	private int rStarRating;
 	@JsonProperty
 	private String rTitle;
+
+
+	private int reservationId;
 }
