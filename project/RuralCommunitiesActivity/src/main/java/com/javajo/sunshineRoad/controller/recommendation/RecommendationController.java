@@ -9,7 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.javajo.sunshineRoad.model.dto.recommendation.*;
+import com.javajo.sunshineRoad.model.service.IService.common.memInfoToSearch.SearchMemIdByUserIdService;
 import com.javajo.sunshineRoad.model.service.IService.recommendation.*;
+import com.sun.mail.iap.Response;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +57,7 @@ public class RecommendationController {
 	private final GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService;
 	private final InsertRegionTownInfoService insertRegionTownInfoService;
 	private final GetSellerInfoByRecAIdService getSellerInfoByRecAIdService;
+	private final SearchMemIdByUserIdService searchMemIdByUserIdService;
 	
 	
 	public RecommendationController(GetRecActivityInfoService getRecActivityInfoService,
@@ -68,7 +71,7 @@ public class RecommendationController {
 			@Qualifier("RecTownReportImageInfoUploader") ImageInfoUploadMarker recTownReportImageInfoUploadMarker,
 			ImgPathToBase64Service imgPathToBase64Service, GetRecImagesByImgIdService getRecImagesByImgIdService,
 			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService, GetRecKeywordCntService getRecKeywordCntService,
-			GetRecSigunguCntService getRecSigunguCntService, GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService, InsertRegionTownInfoService insertRegionTownInfoService, GetSellerInfoByRecAIdService getSellerInfoByRecAIdService) {
+			GetRecSigunguCntService getRecSigunguCntService, GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService, InsertRegionTownInfoService insertRegionTownInfoService, GetSellerInfoByRecAIdService getSellerInfoByRecAIdService, SearchMemIdByUserIdService searchMemIdByUserIdService) {
 		super();
 		this.getRecActivityInfoService = getRecActivityInfoService;
 		this.getRecTownInfoService = getRecTownInfoService;
@@ -93,6 +96,7 @@ public class RecommendationController {
 		this.getTownInfoBySigunguIdAndTownNameService = getTownInfoBySigunguIdAndTownNameService;
 		this.insertRegionTownInfoService = insertRegionTownInfoService;
 		this.getSellerInfoByRecAIdService = getSellerInfoByRecAIdService;
+		this.searchMemIdByUserIdService = searchMemIdByUserIdService;
 	}
 	
 	
@@ -185,7 +189,7 @@ public class RecommendationController {
             produces = {"application/json; charset=utf-8"})
 	public ResponseEntity<String> insertTownReport(
             @RequestPart(value = "files", required = false) List<MultipartFile> imgFiles,
-            @RequestPart(value = "data") TownReportDTO town) {
+            @RequestPart(value = "data") TownReportDTO town, @RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
 		try {
 				RegionTownDTO regionTownToSearch = RegionTownDTO.builder().townName(town.getTownName()).sigunguId(town.getSigunguId()).build();
 				RegionTownDTO regionTownResult = getTownInfoBySigunguIdAndTownNameService.getTownInfoBySigunguIdAndTownName(regionTownToSearch);
@@ -196,6 +200,17 @@ public class RecommendationController {
 					RegionTownDTO regionTownNew = getTownInfoBySigunguIdAndTownNameService.getTownInfoBySigunguIdAndTownName(regionTownToSearch);
 					town.setTownId(regionTownNew.getTownId());
 				}
+
+				int userId = 0;
+				if (uId == null || uId < 1) {
+					userId = sId;
+				} else if (sId == null || sId < 1) {
+					userId = uId;
+				} else {
+					return ResponseEntity.badRequest().body("잘못된 인자");
+				}
+				int memId = searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
+				town.setMemId(memId);
 
 				insertTownReportService.insertTownReport(town);
 				
