@@ -89,16 +89,14 @@ public class MypageActivityReviewController {
 //	}
 
 	// !!후기 수정하기 누르면 폼 내용 받는 -> 리뷰 번호 필요  -> 이걸알면 다 알아성
-	@PostMapping("/activity/update/{revId}")
-	public int updateRev(@PathVariable int revId, @RequestParam("rContent") String rContent) {
-		System.out.println("rContent" + rContent);
-		MypageActivityReviewDTO rev = MypageActivityReviewDTO.builder().rContent(rContent).revId(revId).build();
+	@PostMapping("/activity/update")
+	public int updateRev(MypageActivityReviewDTO review) {
+		System.out.println("rContent" + review.getRContent());
 		/*
 		 * 아래와 같은 코드 ActivityReviewDTO rev = new ActivityReviewDTO();
 		 * rev.setRContent(rContent);
 		 */
-		int result = aReviewService.updateRev(rev);
-		return result;
+        return aReviewService.updateRev(review);
 	}
 	
 	@DeleteMapping("/cancel/{revId}")

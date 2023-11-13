@@ -13,7 +13,7 @@
 		<!-- activityCustomer 객체의 참여인원만 가져오기 -->
 		<association property="activityCustomer"
 			javaType="MypageActivityCustomerDTO">
-			<result column="act_cus_cnt" property="actCusCnt" />
+<!--			<result column="act_cus_cnt" property="actCusCnt" />-->
 		</association>
 		<!-- reservation 객체의 예약상태만 가져오기 -->
 		<association property="reservation" javaType="Reservation">
@@ -35,14 +35,18 @@
 		a_post_id ,
 		a_id ,
 		a_img_id ,
-		a_post_content ,
-		a_view_cnt ,
-		a_favorite_cnt ,
+		a_name,
+		a_post_content,
+		a_start_date,
+		a_min_people,
+		a_reservation_deadline,
+		a_view_cnt,
+		a_favorite_cnt,
 		a_post_date_created
 		FROM
 		(SELECT
 		ROW_NUMBER() OVER(ORDER BY A_POST_DATE_CREATED DESC) NUM,
-		P.* FROM
+		P.*, A.a_name, A.a_start_date, A.min_people, A.a_reservation_deadline FROM
 		ACTIVITY_POST P WHERE A_ID IN
 		(SELECT A_ID FROM ACTIVITY_INFO
 		WHERE S_ID
@@ -55,7 +59,7 @@
 		SELECT
 		COUNT(*)
 		FROM (SELECT * FROM
-		ACTIVITY_CUSTOMER_1 WHERE A_ID = #{postId}) A
+		ACTIVITY_CUSTOMER WHERE A_ID = #{postId}) A
 		JOIN MEMBER M ON
 		(A.U_ID = M.U_ID)
 		JOIN RESERVATION R ON (R.U_ID = M.U_ID)
@@ -71,7 +75,6 @@
 		U_NAME,
 		U_TEL,
 		U_EMAIL,
-		ACT_CUS_CNT,
 		RESERVATION_STATUS
 		FROM
 		(SELECT
@@ -80,11 +83,10 @@
 		M.U_NAME,
 		M.U_TEL,
 		M.U_EMAIL,
-		A.ACT_CUS_CNT,
 		R.RESERVATION_STATUS
 		FROM
 		(SELECT U_ID, ACT_CUS_CNT FROM
-		ACTIVITY_CUSTOMER_1 WHERE A_POST_ID =
+		ACTIVITY_CUSTOMER WHERE A_POST_ID =
 		#{POSTID}) A
 		JOIN MEMBER M ON
 		(A.U_ID = M.U_ID)

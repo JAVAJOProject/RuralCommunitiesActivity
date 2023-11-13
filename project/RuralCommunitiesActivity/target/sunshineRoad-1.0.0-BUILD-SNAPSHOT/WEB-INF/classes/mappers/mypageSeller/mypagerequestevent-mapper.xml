@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper
-	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageRequestEventMapper">
+<mapper namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageRequestEventMapper">
 
 	<resultMap id="RequestEventInfoForClob"
 		type="RequestEventDTO">
@@ -77,7 +76,7 @@
 
 	<select id="selectParticipantCount" parameterType="int"
 		resultType="int">
-		SELECT COUNT(*) FROM EVENT_WINNER_1 WHERE EVENT_ID =
+		SELECT COUNT(*) FROM EVENT_WINNER WHERE EVENT_ID =
 		#{eventId}
 	</select>
 
@@ -93,7 +92,7 @@
 		(SELECT ROW_NUMBER()
 		OVER(ORDER BY
 		EVENT_REPORT_ID DESC) NUM, W.* FROM
-		EVENT_WINNER_1 W WHERE
+		EVENT_WINNER W WHERE
 		EVENT_ID = #{eventId})
 		WHERE NUM BETWEEN #{start}
 		AND #{end}
@@ -101,7 +100,7 @@
 
 	<select id="selectWinnerCount" parameterType="int"
 		resultType="int">
-		SELECT COUNT(*) FROM EVENT_WINNER_1 WHERE EVENT_ID =
+		SELECT COUNT(*) FROM EVENT_WINNER WHERE EVENT_ID =
 		#{eventId}
 		AND EVENT_PROGRESS_STATUS_ID = 3
 	</select>
@@ -119,7 +118,7 @@
 		OVER(ORDER BY
 		EVENT_REPORT_ID DESC)
 		NUM, W.* FROM
-		EVENT_WINNER_1 W WHERE
+		EVENT_WINNER W WHERE
 		EVENT_ID = #{eventId}
 		AND
 		EVENT_PROGRESS_STATUS_ID

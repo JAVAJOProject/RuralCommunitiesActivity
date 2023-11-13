@@ -80,7 +80,7 @@
 			  WHERE U_ID = #{uId}) W
 				 JOIN EVENT_PROGRESS_STATUS S ON (W.EVENT_PROGRESS_STATUS_ID = S.EVENT_PROGRESS_STATUS_ID)
 				 JOIN EVENT E ON (W.EVENT_ID = E.EVENT_ID)
-			LIMIT #{perPostPostNo}
+			LIMIT #{perPagePostNo}
 		OFFSET #{start}
 	</select>
 

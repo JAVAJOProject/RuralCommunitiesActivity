@@ -6,6 +6,7 @@
     <resultMap id="MemberCommunityPostForClob" type="MemberCommunityPost">
         <result property="uCommunityPostId" column="u_community_post_id" />
         <result property="uId" column="u_id" />
+        <result property="uNick" column="u_nick" />
         <result property="uCommunityImgId" column="u_community_img_id" />
         <result property="communityImgName" column="community_img_name" />
         <result property="uCommunityContent" column="u_community_content" jdbcType="CLOB" javaType="java.lang.String" />
@@ -20,6 +21,7 @@
         SELECT
             post.u_community_post_id,
             post.u_id,
+            m.u_nick,
             post.u_community_img_id,
             img.community_img_name,
             post.u_community_content,
@@ -31,15 +33,21 @@
             member_community post
                 INNER JOIN
             community_post_img img ON (post.u_community_img_id = img.community_img_id)
+                INNER JOIN
+            member m ON (post.u_id = m.u_id)
         WHERE
             u_community_post_id > #{postId}
             LIMIT #{perPagePostCount}
+    </select>
+    <select id="getTotalMemberCommunityPostCount" resultType="int">
+        SELECT COUNT(*) FROM member_community
     </select>
 
     <select id="getOneRequestMemberCommunityPost" resultMap="MemberCommunityPostForClob" parameterType="int">
         SELECT
             post.u_community_post_id,
             post.u_id,
+            m.u_nick,
             post.u_community_img_id,
             img.community_img_name,
             post.u_community_content,
@@ -51,6 +59,8 @@
             member_community post
                 INNER JOIN
             community_post_img img ON (post.u_community_img_id = img.community_img_id)
+                INNER JOIN
+            member m ON (post.u_id = m.u_id)
         WHERE
             u_community_post_id = #{postId}
     </select>

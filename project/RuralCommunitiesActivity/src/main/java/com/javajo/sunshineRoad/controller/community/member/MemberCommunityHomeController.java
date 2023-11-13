@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberCommunityHomeController {
     private final MemberCommunityGetRequestPostService memberCommunityGetRequestPostService;
+    private final MemberCommunityGetTotalPostCountService memberCommunityGetTotalPostCountService;
     private final MemberCommunityGetOneRequestPostService memberCommunityGetOneRequestPostService;
     private final MemberCommunityPostRequestPostService memberCommunityPostRequestPostService;
     private final MemberCommunityUpdatePostService memberCommunityUpdatePostService;
@@ -34,6 +37,21 @@ public class MemberCommunityHomeController {
 
         List<MemberCommunityPostDTO> postList = memberCommunityGetRequestPostService.getRequestMemberCommunityPost(pos, perPagePostCount);
         return ResponseEntity.ok(postList);
+    }
+    @GetMapping("/post-list/total-count/{boardType}")
+    public ResponseEntity<List<Integer>> communityPostTotalCount(@PathVariable String boardType) {
+        int perPagePostCount;
+        if (boardType.equals("card")) {
+            perPagePostCount = 10;
+        } else if (boardType.equals("list")) {
+            perPagePostCount = 15;
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+        int totalCount = memberCommunityGetTotalPostCountService.getTotalMemberCommunityPostCount();
+
+        List<Integer> result = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/post-detail/{postId}")

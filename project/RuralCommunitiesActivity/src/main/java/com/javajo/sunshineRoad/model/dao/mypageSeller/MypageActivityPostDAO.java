@@ -34,7 +34,7 @@ public class MypageActivityPostDAO {
 
 
 //	Oracle
-//	// 체험 전체 내역
+	// 체험 전체 내역
 	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo) {
 		System.out.println("ActivityInfoDAO" + sId);
 		int start = pageInfo.getStartList();
@@ -43,7 +43,7 @@ public class MypageActivityPostDAO {
 		return activityInfoMapper.selectByNo(sId, start, end);
 	}
 
-//	// 체험명단 리스트로 member에서
+	// 체험명단 리스트로 member에서
 	public List<MypageMemberDTO> getList(int postId, PageInfo pageInfo) {
 		System.out.println("postId" + postId);
 		int start = pageInfo.getStartList();

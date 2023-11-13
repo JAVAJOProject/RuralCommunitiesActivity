@@ -381,91 +381,15 @@ CREATE TABLE inquiry (
                          inquiry_date_created   TIMESTAMP      NOT NULL,
                          inquiry_a   CLOB      NULL
 );
---
---CREATE TABLE event_winner_1 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_2 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_3 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_4 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_5 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_6 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_7 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_8 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_9 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_10 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_11 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
---CREATE TABLE event_winner_12 (
---   event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
---   u_id   NUMBER(20)      NOT NULL,
---   event_id   NUMBER(10)      NOT NULL,
---   event_progress_status_id   NUMBER(10) NOT NULL,
---   event_story   CLOB      NULL
---);
+
+CREATE TABLE event_winner (
+  event_report_id   NUMBER(20)      NOT NULL PRIMARY KEY,
+  u_id   NUMBER(20)      NOT NULL,
+  event_id   NUMBER(10)      NOT NULL,
+  event_progress_status_id   NUMBER(10) NOT NULL,
+  event_story   CLOB      NULL
+);
+
 CREATE TABLE event_status (
                               event_status_id   NUMBER(10)      NOT NULL PRIMARY KEY,
                               event_status   VARCHAR2(100)   DEFAULT '요청완료'   NOT NULL
@@ -478,46 +402,11 @@ CREATE TABLE post_likes (
                             post_type_id   NUMBER(2)      NOT NULL
 );
 
---CREATE TABLE activity_customer_1 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_2(
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_3 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_4 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_5 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_6 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_7 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
---CREATE TABLE activity_customer_8 (
---    a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
---   a_post_id   NUMBER(10)      NOT NULL,
---    u_id NUMBER(10) NOT NULL
---);
+CREATE TABLE activity_customer (
+   a_customer_id   NUMBER(10)      NOT NULL PRIMARY KEY,
+  a_post_id   NUMBER(10)      NOT NULL,
+   u_id NUMBER(10) NOT NULL
+);
 
 CREATE TABLE town_report (
                              t_r_id   NUMBER(20)      NOT NULL PRIMARY KEY,

@@ -1,5 +1,7 @@
 package com.javajo.sunshineRoad.controller.totalActivity;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -73,6 +75,16 @@ public class TotalActivityListController {
 
 		return ResponseEntity.ok(byThemeList);
 	}
+	@GetMapping("/byThemeList/{boardType}/total-count/{tId}")
+	public ResponseEntity<List<Integer>> getTotalCountByTheme(@PathVariable String boardType, @PathVariable int tId) {
+		if (!boardType.equals("card") && !boardType.equals("list")) {
+			return ResponseEntity.badRequest().build();
+		}
+		int perPagePostCount = 4;
+		int byThemeCount = getTotalActivityCountService.getTotalActivityCountByTheme(tId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, byThemeCount));
+		return ResponseEntity.ok(pageInfo);
+	}
 	@GetMapping("/byRegionListOfSido/{boardType}/{sidoId}/{requestPageNo}")
 	public ResponseEntity<List<ActSummaryListOfSidoDTO>> totalActivityByRegionListOfSido(@PathVariable int sidoId,
 			@PathVariable int requestPageNo, @PathVariable String boardType) {
@@ -87,6 +99,16 @@ public class TotalActivityListController {
 		byRegionList = getRequestPageTotalActivityListService.getByRegionListOfSido(sidoId, byRegionOfSidoCount, perPagePostCount,
 				requestPageNo);
 		return ResponseEntity.ok(byRegionList);
+	}
+	@GetMapping("/byRegionListOfSido/{boardType}/total-count/{sidoId}")
+	public ResponseEntity<List<Integer>> getTotalCountBySido(@PathVariable String boardType, @PathVariable int sidoId) {
+		if (!boardType.equals("card") && !boardType.equals("list")) {
+			return ResponseEntity.badRequest().build();
+		}
+		int perPagePostCount = 8;
+		int byRegionOfSidoCount = getTotalActivityCountService.getTotalActivityCountByRegionOfSido(sidoId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, byRegionOfSidoCount));
+		return ResponseEntity.ok(pageInfo);
 	}
 	@GetMapping("/byRegionListOfSigungu/{boardType}/{sId}/{requestPageNo}")
 	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByRegionList(@PathVariable int sId,
@@ -103,5 +125,15 @@ public class TotalActivityListController {
 				requestPageNo);
 
 		return ResponseEntity.ok(byRegionList);
+	}
+	@GetMapping("/byRegionListOfSigungu/{boardType}/total-count/{sId}")
+	public ResponseEntity<List<Integer>> getTotalCountBySigungu(@PathVariable String boardType, @PathVariable int sId) {
+		if (!boardType.equals("card") && !boardType.equals("list")) {
+			return ResponseEntity.badRequest().build();
+		}
+		int perPagePostCount = 8;
+		int byRegionCount = getTotalActivityCountService.getTotalActivityCountByRegion(sId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, byRegionCount));
+		return ResponseEntity.ok(pageInfo);
 	}
 }

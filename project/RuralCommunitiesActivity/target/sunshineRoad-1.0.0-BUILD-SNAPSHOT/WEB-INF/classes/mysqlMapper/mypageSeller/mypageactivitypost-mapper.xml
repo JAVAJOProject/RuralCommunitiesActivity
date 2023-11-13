@@ -35,7 +35,11 @@
 		SELECT P.a_post_id,
 			   P.a_id,
 			   P.a_img_id,
+			   A.a_name,
 			   P.a_post_content,
+			   A.a_start_date,
+			   A.a_min_people,
+			   A.a_reservation_deadline,
 			   P.a_view_cnt,
 			   P.a_favorite_cnt,
 			   P.a_post_date_created
@@ -51,7 +55,7 @@
 			resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT *
-			  FROM ACTIVITY_CUSTOMER_1
+			  FROM ACTIVITY_CUSTOMER
 			  WHERE A_ID = #{postId}) A
 				 JOIN MEMBER M ON
 			(A.U_ID = M.U_ID)
@@ -70,7 +74,7 @@
 			R.RESERVATION_STATUS
 		FROM
 			(SELECT * FROM
-				ACTIVITY_CUSTOMER_1 WHERE A_ID = #{postId}) A
+				ACTIVITY_CUSTOMER WHERE A_ID = #{postId}) A
 				JOIN MEMBER M ON (A.U_ID = M.U_ID)
 				JOIN RESERVATION R ON (R.U_ID = M.U_ID)
 		WHERE R.A_ID = #{postId}

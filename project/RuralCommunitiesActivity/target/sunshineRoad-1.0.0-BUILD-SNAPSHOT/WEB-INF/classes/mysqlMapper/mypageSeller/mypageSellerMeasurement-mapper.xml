@@ -64,15 +64,12 @@
 	</resultMap>
 	<select id="getGenderReservationData" parameterType="int"
 		resultMap="genderResultMap">
-		SELECT
-		m.u_gender AS gender,
-		COUNT(*) AS reservation_count
-		FROM
-		reservation r
-		JOIN
-		member m ON r.u_id = m.u_id
-		GROUP BY
-		m.u_gender
+		SELECT m.u_gender AS gender,
+			   COUNT(*)   AS reservation_count
+		FROM reservation r
+				 JOIN
+			 member m ON r.u_id = m.u_id
+		GROUP BY m.u_gender
 	</select>
 
 	<!-- 과거의 시간이면서 예약완료 인 사람 -->

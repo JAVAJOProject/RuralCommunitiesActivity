@@ -1,4 +1,4 @@
--- SYSTEM °èÁ¤¿¡¼­
+-- SYSTEM ê³„ì •ì—ì„œ
 
 --GRANT CREATE TRIGGER TO JAVAJO;
 --GRANT CREATE ANY TRIGGER TO JAVAJO;
@@ -7,29 +7,29 @@
 --GRANT CREATE SEQUENCE TO JAVAJO;
 --GRANT CREATE PROCEDURE TO JAVAJO;
 
--- ÇÁ·Î½ÃÀú »ý¼º ÈÄ      
+-- í”„ë¡œì‹œì € ìƒì„± í›„      
 --GRANT EXECUTE ON JAVAJO.activity_customer_create TO JAVAJO;
 --GRANT EXECUTE ON JAVAJO.activity_customer_drop TO JAVAJO;
 --GRANT EXECUTE ON JAVAJO.event_winner_create TO JAVAJO;
 --GRANT EXECUTE ON JAVAJO.event_winner_drop TO JAVAJO;
 
---¸¶ÀÌ¹ÙÆ¼½º¿¡¼­ ÇÁ·Î½ÃÀú È£Ãâ ¹æ¹ý
---<select id="¾ÆÀÌµðÀÌ¸§" statementType="CALLABLE" parameterType="int">
+--ë§ˆì´ë°”í‹°ìŠ¤ì—ì„œ í”„ë¡œì‹œì € í˜¸ì¶œ ë°©ë²•
+--<select id="ì•„ì´ë””ì´ë¦„" statementType="CALLABLE" parameterType="int">
 --{call activity_customer_create(#{aPostId})}
 --</select>
---<select id="¾ÆÀÌµðÀÌ¸§" statementType="CALLABLE" parameterType="int">
+--<select id="ì•„ì´ë””ì´ë¦„" statementType="CALLABLE" parameterType="int">
 --{call activity_customer_drop(#{aPostId})}
 --</select>
---<select id="¾ÆÀÌµðÀÌ¸§" statementType="CALLABLE" parameterType="int">
+--<select id="ì•„ì´ë””ì´ë¦„" statementType="CALLABLE" parameterType="int">
 --{call event_winner_create(#{aPostId})}
 --</select>
---<select id="¾ÆÀÌµðÀÌ¸§" statementType="CALLABLE" parameterType="int">
+--<select id="ì•„ì´ë””ì´ë¦„" statementType="CALLABLE" parameterType="int">
 --{call event_winner_drop(#{aPostId})}
 --</select>
 
--- JAVAJO °èÁ¤¿¡¼­    
+-- JAVAJO ê³„ì •ì—ì„œ    
 
--- ½æ³×ÀÏ µî·Ï/¼öÁ¤/»èÁ¦  
+-- ì¸ë„¤ì¼ ë“±ë¡/ìˆ˜ì •/ì‚­ì œ  
 CREATE OR REPLACE TRIGGER trg_act_thumnail_insert
 AFTER
 INSERT ON activity_images
@@ -151,7 +151,7 @@ BEGIN
 END;
 /
 
---ÀüÃ¼ °Ô½ÃÆÇ °ü¸® µî·Ï/»èÁ¦
+--ì „ì²´ ê²Œì‹œíŒ ê´€ë¦¬ ë“±ë¡/ì‚­ì œ
 CREATE OR REPLACE TRIGGER trg_activity_post_insert
 AFTER
 INSERT ON activity_post
@@ -273,7 +273,7 @@ BEGIN
 END;
 /
 
--- ÀüÃ¼ È¸¿ø °ü¸®(°ü¸®ÀÚ Á¦¿Ü)
+-- ì „ì²´ íšŒì› ê´€ë¦¬(ê´€ë¦¬ìž ì œì™¸)
 CREATE OR REPLACE TRIGGER trg_member_insert
 AFTER
 INSERT ON member
@@ -315,7 +315,7 @@ BEGIN
 END;
 /
 
--- ÂòÇÏ±â Ä«¿îÆ® ÇÁ·Î½ÃÀú ¹× Æ®¸®°Å
+-- ì°œí•˜ê¸° ì¹´ìš´íŠ¸ í”„ë¡œì‹œì € ë° íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER favorite_cnt_Insert
 AFTER
 INSERT ON favorite
@@ -394,7 +394,7 @@ BEGIN
 END;
 /
 
---    ?  ?  ?    ¥í       ?    
+--    ?  ?  ?    Î½       ?    
 CREATE OR REPLACE TRIGGER like_cnt_Insert
 AFTER
 INSERT ON post_likes
@@ -525,7 +525,7 @@ END;
 /
 
 
---  ½Å°í¼ö µ¿±âÈ­ Æ®¸®°Å
+--  ì‹ ê³ ìˆ˜ ë™ê¸°í™” íŠ¸ë¦¬ê±°
 CREATE OR REPLACE TRIGGER trg_community_cum_insert
 AFTER
 INSERT ON report_info

@@ -67,8 +67,9 @@
     <select id="getRecruitingActiveEventOnlyCount" resultType="int">
         SELECT COUNT(*)
         FROM event
-            WHERE event_status_id IN (3, 5)
-              AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
+            WHERE event_status_id = 3
+--             WHERE event_status_id IN (3, 5)
+--               AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
     </select>
 
     <select id="getRequestPageRecruitingEventDataOnly" resultMap="EventDTOForClob">
@@ -100,8 +101,9 @@
                 INNER JOIN
             event_status status ON (event.event_status_id = status.event_status_id)
         WHERE
-            event.event_status_id IN (3 , 5)
-          AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
+            event.event_status_id = 3
+--             event.event_status_id IN (3 , 5)
+--           AND event.event_recruit_end_date <![CDATA[>=]]> CURRENT_TIMESTAMP
         ORDER BY event.event_date_created DESC
             LIMIT #{perPagePostCount} OFFSET #{startPostNo}
     </select>

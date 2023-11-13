@@ -8,6 +8,7 @@ import tractor from '../../../view_img/Service/totalActivity/theme/tractor.png';
 import fishing from '../../../view_img/Service/totalActivity/theme/fishing.svg';
 import tradition from '../../../view_img/Service/totalActivity/theme/plate.svg';
 import plate from '../../../view_img/Service/totalActivity/theme/etcActivity.png';
+import PageNavigateBtn from '../../../components/Service/common/PageNavigateBtn/PageNavigateBtn';
 
 const themeImages = [
   { themeName: '농촌 체험', imgSrc: tractor },
@@ -18,26 +19,38 @@ const themeImages = [
 
 export default function ThemeActivityPage() {
   const [contents, updateContents] = useImmer([]);
+
   const [requestPageNoFarm, setRequestPageNoFarm] = useState(1);
   const [requestPageNoFish, setRequestPageNoFish] = useState(1);
   const [requestPageNoTrad, setRequestPageNoTrad] = useState(1);
   const [requestPageNoEtc, setRequestPageNoEtc] = useState(1);
+  const themePage = [
+    { curr: requestPageNoFarm, setter: setRequestPageNoFarm },
+    { curr: requestPageNoFish, setter: setRequestPageNoFish },
+    { curr: requestPageNoTrad, setter: setRequestPageNoTrad },
+    { curr: requestPageNoEtc, setter: setRequestPageNoEtc },
+  ];
+
+  const [totalPostNoFarm, setTotalPostNoFarm] = useState(1);
+  const [totalPostNoFish, setTotalPostNoFish] = useState(1);
+  const [totalPostNoTrad, setTotalPostNoTrad] = useState(1);
+  const [totalPostNoEtc, setTotalPostNoEtc] = useState(1);
+  const themeTotalPost = [
+    { total: totalPostNoFarm, setter: setTotalPostNoFarm },
+    { total: totalPostNoFish, setter: setTotalPostNoFish },
+    { total: totalPostNoTrad, setter: setTotalPostNoTrad },
+    { total: totalPostNoEtc, setter: setTotalPostNoEtc },
+  ];
 
   useEffect(() => {
     async function fetchData() {
       try {
         const contentsArr = [];
-        const themePage = [
-          requestPageNoFarm,
-          requestPageNoFish,
-          requestPageNoTrad,
-          requestPageNoEtc,
-        ];
 
         for (let themeId = 1; themeId <= 4; themeId++) {
           const activity = await fetchDataGET(
             `/totalActivity/byThemeList/card/${themeId}/${
-              themePage[themeId - 1]
+              themePage[themeId - 1].curr
             }`
           );
 
@@ -51,6 +64,11 @@ export default function ThemeActivityPage() {
             ...item,
             aThumbnailImg: activityImg[index],
           }));
+
+          const [perPagePostNo, totalPostNo] = await fetchDataGET(
+            `/totalActivity/byThemeList/card/total-count/${themeId}`
+          );
+          themeTotalPost[themeId - 1].setter(+totalPostNo / +perPagePostNo);
 
           contentsArr.push(activityData);
         }
@@ -76,11 +94,31 @@ export default function ThemeActivityPage() {
       {contents.map((contentArr, index) => {
         const isLeft = index % 2 === 0 ? false : true;
         return (
-          <div key={`content_${index}`}>
+          <div
+            key={`content_${index}`}
+            style={{
+              display: 'flex',
+              width: '100%',
+              justifyContent: 'center',
+              margin: 'auto',
+            }}
+          >
+            <PageNavigateBtn
+              text="<"
+              curr={themePage[index].curr}
+              total={themeTotalPost[index].total}
+              handleCurr={themePage[index].setter}
+            />
             <ThemeCardSet
               titles={themeImages[index]}
               contents={contentArr}
               isLeft={isLeft}
+            />
+            <PageNavigateBtn
+              text=">"
+              curr={themePage[index].curr}
+              total={themeTotalPost[index].total}
+              handleCurr={themePage[index].setter}
             />
           </div>
         );

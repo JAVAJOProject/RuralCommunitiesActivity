@@ -63,7 +63,7 @@ public class MypageRequestEventDAO {
 
 
 //	Oracle
-//	//요청한 이벤트 내역
+	//요청한 이벤트 내역
 	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
 	    System.out.println("pageInfo" + pageInfo);
 	    int start = pageInfo.getStartList();

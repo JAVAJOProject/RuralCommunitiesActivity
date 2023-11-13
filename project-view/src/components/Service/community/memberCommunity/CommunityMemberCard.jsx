@@ -204,6 +204,8 @@ export default function CommunityMemberCard({
   likesNum,
 }) {
   const navigate = useNavigate();
+  const dateCreatedT = new Date(dateCreated);
+  const dateCreatedText = `${dateCreatedT.getFullYear()}-${dateCreatedT.getMonth() + 1}-${dateCreatedT.getDate()}`;
 
   return (
     <div
@@ -250,7 +252,7 @@ export default function CommunityMemberCard({
         )}
         <div style={memoImages[cardImgId - 1].spaceStyle ?? {}}>
           <p>- {author}</p>
-          <p>{dateCreated}</p>
+          <p>{dateCreatedText}</p>
         </div>
       </div>
     </div>

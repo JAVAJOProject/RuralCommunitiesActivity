@@ -6,6 +6,7 @@
     <resultMap id="SellerCommunityPostForClob" type="SellerCommunityPost">
         <result property="sellerCommunityPostId" column="seller_community_post_id" />
         <result property="sId" column="s_id" />
+        <result property="sComName" column="s_com_name" />
         <result property="sellerCommunityContent" column="seller_community_content" jdbcType="CLOB" javaType="java.lang.String" />
         <result property="sellerCommunityDateCreated" column="seller_community_date_created" />
         <result property="communityLikeCnt" column="community_like_cnt" />
@@ -16,31 +17,38 @@
 <!--    MySQL-->
     <select id="getRequestSellerCommunityPost" resultMap="SellerCommunityPostForClob">
         SELECT
-            seller_community_post_id,
-            s_id,
-            seller_community_content,
-            seller_community_date_created,
-            community_like_cnt,
-            community_view_cnt,
-            community_cum_cnt
+            c.seller_community_post_id,
+            c.s_id,
+            s.s_com_name,
+            c.seller_community_content,
+            c.seller_community_date_created,
+            c.community_like_cnt,
+            c.community_view_cnt,
+            c.community_cum_cnt
         FROM
-            seller_community
+            seller_community c
+                JOIN seller s ON (c.s_id = s.s_id)
         WHERE
             seller_community_post_id > #{postId}
             LIMIT #{perPagePostCount}
     </select>
+    <select id="getTotalSellerCommunityPostCount" resultType="int">
+        SELECT COUNT(*) FROM seller_community
+    </select>
 
     <select id="getOneRequestSellerCommunityPost" resultMap="SellerCommunityPostForClob" parameterType="int">
         SELECT
-            seller_community_post_id,
-            s_id,
-            seller_community_content,
-            seller_community_date_created,
-            community_like_cnt,
-            community_view_cnt,
-            community_cum_cnt
+            c.seller_community_post_id,
+            c.s_id,
+            s.s_com_name,
+            c.seller_community_content,
+            c.seller_community_date_created,
+            c.community_like_cnt,
+            c.community_view_cnt,
+            c.community_cum_cnt
         FROM
-            seller_community
+            seller_community c
+                JOIN seller s ON (c.s_id = s.s_id)
         WHERE
             seller_community_post_id = #{postId}
     </select>

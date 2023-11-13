@@ -4,10 +4,21 @@
   background: rgba(255, 255, 255, 0.79);
   border-radius: 50%;
   opacity: 0%;
+  
+  z-index: 10;
+  position: relative;
+  top: 18.5rem;
 }
 
-.pageNavigateBtn:hover {
+/* .pageNavigateBtn:hover {
+  cursor: pointer;
   opacity: 100%;
+} */
+.pageNavigateBtnLeft {
+  margin-right: -5rem;
+}
+.pageNavigateBtnRight {
+  margin-left: -5rem;
 }
 
 .pageNavigateBtn > p {

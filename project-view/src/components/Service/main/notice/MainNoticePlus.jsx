@@ -1,11 +1,10 @@
 import React from 'react';
-import './MainNoticePlus.css'
+import './MainNoticePlus.css';
 
-export default function MainNoticePlus() {
-	return (
-		<div className='mainNoticePlus'>
-			<div>+</div>
-		</div>
-	);
+export default function MainNoticePlus({ handleClick }) {
+  return (
+    <div className="mainNoticePlus" onClick={handleClick}>
+      <div>+</div>
+    </div>
+  );
 }
-

@@ -77,7 +77,7 @@
 
 	<select id="selectParticipantCount" parameterType="int"
 		resultType="int">
-		SELECT COUNT(*) FROM EVENT_WINNER_${eventId} WHERE EVENT_ID =
+		SELECT COUNT(*) FROM EVENT_WINNER WHERE EVENT_ID =
 		#{eventId}
 	</select>
 
@@ -88,7 +88,7 @@
 			   EVENT_ID,
 			   EVENT_PROGRESS_STATUS_ID,
 			   EVENT_STORY
-		FROM EVENT_WINNER_${eventId}
+		FROM EVENT_WINNER
 		WHERE EVENT_ID = #{eventId}
 		ORDER BY EVENT_REPORT_ID DESC
 			LIMIT #{perPagePostNo}
@@ -97,7 +97,7 @@
 
 	<select id="selectWinnerCount" parameterType="int"
 		resultType="int">
-		SELECT COUNT(*) FROM EVENT_WINNER_${eventId} WHERE EVENT_ID =
+		SELECT COUNT(*) FROM EVENT_WINNER WHERE EVENT_ID =
 		#{eventId}
 		AND EVENT_PROGRESS_STATUS_ID = 3
 	</select>
@@ -109,7 +109,7 @@
 			   EVENT_ID,
 			   EVENT_PROGRESS_STATUS_ID,
 			   EVENT_STORY
-		FROM EVENT_WINNER_${eventId}
+		FROM EVENT_WINNER
 		WHERE EVENT_ID = #{eventId}
 		  AND EVENT_PROGRESS_STATUS_ID
 			= 3

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import CommunityMainTitle from '../community/mainTitle/CommunityMainTitle';
+import CommunityMainTitle from '../community/maintitle/CommunityMainTitle';
 import CommunityRuleBoard from '../community/communityRules/CommunityRuleBoard';
 import CommunityListBtnSet from '../community/buttons/CommunityListBtnSet';
 

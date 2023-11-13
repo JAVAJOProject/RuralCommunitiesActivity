@@ -460,9 +460,9 @@ INSERT INTO post_type VALUES(NULL,'소통공간');
 INSERT INTO post_type VALUES(NULL,'마을소식');
 
 INSERT INTO event VALUES(NULL,7,4,1,NULL,1,5,'강원 농촌체험학습 북적북적 축제',NULL,NULL,'2023-09-05','2017-05-17','2017-05-22','2017-05-24','2017-05-24',400,'서울숲 꿀벌정원 앞 야외 잔디광장',0,0);
-CALL event_winner_create(1);
+-- CALL event_winner_create(1);
 INSERT INTO event VALUES(NULL,5,4,2,NULL,2,5,'농촌여행지 보물찾기 이벤트',NULL,NULL,'2023-09-10','2017-08-01','2017-08-20','2017-08-01','2017-08-20',155,'전국 농촌체험휴양마을과 팜스테이 마을 40곳',0,0);
-CALL event_winner_create(2);
+-- CALL event_winner_create(2);
 INSERT INTO event VALUES(NULL,8,4,3,NULL,2,5,'4박 5일 리얼 농촌체험, 사색 캠프','- 하늘과 바람과 별과 들, 그곳에 살아보기-
 
 농업·농촌이 주는 숨겨진 가치와 소중함에 대해 깊이 생각해보는 思(사)색의 시간,  그리고 네 가지 콘셉트의 각기 다른 四(사)색 캠프
@@ -504,7 +504,7 @@ INSERT INTO event VALUES(NULL,8,4,3,NULL,2,5,'4박 5일 리얼 농촌체험, 사
 
 ○주최: 농림축산식품부
 ○주관: 농림수산식품교육문화정보원',NULL,'2023-09-15','2019-10-29','2019-11-06','2019-10-29','2019-11-06',24,'나주-양펑-홍천-제주도',0,0);
-CALL event_winner_create(3);
+-- CALL event_winner_create(3);
 INSERT INTO event VALUES(NULL,8,4,4,NULL,3,5,'거창군 체험휴양마을 SNS블로거 초청이벤트<거창韓 농촌체험>','개인블로그를 운영하고 있는 전국 블로거와 가족들을 <거창韓 농촌체험>에 초대합니다.
 덕유산, 가야산, 지리산 사이에 위치한 거창군은 깨끗한 물과 맑은 공기, 산수화 같은 절경이 어우러진 곳입니다.
 아름다운 자연에서 즐기는 농촌체험의 기회~ 블로거 사용자들은 놓치지 마세요~
@@ -515,15 +515,15 @@ INSERT INTO event VALUES(NULL,8,4,4,NULL,3,5,'거창군 체험휴양마을 SNS�
 - 신청방법: 참가신청서 작성 후 협의회 사무국장 메일 a69tiq@naver.com 으로 제출
 - 선정방법: 심사 후 개별 통보
 - 총괄문의:(사)거창군농어촌체험휴양마을협의회 055-940-8165',NULL,'2023-09-20','2020-05-01','2020-11-30','2020-05-01','2020-11-30',NULL,'거창',0,0);
-CALL event_winner_create(4);
+-- CALL event_winner_create(4);
 INSERT INTO event VALUES(NULL,4,4,5,NULL,1,5,'제1회 청양온팜축제(cheongyang on-line farm festival)',NULL,NULL,'2023-09-21','2020-08-18','2020-08-31','2020-08-18','2020-08-31',NULL,'온라인',0,0);
-CALL event_winner_create(5);
+-- CALL event_winner_create(5);
 INSERT INTO event VALUES(NULL,NULL,4,6,NULL,3,3,'농촌빛길 사이트 오픈 이벤트',NULL,NULL,'2023-09-30','2020-08-01','2020-11-30','2020-08-01','2020-11-30',50,'온라인',0,0);
-CALL event_winner_create(6);
+-- CALL event_winner_create(6);
 INSERT INTO event VALUES(NULL,5,4,7,NULL,3,3,'충주 愛 퐁당 농촌 체험 여행',NULL,NULL,'2023-10-01','2020-10-05','2020-11-30','2020-10-05',NULL,NULL,'충주',0,0);
-CALL event_winner_create(7);
+-- CALL event_winner_create(7);
 INSERT INTO event VALUES(NULL,4,4,8,NULL,3,3,'영천에서 살아보기',NULL,NULL,'2023-10-02','2021-04-27',NULL,'2021-04-27',NULL,NULL,'영천',0,0);
-CALL event_winner_create(8);
+-- CALL event_winner_create(8);
 INSERT INTO event VALUES(NULL,5,4,9,NULL,3,3,'고고팜창원 바캉스','** 기존 고고팜창원 이벤트는 7~8월 간 고고팜창원:바캉스 로 변경되어 운영됩니다.
 
 - 이벤트 명칭 :‘고고팜창원(GoGoFarmChangwon)’창원농촌체험관광 활성화 SNS 홍보 이벤트
@@ -539,7 +539,7 @@ INSERT INTO event VALUES(NULL,5,4,9,NULL,3,3,'고고팜창원 바캉스','** 기
 - #고고팜창원 #창원농촌체험 #창원가볼만한곳
 
 * 창원농촌체험관광 공식계정 팔로우 필수(@gogo_cw_farm/고고팜창원 페이지)',NULL,'2023-10-03','2021-07-01','2021-08-31','2021-07-01','2021-08-31',400,'창원',0,0);
-CALL event_winner_create(9);
+-- CALL event_winner_create(9);
 INSERT INTO event VALUES(NULL,NULL,4,10,NULL,4,3,'농촌빛길 농어촌 체험단 모집','농촌빛길 농어촌 체험단 모집
 - 농촌빛길에서 농어촌 체험단을 모집합니다 - 
 
@@ -549,13 +549,13 @@ INSERT INTO event VALUES(NULL,NULL,4,10,NULL,4,3,'농촌빛길 농어촌 체험�
 모집 기간 : 2023년 9월 1일 ~ 2023년 10월 31일
 참여 기간 : 2023년 11월 15일 ~ 2023년 12월 31일
 문의 : 농촌빛길 문의하기 게시판',NULL,'2023-10-04','2023-09-01','2023-10-31','2023-09-01','2023-10-31',30,'',0,0);
-CALL event_winner_create(10);
+-- CALL event_winner_create(10);
 INSERT INTO event VALUES(NULL,1,4,11,NULL,3,3,'거창군 체험마을 체험비 지원 이벤트',NULL,NULL,'2023-10-10','2022-05-01','2022-09-30','2022-05-01','2022-09-30',NULL,'거창',0,0);
-CALL event_winner_create(11);
+-- CALL event_winner_create(11);
 INSERT INTO event VALUES(NULL,3,4,12,NULL,1,1,'기각시킬 이벤트',NULL,NULL,'2023-10-11','2023-05-10','2023-05-20','2023-06-01','2023-06-15',5,'온라인',0,0);
-CALL event_winner_create(12);
+-- CALL event_winner_create(12);
 INSERT INTO event VALUES(NULL,7,4,13,NULL,3,3,'2023 남도에서 한달 여행하기',NULL,NULL,'2023-10-15','2023-05-08','2023-05-19','2023-05-26','2023-10-31',30,'목포',0,0);
-CALL event_winner_create(13);
+-- CALL event_winner_create(13);
 
 INSERT INTO event_status VALUES(NULL,'요청완료');
 INSERT INTO event_status VALUES(NULL,'검토중');
@@ -698,6 +698,34 @@ INSERT INTO post_likes VALUES (NULL, 2, 41, 6);
 INSERT INTO post_likes VALUES (NULL, 4, 42, 6);
 INSERT INTO post_likes VALUES (NULL, 3, 43, 6);
 INSERT INTO post_likes VALUES (NULL, 3, 44, 6);
+
+INSERT INTO activity_customer VALUES(NULL,1,1);
+INSERT INTO activity_customer VALUES(NULL,2,2);
+INSERT INTO activity_customer VALUES(NULL,3,3);
+INSERT INTO activity_customer VALUES(NULL,4,4);
+INSERT INTO activity_customer VALUES(NULL,5,5);
+INSERT INTO activity_customer VALUES(NULL,6,6);
+INSERT INTO activity_customer VALUES(NULL,7,7);
+INSERT INTO activity_customer VALUES(NULL,8,8);
+
+INSERT INTO event_winner VALUES (NULL, 1, 1, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 1, 2, 4, NULL);
+INSERT INTO event_winner VALUES (NULL, 1, 3, 6, NULL);
+INSERT INTO event_winner VALUES (NULL, 1, 6, 3, NULL);
+INSERT INTO event_winner VALUES (NULL, 2, 3, 4, NULL);
+INSERT INTO event_winner VALUES (NULL, 2, 1, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 2, 2, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 3, 2, 6, NULL);
+INSERT INTO event_winner VALUES (NULL, 3, 10, 2, '사연 어쩌구 저쩌구');
+INSERT INTO event_winner VALUES (NULL, 4, 3, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 5, 3, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 6, 4, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 7, 5, 5, NULL);
+INSERT INTO event_winner VALUES (NULL, 1, 5, 6, NULL);
+INSERT INTO event_winner VALUES (NULL, 2, 10, 1, '사연 솰라솰라');
+INSERT INTO event_winner VALUES (NULL, 3, 3, 4, NULL);
+INSERT INTO event_winner VALUES (NULL, 4, 4, 4, NULL);
+INSERT INTO event_winner VALUES (NULL, 5, 1, 5, NULL);
 
 --  시향언니 끝 --  
 

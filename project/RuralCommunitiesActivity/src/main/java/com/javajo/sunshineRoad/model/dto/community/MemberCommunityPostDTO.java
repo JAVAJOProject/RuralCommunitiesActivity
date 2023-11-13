@@ -16,6 +16,8 @@ public class MemberCommunityPostDTO {
     @JsonProperty
     private int uId;
     @JsonProperty
+    private String uNick;
+    @JsonProperty
     private int uCommunityImgId;
     private String communityImgName;
     @JsonProperty

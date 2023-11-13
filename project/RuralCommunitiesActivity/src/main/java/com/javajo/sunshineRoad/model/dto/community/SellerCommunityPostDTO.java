@@ -14,6 +14,8 @@ public class SellerCommunityPostDTO {
     private int sellerCommunityPostId;
     @JsonProperty
     private int sId;
+    @JsonProperty
+    private String sComName;
     private String sellerCommunityContent;
     private String sellerCommunityDateCreated;
     private int communityLikeCnt;

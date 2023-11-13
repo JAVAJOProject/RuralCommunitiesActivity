@@ -30,9 +30,9 @@ export default function CommunitySellerCard({
       >
         <Likes
           on={false}
-          postId={postId}
-          postTypeId={postTypeId}
-          likesNum={likesNum}
+          postId={+postId}
+          postTypeId={+postTypeId}
+          likesNum={+likesNum}
           style={{ opacity: '80%', width: '5.5rem' }}
           fontSize={'0.8rem'}
         />

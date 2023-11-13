@@ -54,7 +54,7 @@ public class MypageMemberController { // 수정 , 입력취소, 탈퇴하기
 	// 회원 탈퇴하기 --> 창 뜨면서 진짜로 회원 탈퇴 하겠습니까? 로 하게끔 하기
 	@DeleteMapping("/del")
 	public ResponseEntity<String> delMember(
-			/* @SessionAttribute("loginMember") MypageMemberDTO member */ HttpServletRequest req) {
+			/* @SessionAttribute("loginMember") MypageMemberDTO member HttpServletRequest req*/ ) {
 		int uId = 1;
 		// int uId = loginMember.getUId(); // 로그인한 사용자의 uId 가져오기
 		boolean deleted = memberService.delMember(uId);

@@ -69,8 +69,8 @@ CREATE TABLE review_status (
 );
 
 CREATE TABLE reservation_status (
-                             reservation_status_id   INT   NOT NULL  PRIMARY KEY AUTO_INCREMENT,
-                             reservation_status   VARCHAR(20)  NOT NULL
+ reservation_status_id   INT   NOT NULL  PRIMARY KEY AUTO_INCREMENT,
+ reservation_status   VARCHAR(20)  NOT NULL
 );
 
 CREATE TABLE rec_activity_info (
@@ -384,90 +384,14 @@ CREATE TABLE inquiry (
  inquiry_a TEXT NULL
 );
 
--- CREATE TABLE event_winner_1 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_2 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_3 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_4 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_5 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_6 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_7 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_8 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_9 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_10 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_11 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
--- CREATE TABLE event_winner_12 (
---  event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  u_id INT NOT NULL,
---  event_id INT NOT NULL,
---  event_progress_status_id INT NOT NULL,
---  event_story TEXT NULL
--- );
+CREATE TABLE event_winner (
+ event_report_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ u_id INT NOT NULL,
+ event_id INT NOT NULL,
+ event_progress_status_id INT NOT NULL,
+ event_story TEXT NULL
+);
+
 CREATE TABLE event_status (
  event_status_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
  event_status VARCHAR(100) DEFAULT '요청완료' NOT NULL
@@ -480,46 +404,11 @@ CREATE TABLE post_likes (
  post_type_id INT NOT NULL
 );
 
--- CREATE TABLE activity_customer_1 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_2(
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_3 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_4 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_5 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_6 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_7 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
--- CREATE TABLE activity_customer_8 (
---  a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
---  a_post_id INT NOT NULL,
---  u_id INT NOT NULL
--- );
+CREATE TABLE activity_customer (
+ a_customer_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+ a_post_id INT NOT NULL,
+ u_id INT NOT NULL
+);
 
 CREATE TABLE town_report (
  t_r_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,

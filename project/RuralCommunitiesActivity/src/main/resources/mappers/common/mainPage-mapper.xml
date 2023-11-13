@@ -23,6 +23,7 @@
                      rec_a_post_id, rec_a_title, rec_a_thumbnail_img
                  FROM
                      rec_activity_info
+--             WHERE rec_a_date_created >= SYSTIMESTAMP
                  ORDER BY rec_a_date_created DESC)
         WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
@@ -53,8 +54,8 @@
                      INNER JOIN activity_post post ON (info.a_id = post.a_id)
                          INNER JOIN region_sigungu sigungu ON (info.sigungu_id = sigungu.sigungu_id)
                          INNER JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
-             WHERE
-                 a_reservation_deadline >= SYSTIMESTAMP
+--              WHERE
+--                  a_reservation_deadline >= SYSTIMESTAMP
              ORDER BY info.a_reservation_deadline ASC)
         WHERE ROWNUM <![CDATA[<=]]> 3
     </select>
@@ -171,8 +172,9 @@
 <!--            rec_a_post_id, rec_a_title, rec_a_thumbnail_img-->
 <!--        FROM-->
 <!--            rec_activity_info-->
+<!--    &#45;&#45;             WHERE rec_a_date_created >= CURRENT_TIMESTAMP-->
 <!--        ORDER BY rec_a_date_created DESC-->
-<!--            LIMIT 5;-->
+<!--            LIMIT 5-->
 <!--    </select>-->
 
 <!--    <select id="getOneRecommendationActivityData" resultType="MainPageRecommendationActivityInfo" parameterType="int">-->
@@ -201,8 +203,8 @@
 <!--                     INNER JOIN activity_post post ON (info.a_id = post.a_id)-->
 <!--                     INNER JOIN region_sigungu sigungu ON (info.sigungu_id = sigungu.sigungu_id)-->
 <!--                     INNER JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)-->
-<!--             WHERE-->
-<!--                 a_reservation_deadline >= CURRENT_TIMESTAMP-->
+<!--    &#45;&#45;              WHERE-->
+<!--    &#45;&#45;                  a_reservation_deadline >= CURRENT_TIMESTAMP-->
 <!--             ORDER BY info.a_reservation_deadline ASC) activity_info_post-->
 <!--            LIMIT 3-->
 <!--    </select>-->
@@ -218,7 +220,7 @@
 <!--            activity_info info-->
 <!--                INNER JOIN activity_post post ON (info.a_id = post.a_id)-->
 <!--        WHERE-->
-<!--            info.a_id = #{id};-->
+<!--            info.a_id = #{id}-->
 <!--    </select>-->
 
 <!--    <select id="getMainPageRecTownData" resultMap="MainPageRecommendationTownInfoForClob">-->

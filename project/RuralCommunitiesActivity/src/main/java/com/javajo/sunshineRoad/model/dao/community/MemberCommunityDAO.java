@@ -17,6 +17,10 @@ public class MemberCommunityDAO {
         MemberCommunityMapper mapper = sqlSession.getMapper(MemberCommunityMapper.class);
         return mapper.getRequestMemberCommunityPost(postId, perPagePostCount);
     }
+    public int getTotalMemberCommunityPostCount() {
+        MemberCommunityMapper mapper = sqlSession.getMapper(MemberCommunityMapper.class);
+        return mapper.getTotalMemberCommunityPostCount();
+    }
 
     public MemberCommunityPostDTO getOneRequestMemberCommunityPost(int postId) {
         MemberCommunityMapper mapper = sqlSession.getMapper(MemberCommunityMapper.class);

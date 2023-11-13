@@ -256,90 +256,12 @@ CREATE SEQUENCE inquiry_seq INCREMENT BY 1
     START WITH 0
     NOCACHE
     NOCYCLE;
---CREATE SEQUENCE event_winner_1_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;
---    
--- CREATE SEQUENCE event_winner_2_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;
---    
---CREATE SEQUENCE event_winner_3_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_4_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_5_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_6_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_7_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_8_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_9_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_10_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---    
---CREATE SEQUENCE event_winner_11_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---
---CREATE SEQUENCE event_winner_12_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
-
+CREATE SEQUENCE event_winner_seq INCREMENT BY 1
+   MINVALUE 0
+   NOMAXVALUE
+   START WITH 0
+   NOCACHE
+   NOCYCLE;
 CREATE SEQUENCE event_status_seq INCREMENT BY 1
     MINVALUE 0
     NOMAXVALUE
@@ -354,62 +276,12 @@ CREATE SEQUENCE post_likes_seq INCREMENT BY 1
     NOCACHE
     NOCYCLE;
     
---CREATE SEQUENCE activity_customer_1_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;    
---
---CREATE SEQUENCE activity_customer_2_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
---    
---CREATE SEQUENCE activity_customer_3_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
---    
---CREATE SEQUENCE activity_customer_4_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
---    
---CREATE SEQUENCE activity_customer_5_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
---    
---CREATE SEQUENCE activity_customer_6_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;     
---    
---CREATE SEQUENCE activity_customer_7_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
---    
---CREATE SEQUENCE activity_customer_8_seq INCREMENT BY 1
---    MINVALUE 0
---    NOMAXVALUE
---    START WITH 0
---    NOCACHE
---    NOCYCLE;      
-
+CREATE SEQUENCE activity_customer_seq INCREMENT BY 1
+   MINVALUE 0
+   NOMAXVALUE
+   START WITH 0
+   NOCACHE
+   NOCYCLE;
 CREATE SEQUENCE town_report_seq INCREMENT BY 1
     MINVALUE 0
     NOMAXVALUE

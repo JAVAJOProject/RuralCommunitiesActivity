@@ -19,12 +19,6 @@ const titleContent = {
   ratingTitle: "별점",
 };
 
-const test = {
-  reviewTitle: "체험 후기 제목",
-  ratingNum: 4,
-  content: `체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체험 내용 후기입니다. 체`,
-};
-
 export default function MypageMemberReviewEditPage() {
   const { reviewId } = useParams();
   const [review, updateReview] = useImmer({});

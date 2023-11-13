@@ -24,7 +24,15 @@ public class MypageActivityPostDTO {
 	@JsonProperty
 	private int aImgId;
 	@JsonProperty
+	private String aName;
+	@JsonProperty
 	private String aPostContent;
+	@JsonProperty
+	private String aStartDate;
+	@JsonProperty
+	private int aMinPeople;
+	@JsonProperty
+	private String aReservationDeadline;
 	@JsonProperty
 	private int aViewCnt;
 	@JsonProperty

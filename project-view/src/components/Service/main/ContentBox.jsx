@@ -1,17 +1,20 @@
-import React from "react";
-import ContentTitle from "./ContentTitle";
-import CircleContent from "./recActivity/CircleContent";
-import "./ContentBox.css";
-import MainTotalActivities from "./totalActivity/MainTotalActivities";
-import RecTownBox from "./recTown/RecTownBox";
-import MainEventCard from "./event/MainEventCard";
-import MainNoticeCard from "./notice/MainNoticeCard";
-import MainEventPoster from "./event/MainEventPoster";
+import React from 'react';
+import ContentTitle from './ContentTitle';
+import CircleContent from './recActivity/CircleContent';
+import './ContentBox.css';
+import MainTotalActivities from './totalActivity/MainTotalActivities';
+import RecTownBox from './recTown/RecTownBox';
+import MainEventCard from './event/MainEventCard';
+import MainNoticeCard from './notice/MainNoticeCard';
+import MainEventPoster from './event/MainEventPoster';
 
-import MainNoticePlus from "./notice/MainNoticePlus";
-import MainNoticeTable from "./notice/MainNoticeTable";
+import MainNoticePlus from './notice/MainNoticePlus';
+import MainNoticeTable from './notice/MainNoticeTable';
+import { useNavigate } from 'react-router-dom';
 
 export default function ContentBox({ contents }) {
+  const navigate = useNavigate();
+
   return (
     <div>
       {contents?.recActivity && (
@@ -46,7 +49,12 @@ export default function ContentBox({ contents }) {
             className="mainNoticeBox"
             title={contents?.notice?.title}
           >
-            <MainNoticePlus />
+            <MainNoticePlus
+              handleClick={() => {
+                navigate('/app/customerService/notice');
+                window.scrollTo(0, 0);
+              }}
+            />
             <MainNoticeTable noticeData={contents?.notice?.data} />
           </MainNoticeCard>
         )}

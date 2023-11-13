@@ -35,7 +35,11 @@
 		SELECT P.a_post_id,
 			   P.a_id,
 			   P.a_img_id,
+			   A.a_name,
 			   P.a_post_content,
+			   A.a_start_date,
+			   A.a_min_people,
+			   A.a_reservation_deadline,
 			   P.a_view_cnt,
 			   P.a_favorite_cnt,
 			   P.a_post_date_created

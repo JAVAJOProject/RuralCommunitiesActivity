@@ -13,7 +13,7 @@
 		<result property="rDateCreated" column="r_date_created" />
 		<result property="rContent" column="r_content" jdbcType="CLOB" />
 		<result property="rStarRating" column="r_star_rating" />
-		<result property="rTitile" column="r_title" />
+		<result property="rTitle" column="r_title" />
 	</resultMap>
 
 	<select id="selectCount" parameterType="int" resultType="int">

@@ -35,6 +35,17 @@
 		'YYYY-MM')
 		ORDER BY month
 	</select>
+<!--	SELECT TO_CHAR(months.month, 'YYYY-MM') AS month,-->
+<!--	NVL(COUNT(r.reservation_date), 0) AS total_reservations,-->
+<!--	NVL(SUM(CASE WHEN r.reservation_status = '예약취소' THEN 1 ELSE 0 END), 0) AS canceled_reservations-->
+<!--	FROM (SELECT ADD_MONTHS(TRUNC(SYSDATE, 'MONTH'), LEVEL - 1) AS month-->
+<!--	FROM DUAL-->
+<!--	CONNECT BY LEVEL <= 6) months-->
+<!--	LEFT JOIN reservation r-->
+<!--	ON TO_CHAR(r.reservation_date, 'YYYY-MM') = TO_CHAR(months.month, 'YYYY-MM')-->
+<!--	WHERE months.month BETWEEN ADD_MONTHS(TRUNC(SYSDATE, 'MONTH'), -6) AND ADD_MONTHS(TRUNC(SYSDATE, 'MONTH'), -1)-->
+<!--	GROUP BY TO_CHAR(months.month, 'YYYY-MM')-->
+<!--	ORDER BY month-->
 
 	<!-- 별점개수 별 리뷰 -->
 	<resultMap id="reviewRatingResultMap"
@@ -44,19 +55,21 @@
 	</resultMap>
 	<!-- 별점 갯수 -->
 	<select id="getReviewRatings" resultMap="reviewRatingResultMap">
-		SELECT
-		r_star_rating AS
-		rating,
-		COUNT(*) AS count
+		SELECT r_star_rating AS
+				   rating,
+			   COUNT(*) AS count
 		FROM
-		activity_review
+			activity_review
 		WHERE
-		r_star_rating IN (5,
-		4, 3, 2, 1)
+			r_star_rating IN (5
+			, 4
+			, 3
+			, 2
+			, 1)
 		GROUP BY
-		r_star_rating
+			r_star_rating
 		ORDER BY
-		rating DESC
+			rating DESC
 	</select>
 
 	<!-- 성별 각 예약 cnt -->
@@ -67,15 +80,12 @@
 	</resultMap>
 	<select id="getGenderReservationData" parameterType="int"
 		resultMap="genderResultMap">
-		SELECT
-		m.u_gender AS gender,
-		COUNT(*) AS reservation_count
-		FROM
-		reservation r
-		JOIN
-		member m ON r.u_id = m.u_id
-		GROUP BY
-		m.u_gender
+		SELECT m.u_gender AS gender,
+			   COUNT(*)   AS reservation_count
+		FROM reservation r
+				 JOIN
+			 member m ON r.u_id = m.u_id
+		GROUP BY m.u_gender
 	</select>
 
 	<!-- 과거의 시간이면서 예약완료 인 사람 -->
@@ -97,7 +107,6 @@
 		FROM reservation
 		WHERE reservation_status = '예약완료'
 		AND reservation_date  <![CDATA[<]]> SYSDATE
-
 	</select>
 
 	<!-- 나이대별 -->
@@ -128,6 +137,29 @@
 		member.u_birth
 		BETWEEN TO_DATE('1995-01-01', 'YYYY-MM-DD') AND TO_DATE('1999-12-31',
 		'YYYY-MM-DD')
-
 	</select>
+<!--	SELECT '1-10' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth BETWEEN TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -9*12), 'YYYY') || '-01-01', 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(SYSDATE, 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+<!--	UNION ALL-->
+<!--	SELECT '11-20' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth BETWEEN TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -19*12), 'YYYY') || '-01-01', 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -10*12), 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+<!--	UNION ALL-->
+<!--	SELECT '21-30' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth BETWEEN TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -29*12), 'YYYY') || '-01-01', 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -20*12), 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+<!--	UNION ALL-->
+<!--	SELECT '31-40' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth BETWEEN TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -39*12), 'YYYY') || '-01-01', 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -30*12), 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+<!--	UNION ALL-->
+<!--	SELECT '41-50' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth BETWEEN TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -49*12), 'YYYY') || '-01-01', 'YYYY-MM-DD') AND TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -40*12), 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+<!--	UNION ALL-->
+<!--	SELECT '51+' AS age_range, COUNT(*) AS member_count-->
+<!--	FROM member-->
+<!--	WHERE member.u_birth < TO_DATE(TO_CHAR(ADD_MONTHS(SYSDATE, -50*12), 'YYYY') || '-12-31', 'YYYY-MM-DD')-->
+
 </mapper>

@@ -29,6 +29,9 @@
 		TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS')
 		)
 	</insert>
+	<insert id="addToActivityCustomerList" parameterType="ReservationContent">
+		INSERT INTO activity_customer VALUES (activity_customer_seq.NEXTVAL, #{aPostId}, #{uId})
+	</insert>
 
 	<insert id="addPaymentData" parameterType="ReservationContent">
 		INSERT INTO payment_info VALUES (payment_info_seq.NEXTVAL, DEFAULT, #{paymentAmount}, SYSDATE + 7)
@@ -53,5 +56,7 @@
 		reservation
 		WHERE reservation_id = #{rId}
 	</delete>
-	
+	<delete id="deleteFromActivityCustomerList" parameterType="ReservationContent">
+		DELETE FROM activity_customer WHERE a_post_id = #{aPostId} AND u_id = #{uId}
+	</delete>
 	</mapper>

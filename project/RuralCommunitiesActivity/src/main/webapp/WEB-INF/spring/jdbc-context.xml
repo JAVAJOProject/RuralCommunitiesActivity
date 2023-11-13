@@ -27,7 +27,6 @@
 <!--		MySQL-->
 <!--		<property name="mapperLocations" value="classpath:/mysqlMapper/**/*.xml" />-->
 
-		<!-- 매퍼의 타입 별명 패키지를 각 dto아래의 패키지로 지정하는 코드 -->
 		<property name="typeAliasesPackage" value="com.javajo.sunshineRoad.model.dto" />
 	</bean>
 	

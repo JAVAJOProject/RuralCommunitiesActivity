@@ -959,6 +959,34 @@ INSERT INTO post_likes VALUES (post_likes_seq.NEXTVAL, 4, 42, 6);
 INSERT INTO post_likes VALUES (post_likes_seq.NEXTVAL, 3, 43, 6);
 INSERT INTO post_likes VALUES (post_likes_seq.NEXTVAL, 3, 44, 6);
 
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,1,1);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,2,2);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,3,3);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,4,4);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,5,5);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,6,6);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,7,7);
+INSERT INTO activity_customer VALUES(activity_customer_seq.NEXTVAL,8,8);
+
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 1, 1, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 1, 2, 4, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 1, 3, 6, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 1, 6, 3, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 2, 3, 4, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 2, 1, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 2, 2, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 3, 2, 6, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 3, 10, 2, TO_CLOB('사연 어쩌구 저쩌구'));
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 4, 3, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 5, 3, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 6, 4, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 7, 5, 5, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 1, 5, 6, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 2, 10, 1, TO_CLOB('사연 솰라솰라'));
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 3, 3, 4, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 4, 4, 4, NULL);
+INSERT INTO event_winner VALUES (event_winner_seq.NEXTVAL, 5, 1, 5, NULL);
+
 -- 시향언니 끝 -- 
 
 --남호오빠 시작 -- 

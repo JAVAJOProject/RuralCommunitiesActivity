@@ -12,6 +12,12 @@ button.communityImgRadioArrow:disabled,
 button.communityImgRadioArrow:disabled:hover {
   display: none;
 }
+.mainEventPoster button.communityImgRadioArrow {
+  opacity: 0%;
+}
+.mainEventPoster button.communityImgRadioArrow:hover {
+  opacity: 100%;
+}
 
 button.slick-arrow.slick-prev::before,
 button.slick-arrow.slick-next::before {

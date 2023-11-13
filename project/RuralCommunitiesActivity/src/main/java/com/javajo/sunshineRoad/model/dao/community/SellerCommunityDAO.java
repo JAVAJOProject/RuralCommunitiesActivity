@@ -17,6 +17,10 @@ public class SellerCommunityDAO {
         SellerCommunityMapper mapper = sqlSession.getMapper(SellerCommunityMapper.class);
         return mapper.getRequestSellerCommunityPost(postId, perPagePostCount);
     }
+    public int getTotalSellerCommunityPostCount() {
+        SellerCommunityMapper mapper = sqlSession.getMapper(SellerCommunityMapper.class);
+        return mapper.getTotalSellerCommunityPostCount();
+    }
 
     public SellerCommunityPostDTO getOneRequestSellerCommunityPost(int postId) {
         SellerCommunityMapper mapper = sqlSession.getMapper(SellerCommunityMapper.class);

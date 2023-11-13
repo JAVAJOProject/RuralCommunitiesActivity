@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper
 public interface SellerCommunityMapper {
     public List<SellerCommunityPostDTO> getRequestSellerCommunityPost(@Param("postId") int postId, @Param("perPagePostCount") int perPagePostCount);
+    public int getTotalSellerCommunityPostCount();
     public SellerCommunityPostDTO getOneRequestSellerCommunityPost(int postId);
     public void postRequestSellerCommunityPost(SellerCommunityPostDTO sellerCommunityPost);
     public void updateSellerCommunityPost(SellerCommunityPostDTO sellerCommunityPost);
