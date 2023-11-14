@@ -100,11 +100,18 @@ const defaultContents = {
           }
 
           try {
-            await fetchFormPOSTAndObj(inquiryRegistrationApi, formRef);
-
-            handleModalTexts(modalConfirmContents.success);
-            handleModalBtn(true);
-            handleModalOpen(true);
+            const result = await fetchFormPOSTAndObj(
+              inquiryRegistrationApi,
+              formRef,
+              true
+            );
+            if (result === '등록 완료') {
+              handleModalTexts(modalConfirmContents.success);
+              handleModalBtn(true);
+              handleModalOpen(true);
+            } else {
+              handleModalOpen(true);
+            }
           } catch (error) {
             console.error(error);
             handleModalOpen(true);

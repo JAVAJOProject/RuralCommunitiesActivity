@@ -54,7 +54,8 @@ export default function MypageMemberFavoritesPage() {
           });
         });
       });
-      const [perPagePostCountActivity, totalPostNoActivity] = await fetchDataGET("/mypage/member/favorite/list/activity/total-count");
+      const [perPagePostCountActivity, totalPostNoActivity] =
+        await fetchDataGET('/mypage/member/favorite/list/activity/total-count');
       setTotalPageNoActivity(
         Math.ceil(+totalPostNoActivity / +perPagePostCountActivity)
       );
@@ -85,7 +86,9 @@ export default function MypageMemberFavoritesPage() {
           });
         });
       });
-      const [perPagePostCountEvent, totalPostNoEvent] = await fetchDataGET("/mypage/member/favorite/list/event/total-count");
+      const [perPagePostCountEvent, totalPostNoEvent] = await fetchDataGET(
+        '/mypage/member/favorite/list/event/total-count'
+      );
       setTotalPageNoEvent(
         Math.ceil(+totalPostNoEvent / +perPagePostCountEvent)
       );
@@ -108,6 +111,7 @@ export default function MypageMemberFavoritesPage() {
         requestPageNo={requestPageNoActivity}
         totalPageNo={totalPageNoActivity}
         handleRequestPageNo={setRequestPageNoActivity}
+        link={(postId) => `/app/activity/detail/${postId}/info`}
       />
       <MypageMemberFavoritesTypeSet
         defaultContents={eventTitle}
@@ -115,6 +119,7 @@ export default function MypageMemberFavoritesPage() {
         requestPageNo={requestPageNoEvent}
         totalPageNo={totalPageNoEvent}
         handleRequestPageNo={setRequestPageNoEvent}
+        link={(postId) => `/app/community/event/board/detail/${postId}`}
       />
     </main>
   );

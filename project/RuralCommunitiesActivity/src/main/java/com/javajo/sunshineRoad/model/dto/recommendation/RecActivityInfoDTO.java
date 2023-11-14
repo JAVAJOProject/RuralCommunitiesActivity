@@ -17,6 +17,8 @@ import lombok.Setter;
 public class RecActivityInfoDTO {
 	private int recAPostId;	//게시글 코드
 	private int sigunguId;	//시군구 코드
+	private int sidoId; //시도 코드
+	private String sigunguName; // 시군구명
 	private String recAId;	//서비스 코드
 	private int recAImgId;	//이미지 코드
 	private int postTypeId;	//게시글 타입 코드

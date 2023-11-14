@@ -23,10 +23,10 @@
                      rec_a_post_id, rec_a_title, rec_a_thumbnail_img
                  FROM
                      rec_activity_info
---             WHERE rec_a_date_created >= SYSTIMESTAMP
                  ORDER BY rec_a_date_created DESC)
         WHERE ROWNUM <![CDATA[<=]]> 5
     </select>
+<!--&#45;&#45;             WHERE rec_a_date_created >= SYSTIMESTAMP-->
 
     <select id="getOneRecommendationActivityData" resultType="MainPageRecommendationActivityInfo" parameterType="int">
         SELECT
@@ -54,11 +54,11 @@
                      INNER JOIN activity_post post ON (info.a_id = post.a_id)
                          INNER JOIN region_sigungu sigungu ON (info.sigungu_id = sigungu.sigungu_id)
                          INNER JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
---              WHERE
---                  a_reservation_deadline >= SYSTIMESTAMP
              ORDER BY info.a_reservation_deadline ASC)
         WHERE ROWNUM <![CDATA[<=]]> 3
     </select>
+<!--&#45;&#45;              WHERE-->
+<!--&#45;&#45;                  a_reservation_deadline >= SYSTIMESTAMP-->
 
     <select id="getOneTotalActivityData" resultType="MainPageTotalActivityInfo" parameterType="int">
         SELECT

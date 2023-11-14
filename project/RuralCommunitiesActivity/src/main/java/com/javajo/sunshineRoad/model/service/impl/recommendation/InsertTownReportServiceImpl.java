@@ -17,5 +17,4 @@ public class InsertTownReportServiceImpl implements InsertTownReportService{
 	public void insertTownReport(TownReportDTO town) {
 		recommendationDAO.createTownReport(town);
 	}
-
 }

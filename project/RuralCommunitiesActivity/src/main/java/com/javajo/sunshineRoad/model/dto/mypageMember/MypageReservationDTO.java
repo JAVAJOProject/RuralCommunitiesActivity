@@ -25,11 +25,13 @@ public class MypageReservationDTO {
 	private int aId;
 	@JsonProperty
 	private int uId;
+	@JsonProperty
+	private String aName;
 	private int reservationHeadCount;
 	private int reviewStatus;
 	private String reservationStatus;
 	private String reservationDate;
-	
+
 	private String paymentStatusId; // 결제 상태
 	private MypagePaymentInfoDTO paymentInfo; // 결제정보
 	private MypageActivityInfoDTO activityInfo; // 예약한 체험 게시글 객체

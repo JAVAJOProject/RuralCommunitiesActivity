@@ -18,6 +18,7 @@ public class NoticeListInfoDTO {
 	private int noticeId;  //공지사항 테이블
 	private int noticeImgId;  //공지사항 테이블
 	private int noticeTypeId;   //공지사항 테이블
+	private String noticeTypeName;
 	private String noticeTitle;   //공지사항 테이블
 	private String noticeContent;  //공지사항 테이블
 	private String noticeDateCreated;//공지사항 테이블

@@ -21,7 +21,8 @@
 			SELECT
 				f.faq_id,
 				type.faq_type_id,
-				f.faq_q
+				f.faq_q,
+				f.faq_a
 			FROM faq f
 				LEFT OUTER JOIN
 			faq_type type on(f.faq_type_id=type.faq_type_id)

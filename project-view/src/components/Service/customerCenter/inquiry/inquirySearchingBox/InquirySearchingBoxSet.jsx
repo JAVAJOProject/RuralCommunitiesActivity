@@ -68,6 +68,7 @@ export default function InquirySearchingBoxSet({
   setSearchMode,
   searchingRef,
   checkboxes,
+  handleChecked,
 }) {
   const { register, handleSubmit } = useForm();
 
@@ -83,6 +84,7 @@ export default function InquirySearchingBoxSet({
             checkboxes={checkboxes.images}
             text={checkboxes.text}
             inputName={checkboxes.inputName}
+            handleChecked={handleChecked}
           />
         </div>
       )}
@@ -91,7 +93,7 @@ export default function InquirySearchingBoxSet({
           setSearchMode(true);
           const { searchingTypeId, keyword } = data;
           const result = await fetchDataGET(
-            `/search/${searchingTypeId}/${requestPageNo}?keyword=${keyword}`
+            `/inquiry/search/${searchingTypeId}/${requestPageNo}?keyword=${keyword}`
           );
           const [perPagePostCount, totalPostNo] = await fetchDataGET(
             `/inquiry/search/total-count/${searchingTypeId}?keyword=${keyword}`

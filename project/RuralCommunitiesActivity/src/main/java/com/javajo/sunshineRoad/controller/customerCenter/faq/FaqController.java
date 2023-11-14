@@ -1,5 +1,7 @@
 package com.javajo.sunshineRoad.controller.customerCenter.faq;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -31,6 +33,13 @@ public class FaqController {
 		int totalCount = getFaqListCountService.getFaqListCount(faqTypeId);
 		List<FaqInfoDTO> resultPosts = getRequestPageFaqListService.getRequestPageFaqList(totalCount, perPagePostCount, requestPageNo, faqTypeId);
 		return ResponseEntity.ok(resultPosts);
+	}
+	@GetMapping("/list/total-count/{faqTypeId}")
+	public ResponseEntity<List<Integer>> faqCount(@PathVariable int faqTypeId) {
+		int perPagePostCount = 8;
+		int totalCount = getFaqListCountService.getFaqListCount(faqTypeId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
 	}
 	
 	@GetMapping("/detail/{faqId}")

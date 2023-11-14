@@ -12,6 +12,7 @@
 		<id column="reservation_id" property="reservationId" />
 		<result column="payment_id" property="paymentId" />
 		<result column="a_id" property="aId" />
+		<result column="a_name" property="aName" />
 		<result column="u_id" property="uId" />
 		<result column="reservation_date" property="reservationDate" />
 		<result column="reservation_headcount"
@@ -32,45 +33,37 @@
 	</resultMap>
 	<select id="selectByNo" parameterType="int"
 		resultMap="selectByReservation">
-		SELECT
-		RESERVATION_ID,
-		PAYMENT_ID,
-		A_ID,
-		U_ID,
-		RESERVATION_HEADCOUNT,
-		REVIEW_STATUS,
-		RESERVATION_STATUS,
-		RESERVATION_DATE,
-		PAYMENT_STATUS_ID,
-		A_NAME,
-		PAYMENT_AMOUNT,
-		PAYMENT_DEADLINE,
-		A_THUMBNAIL_IMG
-		FROM
-		(SELECT
-		ROW_NUMBER() OVER(ORDER BY
+		SELECT RESERVATION_ID,
+			   PAYMENT_ID,
+			   A_ID,
+			   U_ID,
+			   RESERVATION_HEADCOUNT,
+			   REVIEW_STATUS,
+			   RESERVATION_STATUS,
+			   RESERVATION_DATE,
+			   PAYMENT_STATUS_ID,
+			   A_NAME,
+			   PAYMENT_AMOUNT,
+			   PAYMENT_DEADLINE,
+			   A_THUMBNAIL_IMG
+		FROM (SELECT ROW_NUMBER() OVER (ORDER BY
 		R.RESERVATION_DATE DESC) NUM,
-		R.*, A.A_NAME,
-		P.PAYMENT_AMOUNT,
-		P.PAYMENT_DEADLINE, P.PAYMENT_STATUS_ID,
-		A.A_THUMBNAIL_IMG
-		FROM
-		(SELECT *
-		FROM RESERVATION WHERE U_ID = #{uId}
-		AND RESERVATION_STATUS != '예약취소')
-		R
-		LEFT JOIN PAYMENT_INFO P ON
-		(R.PAYMENT_ID = P.PAYMENT_ID)
-		LEFT JOIN
-		ACTIVITY_INFO A ON (R.A_ID =
-		A.A_ID))
-		WHERE NUM BETWEEN #{start} AND
-		#{end}
+					 R.*,
+					 A.A_NAME,
+					 P.PAYMENT_AMOUNT,
+					 P.PAYMENT_DEADLINE,
+					 P.PAYMENT_STATUS_ID,
+					 A.A_THUMBNAIL_IMG
+			  FROM (SELECT *
+					FROM RESERVATION
+					WHERE U_ID = #{uId}) R
+					   LEFT JOIN PAYMENT_INFO P ON (R.PAYMENT_ID = P.PAYMENT_ID)
+					   LEFT JOIN ACTIVITY_INFO A ON (R.A_ID = A.A_ID))
+		WHERE NUM BETWEEN #{start} AND #{end}
 	</select>
 	<select id="selectCount" parameterType="int" resultType="int">
 		SELECT
-		COUNT(*) FROM RESERVATION WHERE U_ID=#{uId} AND RESERVATION_STATUS !=
-		'예약취소'
+		COUNT(*) FROM RESERVATION WHERE U_ID=#{uId}
 	</select>
 </mapper>
 

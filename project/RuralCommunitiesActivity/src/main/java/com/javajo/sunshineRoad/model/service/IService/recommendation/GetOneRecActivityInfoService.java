@@ -5,5 +5,5 @@ import java.util.List;
 import com.javajo.sunshineRoad.model.dto.recommendation.RecActivityInfoDTO;
 
 public interface GetOneRecActivityInfoService {
-	public List<RecActivityInfoDTO> getOneRecActivityInfo(int recAPostId);
+	public RecActivityInfoDTO getOneRecActivityInfo(int recAPostId);
 }

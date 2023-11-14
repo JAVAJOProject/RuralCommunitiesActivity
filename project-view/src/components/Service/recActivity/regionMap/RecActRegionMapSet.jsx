@@ -2,11 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import './RecActRegionMapSet.css';
 
 import RecActRegionMap from './RecActRegionMap';
-import { RegionMapInfoContext } from './RegionMapInfoContext';
+import { RegionMapInfoContextRecAct } from '../../../../page/Service/Recommendation/RecActRegionPage';
 
 export default function RecActRegionMapSet({ sidoId, sigunguId }) {
   const { updateRegionSidoInfo, updateRegionSigunguInfo } =
-    useContext(RegionMapInfoContext);
+    useContext(RegionMapInfoContextRecAct);
 
   useEffect(() => {
     if (sidoId) {

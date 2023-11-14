@@ -18,10 +18,11 @@
 .faqTitleBarAnswer > hr {
   width: 50.05269rem;
   border: #316dc6 0.01rem solid;
-  margin: 1rem auto;
+  margin: 0.3rem auto 1rem;
 }
 
 .faqTitleBarAnswerContent {
+  min-height: 3.5rem;
   display: flex;
   justify-content: center;
   height: fit-content;

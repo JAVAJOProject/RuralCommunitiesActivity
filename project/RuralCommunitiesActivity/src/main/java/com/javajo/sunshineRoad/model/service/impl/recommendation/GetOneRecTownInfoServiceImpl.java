@@ -16,7 +16,7 @@ public class GetOneRecTownInfoServiceImpl implements GetOneRecTownInfoService{
 	private final RecommendationDAO recommendationDAO;
 	
 	@Override
-	public List<RecTownInfoDTO> getOneRecTownInfo(int recTId) {
+	public RecTownInfoDTO getOneRecTownInfo(int recTId) {
 		return recommendationDAO.getOneRecTownInfo(recTId);
 	}
 }

@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   margin: 0.5rem auto;
+  cursor: pointer;
 }
 
 .recActRegionTitle > div > h2 {

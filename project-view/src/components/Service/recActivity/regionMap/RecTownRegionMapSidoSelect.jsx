@@ -2,15 +2,15 @@ import React, { useContext, useEffect } from 'react';
 import { useImmer } from 'use-immer';
 import './RegionMapSelect.css';
 
-import { RegionMapInfoContext } from './RegionMapInfoContext';
+import { RegionMapInfoContextRecTown } from '../../../../page/Service/Recommendation/RecTownRegionPage';
 import findCentroid from '../../../../utils/findCentroid';
 
 import sido from '../../../../content/sido.json';
 const { kakao } = window;
 
-export default function RegionMapSidoSelect({ handleUrl, deleteUrl }) {
+export default function RecTownRegionMapSidoSelect({ handleUrl, deleteUrl }) {
   const { regionSidoInfo, updateRegionSidoInfo } =
-    useContext(RegionMapInfoContext);
+    useContext(RegionMapInfoContextRecTown);
   const [polygons, updatePolygons] = useImmer([]);
 
   useEffect(() => {

@@ -8,6 +8,7 @@
 		<result property="noticeId" column="notice_id" />
 		<result property="noticeImgId" column="notice_img_id" />
 		<result property="noticeTypeId" column="notice_type_id" />
+		<result property="noticeTypeName" column="notice_type_name" />
 		<result property="noticeTitle" column="notice_title" />
 		<result property="noticeContent" column="notice_content" jdbcType="CLOB" javaType="java.lang.String"/>
 		<result property="noticeDateCreated" column="notice_date_created" />

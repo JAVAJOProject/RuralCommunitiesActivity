@@ -16,7 +16,7 @@ public class GetOneRecActivityInfoServiceImpl implements GetOneRecActivityInfoSe
 	private final RecommendationDAO recommendationDAO;
 	
 	@Override
-	public List<RecActivityInfoDTO> getOneRecActivityInfo(int recAPostId) {
+	public RecActivityInfoDTO getOneRecActivityInfo(int recAPostId) {
 		return recommendationDAO.getOneRecActivityInfo(recAPostId);
 	}
 }

@@ -2,15 +2,15 @@ import React, { useContext, useEffect } from 'react';
 import { useImmer } from 'use-immer';
 import './RegionMapSelect.css';
 
-import { RegionMapInfoContext } from './RegionMapInfoContext';
+import { RegionMapInfoContextRecTown } from '../../../../page/Service/Recommendation/RecTownRegionPage';
 import findCentroid from '../../../../utils/findCentroid';
 
 import sig from '../../../../content/sig.json';
 const { kakao } = window;
 
-export default function RegionMapSigunguSelect({ handleUrl, deleteUrl }) {
+export default function RecTownRegionMapSigunguSelect({ handleUrl, deleteUrl }) {
   const { regionSidoInfo, regionSigunguInfo, updateRegionSigunguInfo } =
-    useContext(RegionMapInfoContext);
+    useContext(RegionMapInfoContextRecTown);
   const [polygons, updatePolygons] = useImmer([]);
   const [customOverlays, updateCustomOverlays] = useImmer([]);
 

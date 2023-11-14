@@ -51,7 +51,7 @@ export default function EventDetailPage() {
           draft.contentText = data.eventContent;
           draft.applyBtnTypeId = data.eventRecruitTypeId;
         });
-        updateEventImages((draft) => [...images]);
+        updateEventImages(images);
       } catch (error) {
         console.error(error);
       }

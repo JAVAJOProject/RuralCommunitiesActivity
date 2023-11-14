@@ -6,6 +6,7 @@
   background: #000;
   border: none;
   margin: 1.5rem 1rem -0.5rem;
+  cursor: pointer;
 
   white-space: nowrap;
   color: #fff;

@@ -6,8 +6,8 @@ export default function NoticeContentImg({ images }) {
   return (
     <NoticeContentUI>
       <div className="noticeContentImg">
-        {images.map((img) => (
-          <img src={img} alt="" />
+        {images.map((img, index) => (
+          <img key={index} src={img} alt="" />
         ))}
       </div>
     </NoticeContentUI>

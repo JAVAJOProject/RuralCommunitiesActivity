@@ -9,7 +9,7 @@ import buttonCancel from '../../../../../view_img/Service/community/event/cancel
 const buttons = {
   reservation: {
     text: '예약하기',
-    link: '/app/activity/reservation/',
+    link: '/app/activity/reservation',
     imgSrc: buttonReservation,
   },
   back: {
@@ -26,7 +26,7 @@ export default function TotalBtnBox({ postId, isReservation, handleNavigate }) {
       {isReservation && (
         <TotalReservationBtn
           text={reservation.text}
-          link={`${reservation.link}${postId}#`}
+          link={`${reservation.link}/${postId}`}
           imgSrc={reservation.imgSrc}
         />
       )}

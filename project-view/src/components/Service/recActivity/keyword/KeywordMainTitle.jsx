@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import "./KeywordMainTitle.css";
-import { useNavigate } from "react-router-dom/dist";
-import { KeywordAndOrderContext } from "../filterContext/KeywordAndOrder";
+import React, { useContext } from 'react';
+import './KeywordMainTitle.css';
+import { useNavigate } from 'react-router-dom/dist';
+import { KeywordAndOrderContext } from '../filterContext/KeywordAndOrder';
 
 export default function KeywordMainTitle({ contents }) {
   const navigate = useNavigate();
@@ -12,9 +12,10 @@ export default function KeywordMainTitle({ contents }) {
     <div
       className="keywordMainTitle"
       onClick={() => {
-        handleKeyword("");
-        handleOrder("date");
-        navigate("/app/recommendation/keywordActivity/filter?order=date");
+        handleKeyword('');
+        handleOrder('date');
+        navigate('/app/recommendation/keywordActivity/filter?order=date');
+        window.location.reload();
       }}
     >
       <p>{mainTitle}</p>

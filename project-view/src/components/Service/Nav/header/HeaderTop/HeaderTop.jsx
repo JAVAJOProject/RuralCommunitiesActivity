@@ -9,6 +9,7 @@ import AppSignInModal from '../../../common/Modal/AppSignInModal';
 import AppSiteMap from '../../../common/Modal/AppSiteMap';
 
 import sitemap from '../../../../../view_img/Service/mainPage/sitemap.png';
+import AppCheckExistingUser from '../../../common/Modal/AppCheckExistingUser';
 
 const content = {
   projectIntro: '프로젝트 소개',
@@ -23,6 +24,9 @@ export default function HeaderTop() {
 
   const [modalSiteMapOpen, setModalSiteMapOpen] = useState(false);
   const [modalLoginOpen, setModalLoginOpen] = useState(false);
+  const [modalCheckExistingUserOpen, setModalCheckExistingUserOpen] =
+    useState(false);
+  const [selectedMemType, setSelectedMemType] = useState(1);
   const navigate = useNavigate();
 
   const { projectIntro, login, siteMap, logout, mypage } = content;
@@ -85,6 +89,21 @@ export default function HeaderTop() {
         isOpen={modalLoginOpen}
         closeModal={() => {
           setModalLoginOpen(false);
+        }}
+        selectedUserType={selectedMemType}
+        setSelectedUserType={setSelectedMemType}
+        openCheckUserModal={() => {
+          setModalCheckExistingUserOpen(true);
+        }}
+      />
+      <AppCheckExistingUser
+        isOpen={modalCheckExistingUserOpen}
+        closeModal={() => {
+          setModalCheckExistingUserOpen(false);
+        }}
+        selectedMemType={selectedMemType}
+        openLoginModal={() => {
+          setModalLoginOpen(true);
         }}
       />
     </>

@@ -25,7 +25,7 @@
         SELECT COUNT(*) FROM rec_activity_info
     </select>
 	<!-- 전체 추천 -->
-	<select id="getTotalRecActivityCount" resultType="RecActivity">
+	<select id="getTotalRecActivity" resultType="RecActivity">
 		SELECT rec_a_post_id,
 			   sigungu_id,
 			   rec_a_title,
@@ -75,7 +75,7 @@
 		SELECT COUNT(*) FROM rec_town_info
 	</select>
 	<!-- 마을 페이지처리 -->
-	<select id="getTotalRecTownCount" resultType="RecTown">
+	<select id="getTotalRecTown" resultType="RecTown">
 		SELECT rec_t_id,
 			   rec_t_img_id,
 			   town_id,
@@ -91,11 +91,94 @@
 			LIMIT #{perPagePostNo}
 		OFFSET #{startPostNo}
 	</select>
+	<!-- 시도별 마을개수 -->
+	<select id="sidoTownData" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM rec_town_info r
+				 JOIN region_town town ON (r.town_id = town.town_id)
+				 JOIN region_sigungu sigungu ON (town.sigungu_id = sigungu.sigungu_id)
+				 JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
+		WHERE sido.sido_id = #{sidoId}
+	</select>
+	<!-- 시군구별 마을개수 -->
+	<select id="sigunguTownData" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM rec_town_info r
+				 JOIN region_town town ON (r.town_id = town.town_id)
+		WHERE town.sigungu_id = #{sigunguId}
+	</select>
+	<!-- 시도별 마을 -->
+	<select id="getSidoTown" resultType="RecTown">
+		SELECT
+			r.rec_t_id,
+			r.rec_t_img_id,
+			r.town_id,
+			sido.sido_id,
+			sido.sido_name,
+			sigungu.sigungu_id,
+			sigungu.sigungu_name,
+			r.post_type_id,
+			r.rec_t_title,
+			r.rec_t_content,
+			r.rec_t_date_created,
+			r.rec_t_view_cnt,
+			r.rec_t_like_cnt,
+			r.rec_t_thumbnail_img
+		FROM rec_town_info r
+				 JOIN region_town town ON (r.town_id = town.town_id)
+				 JOIN region_sigungu sigungu ON (town.sigungu_id = sigungu.sigungu_id)
+				 JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
+		WHERE sido.sido_id = #{sidoId}
+		ORDER BY ${colName} DESC
+			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+	</select>
+	<!-- 시군구별 마을 -->
+	<select id="getSigunguTown" resultType="RecTown">
+		SELECT
+			r.rec_t_id,
+			r.rec_t_img_id,
+			r.town_id,
+			sido.sido_id,
+			sido.sido_name,
+			sigungu.sigungu_id,
+			sigungu.sigungu_name,
+			r.post_type_id,
+			r.rec_t_title,
+			r.rec_t_content,
+			r.rec_t_date_created,
+			r.rec_t_view_cnt,
+			r.rec_t_like_cnt,
+			r.rec_t_thumbnail_img
+		FROM rec_town_info r
+				 JOIN region_town town ON (r.town_id = town.town_id)
+				 JOIN region_sigungu sigungu ON (town.sigungu_id = sigungu.sigungu_id)
+				 JOIN region_sido sido ON (sigungu.sido_id = sido.sido_id)
+		WHERE sigungu.sigungu_id = #{sigunguId}
+		ORDER BY ${colName} DESC
+			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+	</select>
 	<!-- 마을 자세히 보기 -->
 	<select id="getOneRecTownData" resultType="RecTown" parameterType="int">
-		SELECT *
-		FROM rec_town_info
-		WHERE rec_t_id = #{recTId}
+		SELECT
+			r.rec_t_id,
+			r.rec_t_img_id,
+			r.post_type_id,
+			r.rec_t_title,
+			r.rec_t_content,
+			r.rec_t_date_created,
+			r.rec_t_view_cnt,
+			r.rec_t_like_cnt,
+			r.rec_t_site,
+			r.rec_t_thumbnail_img,
+			r.town_id,
+			t.town_name,
+			s.sigungu_name
+		FROM
+			rec_town_info r
+				JOIN region_town t ON (r.town_id = t.town_id)
+				JOIN region_sigungu s ON (t.sigungu_id = s.sigungu_id)
+		WHERE
+			rec_t_id = #{recTId}
 	</select>
 	<!-- 전체 키워드 -->
 	<select id="getAllKeywordData" resultType="RecKeyword">
@@ -148,29 +231,60 @@
 		WHERE
 			A.sido_id = #{sidoId}
 	</select>
-	<!-- 키워드별 수 -->
+	<!-- 시도별 수 -->
+	<select id="sidoData" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM rec_activity_info r
+				 JOIN region_sigungu s ON (r.sigungu_id = s.sigungu_id)
+		WHERE s.sido_id = #{sidoId}
+	</select>
+	<!-- 시군구별 수 -->
 	<select id="sigunguData" resultType="int" parameterType="int">
 		SELECT COUNT(*)
 		FROM rec_activity_info
 		WHERE sigungu_id = #{sigunguId}
 	</select>
+	<!-- 시도별 추천 체험 -->
+	<select id="sidoActivity" resultType="RecActivity">
+		SELECT
+			r.rec_a_post_id,
+			r.sigungu_id,
+			s.sido_id,
+			r.rec_a_id,
+			r.rec_a_img_id,
+			r.post_type_id,
+			r.rec_a_keyword_id,
+			r.rec_a_title,
+			r.rec_a_content,
+			r.rec_a_date_created,
+			r.rec_a_view_cnt,
+			r.rec_a_like_cnt,
+			r.rec_a_thumbnail_img
+		FROM rec_activity_info r
+				 JOIN region_sigungu s ON (r.sigungu_id = s.sigungu_id)
+		WHERE s.sido_id = #{sidoId}
+		ORDER BY ${colName} DESC
+			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+	</select>
 	<!-- 시군구별 추천 체험 -->
 	<select id="sigunguActivity" resultType="RecActivity">
-        SELECT
-			rec_a_post_id,
-			sigungu_id,
-			rec_a_id,
-			rec_a_img_id,
-			post_type_id,
-			rec_a_keyword_id,
-			rec_a_title,
-			rec_a_content,
-			rec_a_date_created,
-			rec_a_view_cnt,
-			rec_a_like_cnt,
-			rec_a_thumbnail_img
-		FROM rec_activity_info
-		WHERE sigungu_id = #{sigunguId}
+		SELECT
+			r.rec_a_post_id,
+			r.sigungu_id,
+			s.sido_id,
+			r.rec_a_id,
+			r.rec_a_img_id,
+			r.post_type_id,
+			r.rec_a_keyword_id,
+			r.rec_a_title,
+			r.rec_a_content,
+			r.rec_a_date_created,
+			r.rec_a_view_cnt,
+			r.rec_a_like_cnt,
+			r.rec_a_thumbnail_img
+		FROM rec_activity_info r
+				 JOIN region_sigungu s ON (r.sigungu_id = s.sigungu_id)
+		WHERE r.sigungu_id = #{sigunguId}
 		ORDER BY ${colName} DESC
 			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
 	</select>

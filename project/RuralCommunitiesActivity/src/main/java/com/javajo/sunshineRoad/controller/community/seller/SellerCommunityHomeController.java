@@ -87,8 +87,11 @@ public class SellerCommunityHomeController {
 
     // { "sId": 3, "sellerCommunityPostId": 1 }
     // { "sId": 3, "sellerCommunityPostId": 20 }
-    @DeleteMapping("/post/delete")
-    public ResponseEntity<ResponseDTO> deleteRequestSellerCommunityPost(@RequestBody SellerCommunityPostDTO sellerCommunityPost) {
+    @DeleteMapping("/post/delete/{sellerCommunityPostId}")
+    public ResponseEntity<ResponseDTO> deleteRequestSellerCommunityPost(@PathVariable int sellerCommunityPostId) {
+        int sId = 3;
+        SellerCommunityPostDTO sellerCommunityPost = SellerCommunityPostDTO.builder().sId(sId).sellerCommunityPostId(sellerCommunityPostId).build();
+
         boolean isValidUser = sellerCommunityCheckAuthorBeforeUpdatingOrDeletingPostService.checkAuthorBeforeUpdatingOrDeletingPost(sellerCommunityPost);
 
         if (!isValidUser) {

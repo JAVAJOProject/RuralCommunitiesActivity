@@ -1,0 +1,99 @@
+.appCheckExistingUserModal {
+  margin: auto;
+}
+
+.appCheckExistingUserModal > div:first-of-type {
+  width: 40rem;
+  margin-top: 0;
+  height: 3.46669rem;
+  border-radius: 1.25rem 1.25rem 0rem 0rem;
+  background: #45451f;
+}
+.appCheckExistingUserModal > div:first-of-type > h4 {
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.5625rem;
+  font-weight: 700;
+  line-height: 3.46669rem;
+}
+
+.appCheckExistingUserModal > form.was-validated input:invalid {
+  border-color: red;
+}
+
+.appCheckExistingUserModal > form > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.7rem auto;
+}
+.appCheckExistingUserModal > form label {
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: left;
+  min-width: 4.5rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  margin-right: 1rem;
+}
+.appCheckExistingUserModal > form input[type='email'] {
+  width: 13rem;
+  height: 2.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.3rem solid black;
+
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+.appCheckExistingUserModal > form input[type='email'],
+.appCheckExistingUserModal > form input[type='email']:active {
+  outline: none;
+}
+
+.appCheckExistingUserModal .resultExistingUser {
+  width: 100%;
+  height: 3rem;
+  line-height: 3rem;
+}
+.appCheckExistingUserModal .resultExistingUser > p {
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.appCheckExistingUserModal .checkExistingUserBtnBox {
+  margin: 1rem auto 0.5rem;
+  text-align: center;
+}
+.appCheckExistingUserModal .checkExistingUserBtnBox > button {
+  min-width: 9.6875rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  height: 2.4375rem;
+  border-radius: 3.125rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.appCheckExistingUserModal .checkExistingUserBtnBox > button[type='submit'],
+.appCheckExistingUserModal .checkExistingUserBtnBox > button[type='button']:not(:last-of-type) {
+  background: #45451f;
+}
+.appCheckExistingUserModal .checkExistingUserBtnBox > button[type='button']:last-of-type {
+  background: #ccc;
+}

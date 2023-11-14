@@ -39,12 +39,12 @@ export default function RecActKeywordSelectedPage() {
           data.forEach((item, index) => {
             draft.push({
               ...item,
-              postId:item.recAPostId,
-              postTypeId:item.postTypeId,
-              title:item.recATitle,
-              likesCnt:item.recALikeCnt,
-              viewCnt:item.recAViewCnt,
-              textContents:item.recAContent,
+              postId: item.recAPostId,
+              postTypeId: item.postTypeId,
+              title: item.recATitle,
+              likesCnt: item.recALikeCnt,
+              viewCnt: item.recAViewCnt,
+              textContents: item.recAContent,
               recAThumbnailImg: images[index],
             });
           });
@@ -65,7 +65,9 @@ export default function RecActKeywordSelectedPage() {
             key={item.recAPostId}
             style={{ display: 'flex', position: 'relative' }}
             handleClick={() => {
-              navigate(`/app/recommendation/detail/${item.recAPostId}`);
+              navigate(
+                `/app/recommendation/activity/detail/${item.recAPostId}`
+              );
             }}
           >
             <RecCardImg imgSrc={item.recAThumbnailImg} isLeft={index !== 1} />

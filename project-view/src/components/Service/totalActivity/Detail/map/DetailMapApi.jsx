@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './DetailMapApi.css';
 
 import pin from '../../../../../view_img/Service/common/locationPin.png';
@@ -6,6 +6,8 @@ import pin from '../../../../../view_img/Service/common/locationPin.png';
 const { kakao } = window;
 
 export default function DetailMapApi({ addr, locationName, style }) {
+  const [resultStatus, setResultStatus] = useState();
+
   useEffect(() => {
     const container = document.getElementById('kakaoMapInActivityDetail');
 
@@ -16,8 +18,8 @@ export default function DetailMapApi({ addr, locationName, style }) {
     const map = new kakao.maps.Map(container, options);
 
     const geocoder = new kakao.maps.services.Geocoder();
-
     geocoder.addressSearch(addr, function (result, status) {
+      setResultStatus(status);
       if (status === kakao.maps.services.Status.OK && result) {
         const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
@@ -46,18 +48,21 @@ export default function DetailMapApi({ addr, locationName, style }) {
           yAnchor: 2,
         });
         map.setCenter(coords);
+      } else {
+        return <div />;
       }
     });
   }, [addr, locationName]);
 
-  return (
-    addr &&
-    locationName && (
-      <div
-        className="detailMapApi"
-        id="kakaoMapInActivityDetail"
-        style={style ?? {}}
-      ></div>
-    )
+  return addr &&
+    locationName &&
+    resultStatus !== 'ZERO_RESULT' ? (
+    <div
+      className="detailMapApi"
+      id="kakaoMapInActivityDetail"
+      style={style ?? {}}
+    ></div>
+  ) : (
+    <></>
   );
 }

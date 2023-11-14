@@ -53,6 +53,7 @@ import RecActKeywordSelectedPage from './page/Service/Recommendation/RecActKeywo
 import RecActDetailPage from './page/Service/Recommendation/RecActDetailPage';
 import RecActRegionPage from './page/Service/Recommendation/RecActRegionPage';
 import RecTownRegionPage from './page/Service/Recommendation/RecTownRegionPage';
+import RecTownDetailPage from './page/Service/Recommendation/RecTownDetailPage';
 import RecTownReportPage from './page/Service/Recommendation/RecTownReportPage';
 
 // 전체 체험
@@ -326,7 +327,7 @@ const router = createBrowserRouter([
                 ],
               },
               {
-                path: 'detail/:recAPostId',
+                path: 'activity/detail/:recAPostId',
                 element: <RecActDetailPage />,
               },
               {
@@ -350,6 +351,10 @@ const router = createBrowserRouter([
                         element: <RecTownRegionPage />,
                       },
                     ],
+                  },
+                  {
+                    path: 'detail/:recTId',
+                    element: <RecTownDetailPage />,
                   },
                   {
                     path: 'report',
@@ -497,7 +502,7 @@ const router = createBrowserRouter([
                     children: [
                       {
                         path: 'card',
-                        element: <CommunityMemberCardListPage />
+                        element: <CommunityMemberCardListPage />,
                       },
                       {
                         path: 'list',

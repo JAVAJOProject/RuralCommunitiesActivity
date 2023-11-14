@@ -4,6 +4,7 @@
   border-radius: 0.625rem;
   background: rgba(104, 159, 240, 0.24);
   margin: 1.5rem;
+  cursor: pointer;
 
   display: flex;
   flex-direction: column;

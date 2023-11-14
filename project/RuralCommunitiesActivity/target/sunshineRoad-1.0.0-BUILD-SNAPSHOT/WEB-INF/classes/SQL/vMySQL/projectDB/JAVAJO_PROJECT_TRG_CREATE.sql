@@ -298,8 +298,8 @@ AFTER INSERT
 ON post_likes FOR EACH ROW
 BEGIN
 	UPDATE member_community SET community_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = NEW.board_id) WHERE u_community_post_id = (SELECT u_community_post_id FROM board_list WHERE board_id = NEW.board_id);
-    UPDATE rec_activity_info SET rec_a_like_cnt = (SELECT COUNT(*) FROM post_like WHERE board_id = NEW.board_id) WHERE rec_a_post_id = (SELECT rec_a_post_id FROM board_list WHERE board_id = NEW.board_id);
-    UPDATE rec_town_info SET rec_t_like_cnt = (SELECT COUNT(*) FROM post_like WHERE board_id = NEW.board_id) WHERE rec_t_id = (SELECT rec_t_id FROM board_list WHERE board_id = NEW.board_id);
+    UPDATE rec_activity_info SET rec_a_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = NEW.board_id) WHERE rec_a_post_id = (SELECT rec_a_post_id FROM board_list WHERE board_id = NEW.board_id);
+    UPDATE rec_town_info SET rec_t_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = NEW.board_id) WHERE rec_t_id = (SELECT rec_t_id FROM board_list WHERE board_id = NEW.board_id);
     UPDATE seller_community SET community_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = NEW.board_id) WHERE seller_community_post_id = (SELECT seller_community_post_id FROM board_list WHERE board_id = NEW.board_id);
 END $$
 CREATE TRIGGER like_cnt_delete
@@ -307,8 +307,8 @@ AFTER DELETE
 ON post_likes FOR EACH ROW
 BEGIN
 	UPDATE member_community SET community_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = OLD.board_id) WHERE u_community_post_id = (SELECT u_community_post_id FROM board_list WHERE board_id = OLD.board_id);
-    UPDATE rec_activity_info SET rec_a_like_cnt = (SELECT COUNT(*) FROM post_like WHERE board_id = OLD.board_id) WHERE rec_a_post_id = (SELECT rec_a_post_id FROM board_list WHERE board_id = OLD.board_id);
-    UPDATE rec_town_info SET rec_t_like_cnt = (SELECT COUNT(*) FROM post_like WHERE board_id = OLD.board_id) WHERE rec_t_id = (SELECT rec_t_id FROM board_list WHERE board_id = OLD.board_id);
+    UPDATE rec_activity_info SET rec_a_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = OLD.board_id) WHERE rec_a_post_id = (SELECT rec_a_post_id FROM board_list WHERE board_id = OLD.board_id);
+    UPDATE rec_town_info SET rec_t_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = OLD.board_id) WHERE rec_t_id = (SELECT rec_t_id FROM board_list WHERE board_id = OLD.board_id);
     UPDATE seller_community SET community_like_cnt = (SELECT COUNT(*) FROM post_likes WHERE board_id = OLD.board_id) WHERE seller_community_post_id = (SELECT seller_community_post_id FROM board_list WHERE board_id = OLD.board_id);
 END $$
 DELIMITER ;

@@ -8,6 +8,7 @@
   height: 10.25rem;
   mix-blend-mode: darken;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .inquiryListTitle > p {

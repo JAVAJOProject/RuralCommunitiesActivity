@@ -4,6 +4,7 @@
   border-radius: 0.625rem;
   background: #000;
   margin: auto 1rem;
+  cursor: pointer;
 }
 
 .MypageReservationBtn > p {
@@ -20,6 +21,7 @@
   border-radius: 0.625rem;
   background: #000;
   margin: auto 1rem;
+  cursor: pointer;
 }
 
 .MypageReservationOneBtn > p {

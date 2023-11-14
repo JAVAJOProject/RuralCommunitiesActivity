@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { useImmer } from 'use-immer';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { fetchDataGET, fetchImgGET } from '../../../config/ApiService';
 
 import RecActRegionTitle from '../../../components/Service/recActivity/regionTitle/RecActRegionTitle';
 import RecActRegionMapSet from '../../../components/Service/recActivity/regionMap/RecActRegionMapSet';
@@ -13,11 +14,9 @@ import RecActOrderBox from '../../../components/Service/recActivity/order/RecAct
 import RecCardContentsBox from '../../../components/Service/recActivity/keywordFiltered/RecCardContentsBox';
 import RecCardImg from '../../../components/Service/recActivity/keywordFiltered/RecCardImg';
 import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
-import RegionMapInfo from '../../../components/Service/recActivity/regionMap/RegionMapInfoContext';
 
 import mapClickImg from '../../../view_img/Service/recActivity/mapClick.jpg';
 import mapTitleImg from '../../../view_img/Service/recActivity/title.svg';
-import testImg from '../../../view_img/Service/mainPage/testImg/circleTest1.jpg';
 
 const defaultContents = {
   titles: {
@@ -36,41 +35,7 @@ const defaultContents = {
   ],
 };
 
-const testContents = [
-  {
-    recAPostId: 1,
-    sigunguId: 101,
-    postTypeId: 2,
-    recATitle: '체험 이름',
-    recALikeCnt: 235169,
-    recAViewCount: 235169,
-    recAContent: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-    recAThumbnailImg: testImg,
-  },
-  {
-    recAPostId: 2,
-    sigunguId: 102,
-    postTypeId: 2,
-    recATitle: '체험 이름',
-    recALikeCnt: 235169,
-    recAViewCount: 235169,
-    recAContent: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-    recAThumbnailImg: testImg,
-  },
-  {
-    recAPostId: 3,
-    sigunguId: 103,
-    postTypeId: 2,
-    recATitle: '체험 이름',
-    recALikeCnt: 235169,
-    recAViewCount: 235169,
-    recAContent: `여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉.
-여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. 여기는 체험 소개입니다. 신나는 어쩌고를 할수 있는 어쩌구 저꺼꾸 머라머라머라 하기. 아 예시 내용 채우기도 어렵다잉. `,
-    recAThumbnailImg: testImg,
-  },
-];
+export const RegionMapInfoContextRecAct = createContext();
 
 export default function RecActRegionPage() {
   const [searchParams, _] = useSearchParams();
@@ -79,6 +44,16 @@ export default function RecActRegionPage() {
   const sidoUrl = searchParams.get('sido');
   const sigunguUrl = searchParams.get('sigungu');
 
+  const [regionSidoInfo, updateRegionSidoInfo] = useImmer({
+    regionId: sidoUrl ?? '',
+    regionName: '',
+    LatLng: '',
+  });
+  const [regionSigunguInfo, updateRegionSigunguInfo] = useImmer({
+    regionId: sigunguUrl ?? '',
+    regionName: '',
+  });
+
   const navigate = useNavigate();
   const [dbContents, updateDbContents] = useImmer([]);
   const [requestPageNo, setRequestPageNo] = useState(1);
@@ -86,30 +61,65 @@ export default function RecActRegionPage() {
   const [totalPostNo, setTotalPostNo] = useState(0);
 
   useEffect(() => {
-    updateDbContents((draft) => {
-      draft.length = 0;
-      testContents.forEach((item) => {
-        draft.push({
-          postId: item.recAPostId,
-          sigunguId: item.sigunguId,
-          postTypeId: item.postTypeId,
-          title: item.recATitle,
-          likesCnt: item.recALikeCnt,
-          viewCnt: item.recAViewCount,
-          textContents: item.recAContent,
-          thumbnailImg: item.recAThumbnailImg,
-        });
-      });
-    });
-    // updateDbContents((draft) => {
-    //   draft.map((item, index) => ({
-    //     ...item,
-    //     thumbnailImg: testImg,
-    //   }));
-    // });
+    async function fetchContents() {
+      try {
+        let data = [];
+        let totalPost = 0;
+        let perPagePost = 0;
+        const sidoId = regionSidoInfo?.regionId;
+        const sigunguId = regionSigunguInfo?.regionId;
 
-    setTotalPostNo(30);
-  }, [sidoUrl, sigunguUrl, orderUrl]);
+        if (sidoId && !sigunguId) {
+          data = await fetchDataGET(
+            `/recommendation/activity-sido/${sidoId}/${requestPageNo}?requestOrderType=${orderUrl}`
+          );
+          [perPagePost, totalPost] = await fetchDataGET(
+            `/recommendation/activity-sido/total-count/${sidoId}`
+          );
+        } else if (sidoId && sigunguId) {
+          data = await fetchDataGET(
+            `/recommendation/activity-sigungu/${sigunguId}/${requestPageNo}?requestOrderType=${orderUrl}`
+          );
+          [perPagePost, totalPost] = await fetchDataGET(
+            `/recommendation/activity-sigungu/total-count/${sigunguId}`
+          );
+        } else {
+          data = await fetchDataGET(
+            `/recommendation/activity-list/${requestPageNo}?requestOrderType=${orderUrl}`
+          );
+          [perPagePost, totalPost] = await fetchDataGET(
+            '/recommendation/total-count'
+          );
+        }
+        const images = await fetchImgGET(
+          data,
+          'recAPostId',
+          '/main/recommendation-activity-image'
+        );
+        updateDbContents((draft) => {
+          draft.length = 0;
+          data.forEach((item, index) => {
+            draft.push({
+              postId: item.recAPostId,
+              sigunguId: item.sigunguId,
+              sidoId: item.sidoId,
+              postTypeId: item.postTypeId,
+              title: item.recATitle,
+              likesCnt: item.recALikeCnt,
+              viewCnt: item.recAViewCnt,
+              textContents: item.recAContent,
+              thumbnailImg: images[index],
+            });
+          });
+        });
+        setTotalPostNo(+totalPost);
+        setTotalPageNo(Math.ceil(+totalPost / +perPagePost));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchContents();
+  }, [regionSidoInfo?.regionId, regionSigunguInfo?.regionId, orderUrl, requestPageNo]);
 
   const { titles, contentsTitle, orders } = defaultContents;
   contentsTitle.title = `전체 ${totalPostNo}건`;
@@ -121,9 +131,16 @@ export default function RecActRegionPage() {
         subtitle={titles.subtitle}
         imgSrc={titles.imgSrc}
       />
-      <RegionMapInfo>
+      <RegionMapInfoContextRecAct.Provider
+        value={{
+          regionSidoInfo,
+          updateRegionSidoInfo,
+          regionSigunguInfo,
+          updateRegionSigunguInfo,
+        }}
+      >
         <RecActRegionMapSet sidoId={sidoUrl} sigunguId={sigunguUrl} />
-      </RegionMapInfo>
+      </RegionMapInfoContextRecAct.Provider>
       <SearchingBox style={{ margin: '3rem auto' }} />
       <CardListContentBox>
         <CardBoxTitleSet
@@ -134,27 +151,32 @@ export default function RecActRegionPage() {
         <KeywordAndOrder>
           <RecActOrderBox orders={orders} />
           <div style={{ clear: 'both' }}>
-            {dbContents.map((item, index) => (
-              <RecGreenBoxCard
-                key={item.postId}
-                style={{ display: 'flex', position: 'relative' }}
-                handleClick={() => {
-                  navigate(`/app/recommendation/detail/${item.postId}`);
-                }}
-              >
-                <RecCardImg imgSrc={item.thumbnailImg} isLeft={index !== 1} />
-                <RecCardContentsBox contents={item} isLeft={index !== 1} />
-              </RecGreenBoxCard>
-            ))}
+            {dbContents?.length > 0 &&
+              dbContents.map((item, index) => (
+                <RecGreenBoxCard
+                  key={item.postId}
+                  style={{ display: 'flex', position: 'relative' }}
+                  handleClick={() => {
+                    navigate(
+                      `/app/recommendation/activity/detail/${item.postId}`
+                    );
+                  }}
+                >
+                  <RecCardImg imgSrc={item.thumbnailImg} isLeft={index !== 1} />
+                  <RecCardContentsBox contents={item} isLeft={index !== 1} />
+                </RecGreenBoxCard>
+              ))}
           </div>
         </KeywordAndOrder>
       </CardListContentBox>
       <div style={{ margin: '2rem' }}>
-        <PageNoBox
-          curr={requestPageNo}
-          total={totalPageNo}
-          handlePageNo={setRequestPageNo}
-        />
+        {totalPageNo && (
+          <PageNoBox
+            curr={requestPageNo}
+            total={totalPageNo}
+            handlePageNo={setRequestPageNo}
+          />
+        )}
       </div>
     </main>
   );

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import './AppSignInModal.css';
 
+import SignInUserTypeSelect from './signIn/SignInUserTypeSelect';
+import SignInMemberContents from './signIn/SignInMemberContents';
+import SignInSellerContents from './signIn/SignInSellerContents';
+
 import memberSignInImg from '../../../../view_img/Service/common/memberSignIn.svg';
 import sellerSignInImg from '../../../../view_img/Service/common/sellerSignIn.png';
-import SignInUserTypeSelect from './signIn/SignInUserTypeSelect';
-import SignInSellerContents from './signIn/SignInSellerContents';
-import SignInMemberContents from './signIn/SignInMemberContents';
 
 const defaultContents = {
   title: '로그인 해주세요',
@@ -20,9 +21,13 @@ const defaultContents = {
   },
 };
 
-export default function AppSignInModal({ isOpen, closeModal }) {
-  const [selectedUserType, setSelectedUserType] = useState(true);
-
+export default function AppSignInModal({
+  isOpen,
+  closeModal,
+  selectedUserType,
+  setSelectedUserType,
+  openCheckUserModal,
+}) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.cssText = `
@@ -76,29 +81,29 @@ export default function AppSignInModal({ isOpen, closeModal }) {
             type="member"
             imgSrc={member.imgSrc}
             text={member.text}
-            active={selectedUserType}
+            active={selectedUserType === 1}
             handleClick={() => {
-              setSelectedUserType(true);
+              setSelectedUserType(1);
             }}
           />
           <SignInUserTypeSelect
             type="seller"
             imgSrc={seller.imgSrc}
             text={seller.text}
-            active={!selectedUserType}
+            active={selectedUserType === 2}
             handleClick={() => {
-              setSelectedUserType(false);
+              setSelectedUserType(2);
             }}
           />
         </div>
-        {selectedUserType && (
+        {selectedUserType === 1 && (
           <div className="appSignInModalMember">
-            <SignInMemberContents closeModal={closeModal} />
+            <SignInMemberContents closeModal={closeModal} openCheckUserModal={openCheckUserModal} />
           </div>
         )}
-        {!selectedUserType && (
+        {selectedUserType === 2 && (
           <div className="appSignInModalSeller">
-            <SignInSellerContents closeModal={closeModal} />
+            <SignInSellerContents closeModal={closeModal} openCheckUserModal={openCheckUserModal} />
           </div>
         )}
       </div>

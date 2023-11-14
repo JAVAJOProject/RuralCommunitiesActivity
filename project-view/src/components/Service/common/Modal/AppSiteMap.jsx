@@ -109,7 +109,7 @@ export default function AppSiteMap({ isOpen, closeModal }) {
         </div>
         <div className="appSiteMapModalMenus">
           {menus.map((menu) => (
-            <div>
+            <div key={menu.title}>
               <h3
                 onClick={() => {
                   handleNavigate(menu.link);

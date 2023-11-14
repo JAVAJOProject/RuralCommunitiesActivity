@@ -25,7 +25,7 @@ public interface NoticeMapper {
 
 
 	//Oracle
-	//@Parm을 쓰는경우 xml파일에 select문 작성할때 parameterType 작성 하면안됨.
+	//@Param을 쓰는경우 xml파일에 select문 작성할때 parameterType 작성 하면안됨.
 	public List<NoticeListInfoDTO> getRequestPageNoticeList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	public List<NoticeListInfoDTO> getRequestPageNoticeListList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("noticeTypeId") int noticeTypeId);
 

@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './RecActRegionMapTitle.css';
-import { RegionMapInfoContext } from './RegionMapInfoContext';
+import { RegionMapInfoContextRecAct } from '../../../../page/Service/Recommendation/RecActRegionPage';
 
 export default function RecActRegionMapTitle({ type }) {
-  const { regionSidoInfo, regionSigunguInfo } =
-    useContext(RegionMapInfoContext);
+  const { regionSidoInfo, regionSigunguInfo } = useContext(
+    RegionMapInfoContextRecAct
+  );
   const [text, setText] = useState('');
 
   useEffect(() => {

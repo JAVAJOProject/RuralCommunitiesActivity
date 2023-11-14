@@ -20,6 +20,7 @@ export default function CustomerCenterNav({ navContents }) {
       <ul className="navBoxes">
         {navInnerContent.map((nav, index) => (
           <CustomerCenterNavBox
+            key={index}
             innerText={nav.text}
             link={nav.link}
             selectedNo={index}

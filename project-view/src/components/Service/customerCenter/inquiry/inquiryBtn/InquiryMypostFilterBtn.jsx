@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './InquiryMypostFilterBtn.css';
+import { fetchDataGET } from '../../../../../config/ApiService';
 
 export default function InquiryMypostFilterBtn({
   checkboxes,
   text,
   inputName,
+  handleChecked
 }) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = handleChecked;
 
   return (
     <div className="inquiryMypostFilterBtn">

@@ -13,38 +13,59 @@ import java.util.List;
 public class RecommendationDAO { 
 	private final SqlSessionTemplate sqlSession;
 
-	//추천 체험 전체 조회
+	//추천 체험 전체 개수
 	public int getAllRecActivityList() {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getAllRecActivityData(); 
 	}
 	
-	//추천 체험 페이징처리
+	//추천 체험 조회
 	public List<RecActivityInfoDTO> getRequestPageRecActivityContent(String colName, int startPostNo, int endPostNo) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.getTotalRecActivityCount(colName, startPostNo, endPostNo);
+		return mapper.getTotalRecActivity(colName, startPostNo, endPostNo);
 	}
 	
 	//추천 자세히 보기
-	public List<RecActivityInfoDTO> getOneRecActivityInfo(int recAPostId) {
+	public RecActivityInfoDTO getOneRecActivityInfo(int recAPostId) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getOneRecActivityData(recAPostId);
 	}
 	
-	//마을 목록 전체 조회
+	//전체 마을 개수
 	public int getAllRecTownList() {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getAllRecTownData();
 	}
 	
-	//마을 페이징처리
+	//전체 마을 조회
 	public List<RecTownInfoDTO> getRequestPageRecTownContent(String colName, int startPostNo, int endPostNo) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
-		return mapper.getTotalRecTownCount(colName, startPostNo, endPostNo);
+		return mapper.getTotalRecTown(colName, startPostNo, endPostNo);
+	}
+
+	//시도별 마을 개수
+	public int getSidoRecTownList(int sidoId) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.sidoTownData(sidoId);
+	}
+	//시군구별 마을 개수
+	public int getSigunguRecTownList(int sigunguId) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.sigunguTownData(sigunguId);
+	}
+	//시도별 마을 조회
+	public List<RecTownInfoDTO> getRequestPageSidoRecTownContent(int sidoId, String colName, int startPostNo, int endPostNo) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.getSidoTown(sidoId, colName, startPostNo, endPostNo);
+	}
+	//시군구별 마을 조회
+	public List<RecTownInfoDTO> getRequestPageSigunguRecTownContent(int sigunguId, String colName, int startPostNo, int endPostNo) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.getSigunguTown(sigunguId, colName, startPostNo, endPostNo);
 	}
 	
 	//마을 자세히 보기
-	public List<RecTownInfoDTO> getOneRecTownInfo(int recTId) {
+	public RecTownInfoDTO getOneRecTownInfo(int recTId) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.getOneRecTownData(recTId);
 	}
@@ -74,12 +95,22 @@ public class RecommendationDAO {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.sigunguFilter(sidoId);
 	}
+	//시도 필터 수
+	public int getRecSidoCnt(int sidoId) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.sidoData(sidoId);
+	}
 	//시군구 필터 수
 	public int getRecSigunguCnt(int sigunguId) {
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
 		return mapper.sigunguData(sigunguId);
 	}
-	
+
+	//시도별 체험보기
+	public List<RecActivityInfoDTO> sidoActivity(int sidoId, String colName, int startPostNo, int endPostNo) {
+		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);
+		return mapper.sidoActivity(sidoId, colName, startPostNo, endPostNo);
+	}
 	//시군구별 체험보기
 	public List<RecActivityInfoDTO> sigunguActivity(int sigunguId, String colName, int startPostNo, int endPostNo){
 		RecommendationMapper mapper = sqlSession.getMapper(RecommendationMapper.class);

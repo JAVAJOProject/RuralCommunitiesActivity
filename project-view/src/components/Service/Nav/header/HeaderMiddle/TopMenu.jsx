@@ -23,6 +23,7 @@ export default function TopMenu({ menu, menuNo }) {
     <li className="topMenu" style={active ? activeTopMenu : {}}>
       <NavLink
         className="topMenuText"
+        replace
         to={link}
         style={({ isActive }) => {
           setActive(isActive);

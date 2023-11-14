@@ -56,13 +56,14 @@ export default function MemberReservationInfoPage() {
     <main className="appMain">
       <MyPageMemberContentsBox>
         <MypageReservationTitleBox imgSrc={receipt} mainTitle={mainTitle} />
-        {reservation.map((data) => (
-          <MypageReservationContentsBox
-            subtitles={subtitles}
-            data={data}
-            imgSrc={data.aThumbnailImg}
-          />
-        ))}
+        {reservation?.length > 0 &&
+          reservation.map((data) => (
+            <MypageReservationContentsBox
+              subtitles={subtitles}
+              data={data}
+              imgSrc={data.aThumbnailImg}
+            />
+          ))}
       </MyPageMemberContentsBox>
       <PageNoBox
         curr={currentPage}

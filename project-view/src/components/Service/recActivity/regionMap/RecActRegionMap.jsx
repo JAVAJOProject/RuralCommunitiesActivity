@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import './RecActRegionMap.css';
 
 import RecActRegionMapTitle from './RecActRegionMapTitle';
-import RegionMapSidoSelect from './RegionMapSidoSelect';
-import RegionMapSigunguSelect from './RegionMapSigunguSelect';
+import RecActRegionMapSidoSelect from './RecActRegionMapSidoSelect';
+import RecActRegionMapSigunguSelect from './RecActRegionMapSigunguSelect';
 
 export default function RecActRegionMap({ type }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,9 +21,9 @@ export default function RecActRegionMap({ type }) {
     <div className="recActRegionMap">
       <RecActRegionMapTitle type={type} />
       {type === 'sido' ? (
-        <RegionMapSidoSelect handleUrl={handleUrl} deleteUrl={deleteUrl} />
+        <RecActRegionMapSidoSelect handleUrl={handleUrl} deleteUrl={deleteUrl} />
       ) : (
-        <RegionMapSigunguSelect handleUrl={handleUrl} deleteUrl={deleteUrl} />
+        <RecActRegionMapSigunguSelect handleUrl={handleUrl} deleteUrl={deleteUrl} />
       )}
     </div>
   );

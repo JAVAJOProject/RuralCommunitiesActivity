@@ -14,6 +14,7 @@
 		<result property="inquiryContent" column="inquiry_content" jdbcType="CLOB" javaType="java.lang.String"/>
 		<result property="inquiryDateCreated" column="inquiry_date_created"/>
 		<result property="inquiryA" column="inquiry_a" jdbcType="CLOB" javaType="java.lang.String"/>
+		<result property="memTypeId" column="mem_type_id" />
 		<result property="uId" column="u_id"/>
 		<result property="uNick" column="u_nick"/>
 		<result property="sId" column="s_id"/>
@@ -32,6 +33,8 @@
 			   I.INQUIRY_TITLE,
 			   IST.INQUIRY_STATUS,
 			   I.INQUIRY_DATE_CREATED,
+			   I.MEM_ID,
+			   ML.MEM_TYPE_ID,
 			   M.U_NICK,
 			   S.S_COM_NAME
 		FROM INQUIRY I
@@ -40,7 +43,7 @@
 				 LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
 				 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
 		ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
-			LIMIT #{perPagePostCount}
+			LIMIT #{perPagePostNo}
 		OFFSET #{startPostNo}
 		</select>
 	
@@ -49,11 +52,13 @@
 		SELECT
 			I.INQUIRY_ID,
 			I.INQUIRY_TITLE,
+			I.INQUIRY_STATUS_ID,
 			IST.INQUIRY_STATUS,
 			DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
 			M.U_NICK,
 			S.S_COM_NAME,
-			I.INQUIRY_CONTENT
+			I.INQUIRY_CONTENT,
+			I.INQUIRY_A
 		FROM INQUIRY I
 				 INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
 				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
@@ -134,6 +139,8 @@
 		   I.INQUIRY_TITLE,
 		   IST.INQUIRY_STATUS,
 		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+		   I.MEM_ID,
+		   ML.MEM_TYPE_ID,
 		   M.U_NICK,
 		   S.S_COM_NAME,
 		   I.INQUIRY_CONTENT
@@ -145,7 +152,7 @@
 	WHERE UPPER(I.INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
 	   OR UPPER(I.INQUIRY_CONTENT) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
 	ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
-		LIMIT #{perPagePostCount}
+		LIMIT #{perPagePostNo}
 	OFFSET #{startPostNo}
 </select>
 
@@ -155,6 +162,8 @@
 		   I.INQUIRY_TITLE,
 		   IST.INQUIRY_STATUS,
 		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
+		   I.MEM_ID,
+		   ML.MEM_TYPE_ID,
 		   M.U_NICK,
 		   S.S_COM_NAME,
 		   I.INQUIRY_CONTENT
@@ -165,25 +174,29 @@
 			 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
 	WHERE UPPER(INQUIRY_TITLE) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
 	ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
-		LIMIT #{perPagePostCount}
+		LIMIT #{perPagePostNo}
 	OFFSET #{startPostNo}
 </select>
 
 	<!-- 내용으로 문의글 찾기 -->
 <select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob" parameterType="map">
-    SELECT INQUIRY_ID,
-           INQUIRY_TITLE,
+    SELECT I.INQUIRY_ID,
+           I.INQUIRY_TITLE,
            IST.INQUIRY_STATUS,
 		   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
-           M.U_NAME AS NAME,
+		   I.MEM_ID,
+		   ML.MEM_TYPE_ID,
+           M.U_NICK,
+		   S.S_COM_NAME,
            I.INQUIRY_CONTENT
     FROM INQUIRY I
          INNER JOIN INQUIRY_STATUS IST ON (I.INQUIRY_STATUS_ID = IST.INQUIRY_STATUS_ID)
          INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
-         INNER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
-    WHERE UPPER(I.INQUIRY_CONTENT) LIKE UPPER('%' || #{keyword} || '%')
+         LEFT OUTER JOIN MEMBER M ON (ML.U_ID = M.U_ID)
+		 LEFT OUTER JOIN SELLER S ON (ML.S_ID = S.S_ID)
+    WHERE UPPER(I.INQUIRY_CONTENT) LIKE UPPER(CONCAT('%', #{keyword}, '%'))
     ORDER BY I.INQUIRY_DATE_CREATED DESC, I.INQUIRY_ID DESC
-		LIMIT #{perPagePostCount}
+		LIMIT #{perPagePostNo}
 	OFFSET #{startPostNo}
 </select>
 
@@ -202,6 +215,7 @@
 			   IST.INQUIRY_STATUS,
 			   DATE_FORMAT(I.INQUIRY_DATE_CREATED, '%Y-%m-%d') AS INQUIRY_DATE_CREATED,
 			   I.MEM_ID,
+			   ML.MEM_TYPE_ID,
 			   M.U_ID,
 			   M.U_NICK,
 			   S.S_ID,
@@ -212,7 +226,7 @@
 				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
 				 LEFT JOIN MEMBER M ON (ML.U_ID = M.U_ID)
 				 LEFT JOIN SELLER S ON (ML.S_ID = S.S_ID)
-		WHERE I.MEM_ID = #{memId} LIMIT #{perPagePostCount}
+		WHERE I.MEM_ID = #{memId} LIMIT #{perPagePostNo}
 		OFFSET #{startPostNo}
 	</select>
 </mapper>

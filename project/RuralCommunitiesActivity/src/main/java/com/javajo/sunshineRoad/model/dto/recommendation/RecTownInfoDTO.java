@@ -18,6 +18,11 @@ public class RecTownInfoDTO {
 	private int recTId;		//게시글 코드
 	private int recTImgId;	//추천 마을 이미지 코드
 	private int townId;		//마을지역 코드
+	private int sigunguId; //시군구 코드
+	private int sidoId; //시도 코드
+	private String townName; //마일지역명
+	private String sigunguName; //시군구명
+	private String sidoName; //시도명
 	private int postTypeId;	//게시글 타입 코드
 	private String recTTitle;//제목
 	private String recTContent;//내용

@@ -6,8 +6,8 @@ export default function InquiryListBar({ content, type, lock }) {
   const navigate = useNavigate();
   const { inquiryId, inquiryTitle, inquiryStatus, author, inquiryDateCreated } =
     content;
-  const uNick = content?.userInfo?.uNick;
-  const sComName = content?.userInfo?.sComName;
+  const uNick = content?.uNick;
+  const sComName = content?.sComName;
 
   let classes = ['inquiryListBar'];
   if (type) {

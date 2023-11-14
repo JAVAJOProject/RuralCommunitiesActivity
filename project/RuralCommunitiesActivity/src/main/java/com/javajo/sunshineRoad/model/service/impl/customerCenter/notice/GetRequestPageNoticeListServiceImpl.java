@@ -28,7 +28,6 @@ public class GetRequestPageNoticeListServiceImpl implements GetRequestPageNotice
 		 int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
 	     int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-
 	     System.out.println(startPostNo +","+endPostNo);
 	    if (noticeTypeId == 0) {
 	    	return noticeDAO.getRequestPageNoticeList(startPostNo, endPostNo);

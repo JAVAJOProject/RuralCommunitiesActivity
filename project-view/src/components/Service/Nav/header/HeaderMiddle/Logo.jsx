@@ -5,7 +5,7 @@ import './Logo.css';
 
 export default function Logo() {
   return (
-    <Link className="logoBox" to="/">
+    <Link className="logoBox" replace to="/">
       <img className="logo" src={logo} />
     </Link>
   );

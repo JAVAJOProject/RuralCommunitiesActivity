@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './SignInMemberContents.css';
-import { useNavigate } from 'react-router-dom';
+
+import SignInSocialLogin from './SignInSocialLogin';
 
 import googleImg from '../../../../../view_img/Service/common/google.svg';
 import naverImg from '../../../../../view_img/Service/common/naver.png';
 import kakaoImg from '../../../../../view_img/Service/common/kakao.png';
-import SignInSocialLogin from './SignInSocialLogin';
 
 const defaultContents = {
   inputContents: [
@@ -61,9 +61,8 @@ const defaultContents = {
   },
 };
 
-export default function SignInMemberContents({ closeModal }) {
+export default function SignInMemberContents({ closeModal, openCheckUserModal }) {
   const [findMode, setFindMode] = useState(false);
-  const navigate = useNavigate();
 
   const {
     inputContents,
@@ -137,8 +136,7 @@ export default function SignInMemberContents({ closeModal }) {
           type={signUp.inputType}
           onClick={() => {
             closeModal();
-            navigate('/app/agreement/member');
-            window.scrollTo(0, 0);
+            openCheckUserModal();
           }}
         >
           {signUp.text}

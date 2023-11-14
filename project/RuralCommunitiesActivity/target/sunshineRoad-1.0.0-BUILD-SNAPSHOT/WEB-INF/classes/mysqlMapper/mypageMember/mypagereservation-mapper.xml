@@ -9,6 +9,7 @@
 		<id column="reservation_id" property="reservationId" />
 		<result column="payment_id" property="paymentId" />
 		<result column="a_id" property="aId" />
+		<result column="a_name" property="aName" />
 		<result column="u_id" property="uId" />
 		<result column="reservation_date" property="reservationDate" />
 		<result column="reservation_headcount"
@@ -47,7 +48,7 @@
 		FROM RESERVATION R
 				 LEFT JOIN PAYMENT_INFO P ON (R.PAYMENT_ID = P.PAYMENT_ID)
 				 LEFT JOIN ACTIVITY_INFO A ON (R.A_ID = A.A_ID)
-		WHERE U_ID = #{uId} AND RESERVATION_STATUS != '예약취소'
+		WHERE U_ID = #{uId}
 LIMIT #{perPagePostNo} OFFSET #{start}
 	</select>
 
@@ -55,6 +56,5 @@ LIMIT #{perPagePostNo} OFFSET #{start}
 		SELECT COUNT(*)
 		FROM RESERVATION
 		WHERE U_ID = #{uId}
-		  AND RESERVATION_STATUS != '예약취소'
 	</select>
 </mapper>

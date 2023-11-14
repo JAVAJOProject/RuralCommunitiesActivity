@@ -13,7 +13,7 @@ export default function MypageReservationContentsBox({
       <div className="mypageReservationContentsBox">
         <MypageReservationImg imgSrc={imgSrc} />
         <MypageReservationContents
-          mainTitle={data.activityInfo.aName}
+          mainTitle={data?.aName}
           subtitles={subtitles}
           contents={data}
         />

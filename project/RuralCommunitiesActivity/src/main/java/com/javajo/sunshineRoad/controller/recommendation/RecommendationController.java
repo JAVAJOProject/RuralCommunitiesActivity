@@ -38,15 +38,21 @@ public class RecommendationController {
 	private final GetRegionSidoService getRegionSidoService;
 	private final GetSigunguFilterService getSigunguFilterService;
 	private final GetOneRecActivityInfoService getOneRecActivityInfoService;
+	private final GetRecTownSidoCntService getRecTownSidoCntService;
+	private final GetRecTownSigunguCntService getRecTownSigunguCntService;
+	private final GetSidoRecTownService getSidoRecTownService;
+	private final GetSigunguRecTownService getSigunguRecTownService;
 	private final GetOneRecTownInfoService getOneRecTownInfoService;
 	private final PostRequestRecActivityService postRequestRecActivityService;
 	private final PostRequestRecTownService postRequestRecTownService;
+	private final GetSidoActivityService getSidoActivityService;
 	private final GetSigunguActivityService getSigunguActivityService;
 	private final InsertTownReportService insertTownReportService;
 	private final GetRecImagesByImgIdService getRecImagesByImgIdService;
 	private final GetRecTownImagesByImgIdService getRecTownImagesByImgIdService;
 	private final GetRecKeywordCntService getRecKeywordCntService;
 	private final PostRequestRecKeywordService postRequestRecKeywordService;
+	private final GetRecSidoCntService getRecSidoCntService;
 	private final GetRecSigunguCntService getRecSigunguCntService;
 	
 	private final StoreRequestImagesService storeRequestImagesService;
@@ -66,12 +72,11 @@ public class RecommendationController {
 			GetSigunguFilterService getSigunguFilterService, GetOneRecActivityInfoService getOneRecActivityInfoService,
 			GetOneRecTownInfoService getOneRecTownInfoService,
 			PostRequestRecActivityService postRequestRecActivityService,
-			PostRequestRecTownService postRequestRecTownService, GetSigunguActivityService getSigunguActivityService,
+			PostRequestRecTownService postRequestRecTownService, GetSidoActivityService getSidoActivityService, GetSigunguActivityService getSigunguActivityService,
 			InsertTownReportService insertTownReportService, StoreRequestImagesService storeRequestImagesService,
 			@Qualifier("RecTownReportImageInfoUploader") ImageInfoUploadMarker recTownReportImageInfoUploadMarker,
 			ImgPathToBase64Service imgPathToBase64Service, GetRecImagesByImgIdService getRecImagesByImgIdService,
-			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService, GetRecKeywordCntService getRecKeywordCntService,
-			GetRecSigunguCntService getRecSigunguCntService, GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService, InsertRegionTownInfoService insertRegionTownInfoService, GetSellerInfoByRecAIdService getSellerInfoByRecAIdService, SearchMemIdByUserIdService searchMemIdByUserIdService) {
+			GetRecTownImagesByImgIdService getRecTownImagesByImgIdService, GetRecKeywordCntService getRecKeywordCntService, GetRecSidoCntService getRecSidoCntService, GetRecSigunguCntService getRecSigunguCntService, GetTownInfoBySigunguIdAndTownNameService getTownInfoBySigunguIdAndTownNameService, InsertRegionTownInfoService insertRegionTownInfoService, GetSellerInfoByRecAIdService getSellerInfoByRecAIdService, SearchMemIdByUserIdService searchMemIdByUserIdService, GetRecTownSidoCntService getRecTownSidoCntService, GetRecTownSigunguCntService getRecTownSigunguCntService, GetSidoRecTownService getSidoRecTownService, GetSigunguRecTownService getSigunguRecTownService) {
 		super();
 		this.getRecActivityInfoService = getRecActivityInfoService;
 		this.getRecTownInfoService = getRecTownInfoService;
@@ -82,6 +87,7 @@ public class RecommendationController {
 		this.getOneRecTownInfoService = getOneRecTownInfoService;
 		this.postRequestRecActivityService = postRequestRecActivityService;
 		this.postRequestRecTownService = postRequestRecTownService;
+		this.getSidoActivityService = getSidoActivityService;
 		this.getSigunguActivityService = getSigunguActivityService;
 		this.insertTownReportService = insertTownReportService;
 		this.storeRequestImagesService = storeRequestImagesService;
@@ -91,12 +97,18 @@ public class RecommendationController {
 		this.getRecTownImagesByImgIdService = getRecTownImagesByImgIdService;
 		this.getRecKeywordCntService = getRecKeywordCntService;
 		this.postRequestRecKeywordService = postRequestRecKeywordService;
+		this.getRecSidoCntService = getRecSidoCntService;
 		this.getRecSigunguCntService = getRecSigunguCntService;
 
 		this.getTownInfoBySigunguIdAndTownNameService = getTownInfoBySigunguIdAndTownNameService;
 		this.insertRegionTownInfoService = insertRegionTownInfoService;
 		this.getSellerInfoByRecAIdService = getSellerInfoByRecAIdService;
 		this.searchMemIdByUserIdService = searchMemIdByUserIdService;
+
+		this.getRecTownSidoCntService = getRecTownSidoCntService;
+		this.getRecTownSigunguCntService = getRecTownSigunguCntService;
+		this.getSidoRecTownService = getSidoRecTownService;
+		this.getSigunguRecTownService = getSigunguRecTownService;
 	}
 	
 	
@@ -122,22 +134,66 @@ public class RecommendationController {
 
 	//추천 체험 자세히보기
 	@GetMapping("/activity-list-one/{recAPostId}")
-	public List<RecActivityInfoDTO> getOneRecActivityInfo(@PathVariable int recAPostId) {
+	public RecActivityInfoDTO getOneRecActivityInfo(@PathVariable int recAPostId) {
 		return getOneRecActivityInfoService.getOneRecActivityInfo(recAPostId);
 	}
 	//전체 마을
 	@GetMapping("/town-list/{requestPageNo}")
 	public ResponseEntity<List<RecTownInfoDTO>> getAllRectownList(@RequestParam String requestOrderType, @PathVariable int requestPageNo) {
 		
-		int perPagePostCount = 4;
+		int perPagePostCount = 3;
 		int totalCount = getRecTownInfoService.getAllRecTownList();
 		List<RecTownInfoDTO> responseData = postRequestRecTownService.postRequesRecTown(requestOrderType, totalCount, perPagePostCount, requestPageNo);
 
 		return ResponseEntity.ok(responseData);
 	}
+	//전체 마을 페이지처리 데이터
+	@GetMapping("/town-list/total-count")
+	public ResponseEntity<List<Integer>> getAllRecTownCount() {
+		int perPagePostCount = 3;
+		int totalCount = getRecTownInfoService.getAllRecTownList();
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
+	}
+	//시도별 마을
+	@GetMapping("/town-sido/{sidoId}/{requestPageNo}")
+	public ResponseEntity<List<RecTownInfoDTO>> getSidoRectownList(@RequestParam String requestOrderType, @PathVariable int sidoId, @PathVariable int requestPageNo) {
+
+		int perPagePostCount = 3;
+		int totalCount = getRecTownSidoCntService.getRecTownSidoCnt(sidoId);
+		List<RecTownInfoDTO> responseData = getSidoRecTownService.sidoRecTownList(sidoId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
+
+		return ResponseEntity.ok(responseData);
+	}
+	//시도별 마을 페이지처리 데이터
+	@GetMapping("/town-sido/total-count/{sidoId}")
+	public ResponseEntity<List<Integer>> getSidoRecTownCount(@PathVariable int sidoId) {
+		int perPagePostCount = 3;
+		int totalCount = getRecTownSidoCntService.getRecTownSidoCnt(sidoId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
+	}
+	//시군구별 마을
+	@GetMapping("/town-sigungu/{sigunguId}/{requestPageNo}")
+	public ResponseEntity<List<RecTownInfoDTO>> getSigunguRectownList(@RequestParam String requestOrderType, @PathVariable int sigunguId, @PathVariable int requestPageNo) {
+
+		int perPagePostCount = 3;
+		int totalCount = getRecTownSigunguCntService.getRecTownSigunguCnt(sigunguId);
+		List<RecTownInfoDTO> responseData = getSigunguRecTownService.sigunguRecTownList(sigunguId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
+
+		return ResponseEntity.ok(responseData);
+	}
+	//시군구별 마을 페이지처리 데이터
+	@GetMapping("/town-sigungu/total-count/{sigunguId}")
+	public ResponseEntity<List<Integer>> getSigunguRecTownCount(@PathVariable int sigunguId) {
+		int perPagePostCount = 3;
+		int totalCount = getRecTownSigunguCntService.getRecTownSigunguCnt(sigunguId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
+	}
 	//마을 자세히 보기
 	@GetMapping("/town-list-one/{recTId}")
-	public List<RecTownInfoDTO> getOneRecTownInfo(@PathVariable int recTId){
+	public RecTownInfoDTO getOneRecTownInfo(@PathVariable int recTId){
 		return getOneRecTownInfoService.getOneRecTownInfo(recTId);
 	}
 	//키워드별로 체험 보기
@@ -171,10 +227,34 @@ public class RecommendationController {
 	public List<RegionSidoDTO> sigunguFilter(@PathVariable int sidoId) {
 		return getSigunguFilterService.sigunguFilter(sidoId);
 	}
+	//시도별 페이지처리 데이터
+	@GetMapping("/activity-sido/total-count/{sidoId}")
+	public ResponseEntity<List<Integer>> sidoActivityCount(@PathVariable int sidoId) {
+		int perPagePostCount = 3;
+		int totalCount = getRecSidoCntService.getRecSidoCnt(sidoId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
+	}
+	//시군구별 페이지처리 데이터
+	@GetMapping("/activity-sigungu/total-count/{sigunguId}")
+	public ResponseEntity<List<Integer>> sigunguActivityCount(@PathVariable int sigunguId) {
+		int perPagePostCount = 3;
+		int totalCount = getRecSigunguCntService.getRecSigunguCnt(sigunguId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalCount));
+		return ResponseEntity.ok(pageInfo);
+	}
+	//시도별 추천체험
+	@GetMapping("/activity-sido/{sidoId}/{requestPageNo}")
+	public ResponseEntity<List<RecActivityInfoDTO>> sidoActivityList(@PathVariable int sidoId, @RequestParam String requestOrderType, @PathVariable int requestPageNo) {
+		int perPagePostCount = 3;
+		int totalCount = getRecSidoCntService.getRecSidoCnt(sidoId);
+		List<RecActivityInfoDTO> responseData = getSidoActivityService.sidoActivityList(sidoId, requestOrderType, totalCount, perPagePostCount, requestPageNo);
+
+		return ResponseEntity.ok(responseData);
+	}
 	//시군구별 추천체험
 	@GetMapping("/activity-sigungu/{sigunguId}/{requestPageNo}")
-	public ResponseEntity<List<RecActivityInfoDTO>> sigunguActivityList(@PathVariable int sigunguId, @RequestParam String requestOrderType, @PathVariable int requestPageNo){
-		
+	public ResponseEntity<List<RecActivityInfoDTO>> sigunguActivityList(@PathVariable int sigunguId, @RequestParam String requestOrderType, @PathVariable int requestPageNo) {
 		int perPagePostCount = 3;
 		int totalCount = getRecSigunguCntService.getRecSigunguCnt(sigunguId);
 		List<RecActivityInfoDTO> responseData = getSigunguActivityService.sigunguActivityList(sigunguId, requestOrderType, totalCount, perPagePostCount, requestPageNo);

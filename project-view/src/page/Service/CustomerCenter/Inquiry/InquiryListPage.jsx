@@ -9,6 +9,7 @@ import lockImg from '../../../../view_img/Service/customerService/lock.png';
 import readGlassesImg from '../../../../view_img/Service/customerService/readGlasses.png';
 import uncheckedBox from '../../../../view_img/Service/common/emptyCheckBox.svg';
 import checkedBox from '../../../../view_img/Service/common/fullCheckBox.svg';
+import { fetchDataGET } from '../../../../config/ApiService';
 
 const contents = {
   list: {
@@ -33,178 +34,37 @@ const contents = {
   },
 };
 
-const testContents = [
-  {
-    inquiryId: 1,
-    inquiryTitle: '댓글 기능 추가해주세요!',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '프레첼',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-08-30',
-  },
-  {
-    inquiryId: 2,
-    inquiryTitle:
-      '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: null,
-      memTypeId: 2,
-      uName: null,
-      uNick: null,
-      sId: 5,
-      sComName: '박***',
-    },
-    inquiryDateCreated: '2023-09-05',
-  },
-  {
-    inquiryId: 1,
-    inquiryTitle: '댓글 기능 추가해주세요!',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '김**',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-08-30',
-  },
-  {
-    inquiryId: 2,
-    inquiryTitle:
-      '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: null,
-      memTypeId: 2,
-      uName: null,
-      uNick: null,
-      sId: 5,
-      sComName: '박***',
-    },
-    inquiryDateCreated: '2023-09-05',
-  },
-  {
-    inquiryId: 1,
-    inquiryTitle: '댓글 기능 추가해주세요!',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '프레첼',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-08-30',
-  },
-  {
-    inquiryId: 2,
-    inquiryTitle:
-      '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '프레첼',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-09-05',
-  },
-  {
-    inquiryId: 1,
-    inquiryTitle: '댓글 기능 추가해주세요!',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '프레첼',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-08-30',
-  },
-  {
-    inquiryId: 2,
-    inquiryTitle:
-      '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: null,
-      memTypeId: 2,
-      uName: null,
-      uNick: null,
-      sId: 5,
-      sComName: '박***',
-    },
-    inquiryDateCreated: '2023-09-05',
-  },
-  {
-    inquiryId: 1,
-    inquiryTitle: '댓글 기능 추가해주세요!',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: 3,
-      memTypeId: 1,
-      uName: '이름임',
-      uNick: '프레첼',
-      sId: null,
-      sComName: null,
-    },
-    inquiryDateCreated: '2023-08-30',
-  },
-  {
-    inquiryId: 2,
-    inquiryTitle:
-      '개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다. 개인정보 수정이 안됩니다.',
-    inquiryStatus: '답변대기',
-    memId: 1,
-    userInfo: {
-      uId: null,
-      memTypeId: 2,
-      uName: null,
-      uNick: null,
-      sId: 5,
-      sComName: '박***',
-    },
-    inquiryDateCreated: '2023-09-05',
-  },
-];
-
 export default function InquiryListPage() {
   const [dbContents, updateDbContents] = useImmer([]);
   const [requestPageNo, setRequestPageNo] = useState(1);
   const [totalPageNo, setTotalPageNo] = useState(1);
   const [searchMode, setSearchMode] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const searchingRef = useRef(null);
 
   useEffect(() => {
-    if (!searchMode) {
-      updateDbContents(testContents);
-    } else {
-      searchingRef.current.click();
+    async function fetchContents() {
+      if (!searchMode && !isChecked) {
+        const data = await fetchDataGET(`/inquiry/list/${requestPageNo}`);
+        updateDbContents(data);
+        const [perPagePostNo, totalPostNo] = await fetchDataGET(
+          '/inquiry/list/total-count'
+        );
+        setTotalPageNo(Math.ceil(+totalPostNo / +perPagePostNo));
+      } else if (isChecked) {
+        setSearchMode(false);
+        const data = await fetchDataGET(`/inquiry/view/list/${requestPageNo}`);
+        updateDbContents(data);
+        const [perPagePostNo, totalPostNo] = await fetchDataGET(
+          '/inquiry/view/total-count'
+        );
+        setTotalPageNo(Math.ceil(+totalPostNo / +perPagePostNo));
+      } else {
+        searchingRef.current.click();
+      }
     }
-  }, [requestPageNo]);
+    fetchContents();
+  }, [requestPageNo, searchMode, isChecked]);
 
   const { list, lock, button, searchingImg, searching, checkboxes } = contents;
 
@@ -227,6 +87,7 @@ export default function InquiryListPage() {
           setSearchMode={setSearchMode}
           searchingRef={searchingRef}
           checkboxes={checkboxes}
+          handleChecked={[isChecked, setIsChecked]}
         />
         <PageNoBox
           curr={requestPageNo}

@@ -11,6 +11,7 @@ export default function MypageMemberFavoritesTypeSet({
   requestPageNo,
   totalPageNo,
   handleRequestPageNo,
+  link,
 }) {
   const { imgSrc, title, backgroundColor } = defaultContents;
 
@@ -26,6 +27,7 @@ export default function MypageMemberFavoritesTypeSet({
         {dbContents.map((item) => (
           <MypageMemberFavoritesCard
             key={item.postId}
+            link={link(item.postId)}
             imgSrc={item.thumbnailImg}
             title={item.postTitle}
             oneLiner={item.oneLiner ? item.oneLiner : '-'}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SignInSellerContents.css';
-import { useNavigate } from 'react-router-dom';
 
 const defaultContents = {
   inputContents: [
@@ -25,9 +24,8 @@ const defaultContents = {
   },
 };
 
-export default function SignInSellerContents({ closeModal }) {
+export default function SignInSellerContents({ closeModal, openCheckUserModal }) {
   const [findMode, setFindMode] = useState(false);
-  const navigate = useNavigate();
 
   const {
     inputContents,
@@ -72,8 +70,7 @@ export default function SignInSellerContents({ closeModal }) {
           type={signUp.inputType}
           onClick={() => {
             closeModal();
-            navigate('/app/agreement/seller');
-            window.scrollTo(0, 0);
+            openCheckUserModal();
           }}
         >
           {signUp.text}

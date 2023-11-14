@@ -1,0 +1,19 @@
+.totalActRegistrationBtn {
+  width: 8.4375rem;
+  height: 2.75rem;
+  border-radius: 0.625rem;
+  background: #000;
+  cursor: pointer;
+  border: none;
+  outline: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  text-align: center;
+  font-family: SUITE Variable;
+  font-size: 1.125rem;
+  font-weight: 600;
+}

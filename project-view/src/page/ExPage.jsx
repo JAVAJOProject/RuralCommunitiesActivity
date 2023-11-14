@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AppSiteMap from '../components/Service/common/Modal/AppSiteMap';
+import AppCheckExistingUser from '../components/Service/common/Modal/AppCheckExistingUser';
 
 export default function ExPage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +16,12 @@ export default function ExPage() {
         </button>
       </main>
 
-      <AppSiteMap
+      <AppCheckExistingUser
         isOpen={isOpen}
-        closeModal={() => {
+        closeOpen={() => {
           setIsOpen(false);
         }}
+        selectedMemType={1}
       />
     </>
   );
