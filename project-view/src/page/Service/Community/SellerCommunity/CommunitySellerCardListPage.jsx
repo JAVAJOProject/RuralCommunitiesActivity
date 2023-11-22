@@ -68,7 +68,7 @@ export default function CommunitySellerCardListPage() {
       >
         {true && (
           <CommunityWritingBtn
-            link={'/app/community/news/registration'}
+            link={'../../registration'}
             imgSrc={writingBtn.imgSrc}
             text={writingBtn.text}
           />

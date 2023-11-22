@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {
   fetchDataETCAndObj,
   fetchOneContentGET,
+  fetchViewUpdate,
 } from '../../../../config/ApiService';
 
 import CardListContentBox from '../../../../components/Service/common/UI/CardListContentBox';
@@ -81,17 +82,23 @@ const defaultContents = {
 
 export default function CommunitySellerDetailPage() {
   const { sellerCommunityPostId } = useParams();
-  const [isLogined, setIsLogined] = useState(true);
+  const [isLogined, setIsLogined] = useState(false);
   const [dbContent, updateDbContent] = useImmer({});
 
   useEffect(() => {
     async function fetchContents() {
-      const communityPost = await fetchOneContentGET(
-        `/community/seller/post-detail/${sellerCommunityPostId}`
-      );
-      updateDbContent(communityPost);
+      try {
+        fetchViewUpdate(sellerCommunityPostId, 6);
+
+        const communityPost = await fetchOneContentGET(
+          `/community/seller/post-detail/${sellerCommunityPostId}`
+        );
+        updateDbContent(communityPost);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    fetchContents();
+    return () => fetchContents();
   }, [sellerCommunityPostId]);
 
   const [deleteSuccess, setDeleteSuccess] = useState(false);

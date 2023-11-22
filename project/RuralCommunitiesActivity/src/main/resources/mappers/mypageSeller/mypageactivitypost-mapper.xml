@@ -46,11 +46,10 @@
 		FROM
 		(SELECT
 		ROW_NUMBER() OVER(ORDER BY A_POST_DATE_CREATED DESC) NUM,
-		P.*, A.a_name, A.a_start_date, A.min_people, A.a_reservation_deadline FROM
-		ACTIVITY_POST P WHERE A_ID IN
-		(SELECT A_ID FROM ACTIVITY_INFO
-		WHERE S_ID
-		= #{sId}))
+		P.*, A.a_name, A.a_start_date, A.a_min_people, A.a_reservation_deadline
+FROM ACTIVITY_POST P
+JOIN ACTIVITY_INFO A ON (P.A_ID = A.A_ID)
+WHERE A.S_ID = #{sId})
 		WHERE NUM BETWEEN #{start} AND #{end}
 	</select>
 

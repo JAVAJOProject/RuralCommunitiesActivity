@@ -50,7 +50,7 @@ const defaultContents = {
           communityContentRegistrationApi,
           { sellerCommunityContent: inputRef.current.value }
         );
-        
+
         if (result.resultMsg === '등록 성공') {
           setRegistSuccess(true);
           setModalText(modalConfirmContents.success);
@@ -73,6 +73,10 @@ const defaultContents = {
     yellow: pickYellow,
     green: pickGreen,
   },
+  textareaInput: {
+    text: '내용을 입력하세요.',
+    inputName: 'sellerCommunityContent',
+  },
 };
 
 export default function CommunitySellerRegistrationPage() {
@@ -86,7 +90,8 @@ export default function CommunitySellerRegistrationPage() {
   const [registSuccess, setRegistSuccess] = useState(false);
   const [wasValidated, setWasValidated] = useState(false);
 
-  const { registrationBtn, cancelBtn, pickImages } = defaultContents;
+  const { registrationBtn, cancelBtn, pickImages, textareaInput } =
+    defaultContents;
 
   return (
     <div>
@@ -147,6 +152,8 @@ export default function CommunitySellerRegistrationPage() {
           <CommunityInputContent
             textareaRef={textareaRef}
             wasValidated={wasValidated}
+            placeholderText={textareaInput.text}
+            inputName={textareaInput.inputName}
           />
         </CardListContentBox>
       </div>

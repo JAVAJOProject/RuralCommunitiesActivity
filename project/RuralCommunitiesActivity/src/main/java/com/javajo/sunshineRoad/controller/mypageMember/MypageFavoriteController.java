@@ -41,7 +41,7 @@ public class MypageFavoriteController {
 		int uId = 1;
 //		int uId = member.getUId();
 		System.out.println("FavoriteDAO" + uId);
-		int favoriteCount = favoriteService.getActivityCountEvent(uId);
+		int favoriteCount = favoriteService.getCountEvent(uId);
 		PageInfo pageInfo = new PageInfo(1, 5, favoriteCount, 6);
 		List<MypageFavoriteDTO> favoriteMember = favoriteService.getListInfoEvent(uId, pageInfo);
 
@@ -74,7 +74,7 @@ public class MypageFavoriteController {
 		int uId = 1;
 
 		int perPagePostNo = 6;
-		int totalCount = favoriteService.getActivityCountEvent(uId);
+		int totalCount = favoriteService.getCountEvent(uId);
 
 		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, totalCount));
 	}
@@ -86,7 +86,7 @@ public class MypageFavoriteController {
 //		int uId = member.getUId();
 		System.out.println("FavoriteDAO " + uId);
 
-		int favoriteCount = favoriteService.getActivityCountEvent(uId);
+		int favoriteCount = favoriteService.getCountEvent(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, favoriteCount, 6);
 		List<MypageFavoriteDTO> favoriteMember = favoriteService.getInfoEvent(uId, pageInfo);
 
@@ -118,7 +118,7 @@ public class MypageFavoriteController {
 		int uId = 1;
 
 		int perPagePostNo = 6;
-		int totalCount = favoriteService.getActivityCountActivity(uId);
+		int totalCount = favoriteService.getCountActivity(uId);
 
 		return new ArrayList<Integer>(Arrays.asList(perPagePostNo, totalCount));
 	}
@@ -129,7 +129,7 @@ public class MypageFavoriteController {
 		int uId = 1;
 //			int uId = member.getUId();
 		System.out.println("favoriteActivity " + uId);
-		int favoriteCount = favoriteService.getActivityCountActivity(uId);
+		int favoriteCount = favoriteService.getCountActivity(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, favoriteCount, 6);
 		List<MypageFavoriteDTO> favoriteMember = favoriteService.getInfoActivity(uId, pageInfo);
 		return favoriteMember;

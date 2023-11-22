@@ -4,6 +4,7 @@ import { useImmer } from 'use-immer';
 import {
   fetchDataGET,
   fetchOneContentGET,
+  fetchViewUpdate,
 } from '../../../../config/ApiService';
 
 import EventFirstBox from '../../../../components/Service/community/event/Detail/FirstBox/EventFirstBox';
@@ -32,6 +33,8 @@ export default function EventDetailPage() {
   useEffect(() => {
     async function fetchContents() {
       try {
+        fetchViewUpdate(eventId, 4);
+
         const data = await fetchOneContentGET(`/event/event-detail/${eventId}`);
         const images = await fetchDataGET(
           `/event/event-image/${data.eventImgId}`
@@ -56,7 +59,7 @@ export default function EventDetailPage() {
         console.error(error);
       }
     }
-    fetchContents();
+    return () => fetchContents();
   }, [eventId]);
 
   return (

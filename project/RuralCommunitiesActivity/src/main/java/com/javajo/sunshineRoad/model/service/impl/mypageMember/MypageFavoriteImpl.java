@@ -23,8 +23,8 @@ public class MypageFavoriteImpl implements MypageFavoriteService {
 	}
 
 	@Override
-	public int getActivityCountEvent(int uId) {
-		return favoriteDAO.getActivityCountEvent(uId);
+	public int getCountEvent(int uId) {
+		return favoriteDAO.getEventCount(uId);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class MypageFavoriteImpl implements MypageFavoriteService {
 	}
 
 	@Override
-	public int getActivityCountActivity(int uId) {
-		return favoriteDAO.getActivityCountEvent(uId);
+	public int getCountActivity(int uId) {
+		return favoriteDAO.getActivityCount(uId);
 	}
 
 	@Override

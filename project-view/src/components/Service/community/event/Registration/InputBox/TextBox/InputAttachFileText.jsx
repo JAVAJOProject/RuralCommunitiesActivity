@@ -6,6 +6,7 @@ export default function InputAttachFileText({ file, handleDelete }) {
     file.fileName.length > 13
       ? file.fileName.substr(0, 13) + '...'
       : file.fileName;
+
   return (
     <div className="inputAttachFileText">
       <p>{fileName}</p>

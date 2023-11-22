@@ -77,6 +77,7 @@ import EventTextListPage from './page/Service/Community/Event/EventTextListPage'
 import EventDetailPage from './page/Service/Community/Event/EventDetailPage';
 import EventRegistrationPage from './page/Service/Community/Event/EventRegistrationPage';
 import EventApplyPage from './page/Service/Community/Event/EventApplyPage';
+import EventApplyStoryEditPage from './page/Service/Community/Event/EventApplyStoryEditPage';
 import RootLayoutMemberCommunity from './components/Service/community/memberCommunity/RootLayoutMemberCommunity';
 import CommunityMemberCardListPage from './page/Service/Community/MemberCommunity/CommunityMemberCardListPage';
 import CommunityMemberTextListPage from './page/Service/Community/MemberCommunity/CommunityMemberTextListPage';
@@ -486,6 +487,10 @@ const router = createBrowserRouter([
                     path: 'apply/:eventId',
                     element: <EventApplyPage />,
                   },
+                  {
+                    path: 'apply/edit/:eventReportId',
+                    element: <EventApplyStoryEditPage />
+                  }
                 ],
               },
               {

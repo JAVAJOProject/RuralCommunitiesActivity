@@ -202,4 +202,16 @@
         WHERE
             event_img_id = #{eventImgId}
     </select>
+
+    <select id="getEventStoryContent" parameterType="int" resultType="EventStory">
+        SELECT event_report_id, u_id, event_id, event_progress_status_id, event_story
+        FROM event_winner
+        WHERE event_report_id = #{eventReportId}
+    </select>
+
+    <update id="updateEventStoryContent" parameterType="EventStory">
+        UPDATE event_winner
+        SET event_story = #{eventStory}
+        WHERE event_report_id = #{eventReportId}
+    </update>
 </mapper>

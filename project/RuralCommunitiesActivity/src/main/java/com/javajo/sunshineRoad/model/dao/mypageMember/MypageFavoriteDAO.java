@@ -18,10 +18,15 @@ import lombok.RequiredArgsConstructor;
 public class MypageFavoriteDAO {
 	private final SqlSessionTemplate sqlSession;
 
-	public int getActivityCountEvent(int uId) {
+	public int getEventCount(int uId) {
 		System.out.println("uId " + uId);
 		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
 		return favoritemapper.selectCountEvent(uId);
+	}
+	public int getActivityCount(int uId) {
+		System.out.println("uId " + uId);
+		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+		return favoritemapper.selectByActivity(uId);
 	}
 
 	// 로그인한 회원

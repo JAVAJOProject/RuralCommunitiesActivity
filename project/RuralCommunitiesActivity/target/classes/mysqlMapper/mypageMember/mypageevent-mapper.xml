@@ -11,7 +11,7 @@
 		<result property="postTypeId" column="post_type_id" />
 		<result property="eventImgId" column="event_img_id" />
 		<result property="sigunguId" column="sigungu_id" />
-		<result property="eventRecruitTypeId" column="event_recruit_typeId" />
+		<result property="eventRecruitTypeId" column="event_recruit_type_id" />
 		<result property="eventStatusId" column="event_status_id" />
 		<result property="eventName" column="event_name" />
 		<result property="eventContent" column="event_content" jdbcType="CLOB" javaType="java.lang.String" />
@@ -68,10 +68,12 @@
 
 	<select id="selectByMember" resultMap="MyPageEventInfoForClob">
 		SELECT W.EVENT_REPORT_ID,
+			   W.EVENT_PROGRESS_STATUS_ID,
 			   S.EVENT_PROGRESS_STATUS,
 			   E.EVENT_ID,
 			   E.EVENT_NAME,
 			   E.EVENT_THUMBNAIL_IMG,
+			   E.EVENT_RECRUIT_TYPE_ID,
 			   E.EVENT_ADDR,
 			   E.EVENT_RECRUIT_END_DATE,
 			   E.EVENT_START_DATE

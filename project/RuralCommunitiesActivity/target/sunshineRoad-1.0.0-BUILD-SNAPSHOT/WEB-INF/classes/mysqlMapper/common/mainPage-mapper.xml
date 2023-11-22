@@ -117,12 +117,11 @@
     </select>
 
     <select id="getMainPageEventData" resultType="MainPageEventInfo">
-        SELECT
-            event_id, event_thumbnail_img
-        FROM
-            event
-        ORDER BY event_recruit_end_date ASC
-            LIMIT 5
+        SELECT event_id,
+               event_thumbnail_img
+        FROM event
+        WHERE event_status_id IN (3, 5)
+        ORDER BY event_recruit_end_date DESC LIMIT 5
     </select>
 
     <select id="getOneEventData" resultType="MainPageEventInfo" parameterType="int">

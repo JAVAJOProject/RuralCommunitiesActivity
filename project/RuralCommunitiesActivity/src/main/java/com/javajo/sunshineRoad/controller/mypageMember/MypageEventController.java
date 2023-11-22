@@ -79,8 +79,7 @@ public class MypageEventController {
 		return selectEvent;
 	}
 
-	// 시향언니꺼 URL 그대로 사용해야함. 
-	// 상세보기 
+	// 상세보기
 //	@GetMapping("/event/{eventId}")
 //	public MypageEventDTO getEventInfo(@PathVariable int eventId) {
 //		System.out.println("eventId" + eventId);

@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { useNavigate } from 'react-router-dom/dist';
-import { fetchDataGET, fetchOneContentGET } from '../../../config/ApiService';
+import {
+  fetchDataGET,
+  fetchOneContentGET,
+  fetchViewUpdate,
+} from '../../../config/ApiService';
 
 import EventFirstBox from '../../../components/Service/community/event/Detail/FirstBox/EventFirstBox';
 import EventDetailTitle from '../../../components/Service/community/event/Detail/Title/EventDetailTitle';
@@ -32,6 +36,8 @@ export default function TotalActDetailPage() {
   useEffect(() => {
     async function fetchContents() {
       try {
+        fetchViewUpdate(aPostId, 1);
+
         const data = await fetchOneContentGET(
           `/totalActivityContent/one/${aPostId}`
         );
@@ -57,8 +63,8 @@ export default function TotalActDetailPage() {
         console.error(error);
       }
     }
-    fetchContents();
-  }, [aPostId]); //aPostId가 바뀌면 상태 업데이트(클릭하면)
+    return () => fetchContents();
+  }, [aPostId]);
 
   return (
     <div>

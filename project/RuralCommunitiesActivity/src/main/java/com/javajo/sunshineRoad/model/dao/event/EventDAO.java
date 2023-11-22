@@ -70,4 +70,14 @@ public class EventDAO {
         EventMapper mapper = sqlSession.getMapper(EventMapper.class);
         return mapper.getRequestPageRecruitingEventDataOnly(startPostNo, endPostNo);
     }
+
+    public EventStoryDTO getEventStoryContent(int eventReportId) {
+        EventMapper mapper = sqlSession.getMapper(EventMapper.class);
+        return mapper.getEventStoryContent(eventReportId);
+    }
+
+    public void updateEventStoryContent(EventStoryDTO eventStory) {
+        EventMapper mapper = sqlSession.getMapper(EventMapper.class);
+        mapper.updateEventStoryContent(eventStory);
+    }
 }

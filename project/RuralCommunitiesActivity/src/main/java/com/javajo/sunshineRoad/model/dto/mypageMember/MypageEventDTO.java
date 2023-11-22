@@ -19,11 +19,11 @@ import lombok.Setter;
 public class MypageEventDTO {
 	private int eventId;
 	@JsonProperty
-	private String sId;//null 값떄문에
+	private String sId;//null 값 때문에
 	private int postTypeId;
 	private int eventImgId;
-	private String sigunguId; //null 값떄문에
-	private int eventRecruitTypeId;//null 값떄문에
+	private String sigunguId; //null 값 때문에
+	private int eventRecruitTypeId;//null 값 때문에
 	private int eventStatusId;
 	private String eventName;
 	private String eventContent;

@@ -68,8 +68,8 @@ export default function InputAttach({
           required={isRequired}
           onChange={handleChange}
           style={{ display: 'none' }}
-          value={inputDataFiles.map((item) => item.file)}
           multiple
+          // value={inputDataFiles.map((item) => item.file)}
         />
         <p>{fileLimitText}</p>
       </div>

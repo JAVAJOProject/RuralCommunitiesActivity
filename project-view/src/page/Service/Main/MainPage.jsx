@@ -133,7 +133,7 @@ export default function MainPage() {
         console.error(error);
       }
     }
-    fetchContents();
+    return () => fetchContents();
   }, []);
 
   return (

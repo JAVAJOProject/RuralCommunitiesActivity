@@ -45,6 +45,16 @@ const menus = [
     ],
   },
 ];
+const mypage = [
+  {
+    text: '마이 페이지(서비스 이용자)',
+    link: '/app/myInfo/experiencer/personalInfo',
+  },
+  {
+    text: '마이 페이지(서비스 제공자)',
+    link: '/app/myInfo/provider/analytics',
+  },
+];
 const admin = {
   text: '관리자 페이지로 이동하기',
   link: '/admin',
@@ -129,6 +139,13 @@ export default function AppSiteMap({ isOpen, closeModal }) {
                 ))}
               </div>
             </div>
+          ))}
+        </div>
+        <div className="tempMypageEntrypoint">
+          {mypage.map((item) => (
+            <p key={item.text} onClick={() => handleNavigate(item.link)}>
+              {item.text}
+            </p>
           ))}
         </div>
         <div className="navigateToAdmin">

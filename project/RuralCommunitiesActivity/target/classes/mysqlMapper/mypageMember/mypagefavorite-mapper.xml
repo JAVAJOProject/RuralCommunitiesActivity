@@ -45,10 +45,9 @@
 	<select id="selectCountEvent" parameterType="int"
 			resultType="int">
 		SELECT COUNT(*)
-		FROM (SELECT F_ID, BOARD_ID FROM FAVORITE WHERE U_ID = #{uId}) F
-				 JOIN
-				 (SELECT * FROM BOARD_LIST WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID = B.BOARD_ID)
-				 LEFT JOIN EVENT E ON (B.EVENT_ID = E.EVENT_ID)
+		FROM FAVORITE
+		WHERE U_ID = #{uId}
+		  AND POST_TYPE_ID = 4
 	</select>
 
 	<select id="selectByFavoriteListEvent" parameterType="int"
@@ -110,25 +109,10 @@
 		OFFSET #{start}
 	</select>
 	<select id="selectByActivity" parameterType="int"
-			resultMap="favoriteByMember">
-		SELECT F.F_ID,
-			   F.U_ID,
-			   F.BOARD_ID,
-			   E.EVENT_ID,
-			   E.EVENT_ADDR,
-			   E.EVENT_NAME,
-			   E.EVENT_THUMBNAIL_IMG,
-			   E.EVENT_CONTENT
-		FROM (SELECT F_ID, BOARD_ID, U_ID
-			  FROM FAVORITE
-			  WHERE U_ID = #{uId}) F
-				 JOIN (SELECT *
-					   FROM BOARD_LIST
-					   WHERE POST_TYPE_ID = 4) B ON (F.BOARD_ID =
-													 B.BOARD_ID)
-				 LEFT JOIN EVENT E
-						   ON (B.EVENT_ID = E.EVENT_ID)
-			LIMIT #{perPagePostNo}
-		OFFSET #{start}
+			resultType="int">
+		SELECT COUNT(*)
+		FROM FAVORITE
+		WHERE U_ID = #{uId}
+		  AND POST_TYPE_ID = 1
 	</select>
 </mapper>

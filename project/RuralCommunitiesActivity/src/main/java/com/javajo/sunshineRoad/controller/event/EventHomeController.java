@@ -1,5 +1,6 @@
 package com.javajo.sunshineRoad.controller.event;
 
+import com.javajo.sunshineRoad.model.dao.event.UpdateEventStoryContentService;
 import com.javajo.sunshineRoad.model.dto.common.ResponseDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventImagesDTO;
@@ -36,8 +37,10 @@ public class EventHomeController {
     private final GetEventDetailFromEventIdService getEventDetailFromEventIdService;
     private final GetEventImagesByImgIdService getEventImagesByImgIdService;
     private final ImgPathToBase64Service imgPathToBase64Service;
+    private final GetEventStoryContentService getEventStoryContentService;
+    private final UpdateEventStoryContentService updateEventStoryContentService;
 
-    public EventHomeController(GetTotalActiveEventCountService getTotalActiveEventCountService, GetRequestPageEventListService getRequestPageEventListService, GetRecruitingActiveEventOnlyCountService getRecruitingActiveEventOnlyCountService, GetRequestPageRecruitingEventListOnlyService getRequestPageRecruitingEventListOnlyService, PostRequestEventPostService requestEventPostService, @Qualifier("EventImageInfoUploader") ImageInfoUploadMarker eventImageInfoUploadMarker, StoreRequestImagesService storeRequestImagesService, GetEventRecruitTypeIdService getEventRecruitTypeIdService, PostRequestEventStoryService postRequestEventStoryService, GetEventDetailFromEventIdService getEventDetailFromEventIdService, GetEventImagesByImgIdService getEventImagesByImgIdService, ImgPathToBase64Service imgPathToBase64Service) {
+    public EventHomeController(GetTotalActiveEventCountService getTotalActiveEventCountService, GetRequestPageEventListService getRequestPageEventListService, GetRecruitingActiveEventOnlyCountService getRecruitingActiveEventOnlyCountService, GetRequestPageRecruitingEventListOnlyService getRequestPageRecruitingEventListOnlyService, PostRequestEventPostService requestEventPostService, @Qualifier("EventImageInfoUploader") ImageInfoUploadMarker eventImageInfoUploadMarker, StoreRequestImagesService storeRequestImagesService, GetEventRecruitTypeIdService getEventRecruitTypeIdService, PostRequestEventStoryService postRequestEventStoryService, GetEventDetailFromEventIdService getEventDetailFromEventIdService, GetEventImagesByImgIdService getEventImagesByImgIdService, ImgPathToBase64Service imgPathToBase64Service, GetEventStoryContentService getEventStoryContentService, UpdateEventStoryContentService updateEventStoryContentService) {
         this.getTotalActiveEventCountService = getTotalActiveEventCountService;
         this.getRequestPageEventListService = getRequestPageEventListService;
         this.getRecruitingActiveEventOnlyCountService = getRecruitingActiveEventOnlyCountService;
@@ -50,6 +53,8 @@ public class EventHomeController {
         this.getEventDetailFromEventIdService = getEventDetailFromEventIdService;
         this.getEventImagesByImgIdService = getEventImagesByImgIdService;
         this.imgPathToBase64Service = imgPathToBase64Service;
+        this.getEventStoryContentService = getEventStoryContentService;
+        this.updateEventStoryContentService = updateEventStoryContentService;
     }
 
     @GetMapping("/total-count")
@@ -181,5 +186,22 @@ public class EventHomeController {
 
         ResponseDTO response = ResponseDTO.builder().resultMsg(resultMsg).data(eventStory).build();
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/apply/story")
+    public ResponseEntity<EventStoryDTO> getStoryContent(@RequestParam int eventReportId) {
+        EventStoryDTO eventStory = getEventStoryContentService.getEventStoryContent(eventReportId);
+        return ResponseEntity.ok(eventStory);
+    }
+    @PatchMapping("/apply/story")
+    public ResponseEntity<ResponseDTO> editStoryContent(EventStoryDTO eventStory) {
+        try {
+            updateEventStoryContentService.updateEventStoryContent(eventStory);
+            ResponseDTO response = ResponseDTO.builder().resultMsg("수정 완료").build();
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            ResponseDTO response = ResponseDTO.builder().errorMsg("수정 실패").build();
+            return ResponseEntity.ok(response);
+        }
     }
 }

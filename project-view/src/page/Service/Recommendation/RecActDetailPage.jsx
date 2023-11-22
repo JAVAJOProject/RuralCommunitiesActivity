@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useImmer } from 'use-immer';
 import { useNavigate } from 'react-router-dom/dist';
-import { fetchDataGET, fetchOneContentGET } from '../../../config/ApiService';
+import {
+  fetchDataGET,
+  fetchOneContentGET,
+  fetchViewUpdate,
+} from '../../../config/ApiService';
 
 import EventDetailTitle from '../../../components/Service/community/event/Detail/Title/EventDetailTitle';
 import EventImageBox from '../../../components/Service/community/event/Detail/ImageBox/EventImageBox';
@@ -35,6 +39,8 @@ export default function RecActDetailPage() {
   useEffect(() => {
     async function fetchContents() {
       try {
+        fetchViewUpdate(recAPostId, 2);
+
         const details = await fetchOneContentGET(
           `/recommendation/activity-list-one/${recAPostId}`
         );
@@ -62,7 +68,7 @@ export default function RecActDetailPage() {
         console.error(error);
       }
     }
-    fetchContents();
+    return () => fetchContents();
   }, [recAPostId]);
 
   const { sellerInfo } = defaultContents;

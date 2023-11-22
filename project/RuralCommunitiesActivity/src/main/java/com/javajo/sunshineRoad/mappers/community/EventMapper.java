@@ -21,6 +21,8 @@ public interface EventMapper {
     public void postEventStoryRequest(EventStoryDTO eventStory);
     public EventDTO getEventFromEventId(int eventId);
     public EventImagesDTO getEventImagesByImgId(int eventImgId);
+    public EventStoryDTO getEventStoryContent(int eventReportId);
+    public void updateEventStoryContent(EventStoryDTO eventStory);
 
     // Oracle
     public List<EventDTO> getRequestPageEventContent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
