@@ -1,3 +1,5 @@
+_여기에 메인페이지 시연영상 간략한 버전으로 넣기_
+
 # 농어촌 체험 서비스 중개 플랫폼 : 농촌빛길💫
 
 농어촌 체험 서비스 중개 플랫폼인 농촌빛길 프로젝트는 농어촌의 자원과 잠재 관광객인 도시민을 잇는 소통과 기회의 장을 만드는 사이트입니다.
@@ -23,26 +25,41 @@
 - DB 모델링 : ERD Cloud
 - UI 설계 : Figma
 
-## 주요 기능💻
+## 전체 구조 및 주요 기능💻
+
+![주요 기능](https://github.com/JAVAJOProject/RuralCommunitiesActivity/assets/135206920/d5cacd5c-edd8-45a5-883a-4c70dce2dead)
 
 ## DB💾
 
 ![농촌빛길 프로젝트 - 자바조](https://github.com/JAVAJOProject/RuralCommunitiesActivity/assets/135206920/b707dad0-1c62-4aa1-8e93-9014ffe4e289)
-<a href="https://www.erdcloud.com/d/pTwBuwDLFnuuFYLy5" target="_blank">ERDCloud 전체 DB 모델링 링크</a>
+[ERDCloud 전체 DB 모델링 링크](https://www.erdcloud.com/d/pTwBuwDLFnuuFYLy5)
+
+![데이터베이스 - 회원](https://github.com/JAVAJOProject/RuralCommunitiesActivity/assets/135206920/50647235-743d-4844-9ae2-10e2f5f2d30a)
+![데이터베이스 - 게시판](https://github.com/JAVAJOProject/RuralCommunitiesActivity/assets/135206920/022e1a3f-8076-437d-8ee7-1687c10392f3)
+![데이터베이스 - 고객센터](https://github.com/JAVAJOProject/RuralCommunitiesActivity/assets/135206920/c8287e4c-ed0e-4d8c-ba42-285a98ff71da)
 
 ## UI 설계💡
 
-<a href="https://www.figma.com/file/S7JfNevGagugPj4odQQ9SK/Final-Project-%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B0%80%EC%95%88?type=design&node-id=0%3A1&mode=design&t=AYwdmko1wKHNirHW-1" target="_blank">Figma 전체 UI 설계 링크</a>
+[Figma 전체 UI 설계 링크](https://www.figma.com/file/S7JfNevGagugPj4odQQ9SK/Final-Project-%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80-%EA%B0%80%EC%95%88?type=design&node-id=0%3A1&mode=design&t=AYwdmko1wKHNirHW-1)
 
 ## 담당 파트🔗
 
-_폴더 기준으로 분류_
+_* 폴더 기준으로 분류 *_
+
+[🙋🏻‍♀️이시향](#%EF%B8%8F이시향)&nbsp;&nbsp;&nbsp;
+[🙋🏻‍♀️김경미](#%EF%B8%8F김경미)&nbsp;&nbsp;&nbsp;
+[🙋🏻‍♂️김규하](#%EF%B8%8F김규하)&nbsp;&nbsp;&nbsp;
+[🙋🏻‍♂️김남호](#%EF%B8%8F김남호)&nbsp;&nbsp;&nbsp;
+[🙋🏻‍♂️김현승](#%EF%B8%8F김현승)&nbsp;&nbsp;&nbsp;
+[🙋🏻‍♀️이효인](#%EF%B8%8F이효인)&nbsp;&nbsp;&nbsp;
 
 ### **🙋🏻‍♀️이시향🎖**<br>
 
+_여기에 메인 페이지, 메뉴바, 이벤트, 커뮤니티 시연영상 넣기_
+
 > 총괄 및 작업 병합, 설정 관리, 커뮤니티 카테고리 담당(이벤트, 소통공간, 마을소식), 서비스 페이지 UI 설계 및 구현, DB 통합
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -92,7 +109,7 @@ _폴더 기준으로 분류_
 </tr>
 </table>
 
-<table>
+<table width="700px">
 <tr>
 <th>React</th>
 </tr>
@@ -107,9 +124,11 @@ _폴더 기준으로 분류_
 
 ### **🙋🏻‍♀️김경미**<br>
 
+_여기에 마이페이지 멤버, 마이페이지 셀러 시연영상 넣기_
+
 > 마이페이지 카테고리 담당(서비스 이용자의 개인정보 관리, 예약 관리, 이벤트 관리, 찜 목록, 후기 관리, 내 글 목록 / 서비스 제공자의 서비스 이용통계, 사업자정보 관리, 체험 서비스 관리, 이벤트 관리, 내 글 목록 - 기능 및 DB 설계, 구현), DB 통합
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -145,9 +164,11 @@ _폴더 기준으로 분류_
 
 ### **🙋🏻‍♂️김규하**<br>
 
+_여기에 전체 체험 시연영상 넣기_
+
 > 전체체험 카테고리 담당(테마별 체험, 지역별 체험, 농촌관광등급 기능 및 DB 설계, 구현), 회원가입 기능 구현
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -199,9 +220,11 @@ _폴더 기준으로 분류_
 
 ### **🙋🏻‍♂️김남호**<br>
 
+_여기에 추천 체험 시연영상 넣기_
+
 > 추천체험 카테고리 담당(키워드별 추천체험, 지역별 추천체험, 지역별 추천마을 기능 및 DB 설계, 구현)
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -221,9 +244,11 @@ _폴더 기준으로 분류_
 
 ### **🙋🏻‍♂️김현승**<br>
 
+_여기에 고객센터, 날씨 API 시연영상 넣기_
+
 > 고객센터 카테고리 담당(공지사항, FAQ, 1:1 문의 기능 및 DB 설계, 구현), 공공데이터 날씨 API 설계 및 구현
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -251,9 +276,11 @@ _폴더 기준으로 분류_
 
 ### **🙋🏻‍♀️이효인**<br>
 
+_여기에 관리자 페이지 시연영상 넣기_
+
 > 관리자 페이지 전체 담당(기능 및 UI 설계, 구현)
 
-<table>
+<table width="700px">
 <tr>
 <th colspan="2">Spring</th>
 </tr>
@@ -279,7 +306,7 @@ _폴더 기준으로 분류_
 </tr>
 </table>
 
-<table>
+<table width="700px">
 <tr>
 <th>React</th>
 </tr>
