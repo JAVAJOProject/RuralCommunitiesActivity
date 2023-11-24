@@ -79,7 +79,7 @@ _* 코드는 폴더 기준으로 분류 *_<br>
 
 <hr>
 
-### **🙋🏻‍♀️이시향🎖**<br>
+### **🙋🏻‍♀️이시향🔰**<br>
 
 > 총괄 및 작업 병합, 설정 관리, 커뮤니티 카테고리 담당(이벤트, 소통공간, 마을소식), 서비스 페이지 UI 설계 및 구현, DB 통합<br><br>**GitHub >** https://github.com/biyoonx<br>**Email >** ok2geoya@gmail.com
 
