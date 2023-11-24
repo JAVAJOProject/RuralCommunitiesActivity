@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useImmer } from 'use-immer';
+import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
 
 import MypageMemberFavoritesTypeSet from '../../../../components/Service/mypage/Experiencer/Favorites/MypageMemberFavoritesTypeSet';
 
 import favoritesActImg from '../../../../view_img/Service/myPage/experiencer/favoriteAct.jpg';
 import favoritesEventImg from '../../../../view_img/Service/myPage/experiencer/favoriteEvent.jpg';
-
-import testImg from '../../../../view_img/Service/mainPage/testImg/totalActivityTest1.jpg';
-import { fetchDataGET, fetchImgGET } from '../../../../config/ApiService';
-import { useImmer } from 'use-immer';
 
 const defaultContents = {
   activityTitle: {

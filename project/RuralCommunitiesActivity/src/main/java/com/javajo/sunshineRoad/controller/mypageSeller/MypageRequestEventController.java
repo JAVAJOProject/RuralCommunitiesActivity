@@ -1,6 +1,8 @@
 package com.javajo.sunshineRoad.controller.mypageSeller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.core.io.UrlResource;
@@ -31,6 +33,7 @@ public class MypageRequestEventController {
 	private final MypageRequestEventService reqEventService;
 	private final GetOneEventService getOneEventService;
 	private final GetOneImgFromPathService getOneImgFromPathService;
+
 	// 전체 리스트
 	@GetMapping("/event/list/{currentPage}")
 	public List<MypageRequestEventDTO> getEventList(@PathVariable("currentPage") int currentPage /* @SessionAttribute("loginSeller") MypageSellerDTO seller */) {
@@ -43,6 +46,18 @@ public class MypageRequestEventController {
 		
 		List<MypageRequestEventDTO> selectEvent = reqEventService.getEventList(sId, pageInfo);
 		return selectEvent;
+	}
+
+	@GetMapping("/event/total-page")
+	public ResponseEntity<List<Integer>> getTotalPost() {
+		int sId = 1;
+//		int sId = seller.getSId();
+		System.out.println("sId" + sId);
+
+		int perPagePostNo = 3;
+		int reservationCount = reqEventService.getEventCount(sId);
+		List<Integer> pageInfo = new ArrayList<Integer>(Arrays.asList(perPagePostNo, reservationCount));
+		return ResponseEntity.ok(pageInfo);
 	}
 	// 등록한 이벤트 이미지처리
     @GetMapping("/event-image/{id}")

@@ -76,7 +76,7 @@ export default function MypageSellerEventPage() {
   return (
     <>
       <CardListContentBox
-        style={{ width: event.length > 0 ? 'fit-content' : '47rem' }}
+        style={{ width: event?.length > 0 ? 'fit-content' : '47rem' }}
       >
         <CardBoxTitleSet
           imgSrc={titleImg}
@@ -91,7 +91,7 @@ export default function MypageSellerEventPage() {
           link={'/app/community/event/registration'}
         />
         <div>
-          {event.length > 0 &&
+          {event?.length > 0 &&
             event.map((item) => {
               const {
                 eventId,
