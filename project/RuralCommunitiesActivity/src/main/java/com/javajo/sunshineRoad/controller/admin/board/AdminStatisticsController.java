@@ -1,19 +1,15 @@
 package com.javajo.sunshineRoad.controller.admin.board;
 
-import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AStatisticsDTO;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminStatisticsService;
-
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -22,18 +18,12 @@ import lombok.RequiredArgsConstructor;
 public class AdminStatisticsController {
 
 	private final AdminStatisticsService statisticsService;
-//	
-//
-//	public AdminStatisticsController(AdminStatisticsService statisticsService) {
-//		super();
-//		this.statisticsService = statisticsService;
-//	}
+
 //	//통계
-//	//조회
 //	//접속자수 누적 월별 일별 시간대별
 	@Transactional
 	@GetMapping("/visitors/total")
-	public Integer visitorsStatisticsTotal() {
+	public int visitorsStatisticsTotal() {
 
 		try {
 			return statisticsService.visitorsStatisticsTotal();
@@ -43,37 +33,42 @@ public class AdminStatisticsController {
 		}}
 	@Transactional
 	@GetMapping("/visitors/month/{year}")
-	public Integer visitorsStatisticsMonth(@PathVariable int year) {
+	public ResponseEntity<List<Map<String, Object>>> visitorsStatisticsMonth(@PathVariable int year) {
 
 		try {
-			return statisticsService.visitorsStatisticsMonth(year);
+			List<Map<String, Object>> result = statisticsService.visitorsStatisticsMonth(year);
+
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
 		}
 	}
 		
 	@Transactional
 	@GetMapping("/visitors/month/{year}/{month}")
-	public Integer visitorsStatisticsDays(@PathVariable int year,@PathVariable int month) {
+	public ResponseEntity<List<Map<String, Object>>> visitorsStatisticsDays(@PathVariable int year,@PathVariable int month) {
 
 		try {
-			return statisticsService.visitorsStatisticsDays(year, month);
+			List<Map<String, Object>> result = statisticsService.visitorsStatisticsDays(year, month);
+			
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
 	@Transactional
 	@GetMapping("/visitors/times")
-	public Integer visitorsStatisticsTimes() {
+	public ResponseEntity<List<Map<String, Object>>> visitorsStatisticsTimes() {
 
 		try {
-			return statisticsService.visitorsStatisticsTimes();
+			List<Map<String, Object>> result = statisticsService.visitorsStatisticsTimes();
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
@@ -81,37 +76,57 @@ public class AdminStatisticsController {
 	//예약건수 reservation
 	//날짜별 건수 월별
 	@Transactional
-	@GetMapping("/reservation/theme")
-	public Integer reservationTheme(@PathVariable int month) {
+	@GetMapping("/reservation/theme/{month}/{year}")
+	public ResponseEntity<List<Map<String, Object>>> reservationTheme(@PathVariable int month,
+			@PathVariable int year) {
 
 		try {
-			return statisticsService.reservationTheme(month);
+			List<Map<String, Object>> result = statisticsService.reservationTheme(month,year);
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
+		}
+	}
+	//해당월의 일별 예약건수
+	@Transactional
+	@GetMapping("/reservation/day/{month}/{year}")
+	public ResponseEntity<List<Map<String, Object>>> reservationDays(
+			@PathVariable int month,
+			@PathVariable int year) {
+
+		try {
+			List<Map<String, Object>> result = statisticsService.reservationDays(month,year);
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	
+	//월별 예약건수
 	@Transactional
-	@GetMapping("/reservation/month/{month}")
-	public Integer reservationMonth() {
+	@GetMapping("/reservation/month")
+	public ResponseEntity<List<Map<String, Object>>> reservationMonth() {
 
 		try {
-			return statisticsService.reservationMonth();
+			List<Map<String, Object>> result = statisticsService.reservationMonth();
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
 		}
 	}
 	@Transactional
 	@GetMapping("/reservation/seller")
-	public Integer reservationSeller() {
+	public ResponseEntity<List<Map<String, Object>>> reservationSeller() {
 
 		try {
-			return statisticsService.reservationSeller();
+			List<Map<String, Object>> result = statisticsService.reservationSeller();
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0;
+			return ResponseEntity.badRequest().build();
 		}
 	}
 

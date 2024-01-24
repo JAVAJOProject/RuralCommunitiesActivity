@@ -1,0 +1,31 @@
+.approvalTableA {
+    /* border: 1px solid black; */
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    /* line-height: 19px; */
+    text-align: center;
+
+    color: #3F3F3F;
+}
+.approvalTableA > thead> tr > th,
+.approvalTableA > tbody > tr > td {
+    height: 50px;
+}
+.approvalTableA > tbody > tr:nth-child(odd) {
+    background: rgba(85, 142, 228, 0.05);
+}
+
+
+
+.nameHoverA {
+    text-decoration: none;
+    color: #3F3F3F;
+&:hover {
+    text-decoration: underline;
+    color : rgb(226, 104, 3);
+    }
+}

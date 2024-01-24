@@ -1,0 +1,160 @@
+.buttonFullAdmin {
+    /* display: inline-block; */
+    /* text-align: center; */
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+    
+    width: 90px;
+    height: 2.5rem;
+    /* padding: 6px; */
+    margin-left: 10px;
+    margin-top: 6rem;
+
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    float: right;
+}
+
+.modifyBtnA {
+
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+    
+    width: 90px;
+    height: 2.5rem;
+
+    margin-left: 10px;
+    margin-top: 6rem;
+
+
+    background: #6958CE;
+    border: 1px solid #6958CE;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    float: right;
+}
+
+.searchBtnA {
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    width: 90px;
+    padding: 8px;
+    margin-left: 10px;
+
+    border-width: 0;
+    color: #FFFFFF;
+    background: #754BCE;
+    border-radius: 20px;
+    float: right;
+}
+.updateBtnA{
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+
+
+    width: 90px;
+    height: 2.5rem;
+    margin-right: 2.7rem;
+    margin-top: 6rem;
+
+    background: #0FC016;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    
+    border-width: 0;
+    border-radius: 30px;
+    float: right;
+}
+
+.insertBtnA {
+    float: right;
+    width: 73px;
+    height: 36px;
+    background: #0FC016;
+    border-radius: 10px;
+    border-width: 0;
+
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.closeBtnA {
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #383838;
+
+
+    width: 90px;
+    /* height: 2.5rem; */
+    padding: 6px;
+    margin-left: 10px;
+    margin-right: 5rem;
+    margin-top: 6rem;
+
+    background: #FFFFFF;
+    border: 1px solid #CDCDCD;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    float: right;
+
+
+}
+
+.resetBtnA {
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    width: 90px;
+    padding: 8px;
+    margin-left: 10px;
+    
+    border-width: 0;
+    background: #FFFFFF;
+    border-radius: 20px;
+    
+    float: right;
+}
+.unansweredA{
+    width: 48px;
+    height: 30px;
+    background: rgba(175, 215, 255, 0.94);
+    border-radius: 10px;
+    border-width: 0;
+
+    color: #FF0000;
+    text-align: center;
+    font-family: 'SUITE Variable';
+}
+.answeredA {
+    width: 48px;
+    height: 30px;
+    background: rgba(175, 215, 255, 0.94);
+    border-radius: 10px;
+    border-width: 0;
+    
+    text-align: center;
+    font-family: 'SUITE Variable';
+}

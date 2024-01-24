@@ -14,10 +14,14 @@ public interface AdminMemberMapper {
 
     //adminMembers
     public List<AdminMemberDTO> getAllMembers(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);//전체조회
-    public List<AdminMemberDTO> selectMemberID(@Param("searchDTO") ASearchDTO searchDTO);//아이디 선택조회
+    public List<AdminMemberDTO> selectMemberID(@Param("uId") int uId);//아이디 선택조회
     public List<AdminMemberDTO> selectMemberDATE(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);//가입일 기간 조회
     
     public List<AdminMemberDTO> selectMember(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+    
+    
+    public void registrationMember(AdminMemberDTO adminMemberDTO);
+    
     
     public void updateMember(AdminMemberDTO adminMemberDTO);//수정
     public void delMember(int uId);//삭제

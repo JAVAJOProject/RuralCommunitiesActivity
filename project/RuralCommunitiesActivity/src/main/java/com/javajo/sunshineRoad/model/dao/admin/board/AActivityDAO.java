@@ -69,6 +69,14 @@ public class AActivityDAO {
 	
 	
 
+	//이미지 조회
+	public List<AActivityImgDTO> detailImgActivity(int aId) {
+		System.out.println("dao detailImgActivity");
+		
+		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);
+		int aImgId = activityMapper.selectImgId(aId);
+		return activityMapper.detailImgActivity(aImgId);
+	}
 	//등록하기. 이미지는 따로 POST
 	public void registrationActivity(AActivityDTO activityDTO) {
 		AdminActivityMapper activityMapper = sqlSession.getMapper(AdminActivityMapper.class);

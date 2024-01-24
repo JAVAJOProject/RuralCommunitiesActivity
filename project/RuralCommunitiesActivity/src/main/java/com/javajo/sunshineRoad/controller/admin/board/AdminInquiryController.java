@@ -47,7 +47,6 @@ public class AdminInquiryController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().build();//400
 		}
-		
 	}
 	//미답변상태인것
 	//답변완료
@@ -56,9 +55,10 @@ public class AdminInquiryController {
             produces = {"application/json; charset=utf-8"})
 	public ResponseEntity<List<AInquiryDTO>> selectInquiryRequest(@RequestBody ASearchDTO searchDTO,@PathVariable int requestPageNo){
 		System.out.println("selectInquiryRequest()");
-		
+
 		int perPagePostCount = 6;
 
+		System.out.println(searchDTO.getStatus());
 		List<AInquiryDTO> result = new ArrayList<>();
 		try {
 			
@@ -78,13 +78,13 @@ public class AdminInquiryController {
 
 	
 	//미답변 카운트
-		@GetMapping("/Unanswered")
+		@GetMapping("/unanswered")
 		public ResponseEntity<AdminResponseDTO> UnansweredInquiryCnt() {
 			System.out.println("AdminInquiryController  UnansweredInquiryCnt");
 
 			int count = 0;
 			try {
-				count = inquiryService.UnansweredInquiryCnt();
+				count = inquiryService.unansweredInquiryCnt();
 				
 				AdminResponseDTO response = AdminResponseDTO.builder().resultMsg("미답변건 확인완료"+count+"건").build();
 				return ResponseEntity.ok(response);	
@@ -98,9 +98,8 @@ public class AdminInquiryController {
 
 		//상세조회
 		@Transactional
-		@GetMapping("detail/{inquiryId}")
+		@GetMapping("/detail/{inquiryId}")
 		public ResponseEntity<List<AInquiryDTO>> detailInquiry (@PathVariable int inquiryId){
-			System.out.println("detailInquiry");
 			
 			List<AInquiryDTO> result = new ArrayList<>();
 			try {

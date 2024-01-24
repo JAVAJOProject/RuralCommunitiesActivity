@@ -23,7 +23,7 @@ public class ARecTownDTO {
 	private String recTContent;
 	private String recTDateCreated;
 	private int recTViewCnt;
-	private int recTFavoriteCnt;
+	private int recTLikeCnt;
 	private String recTSite;
 	private String recTThumbnailImg;
 }

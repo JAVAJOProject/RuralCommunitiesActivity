@@ -21,15 +21,18 @@ public interface AdminActivityMapper {
 	public List<AActivityDTO> detailActivity(int aId);
 
 	//체험시작일조회
-	public List<AActivityDTO> selectDateActivityStart(ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<AActivityDTO> selectDateActivityStart(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	//체험마감일조회
-	public List<AActivityDTO> selectDateActivityEND(ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<AActivityDTO> selectDateActivityEND(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	//예약마감일조회
-	public List<AActivityDTO> selectDateReservation(ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<AActivityDTO> selectDateReservation(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//필터링 조회
 	public List<AActivityDTO> selectActivity(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
+	//이미지 조회
+	public List<AActivityImgDTO> detailImgActivity(int aId);
+	
 	//등록하기. 이미지는 따로
 	public void registrationActivity(AActivityDTO activityDTO);
 

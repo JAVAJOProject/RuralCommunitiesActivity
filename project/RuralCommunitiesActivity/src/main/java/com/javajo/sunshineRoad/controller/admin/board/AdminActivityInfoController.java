@@ -2,8 +2,8 @@ package com.javajo.sunshineRoad.controller.admin.board;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,19 +18,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.AActivityImgDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeImgDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.service.IService.common.service.StoreRequestImagesService;
 import com.javajo.sunshineRoad.model.service.IService.common.utils.ImageInfoUploadMarker;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityCntService;
 import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminActivityService;
-import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminEventService;
-import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminMCommunityService;
-import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecActivityService;
-import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminRecTownService;
-import com.javajo.sunshineRoad.model.service.impl.admin.board.AdminSCommunityService;
+
 
 
 @RestController
@@ -40,31 +37,25 @@ public class AdminActivityInfoController {
 
 
 	private final AdminActivityService activityService;
+	private final AdminActivityCntService activityCntService;
 	
 	private final ImageInfoUploadMarker adminActivityImageUploadMarker;
 	private final StoreRequestImagesService storeRequestImagesService;
 	
 
-	public AdminActivityInfoController(AdminActivityService activityService,
+	public AdminActivityInfoController(AdminActivityService activityService,AdminActivityCntService activityCntService,
 			ImageInfoUploadMarker adminActivityImageUploadMarker, StoreRequestImagesService storeRequestImagesService) {
 		super();
 		this.activityService = activityService;
+		this.activityCntService = activityCntService;
 		this.adminActivityImageUploadMarker = adminActivityImageUploadMarker;
 		this.storeRequestImagesService = storeRequestImagesService;
 	}
 
-//	1	체험서비스
-//	2	추천체험
-//	3	추천마을   / 마을제보TownReport
-//	4	이벤트 조회 / 이벤트 요청 EventPostingRequest
-//	5	소통공간
-//	6	마을소식
-//  그외  공지사항notice / faq? 문의 Inquire 신고 Declaration 통계statistics-예약reservation 접속connect
-	// 전체게시판 조회하기
+
 	@Transactional
 	@GetMapping("/getAll/{requestPageNo}")
 	public ResponseEntity<List<AActivityDTO>> getAllActivity(@PathVariable int requestPageNo) {
-
 
 		List<AActivityDTO> result = new ArrayList<>();
 		try {
@@ -74,21 +65,35 @@ public class AdminActivityInfoController {
 			return ResponseEntity.ok(result);
 				
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().build();//400
+			return ResponseEntity.badRequest().build();
 		}
-		
 	}
-
+	
+	//total count
+	@Transactional
+	@GetMapping("/totalCount")
+	public List<Integer> totalCountActivity() {
+		int perPagePostCount = 8;
+		int totalPostNo = 0;
+		
+		try {
+			totalPostNo = activityCntService.getTotalCount();
+			
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		} catch (Exception e) {
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		}
+	}
 
 	//체험서비스 필터링 조회
 	@Transactional
 	@PostMapping(value = "/select/{requestPageNo}",
             produces = {"application/json; charset=utf-8"})
 	public ResponseEntity<List<AActivityDTO>> selectActivity(@RequestBody ASearchDTO searchDTO,@PathVariable int requestPageNo){
-
-		int perPagePostCount = 8;
 		
 		List<AActivityDTO> result = new ArrayList<>();
+		
+		int perPagePostCount = 8;
 		try {
 			if(searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {
 				result.addAll(activityService.selectDateActivity(searchDTO,requestPageNo,perPagePostCount));
@@ -101,6 +106,28 @@ public class AdminActivityInfoController {
 		}
 	}
 
+	//체험서비스 필터링 조회 cnt
+	@Transactional
+	@PostMapping(value = "/selectActivityCount",
+            produces = {"application/json; charset=utf-8"})
+	public List<Integer>  selectActivityCount(@RequestBody ASearchDTO searchDTO){
+
+		int perPagePostCount = 8;
+		int totalPostNo = 0;
+		
+		try {
+			if(searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {
+				totalPostNo = activityService.selectDateActivityTotalCount(searchDTO);
+			}else {
+				totalPostNo = activityService.selectActivityTotalCount(searchDTO);
+			}
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
+		}
+	}
+	
 	
 	//상세조회
 	@Transactional
@@ -109,6 +136,19 @@ public class AdminActivityInfoController {
 		return activityService.detailActivity(aId);
 	}
 	
+	//이미지 조회
+	@Transactional
+	@GetMapping("detailImg/{aId}")
+	public ResponseEntity<List<AActivityImgDTO>> detailImgActivity (@PathVariable int aId) {
+		
+		List<AActivityImgDTO> result = new ArrayList<>();
+		try {
+		result.addAll(activityService.detailImgActivity(aId));
+		return ResponseEntity.ok(result);
+		}catch (Exception e) {
+			return ResponseEntity.badRequest().build();//400
+		}
+	}
 	
 	
 	
@@ -195,6 +235,5 @@ public class AdminActivityInfoController {
 		}
 	}
 	
-	//엑셀파일다운
 	
 }

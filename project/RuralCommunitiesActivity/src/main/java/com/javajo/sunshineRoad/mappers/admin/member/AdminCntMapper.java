@@ -16,6 +16,8 @@ public interface AdminCntMapper {
 
 	public int selectAdminDATECnt(@Param("searchDTO")ASearchDTO searchDTO);
 
+	public int selectAdminCnt(@Param("searchDTO")ASearchDTO searchDTO);
+	
 	public int appAdminCnt();
 
 

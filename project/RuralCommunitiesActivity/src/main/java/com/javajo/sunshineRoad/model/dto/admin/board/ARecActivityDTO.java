@@ -24,7 +24,7 @@ public class ARecActivityDTO {
 	private String recATitle;
 	private String recAContent;
 	private String recADateCreated;
-	private int recAViewCount;
-	private int recAFavoriteCnt;
+	private int recAViewCnt;
+	private int recALikeCnt;
 	private String recAThumbnailImg;
 }

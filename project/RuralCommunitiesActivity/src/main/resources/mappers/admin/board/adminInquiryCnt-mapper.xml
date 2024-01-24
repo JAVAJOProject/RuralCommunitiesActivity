@@ -8,34 +8,36 @@
 	SELECT COUNT(*) FROM INQUIRY
 	</select>
 	
-	<select id="selectInquiryStatusCnt" parameterType="ASearch" resultType="int">
+	<select id="selectInquiryStatusCnt" resultType="int">
 SELECT COUNT(*) FROM (
-SELECT 
-    		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
-    		F.FAQ_Q, F.FAQ_A
-    		FROM FAQ F INNER JOIN FAQ_TYPE T
-    		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-    		WHERE F.FAQ_TYPE_ID=#{theme})
+SELECT I.INQUIRY_ID, I.INQUIRY_STATUS_ID, S.INQUIRY_STATUS, 
+				I.INQUIRY_TYPE_ID, 
+				I.MEM_ID, I.INQUIRY_TITLE, I.INQUIRY_CONTENT,
+				TO_CHAR(I.INQUIRY_DATE_CREATED, 'YYYY-MM-DD') AS INQUIRY_DATE_CREATED, I.INQUIRY_A
+				FROM INQUIRY I 
+				INNER JOIN INQUIRY_STATUS S
+				ON (I.INQUIRY_STATUS_ID = S.INQUIRY_STATUS_ID)
+				WHERE I.INQUIRY_STATUS_ID=#{searchDTO.status})
 	</select>
 
-	<select id="selectInquiryTypesCnt" parameterType="ASearch" resultType="int">
+	<select id="selectInquiryTypesCnt" resultType="int">
 SELECT COUNT(*) FROM (
 SELECT 
     		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
     		F.FAQ_Q, F.FAQ_A
     		FROM FAQ F INNER JOIN FAQ_TYPE T
     		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-    		WHERE F.FAQ_TYPE_ID=#{theme})
+    		WHERE F.FAQ_TYPE_ID=#{searchDTO.theme})
 	</select>
 	
-	<select id="UnansweredInquiryCnt" resultType="int">
+	<select id="unansweredInquiryCnt" resultType="int">
 SELECT COUNT(*) FROM (
 SELECT 
     		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
     		F.FAQ_Q, F.FAQ_A
     		FROM FAQ F INNER JOIN FAQ_TYPE T
     		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-    		WHERE F.FAQ_TYPE_ID=#{theme})
+    		WHERE F.FAQ_TYPE_ID=#{searchDTO.theme})
 	</select>
 						
 </mapper>

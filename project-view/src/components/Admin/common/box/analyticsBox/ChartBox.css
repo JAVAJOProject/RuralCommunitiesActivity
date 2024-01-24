@@ -1,0 +1,14 @@
+.chartBoxA{
+    position: absolute;
+    width: 830px;
+    height: 250px;
+    left: 4rem;
+    top: 5rem;
+    background: #FBFBFB;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center;
+
+
+}

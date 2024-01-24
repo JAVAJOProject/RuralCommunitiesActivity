@@ -4,6 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.member.AdminMapper">
 
+
 	<select id="getAllAdmin" resultType="Admin">
 	SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
 	ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM (
@@ -17,7 +18,8 @@
 			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM  ( 
 				SELECT 
 				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
-				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE FROM ADMIN
+				ADMIN_EMAIL, ADMIN_PW,TO_CHAR(ADMIN_REG_DATE, 'YYYY-MM-DD') AS ADMIN_REG_DATE,
+				FROM ADMIN
 				ORDER BY ADMIN_ID)
     		)
     		WHERE seq <![CDATA[>=]]> #{startPostNo}
@@ -28,7 +30,7 @@
 	<select id="selectAdminID" parameterType="int"  resultType="Admin">
 				SELECT 
 				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
-				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				ADMIN_EMAIL, ADMIN_PW,TO_CHAR(ADMIN_REG_DATE, 'YYYY-MM-DD') AS ADMIN_REG_DATE,
 				FROM ADMIN  
 				WHERE ADMIN_ID=#{adminId})
 
@@ -47,7 +49,7 @@
 			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
 				FROM (SELECT 
 				ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
-				ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE 
+				ADMIN_EMAIL, ADMIN_PW,TO_CHAR(ADMIN_REG_DATE, 'YYYY-MM-DD') AS ADMIN_REG_DATE,
 				FROM ADMIN  
 				WHERE ADMIN_REG_DATE BETWEEN 
 				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
@@ -58,6 +60,45 @@
     	)
     	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  				
 	</select>
+	
+	<select id="selectAdmin" resultType="Admin">
+	SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+	ADMIN_EMAIL, ADMIN_PW,TO_CHAR(ADMIN_REG_DATE, 'YYYY-MM-DD') AS ADMIN_REG_DATE,
+	FROM (
+            SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE
+			FROM ADMIN 
+			WHERE
+            (ADMIN_REG_DATE BETWEEN 
+			TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+			AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+			AND (ADMIN_ID=#{searchDTO.id})
+      UNION             
+            SELECT ADMIN_ID, MEM_TYPE_ID, ADMIN_AUTHORITY_ID,
+			ADMIN_EMAIL, ADMIN_PW,ADMIN_REG_DATE
+			FROM ADMIN 
+			WHERE 
+            ADMIN_REG_DATE BETWEEN 
+			TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+			AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+            ORDER BY ADMIN_ID)
+            WHERE ROWNUM BETWEEN #{startPostNo} AND #{endPostNo} 
+	</select>
+	<!--  <insert id="registrationAdmin" parameterType="Admin">
+    INSERT INTO ADMIN VALUES(admin_seq.NEXTVAL,
+    3,
+    #{},
+    #{uNick},
+    #{uPw},
+    #{uTel},
+    SYSTIMESTAMP,
+    #{uMarketing},
+    #{uGender},
+    TO_DATE(#{uBirth},'YYYY-MM-DD HH24:MI:SS'),
+    NULL,
+    NULL,
+    NULL)
+    </insert>    -->
 	
 	<update id="updateAdmin" parameterType="Admin">
 	UPDATE ADMIN SET

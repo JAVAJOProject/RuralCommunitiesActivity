@@ -19,8 +19,6 @@ public class AActivityCntDAO {
 	
 	//전체카운트
 	public int getTotalCount() {
-		System.out.println("AActivityCntDAO");
-		
 		AdminActivityCntMapper activityCntMapper = sqlSession.getMapper(AdminActivityCntMapper.class);
 		return activityCntMapper.getTotalCount();
 	}
@@ -42,8 +40,6 @@ public class AActivityCntDAO {
 	
 	
 	public int selectActivityCnt(ASearchDTO searchDTO) {
-		System.out.println("AActivityCntDAO");
-		
 		AdminActivityCntMapper activityCntMapper = sqlSession.getMapper(AdminActivityCntMapper.class);
 		int totalCnt = activityCntMapper.selectActivityCnt(searchDTO);
 		System.out.println(totalCnt);

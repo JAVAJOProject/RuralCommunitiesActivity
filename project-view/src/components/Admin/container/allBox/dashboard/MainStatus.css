@@ -1,0 +1,19 @@
+.mainStatusA {
+    display: inline-block;
+    position: absolute;
+    top: 2rem;
+    width: 476px;
+    height: 55px;
+    padding: 1rem;
+    margin-left: 3rem;
+
+    background: #FFFFFF;
+    border: 1px solid #F3F6FF;
+    box-shadow: 1px 2px 2px #F3F6FF;
+    border-radius: 10px;
+    
+    text-align: center;
+    font-family: 'SUITE Variable';
+    font-weight: 500;
+    font-size: 16px;
+}

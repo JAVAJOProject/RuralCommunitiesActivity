@@ -107,13 +107,48 @@ import InquiryEditPage from './page/Service/CustomerCenter/Inquiry/InquiryEditPa
 import RootLayoutAdmin from './components/Admin/RootLayoutAdmin';
 import MainPageAdminPage from './page/Admin/mainPage/MainPageAdminPage';
 import NotFoundAdminPage from './page/Admin/errorPage/NotFoundAdminPage';
-import TotalActivityInfoListAdminPage from './page/Admin/board/TotalActivityInfoList/TotalActivityInfoListAdminPage';
-import MemberAdminPage from './page/Admin/member/MemberAdminPage';
-import MemberDetailAdminPage from './page/Admin/member/detail/MemberDetailAdminPage';
-import MemberInsertAdminPage from './page/Admin/member/insert/MemberInsertAdminPage';
-import MemberUpdateAdminPage from './page/Admin/member/update/MemberUpdateAdminPage';
 
-import ExPage from './page/ExPage';
+// 관리자 - 회원관리
+import MemberAdminPage from "./page/Admin/member/MemberAdminPage";
+import MemberDetailAdminPage from "./page/Admin/member/detail/MemberDetailAdminPage";
+import MemberInsertAdminPage from "./page/Admin/member/insert/MemberInsertAdminPage";
+import MemberUpdateAdminPage from "./page/Admin/member/update/MemberUpdateAdminPage";
+import MemberWrotePostAdminPage from './page/Admin/member/wrote/MemberWrotePostAdminPage';
+import AdminPage from './page/Admin/member/AdminPage';
+import SellerAdminPage from './page/Admin/member/SellerAdminPage';
+import AdminDetailAdminPage from './page/Admin/member/detail/AdminDetailAdminPage';
+import SellerDetailAdminPage from './page/Admin/member/detail/SellerDetailAdminPage';
+import AdminInsertAdminPage from './page/Admin/member/insert/AdminInsertAdminPage';
+import SellerInsertAdminPage from './page/Admin/member/insert/SellerInsertAdminPage';
+import AdminUpdateAdminPage from './page/Admin/member/update/AdminUpdateAdminPage';
+import SellerUpdateAdminPage from './page/Admin/member/update/SellerUpdateAdminPage';
+import AdminWrotePostAdminPage from './page/Admin/member/wrote/AdminWrotePostAdminPage';
+import SellerWrotePostAdminPage from './page/Admin/member/wrote/SellerWrotePostAdminPage'
+import ApprovalAdminPage from './page/Admin/member/ApprovalAdminPage';
+
+// 관리자 - 게시판 관리
+import TotalActivityInfoListAdminPage from "./page/Admin/board/TotalActivityInfoList/TotalActivityInfoListAdminPage";
+import ActivityDetailAdminPage from './page/Admin/board/detail/ActivityDetailAdminPage';
+import ActivityInsertAdminPage from './page/Admin/board/insert/ActivityInsertAdminPage';
+import ActivityUpdateAdminPage from './page/Admin/board/update/ActivityUpdateAdminPage';
+import RecActivityInfoListAdminPage from './page/Admin/board/recActivity/RecActivityInfoListAdminPage';
+import EventListAdminPage from './page/Admin/board/event/EventListAdminPage';
+import EventRequestAdminPage from './page/Admin/board/eventRequest/EventRequestAdminPage';
+import MemberCommunityAdminPage from './page/Admin/board/communityForMember/MemberCommunityAdminPage';
+import SellerCommunityAdminPage from './page/Admin/board/communityForSeller/SellerCommunityAdminPage';
+import NoticeListAdminPage from './page/Admin/board/notice/NoticeListAdminPage';
+
+// 관리자 - 예약 통계/관리
+import ReservationForMemberAdminPage from './page/Admin/board/reservation/ReservationForMemberAdminPage';
+import ReservationForSellerAdminPage from './page/Admin/board/reservation/ReservationForSellerAdminPage';
+import ReservationStatisticsAdminPage from './page/Admin/board/analytics/ReservationStatisticsAdminPage';
+import AccessStatisticsAdminPage from './page/Admin/board/analytics/AccessStatisticsAdminPage';
+
+// 관리자 - 서비스 관리(문의, 신고)
+import ReportInfoAdminPage from './page/Admin/board/service/ReportInfoAdminPage';
+import InquiryListAdminPage from './page/Admin/board/service/InquiryListAdminPage';
+import InquiryDetailAdminPage from './page/Admin/board/detail/InquiryDetailAdminPage';
+import InquiryUpdateAdminPage from './page/Admin/board/update/InquiryUpdateAdminPage';
 
 const router = createBrowserRouter([
   {
@@ -131,137 +166,203 @@ const router = createBrowserRouter([
             path: '',
             element: <MainPageAdminPage />,
           },
-          {
-            path: 'user',
-            children: [
-              {
-                path: 'administrator',
-                children: [
-                  {
-                    path: 'list',
-                  },
-                  {
-                    path: 'registration',
-                  },
-                ],
-              },
-              {
-                path: 'experiencer',
-                children: [
-                  {
-                    path: 'list',
-                    element: <MemberAdminPage />,
-                  },
-                  {
-                    path: 'detail/:id',
-                    element: <MemberDetailAdminPage />,
-                  },
-                  {
-                    path: 'update/:id',
-                    element: <MemberUpdateAdminPage />,
-                  },
-                  {
-                    path: 'registration',
-                    element: <MemberInsertAdminPage />,
-                  },
-                ],
-              },
-              {
-                path: 'provider',
-                children: [
-                  {
-                    path: 'list',
-                  },
-                  {
-                    path: 'registration',
-                  },
-                ],
-              },
-              {
-                path: 'membershipApproval',
-              },
-            ],
-          },
-          {
-            path: 'board',
-            children: [
-              {
-                path: 'notice',
-              },
-              {
-                path: 'recommendation',
-              },
-              {
-                path: 'totalActivity',
-                children: [
-                  {
-                    index: true,
-                    path: '',
-                    element: <Navigate replace to={'list'} />,
-                  },
-                  {
-                    path: 'list',
-                    element: <TotalActivityInfoListAdminPage />,
-                  },
-                ],
-              },
-              {
-                path: 'community',
-                children: [
-                  {
-                    path: 'experiencer',
-                  },
-                  {
-                    path: 'provider',
-                  },
-                ],
-              },
-              {
-                path: 'event',
-                children: [
-                  {
-                    path: 'list',
-                  },
-                  {
-                    path: 'request',
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            path: 'reservation',
-            children: [
-              {
-                path: 'experiencer',
-              },
-              {
-                path: 'provider',
-              },
-            ],
-          },
-          {
-            path: 'analytics',
-            children: [
-              {
-                path: 'reservation',
-              },
-              {
-                path: 'access',
-              },
-            ],
-          },
-          {
-            path: 'service',
-            children: [
-              {
-                path: 'inquiry',
-              },
-              {
-                path: 'report',
-              },
-            ],
-          },
+            {
+              path: 'user',
+              children: [
+                {
+                  path: 'administrator',
+                  children: [
+                    {
+                      path: 'list',
+                      element: <AdminPage />
+                    },
+                    {
+                      path: 'detail/:id',
+                      element: <AdminDetailAdminPage />
+                    },
+                    {
+                      path: 'update/:id',
+                      element: <AdminUpdateAdminPage />
+                    },
+                    {
+                      path: 'registration',
+                      element: <AdminInsertAdminPage />
+                    },
+                    {
+                      path: 'wrotePost/:id',
+                      element: <AdminWrotePostAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'experiencer',
+                  children: [
+                    {
+                      path: 'list',
+                      element: <MemberAdminPage />
+                    },
+                    {
+                      path: 'detail/:id',
+                      element: <MemberDetailAdminPage/>
+                    },
+                    {
+                      path: 'update/:id',
+                      element: <MemberUpdateAdminPage/>
+                    },
+                    {
+                      path: 'registration',
+                      element: <MemberInsertAdminPage />
+                    },
+                    {
+                      path: 'wrotePost/:id',
+                      element: <MemberWrotePostAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'provider',
+                  children: [
+                    {
+                      path: 'list',
+                      element: <SellerAdminPage />
+                    },
+                    {
+                      path: 'detail/:id',
+                      element: <SellerDetailAdminPage />
+                    },
+                    {
+                      path: 'update/:id',
+                      element: <SellerUpdateAdminPage />
+                    },
+                    {
+                      path: 'registration',
+                      element: <SellerInsertAdminPage />
+                    },
+                    {
+                      path: 'wrotePost/:id',
+                      element: <SellerWrotePostAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'membershipApproval',
+                  element: <ApprovalAdminPage />
+                },
+              ],
+            },
+            {
+              path: 'board',
+              children: [
+                {
+                  path: 'notice',
+                  element: <NoticeListAdminPage />
+                  
+                },
+                {
+                  path: 'recommendation',
+                  element: <RecActivityInfoListAdminPage />
+                },
+                {
+                  path: 'totalActivity',
+                  children: [
+                    {
+                      index: true,
+                      path: '',
+                      element: <Navigate replace to={'list'} />,
+                    },
+                    {
+                      path: 'list',
+                      element: <TotalActivityInfoListAdminPage />
+                    },
+                    {
+                      path: 'detail/:id',
+                      element: <ActivityDetailAdminPage />
+                    },
+                    {
+                      path: 'update/:id',
+                      element: <ActivityUpdateAdminPage />
+                    },
+                    {
+                      path: 'registration',
+                      element: <ActivityInsertAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'community',
+                  children: [
+                    {
+                      path: 'experiencer',
+                      element: <MemberCommunityAdminPage />
+                    },
+                    {
+                      path: 'provider',
+                      element: <SellerCommunityAdminPage />
+                    },
+                  ],
+                },
+                {
+                  path: 'event',
+                  children: [
+                    {
+                      path: 'list',
+                      element: <EventListAdminPage />
+                    },
+                    {
+                      path: 'request',
+                      element: <EventRequestAdminPage />
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              path: 'reservation',
+              children: [
+                {
+                  path: 'experiencer',
+                  element: <ReservationForMemberAdminPage />
+                },
+                {
+                  path: 'provider',
+                  element: <ReservationForSellerAdminPage />
+                },
+              ],
+            },
+            {
+              path: 'analytics',
+              children: [
+                {
+                  path: 'reservation',
+                  element: <ReservationStatisticsAdminPage />
+                },
+                {
+                  path: 'access',
+                  element: <AccessStatisticsAdminPage />
+                },
+              ],
+            },
+            {
+              path: 'service',
+              children: [
+                {
+                  path: 'inquiry',
+                  element: <InquiryListAdminPage />
+                },
+                {
+                  path: 'inquiryDetail/:id',
+                  element: <InquiryDetailAdminPage />
+                },
+                {
+                  path: 'inquiryUpdate/:id',
+                  element: <InquiryUpdateAdminPage />
+                },
+                {
+                  path: 'report',
+                  element: <ReportInfoAdminPage />
+                },
+              ],
+            },
         ],
       },
       {
@@ -801,10 +902,6 @@ const router = createBrowserRouter([
                 element: <MypageSellerEventEditPage />,
               },
             ],
-          },
-          {
-            path: 'test-ex',
-            element: <ExPage />,
           },
         ],
       },

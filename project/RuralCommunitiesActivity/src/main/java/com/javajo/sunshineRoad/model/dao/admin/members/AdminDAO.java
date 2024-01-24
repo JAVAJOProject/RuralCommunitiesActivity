@@ -1,8 +1,11 @@
 package com.javajo.sunshineRoad.model.dao.admin.members;
 
 import com.javajo.sunshineRoad.mappers.admin.member.AdminMapper;
+import com.javajo.sunshineRoad.mappers.admin.member.AdminMemberMapper;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminDTO;
+import com.javajo.sunshineRoad.model.dto.admin.members.AdminMemberDTO;
+
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -46,6 +49,16 @@ public class AdminDAO {
 
 	}
 
+	//회원 선택 조회   아이디 + 기간
+	public List<AdminDTO> selectAdmin(ASearchDTO searchDTO,int startPostNo, int endPostNo){
+		System.out.println("[AdminDAO] selectAdmin()");
+
+		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
+
+		return adminMapper.selectAdmin(searchDTO,startPostNo,endPostNo);
+		
+    }
+
 
 
 
@@ -57,11 +70,17 @@ public class AdminDAO {
 		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
 		adminMapper.delAdmin(adminId);
 
-
-
 	}
 
+	//회원 등록
+	public void registrationAdmin(AdminDTO adminDTO) {
+		System.out.println("[AdminDAO] registrationAdmin()");
 
+		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
+		adminMapper.registrationAdmin(adminDTO);
+	}
+	
+	
 	//회원정보수정
 	public void updateAdmin(AdminDTO adminDTO) throws Exception{
 		System.out.println("[AdminDAO] updateAdmin()");

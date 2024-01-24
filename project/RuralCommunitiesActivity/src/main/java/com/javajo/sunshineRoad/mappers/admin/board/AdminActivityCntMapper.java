@@ -13,11 +13,11 @@ public interface AdminActivityCntMapper {
 	//전체 카운트
 	public int getTotalCount();
 
-	public int selectStartDateActivityCnt(ASearchDTO searchDTO);
+	public int selectStartDateActivityCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
-	public int selectEndDateActivityCnt(ASearchDTO searchDTO);
+	public int selectEndDateActivityCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
-	public int selectDateReservationCnt(ASearchDTO searchDTO);
+	public int selectDateReservationCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
 	public int selectActivityCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	

@@ -51,10 +51,10 @@ public class AInquiryCntDAO {
 	
 	
 	//선택카운트
-	public int UnansweredInquiryCnt() {
-		System.out.println("AInquiryCntDAO  UnansweredInquiryCnt");
+	public int unansweredInquiryCnt() {
+		System.out.println("AInquiryCntDAO  unansweredInquiryCnt");
 		
 		AdminInquiryCntMapper inquiryCntMapper = sqlSession.getMapper(AdminInquiryCntMapper.class);
-		return inquiryCntMapper.UnansweredInquiryCnt();
+		return inquiryCntMapper.unansweredInquiryCnt();
 	}	
 }

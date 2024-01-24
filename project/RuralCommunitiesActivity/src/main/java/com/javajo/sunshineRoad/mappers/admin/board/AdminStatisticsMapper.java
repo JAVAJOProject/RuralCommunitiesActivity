@@ -1,25 +1,26 @@
 package com.javajo.sunshineRoad.mappers.admin.board;
 
+import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.admin.board.AStatisticsDTO;
 
 @Mapper
 public interface AdminStatisticsMapper {
 
 	
-	public int visitorsStatisticsTotal();
+	public Integer visitorsStatisticsTotal();
 	
-	public int visitorsStatisticsMonth(int year);
+	public List<Map<String, Object>> visitorsStatisticsMonth(int year);
 	
-	public int visitorsStatisticsDays(@Param("year")int year, @Param("month")int month);
+	public List<Map<String, Object>> visitorsStatisticsDays(@Param("year")int year, @Param("month")int month);
 
-	public int visitorsStatisticsTimes();
+	public List<Map<String, Object>> visitorsStatisticsTimes();
 	
 	
-	
-	public int reservationTheme(int month);
-	public int reservationMonth();
-	public int reservationSeller();
+	public List<Map<String, Object>> reservationTheme(@Param("month")int month,@Param("year")int year);
+	public List<Map<String, Object>> reservationDays(@Param("month")int month,@Param("year")int year);
+	public List<Map<String, Object>> reservationMonth();
+	public List<Map<String, Object>> reservationSeller();
 }

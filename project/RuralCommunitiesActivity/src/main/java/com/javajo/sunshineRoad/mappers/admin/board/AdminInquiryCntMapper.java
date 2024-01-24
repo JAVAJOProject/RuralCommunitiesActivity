@@ -17,11 +17,11 @@ public interface AdminInquiryCntMapper {
 	//전체 카운트
 	public int getAllInquiryCnt();
 	
-	public int selectInquiryStatusCnt(ASearchDTO searchDTO);
+	public int selectInquiryStatusCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
-	public int selectInquiryTypesCnt(ASearchDTO searchDTO);
+	public int selectInquiryTypesCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
-	public int UnansweredInquiryCnt();
+	public int unansweredInquiryCnt();
 
 	
 }

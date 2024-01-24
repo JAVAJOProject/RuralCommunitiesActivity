@@ -6,30 +6,20 @@
 
 
 	<select id="getAllActivity"  resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
+	SELECT * FROM (
+    SELECT ROWNUM AS RNUM, TMP.* FROM (
+    SELECT 
 			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
+            SIDO_ID, SIDO_NAME,
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
     		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
+    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE
+    		FROM   ( SELECT 
 				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
                 G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
+    			A.A_THEME_ID, T.A_THEME_NAME,A.A_START_DATE,
+    		 	A.A_END_DATE, A.A_ADDR, 
     			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
     			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
     			FROM ACTIVITY_INFO A 
@@ -41,38 +31,29 @@
     			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
                 LEFT OUTER JOIN REGION_SIDO D
                 ON (G.SIDO_ID = D.SIDO_ID)
-    			ORDER BY A_ID)
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+          ) TMP
+          ORDER BY A_ID
+    ) TMP
+	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+)
+WHERE RNUM <![CDATA[>=]]> #{startPostNo}     
 	</select>
 	
-	<select id="selectDateActivityStart" parameterType="ASearch" resultType="AActivity">
-	SELECT 
+	<select id="selectDateActivityStart" resultType="AActivity">
+	SELECT * FROM (
+    SELECT ROWNUM AS RNUM, TMP.* FROM (
+    SELECT 
 	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
+            SIDO_ID, SIDO_NAME,
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
     		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
+    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE
+    FROM (SELECT 
 				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
                 G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
+    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE,
+    		 	A.A_END_DATE, A.A_ADDR, 
     			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
     			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
     			FROM ACTIVITY_INFO A 
@@ -85,40 +66,31 @@
                 LEFT OUTER JOIN REGION_SIDO D
                 ON (G.SIDO_ID = D.SIDO_ID)
     			WHERE A_START_DATE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				ORDER BY A_ID)
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+          ) TMP
+          ORDER BY A_ID
+    ) TMP
+	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+)
+WHERE RNUM <![CDATA[>=]]> #{startPostNo}      
 	</select>	
 
-	<select id="selectDateActivityEND" parameterType="ASearch" resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
+	<select id="selectDateActivityEND" resultType="AActivity">
+	SELECT * FROM (
+    SELECT ROWNUM AS RNUM, TMP.* FROM (
+    SELECT 
 			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
+            SIDO_ID, SIDO_NAME,
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
     		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
+    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE
+    		FROM   (  SELECT 
 				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
                 G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
+    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE,
+    		 	A.A_END_DATE, A.A_ADDR, 
     			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
     			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
     			FROM ACTIVITY_INFO A 
@@ -131,39 +103,31 @@
                 LEFT OUTER JOIN REGION_SIDO D
                 ON (G.SIDO_ID = D.SIDO_ID)
 				WHERE A_END_DATE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+          ) TMP
+          ORDER BY A_ID
+    ) TMP
+	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+)
+WHERE RNUM <![CDATA[>=]]> #{startPostNo}      
 	</select>	
 	
-	<select id="selectDateReservation" parameterType="ASearch" resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
+	<select id="selectDateReservation"  resultType="AActivity">
+	SELECT * FROM (
+    SELECT ROWNUM AS RNUM, TMP.* FROM (
+    SELECT 
 			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
+            SIDO_ID, SIDO_NAME,
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
     		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
     		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
+    		FROM   ( SELECT 
 				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
                 G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
+    			A.A_THEME_ID, T.A_THEME_NAME,A.A_START_DATE,
+    		 	A.A_END_DATE, A.A_ADDR, 
     			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
     			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
     			FROM ACTIVITY_INFO A 
@@ -176,19 +140,24 @@
                 LEFT OUTER JOIN REGION_SIDO D
                 ON (G.SIDO_ID = D.SIDO_ID)
 				WHERE A_RESERVATION_DEADLINE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+          ) TMP
+          ORDER BY A_ID
+    ) TMP
+	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+)
+WHERE RNUM <![CDATA[>=]]> #{startPostNo}    
 	</select>	
 		
 	<select id="selectActivity" resultType="AActivity">
+	SELECT * FROM (
+    SELECT ROWNUM AS RNUM, TMP.* FROM (
       		SELECT 
 			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
             SIDO_ID, SIDO_NAME,
-    		A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
     		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
     		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
     		FROM   (  SELECT 
@@ -252,9 +221,12 @@
                     OR (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge}
                         AND G.SIDO_ID=#{searchDTO.sido}
                         AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                ORDER BY A_ID
-	)
-	WHERE ROWNUM BETWEEN #{startPostNo} AND #{endPostNo}            
+          ) TMP
+          ORDER BY A_ID
+    ) TMP
+	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+)
+WHERE RNUM <![CDATA[>=]]> #{startPostNo}          
 	</select>
 	
 	<insert id="registrationActivity" parameterType="AActivity">
@@ -327,6 +299,11 @@
     DELETE ACTIVITY_INFO WHERE A_ID=#{aId}
     </delete>
     
+    <select id="detailImgActivity" resultType="AActivityImg" parameterType="int">
+    select a_img1, a_img2, a_img3, a_img4, a_img5
+    from ACTIVITY_IMAGES
+    where a_img_id = #{aImgId}
+    </select>
     
     <select id="detailActivity" resultType="AActivity" parameterType="int">
      			SELECT 

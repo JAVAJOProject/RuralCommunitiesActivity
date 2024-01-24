@@ -1,6 +1,7 @@
 package com.javajo.sunshineRoad.model.dao.admin.members;
 
 import com.javajo.sunshineRoad.mappers.admin.member.AdminCntMapper;
+import com.javajo.sunshineRoad.mappers.admin.member.AdminMemberCntMapper;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,14 @@ public class AdminCntDAO {
 		AdminCntMapper adminCntMapper = sqlSession.getMapper(AdminCntMapper.class);
 		return adminCntMapper.selectAdminDATECnt(searchDTO);
 	}
+	
+	public int selectAdminCnt(ASearchDTO searchDTO) {
+		AdminCntMapper adminCntMapper = sqlSession.getMapper(AdminCntMapper.class);
+		return adminCntMapper.selectAdminCnt(searchDTO);
+	}
+	
+	
+	
 
 	public int appAdminCnt() {
 		AdminCntMapper adminCntMapper = sqlSession.getMapper(AdminCntMapper.class);

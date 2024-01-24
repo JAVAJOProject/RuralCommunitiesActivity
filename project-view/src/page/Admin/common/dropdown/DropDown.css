@@ -1,0 +1,33 @@
+.dropdownBox {
+    width: 10rem;
+    border-radius: 0.3125rem;
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.25);
+    padding: 12px;
+
+}
+
+.dropdownList > li{
+    list-style: none;
+    font-family: 'SUITE Variable';
+    line-height: 35px;
+    color: #363636;
+    border-radius: 5px;
+    font-size: 1.1rem;
+
+    &:hover {
+        background: #95CAFF;
+    }
+}
+
+.dropLink {
+    text-decoration: none;
+    color: #3F3F3F; 
+
+    &:hover {
+        text-decoration: underline;
+        color: #FFF;
+
+    }
+}

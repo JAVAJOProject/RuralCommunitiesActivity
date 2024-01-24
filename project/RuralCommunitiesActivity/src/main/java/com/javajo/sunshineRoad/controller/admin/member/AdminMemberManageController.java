@@ -81,7 +81,29 @@ public class AdminMemberManageController {
 	}
 	
 	
-	
+	//아이디조회
+	@Transactional
+	@RequestMapping(value= "/selectId", method = RequestMethod.POST,
+	produces = "application/json; charset=utf8")
+	public ResponseEntity<List<Object>> selectId(@RequestBody ASearchDTO searchDTO) {
+		List<Object> idList = new ArrayList<>();
+		
+		int userId = searchDTO.getMemTypeId();
+		try {
+		switch(userId) {
+		case 1 : idList.addAll(memberService.selectMemberID(searchDTO.getId())); break;
+		case 2 : idList.addAll(sellerService.selectSellerID(searchDTO.getId())); break;
+		case 3 : idList.addAll(adminService.selectAdminID(searchDTO.getId())); break;
+		default:
+			return ResponseEntity.notFound().build();
+		}
+		return new ResponseEntity<>(idList, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.notFound().build();
+		}
+		
+	}
 	
 
 	// 선택체험자조회
@@ -95,17 +117,9 @@ public class AdminMemberManageController {
 		
 		int perPagePostCount = 8;
 		try {
-			if (searchDTO.getDateType() > 0 && searchDTO.getId() == 0 ) {//가입일 조회인경우 키워드 빈값
+			if (searchDTO.getDateType() > 0  ) {//가입일 조회인경우 키워드 빈값
 				searchDTO.setKeyword("");
 			}
-				
-//			} else if(searchDTO.getId() > 0 && searchDTO.getDateType() == 0 ){//아이디 조회인경우 키워드 기본값
-//				list.addAll(memberService.selectMember(searchDTO, requestPageNo, perPagePostCount));
-//			}else if(searchDTO.getDateType() > 0 && searchDTO.getId() > 0) {//둘다 조회하는경우 기본값
-//				list.addAll(memberService.selectMember(searchDTO, requestPageNo, perPagePostCount));
-//			} else{
-//				list.addAll(memberService.getAllMembers(requestPageNo, perPagePostCount));
-//			}
 				
 			list.addAll(memberService.selectMember(searchDTO, requestPageNo, perPagePostCount));	
 			
@@ -126,11 +140,11 @@ public class AdminMemberManageController {
 		int totalPostNo = 0;
 		
 		try {
-		if (searchDTO.getDateType() >= 0 && searchDTO.getDateType() <=3) {//3 가입일
+			if (searchDTO.getDateType() > 0 && searchDTO.getId() == 0 ) {//가입일 조회인경우 키워드 빈값
+				searchDTO.setKeyword("");
+			}
 			totalPostNo = memberService.selectMemberTotalCount(searchDTO);
-		} else {
-			totalPostNo = memberService.totalCountMembers();
-		}
+			
 		return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -177,13 +191,11 @@ public class AdminMemberManageController {
 		int totalPostNo = 0;
 		
 		try {
-		if (searchDTO.getId() > 0 && searchDTO.getDateType() == 0) {//아이디조회 필터링 x
-			totalPostNo = 1;
-		} else if (searchDTO.getId() <= 0 && searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {//3 가입일 필터링 필요
-			totalPostNo = sellerService.selectSellerDateTotalCount(searchDTO);
-		} else {
-			totalPostNo = sellerService.totalCountSeller();//필터링 필요
-		}
+			if (searchDTO.getDateType() > 0 && searchDTO.getId() == 0 ) {//가입일 조회인경우 키워드 빈값
+				searchDTO.setKeyword("");
+			}
+//			totalPostNo = sellerService.selectSellerTotalCount(searchDTO);
+			
 		return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -203,14 +215,13 @@ public class AdminMemberManageController {
 		
 		int perPagePostCount = 8;
 		try {
-		if (searchDTO.getId() > 0 && searchDTO.getDateType() == 0) {
-			list.addAll(adminService.selectAdminID(searchDTO.getId()));
-		} else if (searchDTO.getId() <= 0 && searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {
-			list.addAll(adminService.selectAdminDate(searchDTO, requestPageNo, perPagePostCount));
-		} else {
-			list.addAll(adminService.getAllAdmin(requestPageNo, perPagePostCount));
-		}
-		return new ResponseEntity<>(list, HttpStatus.OK);
+			if (searchDTO.getDateType() > 0 && searchDTO.getId() == 0 ) {//가입일 조회인경우 키워드 빈값
+				searchDTO.setKeyword("");
+			}
+				
+			list.addAll(adminService.selectAdmin(searchDTO, requestPageNo, perPagePostCount));	
+			
+			return new ResponseEntity<>(list, HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.notFound().build();
@@ -226,19 +237,19 @@ public class AdminMemberManageController {
 		int totalPostNo = 0;
 		
 		try {
-		if (searchDTO.getId() > 0 && searchDTO.getDateType() == 0) {//아이디조회 필터링 x
-			totalPostNo = 1;
-		} else if (searchDTO.getId() <= 0 && searchDTO.getDateType() > 0 && searchDTO.getDateType() <=3) {//3 가입일 필터링 필요
-			totalPostNo = adminService.selectAdminDateCount(searchDTO);
-		} else {
-			totalPostNo = adminService.totalCountAdmin();//필터링 필요
-		}
+			if (searchDTO.getDateType() > 0 && searchDTO.getId() == 0 ) {//가입일 조회인경우 키워드 빈값
+				searchDTO.setKeyword("");
+			}
+			totalPostNo = adminService.selectAdminTotalCount(searchDTO);
+			
 		return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
 		}catch(Exception e) {
 			e.printStackTrace();
 			return new ArrayList<Integer>(Arrays.asList(perPagePostCount, totalPostNo));
 		}
 	}
+		
+			
 
 	// 작성한글 보기
 	@Transactional
@@ -353,6 +364,22 @@ public class AdminMemberManageController {
 		}
 		AdminResponseDTO response = AdminResponseDTO.builder().resultMsg("삭제 완료").build();
 		return ResponseEntity.ok(response);
+		}catch(Exception e) {
+			e.printStackTrace();
+			AdminResponseDTO response = AdminResponseDTO.builder().errorMsg("예외 발생").build();
+			return ResponseEntity.badRequest().body(response);
+		}
+	}
+	@Transactional
+	@RequestMapping(value= "/registrationMember", method = RequestMethod.POST,
+	produces = "application/json; charset=utf8")
+	public ResponseEntity<AdminResponseDTO> registrationMember(@RequestBody AdminMemberDTO adminMemberDTO) {
+		try {
+			
+			memberService.registrationMember(adminMemberDTO);
+			AdminResponseDTO response = AdminResponseDTO.builder().resultMsg("체험자 등록 완료").build();
+			return ResponseEntity.ok(response);
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			AdminResponseDTO response = AdminResponseDTO.builder().errorMsg("예외 발생").build();

@@ -1,0 +1,14 @@
+.calenderSpringA {
+    position: relative;
+    top: -23rem;
+    width: 31px;
+    height: 40px;
+    display: inline-block;
+
+    margin-top: 1rem;
+    margin-left: 1.3rem;
+    background: #055EB6;
+    border: 5px solid #F3F6FF;
+    box-shadow: 5px 5px 50px 5px rgba(124, 134, 185, 0.15);
+    border-radius: 20px;
+}

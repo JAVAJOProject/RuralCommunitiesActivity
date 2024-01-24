@@ -32,11 +32,11 @@ public class AdminMemberDAO {
 
 
 	//회원선택 조회      아이디
-	public List<AdminMemberDTO> selectMemberID(ASearchDTO searchDTO) {
+	public List<AdminMemberDTO> selectMemberID(int uId) {
 		System.out.println("[AdminMemberDAO] selectMemberID()");
 
 		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
-		return memberMapper.selectMemberID(searchDTO);
+		return memberMapper.selectMemberID(uId);
 
 
 	}
@@ -75,6 +75,14 @@ public class AdminMemberDAO {
 	}
 
 
+	//회원 등록
+	public void registrationMember(AdminMemberDTO adminMemberDTO) {
+		System.out.println("[AdminMemberDAO] registrationMember()");
+
+		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
+		memberMapper.registrationMember(adminMemberDTO);
+	}
+	
 	//회원정보수정
 	public void updateMember(AdminMemberDTO adminMemberDTO) throws Exception{
 		System.out.println("[AdminMemberDAO] updateMember()");

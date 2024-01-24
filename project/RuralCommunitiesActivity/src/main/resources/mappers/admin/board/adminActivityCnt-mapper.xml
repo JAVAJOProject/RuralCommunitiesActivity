@@ -8,29 +8,36 @@
 	SELECT COUNT(*) FROM ACTIVITY_INFO
 	</select>
 	
-	<select id="selectStartDateActivityCnt" parameterType="ASearch" resultType="int">
+	<select id="selectStartDateActivityCnt" resultType="int">
 	SELECT COUNT(*) FROM ACTIVITY_INFO
 	WHERE A_START_DATE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
 	</select>	
 
-	<select id="selectEndDateActivityCnt" parameterType="ASearch" resultType="int">
+	<select id="selectEndDateActivityCnt"  resultType="int">
 	SELECT COUNT(*) FROM ACTIVITY_INFO
 	WHERE A_END_DATE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
 	</select>	
 	
-	<select id="selectDateReservationCnt" parameterType="ASearch" resultType="int">
+	<select id="selectDateReservationCnt"  resultType="int">
 	SELECT COUNT(*) FROM ACTIVITY_INFO
 	WHERE A_RESERVATION_DEADLINE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
+	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
 	</select>		
 		
-	<select id="selectActivityCnt" parameterType="ASearch" resultType="int">
+	<select id="selectActivityCnt"  resultType="int">
       		SELECT COUNT(*) 
+    		FROM   (  SELECT 
+			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
+            SIDO_ID, SIDO_NAME,
+    		A_THEME_ID, A_THEME_NAME, TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+    		 TO_CHAR(A_END_DATE, 'YYYY-MM-DD') AS A_END_DATE, A_ADDR, 
+    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
+    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
     		FROM   (  SELECT 
 				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
                 G.SIDO_ID, D.SIDO_NAME,
@@ -88,11 +95,11 @@
     			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
                 LEFT OUTER JOIN REGION_SIDO D
                 ON (G.SIDO_ID = D.SIDO_ID)    
-                WHERE (A.A_CHARGE <![CDATA[>=]]> #{searchDTO.charge})
-                    OR (A.A_CHARGE <![CDATA[>=]]> #{searchDTO.charge}
+                WHERE (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge})
+                    OR (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge}
                         AND G.SIDO_ID=#{searchDTO.sido}
                         AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-				)
+				))
 			</select>
 				
 </mapper>

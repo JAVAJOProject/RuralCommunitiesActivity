@@ -3,6 +3,7 @@ package com.javajo.sunshineRoad.model.dto.admin.board;
 import org.apache.ibatis.type.Alias;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.javajo.sunshineRoad.model.dto.admin.members.AdminMemberDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,6 +28,7 @@ public class AMCommunityDTO {
 	private String communityDateCreated;
 	private int communityLikeCnt;
 	private int communityCumCnt;
-//	private APostTypeDTO postTypeDTO;
+	private int communityViewCnt;
+
 	
 }

@@ -4,34 +4,50 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.member.AdminSellerCntMapper">
 
-
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM (
-	SELECT S_ID, ACCOUNT_INFO_ID, MEM_TYPE_ID, 
-	S_EMAIL, S_COM_NAME, S_TEL, S_REG_DATE, S_ADDR, 
-	S_REG_NUM, S_MARKETING_CONSENT,
-	S_APPROVAL, S_REP_NAME, S_REG_CERTIFICATE_IMG 
-	FROM SELLER)
+		SELECT COUNT(*)
+		FROM (SELECT S_ID,
+					 ACCOUNT_INFO_ID,
+					 MEM_TYPE_ID,
+					 S_EMAIL,
+					 S_COM_NAME,
+					 S_TEL,
+					 S_REG_DATE,
+					 S_ADDR,
+					 S_REG_NUM,
+					 S_MARKETING_CONSENT,
+					 S_APPROVAL,
+					 S_REP_NAME,
+					 S_REG_CERTIFICATE_IMG
+			  FROM SELLER) result
 	</select>
-	
-	
+
 	<select id="selectSellerDATECnt"  resultType="int">
-	SELECT COUNT(*) FROM (
-	SELECT S_ID, ACCOUNT_INFO_ID, MEM_TYPE_ID, 
-	S_EMAIL, S_COM_NAME, S_TEL, S_REG_DATE, S_ADDR, 
-	S_REG_NUM, S_MARKETING_CONSENT,
-	S_APPROVAL, S_REP_NAME, S_REG_CERTIFICATE_IMG 
-	FROM SELLER 
-	WHERE S_REG_DATE BETWEEN 
-	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+		SELECT COUNT(*)
+		FROM (SELECT S_ID,
+					 ACCOUNT_INFO_ID,
+					 MEM_TYPE_ID,
+					 S_EMAIL,
+					 S_COM_NAME,
+					 S_TEL,
+					 S_REG_DATE,
+					 S_ADDR,
+					 S_REG_NUM,
+					 S_MARKETING_CONSENT,
+					 S_APPROVAL,
+					 S_REP_NAME,
+					 S_REG_CERTIFICATE_IMG
+			  FROM SELLER
+			  WHERE S_REG_DATE BETWEEN
+						STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
+						AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')) result
 	</select>
 
 	<select id="appSellerCnt" resultType="int">
-	SELECT COUNT(*) FROM SELLER WHERE S_APPROVAL = 0
+		SELECT COUNT(*)
+		FROM SELLER
+		WHERE S_APPROVAL = 0
 	</select>
-	
-
 	
 	<resultMap type="ASCommunity" id="ASCommunity">
 		<result column="SELLER_COMMUNITY_CONTENT" property="sellerCommunityContent"/>
@@ -46,14 +62,19 @@
 	</resultMap>
 	
 	<select id="wrotePostCnt" parameterType="int" resultType="int">
-		SELECT COUNT(*) FROM (SELECT 
-					S.SELLER_COMMUNITY_POST_ID, S.S_ID,
-					S.POST_TYPE_ID, S.SELLER_COMMUNITY_CONTENT, 
-					S.SELLER_COMMUNITY_DATE_CREATED, S.COMMUNITY_LIKE_CNT,
-					S.COMMUNITY_CUM_CNT, S.COMMUNITY_VIEW_CNT
-					FROM SELLER_COMMUNITY S LEFT OUTER JOIN POST_TYPE P 
-					ON S.POST_TYPE_ID = P.POST_TYPE_ID 
-					WHERE S_ID=#{sId})
+		SELECT COUNT(*)
+		FROM (SELECT S.SELLER_COMMUNITY_POST_ID,
+					 S.S_ID,
+					 S.POST_TYPE_ID,
+					 S.SELLER_COMMUNITY_CONTENT,
+					 S.SELLER_COMMUNITY_DATE_CREATED,
+					 S.COMMUNITY_LIKE_CNT,
+					 S.COMMUNITY_CUM_CNT,
+					 S.COMMUNITY_VIEW_CNT
+			  FROM SELLER_COMMUNITY S
+					   LEFT OUTER JOIN POST_TYPE P
+									   ON S.POST_TYPE_ID = P.POST_TYPE_ID
+			  WHERE S_ID = #{sId}) result
 	</select>
 	
 </mapper>

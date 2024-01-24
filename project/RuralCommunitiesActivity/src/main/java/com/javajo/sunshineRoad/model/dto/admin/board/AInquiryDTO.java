@@ -17,7 +17,9 @@ public class AInquiryDTO {
 
 	private int inquiryId;
 	private int inquiryStatusId;
+	private String inquiryStatus;
 	private int inquiryTypeId;
+	private String inquiryTypeName;
 	private int memId;
 	private String inquiryTitle;
 	private String inquiryContent;
