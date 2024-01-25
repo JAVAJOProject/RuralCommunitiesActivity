@@ -59,7 +59,7 @@ public class RegReservationController {
 
    @Transactional
    @DeleteMapping("/delete")
-   public ResponseEntity<String> deleteReservation(@RequestParam int rId, @RequestParam int aPostId, @RequestParam int uId) {
+   public ResponseEntity<String> deleteReservation(@RequestParam int rId, @RequestParam int aPostId, @RequestParam long uId) {
       try {
          ReservationContentDTO resContent = ReservationContentDTO.builder().reservationId(rId).aPostId(aPostId).uId(uId).build();
          int success = regReservationService.deleteReservation(resContent);

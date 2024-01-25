@@ -19,7 +19,7 @@ import lombok.Setter;
 public class MypageEventWinnerDTO {
 	private int eventReportId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private int eventId;
 	private int eventProgressStatusId;
 	private String eventStory;

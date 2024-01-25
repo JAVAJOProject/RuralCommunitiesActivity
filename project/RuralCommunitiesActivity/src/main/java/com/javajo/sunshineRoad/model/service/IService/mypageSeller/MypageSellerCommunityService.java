@@ -6,7 +6,7 @@ import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageSellerCommunityDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageSellerCommunityService {
-	public List<MypageSellerCommunityDTO> getInfo(int sId, PageInfo pageInfo);
+	public List<MypageSellerCommunityDTO> getInfo(long sId, PageInfo pageInfo);
 
-	public int getCommunityCount(int sId);
+	public int getCommunityCount(long sId);
 }

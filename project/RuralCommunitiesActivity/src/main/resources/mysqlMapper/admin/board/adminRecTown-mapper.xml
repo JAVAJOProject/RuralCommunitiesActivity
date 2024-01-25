@@ -16,7 +16,8 @@
 			   REC_T_LIKE_CNT,
 			   REC_T_SITE,
 			   REC_T_THUMBNAIL_IMG
-		FROM REC_TOWN_INFO LIMIT #{perPagePostNo}
+		FROM REC_TOWN_INFO
+				 LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -63,7 +64,8 @@
 			   REC_T_SITE,
 			   REC_T_THUMBNAIL_IMG
 		FROM REC_TOWN_INFO
-		WHERE TOWN_ID = #{searchDTO.postType} LIMIT #{perPagePostNo}
+		WHERE TOWN_ID = #{searchDTO.postType}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	

@@ -17,7 +17,7 @@ import lombok.Setter;
 public class ReviewDTO {
 	private int revId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	@JsonProperty
 	private int aPostId;
 	@JsonProperty

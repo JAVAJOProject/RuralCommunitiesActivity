@@ -4,6 +4,6 @@ public interface GetTotalActivityCountService {
 	public int getTotalActivityCount();
     public int getTotalActivityCountByTheme(int tId);
     public int getTotalActivityCountByRegionOfSido(int sidoId);
-    public int getTotalActivityCountByRegion(int sId);
+    public int getTotalActivityCountByRegion(long sId);
     
  }

@@ -36,7 +36,7 @@
 				LEFT OUTER JOIN
 			REGION_SIDO D ON (G.SIDO_ID = D.SIDO_ID)
 		ORDER BY A_ID
-			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+			LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 	
 	<select id="selectDateActivityStart" resultType="AActivity">
@@ -73,7 +73,7 @@
 		WHERE
 			A_START_DATE BETWEEN STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f') AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY A_ID
-			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+			LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 
 	<select id="selectDateActivityEND" resultType="AActivity">
@@ -110,7 +110,7 @@
 		WHERE
 			A_END_DATE BETWEEN STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f') AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY A_ID
-			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+			LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 	
 	<select id="selectDateReservation"  resultType="AActivity">
@@ -147,7 +147,7 @@
 		WHERE
 			A_RESERVATION_DEADLINE BETWEEN STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f') AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY A_ID
-			LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+			LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 
 <!--	테스트 필수-->
@@ -252,7 +252,7 @@
 						 AND A.SIGUNGU_ID = #{searchDTO.sigungu}))
 				  result
 			  ORDER BY A_ID
-				  LIMIT #{perPagePostNo}
+				  LIMIT #{perPagePostCount}
 			  OFFSET #{startPostNo}
 	</select>
 	

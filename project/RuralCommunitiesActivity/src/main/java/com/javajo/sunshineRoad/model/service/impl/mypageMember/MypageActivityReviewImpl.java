@@ -21,7 +21,7 @@ public class MypageActivityReviewImpl implements MypageActivityReviewService {
 	private final MainPageDAO mainPageDAO;
 
 	@Override
-	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo) {
+	public List<MypageActivityReviewDTO> getInfo(long uId, PageInfo pageInfo) {
 		return aReviewDAO.getInfo(uId, pageInfo);
 	}
 
@@ -36,7 +36,7 @@ public class MypageActivityReviewImpl implements MypageActivityReviewService {
 	}
 
 	@Override
-	public int getActivityCount(int uId) {
+	public int getActivityCount(long uId) {
 		return aReviewDAO.getActivityCount(uId);
 	}
 

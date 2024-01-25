@@ -7,7 +7,7 @@ import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageRequestEventDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageRequestEventService {
-	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo);
+	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo);
 
 	//public RequestEventDTO selectBySeller(int eventId);
 
@@ -23,7 +23,7 @@ public interface MypageRequestEventService {
 
 	public int modifyEvent(int eventId, String eventName);
 
-	public int getEventCount(int sId);
+	public int getEventCount(long sId);
 
 	public int getEventParticipantCount(int eventId);
 

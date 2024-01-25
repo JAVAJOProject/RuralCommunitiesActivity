@@ -24,7 +24,7 @@ public class MypageReservationDTO {
 	@JsonProperty
 	private int aId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	@JsonProperty
 	private String aName;
 	private int reservationHeadCount;

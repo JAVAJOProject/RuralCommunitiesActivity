@@ -1,11 +1,10 @@
 package com.javajo.sunshineRoad.mappers.mypageMember;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventDTO;
+import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
-import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventDTO;
+import java.util.List;
 
 public interface MypageEventMapper {
 	public List<MypageEventDTO> selectByNo(int eventId);
@@ -16,13 +15,13 @@ public interface MypageEventMapper {
 
 	public int updateEventByWinner(MypageEventWinnerDTO eventWinner);
 
-	public int selectCount(int uId);
+	public int selectCount(long uId);
 
 	public MypageEventDTO getEventInfo(int eventId);
 
 //	Oracle
-	public List<MypageEventDTO> selectByMember(@Param("uId") int uId, @Param("start") int start, @Param("end") int end);
+//	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 //	MySQL
-//	public List<MypageEventDTO> selectByMember(@Param("uId") int uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

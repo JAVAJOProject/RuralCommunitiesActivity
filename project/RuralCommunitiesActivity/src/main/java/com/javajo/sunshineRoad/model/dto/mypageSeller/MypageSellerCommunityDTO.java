@@ -20,7 +20,7 @@ public class MypageSellerCommunityDTO {
 
 	private int sellerCommunityPostId;
 	@JsonProperty
-	private int sId;
+	private long sId;
 	private int postTypeId;
 	private String sellerCommunityContent; //clob 
 	private String sellerCommunityDateCreated;

@@ -16,26 +16,34 @@ import java.util.List;
 public interface AdminInquiryMapper {
 
 
-	//전체 조회
-	public List<AInquiryDTO> getAllInquiry(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-	//status
-	public List<AInquiryDTO> selectInquiryStatus(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	//답변
+	public void answerInquiry(AInquiryDTO inquiryDTO);
 
-	//type
-	public List<AInquiryDTO> selectInquiryTypes(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	//삭제하기 객체
+	public int deleteInquiryPost(int inquiryId);
+
 
 	//상세조회
 	public List<AInquiryDTO> detailInquiry(int inquiryId);
-	
-	//답변
-	public void answerInquiry(AInquiryDTO inquiryDTO);
-	
-	//삭제하기 객체
-	public int deleteInquiryPost(int inquiryId);
-	
 
 
+	// Oracle
+//	//전체 조회
+//	public List<AInquiryDTO> getAllInquiry(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//	//status
+//	public List<AInquiryDTO> selectInquiryStatus(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//
+//	//type
+//	public List<AInquiryDTO> selectInquiryTypes(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
+	// MySQL
+	//전체 조회
+	public List<AInquiryDTO> getAllInquiry(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	//status
+	public List<AInquiryDTO> selectInquiryStatus(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+
+	//type
+	public List<AInquiryDTO> selectInquiryTypes(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 
 

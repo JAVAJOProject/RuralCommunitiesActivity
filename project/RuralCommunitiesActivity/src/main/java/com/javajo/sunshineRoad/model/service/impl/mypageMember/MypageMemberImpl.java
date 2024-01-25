@@ -15,22 +15,22 @@ public class MypageMemberImpl implements MypageMemberService {
 	private final MypageMemberDAO memberDAO;
 
 	@Override
-	public MypageMemberDTO getInfo(int uId) {
+	public MypageMemberDTO getInfo(long uId) {
 		return memberDAO.getInfo(uId);
 	}
 
 	@Override
-	public int changeInfo(String uName, int uId) {
+	public int changeInfo(String uName, long uId) {
 		return memberDAO.changeInfo(uName, uId);
 	}
 
 	@Override
-	public boolean changeInfo(int uId) {
+	public boolean changeInfo(long uId) {
 		return memberDAO.changeInfo(uId);
 	}
 
 	@Override
-	public boolean delMember(int uId) {
+	public boolean delMember(long uId) {
 		return memberDAO.changeInfo(uId);
 	}
 }

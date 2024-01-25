@@ -20,7 +20,7 @@ import lombok.Setter;
 public class AdminMemberDTO {
 
 	@JsonProperty("u_id")
-	private int uId;
+	private long uId;
 	private int memTypeId;//1
 	@JsonProperty("u_name")
 	private String uName;

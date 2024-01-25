@@ -17,19 +17,19 @@ public class GetRequestPageRecruitingEventListOnlyServiceImpl implements GetRequ
     private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 
     // Oracle
-    @Override
-    public List<EventDTO> getRequestPageRecruitingEventListOnly(int totalCount, int perPagePostCount, int requestPageNo) {
-        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-
-        return eventDAO.getRequestPageRecruitingEventDataOnly(startPostNo, endPostNo);
-    }
-
-    // MySQL
 //    @Override
 //    public List<EventDTO> getRequestPageRecruitingEventListOnly(int totalCount, int perPagePostCount, int requestPageNo) {
 //        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 //
-//        return eventDAO.getRequestPageRecruitingEventDataOnly(startPostNo - 1, perPagePostCount);
+//        return eventDAO.getRequestPageRecruitingEventDataOnly(startPostNo, endPostNo);
 //    }
+
+    // MySQL
+    @Override
+    public List<EventDTO> getRequestPageRecruitingEventListOnly(int totalCount, int perPagePostCount, int requestPageNo) {
+        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+
+        return eventDAO.getRequestPageRecruitingEventDataOnly(startPostNo - 1, perPagePostCount);
+    }
 }

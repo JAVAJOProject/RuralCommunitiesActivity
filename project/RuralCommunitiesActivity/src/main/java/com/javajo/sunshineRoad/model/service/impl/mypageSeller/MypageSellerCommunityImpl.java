@@ -18,12 +18,12 @@ public class MypageSellerCommunityImpl implements MypageSellerCommunityService {
 	private final MypageSellerCommunityDAO sellerCommunityDAO;
 
 	@Override
-	public List<MypageSellerCommunityDTO> getInfo(int sId, PageInfo pageInfo) {
+	public List<MypageSellerCommunityDTO> getInfo(long sId, PageInfo pageInfo) {
 		return sellerCommunityDAO.getInfo(sId, pageInfo);
 	}
 
 	@Override
-	public int getCommunityCount(int sId) {
+	public int getCommunityCount(long sId) {
 		return sellerCommunityDAO.getCommunityCount(sId);
 	}
 }

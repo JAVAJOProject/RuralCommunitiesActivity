@@ -29,7 +29,7 @@ public class TotalActivityListDAO {
 		TotalActivityListOfSidoMapper mapper = sqlSession.getMapper(TotalActivityListOfSidoMapper.class);
         return mapper.getTotalActivityCountByRegionOfSidoData(sidoId);
     }
-	public int getTotalActivityCountByRegion(int sId) {
+	public int getTotalActivityCountByRegion(long sId) {
 		TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
         return mapper.getTotalActivityCountByRegionData(sId);
     }
@@ -47,7 +47,7 @@ public class TotalActivityListDAO {
     	TotalActivityListOfSidoMapper mapper = sqlSession.getMapper(TotalActivityListOfSidoMapper.class);
     	return mapper.getRequestPageTotalActivityByRegionOfSidoListData(sidoId, startPostNo, endPostNo);
     } 
-    public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionList(int sId, int startPostNo, int endPostNo) {
+    public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionList(long sId, int startPostNo, int endPostNo) {
     	TotalActivityListMapper mapper = sqlSession.getMapper(TotalActivityListMapper.class);
     	return mapper.getRequestPageTotalActivityByRegionListData(sId, startPostNo, endPostNo);
     }    

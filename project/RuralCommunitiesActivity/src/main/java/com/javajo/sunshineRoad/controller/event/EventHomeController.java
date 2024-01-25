@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.controller.event;
 
-import com.javajo.sunshineRoad.model.dao.event.UpdateEventStoryContentService;
+import com.javajo.sunshineRoad.model.service.IService.event.UpdateEventStoryContentService;
 import com.javajo.sunshineRoad.model.dto.common.ResponseDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventDTO;
 import com.javajo.sunshineRoad.model.dto.event.EventImagesDTO;

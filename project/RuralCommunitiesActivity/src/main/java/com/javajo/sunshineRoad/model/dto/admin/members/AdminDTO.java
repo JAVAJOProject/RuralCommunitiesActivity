@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AdminDTO {
 
-	private int adminId;
+	private long adminId;
 	private int memTypeId;//3
 	private String adminAuthorityId;//권한 최고1 관리자2 승인x null
 	private String adminEmail;

@@ -15,7 +15,7 @@ public class ReservationContentDTO {
 	@JsonProperty
 	private int aId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private int reservationHeadcount;
 	private int reviewStatus;
 	private String reservationStatus;

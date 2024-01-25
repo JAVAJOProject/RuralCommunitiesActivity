@@ -12,12 +12,6 @@ import java.util.List;
 public interface AdminRecTownMapper {
 
 
-	//전체 조회
-	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	//필터링 조회
-	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
 	//등록하기. 이미지는 따로
 	public void registrationRecTown(ARecTownDTO recTownDTO);
 
@@ -41,5 +35,19 @@ public interface AdminRecTownMapper {
 	//상세조회
 	public List<ARecTownDTO> detailRecTown(int recTId);
 
+
+	// Oracle
+//	//전체 조회
+//	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//
+//	//필터링 조회
+//	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+
+	// MySQL
+	//전체 조회
+	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+
+	//필터링 조회
+	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO, @Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 }

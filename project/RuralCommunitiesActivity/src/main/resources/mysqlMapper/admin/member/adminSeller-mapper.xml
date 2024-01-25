@@ -19,7 +19,7 @@
 			   S_REG_CERTIFICATE_IMG
 		FROM SELLER
 		ORDER BY S_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -60,7 +60,7 @@
 				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
 				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY S_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -99,7 +99,7 @@
 		FROM SELLER
 		WHERE S_APPROVAL = 0
 		ORDER BY S_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -135,7 +135,7 @@
 								 ON S.POST_TYPE_ID = P.POST_TYPE_ID
 		WHERE S_ID = #{sId}
 		ORDER BY S.SELLER_COMMUNITY_DATE_CREATED
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	

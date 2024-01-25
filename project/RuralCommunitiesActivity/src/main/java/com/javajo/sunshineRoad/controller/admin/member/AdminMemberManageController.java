@@ -2,25 +2,20 @@ package com.javajo.sunshineRoad.controller.admin.member;
 
 import com.javajo.sunshineRoad.model.dto.admin.AdminResponseDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
-import com.javajo.sunshineRoad.model.dto.admin.members.AEmailDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminMemberDTO;
 import com.javajo.sunshineRoad.model.dto.admin.members.AdminSellerDTO;
-import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminEmailService;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminMemberService;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminSellerService;
 import com.javajo.sunshineRoad.model.service.impl.admin.members.AdminService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpSession;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -88,9 +83,9 @@ public class AdminMemberManageController {
 	public ResponseEntity<List<Object>> selectId(@RequestBody ASearchDTO searchDTO) {
 		List<Object> idList = new ArrayList<>();
 		
-		int userId = searchDTO.getMemTypeId();
+		int memTypeId = searchDTO.getMemTypeId();
 		try {
-		switch(userId) {
+		switch(memTypeId) {
 		case 1 : idList.addAll(memberService.selectMemberID(searchDTO.getId())); break;
 		case 2 : idList.addAll(sellerService.selectSellerID(searchDTO.getId())); break;
 		case 3 : idList.addAll(adminService.selectAdminID(searchDTO.getId())); break;

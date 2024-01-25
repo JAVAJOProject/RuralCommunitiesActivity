@@ -18,7 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MypageSellerDTO {
 	@JsonProperty
-	private int sId;
+	private long sId;
 	private String accountInfoId;
 	private int memTypeId;
 	@JsonProperty

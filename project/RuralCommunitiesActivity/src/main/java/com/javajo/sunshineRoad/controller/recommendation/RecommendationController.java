@@ -269,7 +269,7 @@ public class RecommendationController {
             produces = {"application/json; charset=utf-8"})
 	public ResponseEntity<String> insertTownReport(
             @RequestPart(value = "files", required = false) List<MultipartFile> imgFiles,
-            @RequestPart(value = "data") TownReportDTO town, @RequestParam int memTypeId, @RequestParam(required = false) Integer uId, @RequestParam(required = false) Integer sId) {
+            @RequestPart(value = "data") TownReportDTO town, @RequestParam int memTypeId, @RequestParam(required = false) Long uId, @RequestParam(required = false) Long sId) {
 		try {
 				RegionTownDTO regionTownToSearch = RegionTownDTO.builder().townName(town.getTownName()).sigunguId(town.getSigunguId()).build();
 				RegionTownDTO regionTownResult = getTownInfoBySigunguIdAndTownNameService.getTownInfoBySigunguIdAndTownName(regionTownToSearch);
@@ -281,7 +281,7 @@ public class RecommendationController {
 					town.setTownId(regionTownNew.getTownId());
 				}
 
-				int userId = 0;
+				long userId = 0;
 				if (uId == null || uId < 1) {
 					userId = sId;
 				} else if (sId == null || sId < 1) {
@@ -289,7 +289,7 @@ public class RecommendationController {
 				} else {
 					return ResponseEntity.badRequest().body("잘못된 인자");
 				}
-				int memId = searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
+				long memId = searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
 				town.setMemId(memId);
 
 				insertTownReportService.insertTownReport(town);

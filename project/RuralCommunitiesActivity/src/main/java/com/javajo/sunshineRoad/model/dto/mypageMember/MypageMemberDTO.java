@@ -19,7 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MypageMemberDTO {
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private int memTypeId;
 	@JsonProperty
 	private String uName;

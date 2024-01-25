@@ -34,7 +34,7 @@
 			   REC_A_THUMBNAIL_IMG
 		FROM REC_ACTIVITY_INFO
 		ORDER BY REC_A_POST_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -56,7 +56,7 @@
 				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
 				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY REC_A_POST_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>	
 	
@@ -75,7 +75,7 @@
 		FROM REC_ACTIVITY_INFO
 		WHERE REC_A_TITLE LIKE CONCAT('%', #{searchDTO.keyword}, '%')
 		ORDER BY REC_A_POST_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	

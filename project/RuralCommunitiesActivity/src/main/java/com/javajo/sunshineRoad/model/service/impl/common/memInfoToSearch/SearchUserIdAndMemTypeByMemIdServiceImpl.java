@@ -12,7 +12,7 @@ public class SearchUserIdAndMemTypeByMemIdServiceImpl implements SearchUserIdAnd
     private final MemInfoToSearchDAO memInfoToSearchDAO;
 
     @Override
-    public MemInfoDTO searchUserIdAndMemTypeByMemId(int memId) {
+    public MemInfoDTO searchUserIdAndMemTypeByMemId(long memId) {
         return memInfoToSearchDAO.searchUserIdAndMemTypeByMemId(memId);
     }
 }

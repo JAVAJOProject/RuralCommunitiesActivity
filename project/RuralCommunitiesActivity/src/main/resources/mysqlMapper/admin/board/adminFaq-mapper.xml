@@ -14,7 +14,7 @@
                  INNER JOIN FAQ_TYPE T
                             ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
         ORDER BY FAQ_ID
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
 	</select>
 
@@ -41,7 +41,7 @@
                             ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
         WHERE F.FAQ_TYPE_ID = #{searchDTO.theme}
         ORDER BY FAQ_ID)
-                        LIMIT #{perPagePostNo}
+                        LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
     </select>
 

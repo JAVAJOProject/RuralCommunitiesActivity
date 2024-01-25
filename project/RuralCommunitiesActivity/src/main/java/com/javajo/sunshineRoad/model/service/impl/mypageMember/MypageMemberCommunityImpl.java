@@ -18,18 +18,18 @@ public class MypageMemberCommunityImpl implements MypageMemberCommunityService {
     private final MypageMemberCommunityDAO memCommunityDAO;
 
 	@Override
-	public List<MypageMemberCommunityDTO> getInfo(int uId, PageInfo pageInfo) {
+	public List<MypageMemberCommunityDTO> getInfo(long uId, PageInfo pageInfo) {
 		 return memCommunityDAO.getInfo(uId, pageInfo);
 	}
 
 
 	@Override
-	public int getActivityCount(int uId) {
+	public int getActivityCount(long uId) {
 		return memCommunityDAO.getActivityCount(uId);
 	}
 
 //	@Override
-//	public List<MypageMemberCommunityDTO> getListInfo(int uId) {
+//	public List<MypageMemberCommunityDTO> getListInfo(long uId) {
 //		return memCommunityDAO.getListInfo(uId);
 //
 //	}

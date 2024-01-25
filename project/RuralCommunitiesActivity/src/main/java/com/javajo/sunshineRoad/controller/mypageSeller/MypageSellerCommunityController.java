@@ -24,8 +24,8 @@ public class MypageSellerCommunityController {
 	@GetMapping("/community/info/{currentPage}")
 	public List<MypageSellerCommunityDTO> getInfo(
 			@PathVariable int currentPage/* , @SessionAttribute("loginSeller") MypageSellerDTO seller */) {
-		int sId = 1;
-//		int sId = seller.getSId();
+		long sId = 1;
+//		long sId = seller.getSId();
 		System.out.println("SellerCommunityDAO" + sId);
 		
 		int communityCount = sellerCommunityService.getCommunityCount(sId);
@@ -37,7 +37,7 @@ public class MypageSellerCommunityController {
 	
 	@GetMapping("/community/total-page")
 	public List<Integer> totalPage() {
-		int sId = 1;
+		long sId = 1;
 		int communityCount = sellerCommunityService.getCommunityCount(sId);
 		int perPagePostNo = 3;
 		

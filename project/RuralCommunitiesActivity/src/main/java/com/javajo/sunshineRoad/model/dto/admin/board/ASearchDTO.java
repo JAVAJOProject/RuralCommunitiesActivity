@@ -16,7 +16,7 @@ import lombok.Setter;
 @Data
 public class ASearchDTO {
 
-	private int id;
+	private long id;
 	private int memTypeId = 0;
 	private String startDate = "1900-01-01";
 	private String endDate = "9999-01-01";

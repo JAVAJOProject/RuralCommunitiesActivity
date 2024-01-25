@@ -21,7 +21,7 @@ public class InquiryInfoDTO {
 	private int inquiryId;
 	private int inquiryStatusId;
 	private int inquiryTypeId;
-	private int memId;
+	private long memId;
 	private String inquiryTitle;
 	private String inquiryContent;
 	private String inquiryDateCreated;
@@ -29,11 +29,11 @@ public class InquiryInfoDTO {
 	private String inquiryStatus;
 	private int memTypeId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	@JsonProperty
 	private String uNick;
 	@JsonProperty
-	private int sId;
+	private long sId;
 	@JsonProperty
 	private String sComName;
 }

@@ -82,11 +82,11 @@ public class InquiryDAO {
 	    return inquiryMapper.getSearchInquiryContentCount(keyword);
 	}
 
-	public int getMyInquiryCount(int memId) {
+	public int getMyInquiryCount(long memId) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
 		return inquiryMapper.getMyInquiryCount(memId);
 	}
-	public List<InquiryInfoDTO> getMyInquiryDetail(int startPostNo, int endPostNo, int memId) {
+	public List<InquiryInfoDTO> getMyInquiryDetail(int startPostNo, int endPostNo, long memId) {
 		InquiryMapper inquiryMapper = sqlSession.getMapper(InquiryMapper.class);
 		return inquiryMapper.getMyInquiryDetail(startPostNo, endPostNo, memId);
 	}

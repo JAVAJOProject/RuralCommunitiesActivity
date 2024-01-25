@@ -30,14 +30,14 @@ public class InquiryController {
 	@GetMapping("/list/{requestPageNo}")
 	public ResponseEntity<List<InquiryInfoDTO>> inquiryList(@PathVariable("requestPageNo") int requsetPageNo) {
 		// 임의 테스트용
-		Integer uId = 1;
+		Long uId = 1L;
 		int memTypeId = 1;
-		Integer sId = null;
-//		Integer sId = 1;
+		Long sId = null;
+//		Long sId = 1L;
 //		int memTypeId = 2;
-//		Integer uId = null;
+//		Long uId = null;
 
-		int memId;
+		long memId;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
@@ -67,14 +67,14 @@ public class InquiryController {
 			@RequestParam String keyword,
 			@PathVariable int requestPageNo) {
 		// 임의 테스트용
-		Integer uId = 1;
+		Long uId = 1L;
 		int memTypeId = 1;
-		Integer sId = null;
-//		Integer sId = 1;
+		Long sId = null;
+//		Long sId = 1L;
 //		int memTypeId = 2;
-//		Integer uId = null;
+//		Longr uId = null;
 
-		int memId;
+		long memId;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
@@ -144,14 +144,14 @@ public class InquiryController {
 	@PostMapping("/detail/insert")
 	public ResponseEntity<String> inquiryInsert(InquiryInfoDTO inquiryInfoDTO) {
 		// 임의 테스트용
-		Integer uId = 1;
+		Long uId = 1L;
 		int memTypeId = 1;
-		Integer sId = null;
-//		Integer sId = 1;
+		Long sId = null;
+//		Long sId = 1L;
 //		int memTypeId = 2;
-//		Integer uId = null;
+//		Long uId = null;
 
-		int memId = 0;
+		long memId = 0;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
@@ -167,14 +167,14 @@ public class InquiryController {
 	@GetMapping("/view/list/{requestPageNo}")
 	public ResponseEntity<List<InquiryInfoDTO>> viewInquiry(@PathVariable int requestPageNo) {
 		// 임의 테스트용
-		Integer uId = 1;
+		Long uId = 1L;
 		int memTypeId = 1;
-		Integer sId = null;
-//		Integer sId = 1;
+		Long sId = null;
+//		Long sId = 1L;
 //		int memTypeId = 2;
-//		Integer uId = null;
+//		Long uId = null;
 
-		int memId = 0;
+		long memId = 0;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
@@ -189,14 +189,14 @@ public class InquiryController {
 	@GetMapping("/view/total-count")
 	public ResponseEntity<List<Integer>> getMypostCount() {
 		// 임의 테스트용
-		Integer uId = 1;
+		Long uId = 1L;
 		int memTypeId = 1;
-		Integer sId = null;
-//		Integer sId = 1;
+		Long sId = null;
+//		Long sId = 1L;
 //		int memTypeId = 2;
-//		Integer uId = null;
+//		Long uId = null;
 
-		int memId = 0;
+		long memId = 0;
 		try {
 			memId = getMemId(memTypeId, uId, sId);
 		} catch (IllegalArgumentException e) {
@@ -209,8 +209,8 @@ public class InquiryController {
 		return ResponseEntity.ok(pageInfo);
 	}
 
-	private int getMemId(int memTypeId, Integer uId, Integer sId) throws IllegalArgumentException {
-		int userId;
+	private long getMemId(int memTypeId, Long uId, Long sId) throws IllegalArgumentException {
+		long userId;
 		if (uId == null || uId < 1) {
 			userId = sId;
 		} else if (sId == null || sId < 1) {
@@ -222,7 +222,7 @@ public class InquiryController {
 		return searchMemIdByUserIdService.searchMemIdByUserId(memTypeId, userId);
 	}
 
-	private List<InquiryInfoDTO> hideNames(List<InquiryInfoDTO> inquiryInfoList, int memId) {
+	private List<InquiryInfoDTO> hideNames(List<InquiryInfoDTO> inquiryInfoList, long memId) {
 		inquiryInfoList.forEach(post -> {
 			if (post.getMemId() != memId) {
 				if (post.getMemTypeId() == 1) {

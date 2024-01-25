@@ -21,7 +21,7 @@ public interface AdminSellerCntMapper {
 	
 	public int appSellerCnt();
 	
-	public int wrotePostCnt(int sId);
+	public int wrotePostCnt(long sId);
 	
 	
 }

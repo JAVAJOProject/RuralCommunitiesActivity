@@ -19,7 +19,7 @@ public class MypageRequestEventImpl implements MypageRequestEventService {
 	private final MypageRequestEventDAO requestEventDAO;
 
 	@Override
-	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
+	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
 		return requestEventDAO.getEventList(sId, pageInfo);
 	}
 
@@ -54,7 +54,7 @@ public class MypageRequestEventImpl implements MypageRequestEventService {
 	}
 
 	@Override
-	public int getEventCount(int sId) {
+	public int getEventCount(long sId) {
 		return requestEventDAO.getEventCount(sId);
 
 	}

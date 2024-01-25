@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @NoArgsConstructor
 public class UserMemberDTO {
     @JsonProperty
-    private Integer uId;
+    private Long uId;
     private int memTypeId;
     @JsonProperty
     private String uName;

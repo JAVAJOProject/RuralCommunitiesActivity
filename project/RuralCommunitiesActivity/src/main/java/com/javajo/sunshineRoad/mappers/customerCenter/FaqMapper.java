@@ -1,11 +1,10 @@
 package com.javajo.sunshineRoad.mappers.customerCenter;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.model.dto.customerCenter.faq.FaqInfoDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.customerCenter.faq.FaqInfoDTO;
+import java.util.List;
 
 @Mapper
 public interface FaqMapper {
@@ -15,8 +14,8 @@ public interface FaqMapper {
 	public FaqInfoDTO getFaqDetail(int faqId);
 
 //	Oracle
-	public List<FaqInfoDTO> getRequestPageFaqList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("faqTypeId") int faqTypeId);
+//	public List<FaqInfoDTO> getRequestPageFaqList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("faqTypeId") int faqTypeId);
 
 //	MySQL
-//public List<FaqInfoDTO> getRequestPageFaqList(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount, @Param("faqTypeId") int faqTypeId);
+public List<FaqInfoDTO> getRequestPageFaqList(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount, @Param("faqTypeId") int faqTypeId);
 }

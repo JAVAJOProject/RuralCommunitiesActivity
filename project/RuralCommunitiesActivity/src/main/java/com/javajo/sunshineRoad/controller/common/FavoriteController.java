@@ -40,7 +40,7 @@ public class FavoriteController {
     }
 
     @GetMapping("/list/all/{uId}")
-    public ResponseEntity<List<FavoritesDTO>> getAllFavoriteInfoByUserAndPostTypeService(@PathVariable int uId, @RequestParam int postTypeId) {
+    public ResponseEntity<List<FavoritesDTO>> getAllFavoriteInfoByUserAndPostTypeService(@PathVariable long uId, @RequestParam int postTypeId) {
         if (postTypeId > 5 || postTypeId < 1) {
             return ResponseEntity.badRequest().build();
         }
@@ -51,7 +51,7 @@ public class FavoriteController {
     }
 
     @GetMapping("/list/user/{uId}")
-    public ResponseEntity<List<FavoritesDTO>> getAllFavoriteInfoByUser(@PathVariable int uId) {
+    public ResponseEntity<List<FavoritesDTO>> getAllFavoriteInfoByUser(@PathVariable long uId) {
         List<FavoritesDTO> favoritesList = getAllFavoriteInfoByUserService.getAllFavoriteInfoByUser(uId);
         return ResponseEntity.ok(favoritesList);
     }

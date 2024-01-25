@@ -22,7 +22,7 @@ public class TownReportDTO {
 	private int tRId;//마을제보 코드
 	@JsonProperty
 	private int tRImgId;//마을 제보하기 이미지 코드
-	private int memId;//이용자 코드
+	private long memId;//이용자 코드
 	private int townId;//마을지역 코드
 	@JsonProperty
 	private String tRTitle;//제목

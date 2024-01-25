@@ -14,22 +14,6 @@ import java.util.List;
 public interface AdminEventMapper {
 
 
-	//전체 조회
-	public List<AEventDTO> getAllEvent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	//상세조회
-	public List<AEventDTO> detailEvent(int eventId);
-
-	//이벤트 응모 시작
-	public List<AEventDTO> selectEventRecruitDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-	//이벤트 진행 시작
-	public List<AEventDTO> selectEventStartDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-	//작성일
-	public List<AEventDTO> selectEventCreatedDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	//필터링 조회
-	public List<AEventDTO> selectEvent(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
 	//등록하기. 이미지는 따로
 	public void registrationEvent(AEventDTO AEventDTO);
 
@@ -54,8 +38,36 @@ public interface AdminEventMapper {
 	public int deleteEventPost(int eventId);
 
 
+	//상세조회
+	public List<AEventDTO> detailEvent(int eventId);
 
+	// Oracle
+//	//전체 조회
+//	public List<AEventDTO> getAllEvent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//
+//	//이벤트 응모 시작
+//	public List<AEventDTO> selectEventRecruitDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//	//이벤트 진행 시작
+//	public List<AEventDTO> selectEventStartDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//	//작성일
+//	public List<AEventDTO> selectEventCreatedDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//
+//	//필터링 조회
+//	public List<AEventDTO> selectEvent(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
+	// MySQL
+	//전체 조회
+	public List<AEventDTO> getAllEvent(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+
+	//이벤트 응모 시작
+	public List<AEventDTO> selectEventRecruitDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	//이벤트 진행 시작
+	public List<AEventDTO> selectEventStartDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	//작성일
+	public List<AEventDTO> selectEventCreatedDate(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+
+	//필터링 조회
+	public List<AEventDTO> selectEvent(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 
 

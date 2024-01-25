@@ -13,7 +13,7 @@ import org.apache.ibatis.type.Alias;
 public class SellerCommunityPostDTO {
     private int sellerCommunityPostId;
     @JsonProperty
-    private int sId;
+    private long sId;
     @JsonProperty
     private String sComName;
     private String sellerCommunityContent;

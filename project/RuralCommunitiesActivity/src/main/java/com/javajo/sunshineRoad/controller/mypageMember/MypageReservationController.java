@@ -35,7 +35,7 @@ public class MypageReservationController {
 	@GetMapping("/reserve/{currentPage}")
 	public List<MypageReservationDTO> getListInfo(
 			@PathVariable("currentPage") int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
-		int uId = 1;
+		long uId = 1;
 		System.out.println("ReservationDAO " + uId);
 		System.out.println("currentPage " + currentPage);
 		// 페이징 -> 페이지 당 게시글 3개, 한 화면에 페이지 최대 5개
@@ -56,7 +56,7 @@ public class MypageReservationController {
 	
 	@GetMapping("/reserve/total-page")
 	public List<Integer> getTotalPost() {
-		int uId = 1;
+		long uId = 1;
 		
 		int perPagePostCount = 3;
 		int totalPostNo = mypageReservationService.getReserveCount(uId);

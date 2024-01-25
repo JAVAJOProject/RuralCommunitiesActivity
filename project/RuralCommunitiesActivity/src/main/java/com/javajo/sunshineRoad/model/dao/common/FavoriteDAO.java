@@ -28,7 +28,7 @@ public class FavoriteDAO {
         return mapper.getAllFavoriteInfo();
     }
 
-    public List<FavoritesDTO> getAllFavoriteInfoByUser(int uId) {
+    public List<FavoritesDTO> getAllFavoriteInfoByUser(long uId) {
         FavoriteMapper mapper = sqlSession.getMapper(FavoriteMapper.class);
         return mapper.getAllFavoriteInfoByUser(uId);
     }

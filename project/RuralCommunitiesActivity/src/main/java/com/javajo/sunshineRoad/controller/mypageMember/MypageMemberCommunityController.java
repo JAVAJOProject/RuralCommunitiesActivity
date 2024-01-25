@@ -25,8 +25,8 @@ public class MypageMemberCommunityController {
 
 	@GetMapping("/community/list/{currentPage}")
 	public List<MypageMemberCommunityDTO> getInfo(@PathVariable int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
-		int uId = 1;
-//		int uId = member.getuId();
+		long uId = 1;
+//		long uId = member.getuId();
 		System.out.println("MemberCommunityDAO" + uId);
 		
 		int communityCount = memCommunityService.getActivityCount(uId);
@@ -37,7 +37,7 @@ public class MypageMemberCommunityController {
 	
 	@GetMapping("/community/total-page")
 	public List<Integer> totalPage() {
-		int uId = 1;
+		long uId = 1;
 		int communityCount = memCommunityService.getActivityCount(uId);
 		int perPagePostNo = 3;
 		
@@ -47,11 +47,10 @@ public class MypageMemberCommunityController {
 //	// 내가 쓴글 목록 불러오기  소통공간 
 //	@GetMapping("/community/info")
 //	public List<MypageMemberCommunityDTO>  getInfo( /* @SessionAttribute("loginMember") MypageMemberDTO member */ ) {
-//		int uId = 1;
-//		// int uId = member.getUId();
+//		long uId = 1;
+//		// long uId = member.getUId();
 //		System.out.println("MypageMemberCommunityDTO" + uId);
 //		List<MypageMemberCommunityDTO> selectCount = memCommunityService.getListInfo(uId);
 //		return selectCount;
 //	}
 }
-	

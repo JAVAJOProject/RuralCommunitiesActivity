@@ -11,13 +11,13 @@ import org.apache.ibatis.type.Alias;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemInfoDTO {
-    private int memId;
+    private long memId;
     private int memTypeId;
     private String memIdCol;
     @JsonProperty
-    private int uId;
+    private long uId;
     @JsonProperty
-    private int sId;
+    private long sId;
 
     public void setMemTypeId(int memTypeId) {
         this.memTypeId = memTypeId;

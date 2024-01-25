@@ -10,7 +10,7 @@ public interface LikeMapper {
     public void postLike(LikesDTO likes);
     public int checkIsLike(LikesDTO likes);
     public List<LikesDTO> getAllLikeInfo();
-    public List<LikesDTO> getAllLikeInfoByUser(int uId);
+    public List<LikesDTO> getAllLikeInfoByUser(long uId);
     public List<LikesDTO> getAllLikeInfoByUserAndPostType(LikesDTO likes);
     public void deleteLike(LikesDTO likes);
 }

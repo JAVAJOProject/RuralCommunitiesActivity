@@ -12,7 +12,7 @@ public class SearchMemIdByUserIdServiceImpl implements SearchMemIdByUserIdServic
     private final MemInfoToSearchDAO memInfoToSearchDAO;
 
     @Override
-    public int searchMemIdByUserId(int memTypeId, int userId) {
+    public long searchMemIdByUserId(int memTypeId, long userId) {
         MemInfoDTO memInfo = MemInfoDTO.builder().memTypeId(memTypeId).build();
         memInfo.setMemIdCol(memTypeId);
 

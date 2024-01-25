@@ -14,7 +14,7 @@ public class MemberCommunityPostDTO {
     @JsonProperty
     private int uCommunityPostId;
     @JsonProperty
-    private int uId;
+    private long uId;
     @JsonProperty
     private String uNick;
     @JsonProperty

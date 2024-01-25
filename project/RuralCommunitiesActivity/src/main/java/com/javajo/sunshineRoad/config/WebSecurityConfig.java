@@ -13,7 +13,7 @@ import org.springframework.web.cors.CorsUtils;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private final long MAX_AGE_SECS = 3600;
+    private final long MAX_AGE_SECS = 3600L;
     private final String ORIGINBE = "http://localhost:8080";
     private final String ORIGINFE = "http://localhost:3000";
 

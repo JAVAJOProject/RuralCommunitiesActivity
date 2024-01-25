@@ -18,13 +18,13 @@ public class MypageReservationImpl implements MypageReservationService {
     private final MypageReservationDAO reservationDAO;
 
 	@Override
-	public int getReserveCount(int uId) {
+	public int getReserveCount(long uId) {
 	    return reservationDAO.getReserveCount(uId);
 
 	}
 
 	@Override
-	public List<MypageReservationDTO> getListInfo(int uId, PageInfo pageInfo) {
+	public List<MypageReservationDTO> getListInfo(long uId, PageInfo pageInfo) {
 		return reservationDAO.getListInfo(uId, pageInfo);
 	}
 

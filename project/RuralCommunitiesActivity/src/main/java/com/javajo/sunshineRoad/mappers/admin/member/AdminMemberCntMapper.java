@@ -18,7 +18,7 @@ public interface AdminMemberCntMapper {
 	
 	public int selectMemberCnt(@Param("searchDTO")ASearchDTO searchDTO);
 	
-	public int wrotePostCnt(int uId);
+	public int wrotePostCnt(long uId);
 	
 
 	

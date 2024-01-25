@@ -17,7 +17,7 @@ public class GetReservationCountServiceImpl implements GetReservationCountServic
 		return reservationDAO.getReservationCount();
 	}
 	@Override
-	public int getMyReservationCount(int uId) {
+	public int getMyReservationCount(long uId) {
 		return reservationDAO.getMyReservationCount(uId);
 	}
 	@Override

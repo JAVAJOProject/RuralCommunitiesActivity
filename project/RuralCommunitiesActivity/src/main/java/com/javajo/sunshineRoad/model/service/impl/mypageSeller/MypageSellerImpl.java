@@ -15,7 +15,7 @@ public class MypageSellerImpl implements MypageSellerService {
 	private final MypageSellerDAO sellerDAO;
 
 	@Override
-	public MypageSellerDTO getInfo(int sId) {
+	public MypageSellerDTO getInfo(long sId) {
 
 		return sellerDAO.getInfo(sId);
 	}

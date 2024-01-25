@@ -20,7 +20,7 @@ public class MypageMemberCommunityDTO {
 	@JsonProperty
 	private int uCommunityPostId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private int postTypeId;
 	private int communityImgId;
 	@JsonProperty

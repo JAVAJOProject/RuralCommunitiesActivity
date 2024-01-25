@@ -44,5 +44,5 @@ public class MypageRequestEventDTO {
 	@JsonProperty
 	private int aPostId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 }

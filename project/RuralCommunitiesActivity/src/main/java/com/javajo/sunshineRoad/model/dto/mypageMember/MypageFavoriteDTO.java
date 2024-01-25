@@ -21,7 +21,7 @@ public class MypageFavoriteDTO {
 	@JsonProperty
 	private String fId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private int boardId;
 	private int postTypeId;
 

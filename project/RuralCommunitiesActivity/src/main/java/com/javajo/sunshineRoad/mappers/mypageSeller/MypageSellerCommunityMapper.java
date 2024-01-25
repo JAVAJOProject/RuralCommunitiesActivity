@@ -1,19 +1,18 @@
 package com.javajo.sunshineRoad.mappers.mypageSeller;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageSellerCommunityDTO;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageSellerCommunityDTO;
+import java.util.List;
 
 public interface MypageSellerCommunityMapper {
-	public int selectCount(int sId);
+	public int selectCount(long sId);
 
 
 //    Oracle
-    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") int sId, @Param("start") int start, @Param("end") int end);
+//    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
 
 
 //    MySQL
-//    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") int sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

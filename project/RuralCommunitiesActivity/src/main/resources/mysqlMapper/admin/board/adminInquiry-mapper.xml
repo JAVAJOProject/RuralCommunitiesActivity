@@ -32,7 +32,7 @@
 				 INNER JOIN INQUIRY_STATUS S ON I.INQUIRY_STATUS_ID = S.INQUIRY_STATUS_ID
 				 INNER JOIN INQUIRY_TYPE T ON I.INQUIRY_TYPE_ID = T.INQUIRY_TYPE_ID
 		ORDER BY INQUIRY_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 
@@ -71,7 +71,7 @@
 							ON (I.INQUIRY_TYPE_ID = T.INQUIRY_TYPE_ID)
 		WHERE I.INQUIRY_STATUS_ID = #{searchDTO.status}
 		ORDER BY INQUIRY_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -86,7 +86,7 @@
 			   INQUIRY_A
 		FROM INQUIRY
 		ORDER BY INQUIRY_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 

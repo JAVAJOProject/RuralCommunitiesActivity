@@ -44,8 +44,8 @@ public interface InquiryService {
 	public int getSearchInquiryContentCount(String keyword);
 
 	//내가 쓴 글 개수
-	public int getMyInquiryCount(int memId);
+	public int getMyInquiryCount(long memId);
 	//내가 쓴 글 보기
-	public List<InquiryInfoDTO> getMyInquiryDetail(int totalCount, int perPagePostCount, int requestPageNo, int memId);
+	public List<InquiryInfoDTO> getMyInquiryDetail(int totalCount, int perPagePostCount, int requestPageNo, long memId);
 
 }

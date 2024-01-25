@@ -17,19 +17,19 @@ public class GetRequestPageEventListServiceImpl implements GetRequestPageEventLi
     private final OffSetBasedPaginationUtils offSetBasedPaginationUtils;
 
     // Oracle
-    @Override
-    public List<EventDTO> getRequestPageEventList(int totalCount, int perPagePostCount, int requestPageNo) {
-        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-
-        return eventDAO.getRequestPageEventContent(startPostNo, endPostNo);
-    }
-
-    // MySQL
 //    @Override
 //    public List<EventDTO> getRequestPageEventList(int totalCount, int perPagePostCount, int requestPageNo) {
 //        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 //
-//        return eventDAO.getRequestPageEventContent(startPostNo - 1, perPagePostCount);
+//        return eventDAO.getRequestPageEventContent(startPostNo, endPostNo);
 //    }
+
+    // MySQL
+    @Override
+    public List<EventDTO> getRequestPageEventList(int totalCount, int perPagePostCount, int requestPageNo) {
+        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+
+        return eventDAO.getRequestPageEventContent(startPostNo - 1, perPagePostCount);
+    }
 }

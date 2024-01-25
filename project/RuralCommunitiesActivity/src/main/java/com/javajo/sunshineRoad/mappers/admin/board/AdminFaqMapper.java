@@ -15,29 +15,34 @@ import java.util.List;
 public interface AdminFaqMapper {
 
 
-	//전체 조회
-	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	//등록하기. 이미지는 따로
+	public void registrationFaq(AFaqDTO faqDTO);
+
+	//수정하기 객체
+	public void modifyFaqPost(AFaqDTO faqDTO);
+
+
+	//삭제하기 객체
+	public int deleteFaqPost(int faqId);
+
+
 
 	//상세조회
 	public List<AFaqDTO> detailFaq(int faqId);
-	
+
+	// Oracle
+//	//전체 조회
+//	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+//
+//	//필터링 조회
+//	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+
+	// MySQL
+	//전체 조회
+	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
+
 	//필터링 조회
-	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-	
-	//등록하기. 이미지는 따로
-	public void registrationFaq(AFaqDTO faqDTO);
-	
-	//수정하기 객체
-	public void modifyFaqPost(AFaqDTO faqDTO);
-	
-	
-	//삭제하기 객체
-	public int deleteFaqPost(int faqId);
-	
-
-
-
-
+	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
 
 
 

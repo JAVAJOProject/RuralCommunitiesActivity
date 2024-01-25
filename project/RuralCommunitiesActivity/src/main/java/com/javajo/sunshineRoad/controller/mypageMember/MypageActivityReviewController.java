@@ -32,8 +32,8 @@ public class MypageActivityReviewController {
 	// 체험 리뷰 -> aid로
 	@GetMapping("/activity/list/{currentPage}")
 	public List<MypageActivityReviewDTO> getInfo(@PathVariable int currentPage /* @SessionAttribute("loginMember") MypageMemberDTO member */) {
-		int uId = 1;
-//		int uId = member.getUId();
+		long uId = 1;
+//		long uId = member.getUId();
 		System.out.println("uId" + uId);
 		int activityCount = aReviewService.getActivityCount(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, activityCount, 3);
@@ -49,7 +49,7 @@ public class MypageActivityReviewController {
 	
 	@GetMapping("/total-page")
 	public List<Integer> getTotalPost() {
-		int uId = 1;
+		long uId = 1;
 		
 		int perPagePostCount = 3;
 		int totalPostNo = aReviewService.getActivityCount(uId);
@@ -69,8 +69,8 @@ public class MypageActivityReviewController {
 	public int writeRev(@PathVariable int reservationId, MypageActivityReviewDTO review
 			/*@SessionAttribute("loginMember") MemberDTO member*/) {
 		System.out.println("rContent" + review.getRContent());
-//		int uId = member.getUId();
-		int uId = 1;
+//		long uId = member.getUId();
+		long uId = 1;
 		review.setUId(uId);
 		review.setReservationId(reservationId);
 		/*

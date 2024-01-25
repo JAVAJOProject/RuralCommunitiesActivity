@@ -19,7 +19,7 @@ public class AActivityDTO {
 	@JsonProperty("a_id")
 	private int aId;//체험 서비스
 	@JsonProperty("s_id")
-	private int sId;
+	private long sId;
 	private int sigunguId;//지역
 	@JsonProperty("a_theme_id")
 	private int aThemeId;//테마

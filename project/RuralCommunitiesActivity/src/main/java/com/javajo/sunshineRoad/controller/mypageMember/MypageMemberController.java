@@ -25,8 +25,8 @@ public class MypageMemberController { // 수정 , 입력취소, 탈퇴하기
 	// 로그인 한 사람의 개인정보 뽑기
 	@GetMapping("/info")
 	public MypageMemberDTO getInfo( /* @SessionAttribute("loginMember") MypageMemberDTO member */ ) {
-		int uId = 1;
-		// int uId = member.getUId();
+		long uId = 1;
+		// long uId = member.getUId();
 		System.out.println("MypageMemberDTO" + uId);
 		MypageMemberDTO selectMember = memberService.getInfo(uId);
 		return selectMember;
@@ -38,8 +38,8 @@ public class MypageMemberController { // 수정 , 입력취소, 탈퇴하기
 			/* @ModelAttribute("member") MypageMemberDTO memberChange */ @RequestParam("uName") String uName
 	/* @SessionAttribute("loginMember") MypageMemberDTO member */) { //
 		System.out.println("uName" + uName);
-		int uId = 1;
-//		int uId = member.getUId();
+		long uId = 1;
+//		long uId = member.getUId();
 		int result = memberService.changeInfo(uName, uId);
 
 		return result;
@@ -55,8 +55,8 @@ public class MypageMemberController { // 수정 , 입력취소, 탈퇴하기
 	@DeleteMapping("/del")
 	public ResponseEntity<String> delMember(
 			/* @SessionAttribute("loginMember") MypageMemberDTO member HttpServletRequest req*/ ) {
-		int uId = 1;
-		// int uId = loginMember.getUId(); // 로그인한 사용자의 uId 가져오기
+		long uId = 1;
+		// long uId = loginMember.getUId(); // 로그인한 사용자의 uId 가져오기
 		boolean deleted = memberService.delMember(uId);
 		if (deleted) {
 //			HttpSession session = req.getSession();

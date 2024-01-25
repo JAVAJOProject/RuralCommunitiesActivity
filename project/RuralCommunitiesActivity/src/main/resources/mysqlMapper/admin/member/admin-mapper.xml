@@ -13,7 +13,7 @@
 			   DATE_FORMAT(ADMIN_REG_DATE, '%Y-%m-%d') AS ADMIN_REG_DATE
 		FROM ADMIN
 		ORDER BY ADMIN_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -40,7 +40,7 @@
 				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
 				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 		ORDER BY ADMIN_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	
@@ -73,7 +73,7 @@
 			  WHERE ADMIN_REG_DATE BETWEEN
 						STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
 						AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')) result
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 
@@ -112,7 +112,7 @@
 		FROM ADMIN
 		WHERE ADMIN_AUTHORITY_ID IS NULL
 		ORDER BY ADMIN_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 	

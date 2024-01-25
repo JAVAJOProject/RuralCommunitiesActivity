@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
 @NoArgsConstructor
 public class MainPageTotalActivityInfoDTO {
     @JsonProperty
-    private int sId;
+    private long sId;
     @JsonProperty
     private int aPostId;
     @JsonProperty

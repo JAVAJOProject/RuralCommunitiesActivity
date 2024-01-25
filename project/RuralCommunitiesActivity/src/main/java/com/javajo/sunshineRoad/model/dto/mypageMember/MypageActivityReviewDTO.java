@@ -19,7 +19,7 @@ import lombok.Setter;
 public class MypageActivityReviewDTO {
 	private int revId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	@JsonProperty
 	private int aPostId;
 	@JsonProperty

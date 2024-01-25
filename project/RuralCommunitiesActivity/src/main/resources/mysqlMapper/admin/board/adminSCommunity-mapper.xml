@@ -14,7 +14,7 @@
                COMMUNITY_CUM_CNT
         FROM seller_community
         ORDER BY SELLER_COMMUNITY_POST_ID DESC
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
 	</select>
 	

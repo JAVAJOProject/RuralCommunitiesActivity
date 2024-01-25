@@ -6,19 +6,19 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageFavoriteDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageFavoriteService {
-	public List<MypageFavoriteDTO> getInfoEvent(int uId, PageInfo pageInfo);
+	public List<MypageFavoriteDTO> getInfoEvent(long uId, PageInfo pageInfo);
 
-	public int getCountEvent(int uId);
+	public int getCountEvent(long uId);
 
-	public List<MypageFavoriteDTO> getListInfoEvent(int uId, PageInfo pageInfo);
+	public List<MypageFavoriteDTO> getListInfoEvent(long uId, PageInfo pageInfo);
 
-	public int getCountActivity(int uId);
+	public int getCountActivity(long uId);
 
-	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo);
+	public List<MypageFavoriteDTO> getInfoActivity(long uId, PageInfo pageInfo);
 
-//	public List<MypageFavoriteDTO> getListInfoActivity(int uId, PageInfo pageInfo);
+//	public List<MypageFavoriteDTO> getListInfoActivity(long uId, PageInfo pageInfo);
 //
-//	public List<MypageFavoriteDTO> getInfoActivity(int uId, PageInfo pageInfo);
+//	public List<MypageFavoriteDTO> getInfoActivity(long uId, PageInfo pageInfo);
 //
-//	public MypageFavoriteDTO getActivityCountActivity(int uId);
+//	public MypageFavoriteDTO getActivityCountActivity(long uId);
 }

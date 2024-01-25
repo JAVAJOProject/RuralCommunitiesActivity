@@ -5,5 +5,5 @@ import com.javajo.sunshineRoad.model.dto.common.favorites.FavoritesDTO;
 import java.util.List;
 
 public interface GetAllFavoriteInfoByUserService {
-    public List<FavoritesDTO> getAllFavoriteInfoByUser(int uId);
+    public List<FavoritesDTO> getAllFavoriteInfoByUser(long uId);
 }

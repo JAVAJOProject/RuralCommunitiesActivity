@@ -5,6 +5,6 @@ import com.javajo.sunshineRoad.model.dto.common.mem.MemInfoDTO;
 import java.util.Map;
 
 public interface MemInfoToSearchMapper {
-    public int searchMemIdByUserId(Map<String, Object> params);
-    public MemInfoDTO searchUserIdAndMemTypeByMemId(int memId);
+    public long searchMemIdByUserId(Map<String, Object> params);
+    public MemInfoDTO searchUserIdAndMemTypeByMemId(long memId);
 }

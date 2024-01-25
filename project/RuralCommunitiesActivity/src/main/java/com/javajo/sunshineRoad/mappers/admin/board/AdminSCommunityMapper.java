@@ -9,15 +9,20 @@ import java.util.List;
 @Mapper
 public interface AdminSCommunityMapper {
 
-	//전체 조회
-	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
+	//삭제하기 객체
+	public int deleteSCommunityPost(int sellerCommunityPostId);
 
 	//상세조회
 	public List<ASCommunityDTO> detailSCommunity(int sellerCommunityPostId);
 
 
-	//삭제하기 객체
-	public int deleteSCommunityPost(int sellerCommunityPostId);
+	// Oracle
+//	//전체 조회
+//	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
+	// MySQL
+
+	//전체 조회
+	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 }

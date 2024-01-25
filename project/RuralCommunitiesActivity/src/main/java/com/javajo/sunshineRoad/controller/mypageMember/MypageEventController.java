@@ -28,9 +28,9 @@ public class MypageEventController {
     
 	@GetMapping("/event/list/page/{currentPage}")
 	public List<MypageEventDTO> getEventList(@PathVariable int currentPage /* @SessionAttribute("loginMember") MemberDTO member */) {
-//		int uId = member.getUId();
+//		long uId = member.getUId();
 		System.out.println("--------------");
-		int uId = 1;
+		long uId = 1;
 		int eventCount = eventService.getEventCount(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, eventCount, 3);
 		List<MypageEventDTO> eventpageList = eventService.getEventList(uId, pageInfo);
@@ -39,7 +39,7 @@ public class MypageEventController {
 	// 이벤트 목록 
 	@GetMapping("/event/list/all")
 	public List<MypageEventDTO> getInfo(/* @SessionAttribute("loginMember") MemberDTO member */) {
-//		int uId = member.getUId();
+//		long uId = member.getUId();
 		int eventId = 1;
 		System.out.println("MypageEventDTO" + eventId);
 		List<MypageEventDTO> eventList = eventService.getInfo(eventId);

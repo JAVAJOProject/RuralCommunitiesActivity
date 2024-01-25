@@ -33,8 +33,8 @@ public class MypageActivityPostController {
 	@GetMapping("/activity/list/{currentPage}")
 	public List<MypageActivityPostDTO> getInfo(
 			@PathVariable int currentPage /* @SessionAttribute("loginSeller") MypageSellerDTO seller */) {
-		int sId = 1;
-//		int sId = seller.getSId();
+		long sId = 1;
+//		long sId = seller.getSId();
 		System.out.println("ActivityInfoDAO" + sId);
 
 		int activityCount = activityInfoService.getActivityCount(sId);

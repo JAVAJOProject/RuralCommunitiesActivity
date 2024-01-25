@@ -20,7 +20,7 @@ public class MypageActivityInfoDTO {
 	@JsonProperty
 	private int aId;
 	@JsonProperty
-	private int sId;
+	private long sId;
 	private int sigunguId;
 	@JsonProperty
 	private int aThemeId;

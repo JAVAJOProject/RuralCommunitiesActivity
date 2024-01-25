@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SignUpSellerDTO {
 	@JsonProperty
-	private Integer sId;
+	private Long sId;
 	private String accountInfoId;
 	private int memTypeId;
 	@JsonProperty

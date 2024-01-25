@@ -32,7 +32,7 @@ public class AdminMemberDAO {
 
 
 	//회원선택 조회      아이디
-	public List<AdminMemberDTO> selectMemberID(int uId) {
+	public List<AdminMemberDTO> selectMemberID(long uId) {
 		System.out.println("[AdminMemberDAO] selectMemberID()");
 
 		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
@@ -64,7 +64,7 @@ public class AdminMemberDAO {
 
 
 	//회원 삭제
-	public void delMember(int uId) {
+	public void delMember(long uId) {
 		System.out.println("[AdminMemberDAO] delMember()");
 
 		AdminMemberMapper memberMapper = sqlSession.getMapper(AdminMemberMapper.class);
@@ -93,7 +93,7 @@ public class AdminMemberDAO {
 	}
 
 	//작성한글 보기 wrotePost
-	public List<AMCommunityDTO> wrotePost(int uId,int startPostNo, int endPostNo){
+	public List<AMCommunityDTO> wrotePost(long uId,int startPostNo, int endPostNo){
 		System.out.println("[AdminMemberDAO] wrotePost()");
 
 

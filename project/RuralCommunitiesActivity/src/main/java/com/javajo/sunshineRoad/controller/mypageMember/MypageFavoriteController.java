@@ -38,8 +38,8 @@ public class MypageFavoriteController {
 	// 이벤트 찜 목록
 	@GetMapping("/favorite/list/event/all")
 	public List<MypageFavoriteDTO> getListInfoEvent(/* @SessionAttribute("loginMember") MypageMemberDTO member */) {
-		int uId = 1;
-//		int uId = member.getUId();
+		long uId = 1;
+//		long uId = member.getUId();
 		System.out.println("FavoriteDAO" + uId);
 		int favoriteCount = favoriteService.getCountEvent(uId);
 		PageInfo pageInfo = new PageInfo(1, 5, favoriteCount, 6);
@@ -71,7 +71,7 @@ public class MypageFavoriteController {
 
 	@GetMapping("/favorite/list/event/total-count")
 	public List<Integer> getEventTotalCount() {
-		int uId = 1;
+		long uId = 1;
 
 		int perPagePostNo = 6;
 		int totalCount = favoriteService.getCountEvent(uId);
@@ -82,8 +82,8 @@ public class MypageFavoriteController {
 	@GetMapping("/favorite/list/event/{currentPage}")
 	public List<MypageFavoriteDTO> getInfoEvent(
 			@PathVariable int currentPage /* @SessionAttribute("loginMember") MypageMemberDTO member */) {
-		int uId = 1;
-//		int uId = member.getUId();
+		long uId = 1;
+//		long uId = member.getUId();
 		System.out.println("FavoriteDAO " + uId);
 
 		int favoriteCount = favoriteService.getCountEvent(uId);
@@ -115,7 +115,7 @@ public class MypageFavoriteController {
 
 	@GetMapping("/favorite/list/activity/total-count")
 	public List<Integer> getActivityTotalCount() {
-		int uId = 1;
+		long uId = 1;
 
 		int perPagePostNo = 6;
 		int totalCount = favoriteService.getCountActivity(uId);
@@ -126,8 +126,8 @@ public class MypageFavoriteController {
 	@GetMapping("/favorite/list/activity/{currentPage}")
 	public List<MypageFavoriteDTO> getInfoActivity(
 			@PathVariable int currentPage /* @SessionAttribute("loginMember") MypageMemberDTO member */) {
-		int uId = 1;
-//			int uId = member.getUId();
+		long uId = 1;
+//			long uId = member.getUId();
 		System.out.println("favoriteActivity " + uId);
 		int favoriteCount = favoriteService.getCountActivity(uId);
 		PageInfo pageInfo = new PageInfo(currentPage, 5, favoriteCount, 6);
@@ -138,7 +138,7 @@ public class MypageFavoriteController {
 
 	// 찜 이미지 처리
 	@GetMapping("/favorite-image/{postTypeId}/{uId}")
-	public ResponseEntity<UrlResource> getMainPageEventData(@PathVariable int postTypeId, @PathVariable int uId) {
+	public ResponseEntity<UrlResource> getMainPageEventData(@PathVariable int postTypeId, @PathVariable long uId) {
 		uId = 1;
 		System.out.println("postTypeId " + postTypeId);
 		System.out.println("uIdCheck " + uId);

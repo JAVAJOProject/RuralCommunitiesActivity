@@ -12,7 +12,7 @@ import org.apache.ibatis.type.Alias;
 @AllArgsConstructor
 public class RecActSellerInfoDTO {
     @JsonProperty
-    private int sId;
+    private long sId;
     @JsonProperty
     private String sTel;
     @JsonProperty

@@ -14,7 +14,7 @@ import java.util.Map;
 public class MemInfoToSearchDAO {
     private final SqlSessionTemplate sqlSession;
 
-    public int searchMemIdByUserId(MemInfoDTO memInfo, int userId) {
+    public long searchMemIdByUserId(MemInfoDTO memInfo, long userId) {
         MemInfoToSearchMapper mapper = sqlSession.getMapper(MemInfoToSearchMapper.class);
 
         Map<String, Object> params = new HashMap<String, Object>();
@@ -24,7 +24,7 @@ public class MemInfoToSearchDAO {
         return mapper.searchMemIdByUserId(params);
     }
 
-    public MemInfoDTO searchUserIdAndMemTypeByMemId(int memId) {
+    public MemInfoDTO searchUserIdAndMemTypeByMemId(long memId) {
         MemInfoToSearchMapper mapper = sqlSession.getMapper(MemInfoToSearchMapper.class);
         return mapper.searchUserIdAndMemTypeByMemId(memId);
     }

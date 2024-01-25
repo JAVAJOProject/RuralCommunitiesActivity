@@ -1,17 +1,15 @@
 package com.javajo.sunshineRoad.model.dao.mypageSeller;
 
-import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.javajo.sunshineRoad.mappers.mypageSeller.MypageRequestEventMapper;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
 import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageRequestEventDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
-
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -43,7 +41,7 @@ public class MypageRequestEventDAO {
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
 		return requestEventMapper.updateByEvent(eventId, eventName);
 	}
-	public int getEventCount(int sId) {
+	public int getEventCount(long sId) {
 		System.out.println("sId" + sId);
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
 		return requestEventMapper.selectCount(sId);
@@ -63,63 +61,63 @@ public class MypageRequestEventDAO {
 
 
 //	Oracle
-	//요청한 이벤트 내역
-	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
-	    System.out.println("pageInfo" + pageInfo);
-	    int start = pageInfo.getStartList();
-	    int end = pageInfo.getEndList();
-	    MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-	    return requestEventMapper.getEventInfo(sId, start, end);
-	}
-	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
-		System.out.println("pageInfo" + pageInfo);
-		int start = pageInfo.getStartList();
-	    int end = pageInfo.getEndList();
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectParticipantByNo(eventId, start, end);
-	}
-	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
-		System.out.println("pageInfo" + pageInfo);
-		int start = pageInfo.getStartList();
-	    int end = pageInfo.getEndList();
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectWinnerByNo(eventId, start, end);
-	}
-
-
-//	MySQL
-//	public List<MypageRequestEventDTO> getEventList(int sId, PageInfo pageInfo) {
-//		System.out.println("pageInfo" + pageInfo);
-//		int start = pageInfo.getStartList();
-//		int perPagePostNo = pageInfo.getListLimit();
-//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//		return requestEventMapper.getEventInfo(sId, start - 1, perPagePostNo);
+//	//요청한 이벤트 내역
+//	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
+//	    System.out.println("pageInfo" + pageInfo);
+//	    int start = pageInfo.getStartList();
+//	    int end = pageInfo.getEndList();
+//	    MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//	    return requestEventMapper.getEventInfo(sId, start, end);
 //	}
 //	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
 //		System.out.println("pageInfo" + pageInfo);
 //		int start = pageInfo.getStartList();
-//		int perPagePostNo = pageInfo.getListLimit();
+//	    int end = pageInfo.getEndList();
 //		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//		return requestEventMapper.selectParticipantByNo(eventId, start - 1, perPagePostNo);
+//		return requestEventMapper.selectParticipantByNo(eventId, start, end);
 //	}
 //	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
 //		System.out.println("pageInfo" + pageInfo);
 //		int start = pageInfo.getStartList();
-//		int perPagePostNo = pageInfo.getListLimit();
+//	    int end = pageInfo.getEndList();
 //		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//		return requestEventMapper.selectWinnerByNo(eventId, start - 1, perPagePostNo);
+//		return requestEventMapper.selectWinnerByNo(eventId, start, end);
 //	}
+
+
+//	MySQL
+	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
+		System.out.println("pageInfo" + pageInfo);
+		int start = pageInfo.getStartList();
+		int perPagePostNo = pageInfo.getListLimit();
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.getEventInfo(sId, start - 1, perPagePostNo);
+	}
+	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
+		System.out.println("pageInfo" + pageInfo);
+		int start = pageInfo.getStartList();
+		int perPagePostNo = pageInfo.getListLimit();
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectParticipantByNo(eventId, start - 1, perPagePostNo);
+	}
+	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
+		System.out.println("pageInfo" + pageInfo);
+		int start = pageInfo.getStartList();
+		int perPagePostNo = pageInfo.getListLimit();
+		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+		return requestEventMapper.selectWinnerByNo(eventId, start - 1, perPagePostNo);
+	}
 }
 	
 		//return selectMember;
 	//회원정보 한줄만 가져오니까 ( row)selectOne 
-//		public MemberDTO getInfo(int uId) {
+//		public MemberDTO getInfo(long uId) {
 //		return sqlSession.selectOne("memMapper.", uId);
 //		// 회원 정보 한 줄(row) 만 가져오니까 selectOne
 //	}
 	
 	//회원 삭제 
-//	public int delMember(int uId) {
+//	public int delMember(long uId) {
 //		System.out.println("[MemberDAO] delMember()");
 //	    MemberDAO memberDAO = new MemberDAO(); // MemberDAO 객체 생성
 //	    return memberDAO.delMember(uId); 

@@ -1,11 +1,10 @@
 package com.javajo.sunshineRoad.mappers.mypageSeller;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
 import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageRequestEventDTO;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface MypageRequestEventMapper {
 	public MypageRequestEventDTO selectByNo(int eventId);
@@ -19,7 +18,7 @@ public interface MypageRequestEventMapper {
 	// 키값에 해당하는 변수의 값이 나옴. "키" value ,각각 담김 type 은 상관없음 2개이상의 변수일때 param과 map을사용
 	public int updateByEvent(@Param("eventId") int eventId, @Param("eventName") String eventName);
 
-	public int selectCount(int sId);
+	public int selectCount(long sId);
 
 	public int selectParticipantCount(int eventId);
 
@@ -27,13 +26,13 @@ public interface MypageRequestEventMapper {
 
 
 //	Oracle
-    public List<MypageRequestEventDTO> getEventInfo(@Param("sId") int sId, @Param("start") int start, @Param("end") int end);
-	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
-	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
+//    public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
+//	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
+//	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
 
 
 //	MySQL
-//	public List<MypageRequestEventDTO> getEventInfo(@Param("sId") int sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
-//	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
-//	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+	public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

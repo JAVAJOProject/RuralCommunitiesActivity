@@ -40,7 +40,7 @@ public class TotalActivityListController {
 	}
 	
 	@GetMapping("/countByRegion/{sId}")
-	public int getTotalActivityCountByRegion(@PathVariable int sId) {
+	public int getTotalActivityCountByRegion(@PathVariable long sId) {
 		return getTotalActivityCountService.getTotalActivityCountByRegion(sId);
 	}
 
@@ -111,7 +111,7 @@ public class TotalActivityListController {
 		return ResponseEntity.ok(pageInfo);
 	}
 	@GetMapping("/byRegionListOfSigungu/{boardType}/{sId}/{requestPageNo}")
-	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByRegionList(@PathVariable int sId,
+	public ResponseEntity<List<ActSummaryListDTO>> totalActivityByRegionList(@PathVariable long sId,
 			@PathVariable int requestPageNo, @PathVariable String boardType) {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();
@@ -127,7 +127,7 @@ public class TotalActivityListController {
 		return ResponseEntity.ok(byRegionList);
 	}
 	@GetMapping("/byRegionListOfSigungu/{boardType}/total-count/{sId}")
-	public ResponseEntity<List<Integer>> getTotalCountBySigungu(@PathVariable String boardType, @PathVariable int sId) {
+	public ResponseEntity<List<Integer>> getTotalCountBySigungu(@PathVariable String boardType, @PathVariable long sId) {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();
 		}

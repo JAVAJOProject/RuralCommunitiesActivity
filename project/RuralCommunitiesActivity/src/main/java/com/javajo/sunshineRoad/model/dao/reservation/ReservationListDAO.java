@@ -17,7 +17,7 @@ public class ReservationListDAO {
         ResSummaryListMapper mapper = sqlSession.getMapper(ResSummaryListMapper.class);
         return mapper.getReservationCountData();
     }
-	public int getMyReservationCount(int uId) {
+	public int getMyReservationCount(long uId) {
         ResSummaryListMapper mapper = sqlSession.getMapper(ResSummaryListMapper.class);
         return mapper.getMyReservationCountData(uId);
     }
@@ -30,7 +30,7 @@ public class ReservationListDAO {
     	ResSummaryListMapper mapper = sqlSession.getMapper(ResSummaryListMapper.class);
     	return mapper.getRequestPageReservationListData(startPostNo, endPostNo);
     }
-	public List<ResSummaryListDTO> getRequestPageMyReservitionList(int uId, int startPostNo, int endPostNo) {
+	public List<ResSummaryListDTO> getRequestPageMyReservitionList(long uId, int startPostNo, int endPostNo) {
     	ResSummaryListMapper mapper = sqlSession.getMapper(ResSummaryListMapper.class);
     	return mapper.getRequestPageMyReservationListData(uId, startPostNo, endPostNo);
     }

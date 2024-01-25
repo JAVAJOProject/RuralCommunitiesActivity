@@ -19,7 +19,7 @@ public class MypageActivityPostImpl implements MypageActivityPostService {
 	private final MypageActivityPostDAO activityInfoDAO;
 
 	@Override
-	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo) {
+	public List<MypageActivityPostDTO> getInfo(long sId, PageInfo pageInfo) {
 		return activityInfoDAO.getInfo(sId, pageInfo);
 	}
 
@@ -34,7 +34,7 @@ public class MypageActivityPostImpl implements MypageActivityPostService {
 	}
 
 	@Override
-	public int getActivityCount(int sId) {
+	public int getActivityCount(long sId) {
 		return activityInfoDAO.getActivityCount(sId);
 
 	}

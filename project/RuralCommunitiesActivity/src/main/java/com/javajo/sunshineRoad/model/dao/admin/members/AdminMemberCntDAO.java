@@ -43,7 +43,7 @@ public class AdminMemberCntDAO {
 	
 	
 	
-	public int wrotePostCnt(int uId) {
+	public int wrotePostCnt(long uId) {
 		AdminMemberCntMapper adminMemberCntMapper = sqlSession.getMapper(AdminMemberCntMapper.class);
 		return adminMemberCntMapper.wrotePostCnt(uId);
 	}

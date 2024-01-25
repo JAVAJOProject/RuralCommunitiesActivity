@@ -14,7 +14,7 @@ public class GetAllLikeInfoByUserServiceImpl implements GetAllLikeInfoByUserServ
     private final LikeDAO likeDAO;
 
     @Override
-    public List<LikesDTO> getAllLikeInfoByUser(int uId) {
+    public List<LikesDTO> getAllLikeInfoByUser(long uId) {
         return likeDAO.getAllLikeInfoByUser(uId);
     }
 }

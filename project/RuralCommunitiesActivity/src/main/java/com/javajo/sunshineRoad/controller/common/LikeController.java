@@ -40,7 +40,7 @@ public class LikeController {
     }
 
     @GetMapping("/list/all/{uId}")
-    public ResponseEntity<List<LikesDTO>> getAllLikeInfoByUserAndPostTypeService(@PathVariable int uId, @RequestParam int postTypeId) {
+    public ResponseEntity<List<LikesDTO>> getAllLikeInfoByUserAndPostTypeService(@PathVariable long uId, @RequestParam int postTypeId) {
         if (postTypeId > 6 || postTypeId < 5) {
             return ResponseEntity.badRequest().build();
         }
@@ -51,7 +51,7 @@ public class LikeController {
     }
 
     @GetMapping("/list/user/{uId}")
-    public ResponseEntity<List<LikesDTO>> getAllLikeInfoByUser(@PathVariable int uId) {
+    public ResponseEntity<List<LikesDTO>> getAllLikeInfoByUser(@PathVariable long uId) {
         List<LikesDTO> likesList = getAllLikeInfoByUserService.getAllLikeInfoByUser(uId);
         return ResponseEntity.ok(likesList);
     }

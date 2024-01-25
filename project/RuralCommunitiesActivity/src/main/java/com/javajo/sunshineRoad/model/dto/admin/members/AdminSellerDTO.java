@@ -18,7 +18,7 @@ import lombok.Setter;
 public class AdminSellerDTO {
 
 	@JsonProperty("s_id")
-	private int sId;
+	private long sId;
 	private int accountInfoId;//??
 	private String memTypeId;//제공자2
 	@JsonProperty("s_email")

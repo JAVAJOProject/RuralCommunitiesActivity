@@ -35,7 +35,7 @@
         WHERE
             event.event_status_id IN (3 , 5)
         ORDER BY event.event_date_created DESC
-            LIMIT #{perPagePostNo} OFFSET #{startPostNo}
+            LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 
     <select id="detailEvent" resultType="AEvent" parameterType="int">
@@ -94,7 +94,7 @@
         WHERE EVENT_RECRUIT_START_DATE BETWEEN
                   STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
                   AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
     </select>
 	
@@ -122,7 +122,7 @@
         WHERE EVENT_START_DATE BETWEEN
                   STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
                   AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
     </select>
 
@@ -150,7 +150,7 @@
         WHERE EVENT_DATE_CREATED BETWEEN
                   STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
                   AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
     </select>
 
@@ -208,7 +208,7 @@
               WHERE E.EVENT_STATUS_ID IN (3, 5)
                 AND E.EVENT_RECRUIT_TYPE_ID = #{searchDTO.theme})
         ORDER BY EVENT_RECRUIT_START_DATE DESC
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
 	</select>	
 

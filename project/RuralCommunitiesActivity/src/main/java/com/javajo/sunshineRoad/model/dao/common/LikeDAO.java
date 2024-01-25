@@ -28,7 +28,7 @@ public class LikeDAO {
         return mapper.getAllLikeInfo();
     }
 
-    public List<LikesDTO> getAllLikeInfoByUser(int uId) {
+    public List<LikesDTO> getAllLikeInfoByUser(long uId) {
         LikeMapper mapper = sqlSession.getMapper(LikeMapper.class);
         return mapper.getAllLikeInfoByUser(uId);
     }

@@ -28,7 +28,7 @@ public class GetTotalActivityCountServiceImpl implements GetTotalActivityCountSe
 	}
 
 	@Override
-	public int getTotalActivityCountByRegion(int sId) {
+	public int getTotalActivityCountByRegion(long sId) {
 		return totalActivityDAO.getTotalActivityCountByRegion(sId);
 	}
 }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.common.MemInfoToSearchMapper">
     <!--    MySQL-->
-        <select id="searchMemIdByUserId" resultType="int" parameterType="map">
+        <select id="searchMemIdByUserId" resultType="long" parameterType="map">
             SELECT
                 mem_id
             FROM
@@ -15,7 +15,7 @@
                 mem_type_id = #{memInfo.memTypeId}
         </select>
 
-        <select id="searchUserIdAndMemTypeByMemId" resultType="MemInfoToSearch" parameterType="int">
+        <select id="searchUserIdAndMemTypeByMemId" resultType="MemInfoToSearch" parameterType="long">
             SELECT
                 mem_type_id,
                 u_id,

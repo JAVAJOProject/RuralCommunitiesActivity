@@ -7,11 +7,11 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageMemberDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageActivityPostService {
-	public List<MypageActivityPostDTO> getInfo(int sId, PageInfo pageInfo);
+	public List<MypageActivityPostDTO> getInfo(long sId, PageInfo pageInfo);
 
 	public List<MypageMemberDTO> getList(int postId, PageInfo pageInfo);
 
 	public int getActivityParticipantCount(int postId);
 
-	public int getActivityCount(int sId);
+	public int getActivityCount(long sId);
 }

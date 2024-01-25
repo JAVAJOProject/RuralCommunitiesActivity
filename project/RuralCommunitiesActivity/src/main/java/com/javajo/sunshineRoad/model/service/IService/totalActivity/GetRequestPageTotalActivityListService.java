@@ -9,5 +9,5 @@ public interface GetRequestPageTotalActivityListService {
 	public List<ActSummaryListDTO> getAllSummaryList(int totalCount, int perPagePostCount, int requestPageNo);
     public List<ActSummaryListDTO> getByThemeList(int tId, int totalCount, int perPagePostCount, int requestPageNo);
     public List<ActSummaryListOfSidoDTO> getByRegionListOfSido(int sidoId, int byRegionOfSidoCount, int perPagePostCount, int requestPageNo);
-    public List<ActSummaryListDTO> getByRegionList(int sId, int totalCount, int perPagePostCount, int requestPageNo);
+    public List<ActSummaryListDTO> getByRegionList(long sId, int totalCount, int perPagePostCount, int requestPageNo);
 }

@@ -1,10 +1,9 @@
 package com.javajo.sunshineRoad.mappers.mypageMember;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.model.dto.mypageMember.MypageActivityReviewDTO;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.mypageMember.MypageActivityReviewDTO;
+import java.util.List;
 
 public interface MypageActivityReviewMapper {
 
@@ -13,7 +12,7 @@ public interface MypageActivityReviewMapper {
 
 	public int updateRev(MypageActivityReviewDTO rev);
 
-	public int selectCount(int uId);
+	public int selectCount(long uId);
 
 	public int deleteReview(int revId);
 	public void deleteRevStatus(int reservationId);
@@ -21,8 +20,8 @@ public interface MypageActivityReviewMapper {
 	public MypageActivityReviewDTO selectReview(int revId);
 
 //	Oracle
-	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") int uId, @Param("start") int start, @Param("end") int end);
+//	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 //	MySQL
-//	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") int uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

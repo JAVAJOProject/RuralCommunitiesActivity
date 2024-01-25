@@ -14,7 +14,7 @@ public class GetAllFavoriteInfoByUserServiceImpl implements GetAllFavoriteInfoBy
     private final FavoriteDAO favoriteDAO;
 
     @Override
-    public List<FavoritesDTO> getAllFavoriteInfoByUser(int uId) {
+    public List<FavoritesDTO> getAllFavoriteInfoByUser(long uId) {
         return favoriteDAO.getAllFavoriteInfoByUser(uId);
     }
 }

@@ -30,7 +30,7 @@ public class AdminDAO {
 
 
 	//회원선택 조회      아이디
-	public List<AdminDTO> selectAdminID(int adminId) {
+	public List<AdminDTO> selectAdminID(long adminId) {
 		System.out.println("[AdminDAO] selectAdminID()");
 
 		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
@@ -64,7 +64,7 @@ public class AdminDAO {
 
 
 	//회원 삭제
-	public void delAdmin(int adminId) {
+	public void delAdmin(long adminId) {
 		System.out.println("[AdminDAO] delAdmin()");
 
 		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);
@@ -100,7 +100,7 @@ public class AdminDAO {
 
 
 	//승인하기
-	public void updateApp(int adminId) {
+	public void updateApp(long adminId) {
 		System.out.println("[AdminDAO] updateApp()");
 
 		AdminMapper adminMapper = sqlSession.getMapper(AdminMapper.class);

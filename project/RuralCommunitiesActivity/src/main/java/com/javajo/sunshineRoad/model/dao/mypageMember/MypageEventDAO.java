@@ -1,17 +1,15 @@
 package com.javajo.sunshineRoad.model.dao.mypageMember;
 
-import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.javajo.sunshineRoad.mappers.mypageMember.MypageEventMapper;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventDTO;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
-
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
@@ -38,8 +36,8 @@ public class MypageEventDAO {
 		return eventmapper.updateEventByWinner(eventWinner);
 	}
 
-	public int getEventCount(int uId) {
-		System.out.println("int uId" + uId);
+	public int getEventCount(long uId) {
+		System.out.println("long uId" + uId);
 		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
 		return eventmapper.selectCount(uId);
 	}
@@ -61,21 +59,21 @@ public class MypageEventDAO {
 
 	// 이벤트 참여 내역
 //	Oracle
-	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
-		int start = pageInfo.getStartList();
-		int end = pageInfo.getEndList();
-		System.out.println("uId" + uId);
-		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
-		return eventmapper.selectByMember(uId, start, end);
-	}
+//	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
+//		int start = pageInfo.getStartList();
+//		int end = pageInfo.getEndList();
+//		System.out.println("uId" + uId);
+//		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+//		return eventmapper.selectByMember(uId, start, end);
+//	}
 
 
 //	MySQL
-//	public List<MypageEventDTO> getEventList(int uId, PageInfo pageInfo) {
-//		int start = pageInfo.getStartList();
-//		int perPagePostNo = pageInfo.getListLimit();
-//		System.out.println("uId" + uId);
-//		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
-//		return eventmapper.selectByMember(uId, start - 1, perPagePostNo);
-//	}
+	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
+		int start = pageInfo.getStartList();
+		int perPagePostNo = pageInfo.getListLimit();
+		System.out.println("uId" + uId);
+		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+		return eventmapper.selectByMember(uId, start - 1, perPagePostNo);
+	}
 }

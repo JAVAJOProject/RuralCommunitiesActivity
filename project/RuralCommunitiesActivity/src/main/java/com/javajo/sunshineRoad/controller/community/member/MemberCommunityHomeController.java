@@ -89,7 +89,7 @@ public class MemberCommunityHomeController {
     // { "uId": 3, "uCommunityPostId": 20 }
     @DeleteMapping("/post/delete/{uCommunityPostId}")
     public ResponseEntity<ResponseDTO> deleteRequestMemberCommunityPost(@PathVariable int uCommunityPostId) {
-        int uId = 3;
+        long uId = 3;
         MemberCommunityPostDTO memberCommunityPost = MemberCommunityPostDTO.builder().uId(uId).uCommunityPostId(uCommunityPostId).build();
 
         boolean isValidUser = memberCommunityCheckAuthorBeforeUpdatingOrDeletingPostService.checkAuthorBeforeUpdatingOrDeletingPost(memberCommunityPost);

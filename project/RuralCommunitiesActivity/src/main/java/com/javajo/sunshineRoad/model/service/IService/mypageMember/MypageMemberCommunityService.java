@@ -6,12 +6,12 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageMemberCommunityDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageMemberCommunityService {
-	public List<MypageMemberCommunityDTO> getInfo(int uId, PageInfo pageInfo);
+	public List<MypageMemberCommunityDTO> getInfo(long uId, PageInfo pageInfo);
 	// public ReservationDTO getInfo(int reservationId);
 
-	public int getActivityCount(int uId);
+	public int getActivityCount(long uId);
 
-//	public List<MypageMemberCommunityDTO> getListInfo(int uId);
+//	public List<MypageMemberCommunityDTO> getListInfo(long uId);
 //
 
 }

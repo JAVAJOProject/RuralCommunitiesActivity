@@ -14,7 +14,7 @@ import java.util.Optional;
 public class UserDAO {
     private final SqlSessionTemplate sqlSession;
 
-    public Optional<User> findByUId(Integer uId) {
+    public Optional<User> findByUId(Long uId) {
         SignInMapper mapper = sqlSession.getMapper(SignInMapper.class);
         return mapper.findByUId(uId);
     }

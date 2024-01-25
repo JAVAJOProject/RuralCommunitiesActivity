@@ -28,7 +28,7 @@ public class ReservationListController {
 		return getReservationCountService.getReservationCount();
 	}
 	@GetMapping("/myCount/{uId}")//내가 신청한 예약 개수(체험자)
-	public int getMyReservationCount(@PathVariable int uId) {
+	public int getMyReservationCount(@PathVariable long uId) {
 		return getReservationCountService.getMyReservationCount(uId);
 	}
 	@GetMapping("/myServiceCount/{aId}")//내 체험에 받은 예약 개수(체험제공자)
@@ -53,7 +53,7 @@ public class ReservationListController {
 	}
 	
 	@GetMapping("/myList/{boardType}/{uId}/{requestPageNo}") // 내 예약리스트 조회(체험자) 
-	public ResponseEntity<List<ResSummaryListDTO>> MyReservationList(@PathVariable String boardType, @PathVariable int uId, @PathVariable int requestPageNo) {
+	public ResponseEntity<List<ResSummaryListDTO>> MyReservationList(@PathVariable String boardType, @PathVariable long uId, @PathVariable int requestPageNo) {
 		if (!boardType.equals("card") && !boardType.equals("list")) {
 			return ResponseEntity.badRequest().build();
 		}

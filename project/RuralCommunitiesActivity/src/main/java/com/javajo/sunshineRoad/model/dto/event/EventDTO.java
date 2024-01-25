@@ -13,7 +13,7 @@ import org.apache.ibatis.type.Alias;
 public class EventDTO {
     private int eventId;
     @JsonProperty
-    private int sId;
+    private long sId;
     private int postTypeId;
     private int eventImgId;
     private int sigunguId;

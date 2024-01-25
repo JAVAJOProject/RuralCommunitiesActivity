@@ -10,7 +10,7 @@ public interface FavoriteMapper {
     public void postFavorite(FavoritesDTO favorites);
     public int checkIsFavorite(FavoritesDTO favorites);
     public List<FavoritesDTO> getAllFavoriteInfo();
-    public List<FavoritesDTO> getAllFavoriteInfoByUser(int uId);
+    public List<FavoritesDTO> getAllFavoriteInfoByUser(long uId);
     public List<FavoritesDTO> getAllFavoriteInfoByUserAndPostType(FavoritesDTO favorites);
     public void deleteFavorite(FavoritesDTO favorites);
 }

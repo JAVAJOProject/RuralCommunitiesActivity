@@ -20,7 +20,7 @@ public class AInquiryDTO {
 	private String inquiryStatus;
 	private int inquiryTypeId;
 	private String inquiryTypeName;
-	private int memId;
+	private long memId;
 	private String inquiryTitle;
 	private String inquiryContent;
 	private String inquiryDateCreated;

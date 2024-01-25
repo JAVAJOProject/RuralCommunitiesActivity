@@ -37,8 +37,8 @@ public class MypageRequestEventController {
 	// 전체 리스트
 	@GetMapping("/event/list/{currentPage}")
 	public List<MypageRequestEventDTO> getEventList(@PathVariable("currentPage") int currentPage /* @SessionAttribute("loginSeller") MypageSellerDTO seller */) {
-		int sId = 1;
-//		int sId = seller.getSId();
+		long sId = 1;
+//		long sId = seller.getSId();
 		System.out.println("sId" + sId);
 		
 		int reservationCount = reqEventService.getEventCount(sId);
@@ -50,8 +50,8 @@ public class MypageRequestEventController {
 
 	@GetMapping("/event/total-page")
 	public ResponseEntity<List<Integer>> getTotalPost() {
-		int sId = 1;
-//		int sId = seller.getSId();
+		long sId = 1;
+//		long sId = seller.getSId();
 		System.out.println("sId" + sId);
 
 		int perPagePostNo = 3;

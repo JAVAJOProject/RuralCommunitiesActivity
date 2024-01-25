@@ -7,13 +7,13 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageActivityReviewDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 
 public interface MypageActivityReviewService {
-	public List<MypageActivityReviewDTO> getInfo(int uId, PageInfo pageInfo);
+	public List<MypageActivityReviewDTO> getInfo(long uId, PageInfo pageInfo);
 
 	void writeRev(MypageActivityReviewDTO rev);
 
 	int updateRev(MypageActivityReviewDTO rev);
 
-	public int getActivityCount(int uId);
+	public int getActivityCount(long uId);
 
 	MainPageTotalActivityInfoDTO getOneTotalActivityData(int id);
 

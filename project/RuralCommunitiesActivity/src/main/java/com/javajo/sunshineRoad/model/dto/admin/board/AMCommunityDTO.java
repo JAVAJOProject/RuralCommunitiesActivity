@@ -21,7 +21,7 @@ public class AMCommunityDTO {
 
 	private int communityPostId;
 	@JsonProperty("u_id")
-	private int uId;
+	private long uId;
 	private int postTypeId;
 	private int communityImgId;
 	private String communityContent;

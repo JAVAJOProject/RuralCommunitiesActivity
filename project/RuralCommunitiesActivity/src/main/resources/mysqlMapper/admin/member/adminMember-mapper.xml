@@ -40,7 +40,7 @@
 			   U_KAKAO_LOGIN
 		FROM MEMBER
 		ORDER BY U_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 
@@ -86,7 +86,7 @@
 				   AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 			AND U_ID = #{searchDTO.id})
 		ORDER BY U_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 
@@ -131,7 +131,7 @@
 			AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f'))
 		  AND U_NAME LIKE CONCAT('%', #{searchDTO.keyword}, '%')
 		ORDER BY U_ID
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 
@@ -190,7 +190,7 @@
 				 LEFT JOIN MEMBER I ON M.U_ID = I.U_ID
 		WHERE M.U_ID = #{uId}
 		ORDER BY M.U_COMMUNITY_DATE_CREATED DESC
-			LIMIT #{perPagePostNo}
+			LIMIT #{perPagePostCount}
 		OFFSET #{startPostNo}
 	</select>
 

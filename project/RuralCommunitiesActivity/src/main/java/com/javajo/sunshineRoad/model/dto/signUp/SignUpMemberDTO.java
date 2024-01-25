@@ -16,7 +16,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SignUpMemberDTO {
 	@JsonProperty
-	private Integer uId;
+	private Long uId;
 	private int memTypeId;
 	@JsonProperty
 	private String uName;

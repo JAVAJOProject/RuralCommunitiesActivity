@@ -18,7 +18,7 @@ public class ResSummaryListDTO {
 	@JsonProperty
 	private int aId;
 	@JsonProperty
-	private int uId;
+	private long uId;
 	private String reservationStatus;
 	private String reservationDate;
 }

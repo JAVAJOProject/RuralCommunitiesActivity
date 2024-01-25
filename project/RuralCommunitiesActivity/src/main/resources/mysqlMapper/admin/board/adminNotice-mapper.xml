@@ -16,7 +16,7 @@
                  INNER JOIN notice_type T
                             ON (N.NOTICE_TYPE_ID = T.NOTICE_TYPE_ID)
         ORDER BY N.NOTICE_DATE_CREATED DESC
-            LIMIT #{perPagePostNo}
+            LIMIT #{perPagePostCount}
         OFFSET #{startPostNo}
 	</select>
 
