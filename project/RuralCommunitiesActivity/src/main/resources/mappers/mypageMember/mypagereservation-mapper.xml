@@ -62,8 +62,9 @@
 	</select>
 
 	<select id="selectCount" parameterType="long" resultType="int">
-		SELECT
-		COUNT(*) FROM RESERVATION WHERE U_ID=#{uId}
+		SELECT COUNT(*)
+		FROM RESERVATION
+		WHERE U_ID = #{uId}
 	</select>
 </mapper>
 

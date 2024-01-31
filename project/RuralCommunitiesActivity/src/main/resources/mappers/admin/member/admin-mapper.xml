@@ -37,7 +37,7 @@
 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 	
-	<select id="selectAdminID" parameterType="int"  resultType="Admin">
+	<select id="selectAdminID" parameterType="long"  resultType="Admin">
 		SELECT ADMIN_ID,
 			   MEM_TYPE_ID,
 			   ADMIN_AUTHORITY_ID,
@@ -141,7 +141,7 @@
 		WHERE ADMIN_ID = #{adminId}
 	</update>
 
-	<delete id="delAdmin" parameterType="int">
+	<delete id="delAdmin" parameterType="long">
 		DELETE
 		FROM ADMIN
 		WHERE ADMIN_ID = #{adminId}
@@ -181,7 +181,7 @@
 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 	
- 	<update id="updateApp" parameterType="int">
+ 	<update id="updateApp" parameterType="long">
 		UPDATE ADMIN
 		SET ADMIN_AUTHORITY_ID=2
 		WHERE ADMIN_ID = #{adminId}

@@ -63,7 +63,7 @@
 					 post.community_cum_cnt
 			  FROM member_community post
 					   INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
-			  WHERE u_community_post_id > #{postId}
+			  WHERE u_community_post_id <![CDATA[>]]> #{postId}
 			  ORDER BY post.u_community_date_created DESC)
 		WHERE ROWNUM <![CDATA[<=]]> 10
 	</select>

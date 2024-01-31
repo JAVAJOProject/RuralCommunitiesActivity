@@ -157,7 +157,7 @@
 </select>
 
 	<!-- 제목으로 문의글 찾기 -->
-<select id="searchInquiryByTitle" resultMap="InquiryInfoDTOForClob" parameterType="map">
+<select id="searchInquiryByTitle" resultMap="InquiryInfoDTOForClob">
 	SELECT I.INQUIRY_ID,
 		   I.INQUIRY_TITLE,
 		   IST.INQUIRY_STATUS,

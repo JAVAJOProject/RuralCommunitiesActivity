@@ -23,7 +23,7 @@
 
 	<!-- Oracle -->
 	<!-- 전체 문의 목록 개수 -->
-	<select id="getInquiryListCount" resultType="int" parameterType="int">
+	<select id="getInquiryListCount" resultType="int">
 		SELECT COUNT(*) FROM inquiry
 	</select>
 	
@@ -77,7 +77,7 @@
 	<select id="getInquiryDetail" resultMap="InquiryInfoDTOForClob" parameterType="int">
 		SELECT I.INQUIRY_ID,
 			   I.INQUIRY_TITLE,
-		       I.INQUIRY_STATUS_ID,
+			   I.INQUIRY_STATUS_ID,
 			   IST.INQUIRY_STATUS,
 			   TO_CHAR(I.INQUIRY_DATE_CREATED, 'YYYY-MM-DD') AS INQUIRY_DATE_CREATED,
 			   M.U_NICK,
@@ -94,10 +94,10 @@
 	
 	<!-- 문의글 업데이트 -->
 	<update id="inquiryUpdate" parameterType="InquiryInfo">
-		UPDATE INQUIRY SET 
-				INQUIRY_TYPE_ID = #{inquiryTypeId},
-				INQUIRY_TITLE = #{inquiryTitle},
-				INQUIRY_CONTENT = TO_CLOB(#{inquiryContent})
+		UPDATE INQUIRY
+		SET INQUIRY_TYPE_ID = #{inquiryTypeId},
+			INQUIRY_TITLE   = #{inquiryTitle},
+			INQUIRY_CONTENT = TO_CLOB(#{inquiryContent})
 		WHERE INQUIRY_ID = #{inquiryId}
 	</update>
 	
@@ -109,14 +109,14 @@
 	<!-- 문의글 추가 -->
 	<insert id="inquiryInsert" parameterType="InquiryInfo">
 		INSERT INTO INQUIRY
-		VALUES(inquiry_seq.NEXTVAL,
-		DEFAULT,
-		#{inquiryTypeId},
-		#{memId},
-		#{inquiryTitle},
-		TO_CLOB(#{inquiryContent}),
-		SYSTIMESTAMP,
-		NULL)
+		VALUES (inquiry_seq.NEXTVAL,
+				DEFAULT,
+				#{inquiryTypeId},
+				#{memId},
+				#{inquiryTitle},
+				TO_CLOB(#{inquiryContent}),
+				SYSTIMESTAMP,
+				NULL)
 	</insert>
 	<!-- 아래부터는 검색기능 -->
 	<!--<select id="searchInquiry" resultMap="InquiryInfoDTOForClob" parameterType="string">
@@ -192,7 +192,7 @@
 </select>
 
 	<!-- 모든 문의글 찾기 -->
-<select id="searchInquiryAll" resultMap="InquiryInfoDTOForClob" parameterType="map">
+<select id="searchInquiryAll" resultMap="InquiryInfoDTOForClob">
 	SELECT INQUIRY_ID,
 		   INQUIRY_TITLE,
 		   INQUIRY_STATUS,
@@ -244,7 +244,7 @@
 </select>
 
 	<!-- 제목으로 문의글 찾기 -->
-<select id="searchInquiryByTitle" resultMap="InquiryInfoDTOForClob" parameterType="map">
+<select id="searchInquiryByTitle" resultMap="InquiryInfoDTOForClob">
 	SELECT INQUIRY_ID,
 		   INQUIRY_TITLE,
 		   INQUIRY_STATUS,
@@ -295,7 +295,7 @@
 </select>
 
 	<!-- 내용으로 문의글 찾기 -->
-<select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob" parameterType="map">
+<select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob">
 	SELECT INQUIRY_ID,
 		   INQUIRY_TITLE,
 		   INQUIRY_STATUS,
@@ -346,7 +346,7 @@
 </select>
 
 	<!-- 내가 쓴 글 보기 -->
-	<select id="getMyInquiryCount" resultType="int" parameterType="int">
+	<select id="getMyInquiryCount" resultType="int" parameterType="long">
 		SELECT count(*)
 		FROM INQUIRY I
 				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
@@ -354,7 +354,7 @@
 				 LEFT JOIN SELLER S ON (ML.S_ID = S.S_ID)
 		WHERE I.MEM_ID = #{memId}
 	</select>
-	<select id="getMyInquiryDetail" resultMap="InquiryInfoDTOForClob" parameterType="int">
+	<select id="getMyInquiryDetail" resultMap="InquiryInfoDTOForClob">
 		SELECT INQUIRY_ID,
 			   INQUIRY_TITLE,
 			   INQUIRY_STATUS,

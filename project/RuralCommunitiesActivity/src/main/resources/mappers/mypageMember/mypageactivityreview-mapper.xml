@@ -17,12 +17,13 @@
 	</resultMap>
 
 	<select id="selectCount" parameterType="long" resultType="int">
-		SELECT
-			COUNT(*) FROM ACTIVITY_REVIEW WHERE U_ID=#{uId}
+		SELECT COUNT(*)
+		FROM ACTIVITY_REVIEW
+		WHERE U_ID = #{uId}
 	</select>
 
 	<select id="selectReview" parameterType="int" resultType="ActivityReviewDTO">
-		SELECT * FROM ACTIVITY_REVIEW WHERE REV_ID = ${revId}
+		SELECT * FROM ACTIVITY_REVIEW WHERE REV_ID = #{revId}
 	</select>
 
 	<select id="selectByNo" resultType="ActivityReviewDTO">
@@ -52,11 +53,11 @@
 
 	<update id="updateRev" parameterType="ActivityReviewDTO">
 		UPDATE ACTIVITY_REVIEW SET
-			R_CONTENT = #{rContent} WHERE REV_ID = ${revId}
+			R_CONTENT = #{rContent} WHERE REV_ID = #{revId}
 	</update>
 
 	<delete id="deleteReview" parameterType="int">
-		DELETE FROM ACTIVITY_REVIEW WHERE REV_ID = ${revId}
+		DELETE FROM ACTIVITY_REVIEW WHERE REV_ID = #{revId}
 	</delete>
 	<update id="deleteRevStatus" parameterType="int">
 		UPDATE reservation SET review_status = 0 WHERE reservation_id = #{reservationId}

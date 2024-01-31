@@ -16,26 +16,24 @@
 	</resultMap>	
 
 	<select id="getTotalActivityCountData" resultType="int">
-		SELECT
-		COUNT(*) FROM activity_info
+		SELECT COUNT(*)
+		FROM activity_info
 	</select>
 	<select id="getTotalActivityCountByThemeData" resultType="int"
 		parameterType="int">
-		SELECT
-		COUNT(*) FROM activity_info
-		WHERE a_theme_id =
-		#{tId}
+		SELECT COUNT(*)
+		FROM activity_info
+		WHERE a_theme_id = #{tId}
 	</select>
 	<select id="getTotalActivityCountByRegionData" resultType="int"
-		parameterType="int">
-		SELECT
-		COUNT(*) FROM activity_info
-		WHERE sigungu_id =
-		#{sId}
+		parameterType="long">
+		SELECT COUNT(*)
+		FROM activity_info
+		WHERE sigungu_id = #{sId}
 	</select>
 
 	<select id="getRequestPageTotalActivityData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT
 		a_id, a_img_id, a_name, a_one_liner,
 		a_thumbnail_img, a_theme_id,
@@ -74,7 +72,7 @@
 	</select>
 
 	<select id="getRequestPageTotalActivityByThemeListData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT
 		a_id, a_img_id, a_name, a_one_liner,
 		a_thumbnail_img, a_theme_id,
@@ -115,7 +113,7 @@
 
 	
 	<select id="getRequestPageTotalActivityByRegionListData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT
 		a_id, a_img_id, a_name, a_one_liner,
 		a_thumbnail_img, a_theme_id,

@@ -47,7 +47,7 @@
         WHERE F.FAQ_ID = #{faqId}
     </select>
     
-    <select id="selectFaq"  resultType="AFAQ">
+    <select id="selectFaq" resultType="AFAQ">
         SELECT FAQ_ID,
                FAQ_TYPE_ID,
                FAQ_TYPE_NAME,

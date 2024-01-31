@@ -6,8 +6,9 @@
 	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerCommunityMapper">
 
 	<select id="selectCount" parameterType="long" resultType="int">
-		SELECT
-		COUNT(*) FROM SELLER_COMMUNITY WHERE S_ID=#{sId}
+		SELECT COUNT(*)
+		FROM SELLER_COMMUNITY
+		WHERE S_ID = #{sId}
 	</select>
 
 	<select id="selectByNo" resultType="MypageSellerCommunityDTO">

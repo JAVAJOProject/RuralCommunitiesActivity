@@ -26,8 +26,7 @@
 		activity_images C ON B.a_img_id = C.a_img_id
 	</select>
 
-	<insert id="insertTotalActivityInfoData"
-		parameterType="TotalActivityContent">
+	<insert id="insertTotalActivityInfoData" parameterType="TotalActivityContent">
 		INSERT INTO activity_info (
 		a_id, s_id, sigungu_id, a_theme_id, 
 		a_start_date,
@@ -48,8 +47,7 @@
 		TO_DATE(#{aReservationDeadline}, 'YYYY-MM-DD HH24:MI:SS')
 		)
 	</insert>
-	<insert id="insertTotalActivityPostData"
-		parameterType="TotalActivityContent">
+	<insert id="insertTotalActivityPostData" parameterType="TotalActivityContent">
 		INSERT
 		INTO activity_post (
 		a_post_id, 
@@ -81,12 +79,11 @@
 	</insert>
 
 	<update id="updateTotalActivityImagesIdInfoData" parameterType="TotalActivityContent">
-		UPDATE activity_info SET a_img_id = #{aImgId} WHERE a_id = #{aId}		
+		UPDATE activity_info SET a_img_id = #{aImgId} WHERE a_id = #{aId}
 	</update>
 	
 	<!-- update -->
-	<update id="updateTotalActivityInfoData"
-		parameterType="TotalActivityContent">
+	<update id="updateTotalActivityInfoData" parameterType="TotalActivityContent">
 		UPDATE activity_info
 		SET
 		a_img_id = #{aImgId},
@@ -111,16 +108,14 @@
 		WHERE
 		a_id = #{aId}
 	</update>
-	<update id="updateTotalActivityPostData"
-		parameterType="TotalActivityContent">
+	<update id="updateTotalActivityPostData" parameterType="TotalActivityContent">
 		UPDATE activity_post
 		SET
 		a_post_content = #{aPostContent,
 		jdbcType=CLOB}
 		WHERE a_post_id = #{aId}
 	</update>
-	<update id="updateTotalActivityImgData"
-		parameterType="TotalActivityContent">
+	<update id="updateTotalActivityImgData" parameterType="TotalActivityContent">
 		UPDATE activity_images
 		SET
 		a_img1 = #{aImg1},

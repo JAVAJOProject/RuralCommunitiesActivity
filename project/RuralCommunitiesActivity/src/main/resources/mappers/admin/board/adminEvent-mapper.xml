@@ -390,7 +390,7 @@
         WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 
-	<select id="selectEvent"  resultType="AEvent">
+	<select id="selectEvent" resultType="AEvent">
         SELECT *
         FROM (SELECT E.EVENT_ID,
                      E.S_ID,

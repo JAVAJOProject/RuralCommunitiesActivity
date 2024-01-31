@@ -89,7 +89,7 @@
 		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 
-	<select id="selectMemberID"  resultType="AMember">
+	<select id="selectMemberID" parameterType="long" resultType="AMember">
 		SELECT U_ID,
 			   MEM_TYPE_ID,
 			   U_NAME,
@@ -272,7 +272,7 @@
 		WHERE U_ID = #{uId}
 	</update>
 
-	<delete id="delMember" parameterType="int">
+	<delete id="delMember" parameterType="long">
 		DELETE
 		FROM MEMBER
 		WHERE U_ID = #{uId}
@@ -281,7 +281,7 @@
 <!--  
 -->
 
-	<select id="wrotePost" parameterType="int" resultMap="AMCommunityMap">
+	<select id="wrotePost" resultMap="AMCommunityMap">
 		SELECT U_COMMUNITY_POST_ID,
 			   U_ID,
 			   U_NICK,

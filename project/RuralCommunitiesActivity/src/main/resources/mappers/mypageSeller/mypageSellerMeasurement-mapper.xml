@@ -21,18 +21,20 @@
 		reservation_date BETWEEN TO_DATE('2023-04-01', 'YYYY-MM-DD') AND TO_DATE('2023-09-30', 
 		'YYYY-MM-DD') GROUP BY TO_CHAR(reservation_date, 'YYYY-MM') ORDER BY month 
 		) where <![CDATA[rownum<=6]]> -->
-	<select id="getMeasurementData" parameterType="int"
-		resultMap="measurementResultMap">
+	<select id="getMeasurementData" resultMap="measurementResultMap">
 		SELECT TO_CHAR(reservation_date, 'YYYY-MM') AS month,
 		COUNT(*) AS total_reservations,
 		SUM(CASE WHEN reservation_status =
 		'예약취소' THEN 1 ELSE 0 END) AS
 		canceled_reservations
 		FROM reservation
-		WHERE reservation_date BETWEEN TO_DATE('2023-04-01', 'YYYY-MM-DD') AND
-		TO_DATE('2023-09-30', 'YYYY-MM-DD')
+		WHERE reservation_date BETWEEN TO_DATE('2023-04-01'
+			, 'YYYY-MM-DD')
+		  AND
+			TO_DATE('2023-09-30'
+			, 'YYYY-MM-DD')
 		GROUP BY TO_CHAR(reservation_date,
-		'YYYY-MM')
+			'YYYY-MM')
 		ORDER BY month
 	</select>
 <!--	SELECT TO_CHAR(months.month, 'YYYY-MM') AS month,-->
@@ -78,8 +80,7 @@
 		<result column="gender" property="gender" />
 		<result column="gender_count" property="genderCount" />
 	</resultMap>
-	<select id="getGenderReservationData" parameterType="int"
-		resultMap="genderResultMap">
+	<select id="getGenderReservationData" resultMap="genderResultMap">
 		SELECT m.u_gender AS gender,
 			   COUNT(*)   AS reservation_count
 		FROM reservation r
@@ -97,16 +98,15 @@
 			property="totalVisitorsCount" />
 	</resultMap>
 	<select id="getReviewRatio" resultMap="ReviewRatioMap">
-		SELECT
-		COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) AS review_written_count,
-		COUNT(*) AS total_visitors_count,
-		CASE
-		WHEN COUNT(*) = 0 THEN 0
-		ELSE COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) / COUNT(*)
-		END AS review_ratio
+		SELECT COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) AS review_written_count,
+			   COUNT(*)                                                AS total_visitors_count,
+			   CASE
+				   WHEN COUNT(*) = 0 THEN 0
+				   ELSE COUNT(CASE WHEN review_status = 1 THEN 1 ELSE NULL END) / COUNT(*)
+				   END                                                 AS review_ratio
 		FROM reservation
 		WHERE reservation_status = '예약완료'
-		AND reservation_date  <![CDATA[<]]> SYSDATE
+		  AND reservation_date  <![CDATA[<]]> SYSDATE
 	</select>
 
 	<!-- 나이대별 -->
@@ -115,28 +115,21 @@
 		<result column="age_range" property="ageRange" />
 		<result column="member_count" property="memberCount" />
 	</resultMap>
-	<select id="getReservationsByAge"
-		resultMap="MeasurementByAgeMap">
-		SELECT
-		'90-94' AS age_range,
-		COUNT(*) AS member_count
-		FROM
-		member
-		WHERE
-		member.u_birth BETWEEN TO_DATE('1990-01-01', 'YYYY-MM-DD')
-		AND TO_DATE('1994-12-31',
-		'YYYY-MM-DD')
+	<select id="getReservationsByAge" resultMap="MeasurementByAgeMap">
+		SELECT '90-94'  AS age_range,
+			   COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth BETWEEN TO_DATE('1990-01-01', 'YYYY-MM-DD')
+				  AND TO_DATE('1994-12-31',
+							  'YYYY-MM-DD')
 		UNION ALL
-		SELECT
-		'95-99' AS
-		age_range,
-		COUNT(*) AS member_count
-		FROM
-		member
-		WHERE
-		member.u_birth
-		BETWEEN TO_DATE('1995-01-01', 'YYYY-MM-DD') AND TO_DATE('1999-12-31',
-		'YYYY-MM-DD')
+		SELECT '95-99'  AS
+						   age_range,
+			   COUNT(*) AS member_count
+		FROM member
+		WHERE member.u_birth
+				  BETWEEN TO_DATE('1995-01-01', 'YYYY-MM-DD') AND TO_DATE('1999-12-31',
+																		  'YYYY-MM-DD')
 	</select>
 <!--	SELECT '1-10' AS age_range, COUNT(*) AS member_count-->
 <!--	FROM member-->

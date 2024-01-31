@@ -30,69 +30,64 @@
 	</select>
 
 	<select id="selectByNo" resultType="ActivityPost">
-		SELECT
-		a_post_id ,
-		a_id ,
-		a_img_id ,
-		a_name,
-		a_post_content,
-		a_start_date,
-		a_min_people,
-		a_reservation_deadline,
-		a_view_cnt,
-		a_favorite_cnt,
-		a_post_date_created
-		FROM
-		(SELECT
-		ROW_NUMBER() OVER(ORDER BY A_POST_DATE_CREATED DESC) NUM,
-		P.*, A.a_name, A.a_start_date, A.a_min_people, A.a_reservation_deadline
-FROM ACTIVITY_POST P
-JOIN ACTIVITY_INFO A ON (P.A_ID = A.A_ID)
-WHERE A.S_ID = #{sId})
+		SELECT a_post_id,
+			   a_id,
+			   a_img_id,
+			   a_name,
+			   a_post_content,
+			   a_start_date,
+			   a_min_people,
+			   a_reservation_deadline,
+			   a_view_cnt,
+			   a_favorite_cnt,
+			   a_post_date_created
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY A_POST_DATE_CREATED DESC) NUM, P.*
+				   , A.a_name
+				   , A.a_start_date
+				   , A.a_min_people
+				   , A.a_reservation_deadline
+			  FROM ACTIVITY_POST P
+					   JOIN ACTIVITY_INFO A ON (P.A_ID = A.A_ID)
+			  WHERE A.S_ID = #{sId})
 		WHERE NUM BETWEEN #{start} AND #{end}
 	</select>
 
 	<select id="selectParticipantCount" parameterType="int"
 		resultType="int">
-		SELECT
-		COUNT(*)
-		FROM (SELECT * FROM
-		ACTIVITY_CUSTOMER WHERE A_ID = #{postId}) A
-		JOIN MEMBER M ON
-		(A.U_ID = M.U_ID)
-		JOIN RESERVATION R ON (R.U_ID = M.U_ID)
-		WHERE R.A_ID =
-		#{postId}
+		SELECT COUNT(*)
+		FROM (SELECT *
+			  FROM ACTIVITY_CUSTOMER
+			  WHERE A_ID = #{postId}) A
+				 JOIN MEMBER M ON
+			(A.U_ID = M.U_ID)
+				 JOIN RESERVATION R ON (R.U_ID = M.U_ID)
+		WHERE R.A_ID = #{postId}
 	</select>
 
 	<!-- 체험 게시글에서 멤버 정보 가져오기 -->
 	<select id="selectInfoByPostId" resultMap="actMemListView">
-		SELECT
-		U_NICK,
-		U_NAME,
-		U_TEL,
-		U_EMAIL,
-		RESERVATION_STATUS
-		FROM
-		(SELECT
-		ROW_NUMBER() OVER(ORDER BY R.RESERVATION_DATE DESC) NUM,
-		M.U_NICK,
-		M.U_NAME,
-		M.U_TEL,
-		M.U_EMAIL,
-		R.RESERVATION_STATUS
-		FROM
-		(SELECT U_ID, ACT_CUS_CNT FROM
-		ACTIVITY_CUSTOMER WHERE A_POST_ID =
-		#{POSTID}) A
-		JOIN MEMBER M ON
-		(A.U_ID = M.U_ID)
-		JOIN RESERVATION R ON
-		(R.U_ID = M.U_ID)
-		WHERE R.A_ID =
-		${POSTID})
+		SELECT U_NICK,
+			   U_NAME,
+			   U_TEL,
+			   U_EMAIL,
+			   RESERVATION_STATUS
+		FROM (SELECT ROW_NUMBER() OVER(ORDER BY R.RESERVATION_DATE DESC) NUM, M.U_NICK,
+					 M.U_NAME,
+					 M.U_TEL,
+					 M.U_EMAIL,
+					 R.RESERVATION_STATUS
+			  FROM (SELECT U_ID, ACT_CUS_CNT
+					FROM ACTIVITY_CUSTOMER
+					WHERE A_POST_ID =
+						  #{POSTID}) A
+					   JOIN MEMBER M ON
+				  (A.U_ID = M.U_ID)
+					   JOIN RESERVATION R ON
+				  (R.U_ID = M.U_ID)
+			  WHERE R.A_ID =
+					${POSTID})
 		WHERE NUM BETWEEN #{start}
-		AND #{end}
+				  AND #{end}
 	</select>
 
 </mapper>

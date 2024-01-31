@@ -34,8 +34,9 @@
 	</resultMap>
 
 	<select id="selectCount" parameterType="long" resultType="int">
-		SELECT
-		COUNT(*) FROM EVENT WHERE S_ID = #{sId}
+		SELECT COUNT(*)
+		FROM EVENT
+		WHERE S_ID = #{sId}
 	</select>
 
 	<select id="getEventInfo" resultType="RequestEventDTO">

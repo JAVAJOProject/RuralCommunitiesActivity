@@ -18,7 +18,7 @@ public interface AdminMemberMapper {
     public void delMember(long uId);//삭제
 
 
-    public List<AdminMemberDTO> selectMemberID(@Param("uId") long uId);//아이디 선택조회
+    public List<AdminMemberDTO> selectMemberID(long uId);//아이디 선택조회
 
     // Oracle
 //    //adminMembers

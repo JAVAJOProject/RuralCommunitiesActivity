@@ -25,7 +25,7 @@
             post_type type ON (f.post_type_id = type.post_type_id)
     </select>
 
-    <select id="getAllFavoriteInfoByUser" resultType="Favorites" parameterType="int">
+    <select id="getAllFavoriteInfoByUser" resultType="Favorites" parameterType="long">
         SELECT
             f.f_id,
             f.u_id,

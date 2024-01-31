@@ -25,7 +25,7 @@
                 post_type type ON (l.post_type_id = type.post_type_id)
         </select>
 
-        <select id="getAllLikeInfoByUser" resultType="Likes" parameterType="int">
+        <select id="getAllLikeInfoByUser" resultType="Likes" parameterType="long">
             SELECT
                 l.l_id,
                 l.u_id,

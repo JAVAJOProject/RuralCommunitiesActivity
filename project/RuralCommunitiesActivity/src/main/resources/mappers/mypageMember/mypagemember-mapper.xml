@@ -22,9 +22,9 @@
 		resultType="MypageMemberDTO">
 		SELECT *
 		FROM MEMBER
-		WHERE U_ID IN (SELECT U_ID FROM
-		ACTIVITY_CUSTOMER_1 WHERE A_POST_ID =
-		#{postId})
+		WHERE U_ID IN (SELECT U_ID
+					   FROM ACTIVITY_CUSTOMER_1
+					   WHERE A_POST_ID = #{postId})
 	</select>
 	
 	

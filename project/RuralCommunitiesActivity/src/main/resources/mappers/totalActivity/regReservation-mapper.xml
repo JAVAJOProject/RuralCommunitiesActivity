@@ -13,24 +13,19 @@
 		<result property="reservationDate" column="reservation_date" />
 	</resultMap>
 	
-	<insert id="addReservationData"
-		parameterType="ReservationContent">
-		INSERT INTO 
-		reservation (
-		reservation_id, payment_id,
-		a_id, u_id,
-		reservation_headcount, review_status, reservation_status,
-		reservation_date
-		)
-		VALUES (
-		reservation_seq.NEXTVAL,
-		#{paymentId}, #{aId}, #{uId},
-		#{reservationHeadcount}, DEFAULT, DEFAULT,
-		TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS')
-		)
+	<insert id="addReservationData" parameterType="ReservationContent">
+		INSERT INTO reservation (reservation_id, payment_id,
+								 a_id, u_id,
+								 reservation_headcount, review_status, reservation_status,
+								 reservation_date)
+		VALUES (reservation_seq.NEXTVAL,
+				#{paymentId}, #{aId}, #{uId},
+				#{reservationHeadcount}, DEFAULT, DEFAULT,
+				TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	<insert id="addToActivityCustomerList" parameterType="ReservationContent">
-		INSERT INTO activity_customer VALUES (activity_customer_seq.NEXTVAL, #{aPostId}, #{uId})
+		INSERT INTO activity_customer
+		VALUES (activity_customer_seq.NEXTVAL, #{aPostId}, #{uId})
 	</insert>
 
 	<insert id="addPaymentData" parameterType="ReservationContent">
@@ -40,23 +35,22 @@
 		SELECT MAX(payment_id) FROM payment_info
 	</select>
 	
-	<update id="updateReservationData"
-		parameterType="ReservationContent">
+	<update id="updateReservationData" parameterType="ReservationContent">
 		UPDATE reservation
-		SET
-		payment_id = #{paymentId},
-		reservation_date = TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS')
-		WHERE
-		reservation_id = #{reservationId}
+		SET payment_id       = #{paymentId},
+			reservation_date = TO_DATE(#{reservationDate}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE reservation_id = #{reservationId}
 	</update>
 	
 	<delete id="deleteReservationData" parameterType="int">
 		DELETE
-		FROM
-		reservation
+		FROM reservation
 		WHERE reservation_id = #{rId}
 	</delete>
 	<delete id="deleteFromActivityCustomerList" parameterType="ReservationContent">
-		DELETE FROM activity_customer WHERE a_post_id = #{aPostId} AND u_id = #{uId}
+		DELETE
+		FROM activity_customer
+		WHERE a_post_id = #{aPostId}
+		  AND u_id = #{uId}
 	</delete>
 	</mapper>

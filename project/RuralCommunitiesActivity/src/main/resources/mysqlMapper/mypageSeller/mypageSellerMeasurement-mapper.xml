@@ -15,8 +15,7 @@
 
 <!--	MySQL-->
 	<!-- 월별 예약자수 대비 취소자수 -->
-	<select id="getMeasurementData" parameterType="int"
-		resultMap="measurementResultMap">
+	<select id="getMeasurementData" resultMap="measurementResultMap">
 		SELECT DATE_FORMAT(months.month, '%Y-%m') AS month,
     IFNULL(COUNT(r.reservation_date), 0) AS total_reservations,
     IFNULL(SUM(CASE WHEN r.reservation_status = '예약취소' THEN 1 ELSE 0 END), 0) AS canceled_reservations
@@ -62,8 +61,7 @@
 		<result column="gender" property="gender" />
 		<result column="gender_count" property="genderCount" />
 	</resultMap>
-	<select id="getGenderReservationData" parameterType="int"
-		resultMap="genderResultMap">
+	<select id="getGenderReservationData" resultMap="genderResultMap">
 		SELECT m.u_gender AS gender,
 			   COUNT(*)   AS reservation_count
 		FROM reservation r
@@ -99,8 +97,7 @@
 		<result column="age_range" property="ageRange" />
 		<result column="member_count" property="memberCount" />
 	</resultMap>
-	<select id="getReservationsByAge"
-		resultMap="MeasurementByAgeMap">
+	<select id="getReservationsByAge" resultMap="MeasurementByAgeMap">
 		SELECT '1-10' AS age_range, COUNT(*) AS member_count
 		FROM member
 		WHERE member.u_birth BETWEEN DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 9 YEAR), '%Y-01-01') AND DATE_FORMAT(NOW(),

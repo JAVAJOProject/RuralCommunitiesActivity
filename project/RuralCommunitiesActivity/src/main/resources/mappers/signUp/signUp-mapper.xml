@@ -10,31 +10,28 @@
     </select>
     
     <insert id="insertMemberData" parameterType="SignUpMember">
-		INSERT INTO member (
-			u_id,
-			mem_type_id,
-			u_name,
-			u_email,
-			u_nick,
-			u_pw,
-			u_tel,
-			u_reg_date,
-			u_marketing,
-			u_gender,
-			u_birth
-		) VALUES (
-			member_seq.NEXTVAL,
-			DEFAULT,
-			#{uName},
-			#{uEmail},
-			#{uNick},
-			#{uPw},
-			#{uTel},
-			DEFAULT,
-			#{uMarketing},
-			#{uGender},
-			TO_DATE(#{uBirth}, 'YYYY-MM-DD')
-		)
+		INSERT INTO member (u_id,
+							mem_type_id,
+							u_name,
+							u_email,
+							u_nick,
+							u_pw,
+							u_tel,
+							u_reg_date,
+							u_marketing,
+							u_gender,
+							u_birth)
+		VALUES (member_seq.NEXTVAL,
+				DEFAULT,
+				#{uName},
+				#{uEmail},
+				#{uNick},
+				#{uPw},
+				#{uTel},
+				DEFAULT,
+				#{uMarketing},
+				#{uGender},
+				TO_DATE(#{uBirth}, 'YYYY-MM-DD'))
 	</insert>
 
     <select id="isSellerData" parameterType="String" resultType="int">
