@@ -6,9 +6,24 @@
 	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberMapper">
 
 <!--	MySQL-->
-	<select id="selectByNo" parameterType="int"
+	<select id="selectByNo" parameterType="long"
 		resultType="MypageMemberDTO">
-		SELECT * FROM MEMBER WHERE U_ID=#{uId}
+		SELECT u_id,
+			   mem_type_id,
+			   u_name,
+			   u_email,
+			   u_nick,
+			   u_tel,
+			   DATE_FORMAT(u_reg_date, '%Y-%m-%d') AS u_reg_date,
+			   u_marketing,
+			   u_gender,
+			   DATE_FORMAT(u_birth, '%Y-%m-%d')    AS u_birth,
+			   u_google_login,
+			   u_naver_login,
+			   u_kakao_login,
+			   social_type,
+		FROM MEMBER
+		WHERE U_ID = #{uId}
 	</select>
 
 	<update id="changeByName">

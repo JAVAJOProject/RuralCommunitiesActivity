@@ -1,39 +1,38 @@
-.boardformInnerBoxA{
-    box-sizing: border-box;
-    width: 38rem;
-    height: 4rem;
-    background: #FFFFFF;
-    border: 0.9px solid #a3a3a3;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+.boardformInnerBoxA {
+  box-sizing: border-box;
+  width: 38rem;
+  height: 4rem;
+  background: #ffffff;
+  border: 0.9px solid #a3a3a3;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
-.boardformNameA{
-    width: 100%;
-    padding: 20px;
-    border-radius: 10px;
-    
-    text-align: center;
-    font-family: 'SUITE Variable';
-    font-weight: 600;
-}
-.formInnerBoxA{
-    box-sizing: border-box;
-    width: 38rem;
-    height: 700px;
-    background: #FFFFFF;
-    border: 0.9px solid #a3a3a3;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
-    padding: 4rem;
-}
-.formNameA{
-    margin-left: 11.8rem;
-    display: inline-block;
-    padding: 10px;
-    background: #FFCC48;
-    border-radius: 20px;
+.boardformNameA {
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
 
-    font-family: 'SUITE Variable';
-    font-weight: 600;
+  text-align: center;
+  font-family: 'SUITE Variable';
+  font-weight: 600;
+}
+.formInnerBoxA {
+  box-sizing: border-box;
+  width: 38rem;
+  height: 700px;
+  background: #ffffff;
+  border: 0.9px solid #a3a3a3;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  padding: 4rem;
+}
+.formNameA {
+  margin-left: 11.8rem;
+  display: inline-block;
+  padding: 10px;
+  background: #ffcc48;
+  border-radius: 20px;
 
+  font-family: 'SUITE Variable';
+  font-weight: 600;
 }

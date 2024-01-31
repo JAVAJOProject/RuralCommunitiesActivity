@@ -5,6 +5,8 @@
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminMCommunityCntMapper">
 
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM MEMBER_COMMUNITY
+		SELECT COUNT(*)
+		FROM MEMBER_COMMUNITY
 	</select>
+
 </mapper>

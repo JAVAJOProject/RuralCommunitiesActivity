@@ -29,7 +29,7 @@
             seller_community c
                 JOIN seller s ON (c.s_id = s.s_id)
         WHERE
-            seller_community_post_id > #{postId}
+            seller_community_post_id <![CDATA[>]]> #{postId}
             LIMIT #{perPagePostCount}
     </select>
     <select id="getTotalSellerCommunityPostCount" resultType="int">

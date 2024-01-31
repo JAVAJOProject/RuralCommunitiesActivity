@@ -41,4 +41,6 @@ public class MypageSellerDTO {
 	private int sApproval;
 	@JsonProperty
 	private String sRepName;
+	@JsonProperty
+	private String sRegCertificateImg;
 }

@@ -6,14 +6,13 @@
 	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberCommunityMapper">
 
 <!--	MySQL-->
-	<select id="selectCount" parameterType="int" resultType="int">
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT COUNT(*)
 		FROM MEMBER_COMMUNITY
 		WHERE U_ID = #{uId}
 	</select>
 
-	<select id="selectByNo" parameterType="int"
-		resultType="MypageMemberCommunityDTO">
+	<select id="selectByNo" resultType="MypageMemberCommunityDTO">
 		SELECT U_COMMUNITY_POST_ID,
 			   U_ID,
 			   POST_TYPE_ID,
@@ -56,7 +55,7 @@
 		   post.community_cum_cnt
 	FROM member_community post
 			 INNER JOIN community_post_img img ON (post.community_img_id = img.community_img_id)
-	WHERE u_community_post_id > #{postId}
+	WHERE u_community_post_id <![CDATA[>]]> #{postId}
 	ORDER BY post.u_community_date_created DESC LIMIT 10
 </select>
 

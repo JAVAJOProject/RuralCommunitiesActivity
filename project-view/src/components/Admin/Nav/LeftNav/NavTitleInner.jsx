@@ -11,7 +11,7 @@ export default function NavTitleInner({ navContent }) {
   return (
     <div>
       <NavContent
-      key={link}
+        key={link}
         navContent={navTitleContents}
         style={{ marginLeft: '2.5rem' }}
         type={type}
@@ -19,7 +19,7 @@ export default function NavTitleInner({ navContent }) {
       {(type === 'subtitle' || type === 'content') &&
         contents.map((content, index) => (
           <NavContent
-          key={index}
+            key={index}
             navContent={content}
             style={{ marginLeft: '5rem' }}
             type={content.type}

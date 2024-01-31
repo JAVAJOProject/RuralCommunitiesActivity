@@ -5,94 +5,140 @@
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminActivityCntMapper">
 
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM ACTIVITY_INFO
+		SELECT COUNT(*)
+		FROM ACTIVITY_INFO
 	</select>
 	
-	<select id="selectStartDateActivityCnt" parameterType="ASearch" resultType="int">
-	SELECT COUNT(*) FROM ACTIVITY_INFO
-	WHERE A_START_DATE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	<select id="selectStartDateActivityCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM ACTIVITY_INFO
+		WHERE A_START_DATE BETWEEN
+				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
+				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 	</select>	
 
-	<select id="selectEndDateActivityCnt" parameterType="ASearch" resultType="int">
-	SELECT COUNT(*) FROM ACTIVITY_INFO
-	WHERE A_END_DATE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-	</select>	
+	<select id="selectEndDateActivityCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM ACTIVITY_INFO
+		WHERE A_END_DATE BETWEEN
+				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
+				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
+	</select>
 	
-	<select id="selectDateReservationCnt" parameterType="ASearch" resultType="int">
-	SELECT COUNT(*) FROM ACTIVITY_INFO
-	WHERE A_RESERVATION_DEADLINE BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+	<select id="selectDateReservationCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM ACTIVITY_INFO
+		WHERE A_RESERVATION_DEADLINE BETWEEN
+				  STR_TO_DATE(#{searchDTO.startDate}, '%Y-%m-%d %H:%i:%s.%f')
+				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 	</select>		
 		
-	<select id="selectActivityCnt" parameterType="ASearch" resultType="int">
-      		SELECT COUNT(*) 
-    		FROM   (  SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-                WHERE (A.A_NAME LIKE '%'||#{searchDTO.keyword}||'%'
-                        AND G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                OR (A.A_NAME LIKE '%'||#{searchDTO.keyword}||'%')
-        UNION
-                SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-                WHERE (G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu}
-                        AND A.A_THEME_ID=#{searchDTO.theme})
-                OR (G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                OR (A.A_THEME_ID=#{searchDTO.theme})
-        UNION
-                SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)    
-                WHERE (A.A_CHARGE <![CDATA[>=]]> #{searchDTO.charge})
-                    OR (A.A_CHARGE <![CDATA[>=]]> #{searchDTO.charge}
-                        AND G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-				)
-			</select>
+<!--	테스트 필수-->
+	<select id="selectActivityCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM (SELECT A.A_ID,
+					 A.S_ID,
+					 S.S_COM_NAME,
+					 A.SIGUNGU_ID,
+					 G.SIGUNGU_NAME,
+					 G.SIDO_ID,
+					 D.SIDO_NAME,
+					 A.A_THEME_ID,
+					 T.A_THEME_NAME,
+					 DATE_FORMAT(A.A_START_DATE, '%Y-%m-%d') AS A_START_DATE,
+					 DATE_FORMAT(A.A_END_DATE, '%Y-%m-%d')   AS A_END_DATE,
+					 A.A_ADDR,
+					 A.A_NAME,
+					 A.A_ONE_LINER,
+					 A.A_MIN_PEOPLE,
+					 A.A_MAX_PEOPLE,
+					 A.A_CHARGE,
+					 A.S_SITE,
+					 A.A_RESERVATION_DEADLINE
+			  FROM ACTIVITY_INFO A
+					   LEFT OUTER JOIN SELLER S
+									   ON (A.S_ID = S.S_ID)
+					   LEFT OUTER JOIN ACTIVITY_THEME T
+									   ON (A.A_THEME_ID = T.A_THEME_ID)
+					   LEFT OUTER JOIN REGION_SIGUNGU G
+									   ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+					   LEFT OUTER JOIN REGION_SIDO D
+									   ON (G.SIDO_ID = D.SIDO_ID)
+			  WHERE (A.A_NAME LIKE CONCAT('%', #{searchDTO.keyword}, '%')
+				  AND G.SIDO_ID = #{searchDTO.sido}
+				  AND A.SIGUNGU_ID = #{searchDTO.sigungu})
+				 OR (A.A_NAME LIKE CONCAT('%', #{searchDTO.keyword}, '%'))
+			  UNION
+			  SELECT A.A_ID,
+					 A.S_ID,
+					 S.S_COM_NAME,
+					 A.SIGUNGU_ID,
+					 G.SIGUNGU_NAME,
+					 G.SIDO_ID,
+					 D.SIDO_NAME,
+					 A.A_THEME_ID,
+					 T.A_THEME_NAME,
+					 DATE_FORMAT(A.A_START_DATE, '%Y-%m-%d') AS A_START_DATE,
+					 DATE_FORMAT(A.A_END_DATE, '%Y-%m-%d')   AS A_END_DATE,
+					 A.A_ADDR,
+					 A.A_NAME,
+					 A.A_ONE_LINER,
+					 A.A_MIN_PEOPLE,
+					 A.A_MAX_PEOPLE,
+					 A.A_CHARGE,
+					 A.S_SITE,
+					 A.A_RESERVATION_DEADLINE
+			  FROM ACTIVITY_INFO A
+					   LEFT OUTER JOIN SELLER S
+									   ON (A.S_ID = S.S_ID)
+					   LEFT OUTER JOIN ACTIVITY_THEME T
+									   ON (A.A_THEME_ID = T.A_THEME_ID)
+					   LEFT OUTER JOIN REGION_SIGUNGU G
+									   ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+					   LEFT OUTER JOIN REGION_SIDO D
+									   ON (G.SIDO_ID = D.SIDO_ID)
+			  WHERE (G.SIDO_ID = #{searchDTO.sido}
+				  AND A.SIGUNGU_ID = #{searchDTO.sigungu}
+				  AND A.A_THEME_ID = #{searchDTO.theme}
+				  )
+				 OR (G.SIDO_ID = #{searchDTO.sido}
+				  AND A.SIGUNGU_ID = #{searchDTO.sigungu}
+				  )
+				 OR (A.A_THEME_ID = #{searchDTO.theme}
+				  )
+			  UNION
+			  SELECT A.A_ID,
+					 A.S_ID,
+					 S.S_COM_NAME,
+					 A.SIGUNGU_ID,
+					 G.SIGUNGU_NAME,
+					 G.SIDO_ID,
+					 D.SIDO_NAME,
+					 A.A_THEME_ID,
+					 T.A_THEME_NAME,
+					 DATE_FORMAT(A.A_START_DATE, '%Y-%m-%d') AS A_START_DATE,
+					 DATE_FORMAT(A.A_END_DATE, '%Y-%m-%d')   AS A_END_DATE,
+					 A.A_ADDR,
+					 A.A_NAME,
+					 A.A_ONE_LINER,
+					 A.A_MIN_PEOPLE,
+					 A.A_MAX_PEOPLE,
+					 A.A_CHARGE,
+					 A.S_SITE,
+					 A.A_RESERVATION_DEADLINE
+			  FROM ACTIVITY_INFO A
+					   LEFT OUTER JOIN SELLER S
+									   ON (A.S_ID = S.S_ID)
+					   LEFT OUTER JOIN ACTIVITY_THEME T
+									   ON (A.A_THEME_ID = T.A_THEME_ID)
+					   LEFT OUTER JOIN REGION_SIGUNGU G
+									   ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+					   LEFT OUTER JOIN REGION_SIDO D
+									   ON (G.SIDO_ID = D.SIDO_ID)
+			  WHERE (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge})
+				 OR (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge}
+				  AND G.SIDO_ID = #{searchDTO.sido}
+				  AND A.SIGUNGU_ID = #{searchDTO.sigungu})))) result
+	</select>
 				
 </mapper>

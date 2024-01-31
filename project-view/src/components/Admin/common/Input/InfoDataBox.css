@@ -1,31 +1,26 @@
-
-
-.InfoDataBox > ul{
-    list-style: none;
+.InfoDataBox > ul {
+  list-style: none;
 }
 
 .InfoDataBox > ul > li {
-
-    width: 18rem;
-    height: 2.1rem;
-    background: #FFFFFF;
-    border: 1px solid #BDBDBD;
-    border-radius: 5px;
-    float: right;
-    margin-bottom: 0.95rem;
-    padding: 5px;
-
+  width: 18rem;
+  height: 2.1rem;
+  background: #ffffff;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  float: right;
+  margin-bottom: 0.95rem;
+  padding: 5px;
 }
 
-    /* display: inline-block; */
-    /* border : 1px solid black; */
-    /* height: 1.4rem; */
-    /* margin-bottom: 6px; */
-    /* background: #FFFFFF; */
-    /* border-width : 0; */
+/* display: inline-block; */
+/* border : 1px solid black; */
+/* height: 1.4rem; */
+/* margin-bottom: 6px; */
+/* background: #FFFFFF; */
+/* border-width : 0; */
 
-
-    /* margin-left: 60px;  */
-    /* margin-left: 10px; */
-    /* margin-right : 10px; */
-    /* text-align: center; */
+/* margin-left: 60px;  */
+/* margin-left: 10px; */
+/* margin-right : 10px; */
+/* text-align: center; */

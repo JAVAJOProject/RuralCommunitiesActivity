@@ -16,8 +16,8 @@
 	</resultMap>
 	
 	<select id="visitorsStatisticsMonth" resultType="HashMap">
-		SELECT DATE_FORMAT(B_VISITED_DATE, '%m') AS MONTH,
-			   COUNT(B_ID) AS COUNT
+		SELECT DATE_FORMAT(B_VISITED_DATE, '%m') AS MONTHS,
+			   COUNT(B_ID)
 		FROM behavior_info
 		WHERE #{year} = DATE_FORMAT(B_VISITED_DATE, '%y')
 		GROUP BY DATE_FORMAT(B_VISITED_DATE, '%m')
@@ -35,18 +35,18 @@
 	</select>
 	
 	<select id="visitorsStatisticsTimes" resultType="HashMap">
-		SELECT DATE_FORMAT(B_VISITED_DATE, '%H') AS HOUR,
-			   COUNT(B_VISITED_DATE) AS COUNT
+		SELECT DATE_FORMAT(B_VISITED_DATE, '%H') AS HOURS,
+			   COUNT(B_VISITED_DATE)
 		FROM behavior_info
 		GROUP BY DATE_FORMAT(B_VISITED_DATE, '%H')
 		ORDER BY DATE_FORMAT(B_VISITED_DATE, '%H')
 	</select>
 
 	<select id="reservationTheme"  resultType="HashMap">
-		SELECT T.A_THEME_NAME AS THEME, COUNT(R.RESERVATION_STATUS) AS COUNT
+		SELECT T.A_THEME_NAME AS THEME, COUNT(R.RESERVATION_STATUS)
 		FROM ACTIVITY_INFO A
-			INNER JOIN ACTIVITY_THEME T ON A.A_THEME_ID = T.A_THEME_ID
-			INNER JOIN reservation R ON A.A_ID = R.A_ID
+				 INNER JOIN ACTIVITY_THEME T ON A.A_THEME_ID = T.A_THEME_ID
+				 INNER JOIN reservation R ON A.A_ID = R.A_ID
 		WHERE R.RESERVATION_STATUS = '예약완료'
 		  AND #{month} = DATE_FORMAT(R.RESERVATION_DATE, '%m')
 		  AND #{year} = DATE_FORMAT(R.RESERVATION_DATE, '%Y')
@@ -56,35 +56,37 @@
 
 <!--	테스트 필수 -->
 	<select id="reservationDays" resultType="HashMap">
-		WITH RECURSIVE ALLDATE AS (
-		SELECT 1 AS LEVEL,
-		DATE_FORMAT(STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d'), '%d') AS DAY
-		UNION ALL
-		SELECT LEVEL + 1,
-		DATE_FORMAT((STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d') + INTERVAL (LEVEL) DAY), '%d')
-		FROM ALLDATE
-		WHERE LEVEL + 1 <= DAY(LAST_DAY(STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d')))
-		)
+		WITH RECURSIVE
+			ALLDATE AS (SELECT 1                                                                                 AS LEVEL,
+							   DATE_FORMAT(STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d'), '%d') AS DAYS
+						UNION ALL
+						SELECT LEVEL + 1,
+							   DATE_FORMAT((
+								   STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d') + INTERVAL (LEVEL) DAYS), '%d')
+						FROM ALLDATE
+						WHERE LEVEL + 1 <![CDATA[<=]]> DAY (LAST_DAY(STR_TO_DATE(CONCAT(#{year}, '-', #{month}, '-01'), '%Y-%m-%d')))
+			)
 		SELECT d.DAY,
-		COALESCE(COUNT(r.RESERVATION_STATUS), 0) AS COUNT
+			   COALESCE(COUNT(r.RESERVATION_STATUS), 0)
 		FROM ALLDATE d
-		LEFT JOIN reservation r ON d.DAY = DATE_FORMAT(r.RESERVATION_DATE, '%d') AND DATE_FORMAT(r.RESERVATION_DATE, '%m') = #{month}
+				 LEFT JOIN reservation r ON d.DAY = DATE_FORMAT(r.RESERVATION_DATE, '%d') AND
+											DATE_FORMAT(r.RESERVATION_DATE, '%m') = #{month}
 		GROUP BY d.DAY
 		ORDER BY d.DAY
 	</select>
 	
-	<select id="reservationMonth" resultType="AStatistics">
-		SELECT DATE_FORMAT(RESERVATION_DATE, '%m') AS MONTH,
-       		   COUNT(RESERVATION_STATUS) AS COUNT
+	<select id="reservationMonth" resultType="HashMap">
+		SELECT DATE_FORMAT(RESERVATION_DATE, '%m') AS MONTHS,
+       		   COUNT(RESERVATION_STATUS)
 		FROM reservation
 		WHERE RESERVATION_STATUS = '예약완료'
 		GROUP BY DATE_FORMAT(RESERVATION_DATE, '%m')
 		ORDER BY DATE_FORMAT(RESERVATION_DATE, '%m')
 	</select>
 	
-	<select id="reservationSeller" resultType="AStatistics">
+	<select id="reservationSeller" resultType="HashMap">
 		SELECT A.S_ID AS SELLER,
-			   COUNT(R.RESERVATION_STATUS) AS COUNT
+			   COUNT(R.RESERVATION_STATUS)
 		FROM ACTIVITY_INFO A
 			LEFT JOIN ACTIVITY_THEME T
 				ON (A.A_THEME_ID = T.A_THEME_ID)

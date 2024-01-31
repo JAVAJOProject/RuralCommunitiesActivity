@@ -136,7 +136,7 @@ export default function NavAdmin() {
   return (
     <div className="adminNavBox">
       <LogoAdmin link={mainLink} />
-      <div >
+      <div>
         {contents.map((content, index) => (
           <NavTab key={index} titleInfo={content} />
         ))}

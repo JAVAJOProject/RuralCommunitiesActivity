@@ -31,8 +31,7 @@
 			<result column="a_thumbnail_img" property="aThumbnailImg" />
 		</association>
 	</resultMap>
-	<select id="selectByNo" parameterType="int"
-		resultMap="selectByReservation">
+	<select id="selectByNo" resultMap="selectByReservation">
 		SELECT RESERVATION_ID,
 			   PAYMENT_ID,
 			   A_ID,
@@ -61,7 +60,8 @@
 					   LEFT JOIN ACTIVITY_INFO A ON (R.A_ID = A.A_ID))
 		WHERE NUM BETWEEN #{start} AND #{end}
 	</select>
-	<select id="selectCount" parameterType="int" resultType="int">
+
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT
 		COUNT(*) FROM RESERVATION WHERE U_ID=#{uId}
 	</select>

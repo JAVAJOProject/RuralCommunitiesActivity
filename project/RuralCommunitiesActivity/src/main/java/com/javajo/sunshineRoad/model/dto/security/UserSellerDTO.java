@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserSellerDTO {
+public class UserSellerDTO implements UserDTO {
     @JsonProperty
     private Long sId;
     private String accountInfoId;
@@ -36,12 +36,18 @@ public class UserSellerDTO {
     private int sApproval;
     @JsonProperty
     private String sRepName;
+    @JsonProperty
+    private String sRegCertificateImg;
 
     private Role role;
-    private SocialType socialType;
-    private String socialId;
+//    private SocialType socialType;
+//    private String socialId;
     private String refreshToken;
 
+    public void setMemTypeId(int memTypeId) {
+        this.memTypeId = memTypeId;
+        this.role = Role.SELLER;
+    }
     public void authorizeUser() {
         this.role = Role.SELLER;
     }

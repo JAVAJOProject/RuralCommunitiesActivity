@@ -5,7 +5,8 @@
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminExcelMapper">
 
 	<select id="findAll" resultType="AExcel">
-	SELECT d_date , report_cnt FROM REPORT_INFO
+		SELECT d_date, report_cnt
+		FROM REPORT_INFO
 	</select>
 				
 </mapper>

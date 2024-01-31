@@ -19,7 +19,7 @@
 					 REC_T_CONTENT,
 					 REC_T_DATE_CREATED,
 					 REC_T_VIEW_CNT,
-					 REC_T_FAVORITE_CNT,
+					 REC_T_LIKE_CNT,
 					 REC_T_SITE,
 					 REC_T_THUMBNAIL_IMG
 			  FROM REC_TOWN_INFO) result

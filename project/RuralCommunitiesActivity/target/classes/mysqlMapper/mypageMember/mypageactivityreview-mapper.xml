@@ -17,7 +17,7 @@
 	</resultMap>
 
 	<!--	MySQL-->
-	<select id="selectCount" parameterType="int" resultType="int">
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT COUNT(*)
 		FROM ACTIVITY_REVIEW
 		WHERE U_ID = #{uId}
@@ -27,8 +27,7 @@
 		SELECT * FROM ACTIVITY_REVIEW WHERE REV_ID = ${revId}
 	</select>
 
-	<select id="selectByNo" parameterType="int"
-			resultType="ActivityReviewDTO">
+	<select id="selectByNo" resultType="ActivityReviewDTO">
 		SELECT rev_id,
 			   u_id,
 			   a_post_id,

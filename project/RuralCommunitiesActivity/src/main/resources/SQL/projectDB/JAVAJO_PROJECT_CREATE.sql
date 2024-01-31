@@ -4,7 +4,7 @@ CREATE TABLE member (
                         u_name   VARCHAR2(100)      NOT NULL,
                         u_email   VARCHAR2(100)      NOT NULL,
                         u_nick   VARCHAR2(100)      NULL,
-                        u_pw   VARCHAR2(100)      NOT NULL,
+                        u_pw   VARCHAR2(2000)      NOT NULL,
                         u_tel   VARCHAR2(50)      NOT NULL,
                         u_reg_date   TIMESTAMP   DEFAULT SYSTIMESTAMP   NOT NULL,
                         u_marketing   NUMBER(1)      NOT NULL,
@@ -12,7 +12,9 @@ CREATE TABLE member (
                         u_birth   DATE      NOT NULL,
                         u_google_login   VARCHAR2(100)      NULL,
                         u_naver_login   VARCHAR2(100)      NULL,
-                        u_kakao_login   VARCHAR2(100)      NULL
+                        u_kakao_login   VARCHAR2(100)      NULL,
+                        social_type   VARCHAR2(100)      NULL,
+                        refresh_token   VARCHAR2(2000)      NULL
 );
 
 CREATE TABLE activity_info (
@@ -163,7 +165,7 @@ CREATE TABLE seller (
                         mem_type_id   NUMBER(1)   DEFAULT 2   NOT NULL,
                         s_email   VARCHAR2(100)      NOT NULL,
                         s_com_name   VARCHAR2(100)      NOT NULL,
-                        s_pw   VARCHAR2(100)      NOT NULL,
+                        s_pw   VARCHAR2(2000)      NOT NULL,
                         s_tel   VARCHAR2(50)      NOT NULL,
                         s_reg_date   TIMESTAMP  DEFAULT SYSTIMESTAMP    NOT NULL,
                         s_addr   VARCHAR2(50)      NOT NULL,
@@ -171,7 +173,8 @@ CREATE TABLE seller (
                         s_marketing_consent   NUMBER(1)      NOT NULL,
                         s_approval   NUMBER(1)      NOT NULL,
                         s_rep_name   VARCHAR2(20)      NOT NULL,
-                        s_reg_certificate_img CLOB NULL
+                        s_reg_certificate_img CLOB NULL,
+                        refresh_token   VARCHAR2(2000)      NULL
 );
 
 CREATE TABLE post_type (
@@ -184,9 +187,10 @@ CREATE TABLE admin (
                        mem_type_id   NUMBER(1)   DEFAULT 3   NOT NULL,
                        admin_authority_id   NUMBER(5)   NULL,
                        admin_email   VARCHAR2(100)      NOT NULL,
-                       admin_pw   VARCHAR2(100)      NOT NULL,
+                       admin_pw   VARCHAR2(2000)      NOT NULL,
                        admin_reg_date   TIMESTAMP      NOT NULL,
-                       admin_tel   VARCHAR(50)      NOT NULL
+                       admin_tel   VARCHAR(50)      NOT NULL,
+                       refresh_token   VARCHAR2(2000)      NULL
 );
 
 CREATE TABLE member_type (

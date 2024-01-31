@@ -2,7 +2,7 @@
   list-style-type: none;
   display: flex;
   margin: 1.5rem;
-	margin-left: 2rem;
+  margin-left: 2rem;
 }
 
 .rightNavTodoList > a {
@@ -22,7 +22,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-	margin-left: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .rightNavTodoNo > p {

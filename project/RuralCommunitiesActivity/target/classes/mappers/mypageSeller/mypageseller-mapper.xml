@@ -5,7 +5,7 @@
 <mapper
 	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerMapper">
 
-	<select id="selectByNo" parameterType="int"
+	<select id="selectByNo" parameterType="long"
 		resultType="SellerDTO">
 		SELECT * FROM SELLER WHERE S_ID=#{sId}
 	</select>

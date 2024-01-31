@@ -5,10 +5,13 @@ import './ModifyBtn.css';
 export default function ModifyBtn({ text, link, imgSrc }) {
   const navigate = useNavigate();
   return (
-    <button className="modifyBtn"
+    <button
+      className="modifyBtn"
       onClick={() => {
         navigate(link);
-      }}>{text}</button>
+      }}
+    >
+      {text}
+    </button>
   );
 }
-

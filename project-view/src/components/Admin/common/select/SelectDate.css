@@ -3,18 +3,18 @@
   /* border : 1px solid black; */
 }
 
- .selectAdmin > select {
-   -webkit-appearance:none; 
-   /* -moz-appearance:none;  */
-   /* appearance:none; */
-   background: url('../../../../view_img/Admin/common/GroupArrow.png') no-repeat center center;
-   width: 6.8rem;
-   border-width : 0;
-   background-size: 109px;
-   height: 1.78rem;
-   margin-bottom: 2px;
-   margin-right: 10px;
-
+.selectAdmin > select {
+  -webkit-appearance: none;
+  /* -moz-appearance:none;  */
+  /* appearance:none; */
+  background: url('../../../../view_img/Admin/common/GroupArrow.png') no-repeat
+    center center;
+  width: 6.8rem;
+  border-width: 0;
+  background-size: 109px;
+  height: 1.78rem;
+  margin-bottom: 2px;
+  margin-right: 10px;
 }
 /* date 안에 글자 없앨라 했는데 ...
 select[type=date]::-webkit-datetime-edit-text {

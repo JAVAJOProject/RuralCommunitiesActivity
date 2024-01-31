@@ -6,348 +6,488 @@
 
 
 	<select id="getAllActivity"  resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-    			ORDER BY A_ID)
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT A_ID,
+						   S_ID,
+						   S_COM_NAME,
+						   SIGUNGU_ID,
+						   SIGUNGU_NAME,
+						   SIDO_ID,
+						   SIDO_NAME,
+						   A_THEME_ID,
+						   A_THEME_NAME,
+						   TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+						   TO_CHAR(A_END_DATE, 'YYYY-MM-DD')   AS A_END_DATE,
+						   A_ADDR,
+						   A_NAME,
+						   A_ONE_LINER,
+						   A_MIN_PEOPLE,
+						   A_MAX_PEOPLE,
+						   A_CHARGE,
+						   S_SITE,
+						   A_RESERVATION_DEADLINE
+					FROM (SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)) TMP
+					ORDER BY A_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
 	</select>
 	
-	<select id="selectDateActivityStart" parameterType="ASearch" resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-    			WHERE A_START_DATE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				ORDER BY A_ID)
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	<select id="selectDateActivityStart" resultType="AActivity">
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT A_ID,
+						   S_ID,
+						   S_COM_NAME,
+						   SIGUNGU_ID,
+						   SIGUNGU_NAME,
+						   SIDO_ID,
+						   SIDO_NAME,
+						   A_THEME_ID,
+						   A_THEME_NAME,
+						   TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+						   TO_CHAR(A_END_DATE, 'YYYY-MM-DD')   AS A_END_DATE,
+						   A_ADDR,
+						   A_NAME,
+						   A_ONE_LINER,
+						   A_MIN_PEOPLE,
+						   A_MAX_PEOPLE,
+						   A_CHARGE,
+						   S_SITE,
+						   A_RESERVATION_DEADLINE
+					FROM (SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE A_START_DATE BETWEEN
+									TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+									AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')) TMP
+					ORDER BY A_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
 	</select>	
 
-	<select id="selectDateActivityEND" parameterType="ASearch" resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-				WHERE A_END_DATE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	<select id="selectDateActivityEND" resultType="AActivity">
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT A_ID,
+						   S_ID,
+						   S_COM_NAME,
+						   SIGUNGU_ID,
+						   SIGUNGU_NAME,
+						   SIDO_ID,
+						   SIDO_NAME,
+						   A_THEME_ID,
+						   A_THEME_NAME,
+						   TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+						   TO_CHAR(A_END_DATE, 'YYYY-MM-DD')   AS A_END_DATE,
+						   A_ADDR,
+						   A_NAME,
+						   A_ONE_LINER,
+						   A_MIN_PEOPLE,
+						   A_MAX_PEOPLE,
+						   A_CHARGE,
+						   S_SITE,
+						   A_RESERVATION_DEADLINE
+					FROM (SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE A_END_DATE BETWEEN
+									TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+									AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')) TMP
+					ORDER BY A_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
 	</select>	
 	
-	<select id="selectDateReservation" parameterType="ASearch" resultType="AActivity">
-	SELECT 
-	A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    SIDO_ID, SIDO_NAME,
-    A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    FROM (SELECT 
-    	SEQ,
-		A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    	SIDO_ID, SIDO_NAME,
-        A_THEME_ID,A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    	A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    	A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    	FROM (SELECT 
-    		ROWNUM AS SEQ,
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-    		SIDO_ID, SIDO_NAME,
-            A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM (SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-				WHERE A_RESERVATION_DEADLINE BETWEEN
-				TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-				AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+	<select id="selectDateReservation"  resultType="AActivity">
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT A_ID,
+						   S_ID,
+						   S_COM_NAME,
+						   SIGUNGU_ID,
+						   SIGUNGU_NAME,
+						   SIDO_ID,
+						   SIDO_NAME,
+						   A_THEME_ID,
+						   A_THEME_NAME,
+						   TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+						   TO_CHAR(A_END_DATE, 'YYYY-MM-DD')   AS A_END_DATE,
+						   A_ADDR,
+						   A_NAME,
+						   A_ONE_LINER,
+						   A_MIN_PEOPLE,
+						   A_MAX_PEOPLE,
+						   A_CHARGE,
+						   S_SITE,
+						   A_RESERVATION_DEADLINE
+					FROM (SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE A_RESERVATION_DEADLINE BETWEEN
+									TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+									AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')) TMP
+					ORDER BY A_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
 	</select>	
 		
 	<select id="selectActivity" resultType="AActivity">
-      		SELECT 
-			A_ID, S_ID, S_COM_NAME, SIGUNGU_ID, SIGUNGU_NAME,
-            SIDO_ID, SIDO_NAME,
-    		A_THEME_ID, A_THEME_NAME, A_START_DATE, A_END_DATE, A_ADDR, 
-    		A_NAME, A_ONE_LINER, A_MIN_PEOPLE, A_MAX_PEOPLE,
-    		A_CHARGE, S_SITE, A_RESERVATION_DEADLINE 
-    		FROM   (  SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-                WHERE (A.A_NAME LIKE '%'||#{searchDTO.keyword}||'%'
-                        AND G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                OR (A.A_NAME LIKE '%'||#{searchDTO.keyword}||'%')
-        UNION
-                SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-                WHERE (G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu}
-                        AND A.A_THEME_ID=#{searchDTO.theme})
-                OR (G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                OR (A.A_THEME_ID=#{searchDTO.theme})
-        UNION
-                SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE 
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)    
-                WHERE (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge})
-                    OR (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge}
-                        AND G.SIDO_ID=#{searchDTO.sido}
-                        AND A.SIGUNGU_ID=#{searchDTO.sigungu})
-                ORDER BY A_ID
-	)
-	WHERE ROWNUM BETWEEN #{startPostNo} AND #{endPostNo}            
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT A_ID,
+						   S_ID,
+						   S_COM_NAME,
+						   SIGUNGU_ID,
+						   SIGUNGU_NAME,
+						   SIDO_ID,
+						   SIDO_NAME,
+						   A_THEME_ID,
+						   A_THEME_NAME,
+						   TO_CHAR(A_START_DATE, 'YYYY-MM-DD') AS A_START_DATE,
+						   TO_CHAR(A_END_DATE, 'YYYY-MM-DD')   AS A_END_DATE,
+						   A_ADDR,
+						   A_NAME,
+						   A_ONE_LINER,
+						   A_MIN_PEOPLE,
+						   A_MAX_PEOPLE,
+						   A_CHARGE,
+						   S_SITE,
+						   A_RESERVATION_DEADLINE
+					FROM (SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE (A.A_NAME LIKE '%' || #{searchDTO.keyword} || '%'
+							  AND G.SIDO_ID = #{searchDTO.sido}
+							  AND A.SIGUNGU_ID = #{searchDTO.sigungu})
+							 OR (A.A_NAME LIKE '%' || #{searchDTO.keyword} || '%')
+						  UNION
+						  SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE (G.SIDO_ID = #{searchDTO.sido}
+							  AND A.SIGUNGU_ID = #{searchDTO.sigungu}
+							  AND A.A_THEME_ID = #{searchDTO.theme})
+							 OR (G.SIDO_ID = #{searchDTO.sido}
+							  AND A.SIGUNGU_ID = #{searchDTO.sigungu})
+							 OR (A.A_THEME_ID = #{searchDTO.theme})
+						  UNION
+						  SELECT A.A_ID,
+								 A.S_ID,
+								 S.S_COM_NAME,
+								 A.SIGUNGU_ID,
+								 G.SIGUNGU_NAME,
+								 G.SIDO_ID,
+								 D.SIDO_NAME,
+								 A.A_THEME_ID,
+								 T.A_THEME_NAME,
+								 A.A_START_DATE,
+								 A.A_END_DATE,
+								 A.A_ADDR,
+								 A.A_NAME,
+								 A.A_ONE_LINER,
+								 A.A_MIN_PEOPLE,
+								 A.A_MAX_PEOPLE,
+								 A.A_CHARGE,
+								 A.S_SITE,
+								 A.A_RESERVATION_DEADLINE
+						  FROM ACTIVITY_INFO A
+								   LEFT JOIN SELLER S
+											  ON (A.S_ID = S.S_ID)
+								   LEFT JOIN ACTIVITY_THEME T
+											  ON (A.A_THEME_ID = T.A_THEME_ID)
+								   LEFT JOIN REGION_SIGUNGU G
+											  ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+								   LEFT OUTER JOIN REGION_SIDO D
+												   ON (G.SIDO_ID = D.SIDO_ID)
+						  WHERE (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge})
+							 OR (A.A_CHARGE <![CDATA[<=]]> #{searchDTO.charge}
+							  AND G.SIDO_ID = #{searchDTO.sido}
+							  AND A.SIGUNGU_ID = #{searchDTO.sigungu})) TMP
+					ORDER BY A_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
 	</select>
 	
 	<insert id="registrationActivity" parameterType="AActivity">
-	INSERT INTO activity_info VALUES
-	(activity_info_seq.NEXTVAL,
-	#{aId},
-	#{sId},
-	#{sigunguId},
-	#{aThemeId},
-	TO_DATE(#{aStartDate},'YYYY-MM-DD HH24:MI:SS'),
-	TO_DATE(#{aEndDate},'YYYY-MM-DD HH24:MI:SS'),
-	#{aAddr},
-	#{aName},
-	#{aOneLiner},
-	#{aMinPeople},
-	#{aMaxPeople},
-	#{aCharge},
-	NULL,
-	#{sSite},
-	TO_DATE(#{aReservationDeadline},'YYYY-MM-DD HH24:MI:SS'))
+		INSERT INTO activity_info
+		VALUES (activity_info_seq.NEXTVAL,
+				#{aId},
+				#{sId},
+				#{sigunguId},
+				#{aThemeId},
+				TO_DATE(#{aStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+				TO_DATE(#{aEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
+				#{aAddr},
+				#{aName},
+				#{aOneLiner},
+				#{aMinPeople},
+				#{aMaxPeople},
+				#{aCharge},
+				NULL,
+				#{sSite},
+				TO_DATE(#{aReservationDeadline}, 'YYYY-MM-DD HH24:MI:SS'))
 	</insert>
 	
 	
 	<select id="PostMaxID" resultType="int" >
-	SELECT MAX(A_ID) FROM ACTIVITY_INFO
+		SELECT MAX(A_ID)
+		FROM ACTIVITY_INFO
     </select>
     
     
 	<select id="ImgMaxID" resultType="int" >
-    SELECT MAX(A_IMG_ID) FROM ACTIVITY_IMAGES
+		SELECT MAX(A_IMG_ID)
+		FROM ACTIVITY_IMAGES
     </select>
     
     <insert id="activityImgValues" parameterType="AActivityImg">
-    INSERT INTO ACTIVITY_IMAGES VALUES
-    (ACTIVITY_IMAGES_SEQ.NEXTVAL, #{activityImg1}, #{activityImg2}, #{activityImg3}, #{activityImg4}, #{activityImg5})
+		INSERT INTO ACTIVITY_IMAGES
+		VALUES (ACTIVITY_IMAGES_SEQ.NEXTVAL, #{activityImg1}, #{activityImg2}, #{activityImg3}, #{activityImg4},
+				#{activityImg5})
     </insert>
     
     <update id="updateImgID" parameterType="AActivity">
-    UPDATE ACTIVITY_INFO SET A_IMG_ID = #{aImgId} WHERE A_ID = #{aId}
+		UPDATE ACTIVITY_INFO
+		SET A_IMG_ID = #{aImgId}
+		WHERE A_ID = #{aId}
     </update>   
     
     <update id="modifyActivityPost" parameterType="AActivity">
-    UPDATE ACTIVITY_INFO SET
-    SIGUNGU_ID=#{sigunguId}, 
-    A_THEME_ID=#{aThemeId},
-    A_START_DATE = TO_DATE(#{aStartDate},'YYYY-MM-DD HH24:MI:SS'),
-    A_END_DATE = TO_DATE(#{aEndDate},'YYYY-MM-DD HH24:MI:SS'),
-    A_ADDR=#{aAddr}, 
-    A_NAME=#{aName},
-    A_ONE_LINER=#{aOneLiner},
-    A_MIN_PEOPLE=#{aMinPeople},
-    A_MAX_PEOPLE=#{aMaxPeople},
-    A_CHARGE=#{aCharge},
-    S_SITE=#{sSite}, 
-    A_RESERVATION_DEADLINE = TO_DATE(#{aReservationDeadline},'YYYY-MM-DD HH24:MI:SS')
-    WHERE A_ID=#{aId} AND S_ID=#{sId}
+		UPDATE ACTIVITY_INFO
+		SET SIGUNGU_ID=#{sigunguId},
+			A_THEME_ID=#{aThemeId},
+			A_START_DATE = TO_DATE(#{aStartDate}, 'YYYY-MM-DD HH24:MI:SS'),
+			A_END_DATE = TO_DATE(#{aEndDate}, 'YYYY-MM-DD HH24:MI:SS'),
+			A_ADDR=#{aAddr},
+			A_NAME=#{aName},
+			A_ONE_LINER=#{aOneLiner},
+			A_MIN_PEOPLE=#{aMinPeople},
+			A_MAX_PEOPLE=#{aMaxPeople},
+			A_CHARGE=#{aCharge},
+			S_SITE=#{sSite},
+			A_RESERVATION_DEADLINE = TO_DATE(#{aReservationDeadline}, 'YYYY-MM-DD HH24:MI:SS')
+		WHERE A_ID = #{aId}
+		  AND S_ID = #{sId}
     </update>
     
     <select id="selectImgId" resultType="int" parameterType="int">
-    SELECT B.A_IMG_ID FROM ACTIVITY_INFO A , activity_images B
-    WHERE A.A_IMG_ID = B.A_IMG_ID
-    AND A.A_ID =#{aId}
+		SELECT B.A_IMG_ID
+		FROM ACTIVITY_INFO A,
+			 activity_images B
+		WHERE A.A_IMG_ID = B.A_IMG_ID
+		  AND A.A_ID = #{aId}
     </select>
     
     <delete id="deleteActivityImg" parameterType="int">
-    DELETE ACTIVITY_IMAGES WHERE A_IMG_ID =#{aImgId}
+		DELETE
+		FROM ACTIVITY_IMAGES
+		WHERE A_IMG_ID =
+			  #{aImgId}
     </delete>
     
     <delete id="deleteActivityPost" parameterType="int">
-    DELETE ACTIVITY_INFO WHERE A_ID=#{aId}
+		DELETE
+		FROM ACTIVITY_INFO
+		WHERE A_ID = #{aId}
     </delete>
     
+    <select id="detailImgActivity" resultType="AActivityImg" parameterType="int">
+		select a_img1, a_img2, a_img3, a_img4, a_img5
+		from ACTIVITY_IMAGES
+		where a_img_id = #{aImgId}
+    </select>
     
     <select id="detailActivity" resultType="AActivity" parameterType="int">
-     			SELECT 
-				A.A_ID, A.S_ID, S.S_COM_NAME, A.SIGUNGU_ID, G.SIGUNGU_NAME,
-                G.SIDO_ID, D.SIDO_NAME,
-    			A.A_THEME_ID, T.A_THEME_NAME, A.A_START_DATE, A.A_END_DATE, A.A_ADDR, 
-    			A.A_NAME, A.A_ONE_LINER, A.A_MIN_PEOPLE, A.A_MAX_PEOPLE,
-    			A.A_CHARGE, A.S_SITE, A.A_RESERVATION_DEADLINE, A.A_IMG_ID,
-    			I.A_IMG1, I.A_IMG2, I.A_IMG3, I.A_IMG4,I.A_IMG5
-    			FROM ACTIVITY_INFO A 
-                INNER JOIN SELLER S
-    			ON (A.S_ID = S.S_ID) 
-    			INNER JOIN ACTIVITY_THEME T
-    			ON (A.A_THEME_ID = T.A_THEME_ID)
-    			INNER JOIN ACTIVITY_IMAGES I
-    			ON (A.A_IMG_ID = I.A_IMG_ID) 
-    			INNER JOIN REGION_SIGUNGU G
-    			ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
-                LEFT OUTER JOIN REGION_SIDO D
-                ON (G.SIDO_ID = D.SIDO_ID)
-                WHERE A.A_ID=#{aId}
+		SELECT A.A_ID,
+			   A.S_ID,
+			   S.S_COM_NAME,
+			   A.SIGUNGU_ID,
+			   G.SIGUNGU_NAME,
+			   G.SIDO_ID,
+			   D.SIDO_NAME,
+			   A.A_THEME_ID,
+			   T.A_THEME_NAME,
+			   A.A_START_DATE,
+			   A.A_END_DATE,
+			   A.A_ADDR,
+			   A.A_NAME,
+			   A.A_ONE_LINER,
+			   A.A_MIN_PEOPLE,
+			   A.A_MAX_PEOPLE,
+			   A.A_CHARGE,
+			   A.S_SITE,
+			   A.A_RESERVATION_DEADLINE,
+			   A.A_IMG_ID,
+			   I.A_IMG1,
+			   I.A_IMG2,
+			   I.A_IMG3,
+			   I.A_IMG4,
+			   I.A_IMG5
+		FROM ACTIVITY_INFO A
+				 LEFT JOIN SELLER S
+							ON (A.S_ID = S.S_ID)
+				 LEFT JOIN ACTIVITY_THEME T
+							ON (A.A_THEME_ID = T.A_THEME_ID)
+				 LEFT JOIN ACTIVITY_IMAGES I
+							ON (A.A_IMG_ID = I.A_IMG_ID)
+				 LEFT JOIN REGION_SIGUNGU G
+							ON (A.SIGUNGU_ID = G.SIGUNGU_ID)
+				 LEFT OUTER JOIN REGION_SIDO D
+								 ON (G.SIDO_ID = D.SIDO_ID)
+		WHERE A.A_ID = #{aId}
     </select>
 			
 </mapper>

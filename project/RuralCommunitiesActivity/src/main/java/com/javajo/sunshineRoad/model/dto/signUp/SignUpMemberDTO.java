@@ -1,19 +1,16 @@
 package com.javajo.sunshineRoad.model.dto.signUp;
 
+import lombok.*;
 import org.apache.ibatis.type.Alias;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Alias("SignUpMember")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class SignUpMemberDTO {
 	@JsonProperty
 	private Long uId;
@@ -42,4 +39,7 @@ public class SignUpMemberDTO {
 	private String uNaverLogin;
 	@JsonProperty
 	private String uKakaoLogin;
+
+	private String socialType;
+	private String refreshToken;
 }

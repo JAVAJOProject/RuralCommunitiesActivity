@@ -21,7 +21,7 @@
 	</resultMap>
 
 <!--	MySQL-->
-	<select id="selectCount" parameterType="int" resultType="int">
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT COUNT(*)
 		FROM ACTIVITY_POST
 		WHERE A_ID IN
@@ -30,8 +30,7 @@
 			   WHERE S_ID = #{sId})
 	</select>
 
-	<select id="selectByNo" parameterType="int"
-		resultType="ActivityPost">
+	<select id="selectByNo" resultType="ActivityPost">
 		SELECT P.a_post_id,
 			   P.a_id,
 			   P.a_img_id,
@@ -64,8 +63,7 @@
 	</select>
 
 	<!-- 체험 게시글에서 멤버 정보 가져오기 -->
-	<select id="selectInfoByPostId" parameterType="int"
-		resultMap="actMemListView">
+	<select id="selectInfoByPostId" resultMap="actMemListView">
 		SELECT
 			M.U_NICK,
 			M.U_NAME,

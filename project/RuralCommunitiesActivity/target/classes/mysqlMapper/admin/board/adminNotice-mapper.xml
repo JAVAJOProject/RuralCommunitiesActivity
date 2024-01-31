@@ -4,96 +4,103 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminNoticeMapper">
 
-	
 	<select id="getAllNotice" resultType="ANotice">
-    SELECT 
-    NOTICE_ID, NOTICE_IMG_ID, NOTICE_TYPE_ID,NOTICE_TYPE_NAME,
-    NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE_CREATED
-    FROM (SELECT 
-        SEQ,
-        NOTICE_ID, NOTICE_IMG_ID, NOTICE_TYPE_ID,NOTICE_TYPE_NAME,
-        NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE_CREATED
-        FROM (SELECT
-            ROWNUM AS SEQ,
-            NOTICE_ID, NOTICE_IMG_ID, NOTICE_TYPE_ID,NOTICE_TYPE_NAME,
-            NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE_CREATED
-            FROM ( SELECT 
-            	N.NOTICE_ID, N.NOTICE_IMG_ID, N.NOTICE_TYPE_ID, T.NOTICE_TYPE_NAME,
-    			N.NOTICE_TITLE, N.NOTICE_CONTENT, N.NOTICE_DATE_CREATED
-    			FROM NOTICE N INNER JOIN notice_type T
-    			ON N.NOTICE_TYPE_ID = T.NOTICE_TYPE_ID
-    			ORDER BY N.NOTICE_DATE_CREATED DESC)                     
-            )
-			WHERE seq <![CDATA[>=]]> #{startPostNo}
-		)
-		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}		
+        SELECT N.NOTICE_ID,
+               N.NOTICE_IMG_ID,
+               N.NOTICE_TYPE_ID,
+               T.NOTICE_TYPE_NAME,
+               N.NOTICE_TITLE,
+               N.NOTICE_CONTENT,
+               N.NOTICE_DATE_CREATED
+        FROM NOTICE N
+                 INNER JOIN notice_type T
+                            ON (N.NOTICE_TYPE_ID = T.NOTICE_TYPE_ID)
+        ORDER BY N.NOTICE_DATE_CREATED DESC
+            LIMIT #{perPagePostCount}
+        OFFSET #{startPostNo}
 	</select>
 
     <select id="detailNotice" resultType="ANotice" parameterType="int">
-SELECT 
-N.NOTICE_ID, N.NOTICE_IMG_ID, N.NOTICE_TYPE_ID, T.NOTICE_TYPE_NAME,
-N.NOTICE_TITLE, N.NOTICE_CONTENT, N.NOTICE_DATE_CREATED
-FROM NOTICE N INNER JOIN notice_type T
-ON (N.NOTICE_TYPE_ID = T.NOTICE_TYPE_ID)
-WHERE N.NOTICE_ID=#{noticeId}
+        SELECT N.NOTICE_ID,
+               N.NOTICE_IMG_ID,
+               N.NOTICE_TYPE_ID,
+               T.NOTICE_TYPE_NAME,
+               N.NOTICE_TITLE,
+               N.NOTICE_CONTENT,
+               N.NOTICE_DATE_CREATED
+        FROM NOTICE N
+                 INNER JOIN notice_type T
+                            ON (N.NOTICE_TYPE_ID = T.NOTICE_TYPE_ID)
+        WHERE N.NOTICE_ID = #{noticeId}
     </select>
     
      <select id="detailNoticeImg" resultType="ANoticeImg" parameterType="int">
-SELECT 
-N.NOTICE_IMG_ID, I.NOTICE_IMG_1 ,I.NOTICE_IMG_2,I.NOTICE_IMG_3,I.NOTICE_IMG_4,I.NOTICE_IMG_5
-FROM NOTICE N INNER JOIN NOTICE_IMAGES I
-ON (N.NOTICE_IMG_ID = I.NOTICE_IMG_ID)
-WHERE N.NOTICE_ID=#{noticeId}
+         SELECT N.NOTICE_IMG_ID,
+                I.NOTICE_IMG_1,
+                I.NOTICE_IMG_2,
+                I.NOTICE_IMG_3,
+                I.NOTICE_IMG_4,
+                I.NOTICE_IMG_5
+         FROM NOTICE N
+                  INNER JOIN NOTICE_IMAGES I
+                             ON (N.NOTICE_IMG_ID = I.NOTICE_IMG_ID)
+         WHERE N.NOTICE_ID = #{noticeId}
     </select>
     
 	<insert id="registrationNotice" parameterType="ANotice">
-	INSERT INTO NOTICE VALUES
-	(NOTICE_SEQ.NEXTVAL,
-	#{noticeImgId},
-	#{noticeTypeId},
-	#{noticeTitle},
-	#{noticeContent},
-	SYSTIMESTAMP
-	)
+        INSERT INTO NOTICE
+        VALUES (NULL,
+                #{noticeImgId},
+                #{noticeTypeId},
+                #{noticeTitle},
+                #{noticeContent},
+                CURRENT_TIMESTAMP)
 	</insert>
 	
 	<select id="PostMaxID" resultType="int" >
-	SELECT MAX(NOTICE_ID) FROM NOTICE
+        SELECT MAX(NOTICE_ID)
+        FROM NOTICE
     </select>
     
 	<select id="ImgMaxID" resultType="int" >
-    SELECT MAX(NOTICE_IMG_ID) FROM NOTICE_IMAGES
+        SELECT MAX(NOTICE_IMG_ID)
+        FROM NOTICE_IMAGES
     </select>
     
     <insert id="noticeImgValues" parameterType="ANoticeImg">
-    INSERT INTO NOTICE_IMAGES VALUES
-    (NOTICE_IMAGES_SEQ.NEXTVAL, #{noticeImg1}, #{noticeImg2}, #{noticeImg3}, #{noticeImg4}, #{noticeImg5})
+        INSERT INTO NOTICE_IMAGES
+        VALUES (NULL, #{noticeImg1}, #{noticeImg2}, #{noticeImg3}, #{noticeImg4}, #{noticeImg5})
     </insert>
     
     <update id="updateImgID" parameterType="ANotice">
-    UPDATE NOTICE SET NOTICE_IMG_ID=#{noticeImgId} WHERE NOTICE_ID = #{noticeId}
+        UPDATE NOTICE
+        SET NOTICE_IMG_ID=#{noticeImgId}
+        WHERE NOTICE_ID = #{noticeId}
     </update>   
     
     <update id="modifyNoticePost" parameterType="ANotice">
-    UPDATE NOTICE SET
-    NOTICE_TITLE=#{noticeTitle},
-    NOTICE_CONTENT=TO_CLOB(#{noticeContent})
-	WHERE NOTICE_ID=#{noticeId}
+        UPDATE NOTICE
+        SET NOTICE_TITLE=#{noticeTitle},
+            NOTICE_CONTENT=#{noticeContent}
+        WHERE NOTICE_ID = #{noticeId}
     </update>
     
     <select id="selectImgId" resultType="int" parameterType="int">
-    SELECT NOTICE_IMG_ID FROM NOTICE
-    WHERE NOTICE_ID=#{noticeId}
+        SELECT NOTICE_IMG_ID
+        FROM NOTICE
+        WHERE NOTICE_ID = #{noticeId}
     </select>
     
     <delete id="deleteNoticeImg" parameterType="int">
-    DELETE NOTICE_IMAGES WHERE NOTICE_IMG_ID =#{noticeImgId}
+        DELETE
+        FROM NOTICE_IMAGES
+        WHERE NOTICE_IMG_ID = #{noticeImgId}
     </delete>
     
     <delete id="deleteNoticePost" parameterType="int">
-    DELETE NOTICE WHERE NOTICE_ID=#{noticeId}
+        DELETE
+        FROM NOTICE
+        WHERE NOTICE_ID = #{noticeId}
     </delete>
-    
-    
 
 </mapper>

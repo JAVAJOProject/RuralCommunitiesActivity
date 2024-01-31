@@ -1,24 +1,21 @@
 .deleteBtnA {
-    /* display: inline-block; */
-    text-align: center;
-    font-family: 'SUITE Variable';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    color: #EC2A2A;
+  /* display: inline-block; */
+  text-align: center;
+  font-family: 'SUITE Variable';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #ec2a2a;
 
+  width: 90px;
+  height: 2.5rem;
+  padding: 7px;
+  margin-left: 10px;
+  margin-top: 6rem;
 
-    width: 90px;
-    height: 2.5rem;
-    padding: 7px;
-    margin-left: 10px;
-    margin-top: 6rem;
-
-    background: #FFFFFF;
-    border: 1px solid #CDCDCD;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 30px;
-    float: right;
-
-
+  background: #ffffff;
+  border: 1px solid #cdcdcd;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  float: right;
 }

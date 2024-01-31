@@ -5,33 +5,45 @@
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminRecActivityCntMapper">
 
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM REC_ACTIVITY_INFO
+		SELECT COUNT(*)
+		FROM REC_ACTIVITY_INFO
 	</select>
 	
 	<select id="selectDateRecActivityCnt" parameterType="ASearch" resultType="int">
-    SELECT COUNT(*) FROM REC_ACTIVITY_INFO
-	WHERE REC_A_DATE_CREATED BETWEEN
-	TO_TIMESTAMP(#{startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+		SELECT COUNT(*)
+		FROM REC_ACTIVITY_INFO
+		WHERE REC_A_DATE_CREATED BETWEEN
+				  STR_TO_DATE(#{startDate}, '%Y-%m-%d %H:%i:%s.%f')
+				  AND STR_TO_DATE(#{endDate}, '%Y-%m-%d %H:%i:%s.%f')
 	</select>	
 	
 	<select id="selectRecActivityCnt" parameterType="ASearch" resultType="int">
-    SELECT COUNT(*) 
-    FROM (
-	SELECT REC_A_POST_ID, SIGUNGU_ID, REC_A_ID,
-	REC_A_IMG_ID, POST_TYPE_ID, REC_A_KEYWORD_ID, REC_A_TITLE,
-	REC_A_DATE_CREATED, REC_A_VIEW_COUNT,
-	REC_A_FAVORITE_CNT
-    FROM REC_ACTIVITY_INFO
-    WHERE REC_A_TITLE LIKE '%'||#{keyword}||'%'
-    UNION
-	SELECT REC_A_POST_ID, SIGUNGU_ID, REC_A_ID,
-	REC_A_IMG_ID, POST_TYPE_ID, REC_A_KEYWORD_ID,REC_A_TITLE,
-	REC_A_DATE_CREATED, REC_A_VIEW_COUNT,
-	REC_A_FAVORITE_CNT
-    FROM REC_ACTIVITY_INFO
-    WHERE SIGUNGU_ID=#{sigungu}
-    )
+		SELECT COUNT(*)
+		FROM (SELECT REC_A_POST_ID,
+					 SIGUNGU_ID,
+					 REC_A_ID,
+					 REC_A_IMG_ID,
+					 POST_TYPE_ID,
+					 REC_A_KEYWORD_ID,
+					 REC_A_TITLE,
+					 REC_A_DATE_CREATED,
+					 REC_A_VIEW_CNT,
+					 REC_A_LIKE_CNT
+			  FROM REC_ACTIVITY_INFO
+			  WHERE REC_A_TITLE LIKE CONCAT('%', #{keyword}, '%')
+			  UNION
+			  SELECT REC_A_POST_ID,
+					 SIGUNGU_ID,
+					 REC_A_ID,
+					 REC_A_IMG_ID,
+					 POST_TYPE_ID,
+					 REC_A_KEYWORD_ID,
+					 REC_A_TITLE,
+					 REC_A_DATE_CREATED,
+					 REC_A_VIEW_CNT,
+					 REC_A_LIKE_CNT
+			  FROM REC_ACTIVITY_INFO
+			  WHERE SIGUNGU_ID = #{sigungu}) result
 	</select>
 	
 </mapper>

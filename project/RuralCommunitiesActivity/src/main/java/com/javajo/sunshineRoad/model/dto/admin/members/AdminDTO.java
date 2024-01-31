@@ -26,6 +26,8 @@ public class AdminDTO {
 	private String adminTel;
 
 
+	private String refreshToken;
+
 	
 	
 }

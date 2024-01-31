@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.security.SignInMemberMapper">
+    <select id="findByMemberId" resultType="UserMember" parameterType="long">
+        SELECT u_id,
+               mem_type_id,
+               u_name,
+               u_email,
+               u_nick,
+               u_pw,
+               u_tel,
+               DATE_FORMAT(u_reg_date, '%Y-%m-%d') AS u_reg_date,
+               u_marketing,
+               u_gender,
+               DATE_FORMAT(u_birth, '%Y-%m-%d') AS u_birth,
+               u_google_login,
+               u_naver_login,
+               u_kakao_login,
+               social_type,
+               refresh_token
+        FROM member
+        WHERE u_id = #{uId}
+    </select>
+
+    <select id="findByMemberEmail" resultType="UserMember" parameterType="string">
+        SELECT u_id,
+               mem_type_id,
+               u_name,
+               u_email,
+               u_nick,
+               u_pw,
+               u_tel,
+               DATE_FORMAT(u_reg_date, '%Y-%m-%d') AS u_reg_date,
+               u_marketing,
+               u_gender,
+               DATE_FORMAT(u_birth, '%Y-%m-%d') AS u_birth,
+               u_google_login,
+               u_naver_login,
+               u_kakao_login,
+               social_type,
+               refresh_token
+        FROM member
+        WHERE u_email = #{uEmail}
+    </select>
+
+    <select id="findByMemberRefreshToken" resultType="UserMember" parameterType="string">
+        SELECT u_id,
+               mem_type_id,
+               u_name,
+               u_email,
+               u_nick,
+               u_pw,
+               u_tel,
+               DATE_FORMAT(u_reg_date, '%Y-%m-%d') AS u_reg_date,
+               u_marketing,
+               u_gender,
+               DATE_FORMAT(u_birth, '%Y-%m-%d') AS u_birth,
+               u_google_login,
+               u_naver_login,
+               u_kakao_login,
+               social_type,
+               refresh_token
+        FROM member
+        WHERE refresh_token = #{refreshToken}
+    </select>
+
+    <select id="findBySocialTypeAndSocialEmail" resultType="UserMember" parameterType="UserMember">
+        SELECT u_id,
+               mem_type_id,
+               u_name,
+               u_email,
+               u_nick,
+               u_pw,
+               u_tel,
+               DATE_FORMAT(u_reg_date, '%Y-%m-%d') AS u_reg_date,
+               u_marketing,
+               u_gender,
+               DATE_FORMAT(u_birth, '%Y-%m-%d')    AS u_birth,
+               u_google_login,
+               u_naver_login,
+               u_kakao_login,
+               social_type,
+               refresh_token
+        FROM member
+        WHERE social_type = #{socialType}
+          AND (u_google_login = #{uGoogleLogin} OR u_naver_login = #{uNaverLogin} OR u_kakao_login = #{uKakaoLogin})
+    </select>
+
+    <update id="updateMemberRefreshToken" parameterType="UserAdmin">
+        UPDATE member
+        SET refresh_token = #{refreshToken}
+        WHERE u_email = #{uEmail}
+    </update>
+</mapper>

@@ -4,7 +4,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminActivityMapper">
 
-	<select id="getAllActivity"  resultType="AActivity">
+	<select id="getAllActivity" resultType="AActivity">
 		SELECT
 			A.A_ID,
 			A.S_ID,
@@ -113,7 +113,7 @@
 			LIMIT #{perPagePostCount} OFFSET #{startPostNo}
 	</select>
 	
-	<select id="selectDateReservation"  resultType="AActivity">
+	<select id="selectDateReservation" resultType="AActivity">
 		SELECT
 			A.A_ID,
 			A.S_ID,

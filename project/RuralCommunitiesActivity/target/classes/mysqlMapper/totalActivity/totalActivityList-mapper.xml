@@ -35,7 +35,7 @@
 	</select>
 
 	<select id="getRequestPageTotalActivityData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT activity_info.a_id,
 			   activity_info.a_img_id,
 			   activity_info.a_name,
@@ -54,7 +54,7 @@
 	</select>
 
 	<select id="getRequestPageTotalActivityByThemeListData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT activity_info.a_id,
 			   activity_info.a_img_id,
 			   activity_info.a_name,
@@ -74,7 +74,7 @@
 
 	
 	<select id="getRequestPageTotalActivityByRegionListData"
-		resultType="ActSummaryList" parameterType="int">
+		resultType="ActSummaryList">
 		SELECT activity_info.a_id,
 			   activity_info.a_img_id,
 			   activity_info.a_name,

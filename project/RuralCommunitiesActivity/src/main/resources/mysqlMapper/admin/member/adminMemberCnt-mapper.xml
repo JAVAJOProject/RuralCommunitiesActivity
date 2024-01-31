@@ -24,7 +24,7 @@
 	</select>
 
 
-	<select id="selectMemberDATECnt"  resultType="int">
+	<select id="selectMemberDATECnt" resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT U_ID,
 					 MEM_TYPE_ID,
@@ -99,7 +99,7 @@
 		<result column="POST_TYPE_NAME" property="postTypeName"/>
 	</resultMap>-->
 	
-	<select id="wrotePostCnt" parameterType="int" resultType="int">
+	<select id="wrotePostCnt" parameterType="long" resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT M.U_COMMUNITY_POST_ID,
 					 M.U_ID,

@@ -1,14 +1,14 @@
 .pageNumberA {
-    display: inline-block;
-    width: 20rem;
-    height: 2rem;
-    text-align: center;
+  display: inline-block;
+  width: 20rem;
+  height: 2rem;
+  text-align: center;
 }
 .pageNumberA > p {
-    display: inline-block;
-    padding: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem;
 
-    &:hover {
-        color: blue;
-    }
+  &:hover {
+    color: blue;
+  }
 }

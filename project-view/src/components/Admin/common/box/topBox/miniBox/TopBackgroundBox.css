@@ -1,45 +1,44 @@
-.TopBackgroundBoxA{
-    width: 55%;
-    min-width: 800px;
-    height: 200px;
-    padding: 10px;
-    margin-left: 60px;
-    background: #f8f8f8;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-
-} 
+.TopBackgroundBoxA {
+  width: 55%;
+  min-width: 800px;
+  height: 200px;
+  padding: 10px;
+  margin-left: 60px;
+  background: #f8f8f8;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+}
 
 .CategoryNameNormalA {
-    font-family: 'SUITE Variable';
-    font-weight: 500;
-    font-size: 20px;
-    margin-top: 2rem;
-    margin-left: 4rem;
+  font-family: 'SUITE Variable';
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 2rem;
+  margin-left: 4rem;
 }
 .CategoryNameA {
-    display: inline-block;
-    padding: 8px;
-    background: #FFCC48;
-    border-radius: 10px;
+  display: inline-block;
+  padding: 8px;
+  background: #ffcc48;
+  border-radius: 10px;
 }
-        
-.CategoryNameA > p {
-    font-family: 'SUITE Variable';
-    font-style: normal;
-    font-weight: 700;
-} 
-.imgA {
-    mix-blend-mode: multiply;
-    width: 6.375rem;
-    height: 6.375rem;
 
-    position: absolute;
-    left: 3rem;
-    top: -1rem;
+.CategoryNameA > p {
+  font-family: 'SUITE Variable';
+  font-style: normal;
+  font-weight: 700;
+}
+.imgA {
+  mix-blend-mode: multiply;
+  width: 6.375rem;
+  height: 6.375rem;
+
+  position: absolute;
+  left: 3rem;
+  top: -1rem;
 }
 
 .img1A {
-    float: right;
-    padding-top: 0.6rem;
+  float: right;
+  padding-top: 0.6rem;
 }

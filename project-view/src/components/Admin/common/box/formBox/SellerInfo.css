@@ -1,23 +1,23 @@
-.sellerInfoA{
-    width: 100%;
-    margin-top: 10rem;
+.sellerInfoA {
+  width: 100%;
+  margin-top: 10rem;
 
-    font-family: 'SUITE Variable';
-    font-size: 14px;
+  font-family: 'SUITE Variable';
+  font-size: 14px;
 }
-.sellerInfoA > p{
-    text-align: center;
+.sellerInfoA > p {
+  text-align: center;
 }
 
 .sellerInfoTableA {
-    width: 100%;
-    height: 6rem;
+  width: 100%;
+  height: 6rem;
 }
 
 .sellerInfoTableA > tr > th {
-    text-align: left;
-    font-weight: 400;
+  text-align: left;
+  font-weight: 400;
 }
 .sellerInfoTableA > tr > td {
-    width: 8rem;
+  width: 8rem;
 }

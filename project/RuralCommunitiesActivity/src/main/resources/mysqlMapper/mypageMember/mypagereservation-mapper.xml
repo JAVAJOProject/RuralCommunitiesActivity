@@ -30,8 +30,7 @@
 	</resultMap>
 
 <!--	MySQL-->
-	<select id="selectByNo" parameterType="int"
-		resultMap="selectByReservation">
+	<select id="selectByNo" resultMap="selectByReservation">
 		SELECT R.RESERVATION_ID,
 			   R.PAYMENT_ID,
 			   R.A_ID,
@@ -48,11 +47,11 @@
 		FROM RESERVATION R
 				 LEFT JOIN PAYMENT_INFO P ON (R.PAYMENT_ID = P.PAYMENT_ID)
 				 LEFT JOIN ACTIVITY_INFO A ON (R.A_ID = A.A_ID)
-		WHERE U_ID = #{uId}
-LIMIT #{perPagePostNo} OFFSET #{start}
+		WHERE U_ID = #{uId} LIMIT #{perPagePostNo}
+		OFFSET #{start}
 	</select>
 
-	<select id="selectCount" parameterType="int" resultType="int">
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT COUNT(*)
 		FROM RESERVATION
 		WHERE U_ID = #{uId}

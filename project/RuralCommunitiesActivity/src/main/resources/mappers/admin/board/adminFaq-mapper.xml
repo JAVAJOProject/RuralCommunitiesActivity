@@ -4,86 +4,101 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminFaqMapper">
 
-	
 	<select id="getAllFaq" resultType="AFAQ">
-SELECT FAQ_ID, FAQ_TYPE_ID, FAQ_TYPE_NAME,
-FAQ_Q, FAQ_A
-FROM (SELECT 
-    SEQ,
-    FAQ_ID, FAQ_TYPE_ID,FAQ_TYPE_NAME,
-    FAQ_Q, FAQ_A
-    FROM (SELECT 
-        ROWNUM AS SEQ,
-        FAQ_ID, FAQ_TYPE_ID, FAQ_TYPE_NAME,
-        FAQ_Q, FAQ_A
-        FROM (SELECT 
-             F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
-            F.FAQ_Q, F.FAQ_A
-            FROM FAQ F INNER JOIN FAQ_TYPE T
-            ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-            ORDER BY FAQ_ID)
-            )
-			WHERE seq <![CDATA[>=]]> #{startPostNo}
-		)
-		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}		
+        SELECT FAQ_ID,
+               FAQ_TYPE_ID,
+               FAQ_TYPE_NAME,
+               FAQ_Q,
+               FAQ_A
+        FROM (SELECT SEQ,
+                     FAQ_ID,
+                     FAQ_TYPE_ID,
+                     FAQ_TYPE_NAME,
+                     FAQ_Q,
+                     FAQ_A
+              FROM (SELECT ROWNUM AS SEQ,
+                           FAQ_ID,
+                           FAQ_TYPE_ID,
+                           FAQ_TYPE_NAME,
+                           FAQ_Q,
+                           FAQ_A
+                    FROM (SELECT F.FAQ_ID,
+                                 F.FAQ_TYPE_ID,
+                                 T.FAQ_TYPE_NAME,
+                                 F.FAQ_Q,
+                                 F.FAQ_A
+                          FROM FAQ F
+                                   INNER JOIN FAQ_TYPE T
+                                              ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+                          ORDER BY FAQ_ID))
+              WHERE seq <![CDATA[>=]]> #{startPostNo})
+        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 
     <select id="detailFaq" resultType="AFAQ" parameterType="int">
-	SELECT 
-    F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
-    F.FAQ_Q, F.FAQ_A
-    FROM FAQ F INNER JOIN FAQ_TYPE T
-    ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-    WHERE F.FAQ_ID=#{faqId}
+        SELECT F.FAQ_ID,
+               F.FAQ_TYPE_ID,
+               T.FAQ_TYPE_NAME,
+               F.FAQ_Q,
+               F.FAQ_A
+        FROM FAQ F
+                 INNER JOIN FAQ_TYPE T
+                            ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+        WHERE F.FAQ_ID = #{faqId}
     </select>
     
     <select id="selectFaq"  resultType="AFAQ">
-SELECT FAQ_ID, FAQ_TYPE_ID, FAQ_TYPE_NAME,
-FAQ_Q, FAQ_A
-FROM (SELECT 
-    SEQ,
-    FAQ_ID, FAQ_TYPE_ID,FAQ_TYPE_NAME,
-    FAQ_Q, FAQ_A
-    FROM (SELECT 
-        ROWNUM AS SEQ,
-        FAQ_ID, FAQ_TYPE_ID, FAQ_TYPE_NAME,
-        FAQ_Q, FAQ_A
-        FROM (SELECT 
-    		F.FAQ_ID, F.FAQ_TYPE_ID, T.FAQ_TYPE_NAME,
-    		F.FAQ_Q, F.FAQ_A
-    		FROM FAQ F INNER JOIN FAQ_TYPE T
-    		ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
-    		WHERE F.FAQ_TYPE_ID=#{searchDTO.theme}
-    		ORDER BY FAQ_ID)
-                )
-			WHERE seq <![CDATA[>=]]> #{startPostNo}
-		)
-		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+        SELECT FAQ_ID,
+               FAQ_TYPE_ID,
+               FAQ_TYPE_NAME,
+               FAQ_Q,
+               FAQ_A
+        FROM (SELECT SEQ,
+                     FAQ_ID,
+                     FAQ_TYPE_ID,
+                     FAQ_TYPE_NAME,
+                     FAQ_Q,
+                     FAQ_A
+              FROM (SELECT ROWNUM AS SEQ,
+                           FAQ_ID,
+                           FAQ_TYPE_ID,
+                           FAQ_TYPE_NAME,
+                           FAQ_Q,
+                           FAQ_A
+                    FROM (SELECT F.FAQ_ID,
+                                 F.FAQ_TYPE_ID,
+                                 T.FAQ_TYPE_NAME,
+                                 F.FAQ_Q,
+                                 F.FAQ_A
+                          FROM FAQ F
+                                   INNER JOIN FAQ_TYPE T
+                                              ON F.FAQ_TYPE_ID = T.FAQ_TYPE_ID
+                          WHERE F.FAQ_TYPE_ID = #{searchDTO.theme}
+                          ORDER BY FAQ_ID))
+              WHERE seq <![CDATA[>=]]> #{startPostNo})
+        WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>	
 
 	<insert id="registrationFaq" parameterType="AFAQ">
-	INSERT INTO FAQ VALUES
-	(FAQ_SEQ.NEXTVAL,
-	#{faqTypeId},
-	#{faqQ},
-	#{faqA})
+        INSERT INTO FAQ
+        VALUES (FAQ_SEQ.NEXTVAL,
+                #{faqTypeId},
+                #{faqQ},
+                #{faqA})
 	</insert>	
 
- 
     <update id="modifyFaqPost" parameterType="AFAQ">
-    UPDATE FAQ SET
-    FAQ_TYPE_ID=#{faqTypeId},
-    FAQ_Q=#{faqQ},
-    FAQ_A=#{faqA}
-    WHERE FAQ_ID=#{faqId}
+        UPDATE FAQ
+        SET FAQ_TYPE_ID=#{faqTypeId},
+            FAQ_Q=#{faqQ},
+            FAQ_A=#{faqA}
+        WHERE FAQ_ID = #{faqId}
     </update>
-    
 
-    
     <delete id="deleteFaqPost" parameterType="int">
-    DELETE FAQ WHERE FAQ_ID=#{faqId}
+        DELETE
+        FROM FAQ
+        WHERE FAQ_ID = #{faqId}
     </delete>
-    
-    
 
 </mapper>

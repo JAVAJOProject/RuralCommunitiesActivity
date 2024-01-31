@@ -1,18 +1,17 @@
 .unitBoxA {
-    /* border: 1px solid black; */
-    position: absolute;
-    top: 5rem;
-    width: 1.8rem;
-    height: 15.7rem;
-    
-    font-family: 'SUITE Variable';
-    font-weight: 700;
-    font-size: 13px;
-    color: #CDCDCD;
+  /* border: 1px solid black; */
+  position: absolute;
+  top: 5rem;
+  width: 1.8rem;
+  height: 15.7rem;
+
+  font-family: 'SUITE Variable';
+  font-weight: 700;
+  font-size: 13px;
+  color: #cdcdcd;
 }
 
 .graphUnitA {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }

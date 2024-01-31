@@ -6,9 +6,23 @@
 	namespace="com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerMapper">
 
 <!--	MySQL-->
-	<select id="selectByNo" parameterType="int"
+	<select id="selectByNo" parameterType="long"
 		resultType="SellerDTO">
-		SELECT * FROM SELLER WHERE S_ID=#{sId}
+		SELECT s_id,
+			   account_info_id,
+			   mem_type_id,
+			   s_email,
+			   s_com_name,
+			   s_tel,
+			   DATE_FORMAT(s_reg_date, '%Y-%m-%d') AS s_reg_date,
+			   s_addr,
+			   s_reg_num,
+			   s_marketing_consent,
+			   s_approval,
+			   s_rep_name,
+			   s_reg_certificate_img
+		FROM SELLER
+		WHERE S_ID = #{sId}
 	</select>
 
 	<!-- <delete id="delMember" parameterType="int"> DELETE FROM MEMBER WHERE 

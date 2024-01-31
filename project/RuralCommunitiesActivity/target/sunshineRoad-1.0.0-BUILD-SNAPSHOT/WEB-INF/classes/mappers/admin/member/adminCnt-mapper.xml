@@ -5,27 +5,22 @@
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.member.AdminCntMapper">
 
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM ADMIN
+		SELECT COUNT(*)
+		FROM ADMIN
 	</select>
-	
 
 	<select id="selectAdminDATECnt"  resultType="int">
-	SELECT COUNT(*) FROM 
-	(SELECT * 
-	FROM ADMIN 
-	WHERE ADMIN_REG_DATE BETWEEN 
-	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+		SELECT COUNT(*)
+		FROM (SELECT *
+			  FROM ADMIN
+			  WHERE ADMIN_REG_DATE BETWEEN
+						TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+						AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
 	</select>
- 
 
- 	
 	<select id="appAdmin" resultType="int">
-	SELECT COUNT(*) FROM 
-	(SELECT * FROM ADMIN WHERE ADMIN_AUTHORITY_ID IS NULL)
+		SELECT COUNT(*)
+		FROM (SELECT * FROM ADMIN WHERE ADMIN_AUTHORITY_ID IS NULL)
 	</select>
-	
-
 
 </mapper>
-

@@ -1,24 +1,24 @@
 .inquiryMainTableA {
-    font-family: 'SUITE Variable';
-    font-size: 13px;
-    text-align: center;
+  font-family: 'SUITE Variable';
+  font-size: 13px;
+  text-align: center;
 }
 .inquiryCategoryA {
-    width: 75px;
-    height: 30px;
-    background: rgba(47, 130, 213, 0.94);
-    border-radius: 10px;
+  width: 75px;
+  height: 30px;
+  background: rgba(47, 130, 213, 0.94);
+  border-radius: 10px;
 
-    color: #FFFFFF;
+  color: #ffffff;
 }
 .inquiryTitleA {
-    width: 270px;
-    height: 31px;
-    background: rgba(189, 222, 255, 0.25);
-    border-radius: 10px;
-    text-align: left;
+  width: 270px;
+  height: 31px;
+  background: rgba(189, 222, 255, 0.25);
+  border-radius: 10px;
+  text-align: left;
 
-    color: #878787;
+  color: #878787;
 }
 /* .inquiryStatusA{
     width: 48px;

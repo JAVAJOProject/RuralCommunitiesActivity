@@ -11,7 +11,7 @@ export default function RootLayoutAdmin() {
       <AdminTopNav />
       <main className="appAdmin">
         <Outlet />
-      <RightNavBox />
+        <RightNavBox />
       </main>
     </>
   );

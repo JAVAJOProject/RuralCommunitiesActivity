@@ -1,19 +1,18 @@
 .calenderCellA {
-    display: inline-block;
-    width: 3.3rem;
-    height: 2.9rem;
-    border: 3px solid #F7F7F7;
+  display: inline-block;
+  width: 3.3rem;
+  height: 2.9rem;
+  border: 3px solid #f7f7f7;
 
-    margin: 2px;
+  margin: 2px;
 
-    font-family: 'SUITE Variable';
-    font-size: 12px;
-    line-height: 1.3rem;
+  font-family: 'SUITE Variable';
+  font-size: 12px;
+  line-height: 1.3rem;
 }
 
 .cellDataA {
-    font-size: 14px;
-    font-weight: 700;
-    color: #FA9595;
-
+  font-size: 14px;
+  font-weight: 700;
+  color: #fa9595;
 }

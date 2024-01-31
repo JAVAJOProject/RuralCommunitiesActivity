@@ -13,4 +13,6 @@
 	<util:properties id="utilProperty" location="classpath:properties/util.info.properties" />
 <!--	<util:properties id="commInfoProperty" location="classpath:properties/comm.info.properties" />-->
 
+	<util:properties id="securityProperty" location="classpath:properties/security.info.properties" />
+
 </beans>

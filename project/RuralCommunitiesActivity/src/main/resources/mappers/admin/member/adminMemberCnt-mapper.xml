@@ -4,56 +4,84 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.member.AdminMemberCntMapper">
 
-
 	<select id="getTotalCount" resultType="int">
-	SELECT COUNT(*) FROM (
-	SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-	U_MARKETING, U_GENDER, U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN
-	FROM MEMBER)
+		SELECT COUNT(*)
+		FROM (SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN
+			  FROM MEMBER)
 	</select>
 
-
 	<select id="selectMemberDATECnt"  resultType="int">
-	SELECT COUNT(*) FROM (
-	SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-	U_MARKETING, U_GENDER, U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN 
-	FROM MEMBER 
-	WHERE U_REG_DATE BETWEEN 
-	TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff') 
-	AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+		SELECT COUNT(*)
+		FROM (SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN
+			  FROM MEMBER
+			  WHERE U_REG_DATE BETWEEN
+						TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+						AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
 	</select>
 
 	<select id="selectMemberCnt" resultType="int">
-	SELECT COUNT(*) FROM (
-                SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_TEL,U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN 
-				FROM MEMBER 
-				WHERE
-                (U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-				AND (U_ID=#{searchDTO.id})
-         UNION             
-                SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN 
-				FROM MEMBER 
-				WHERE 
-                U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-                AND U_NAME LIKE '%'||#{searchDTO.keyword}||'%')
+		SELECT COUNT(*)
+		FROM (SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN
+			  FROM MEMBER
+			  WHERE (U_REG_DATE BETWEEN
+				  TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+				  AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+				AND (U_ID = #{searchDTO.id})
+			  UNION
+			  SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN
+			  FROM MEMBER
+			  WHERE U_REG_DATE BETWEEN
+				  TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+				  AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+				AND U_NAME LIKE '%' || #{searchDTO.keyword} || '%')
       </select>          
                 	
 	<!--  
@@ -70,15 +98,20 @@
 	</resultMap>-->
 	
 	<select id="wrotePostCnt" parameterType="int" resultType="int">
-	SELECT COUNT(*) FROM (
-	SELECT 
-			M.U_COMMUNITY_POST_ID, M.U_ID, M.POST_TYPE_ID,
-			M.U_COMMUNITY_IMG_ID, M.U_COMMUNITY_CONTENT, 
-			M.U_COMMUNITY_DATE_CREATED, M.COMMUNITY_LIKE_CNT,
-			M.COMMUNITY_VIEW_CNT, M.COMMUNITY_CUM_CNT
-				FROM MEMBER_COMMUNITY M LEFT OUTER JOIN POST_TYPE P 
-				ON M.POST_TYPE_ID = P.POST_TYPE_ID 
-				WHERE U_ID=#{uId})
+		SELECT COUNT(*)
+		FROM (SELECT M.U_COMMUNITY_POST_ID,
+					 M.U_ID,
+					 M.POST_TYPE_ID,
+					 M.U_COMMUNITY_IMG_ID,
+					 M.U_COMMUNITY_CONTENT,
+					 M.U_COMMUNITY_DATE_CREATED,
+					 M.COMMUNITY_LIKE_CNT,
+					 M.COMMUNITY_VIEW_CNT,
+					 M.COMMUNITY_CUM_CNT
+			  FROM MEMBER_COMMUNITY M
+					   LEFT OUTER JOIN POST_TYPE P
+									   ON M.POST_TYPE_ID = P.POST_TYPE_ID
+			  WHERE U_ID = #{uId})
 	</select>
 
 </mapper>

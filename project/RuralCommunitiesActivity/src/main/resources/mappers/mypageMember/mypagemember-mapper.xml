@@ -5,7 +5,7 @@
 <mapper
 	namespace="com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberMapper">
 
-	<select id="selectByNo" parameterType="int"
+	<select id="selectByNo" parameterType="long"
 		resultType="MypageMemberDTO">
 		SELECT * FROM MEMBER WHERE U_ID=#{uId}
 	</select>

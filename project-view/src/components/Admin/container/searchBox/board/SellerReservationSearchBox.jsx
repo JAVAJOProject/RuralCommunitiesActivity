@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useImmer } from 'use-immer';
 import { fetchDataPOSTAndObj } from '../../../../../config/ApiService';
@@ -11,112 +11,113 @@ import SelectDate from '../../../common/select/SelectDate';
 
 const title = '제공자 예약내역조회';
 const category = [
-    { 
-      name: 'date', 
-      value: '기간',
-    },
-    { 
-      name: 'reservation', 
-      value: '예약상태',
-    },
-    { 
-        name: 'id', 
-        value: '아이디',
-      },
-  ];
+  {
+    name: 'date',
+    value: '기간',
+  },
+  {
+    name: 'reservation',
+    value: '예약상태',
+  },
+  {
+    name: 'id',
+    value: '아이디',
+  },
+];
 
+export default function SellerReservationSearchBox({ searchData }) {
+  const [activityInfoAdmin, updateActivityInfoAdmin] = useImmer([]); //표시할 회원정보
+  const [activityRequestPage, setActivityRequestPage] = useState(1); //요청페이지
+  const [activityTotalPageA, setActivityTotalPageA] = useState(1); //총페이지
+  const [activityPostCntA, setActivityPostCntA] = useState(0);
 
-export default function SellerReservationSearchBox({searchData}) {
-
-    const [activityInfoAdmin, updateActivityInfoAdmin ]= useImmer([]);//표시할 회원정보
-    const [activityRequestPage, setActivityRequestPage] = useState(1);//요청페이지
-    const [activityTotalPageA, setActivityTotalPageA] = useState(1);//총페이지
-    const [activityPostCntA, setActivityPostCntA] = useState();
-
-    //input value관리 초깃값
-  const [ totalActivityADTO, setTotalActivityADTO] = useState({
+  //input value관리 초깃값
+  const [totalActivityADTO, setTotalActivityADTO] = useState({
     id: 0,
     memTypeId: 0,
-    startDate: "1900-01-01",
-    endDate: "9999-01-01",
-    dateType: 0,//3
+    startDate: '1900-01-01',
+    endDate: '9999-01-01',
+    dateType: 0, //3
     sido: 0,
     sigungu: 0,
-    keyword: "ㅇㄹ어이ㅏㅇ닌",
+    keyword: 'ㅇㄹ어이ㅏㅇ닌',
     charge: 0,
     theme: 0,
     status: 0,
   });
- const SelectDateType =[
-  {value:	0	, title:	"기간조회"	, name: "dateType" },
-  {value:	1	, title:	"체험시작일"	, name: "dateType" },
-  {value:	2	, title:	"체험종료일"	, name: "dateType" },
-  {value:	3 , title:	"예약마감일"	, name: "dateType" },
- ]
-const InputSelectData = [
-  { key: 'startDate', type: "date" , name: "startDate", value: "" },
-  { key: 'endDate', type: "date" , name: "endDate", value: ""},
-];
-const InputSelectKeyword = [
-  { key: 'keyword', type: "search", name: "keyword", value: "", placeholder:'아이디 입력'},
-];
+  const SelectDateType = [
+    { value: 0, title: '기간조회', name: 'dateType' },
+    { value: 1, title: '체험시작일', name: 'dateType' },
+    { value: 2, title: '체험종료일', name: 'dateType' },
+    { value: 3, title: '예약마감일', name: 'dateType' },
+  ];
+  const InputSelectData = [
+    { key: 'startDate', type: 'date', name: 'startDate', value: '' },
+    { key: 'endDate', type: 'date', name: 'endDate', value: '' },
+  ];
+  const InputSelectKeyword = [
+    {
+      key: 'keyword',
+      type: 'search',
+      name: 'keyword',
+      value: '',
+      placeholder: '아이디 입력',
+    },
+  ];
 
-
-   //검색하기
-   const fetchData = async () => {
+  //검색하기
+  const fetchData = async () => {
     try {
       const requestData = await fetchDataPOSTAndObj(
-        `/admin/board/activity/select/${activityRequestPage}`, totalActivityADTO 
+        `/admin/board/activity/select/${activityRequestPage}`,
+        totalActivityADTO
       );
-  
-      if(requestData !== undefined ) {
+
+      if (requestData !== undefined) {
         updateActivityInfoAdmin((draft) => {
           draft.length = 0;
           requestData.forEach((item) => {
             draft.push({
-              ...item
+              ...item,
             });
           });
         });
 
-        console.log('requestData',requestData);
+        console.log('requestData', requestData);
         //여기에 페이지처리하기
         // const [perPostPageNo, totalPostNo] = await fetchDataPOSTAndObj (
-        //   `/admin/membermanage/selectMemberCount`, totalActivityADTO 
+        //   `/admin/membermanage/selectMemberCount`, totalActivityADTO
         // );
-    
-        // setActivityTotalPageA(Math.ceil(+totalPostNo / +perPostPageNo));
- 
-  
-      console.log('activityInfoAdmin 출력', activityInfoAdmin);
-      // console.log('totalPostNo 출력', totalPostNo);
-      // console.log('perPostPageNo 출력', perPostPageNo);
 
-      //cnt
-      // setActivityPostCntA(totalPostNo);
-      // console.log(activityPostCntA);
+        // setActivityTotalPageA(Math.ceil(+totalPostNo / +perPostPageNo));
+
+        console.log('activityInfoAdmin 출력', activityInfoAdmin);
+        // console.log('totalPostNo 출력', totalPostNo);
+        // console.log('perPostPageNo 출력', perPostPageNo);
+
+        //cnt
+        // setActivityPostCntA(totalPostNo);
+        // console.log(activityPostCntA);
       } else {
         console.error('api요청 실패');
       }
-      }catch(error){
-        console.error(error);
-      }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  
-    useEffect(() => {
-      fetchData();
-    }, [activityRequestPage]);
-    
-  
-//submit
-const onSubmitForTotalActivityInfoA = (event) => {
-  event.preventDefault();
+  useEffect(() => {
+    fetchData();
+  }, [activityRequestPage]);
+
+  //submit
+  const onSubmitForTotalActivityInfoA = (event) => {
+    event.preventDefault();
     //inputValue출력해보기
     Object.keys(totalActivityADTO).map((key) => {
       console.log(`${key}: ${totalActivityADTO[key]}`);
     });
-  //submit 하고 fatchData호출
+    //submit 하고 fatchData호출
     fetchData();
   };
 
@@ -124,39 +125,38 @@ const onSubmitForTotalActivityInfoA = (event) => {
   useEffect(() => {
     searchData(activityInfoAdmin, activityPostCntA);
     console.log('activityInfoAdmin 출력', activityInfoAdmin);
-  },[activityInfoAdmin])
+  }, [activityInfoAdmin]);
 
   //onchange
   const handleOnChange = (event) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     setTotalActivityADTO((prevInputValue) => ({
       ...prevInputValue,
       [name]: value,
     }));
-
-
   };
 
+  useEffect(() => {
+    console.log('onChange dto출력', totalActivityADTO);
+  }, [totalActivityADTO]);
 
-useEffect(() => {
-  console.log('onChange dto출력',totalActivityADTO);
-},[totalActivityADTO])
+  return (
+    <div>
+      <TopSearchBigBox categoryName={title}>
+        <form onSubmit={onSubmitForTotalActivityInfoA}>
+          <InputLabel labelType="search" inputLabelData={category} />
+          <SelectDate selectType="date" selectChange={handleOnChange} />
+          <Input inputData={InputSelectData} change={handleOnChange} />
+          <br />
+          <SelectDate selectType="reservation" selectChange={handleOnChange} />
+          <br />
+          <Input inputData={InputSelectKeyword} change={handleOnChange} />
+          <br />
 
-    return (
-        <div>
-        <TopSearchBigBox categoryName={title} >
-            <form onSubmit={onSubmitForTotalActivityInfoA}> 
-                <InputLabel labelType='search' inputLabelData={category} />
-                <SelectDate selectType='date' selectChange={handleOnChange} />
-                <Input inputData={InputSelectData} change={handleOnChange}/><br />
-                <SelectDate selectType='reservation' selectChange={handleOnChange}/><br />
-                <Input inputData={InputSelectKeyword} change={handleOnChange}/><br />
-
-                <Buttonbtn type='reset' text='초기화' />
-                <Buttonbtn type='submit' text='검 색'  />
-            </form>    
-        </TopSearchBigBox>            
-        </div>
-    );
+          <Buttonbtn type="reset" text="초기화" />
+          <Buttonbtn type="submit" text="검 색" />
+        </form>
+      </TopSearchBigBox>
+    </div>
+  );
 }
-

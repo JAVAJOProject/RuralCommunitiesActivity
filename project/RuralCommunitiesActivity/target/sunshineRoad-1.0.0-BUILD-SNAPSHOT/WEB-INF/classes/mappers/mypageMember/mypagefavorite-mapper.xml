@@ -41,7 +41,7 @@
 		<result property="aThumbnailImg" column="a_thumbnail_img" />
 	</resultMap>
 
-	<select id="selectCountEvent" parameterType="int"
+	<select id="selectCountEvent" parameterType="long"
 			resultType="int">
 		SELECT COUNT(*)
 		FROM FAVORITE
@@ -82,8 +82,7 @@
 		#{start}
 		AND #{end}
 		-->
-	<select id="selectByFavoriteListEvent" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByFavoriteListEvent" resultMap="favoriteByMember">
 		SELECT
 			F_ID,
 			U_ID,
@@ -133,8 +132,7 @@
 			 )
 		WHERE ROWNUM <![CDATA[<=]]> #{end}
 	</select>
-	<select id="selectByFavoriteListActivity" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByFavoriteListActivity" resultMap="favoriteByMember">
 		SELECT F_ID,
 			   U_ID,
 			   BOARD_ID,
@@ -185,8 +183,7 @@
 			  #{end}
 	</select>
 
-	<select id="selectByMemberEvent" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByMemberEvent" resultMap="favoriteByMember">
 		SELECT
 			F_ID,
 			U_ID,
@@ -236,7 +233,7 @@
 			 )
 		WHERE ROWNUM <![CDATA[<=]]> #{end}
 	</select>
-	<select id="selectByActivity" parameterType="int"
+	<select id="selectByActivity" parameterType="long"
 			resultType="int">
 		SELECT COUNT(*)
 		FROM FAVORITE

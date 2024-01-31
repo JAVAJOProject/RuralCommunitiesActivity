@@ -4,129 +4,125 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminRecTownMapper">
 
-
 	<select id="getAllRecTown" resultType="ARTown">
-	SELECT 
-  	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-  	POST_TYPE_ID, REC_T_TITLE,
-  	REC_T_CONTENT, REC_T_DATE_CREATED,
-  	REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-  	REC_T_SITE, REC_T_THUMBNAIL_IMG
-  	FROM (SELECT
-   		SEQ,
-    	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-    	POST_TYPE_ID, REC_T_TITLE,
-    	REC_T_CONTENT, REC_T_DATE_CREATED,
-    	REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-    	REC_T_SITE, REC_T_THUMBNAIL_IMG
-    	FROM (SELECT 
-        	ROWNUM AS SEQ,
-        	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-        	POST_TYPE_ID, REC_T_TITLE,
-        	REC_T_CONTENT, REC_T_DATE_CREATED,
-        	REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-        	REC_T_SITE, REC_T_THUMBNAIL_IMG
-        	FROM (SELECT 
-            	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-            	POST_TYPE_ID, REC_T_TITLE,
-            	REC_T_CONTENT, REC_T_DATE_CREATED,
-            	REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-            	REC_T_SITE, REC_T_THUMBNAIL_IMG
-            	FROM REC_TOWN_INFO)
-        	)
-			WHERE seq <![CDATA[>=]]> #{startPostNo}
-		)
-		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
+		SELECT REC_T_ID,
+			   REC_T_IMG_ID,
+			   TOWN_ID,
+			   POST_TYPE_ID,
+			   REC_T_TITLE,
+			   REC_T_CONTENT,
+			   REC_T_DATE_CREATED,
+			   REC_T_VIEW_CNT,
+			   REC_T_LIKE_CNT,
+			   REC_T_SITE,
+			   REC_T_THUMBNAIL_IMG
+		FROM REC_TOWN_INFO
+				 LIMIT #{perPagePostCount}
+		OFFSET #{startPostNo}
 	</select>
 	
 	<select id="detailRecTown" resultType="ARTown" parameterType="int">
-				SELECT 
-            	T.REC_T_ID, T.REC_T_IMG_ID, T.TOWN_ID,
-            	T.POST_TYPE_ID, T.REC_T_TITLE,
-            	T.REC_T_CONTENT, T.REC_T_DATE_CREATED,
-            	T.REC_T_VIEW_CNT, T.REC_T_FAVORITE_CNT,
-            	T.REC_T_SITE, T.REC_T_THUMBNAIL_IMG
-            	FROM REC_TOWN_INFO T INNER JOIN REC_TOWN_IMAGES I
-            	ON T.REC_T_IMG_ID = I.REC_TOWN_IMG_ID
-            	WHERE REC_T_ID=#{recTId}
+		SELECT T.REC_T_ID,
+			   T.REC_T_IMG_ID,
+			   T.TOWN_ID,
+			   T.POST_TYPE_ID,
+			   T.REC_T_TITLE,
+			   T.REC_T_CONTENT,
+			   T.REC_T_DATE_CREATED,
+			   T.REC_T_VIEW_CNT,
+			   T.REC_T_LIKE_CNT,
+			   T.REC_T_SITE,
+			   T.REC_T_THUMBNAIL_IMG
+		FROM REC_TOWN_INFO T
+				 INNER JOIN REC_TOWN_IMAGES I
+							ON T.REC_T_IMG_ID = I.REC_TOWN_IMG_ID
+		WHERE REC_T_ID = #{recTId}
 	</select>
 	
 	<select id="selectRecTown" resultType="ARTown">
-				SELECT 
-				REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-        		POST_TYPE_ID, REC_T_TITLE,
-        		REC_T_DATE_CREATED,
-        		REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-        		REC_T_SITE, REC_T_THUMBNAIL_IMG
-            	FROM(SELECT 
-				REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-        		POST_TYPE_ID, REC_T_TITLE,
-        		REC_T_DATE_CREATED,
-        		REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-        		REC_T_SITE, REC_T_THUMBNAIL_IMG
-            	FROM REC_TOWN_INFO
-            	WHERE REC_T_TITLE LIKE '%'||#{searchDTO.keyword}||'%'
-            	UNION
-            	SELECT 
-            	REC_T_ID, REC_T_IMG_ID, TOWN_ID,
-        		POST_TYPE_ID, REC_T_TITLE,
-        		REC_T_DATE_CREATED,
-        		REC_T_VIEW_CNT, REC_T_FAVORITE_CNT,
-        		REC_T_SITE, REC_T_THUMBNAIL_IMG
-            	FROM REC_TOWN_INFO
-            	WHERE TOWN_ID=#{searchDTO.postType}
-         	)
-		WHERE ROWNUM BETWEEN #{startPostNo} AND #{endPostNo}
+		SELECT REC_T_ID,
+			   REC_T_IMG_ID,
+			   TOWN_ID,
+			   POST_TYPE_ID,
+			   REC_T_TITLE,
+			   REC_T_DATE_CREATED,
+			   REC_T_VIEW_CNT,
+			   REC_T_LIKE_CNT,
+			   REC_T_SITE,
+			   REC_T_THUMBNAIL_IMG
+		FROM REC_TOWN_INFO
+		WHERE REC_T_TITLE LIKE CONCAT('%', #{searchDTO.keyword}, '%')
+		UNION
+		SELECT REC_T_ID,
+			   REC_T_IMG_ID,
+			   TOWN_ID,
+			   POST_TYPE_ID,
+			   REC_T_TITLE,
+			   REC_T_DATE_CREATED,
+			   REC_T_VIEW_CNT,
+			   REC_T_LIKE_CNT,
+			   REC_T_SITE,
+			   REC_T_THUMBNAIL_IMG
+		FROM REC_TOWN_INFO
+		WHERE TOWN_ID = #{searchDTO.postType}
+			LIMIT #{perPagePostCount}
+		OFFSET #{startPostNo}
 	</select>
 	
 	<insert id="registrationRecTown" parameterType="ARTown">
-	INSERT INTO REC_TOWN_INFO VALUES
-	(REC_TOWN_INFO_SEQ.NEXTVAL,
-	#{recTImgId},
-	#{townId},
-	#{postTypeId},
-	#{recTTitle},
-	#{recTContent},
-	TO_DATE(#{recTDateCreated},'YYYY-MM-DD HH24:MI:SS'),
-	#{recTViewCnt},
-	#{recTFavoriteCnt},
-	#{recTSite},
-	NULL)
+		INSERT INTO REC_TOWN_INFO
+		VALUES (NULL,
+				#{recTImgId},
+				#{townId},
+				#{postTypeId},
+				#{recTTitle},
+				#{recTContent},
+				STR_TO_DATE(#{recTDateCreated}, '%Y-%m-%d %H:%i:%s'),
+				#{recTViewCnt},
+				#{recTFavoriteCnt},
+				#{recTSite},
+				NULL)
 	</insert>
 
 	<select id="PostMaxID" resultType="int" >
-	SELECT MAX(REC_T_ID) FROM REC_TOWN_INFO
+		SELECT MAX(REC_T_ID)
+		FROM REC_TOWN_INFO
     </select>
 
 	<select id="ImgMaxID" resultType="int" >
-    SELECT MAX(REC_TOWN_IMG_ID) FROM REC_TOWN_IMAGES
+		SELECT MAX(REC_TOWN_IMG_ID)
+		FROM REC_TOWN_IMAGES
     </select>
     
     <insert id="recTownImgValues" parameterType="ARecTownImg">
-    INSERT INTO REC_TOWN_IMAGES VALUES
-    (REC_TOWN_IMAGES_SEQ.NEXTVAL, #{recTownImg1}, #{recTownImg2}, #{recTownImg3}, #{recTownImg4}, #{recTownImg5})
+		INSERT INTO REC_TOWN_IMAGES
+		VALUES (NULL, #{recTownImg1}, #{recTownImg2}, #{recTownImg3}, #{recTownImg4}, #{recTownImg5})
     </insert>
     
     <update id="updateImgID" parameterType="ARTown">
-    UPDATE REC_TOWN_INFO SET REC_T_IMG_ID = #{recTImgId} WHERE REC_T_ID = #{recTId}
+		UPDATE REC_TOWN_INFO
+		SET REC_T_IMG_ID = #{recTImgId}
+		WHERE REC_T_ID = #{recTId}
     </update>   
-    
-    
-    
+
     <select id="selectImgId" resultType="int" parameterType="int">
-    SELECT B.REC_TOWN_IMG_ID FROM REC_TOWN_INFO A , REC_TOWN_IMAGES B
-    WHERE A.REC_T_IMG_ID = B.REC_TOWN_IMG_ID
-    AND A.REC_T_ID =#{recTId}
+		SELECT B.REC_TOWN_IMG_ID
+		FROM REC_TOWN_INFO A,
+			 REC_TOWN_IMAGES B
+		WHERE A.REC_T_IMG_ID = B.REC_TOWN_IMG_ID
+		  AND A.REC_T_ID = #{recTId}
     </select>
     
     <delete id="deleteRecTownImg" parameterType="int">
-    DELETE REC_TOWN_IMAGES WHERE REC_TOWN_IMG_ID =#{recTImgId}
+		DELETE
+		FROM REC_TOWN_IMAGES
+		WHERE REC_TOWN_IMG_ID = #{recTImgId}
     </delete>
     
     <delete id="deleteRecTownPost" parameterType="int">
-    DELETE REC_TOWN_INFO WHERE REC_T_ID=#{recTId}
+		DELETE
+		FROM REC_TOWN_INFO
+		WHERE REC_T_ID = #{recTId}
     </delete>
 
-    
-    	
 </mapper>

@@ -9,12 +9,21 @@ export default function NavTab({ titleInfo, className }) {
 
   return (
     <div className="navTab">
-      <NavTitle key={title} className={className} imgSrc={titleImg} navTitle={title} />
+      <NavTitle
+        key={title}
+        className={className}
+        imgSrc={titleImg}
+        navTitle={title}
+      />
       {contents.map((content, index) =>
         content.type ? (
-          <NavTitleInner key={index}  navContent={content} />
+          <NavTitleInner key={index} navContent={content} />
         ) : (
-          <NavContent key={index} className="adminNavContentInner" navContent={content} />
+          <NavContent
+            key={index}
+            className="adminNavContentInner"
+            navContent={content}
+          />
         )
       )}
     </div>

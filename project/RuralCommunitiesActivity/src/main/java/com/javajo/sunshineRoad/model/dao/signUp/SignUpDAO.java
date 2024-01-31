@@ -1,6 +1,6 @@
 package com.javajo.sunshineRoad.model.dao.signUp;
 
-import com.javajo.sunshineRoad.mappers.security.SignUpMapper;
+import com.javajo.sunshineRoad.mappers.signUp.SignUpMapper;
 import com.javajo.sunshineRoad.model.dto.signUp.BankListDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SellerAccountInfoDTO;
 import com.javajo.sunshineRoad.model.dto.signUp.SignUpMemberDTO;
@@ -21,9 +21,9 @@ public class SignUpDAO {
         return mapper.isMemberData(email);
     }
 
-    public void insertMember(SignUpMemberDTO signUpMemberDTO) {
+    public int insertMember(SignUpMemberDTO signUpMemberDTO) {
     	SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
-    	mapper.insertMemberData(signUpMemberDTO);
+    	return mapper.insertMemberData(signUpMemberDTO);
     }
 
     public int isSeller(String email) {
@@ -31,9 +31,9 @@ public class SignUpDAO {
         return mapper.isSellerData(email);
     }
 
-    public void insertAccountInfo(SellerAccountInfoDTO sellerAccountInfo) {
+    public int insertAccountInfo(SellerAccountInfoDTO sellerAccountInfo) {
         SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
-        mapper.insertAccountInfoData(sellerAccountInfo);
+        return mapper.insertAccountInfoData(sellerAccountInfo);
     }
 
     public int getAccountInfoId() {
@@ -41,9 +41,9 @@ public class SignUpDAO {
         return mapper.getAccountInfoId();
     }
 
-    public void insertSeller(SignUpSellerDTO signUpSellerDTO) {
+    public int insertSeller(SignUpSellerDTO signUpSellerDTO) {
     	SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
-    	mapper.insertSellerData(signUpSellerDTO);
+    	return mapper.insertSellerData(signUpSellerDTO);
     }
 
 

@@ -1,16 +1,16 @@
 .formBackgroundBoxA {
-    margin-left: 8rem;
-    padding: 80px;
-    width: 48rem;
-    height: 903px;
-    background: #FBFBFB;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
+  margin-left: 8rem;
+  padding: 80px;
+  width: 48rem;
+  height: 903px;
+  background: #fbfbfb;
+  box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
 }
 
 .clipStyleA {
-    width: 7rem;
-    position: absolute;
-    top: 3.4rem;
-    left: 29rem; 
+  width: 7rem;
+  position: absolute;
+  top: 3.4rem;
+  left: 29rem;
 }

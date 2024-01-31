@@ -14,8 +14,8 @@
         <result property="recATitle" column="REC_A_TITLE" />
         <result property="recAContent" column="REC_A_CONTENT"  jdbcType="CLOB" javaType="java.lang.String" />
         <result property="recADateCreated" column="REC_A_DATE_CREATED" />
-        <result property="recAViewCount" column="REC_A_VIEW_COUNT" />
-        <result property="recAFavoriteCnt" column="REC_A_FAVORITE_CNT" />
+        <result property="recAViewCount" column="REC_A_VIEW_CNT" />
+        <result property="recAFavoriteCnt" column="REC_A_LIKE_CNT" />
         <result property="recAThumbnailImg" column="REC_A_THUMBNAIL_IMG" />
     </resultMap>
 

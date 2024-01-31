@@ -1,36 +1,36 @@
 .searchLabelBoxA {
-    /* border: 1px solid black; */
-    display: inline-block;
-    float: left;
+  /* border: 1px solid black; */
+  display: inline-block;
+  float: left;
 }
 
 .searchLabelA > li {
-    list-style: none;
-    font-family: 'SUITE Variable';
-    font-size: 16px;
-    text-align: center;
-    line-height: 1.4rem;
-    margin-bottom: 0.5rem;
-    margin-right: 1rem;
+  list-style: none;
+  font-family: 'SUITE Variable';
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.4rem;
+  margin-bottom: 0.5rem;
+  margin-right: 1rem;
 }
 
 .inputLabelBoxA {
-    /* border: 1px solid black; */
+  /* border: 1px solid black; */
 }
 .inputLabelA > li {
-    list-style: none;
-    width: 10rem;
-    height: 2.1rem;
-    padding: 0.4rem;
-    background: #F3F6FF;
-    border: 1px solid #BDBDBD;
-    border-radius: 5px;
-    margin-bottom: 0.97rem;
+  list-style: none;
+  width: 10rem;
+  height: 2.1rem;
+  padding: 0.4rem;
+  background: #f3f6ff;
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+  margin-bottom: 0.97rem;
 
-    font-family: 'SUITE Variable';
-    /* font-style: normal; */
-    font-weight: 300;
-    font-size: 16px;   
-    color: #000000;
-    text-align: center;
+  font-family: 'SUITE Variable';
+  /* font-style: normal; */
+  font-weight: 300;
+  font-size: 16px;
+  color: #000000;
+  text-align: center;
 }

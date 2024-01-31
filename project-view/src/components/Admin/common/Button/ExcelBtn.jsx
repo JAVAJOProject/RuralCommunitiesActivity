@@ -13,7 +13,7 @@ export default function ExcelBtn({ imgSrc, downData, text }) {
   //다운로드 데이터 - 체험자
   const excelDownload = (downData) => {
     const ws = XLSX.utils.aoa_to_sheet([[]]);
-    downData.map(data => {
+    downData.map((data) => {
       XLSX.utils.sheet_add_aoa(
         ws,
         [
@@ -37,7 +37,6 @@ export default function ExcelBtn({ imgSrc, downData, text }) {
     FileSaver.saveAs(excelFile, excelFileName + excelFileExtension);
   };
 
-  
   return (
     <div
       className="excelBtn"
@@ -45,7 +44,7 @@ export default function ExcelBtn({ imgSrc, downData, text }) {
         excelDownload(downData);
       }}
     >
-      <img src={ExcelImg} alt="" style={{width: '3rem'}} />
+      <img src={ExcelImg} alt="" style={{ width: '3rem' }} />
     </div>
   );
 }

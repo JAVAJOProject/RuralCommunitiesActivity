@@ -59,20 +59,6 @@ public class SignUpController {
         }
     }
 
-    @PostMapping("/register/seller/account/{sEmail}")
-    public ResponseEntity<ResponseDTO> registerSellerAccount(@RequestBody SellerAccountInfoDTO sellerAccountInfo, @PathVariable String sEmail) {
-        boolean isSeller = checkIsSellerService.isSeller(sEmail);
-
-        if (isSeller) {
-            ResponseDTO response = ResponseDTO.builder().errorMsg("already exists").build();
-            return ResponseEntity.badRequest().body(response);
-        }
-
-        int registeredId = registerSellerAccountInfoService.registerSellerAccountInfo(sellerAccountInfo);
-        ResponseDTO response = ResponseDTO.builder().resultMsg("Seller registered successfully").data(registeredId).build();
-        return ResponseEntity.ok(response);
-    }
-
     @PostMapping("/register/seller/info")
     public ResponseEntity<String> registerSeller(@RequestBody SignUpSellerDTO signUpSellerDTO) {
         boolean isSeller = checkIsSellerService.isSeller(signUpSellerDTO.getSEmail());
@@ -83,6 +69,20 @@ public class SignUpController {
 
         registerSellerService.registerSeller(signUpSellerDTO);
         return ResponseEntity.ok("Seller registered successfully");
+    }
+
+    @PostMapping("/register/seller/account/{sEmail}")
+    public ResponseEntity<ResponseDTO> registerSellerAccount(@RequestBody SellerAccountInfoDTO sellerAccountInfo, @PathVariable String sEmail) {
+        boolean isSeller = checkIsSellerService.isSeller(sEmail);
+
+        if (!isSeller) {
+            ResponseDTO response = ResponseDTO.builder().errorMsg("Seller should be registered first").build();
+            return ResponseEntity.badRequest().body(response);
+        }
+
+        int registeredId = registerSellerAccountInfoService.registerSellerAccountInfo(sellerAccountInfo);
+        ResponseDTO response = ResponseDTO.builder().resultMsg("Account info is registered successfully").data(registeredId).build();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/bank-list")

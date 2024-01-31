@@ -1,33 +1,31 @@
 .dropdownBox {
-    width: 10rem;
-    border-radius: 0.3125rem;
-    background: #FFF;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.25);
-    padding: 12px;
-
+  width: 10rem;
+  border-radius: 0.3125rem;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.25);
+  padding: 12px;
 }
 
-.dropdownList > li{
-    list-style: none;
-    font-family: 'SUITE Variable';
-    line-height: 35px;
-    color: #363636;
-    border-radius: 5px;
-    font-size: 1.1rem;
+.dropdownList > li {
+  list-style: none;
+  font-family: 'SUITE Variable';
+  line-height: 35px;
+  color: #363636;
+  border-radius: 5px;
+  font-size: 1.1rem;
 
-    &:hover {
-        background: #95CAFF;
-    }
+  &:hover {
+    background: #95caff;
+  }
 }
 
 .dropLink {
-    text-decoration: none;
-    color: #3F3F3F; 
+  text-decoration: none;
+  color: #3f3f3f;
 
-    &:hover {
-        text-decoration: underline;
-        color: #FFF;
-
-    }
+  &:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
 }

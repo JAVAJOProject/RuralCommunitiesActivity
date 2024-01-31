@@ -4,70 +4,91 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.javajo.sunshineRoad.mappers.admin.board.AdminStatisticsMapper">
 
-	
 	<select id="visitorsStatisticsTotal" resultType="int">
-	select count(b_id) from behavior_info
+		select count(b_id)
+		from behavior_info
 	</select>
 
-	<select id="visitorsStatisticsMonth" resultType="int">
-	SELECT TO_CHAR(B_VISITED_DATE, 'MM') AS MONTH,
+	<resultMap type="HashMap" id="visitorsMonthMap">
+	<id column="MONTH" property="MONTH" />
+	<id column="COUNT" property="COUNT" />
+	</resultMap>
+	
+	<select id="visitorsStatisticsMonth" resultType="HashMap">
+		SELECT TO_CHAR(B_VISITED_DATE, 'MM') AS MONTHS,
 	COUNT(B_ID)
-	FROM behavior_info
-	WHERE #{year} = TO_CHAR(B_VISITED_DATE, 'YY')
-	GROUP BY TO_CHAR(B_VISITED_DATE, 'MM')
-	ORDER BY TO_CHAR(B_VISITED_DATE, 'MM')
+		FROM behavior_info
+		WHERE #{year} = TO_CHAR(B_VISITED_DATE, 'YY')
+		GROUP BY TO_CHAR(B_VISITED_DATE, 'MM')
+		ORDER BY TO_CHAR(B_VISITED_DATE, 'MM')
 	</select>
 
-	<select id="visitorsStatisticsDays" resultType="int">
-	SELECT TO_CHAR(B_VISITED_DATE, 'DD') AS DAYS,
-	COUNT(B_ID)
-	FROM behavior_info
-	WHERE #{month} = TO_CHAR(B_VISITED_DATE, 'MM')
-	AND #{year} = TO_CHAR(B_VISITED_DATE, YY')
-	GROUP BY TO_CHAR(B_VISITED_DATE, 'DD')
-	ORDER BY TO_CHAR(B_VISITED_DATE, 'DD')
+	<select id="visitorsStatisticsDays" resultType="HashMap">
+		SELECT TO_CHAR(B_VISITED_DATE, 'DD') AS DAYS,
+			   COUNT(B_ID)
+		FROM behavior_info
+		WHERE #{month} = TO_CHAR(B_VISITED_DATE, 'MM')
+		  AND #{year} = TO_CHAR(B_VISITED_DATE, 'YY')
+		GROUP BY TO_CHAR(B_VISITED_DATE, 'DD')
+		ORDER BY TO_CHAR(B_VISITED_DATE, 'DD')
 	</select>
 	
-	<select id="visitorsStatisticsTimes" resultType="int">
-	SELECT TO_CHAR(B_VISITED_DATE, 'HH24') AS HOUR, COUNT(B_VISITED_DATE) AS COUNT
-	FROM behavior_info
-	GROUP BY TO_CHAR(B_VISITED_DATE, 'HH24')
-	ORDER BY TO_CHAR(B_VISITED_DATE, 'HH24')
+	<select id="visitorsStatisticsTimes" resultType="HashMap">
+		SELECT TO_CHAR(B_VISITED_DATE, 'HH24') AS HOURS, COUNT(B_VISITED_DATE)
+		FROM behavior_info
+		GROUP BY TO_CHAR(B_VISITED_DATE, 'HH24')
+		ORDER BY TO_CHAR(B_VISITED_DATE, 'HH24')
 	</select>	
 	
 	
-	<select id="reservationTheme" parameterType="int" resultType="int">
-SELECT  T.A_THEME_NAME AS THEME , COUNT(R.RESERVATION_STATUS) AS COUNT
-FROM ACTIVITY_INFO A INNER JOIN ACTIVITY_THEME T
-ON (A.A_THEME_ID = T.A_THEME_ID)
-INNER JOIN reservation R 
-ON (A.A_ID = R.A_ID)
-WHERE R.RESERVATION_STATUS = '예약완료'
-AND #{month} = TO_CHAR(R.RESERVATION_DATE, 'MM')
-GROUP BY A_THEME_NAME
-ORDER BY A_THEME_NAME
+	<select id="reservationTheme"  resultType="HashMap">
+		SELECT T.A_THEME_NAME AS THEME, COUNT(R.RESERVATION_STATUS)
+		FROM ACTIVITY_INFO A
+			INNER JOIN ACTIVITY_THEME T
+				ON (A.A_THEME_ID = T.A_THEME_ID)
+			INNER JOIN reservation R
+				ON (A.A_ID = R.A_ID)
+		WHERE R.RESERVATION_STATUS = '예약완료'
+		  AND TO_CHAR(R.RESERVATION_DATE, 'MM') = #{month}
+		  AND TO_CHAR(R.RESERVATION_DATE, 'YYYY') = #{year}
+		GROUP BY A_THEME_NAME
+		ORDER BY A_THEME_NAME
 	</select>		
 	
+	<select id="reservationDays" resultType="HashMap">
+		WITH ALLDATE AS (SELECT TO_CHAR(TO_DATE(#{month} || '-01-' || #{year}, 'MM-DD-YYYY') + LEVEL - 1, 'DD') AS DAYS
+						 FROM dual
+		CONNECT BY LEVEL <![CDATA[<=]]> LAST_DAY(#{year} || '-' || #{month} || '-01') - TO_DATE(#{month} || '-01-' || #{year}
+				 , 'MM-DD-YYYY') + 1)
+		SELECT d.DAY,
+			   NVL(COUNT(r.RESERVATION_STATUS), 0)
+		FROM ALLDATE d
+				 LEFT JOIN reservation r
+						   ON d.DAY = TO_CHAR(r.RESERVATION_DATE, 'DD') AND TO_CHAR(r.RESERVATION_DATE, 'MM') = #{month}
+		GROUP BY d.DAY
+		ORDER BY d.DAY
+	</select>	
+	
 	<select id="reservationMonth" resultType="AStatistics">
-SELECT  TO_CHAR(R.RESERVATION_DATE, 'MM') as month,
-count(R.RESERVATION_STATUS) as coount
-FROM ACTIVITY_INFO A INNER JOIN ACTIVITY_THEME T
-ON (A.A_THEME_ID = T.A_THEME_ID)
-INNER JOIN reservation R 
-ON (A.A_ID = R.A_ID)
-WHERE R.RESERVATION_STATUS = '예약완료'
-GROUP BY TO_CHAR(R.RESERVATION_DATE, 'MM')
-ORDER BY TO_CHAR(R.RESERVATION_DATE, 'MM')
+		SELECT TO_CHAR(RESERVATION_DATE, 'MM') AS MONTHS,
+			   count(RESERVATION_STATUS)
+		FROM reservation
+			WHERE RESERVATION_STATUS = '예약완료'
+		GROUP BY TO_CHAR(RESERVATION_DATE, 'MM')
+		ORDER BY TO_CHAR(RESERVATION_DATE, 'MM')
 	</select>	
 	
 	<select id="reservationSeller" resultType="AStatistics">
-SELECT  A.S_ID AS SELLER, COUNT(R.RESERVATION_STATUS) AS COUNT
-FROM ACTIVITY_INFO A INNER JOIN ACTIVITY_THEME T
-ON (A.A_THEME_ID = T.A_THEME_ID)
-INNER JOIN reservation R 
-ON (A.A_ID = R.A_ID)
-WHERE R.RESERVATION_STATUS = '예약완료'
-GROUP BY A.S_ID
-ORDER BY A.S_ID;
+		SELECT A.S_ID AS SELLER,
+			   COUNT(R.RESERVATION_STATUS)
+		FROM ACTIVITY_INFO A
+			INNER JOIN ACTIVITY_THEME T
+				ON (A.A_THEME_ID = T.A_THEME_ID)
+			INNER JOIN reservation R
+				ON (A.A_ID = R.A_ID)
+			WHERE R.RESERVATION_STATUS = '예약완료'
+		GROUP BY A.S_ID
+		ORDER BY A.S_ID
 	</select>
+
 </mapper>

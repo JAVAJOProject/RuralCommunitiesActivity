@@ -11,7 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserMemberDTO {
+public class UserMemberDTO implements UserDTO {
     @JsonProperty
     private Long uId;
     private int memTypeId;
@@ -42,9 +42,13 @@ public class UserMemberDTO {
 
     private Role role;
     private SocialType socialType;
-    private String socialId;
+    private String socialEmail;
     private String refreshToken;
 
+    public void setMemTypeId(int memTypeId) {
+        this.memTypeId = memTypeId;
+        this.role = Role.MEMBER;
+    }
     public void authorizeUser() {
         this.role = Role.MEMBER;
     }

@@ -5,7 +5,7 @@ import TotalActivityCalendar from '../../../components/Service/totalActivity/Cal
 import TotalActivityCalendarContents from '../../../components/Service/totalActivity/Calendar/TotalActivityCalendarContents';
 import PageNoBox from '../../../components/Service/common/PageNo/PageNoBox';
 
-import testImg from '../../../view_img/test.png';
+import testImg from '../../../view_img/test.jpg';
 
 const testDateContents = [
   { day: 1, count: 5 },

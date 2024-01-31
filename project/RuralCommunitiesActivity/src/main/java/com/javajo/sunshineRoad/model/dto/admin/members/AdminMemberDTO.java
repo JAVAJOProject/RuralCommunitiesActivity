@@ -46,7 +46,9 @@ public class AdminMemberDTO {
 	private String uNaverLogin;
 	@JsonProperty("u_kakao_login")
 	private String uKakaoLogin;
-	
+
+	private String socialType;
+	private String refreshToken;
 
 	
 	

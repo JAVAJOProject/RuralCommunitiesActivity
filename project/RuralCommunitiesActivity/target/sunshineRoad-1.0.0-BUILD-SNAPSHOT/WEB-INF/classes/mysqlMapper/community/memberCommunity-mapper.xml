@@ -36,7 +36,7 @@
                 INNER JOIN
             member m ON (post.u_id = m.u_id)
         WHERE
-            u_community_post_id > #{postId}
+            u_community_post_id <![CDATA[>]]> #{postId}
             LIMIT #{perPagePostCount}
     </select>
     <select id="getTotalMemberCommunityPostCount" resultType="int">

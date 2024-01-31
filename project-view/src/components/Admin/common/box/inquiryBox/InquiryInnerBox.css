@@ -1,24 +1,24 @@
 .InquiryInnerBoxA {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    background: #FFFFFF;
-    border-radius: 16px;
-    padding: 1rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
 }
 
 .inquiryNameA {
-    display: inline-block;
-    background: #95CAFF;
-    border-radius: 10px;
+  display: inline-block;
+  background: #95caff;
+  border-radius: 10px;
 
-    padding: 5px;
-    padding-left: 2rem;
-    padding-right: 2rem;
+  padding: 5px;
+  padding-left: 2rem;
+  padding-right: 2rem;
 
-    font-family: 'SUITE Variable';
-    font-weight: 700;
-    font-size: 16px;
+  font-family: 'SUITE Variable';
+  font-weight: 700;
+  font-size: 16px;
 
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }

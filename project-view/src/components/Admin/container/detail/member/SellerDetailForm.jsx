@@ -1,10 +1,5 @@
 import React from 'react';
 
 export default function SellerDetailForm() {
-    return (
-        <div>
-            SellerDetailForm
-        </div>
-    );
+  return <div>SellerDetailForm</div>;
 }
-

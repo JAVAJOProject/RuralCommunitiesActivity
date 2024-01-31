@@ -6,9 +6,13 @@ export default function InsertBtn({ link }) {
   const navigate = useNavigate();
 
   return (
-    <button className="insertBtn"
+    <button
+      className="insertBtn"
       onClick={() => {
-        navigate(link)
-      }}>등록하기</button>
+        navigate(link);
+      }}
+    >
+      등록하기
+    </button>
   );
 }

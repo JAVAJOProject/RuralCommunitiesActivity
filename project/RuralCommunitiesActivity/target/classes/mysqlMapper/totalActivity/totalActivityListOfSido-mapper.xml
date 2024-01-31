@@ -28,7 +28,7 @@
    </select>
    
    <select id="getRequestPageTotalActivityByRegionOfSidoListData"
-      resultType="ActSummaryListOfSido" parameterType="int">
+      resultType="ActSummaryListOfSido">
       SELECT activity_info.a_id,
              activity_info.a_img_id,
              activity_info.a_name,

@@ -19,204 +19,327 @@
 		<result property="communityCumCnt" column="COMMUNITY_CUM_CNT" />
 		<result property="communityViewCnt" column="COMMUNITY_VIEW_CNT" />
 	</resultMap>
-	
 
 	<resultMap type="AMember" id="AMemberMap">
 		<result column="U_NICK" property="u_nick"/>
 	</resultMap>
 	
 	<select id="getAllMembers" resultType="AMember">
-	SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-	U_MARKETING, U_GENDER, U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN
-	FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-		SEQ,
-		U_EMAIL, U_NICK, U_TEL,U_REG_DATE,
-		U_MARKETING, U_GENDER, U_BIRTH,
-		U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-		U_KAKAO_LOGIN
-		FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-			ROWNUM AS SEQ,
-			U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-			U_MARKETING, U_GENDER, U_BIRTH,
-			U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-			U_KAKAO_LOGIN
-			FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_TEL, TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN
-				FROM MEMBER
-				ORDER BY U_ID)
-	    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+		SELECT U_ID,
+			   MEM_TYPE_ID,
+			   U_NAME,
+			   U_EMAIL,
+			   U_NICK,
+			   U_TEL,
+			   U_REG_DATE,
+			   U_MARKETING,
+			   U_GENDER,
+			   U_BIRTH,
+			   U_GOOGLE_LOGIN,
+			   U_NAVER_LOGIN,
+			   U_KAKAO_LOGIN,
+			   SOCIAL_TYPE
+		FROM (SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 SEQ,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN,
+					 SOCIAL_TYPE
+			  FROM (SELECT U_ID,
+						   MEM_TYPE_ID,
+						   U_NAME,
+						   ROWNUM AS SEQ,
+						   U_EMAIL,
+						   U_NICK,
+						   U_TEL,
+						   U_REG_DATE,
+						   U_MARKETING,
+						   U_GENDER,
+						   U_BIRTH,
+						   U_GOOGLE_LOGIN,
+						   U_NAVER_LOGIN,
+						   U_KAKAO_LOGIN,
+						   SOCIAL_TYPE
+					FROM (SELECT U_ID,
+								 MEM_TYPE_ID,
+								 U_NAME,
+								 U_EMAIL,
+								 U_NICK,
+								 U_TEL,
+								 TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
+								 U_MARKETING,
+								 U_GENDER,
+								 U_BIRTH,
+								 U_GOOGLE_LOGIN,
+								 U_NAVER_LOGIN,
+								 U_KAKAO_LOGIN,
+								 SOCIAL_TYPE
+						  FROM MEMBER
+						  ORDER BY U_ID))
+			  WHERE seq <![CDATA[>=]]> #{startPostNo})
+		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 
 	<select id="selectMemberID"  resultType="AMember">
-	SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_TEL, TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
-	U_MARKETING, U_GENDER, U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN 
-	FROM MEMBER WHERE U_ID=#{uId}
+		SELECT U_ID,
+			   MEM_TYPE_ID,
+			   U_NAME,
+			   U_EMAIL,
+			   U_NICK,
+			   U_TEL,
+			   TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
+			   U_MARKETING,
+			   U_GENDER,
+			   U_BIRTH,
+			   U_GOOGLE_LOGIN,
+			   U_NAVER_LOGIN,
+			   U_KAKAO_LOGIN,
+			   SOCIAL_TYPE
+		FROM MEMBER
+		WHERE U_ID = #{uId}
 	</select>
 	
 	<select id="selectMemberDATE" resultType="AMember">
-	SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-	U_MARKETING, U_GENDER, U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN 
-	FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-		SEQ,
-		U_EMAIL, U_NICK, U_TEL,U_REG_DATE,
-		U_MARKETING, U_GENDER, U_BIRTH,
-		U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-		U_KAKAO_LOGIN 
-		FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-			ROWNUM AS SEQ,
-			U_EMAIL, U_NICK, U_TEL, U_REG_DATE,
-			U_MARKETING, U_GENDER, U_BIRTH,
-			U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-			U_KAKAO_LOGIN 
-			FROM (SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_TEL, TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN 
-				FROM MEMBER 
-				WHERE (U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-				OR (U_ID=#{searchDTO.id})
-				OR (U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND U_ID=#{searchDTO.id})
-				ORDER BY U_ID)
-	    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+		SELECT U_ID,
+			   MEM_TYPE_ID,
+			   U_NAME,
+			   U_EMAIL,
+			   U_NICK,
+			   U_TEL,
+			   U_REG_DATE,
+			   U_MARKETING,
+			   U_GENDER,
+			   U_BIRTH,
+			   U_GOOGLE_LOGIN,
+			   U_NAVER_LOGIN,
+			   U_KAKAO_LOGIN,
+			   SOCIAL_TYPE
+		FROM (SELECT U_ID,
+					 MEM_TYPE_ID,
+					 U_NAME,
+					 SEQ,
+					 U_EMAIL,
+					 U_NICK,
+					 U_TEL,
+					 U_REG_DATE,
+					 U_MARKETING,
+					 U_GENDER,
+					 U_BIRTH,
+					 U_GOOGLE_LOGIN,
+					 U_NAVER_LOGIN,
+					 U_KAKAO_LOGIN,
+					 SOCIAL_TYPE
+			  FROM (SELECT U_ID,
+						   MEM_TYPE_ID,
+						   U_NAME,
+						   ROWNUM AS SEQ,
+						   U_EMAIL,
+						   U_NICK,
+						   U_TEL,
+						   U_REG_DATE,
+						   U_MARKETING,
+						   U_GENDER,
+						   U_BIRTH,
+						   U_GOOGLE_LOGIN,
+						   U_NAVER_LOGIN,
+						   U_KAKAO_LOGIN,
+						   SOCIAL_TYPE
+					FROM (SELECT U_ID,
+								 MEM_TYPE_ID,
+								 U_NAME,
+								 U_EMAIL,
+								 U_NICK,
+								 U_TEL,
+								 TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
+								 U_MARKETING,
+								 U_GENDER,
+								 U_BIRTH,
+								 U_GOOGLE_LOGIN,
+								 U_NAVER_LOGIN,
+								 U_KAKAO_LOGIN,
+								 SOCIAL_TYPE
+						  FROM MEMBER
+						  WHERE (U_REG_DATE BETWEEN
+							  TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+							  AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+							 OR (U_ID = #{searchDTO.id})
+							 OR (U_REG_DATE BETWEEN
+									 TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+									 AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+							  AND U_ID = #{searchDTO.id})
+						  ORDER BY U_ID))
+			  WHERE seq <![CDATA[>=]]> #{startPostNo})
+		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
 	</select>
 	<select id="selectMember" resultType="AMember">
-	SELECT * FROM (
-    SELECT ROWNUM AS RNUM, TMP.* FROM (
-    SELECT U_ID, MEM_TYPE_ID, U_NAME,
-	U_EMAIL, U_NICK, U_PW, U_TEL, TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
-	U_MARKETING, U_GENDER, TO_CHAR(U_BIRTH, 'YYYY-MM-DD') AS U_BIRTH,
-	U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-	U_KAKAO_LOGIN FROM (
-                SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_PW,  U_TEL,U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN 
-				FROM MEMBER 
-				WHERE
-                (U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
-				AND (U_ID=#{searchDTO.id})
-         UNION             
-                SELECT U_ID, MEM_TYPE_ID, U_NAME,
-				U_EMAIL, U_NICK, U_PW,  U_TEL, U_REG_DATE,
-				U_MARKETING, U_GENDER, U_BIRTH,
-				U_GOOGLE_LOGIN, U_NAVER_LOGIN,
-				U_KAKAO_LOGIN 
-				FROM MEMBER 
-				WHERE 
-                U_REG_DATE BETWEEN 
-				TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-				AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
-                AND U_NAME LIKE '%'||#{searchDTO.keyword}||'%'
-            )TMP
-            ORDER BY U_ID
-    ) TMP
-	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
-)
-WHERE RNUM <![CDATA[>=]]> #{startPostNo}
+		SELECT *
+		FROM (SELECT ROWNUM AS RNUM, TMP.*
+			  FROM (SELECT U_ID,
+						   MEM_TYPE_ID,
+						   U_NAME,
+						   U_EMAIL,
+						   U_NICK,
+						   U_PW,
+						   U_TEL,
+						   TO_CHAR(U_REG_DATE, 'YYYY-MM-DD') AS U_REG_DATE,
+						   U_MARKETING,
+						   U_GENDER,
+						   TO_CHAR(U_BIRTH, 'YYYY-MM-DD')    AS U_BIRTH,
+						   U_GOOGLE_LOGIN,
+						   U_NAVER_LOGIN,
+						   U_KAKAO_LOGIN,
+						   SOCIAL_TYPE
+					FROM (SELECT U_ID,
+								 MEM_TYPE_ID,
+								 U_NAME,
+								 U_EMAIL,
+								 U_NICK,
+								 U_PW,
+								 U_TEL,
+								 U_REG_DATE,
+								 U_MARKETING,
+								 U_GENDER,
+								 U_BIRTH,
+								 U_GOOGLE_LOGIN,
+								 U_NAVER_LOGIN,
+								 U_KAKAO_LOGIN,
+								 SOCIAL_TYPE
+						  FROM MEMBER
+						  WHERE (U_REG_DATE BETWEEN
+							  TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+							  AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff'))
+							AND (U_ID = #{searchDTO.id})
+						  UNION
+						  SELECT U_ID,
+								 MEM_TYPE_ID,
+								 U_NAME,
+								 U_EMAIL,
+								 U_NICK,
+								 U_PW,
+								 U_TEL,
+								 U_REG_DATE,
+								 U_MARKETING,
+								 U_GENDER,
+								 U_BIRTH,
+								 U_GOOGLE_LOGIN,
+								 U_NAVER_LOGIN,
+								 U_KAKAO_LOGIN,
+								 SOCIAL_TYPE
+						  FROM MEMBER
+						  WHERE U_REG_DATE BETWEEN
+							  TO_TIMESTAMP(#{searchDTO.startDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+							  AND TO_TIMESTAMP(#{searchDTO.endDate}, 'YYYY-MM-DD HH24:MI:SS.xff')
+							AND U_NAME LIKE '%' || #{searchDTO.keyword} || '%') TMP
+					ORDER BY U_ID) TMP
+			  WHERE ROWNUM <![CDATA[<=]]> #{endPostNo})
+		WHERE RNUM <![CDATA[>=]]> #{startPostNo}
       </select>          
     <insert id="registrationMember" parameterType="AMember">
-    INSERT INTO MEMBER VALUES(member_seq.NEXTVAL,
-    1,
-    #{uName},
-    #{uEmail},
-    #{uNick},
-    #{uPw},
-    #{uTel},
-    SYSTIMESTAMP,
-    #{uMarketing},
-    #{uGender},
-    TO_DATE(#{uBirth},'YYYY-MM-DD HH24:MI:SS'),
-    NULL,
-    NULL,
-    NULL)
+		INSERT INTO MEMBER
+		VALUES (member_seq.NEXTVAL,
+				1,
+				#{uName},
+				#{uEmail},
+				#{uNick},
+				#{uPw},
+				#{uTel},
+				SYSTIMESTAMP,
+				#{uMarketing},
+				#{uGender},
+				TO_DATE(#{uBirth}, 'YYYY-MM-DD HH24:MI:SS'),
+				NULL,
+				NULL,
+				NULL,
+			    NULL)
     </insert>    
            	
 	<update id="updateMember" parameterType="AMember">
-	UPDATE MEMBER SET
-	U_NAME=#{uName},
-	U_EMAIL=#{uEmail},
-	U_NICK=#{uNick},
-	U_PW=#{uPw},
-	U_TEL=#{uTel}
-	WHERE U_ID=#{uId}
+		UPDATE MEMBER
+		SET U_NAME=#{uName},
+			U_EMAIL=#{uEmail},
+			U_NICK=#{uNick},
+			U_PW=#{uPw},
+			U_TEL=#{uTel}
+		WHERE U_ID = #{uId}
 	</update>
-	
-	
+
 	<delete id="delMember" parameterType="int">
-	DELETE FROM MEMBER WHERE U_ID=#{uId}
+		DELETE
+		FROM MEMBER
+		WHERE U_ID = #{uId}
 	</delete>
-	
-
-	
-
-	
-
 
 <!--  
 -->
 
-	
 	<select id="wrotePost" parameterType="int" resultMap="AMCommunityMap">
-	SELECT 
-	U_COMMUNITY_POST_ID, U_ID, U_NICK, U_EMAIL, POST_TYPE_ID,POST_TYPE_NAME,
-	U_COMMUNITY_IMG_ID, U_COMMUNITY_CONTENT,
-	U_COMMUNITY_DATE_CREATED, COMMUNITY_LIKE_CNT,
-	COMMUNITY_VIEW_CNT, COMMUNITY_CUM_CNT
-	FROM  (SELECT 
-		SEQ,
-		U_COMMUNITY_POST_ID, U_ID, U_NICK, U_EMAIL,  POST_TYPE_ID,POST_TYPE_NAME,
-		U_COMMUNITY_IMG_ID, U_COMMUNITY_CONTENT,
-		U_COMMUNITY_DATE_CREATED, COMMUNITY_LIKE_CNT,
-		COMMUNITY_VIEW_CNT, COMMUNITY_CUM_CNT
-		FROM (SELECT 
-			ROWNUM AS SEQ,
-			U_COMMUNITY_POST_ID, U_ID, U_NICK, U_EMAIL, POST_TYPE_ID,POST_TYPE_NAME,
-			U_COMMUNITY_IMG_ID, U_COMMUNITY_CONTENT, 
-			U_COMMUNITY_DATE_CREATED, COMMUNITY_LIKE_CNT,
-			COMMUNITY_VIEW_CNT, COMMUNITY_CUM_CNT
-			FROM (SELECT 
-			M.U_COMMUNITY_POST_ID, M.U_ID, I.U_NICK, I.U_EMAIL,  M.POST_TYPE_ID, P.POST_TYPE_NAME,
-			M.U_COMMUNITY_IMG_ID, M.U_COMMUNITY_CONTENT, 
-			TO_CHAR(M.U_COMMUNITY_DATE_CREATED,'YYYY-MM-DD') AS U_COMMUNITY_DATE_CREATED, M.COMMUNITY_LIKE_CNT,
-			M.COMMUNITY_VIEW_CNT, M.COMMUNITY_CUM_CNT
-				FROM 
-				MEMBER_COMMUNITY M 
-				LEFT JOIN POST_TYPE P 
-				ON (M.POST_TYPE_ID = P.POST_TYPE_ID)
-				LEFT JOIN MEMBER I
-				ON (M.U_ID = I.U_ID)
-				WHERE M.U_ID=#{uId})
-	    		)
-    		WHERE seq <![CDATA[>=]]> #{startPostNo}
-    	)
-    	WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}  
+		SELECT U_COMMUNITY_POST_ID,
+			   U_ID,
+			   U_NICK,
+			   U_EMAIL,
+			   POST_TYPE_ID,
+			   POST_TYPE_NAME,
+			   U_COMMUNITY_IMG_ID,
+			   U_COMMUNITY_CONTENT,
+			   U_COMMUNITY_DATE_CREATED,
+			   COMMUNITY_LIKE_CNT,
+			   COMMUNITY_VIEW_CNT,
+			   COMMUNITY_CUM_CNT
+		FROM (SELECT SEQ,
+					 U_COMMUNITY_POST_ID,
+					 U_ID,
+					 U_NICK,
+					 U_EMAIL,
+					 POST_TYPE_ID,
+					 POST_TYPE_NAME,
+					 U_COMMUNITY_IMG_ID,
+					 U_COMMUNITY_CONTENT,
+					 U_COMMUNITY_DATE_CREATED,
+					 COMMUNITY_LIKE_CNT,
+					 COMMUNITY_VIEW_CNT,
+					 COMMUNITY_CUM_CNT
+			  FROM (SELECT ROWNUM AS SEQ,
+						   U_COMMUNITY_POST_ID,
+						   U_ID,
+						   U_NICK,
+						   U_EMAIL,
+						   POST_TYPE_ID,
+						   POST_TYPE_NAME,
+						   U_COMMUNITY_IMG_ID,
+						   U_COMMUNITY_CONTENT,
+						   U_COMMUNITY_DATE_CREATED,
+						   COMMUNITY_LIKE_CNT,
+						   COMMUNITY_VIEW_CNT,
+						   COMMUNITY_CUM_CNT
+					FROM (SELECT M.U_COMMUNITY_POST_ID,
+								 M.U_ID,
+								 I.U_NICK,
+								 I.U_EMAIL,
+								 M.POST_TYPE_ID,
+								 P.POST_TYPE_NAME,
+								 M.U_COMMUNITY_IMG_ID,
+								 M.U_COMMUNITY_CONTENT,
+								 TO_CHAR(M.U_COMMUNITY_DATE_CREATED, 'YYYY-MM-DD') AS U_COMMUNITY_DATE_CREATED,
+								 M.COMMUNITY_LIKE_CNT,
+								 M.COMMUNITY_VIEW_CNT,
+								 M.COMMUNITY_CUM_CNT
+						  FROM MEMBER_COMMUNITY M
+								   LEFT JOIN POST_TYPE P
+											 ON (M.POST_TYPE_ID = P.POST_TYPE_ID)
+								   LEFT JOIN MEMBER I
+											 ON (M.U_ID = I.U_ID)
+						  WHERE M.U_ID = #{uId}))
+			  WHERE seq <![CDATA[>=]]> #{startPostNo})
+		WHERE ROWNUM <![CDATA[<=]]> #{endPostNo}
     		</select>
 
 </mapper>

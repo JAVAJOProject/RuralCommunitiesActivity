@@ -37,4 +37,11 @@ public class PropertiesConfig {
         propertiesFactoryBean.setLocation(classPathResource);
         return propertiesFactoryBean;
     }
+    @Bean(name="securityProperties")
+    public PropertiesFactoryBean securityFactoryBean() {
+        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
+        ClassPathResource classPathResource = new ClassPathResource("properties/security.info.properties");
+        propertiesFactoryBean.setLocation(classPathResource);
+        return propertiesFactoryBean;
+    }
 }

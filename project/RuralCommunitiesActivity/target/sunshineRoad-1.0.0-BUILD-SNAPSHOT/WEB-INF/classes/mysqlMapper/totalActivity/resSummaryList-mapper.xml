@@ -20,7 +20,7 @@
 		FROM reservation
 	</select>
 	
-	<select id="getMyReservationCountData" resultType="int" parameterType="int">
+	<select id="getMyReservationCountData" resultType="int" parameterType="long">
 		SELECT COUNT(*)
 		FROM reservation
 		WHERE u_id = #{uId}
@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="getRequestPageMyReservationListData"
-		resultType="ResSummaryList" parameterType="int">
+		resultType="ResSummaryList">
 		SELECT reservation.reservation_id,
 			   reservation.u_id,
 			   reservation.a_id,
@@ -60,7 +60,7 @@
 	</select>
 
 	<select id="getRequestPageMyServiceReservationListData"
-		resultType="ResSummaryList" parameterType="int">
+		resultType="ResSummaryList">
 		SELECT reservation.reservation_id,
 			   reservation.u_id,
 			   reservation.a_id,

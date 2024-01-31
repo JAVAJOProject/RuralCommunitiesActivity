@@ -33,13 +33,12 @@
 		<result property="eventStatus" column="event_status" />
 	</resultMap>
 
-	<select id="selectCount" parameterType="int" resultType="int">
+	<select id="selectCount" parameterType="long" resultType="int">
 		SELECT
 		COUNT(*) FROM EVENT WHERE S_ID = #{sId}
 	</select>
 
-	<select id="getEventInfo" parameterType="int"
-		resultType="RequestEventDTO">
+	<select id="getEventInfo" resultType="RequestEventDTO">
 		SELECT
 		EVENT_ID ,
 		S_ID ,
@@ -80,8 +79,7 @@
 		#{eventId}
 	</select>
 
-	<select id="selectParticipantByNo" parameterType="int"
-		resultType="EventWinner">
+	<select id="selectParticipantByNo" resultType="EventWinner">
 		SELECT
 		EVENT_REPORT_ID ,
 		U_ID ,
@@ -105,8 +103,7 @@
 		AND EVENT_PROGRESS_STATUS_ID = 3
 	</select>
 
-	<select id="selectWinnerByNo" parameterType="int"
-		resultType="EventWinner">
+	<select id="selectWinnerByNo" resultType="EventWinner">
 		SELECT
 		EVENT_REPORT_ID ,
 		U_ID ,

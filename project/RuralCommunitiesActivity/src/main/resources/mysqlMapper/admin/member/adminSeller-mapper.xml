@@ -23,7 +23,7 @@
 		OFFSET #{startPostNo}
 	</select>
 	
-	<select id="selectSellerIDAdmin" parameterType="int" resultType="ASeller">
+	<select id="selectSellerIDAdmin" parameterType="long" resultType="ASeller">
 		SELECT S_ID,
 			   ACCOUNT_INFO_ID,
 			   MEM_TYPE_ID,
@@ -76,7 +76,7 @@
 	</update>
 
 
-	<delete id="delSellerAdmin" parameterType="int">
+	<delete id="delSellerAdmin" parameterType="long">
 		DELETE
 		FROM SELLER
 		WHERE S_ID = #{sId}
@@ -103,7 +103,7 @@
 		OFFSET #{startPostNo}
 	</select>
 	
-	<update id="updateAppAdmin" parameterType="int">
+	<update id="updateAppAdmin" parameterType="long">
 		UPDATE SELLER
 		SET S_APPROVAL=1
 		WHERE S_ID = #{sId}
@@ -121,7 +121,7 @@
 		<result column="POST_TYPE_NAME" property="postTypeName"/>
 	</resultMap>
 
-	<select id="wrotePost" parameterType="int" resultMap="ASCommunityMap">
+	<select id="wrotePost" resultMap="ASCommunityMap">
 		SELECT S.SELLER_COMMUNITY_POST_ID,
 			   S.S_ID,
 			   S.POST_TYPE_ID,

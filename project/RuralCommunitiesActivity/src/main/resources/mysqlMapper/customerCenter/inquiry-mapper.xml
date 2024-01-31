@@ -179,7 +179,7 @@
 </select>
 
 	<!-- 내용으로 문의글 찾기 -->
-<select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob" parameterType="map">
+<select id="searchInquiryByContent" resultMap="InquiryInfoDTOForClob">
     SELECT I.INQUIRY_ID,
            I.INQUIRY_TITLE,
            IST.INQUIRY_STATUS,
@@ -201,7 +201,7 @@
 </select>
 
 <!-- 내가 쓴 글 보기 -->
-	<select id="getMyInquiryCount" resultType="int" parameterType="int">
+	<select id="getMyInquiryCount" resultType="int" parameterType="long">
 		SELECT count(*)
 		FROM INQUIRY I
 				 INNER JOIN MEMBER_LIST ML ON (I.MEM_ID = ML.MEM_ID)
@@ -209,7 +209,7 @@
 				 LEFT JOIN SELLER S ON (ML.S_ID = S.S_ID)
 		WHERE I.MEM_ID = #{memId}
 	</select>
-	<select id="getMyInquiryDetail" resultMap="InquiryInfoDTOForClob" parameterType="int">
+	<select id="getMyInquiryDetail" resultMap="InquiryInfoDTOForClob">
 		SELECT I.INQUIRY_ID,
 			   I.INQUIRY_TITLE,
 			   IST.INQUIRY_STATUS,

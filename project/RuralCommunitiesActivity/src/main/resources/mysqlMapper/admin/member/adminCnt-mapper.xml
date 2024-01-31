@@ -9,7 +9,7 @@
 		FROM ADMIN
 	</select>
 
-	<select id="selectAdminDATECnt"  resultType="int">
+	<select id="selectAdminDATECnt" resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT *
 			  FROM ADMIN

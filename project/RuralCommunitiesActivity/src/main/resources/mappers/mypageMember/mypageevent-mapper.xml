@@ -50,7 +50,7 @@
 		</association>
 	</resultMap>
 
-	<select id="selectCount" parameterType="int"
+	<select id="selectCount" parameterType="long"
 			resultType="int">
 		SELECT
 			COUNT(*)

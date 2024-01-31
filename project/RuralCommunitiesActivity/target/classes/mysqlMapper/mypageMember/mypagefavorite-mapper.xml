@@ -42,7 +42,7 @@
 	</resultMap>
 
 <!--	MySQL-->
-	<select id="selectCountEvent" parameterType="int"
+	<select id="selectCountEvent" parameterType="long"
 			resultType="int">
 		SELECT COUNT(*)
 		FROM FAVORITE
@@ -50,8 +50,7 @@
 		  AND POST_TYPE_ID = 4
 	</select>
 
-	<select id="selectByFavoriteListEvent" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByFavoriteListEvent" resultMap="favoriteByMember">
 		SELECT F.F_ID,
 			   F.U_ID,
 			   F.BOARD_ID,
@@ -68,8 +67,7 @@
 			LIMIT #{perPagePostNo}
 		OFFSET #{start}
 	</select>
-	<select id="selectByFavoriteListActivity" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByFavoriteListActivity" resultMap="favoriteByMember">
 		SELECT F.F_ID,
 			   F.U_ID,
 			   F.BOARD_ID,
@@ -92,8 +90,7 @@
 		OFFSET #{start}
 	</select>
 
-	<select id="selectByMemberEvent" parameterType="int"
-			resultMap="favoriteByMember">
+	<select id="selectByMemberEvent" resultMap="favoriteByMember">
 		SELECT F.F_ID,
 			   F.U_ID,
 			   F.BOARD_ID,
@@ -108,7 +105,7 @@
 			LIMIT #{perPagePostNo}
 		OFFSET #{start}
 	</select>
-	<select id="selectByActivity" parameterType="int"
+	<select id="selectByActivity" parameterType="long"
 			resultType="int">
 		SELECT COUNT(*)
 		FROM FAVORITE

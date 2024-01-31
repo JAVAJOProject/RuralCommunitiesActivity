@@ -45,6 +45,7 @@ public class MypageMemberDTO {
 	private String uNaverLogin;
 	@JsonProperty
 	private String uKakaoLogin;
+	private String socialType;
 	
 	// 체험 참여자 명단에 조인할 객체
 	private MypageActivityCustomerDTO activityCustomer;

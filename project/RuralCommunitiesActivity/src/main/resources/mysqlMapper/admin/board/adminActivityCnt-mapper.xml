@@ -17,7 +17,7 @@
 				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 	</select>	
 
-	<select id="selectEndDateActivityCnt"  resultType="int">
+	<select id="selectEndDateActivityCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM ACTIVITY_INFO
 		WHERE A_END_DATE BETWEEN
@@ -25,7 +25,7 @@
 				  AND STR_TO_DATE(#{searchDTO.endDate}, '%Y-%m-%d %H:%i:%s.%f')
 	</select>
 	
-	<select id="selectDateReservationCnt"  resultType="int">
+	<select id="selectDateReservationCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM ACTIVITY_INFO
 		WHERE A_RESERVATION_DEADLINE BETWEEN
@@ -34,7 +34,7 @@
 	</select>		
 		
 <!--	테스트 필수-->
-	<select id="selectActivityCnt"  resultType="int">
+	<select id="selectActivityCnt" resultType="int">
 		SELECT COUNT(*)
 		FROM (SELECT A.A_ID,
 					 A.S_ID,

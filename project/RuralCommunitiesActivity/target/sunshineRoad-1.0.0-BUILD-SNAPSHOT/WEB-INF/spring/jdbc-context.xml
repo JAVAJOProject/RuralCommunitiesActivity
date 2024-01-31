@@ -20,12 +20,12 @@
 	</bean>
 
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<property name="dataSource" ref="dataSource" />
 <!--		Oracle-->
 <!--		<property name="mapperLocations" value="classpath:/mappers/**/*.xml" />-->
 <!--		MySQL-->
-		<property name="mapperLocations" value="classpath:/mysqlMapper/**/*.xml" />
+		<property name="mapperLocations" value="classpath:mysqlMapper/**/*.xml" />
 
 		<property name="typeAliasesPackage" value="com.javajo.sunshineRoad.model.dto" />
 	</bean>

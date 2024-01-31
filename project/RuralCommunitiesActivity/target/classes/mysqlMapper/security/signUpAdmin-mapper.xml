@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.security.SignUpAdminMapper">
+    <select id="isExistingAdmin" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM admin_email = #{adminEmail}
+    </select>
+
+    <insert id="insertAdmin" parameterType="UserAdmin">
+        INSERT INTO admin (admin_id, mem_type_id, admin_authority_id, admin_email, admin_pw, admin_reg_date, admin_tel,
+                           refresh_token)
+        VALUES (NULL, 3, 0, #{adminEmail}, #{adminPw}, CURRENT_TIMESTAMP, #{adminTel}, NULL)
+    </insert>
+</mapper>

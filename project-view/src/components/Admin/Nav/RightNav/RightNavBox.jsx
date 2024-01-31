@@ -12,8 +12,9 @@ const contents = [
 export default function RightNavBox() {
   return (
     <div className="rightNavBox">
-			<div className='todayTodoBox'>
-      <img className='todayTodo' src={todayTodo} alt=''/></div>
+      <div className="todayTodoBox">
+        <img className="todayTodo" src={todayTodo} alt="" />
+      </div>
       <div className="rightNavTitleBox">
         <p>{title}</p>
       </div>

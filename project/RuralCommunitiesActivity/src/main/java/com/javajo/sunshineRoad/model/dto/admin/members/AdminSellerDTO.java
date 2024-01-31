@@ -42,6 +42,7 @@ public class AdminSellerDTO {
 	@JsonProperty("s_rep_name")
 	private String sRepName;//대표자
 
+	private String refreshToken;
 
 	
 	

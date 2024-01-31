@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.javajo.sunshineRoad.mappers.security.SignInSellerMapper">
+    <select id="findBySellerId" resultType="UserSeller" parameterType="long">
+        SELECT s_id,
+               account_info_id,
+               mem_type_id,
+               s_email,
+               s_com_name,
+               s_pw,
+               s_tel,
+               DATE_FORMAT(s_reg_date, '%Y-%m-%d') AS s_reg_date,
+               s_addr,
+               s_reg_num,
+               s_marketing_consent,
+               s_approval,
+               s_rep_name,
+               s_reg_certificate_img,
+               refresh_token
+        FROM seller
+        WHERE s_id = #{sId}
+    </select>
+
+    <select id="findBySellerEmail" resultType="UserSeller" parameterType="string">
+        SELECT s_id,
+               account_info_id,
+               mem_type_id,
+               s_email,
+               s_com_name,
+               s_pw,
+               s_tel,
+               DATE_FORMAT(s_reg_date, '%Y-%m-%d') AS s_reg_date,
+               s_addr,
+               s_reg_num,
+               s_marketing_consent,
+               s_approval,
+               s_rep_name,
+               s_reg_certificate_img,
+               refresh_token
+        FROM seller
+        WHERE s_email = #{sEmail}
+    </select>
+
+    <select id="findBySellerRefreshToken" resultType="UserSeller" parameterType="string">
+        SELECT s_id,
+               account_info_id,
+               mem_type_id,
+               s_email,
+               s_com_name,
+               s_pw,
+               s_tel,
+               DATE_FORMAT(s_reg_date, '%Y-%m-%d') AS s_reg_date,
+               s_addr,
+               s_reg_num,
+               s_marketing_consent,
+               s_approval,
+               s_rep_name,
+               s_reg_certificate_img,
+               refresh_token
+        FROM seller
+        WHERE refresh_token = #{refreshToken}
+    </select>
+
+    <update id="updateSellerRefreshToken" parameterType="UserSeller">
+        UPDATE seller
+        SET refresh_token = #{refreshToken}
+        WHERE s_email = #{sEmail}
+    </update>
+</mapper>

@@ -1,36 +1,34 @@
-import React, {useState,useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './MainStatus.css';
 
 import { fetchOneContentGET } from '../../../../../config/ApiService';
 
 const todayUsers = 5;
 export default function MainStatus() {
+  const [totalVisitors, setTotalVisitors] = useState(0);
 
-    const [totalVisitors , setTotalVisitors] = useState(0);
-
-//누적 접속자수
-useEffect(() => {
+  //누적 접속자수
+  useEffect(() => {
     fetchTotalVisitors();
-},[totalVisitors]);
+  }, [totalVisitors]);
 
-const fetchTotalVisitors = async () => {
+  const fetchTotalVisitors = async () => {
     try {
       const requestDataForTTLVisitors = await fetchOneContentGET(
         '/admin/board/statistics/visitors/total'
       );
-  
-      if(requestDataForTTLVisitors !== undefined ) {
+
+      if (requestDataForTTLVisitors !== undefined) {
         setTotalVisitors(requestDataForTTLVisitors);
       }
-      }catch(error){
-        console.error(error);
-      };
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <div className="mainStatusA">
+      누적 접속자 수 : {totalVisitors}명 , 금일 접속자 수 : {todayUsers}명
+    </div>
+  );
 }
-
-    return (
-        <div className='mainStatusA'>
-            누적 접속자 수 : {totalVisitors}명 , 금일 접속자 수 : {todayUsers}명
-        </div>
-    );
-} 
-
