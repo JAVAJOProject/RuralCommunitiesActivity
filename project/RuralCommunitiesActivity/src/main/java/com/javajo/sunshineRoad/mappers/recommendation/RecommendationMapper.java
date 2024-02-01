@@ -36,21 +36,21 @@ public interface RecommendationMapper {
 
 
 //	Oracle
-//	public List<RecActivityInfoDTO> keywordFilter(@Param("recAKeywordId") int recAKeywordId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecActivityInfoDTO> getTotalRecActivity(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecActivityInfoDTO> sidoActivity(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecActivityInfoDTO> sigunguActivity(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecTownInfoDTO> getTotalRecTown(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecTownInfoDTO> getSidoTown(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<RecTownInfoDTO> getSigunguTown(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecActivityInfoDTO> keywordFilter(@Param("recAKeywordId") int recAKeywordId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecActivityInfoDTO> getTotalRecActivity(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecActivityInfoDTO> sidoActivity(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecActivityInfoDTO> sigunguActivity(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecTownInfoDTO> getTotalRecTown(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecTownInfoDTO> getSidoTown(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<RecTownInfoDTO> getSigunguTown(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 
 //	MySQL
-	public List<RecActivityInfoDTO> keywordFilter(@Param("recAKeywordId") int recAKeywordId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecActivityInfoDTO> getTotalRecActivity(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecActivityInfoDTO> sidoActivity(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecActivityInfoDTO> sigunguActivity(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecTownInfoDTO> getTotalRecTown(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecTownInfoDTO> getSidoTown(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<RecTownInfoDTO> getSigunguTown(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecActivityInfoDTO> keywordFilter(@Param("recAKeywordId") int recAKeywordId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecActivityInfoDTO> getTotalRecActivity(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecActivityInfoDTO> sidoActivity(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecActivityInfoDTO> sigunguActivity(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecTownInfoDTO> getTotalRecTown(@Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecTownInfoDTO> getSidoTown(@Param("sidoId") int sidoId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<RecTownInfoDTO> getSigunguTown(@Param("sigunguId") int sigunguId, @Param("colName") String colName, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
 }

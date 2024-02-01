@@ -18,11 +18,10 @@ public interface AdminSCommunityMapper {
 
 
 	// Oracle
-//	//전체 조회
-//	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	//전체 조회
+	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	// MySQL
-
-	//전체 조회
-	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//	//전체 조회
+//	public List<ASCommunityDTO> getAllsCommunity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 }

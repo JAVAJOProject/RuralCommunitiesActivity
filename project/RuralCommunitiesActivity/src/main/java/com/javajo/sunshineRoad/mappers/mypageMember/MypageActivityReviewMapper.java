@@ -20,8 +20,8 @@ public interface MypageActivityReviewMapper {
 	public MypageActivityReviewDTO selectReview(int revId);
 
 //	Oracle
-//	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
+	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 //	MySQL
-	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageActivityReviewDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

@@ -24,17 +24,17 @@ public interface InquiryMapper {
 	public int getMyInquiryCount(long memId);
 
 //	Oracle
-//	public List<InquiryInfoDTO> getRequestPageInquiryList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<InquiryInfoDTO> searchInquiryAll(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
-//	public List<InquiryInfoDTO> searchInquiryByTitle(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
-//	public List<InquiryInfoDTO> searchInquiryByContent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
-//	public List<InquiryInfoDTO> getMyInquiryDetail(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("memId") long memId);
+	public List<InquiryInfoDTO> getRequestPageInquiryList(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<InquiryInfoDTO> searchInquiryAll(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
+	public List<InquiryInfoDTO> searchInquiryByTitle(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
+	public List<InquiryInfoDTO> searchInquiryByContent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("keyword") String keyword);
+	public List<InquiryInfoDTO> getMyInquiryDetail(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo, @Param("memId") long memId);
 
 
 //	MySQL
-	public List<InquiryInfoDTO> getRequestPageInquiryList(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<InquiryInfoDTO> searchInquiryAll(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
-	public List<InquiryInfoDTO> searchInquiryByTitle(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
-	public List<InquiryInfoDTO> searchInquiryByContent(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
-	public List<InquiryInfoDTO> getMyInquiryDetail(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("memId") long memId);
+//	public List<InquiryInfoDTO> getRequestPageInquiryList(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<InquiryInfoDTO> searchInquiryAll(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
+//	public List<InquiryInfoDTO> searchInquiryByTitle(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
+//	public List<InquiryInfoDTO> searchInquiryByContent(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("keyword") String keyword);
+//	public List<InquiryInfoDTO> getMyInquiryDetail(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo, @Param("memId") long memId);
 }

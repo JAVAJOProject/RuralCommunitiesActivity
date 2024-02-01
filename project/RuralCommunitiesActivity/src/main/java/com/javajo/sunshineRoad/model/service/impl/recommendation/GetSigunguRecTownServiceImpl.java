@@ -17,28 +17,12 @@ public class GetSigunguRecTownServiceImpl implements GetSigunguRecTownService {
 
 
 //	Oracle
-//	@Override
-//	public List<RecTownInfoDTO> sigunguRecTownList(int sigunguId, String requestOrderType, int totalCount, int perPagePostCount, int requestPageNo) {
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//        String colName;
-//		switch(requestOrderType) {
-//			case "date" : colName = "rec_t_date_created"; break;
-//			case "viewCount" : colName = "rec_t_view_cnt"; break;
-//			case "likes" : colName = "rec_t_like_cnt"; break;
-//			default : throw new IllegalArgumentException("잘못된 타입");
-//		}
-//
-//		return recommendationDAO.getRequestPageSigunguRecTownContent(sigunguId, colName, startPostNo, endPostNo);
-//	}
-
-//	MySQL
 	@Override
 	public List<RecTownInfoDTO> sigunguRecTownList(int sigunguId, String requestOrderType, int totalCount, int perPagePostCount, int requestPageNo) {
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		String colName;
+        String colName;
 		switch(requestOrderType) {
 			case "date" : colName = "rec_t_date_created"; break;
 			case "viewCount" : colName = "rec_t_view_cnt"; break;
@@ -46,6 +30,22 @@ public class GetSigunguRecTownServiceImpl implements GetSigunguRecTownService {
 			default : throw new IllegalArgumentException("잘못된 타입");
 		}
 
-		return recommendationDAO.getRequestPageSigunguRecTownContent(sigunguId, colName, startPostNo - 1, perPagePostCount);
+		return recommendationDAO.getRequestPageSigunguRecTownContent(sigunguId, colName, startPostNo, endPostNo);
 	}
+
+//	MySQL
+//	@Override
+//	public List<RecTownInfoDTO> sigunguRecTownList(int sigunguId, String requestOrderType, int totalCount, int perPagePostCount, int requestPageNo) {
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		String colName;
+//		switch(requestOrderType) {
+//			case "date" : colName = "rec_t_date_created"; break;
+//			case "viewCount" : colName = "rec_t_view_cnt"; break;
+//			case "likes" : colName = "rec_t_like_cnt"; break;
+//			default : throw new IllegalArgumentException("잘못된 타입");
+//		}
+//
+//		return recommendationDAO.getRequestPageSigunguRecTownContent(sigunguId, colName, startPostNo - 1, perPagePostCount);
+//	}
 }

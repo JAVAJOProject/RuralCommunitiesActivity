@@ -42,30 +42,30 @@ public interface AdminActivityMapper {
 	public List<AActivityDTO> detailActivity(int aId);
 
 	// Oracle
-//	//전체 조회
-//	public List<AActivityDTO> getAllActivity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//
-//	//체험시작일조회
-//	public List<AActivityDTO> selectDateActivityStart(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	//체험마감일조회
-//	public List<AActivityDTO> selectDateActivityEND(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	//예약마감일조회
-//	public List<AActivityDTO> selectDateReservation(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//
-//	//필터링 조회
-//	public List<AActivityDTO> selectActivity(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	// MySQL
 	//전체 조회
-	public List<AActivityDTO> getAllActivity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<AActivityDTO> getAllActivity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//체험시작일조회
-	public List<AActivityDTO> selectDateActivityStart(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int endPostCount);
+	public List<AActivityDTO> selectDateActivityStart(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	//체험마감일조회
-	public List<AActivityDTO> selectDateActivityEND(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<AActivityDTO> selectDateActivityEND(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 	//예약마감일조회
-	public List<AActivityDTO> selectDateReservation(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<AActivityDTO> selectDateReservation(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//필터링 조회
-	public List<AActivityDTO> selectActivity(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<AActivityDTO> selectActivity(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+
+	// MySQL
+//	//전체 조회
+//	public List<AActivityDTO> getAllActivity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//
+//	//체험시작일조회
+//	public List<AActivityDTO> selectDateActivityStart(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int endPostCount);
+//	//체험마감일조회
+//	public List<AActivityDTO> selectDateActivityEND(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//	//예약마감일조회
+//	public List<AActivityDTO> selectDateReservation(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//
+//	//필터링 조회
+//	public List<AActivityDTO> selectActivity(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 }

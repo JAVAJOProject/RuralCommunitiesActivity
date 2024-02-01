@@ -58,43 +58,6 @@ public class AdminRecTownService implements IAdminRecTownService {
 
 
 	// Oracle
-//	//전체조회
-//	@Override
-//	public List<ARecTownDTO> getAllRecTown(int requestPageNo,int perPagePostCount) {
-//		System.out.println("[RecTownService] getAll()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = recTownCntService.getTotalCount();
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return RecTownDAO.getAllRecTown(startPostNo,endPostNo);
-//	}
-//
-//	//필터링조회
-//	@Override
-//	public List<ARecTownDTO> selectRecTown(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//		System.out.println("[RecTownService] selectRecTown()");
-//
-//		int totalCount = 0;
-//		int startPostNo = 0;
-//		int endPostNo = 0;
-//
-//
-//		//키워드가 없는경우 다른 쿼리에 영향 없도록
-//		if(searchDTO.getKeyword() == null || searchDTO.getKeyword().isEmpty() || searchDTO.getKeyword().equals("")) {
-//			searchDTO.setKeyword("%나다%");
-//		}
-//
-//		totalCount = recTownCntService.selectRecTownCnt(searchDTO);
-//		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//		endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//		return RecTownDAO.selectRecTown(searchDTO,startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	@Override
 	public List<ARecTownDTO> getAllRecTown(int requestPageNo,int perPagePostCount) {
@@ -105,8 +68,9 @@ public class AdminRecTownService implements IAdminRecTownService {
 		totalCount = recTownCntService.getTotalCount();
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return RecTownDAO.getAllRecTown(startPostNo - 1, perPagePostCount);
+		return RecTownDAO.getAllRecTown(startPostNo,endPostNo);
 	}
 
 	//필터링조회
@@ -116,6 +80,7 @@ public class AdminRecTownService implements IAdminRecTownService {
 
 		int totalCount = 0;
 		int startPostNo = 0;
+		int endPostNo = 0;
 
 
 		//키워드가 없는경우 다른 쿼리에 영향 없도록
@@ -125,7 +90,42 @@ public class AdminRecTownService implements IAdminRecTownService {
 
 		totalCount = recTownCntService.selectRecTownCnt(searchDTO);
 		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-
-		return RecTownDAO.selectRecTown(searchDTO, startPostNo - 1, perPagePostCount);
+		endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+		return RecTownDAO.selectRecTown(searchDTO,startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	@Override
+//	public List<ARecTownDTO> getAllRecTown(int requestPageNo,int perPagePostCount) {
+//		System.out.println("[RecTownService] getAll()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = recTownCntService.getTotalCount();
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return RecTownDAO.getAllRecTown(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//필터링조회
+//	@Override
+//	public List<ARecTownDTO> selectRecTown(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//		System.out.println("[RecTownService] selectRecTown()");
+//
+//		int totalCount = 0;
+//		int startPostNo = 0;
+//
+//
+//		//키워드가 없는경우 다른 쿼리에 영향 없도록
+//		if(searchDTO.getKeyword() == null || searchDTO.getKeyword().isEmpty() || searchDTO.getKeyword().equals("")) {
+//			searchDTO.setKeyword("%나다%");
+//		}
+//
+//		totalCount = recTownCntService.selectRecTownCnt(searchDTO);
+//		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return RecTownDAO.selectRecTown(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
 }

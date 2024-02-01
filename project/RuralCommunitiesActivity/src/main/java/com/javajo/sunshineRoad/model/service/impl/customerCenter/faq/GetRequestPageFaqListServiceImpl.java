@@ -18,20 +18,20 @@ public class GetRequestPageFaqListServiceImpl implements GetRequestPageFaqListSe
 
 
 //    Oracle
-//    @Override
-//    public List<FaqInfoDTO> getRequestPageFaqList(int totalCount, int perPagePostCount, int requestPageNo, int faqTypeId){
-//
-//    	 int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//	     int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//	    	return faqDAO.getRequestPageFaqList(startPostNo, endPostNo, faqTypeId);
-//    }
-
-//    MySQL
     @Override
     public List<FaqInfoDTO> getRequestPageFaqList(int totalCount, int perPagePostCount, int requestPageNo, int faqTypeId){
-        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
 
-        return faqDAO.getRequestPageFaqList(startPostNo - 1, perPagePostCount, faqTypeId);
+    	 int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+	     int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+
+	    	return faqDAO.getRequestPageFaqList(startPostNo, endPostNo, faqTypeId);
     }
+
+//    MySQL
+//    @Override
+//    public List<FaqInfoDTO> getRequestPageFaqList(int totalCount, int perPagePostCount, int requestPageNo, int faqTypeId){
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return faqDAO.getRequestPageFaqList(startPostNo - 1, perPagePostCount, faqTypeId);
+//    }
 }

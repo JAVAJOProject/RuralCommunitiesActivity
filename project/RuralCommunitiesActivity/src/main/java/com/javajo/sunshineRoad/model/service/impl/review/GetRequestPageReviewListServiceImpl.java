@@ -18,19 +18,19 @@ public class GetRequestPageReviewListServiceImpl implements GetRequestPageReview
 
 
 //    Oracle
-//	@Override
-//	public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo, endPostNo);
-//    }
+	@Override
+	public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
+		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+
+        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo, endPostNo);
+    }
 
 //    MySQL
-    @Override
-    public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
-        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-
-        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo - 1, perPagePostCount);
-    }
+//    @Override
+//    public List<ReviewDTO> getRequestPageReviewList(int totalCount, int perPagePostCount, int aPostId, int requestPageNo) {
+//        int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//        return reviewListDAO.getRequestPageReviewContent(aPostId, startPostNo - 1, perPagePostCount);
+//    }
 }

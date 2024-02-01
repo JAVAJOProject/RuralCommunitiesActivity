@@ -6,7 +6,6 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageEventWinnerDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MypageEventDAO {
-
-	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
 	public int cancelEvent(int reportId) {
@@ -59,21 +56,21 @@ public class MypageEventDAO {
 
 	// 이벤트 참여 내역
 //	Oracle
-//	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
-//		int start = pageInfo.getStartList();
-//		int end = pageInfo.getEndList();
-//		System.out.println("uId" + uId);
-//		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
-//		return eventmapper.selectByMember(uId, start, end);
-//	}
+	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
+		int start = pageInfo.getStartList();
+		int end = pageInfo.getEndList();
+		System.out.println("uId" + uId);
+		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+		return eventmapper.selectByMember(uId, start, end);
+	}
 
 
 //	MySQL
-	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
-		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
-		System.out.println("uId" + uId);
-		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
-		return eventmapper.selectByMember(uId, start - 1, perPagePostNo);
-	}
+//	public List<MypageEventDTO> getEventList(long uId, PageInfo pageInfo) {
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		System.out.println("uId" + uId);
+//		MypageEventMapper eventmapper = sqlSession.getMapper(MypageEventMapper.class);
+//		return eventmapper.selectByMember(uId, start - 1, perPagePostNo);
+//	}
 }

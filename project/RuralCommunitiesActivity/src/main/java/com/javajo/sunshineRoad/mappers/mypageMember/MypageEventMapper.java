@@ -20,8 +20,8 @@ public interface MypageEventMapper {
 	public MypageEventDTO getEventInfo(int eventId);
 
 //	Oracle
-//	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
+	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 //	MySQL
-	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageEventDTO> selectByMember(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

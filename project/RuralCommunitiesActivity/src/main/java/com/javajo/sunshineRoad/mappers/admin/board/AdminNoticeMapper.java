@@ -1,15 +1,11 @@
 package com.javajo.sunshineRoad.mappers.admin.board;
 
-import java.util.List;
-
+import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeDTO;
+import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeImgDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityImgDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.ANoticeImgDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
+import java.util.List;
 
 @Mapper
 public interface AdminNoticeMapper {
@@ -42,11 +38,11 @@ public interface AdminNoticeMapper {
 		public List<ANoticeImgDTO> detailNoticeImg(int noticeId);
 
 		// Oracle
-//		//전체 조회
-//		public List<ANoticeDTO> getAllNotice(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+		//전체 조회
+		public List<ANoticeDTO> getAllNotice(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 		// MySQL
-		//전체 조회
-		public List<ANoticeDTO> getAllNotice(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//		//전체 조회
+//		public List<ANoticeDTO> getAllNotice(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 }

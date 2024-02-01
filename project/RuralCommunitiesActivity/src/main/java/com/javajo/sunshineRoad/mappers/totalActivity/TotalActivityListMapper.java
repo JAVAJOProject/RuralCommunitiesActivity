@@ -18,13 +18,13 @@ public interface TotalActivityListMapper {
 
 
 //	Oracle
-//	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId") int tId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId") long sId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId") int tId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId") long sId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 
 //	MySQL
-	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId") int tId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
-	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId") long sId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityData(@Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityByThemeListData(@Param("tId") int tId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListDTO> getRequestPageTotalActivityByRegionListData(@Param("sId") long sId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
 }

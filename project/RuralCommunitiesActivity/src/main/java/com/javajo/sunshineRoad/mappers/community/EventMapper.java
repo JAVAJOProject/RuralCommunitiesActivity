@@ -25,10 +25,10 @@ public interface EventMapper {
     public void updateEventStoryContent(EventStoryDTO eventStory);
 
     // Oracle
-//    public List<EventDTO> getRequestPageEventContent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//    public List<EventDTO> getRequestPageRecruitingEventDataOnly(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+    public List<EventDTO> getRequestPageEventContent(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+    public List<EventDTO> getRequestPageRecruitingEventDataOnly(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
     // MySQL
-    public List<EventDTO> getRequestPageEventContent(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
-    public List<EventDTO> getRequestPageRecruitingEventDataOnly(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//    public List<EventDTO> getRequestPageEventContent(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//    public List<EventDTO> getRequestPageRecruitingEventDataOnly(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 }

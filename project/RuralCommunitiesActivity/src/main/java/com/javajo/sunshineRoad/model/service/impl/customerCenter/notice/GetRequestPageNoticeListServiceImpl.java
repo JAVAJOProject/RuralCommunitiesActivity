@@ -18,32 +18,32 @@ public class GetRequestPageNoticeListServiceImpl implements GetRequestPageNotice
     
 
 //	Oracle
-//	@Override
-//	public List<NoticeListInfoDTO> getRequestPageNoticeList(int totalCount, int perPagePostCount, int requestPageNo, int noticeTypeId){
-//
-//		System.out.println("countservice"+totalCount+","+perPagePostCount+","+requestPageNo+","+noticeTypeId);
-//
-//		 int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//	     int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//	     System.out.println(startPostNo +","+endPostNo);
-//	    if (noticeTypeId == 0) {
-//	    	return noticeDAO.getRequestPageNoticeList(startPostNo, endPostNo);
-//	    } else {
-//	    	return noticeDAO.getRequestPageNoticeListList(startPostNo, endPostNo, noticeTypeId);
-//	    }
-//	}
+	@Override
+	public List<NoticeListInfoDTO> getRequestPageNoticeList(int totalCount, int perPagePostCount, int requestPageNo, int noticeTypeId){
+
+		System.out.println("countservice"+totalCount+","+perPagePostCount+","+requestPageNo+","+noticeTypeId);
+
+		 int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+	     int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+
+	     System.out.println(startPostNo +","+endPostNo);
+	    if (noticeTypeId == 0) {
+	    	return noticeDAO.getRequestPageNoticeList(startPostNo, endPostNo);
+	    } else {
+	    	return noticeDAO.getRequestPageNoticeListList(startPostNo, endPostNo, noticeTypeId);
+	    }
+	}
 
 
 //	MySQL
-	@Override
-	public List<NoticeListInfoDTO> getRequestPageNoticeList(int totalCount, int perPagePostCount, int requestPageNo, int noticeTypeId){
-		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-
-		if (noticeTypeId == 0) {
-			return noticeDAO.getRequestPageNoticeList(startPostNo - 1, perPagePostCount);
-		} else {
-			return noticeDAO.getRequestPageNoticeListList(startPostNo - 1, perPagePostCount, noticeTypeId);
-		}
-	}
+//	@Override
+//	public List<NoticeListInfoDTO> getRequestPageNoticeList(int totalCount, int perPagePostCount, int requestPageNo, int noticeTypeId){
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		if (noticeTypeId == 0) {
+//			return noticeDAO.getRequestPageNoticeList(startPostNo - 1, perPagePostCount);
+//		} else {
+//			return noticeDAO.getRequestPageNoticeListList(startPostNo - 1, perPagePostCount, noticeTypeId);
+//		}
+//	}
 }

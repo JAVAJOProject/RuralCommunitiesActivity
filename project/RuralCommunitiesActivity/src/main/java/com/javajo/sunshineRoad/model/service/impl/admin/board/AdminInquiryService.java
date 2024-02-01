@@ -50,49 +50,6 @@ public class AdminInquiryService implements IAdminInquiryService {
 
 
 	// Oracle
-//	@Override
-//	public List<AInquiryDTO> getAllInquiry(int requestPageNo, int perPagePostCount) {
-//		System.out.println("[AdminInquiryService] getAllInquiry()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = inquiryCntDAO.getAllInquiryCnt();
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return inquiryDAO.getAllInquiry(startPostNo,endPostNo);
-//	}
-//
-//	@Override
-//	public List<AInquiryDTO> selectInquiryStatus(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount) {
-//		System.out.println("[AdminInquiryService] selectInquiryStatus()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = inquiryCntDAO.selectInquiryStatusCnt(searchDTO);
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return inquiryDAO.selectInquiryStatus(searchDTO,startPostNo,endPostNo);
-//	}
-//
-//	@Override
-//	public List<AInquiryDTO> selectInquiryTypes(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount) {
-//		System.out.println("[AdminInquiryService] selectInquiryTypes()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = inquiryCntDAO.selectInquiryTypesCnt(searchDTO);
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return inquiryDAO.selectInquiryTypes(searchDTO,startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	@Override
 	public List<AInquiryDTO> getAllInquiry(int requestPageNo, int perPagePostCount) {
 		System.out.println("[AdminInquiryService] getAllInquiry()");
@@ -102,8 +59,9 @@ public class AdminInquiryService implements IAdminInquiryService {
 		totalCount = inquiryCntDAO.getAllInquiryCnt();
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return inquiryDAO.getAllInquiry(startPostNo - 1, perPagePostCount);
+		return inquiryDAO.getAllInquiry(startPostNo,endPostNo);
 	}
 
 	@Override
@@ -115,8 +73,9 @@ public class AdminInquiryService implements IAdminInquiryService {
 		totalCount = inquiryCntDAO.selectInquiryStatusCnt(searchDTO);
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return inquiryDAO.selectInquiryStatus(searchDTO, startPostNo - 1, perPagePostCount);
+		return inquiryDAO.selectInquiryStatus(searchDTO,startPostNo,endPostNo);
 	}
 
 	@Override
@@ -128,7 +87,48 @@ public class AdminInquiryService implements IAdminInquiryService {
 		totalCount = inquiryCntDAO.selectInquiryTypesCnt(searchDTO);
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return inquiryDAO.selectInquiryTypes(searchDTO, startPostNo - 1, perPagePostCount);
+		return inquiryDAO.selectInquiryTypes(searchDTO,startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	@Override
+//	public List<AInquiryDTO> getAllInquiry(int requestPageNo, int perPagePostCount) {
+//		System.out.println("[AdminInquiryService] getAllInquiry()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = inquiryCntDAO.getAllInquiryCnt();
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return inquiryDAO.getAllInquiry(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	@Override
+//	public List<AInquiryDTO> selectInquiryStatus(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount) {
+//		System.out.println("[AdminInquiryService] selectInquiryStatus()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = inquiryCntDAO.selectInquiryStatusCnt(searchDTO);
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return inquiryDAO.selectInquiryStatus(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
+//
+//	@Override
+//	public List<AInquiryDTO> selectInquiryTypes(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount) {
+//		System.out.println("[AdminInquiryService] selectInquiryTypes()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = inquiryCntDAO.selectInquiryTypesCnt(searchDTO);
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return inquiryDAO.selectInquiryTypes(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
 }

@@ -6,9 +6,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
 <!--	Oracle-->
-<!--	<util:properties id="infoProperty" location="classpath:properties/dev.info.properties" />-->
+	<util:properties id="infoProperty" location="classpath:properties/dev.info.properties" />
 <!--	MySQL-->
-	<util:properties id="infoProperty" location="classpath:properties/dev2.info.properties" />
+<!--	<util:properties id="infoProperty" location="classpath:properties/dev2.info.properties" />-->
 
 	<util:properties id="utilProperty" location="classpath:properties/util.info.properties" />
 <!--	<util:properties id="commInfoProperty" location="classpath:properties/comm.info.properties" />-->

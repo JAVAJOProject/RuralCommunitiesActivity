@@ -1,21 +1,18 @@
 package com.javajo.sunshineRoad.model.dao.mypageSeller;
 
-import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.javajo.sunshineRoad.mappers.mypageSeller.MypageSellerMeasurementMapper;
 import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageSellerMeasurementDTO;
-
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
 public class MypageSellerMeasurementDAO {
-	@Autowired
 	private final SqlSessionTemplate sqlSession; // MyBatis의 SqlSession을 주입 받습니다.
+
 	// 월별 예약자수 대비 취소자수
 	public List<MypageSellerMeasurementDTO> getMeasurementData() {
 		System.out.println("test");

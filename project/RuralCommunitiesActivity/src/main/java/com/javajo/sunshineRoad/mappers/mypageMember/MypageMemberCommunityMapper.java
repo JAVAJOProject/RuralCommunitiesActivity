@@ -9,8 +9,8 @@ public interface MypageMemberCommunityMapper {
 	public int selectCount(long uId);
 
 //	Oracle
-//   public List<MypageMemberCommunityDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
+   public List<MypageMemberCommunityDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 //   MySQL
-	public List<MypageMemberCommunityDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageMemberCommunityDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

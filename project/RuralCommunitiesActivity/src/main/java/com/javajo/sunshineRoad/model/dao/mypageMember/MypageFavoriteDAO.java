@@ -27,53 +27,53 @@ public class MypageFavoriteDAO {
 
 	// 로그인한 회원
 //	Oracle
-//	public List<MypageFavoriteDTO> getInfoEvent(long uId, PageInfo pageInfo) {
-//		System.out.println("FavoriteDAO " + uId);
-//		int start = pageInfo.getStartList();
-//		int end = pageInfo.getEndList();
-//
-//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-//		return favoritemapper.selectByMemberEvent(uId, start, end);
-//	}
-//	public List<MypageFavoriteDTO> getListInfoEvent(long uId, PageInfo pageInfo) {
-//		System.out.println("FavoriteDAO " + uId);
-//		int start = pageInfo.getStartList();
-//		int end = pageInfo.getEndList();
-//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-//		return favoritemapper.selectByFavoriteListEvent(uId, start, end);
-//	}
-//	public List<MypageFavoriteDTO> getInfoActivity(long uId, PageInfo pageInfo) {
-//		System.out.println("FavoriteDAO " + uId);
-//		int start = pageInfo.getStartList();
-//		int end = pageInfo.getEndList();
-//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-//		return favoritemapper.selectByFavoriteListActivity(uId, start, end);
-//	}
-
-
-//	MySQL
 	public List<MypageFavoriteDTO> getInfoEvent(long uId, PageInfo pageInfo) {
 		System.out.println("FavoriteDAO " + uId);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
+		int end = pageInfo.getEndList();
 
 		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoritemapper.selectByMemberEvent(uId, start - 1, perPagePostNo);
+		return favoritemapper.selectByMemberEvent(uId, start, end);
 	}
 	public List<MypageFavoriteDTO> getListInfoEvent(long uId, PageInfo pageInfo) {
 		System.out.println("FavoriteDAO " + uId);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
-
-		MypageFavoriteMapper favoriteMapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoriteMapper.selectByFavoriteListEvent(uId, start - 1, perPagePostNo);
+		int end = pageInfo.getEndList();
+		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+		return favoritemapper.selectByFavoriteListEvent(uId, start, end);
 	}
 	public List<MypageFavoriteDTO> getInfoActivity(long uId, PageInfo pageInfo) {
 		System.out.println("FavoriteDAO " + uId);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
-
+		int end = pageInfo.getEndList();
 		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
-		return favoritemapper.selectByFavoriteListActivity(uId, start - 1, perPagePostNo);
+		return favoritemapper.selectByFavoriteListActivity(uId, start, end);
 	}
+
+
+//	MySQL
+//	public List<MypageFavoriteDTO> getInfoEvent(long uId, PageInfo pageInfo) {
+//		System.out.println("FavoriteDAO " + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+//		return favoritemapper.selectByMemberEvent(uId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageFavoriteDTO> getListInfoEvent(long uId, PageInfo pageInfo) {
+//		System.out.println("FavoriteDAO " + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageFavoriteMapper favoriteMapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+//		return favoriteMapper.selectByFavoriteListEvent(uId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageFavoriteDTO> getInfoActivity(long uId, PageInfo pageInfo) {
+//		System.out.println("FavoriteDAO " + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageFavoriteMapper favoritemapper = sqlSession.getMapper(MypageFavoriteMapper.class);
+//		return favoritemapper.selectByFavoriteListActivity(uId, start - 1, perPagePostNo);
+//	}
 }

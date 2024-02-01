@@ -26,13 +26,13 @@ public interface MypageRequestEventMapper {
 
 
 //	Oracle
-//    public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
-//	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
-//	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
+    public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
+	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
+	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("end") int end);
 
 
 //	MySQL
-	public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
-	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
-	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageRequestEventDTO> getEventInfo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageEventWinnerDTO> selectParticipantByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageEventWinnerDTO> selectWinnerByNo(@Param("eventId") int eventId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

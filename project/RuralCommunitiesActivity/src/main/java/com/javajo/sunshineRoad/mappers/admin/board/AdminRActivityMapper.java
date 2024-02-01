@@ -38,23 +38,23 @@ public interface AdminRActivityMapper {
 
 
 	// Oracle
-//	//전체 조회
-//	public List<ARecActivityDTO> getAllRecActivity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//
-//	//작성일 조회
-//	public List<ARecActivityDTO> selectDateRecActivity(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo")int startPostNo,@Param("endPostNo")int endPostNo);
-//
-//	//필터링 조회 시군구 키워드
-//	public List<ARecActivityDTO> selectRecActivity (@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo")int startPostNo, @Param("endPostNo")int endPostNo);
-
-	// MySQL
 	//전체 조회
-	public List<ARecActivityDTO> getAllRecActivity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<ARecActivityDTO> getAllRecActivity(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//작성일 조회
-	public List<ARecActivityDTO> selectDateRecActivity(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo")int startPostNo,@Param("perPagePostCount") int perPagePostCount);
+	public List<ARecActivityDTO> selectDateRecActivity(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo")int startPostNo,@Param("endPostNo")int endPostNo);
 
 	//필터링 조회 시군구 키워드
-	public List<ARecActivityDTO> selectRecActivity (@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo")int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<ARecActivityDTO> selectRecActivity (@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo")int startPostNo, @Param("endPostNo")int endPostNo);
+
+	// MySQL
+//	//전체 조회
+//	public List<ARecActivityDTO> getAllRecActivity(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//
+//	//작성일 조회
+//	public List<ARecActivityDTO> selectDateRecActivity(@Param("searchDTO")ASearchDTO searchDTO,@Param("startPostNo")int startPostNo,@Param("perPagePostCount") int perPagePostCount);
+//
+//	//필터링 조회 시군구 키워드
+//	public List<ARecActivityDTO> selectRecActivity (@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo")int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 }

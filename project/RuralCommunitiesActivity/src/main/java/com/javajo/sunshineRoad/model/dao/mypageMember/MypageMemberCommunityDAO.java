@@ -5,7 +5,6 @@ import com.javajo.sunshineRoad.model.dto.mypageMember.MypageMemberCommunityDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MypageMemberCommunityDAO {
-	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
 //	public List<MypageMemberCommunityDTO> getActivityCount(long uId) {
@@ -46,22 +44,22 @@ public class MypageMemberCommunityDAO {
 
 
 //	Oracle
-//	public List<MypageMemberCommunityDTO> getInfo(long uId, PageInfo pageInfo) {
-//		System.out.println("uId" + uId);
-//		int start = pageInfo.getStartList();
-//		int end = pageInfo.getEndList();
-//		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
-//		return memCommunityMapper.selectByNo(uId, start, end);
-//	}
-
-
-//	MySQL
 	public List<MypageMemberCommunityDTO> getInfo(long uId, PageInfo pageInfo) {
 		System.out.println("uId" + uId);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
-
+		int end = pageInfo.getEndList();
 		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
-		return memCommunityMapper.selectByNo(uId, start - 1, perPagePostNo);
+		return memCommunityMapper.selectByNo(uId, start, end);
 	}
+
+
+//	MySQL
+//	public List<MypageMemberCommunityDTO> getInfo(long uId, PageInfo pageInfo) {
+//		System.out.println("uId" + uId);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//
+//		MypageMemberCommunityMapper memCommunityMapper = sqlSession.getMapper(MypageMemberCommunityMapper.class);
+//		return memCommunityMapper.selectByNo(uId, start - 1, perPagePostNo);
+//	}
 }

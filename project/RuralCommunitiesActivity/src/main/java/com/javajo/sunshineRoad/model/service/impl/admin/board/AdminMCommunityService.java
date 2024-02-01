@@ -36,22 +36,6 @@ public class AdminMCommunityService implements IAdminMCommunityService {
 
 
 	// Oracle
-//	//전체조회
-//	@Override
-//	public List<AMCommunityDTO> getAllmCommunity(int requestPageNo,int perPagePostCount) {
-//		System.out.println("[MCommunityService] getAllmCommunity()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = mCommunityCntDAO.getTotalCount();
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return mCommunityDAO.getAllmCommunity(startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	@Override
 	public List<AMCommunityDTO> getAllmCommunity(int requestPageNo,int perPagePostCount) {
@@ -62,7 +46,23 @@ public class AdminMCommunityService implements IAdminMCommunityService {
 		totalCount = mCommunityCntDAO.getTotalCount();
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return mCommunityDAO.getAllmCommunity(startPostNo - 1, perPagePostCount);
+		return mCommunityDAO.getAllmCommunity(startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	@Override
+//	public List<AMCommunityDTO> getAllmCommunity(int requestPageNo,int perPagePostCount) {
+//		System.out.println("[MCommunityService] getAllmCommunity()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = mCommunityCntDAO.getTotalCount();
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return mCommunityDAO.getAllmCommunity(startPostNo - 1, perPagePostCount);
+//	}
 }

@@ -37,17 +37,17 @@ public interface AdminRecTownMapper {
 
 
 	// Oracle
-//	//전체 조회
-//	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//
-//	//필터링 조회
-//	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	// MySQL
 	//전체 조회
-	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//필터링 조회
-	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO, @Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+
+	// MySQL
+//	//전체 조회
+//	public List<ARecTownDTO> getAllRecTown(@Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
+//
+//	//필터링 조회
+//	public List<ARecTownDTO> selectRecTown(@Param("searchDTO") ASearchDTO searchDTO, @Param("startPostNo") int startPostNo, @Param("perPagePostCount") int perPagePostCount);
 
 }

@@ -10,9 +10,9 @@ public interface MypageSellerCommunityMapper {
 
 
 //    Oracle
-//    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
+    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("end") int end);
 
 
 //    MySQL
-    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//    public List<MypageSellerCommunityDTO> selectByNo(@Param("sId") long sId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

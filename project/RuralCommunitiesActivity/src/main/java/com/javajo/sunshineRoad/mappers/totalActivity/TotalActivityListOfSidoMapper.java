@@ -12,8 +12,8 @@ public interface TotalActivityListOfSidoMapper {
 public int getTotalActivityCountByRegionOfSidoData(int sidoId);
 
 //	Oracle
-//	public List<ActSummaryListOfSidoDTO> getRequestPageTotalActivityByRegionOfSidoListData(@Param("sidoId") int sidoId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+	public List<ActSummaryListOfSidoDTO> getRequestPageTotalActivityByRegionOfSidoListData(@Param("sidoId") int sidoId, @Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 //	MySQL
-	public List<ActSummaryListOfSidoDTO> getRequestPageTotalActivityByRegionOfSidoListData(@Param("sidoId") int sidoId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
+//	public List<ActSummaryListOfSidoDTO> getRequestPageTotalActivityByRegionOfSidoListData(@Param("sidoId") int sidoId, @Param("startPostNo") int startPostNo, @Param("perPagePostNo") int perPagePostNo);
 }

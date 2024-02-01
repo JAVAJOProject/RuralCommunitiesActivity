@@ -51,36 +51,6 @@ public class AdminFaqService implements IAdminFaqService {
 
 
 	// Oracle
-//	//전체조회
-//	public List<AFaqDTO> getAllFaq(int requestPageNo, int perPagePostCount){
-//		System.out.println("[AdminFaqService] getAllFaq()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = faqCntDAO.getTotalCount();
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return faqDAO.getAllFaq(startPostNo,endPostNo);
-//	}
-//
-//	//필터링 조회
-//	public List<AFaqDTO> selectFaq(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount){
-//		System.out.println("[AdminFaqService] selectFaq()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = faqCntDAO.selectFaqCnt(searchDTO);
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return faqDAO.selectFaq(searchDTO,startPostNo,endPostNo);
-//	}
-
-
-	// MySQL
 	//전체조회
 	public List<AFaqDTO> getAllFaq(int requestPageNo, int perPagePostCount){
 		System.out.println("[AdminFaqService] getAllFaq()");
@@ -90,8 +60,9 @@ public class AdminFaqService implements IAdminFaqService {
 		totalCount = faqCntDAO.getTotalCount();
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return faqDAO.getAllFaq(startPostNo - 1, perPagePostCount);
+		return faqDAO.getAllFaq(startPostNo,endPostNo);
 	}
 
 	//필터링 조회
@@ -103,7 +74,36 @@ public class AdminFaqService implements IAdminFaqService {
 		totalCount = faqCntDAO.selectFaqCnt(searchDTO);
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return faqDAO.selectFaq(searchDTO, startPostNo - 1, perPagePostCount);
+		return faqDAO.selectFaq(searchDTO,startPostNo,endPostNo);
 	}
+
+
+	// MySQL
+//	//전체조회
+//	public List<AFaqDTO> getAllFaq(int requestPageNo, int perPagePostCount){
+//		System.out.println("[AdminFaqService] getAllFaq()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = faqCntDAO.getTotalCount();
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return faqDAO.getAllFaq(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//필터링 조회
+//	public List<AFaqDTO> selectFaq(ASearchDTO searchDTO, int requestPageNo, int perPagePostCount){
+//		System.out.println("[AdminFaqService] selectFaq()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = faqCntDAO.selectFaqCnt(searchDTO);
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return faqDAO.selectFaq(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
 }

@@ -65,21 +65,6 @@ public class AdminNoticeService implements IAdminNoticeService {
 
 
 	// Oracle
-//	//전체조회
-//	public List<ANoticeDTO> getAllNotice(int requestPageNo, int perPagePostCount){
-//		System.out.println("[AdminNoticeService] getAllNotice()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = noticeCntDAO.getTotalCount();
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return noticeDAO.getAllNotice(startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	public List<ANoticeDTO> getAllNotice(int requestPageNo, int perPagePostCount){
 		System.out.println("[AdminNoticeService] getAllNotice()");
@@ -89,7 +74,22 @@ public class AdminNoticeService implements IAdminNoticeService {
 		totalCount = noticeCntDAO.getTotalCount();
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return noticeDAO.getAllNotice(startPostNo - 1, perPagePostCount);
+		return noticeDAO.getAllNotice(startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	public List<ANoticeDTO> getAllNotice(int requestPageNo, int perPagePostCount){
+//		System.out.println("[AdminNoticeService] getAllNotice()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = noticeCntDAO.getTotalCount();
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return noticeDAO.getAllNotice(startPostNo - 1, perPagePostCount);
+//	}
 }

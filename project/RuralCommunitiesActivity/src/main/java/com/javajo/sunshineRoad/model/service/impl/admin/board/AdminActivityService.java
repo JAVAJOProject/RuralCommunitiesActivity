@@ -96,75 +96,6 @@ public class AdminActivityService implements IAdminActivityService {
 
 
 	// Oracle
-//	//전체조회
-//	@Override
-//	public List<AActivityDTO> getAllActivity(int requestPageNo, int perPagePostCount) {
-//		System.out.println("[ActivityService] getAllActivity()");
-//
-//		int totalCount = activityCntService.getTotalCount();
-//
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return activityDAO.getAllActivity(startPostNo,endPostNo);
-//	}
-//
-//	//필터링 조회 날짜
-//	@Override
-//	public List<AActivityDTO> selectDateActivity(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//		System.out.println("[ActivityService] selectDateActivity()");
-//
-//		int totalCount = 0;
-//		int startPostNo = 0;
-//		int endPostNo = 0;
-//
-//		//날짜가 혹시 없는경우 전체 조회
-////		if(searchDTO.getStartDate() == null || searchDTO.getStartDate().isEmpty() || searchDTO.getStartDate().equals("")) {
-////			searchDTO.setStartDate("2020-01-01");
-////			if(searchDTO.getEndDate() == null || searchDTO.getEndDate().isEmpty() || searchDTO.getEndDate().equals("")) {
-////				searchDTO.setEndDate("2025-12-31");
-////			}
-////		}
-//
-//
-//		switch(searchDTO.getDateType()) {
-//		case 1 :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					System.out.println(startPostNo+""+endPostNo);
-//					return activityDAO.selectStartDateActivity(searchDTO,startPostNo,endPostNo); //체험 시작일
-//
-//		case 2 :  	totalCount = activityCntService.selectEndDateActivityCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return activityDAO.selectEndDateActivity(searchDTO,startPostNo,endPostNo);  //체험 종료일
-//
-//		case 3 :  	totalCount = activityCntService.selectDateReservationCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return activityDAO.selectDateReservation(searchDTO,startPostNo,endPostNo);  //예약일?
-//
-//		default :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return activityDAO.selectStartDateActivity(searchDTO,startPostNo,endPostNo); //체험 시작일
-//		}
-//	}
-//
-//	//필터링조회
-//	@Override
-//	public List<AActivityDTO> selectActivity(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//		System.out.println("[ActivityService] selectActivity()");
-//
-//		int totalCount = activityCntService.selectActivityCnt(searchDTO);
-//		System.out.println(totalCount);
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//		int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//		return activityDAO.selectActivity(searchDTO,startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	@Override
 	public List<AActivityDTO> getAllActivity(int requestPageNo, int perPagePostCount) {
@@ -174,8 +105,9 @@ public class AdminActivityService implements IAdminActivityService {
 
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return activityDAO.getAllActivity(startPostNo - 1, perPagePostCount);
+		return activityDAO.getAllActivity(startPostNo,endPostNo);
 	}
 
 	//필터링 조회 날짜
@@ -185,6 +117,7 @@ public class AdminActivityService implements IAdminActivityService {
 
 		int totalCount = 0;
 		int startPostNo = 0;
+		int endPostNo = 0;
 
 		//날짜가 혹시 없는경우 전체 조회
 //		if(searchDTO.getStartDate() == null || searchDTO.getStartDate().isEmpty() || searchDTO.getStartDate().equals("")) {
@@ -196,22 +129,26 @@ public class AdminActivityService implements IAdminActivityService {
 
 
 		switch(searchDTO.getDateType()) {
-			case 1 :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				System.out.println(startPostNo - 1+"+"+perPagePostCount);
-				return activityDAO.selectStartDateActivity(searchDTO, startPostNo - 1, perPagePostCount); //체험 시작일
+		case 1 :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					System.out.println(startPostNo+""+endPostNo);
+					return activityDAO.selectStartDateActivity(searchDTO,startPostNo,endPostNo); //체험 시작일
 
-			case 2 :  	totalCount = activityCntService.selectEndDateActivityCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return activityDAO.selectEndDateActivity(searchDTO, startPostNo - 1, perPagePostCount);  //체험 종료일
+		case 2 :  	totalCount = activityCntService.selectEndDateActivityCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return activityDAO.selectEndDateActivity(searchDTO,startPostNo,endPostNo);  //체험 종료일
 
-			case 3 :  	totalCount = activityCntService.selectDateReservationCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return activityDAO.selectDateReservation(searchDTO, startPostNo - 1, perPagePostCount);  //예약일?
+		case 3 :  	totalCount = activityCntService.selectDateReservationCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return activityDAO.selectDateReservation(searchDTO,startPostNo,endPostNo);  //예약일?
 
-			default :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return activityDAO.selectStartDateActivity(searchDTO, startPostNo - 1, perPagePostCount); //체험 시작일
+		default :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return activityDAO.selectStartDateActivity(searchDTO,startPostNo,endPostNo); //체험 시작일
 		}
 	}
 
@@ -223,6 +160,69 @@ public class AdminActivityService implements IAdminActivityService {
 		int totalCount = activityCntService.selectActivityCnt(searchDTO);
 		System.out.println(totalCount);
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-		return activityDAO.selectActivity(searchDTO, startPostNo - 1, perPagePostCount);
+		int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+		return activityDAO.selectActivity(searchDTO,startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	@Override
+//	public List<AActivityDTO> getAllActivity(int requestPageNo, int perPagePostCount) {
+//		System.out.println("[ActivityService] getAllActivity()");
+//
+//		int totalCount = activityCntService.getTotalCount();
+//
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return activityDAO.getAllActivity(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//필터링 조회 날짜
+//	@Override
+//	public List<AActivityDTO> selectDateActivity(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//		System.out.println("[ActivityService] selectDateActivity()");
+//
+//		int totalCount = 0;
+//		int startPostNo = 0;
+//
+//		//날짜가 혹시 없는경우 전체 조회
+////		if(searchDTO.getStartDate() == null || searchDTO.getStartDate().isEmpty() || searchDTO.getStartDate().equals("")) {
+////			searchDTO.setStartDate("2020-01-01");
+////			if(searchDTO.getEndDate() == null || searchDTO.getEndDate().isEmpty() || searchDTO.getEndDate().equals("")) {
+////				searchDTO.setEndDate("2025-12-31");
+////			}
+////		}
+//
+//
+//		switch(searchDTO.getDateType()) {
+//			case 1 :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				System.out.println(startPostNo - 1+"+"+perPagePostCount);
+//				return activityDAO.selectStartDateActivity(searchDTO, startPostNo - 1, perPagePostCount); //체험 시작일
+//
+//			case 2 :  	totalCount = activityCntService.selectEndDateActivityCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return activityDAO.selectEndDateActivity(searchDTO, startPostNo - 1, perPagePostCount);  //체험 종료일
+//
+//			case 3 :  	totalCount = activityCntService.selectDateReservationCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return activityDAO.selectDateReservation(searchDTO, startPostNo - 1, perPagePostCount);  //예약일?
+//
+//			default :  	totalCount = activityCntService.selectStartDateActivityCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return activityDAO.selectStartDateActivity(searchDTO, startPostNo - 1, perPagePostCount); //체험 시작일
+//		}
+//	}
+//
+//	//필터링조회
+//	@Override
+//	public List<AActivityDTO> selectActivity(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//		System.out.println("[ActivityService] selectActivity()");
+//
+//		int totalCount = activityCntService.selectActivityCnt(searchDTO);
+//		System.out.println(totalCount);
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//		return activityDAO.selectActivity(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
 }

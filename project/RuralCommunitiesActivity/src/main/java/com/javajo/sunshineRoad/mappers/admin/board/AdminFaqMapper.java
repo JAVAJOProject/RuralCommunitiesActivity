@@ -1,14 +1,11 @@
 package com.javajo.sunshineRoad.mappers.admin.board;
 
 
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AActivityImgDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AEventDTO;
-import com.javajo.sunshineRoad.model.dto.admin.board.AEventImgDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.AFaqDTO;
 import com.javajo.sunshineRoad.model.dto.admin.board.ASearchDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 @Mapper
@@ -31,18 +28,18 @@ public interface AdminFaqMapper {
 	public List<AFaqDTO> detailFaq(int faqId);
 
 	// Oracle
-//	//전체 조회
-//	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-//
-//	//필터링 조회
-//	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
-
-	// MySQL
 	//전체 조회
-	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
+	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
 
 	//필터링 조회
-	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
+	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param("endPostNo") int endPostNo);
+
+	// MySQL
+//	//전체 조회
+//	public List<AFaqDTO> getAllFaq(@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
+//
+//	//필터링 조회
+//	public List<AFaqDTO> selectFaq(@Param("searchDTO") ASearchDTO searchDTO,@Param("startPostNo") int startPostNo, @Param(" perPagePostCount") int perPagePostCount);
 
 
 

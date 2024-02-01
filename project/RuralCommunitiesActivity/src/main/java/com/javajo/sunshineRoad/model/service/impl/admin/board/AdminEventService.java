@@ -57,103 +57,18 @@ public class AdminEventService implements IAdminEventService {
 
 
 	// Oracle
-//	//전체조회
-//	@Override
-//	public List<AEventDTO> getAllEvent(int requestPageNo,int perPagePostCount) {
-//		System.out.println("[EventService] getAllEvent()");
-//		int totalCount = 0;
-//
-//		totalCount = eventCntService.getTotalCount();
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return eventDAO.getAllEvent(startPostNo,endPostNo);
-//	}
-//
-//	//필터링 조회 날짜
-//	@Override
-//	public List<AEventDTO> selectEventDate(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//		System.out.println("[EventService] selectEventDate()");
-//
-//		int totalCount = 0;
-//		int startPostNo = 0;
-//		int endPostNo = 0;
-//
-//
-//		System.out.println(searchDTO.getStartDate() + ","+searchDTO.getEndDate() );
-//		//날짜가 혹시 없는경우 전체 조회    이게 안먹히네..
-//		if(searchDTO.getStartDate() == null || searchDTO.getStartDate().isEmpty() || searchDTO.getStartDate().equals("")) {
-//			searchDTO.setStartDate("2017-01-01");
-//			if(searchDTO.getEndDate() == null || searchDTO.getEndDate().isEmpty() || searchDTO.getEndDate().equals("")) {
-//				searchDTO.setEndDate("2025-12-31");
-//			}
-//		}
-//
-//
-//		switch(searchDTO.getDateType()) {
-//		case 1 :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//					System.out.println(startPostNo +","+endPostNo+",");
-//					return eventDAO.selectEventRecruitDate(searchDTO,startPostNo,endPostNo); //이벤트 응모 시작
-//
-//		case 2 :  	totalCount = eventCntService.selectEventStartDateCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return eventDAO.selectEventStartDate(searchDTO,startPostNo,endPostNo);  //이벤트 진행 시작
-//
-//		case 3 :  	totalCount = eventCntService.selectEventCreatedDateCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return eventDAO.selectEventCreatedDate(searchDTO,startPostNo,endPostNo);  //작성일
-//
-//		default :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
-//					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//					return eventDAO.selectEventRecruitDate(searchDTO,startPostNo,endPostNo); //이벤트 응모 시작
-//		}
-//	}
-//
-//	//필터링조회 지역,모집방식(상태는 3.5 default)
-//	@Override
-//	public List<AEventDTO> selectEventRequest(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//		System.out.println("[EventService] selectEventRequest()");
-//
-//		int totalCount = 0;
-//		int startPostNo = 0;
-//		int endPostNo = 0;
-//
-////		모집방식 theme
-////		1	선착순
-////		2	랜덤추첨
-////		3	조건에 맞는 신청만
-////		4	사연뽑기
-////		상태코드  3.5만 보이게 세팅
-////		1	요청완료
-////		2	검토중
-////		3	승인 및 게시 대기
-////		4	기각
-////		5	종료
-//		totalCount = eventCntService.selectEventCnt(searchDTO);
-//		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//		endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//		return eventDAO.selectEvent(searchDTO,startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	@Override
-	public List<AEventDTO> getAllEvent(int requestPageNo, int perPagePostCount) {
+	public List<AEventDTO> getAllEvent(int requestPageNo,int perPagePostCount) {
 		System.out.println("[EventService] getAllEvent()");
 		int totalCount = 0;
 
 		totalCount = eventCntService.getTotalCount();
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return eventDAO.getAllEvent(startPostNo - 1, perPagePostCount);
+		return eventDAO.getAllEvent(startPostNo,endPostNo);
 	}
 
 	//필터링 조회 날짜
@@ -163,6 +78,7 @@ public class AdminEventService implements IAdminEventService {
 
 		int totalCount = 0;
 		int startPostNo = 0;
+		int endPostNo = 0;
 
 
 		System.out.println(searchDTO.getStartDate() + ","+searchDTO.getEndDate() );
@@ -176,23 +92,27 @@ public class AdminEventService implements IAdminEventService {
 
 
 		switch(searchDTO.getDateType()) {
-			case 1 :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+		case 1 :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-				System.out.println(startPostNo - 1 +"+"+ perPagePostCount);
-				return eventDAO.selectEventRecruitDate(searchDTO, startPostNo - 1, perPagePostCount); //이벤트 응모 시작
+					System.out.println(startPostNo +","+endPostNo+",");
+					return eventDAO.selectEventRecruitDate(searchDTO,startPostNo,endPostNo); //이벤트 응모 시작
 
-			case 2 :  	totalCount = eventCntService.selectEventStartDateCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return eventDAO.selectEventStartDate(searchDTO, startPostNo - 1, perPagePostCount);  //이벤트 진행 시작
+		case 2 :  	totalCount = eventCntService.selectEventStartDateCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return eventDAO.selectEventStartDate(searchDTO,startPostNo,endPostNo);  //이벤트 진행 시작
 
-			case 3 :  	totalCount = eventCntService.selectEventCreatedDateCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return eventDAO.selectEventCreatedDate(searchDTO, startPostNo - 1, perPagePostCount);  //작성일
+		case 3 :  	totalCount = eventCntService.selectEventCreatedDateCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return eventDAO.selectEventCreatedDate(searchDTO,startPostNo,endPostNo);  //작성일
 
-			default :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
-				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-				return eventDAO.selectEventRecruitDate(searchDTO, startPostNo - 1, perPagePostCount); //이벤트 응모 시작
+		default :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
+					startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+					endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+					return eventDAO.selectEventRecruitDate(searchDTO,startPostNo,endPostNo); //이벤트 응모 시작
 		}
 	}
 
@@ -203,6 +123,7 @@ public class AdminEventService implements IAdminEventService {
 
 		int totalCount = 0;
 		int startPostNo = 0;
+		int endPostNo = 0;
 
 //		모집방식 theme
 //		1	선착순
@@ -217,6 +138,85 @@ public class AdminEventService implements IAdminEventService {
 //		5	종료
 		totalCount = eventCntService.selectEventCnt(searchDTO);
 		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-		return eventDAO.selectEvent(searchDTO, startPostNo - 1, perPagePostCount);
+		endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+		return eventDAO.selectEvent(searchDTO,startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	@Override
+//	public List<AEventDTO> getAllEvent(int requestPageNo, int perPagePostCount) {
+//		System.out.println("[EventService] getAllEvent()");
+//		int totalCount = 0;
+//
+//		totalCount = eventCntService.getTotalCount();
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return eventDAO.getAllEvent(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//필터링 조회 날짜
+//	@Override
+//	public List<AEventDTO> selectEventDate(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//		System.out.println("[EventService] selectEventDate()");
+//
+//		int totalCount = 0;
+//		int startPostNo = 0;
+//
+//
+//		System.out.println(searchDTO.getStartDate() + ","+searchDTO.getEndDate() );
+//		//날짜가 혹시 없는경우 전체 조회    이게 안먹히네..
+//		if(searchDTO.getStartDate() == null || searchDTO.getStartDate().isEmpty() || searchDTO.getStartDate().equals("")) {
+//			searchDTO.setStartDate("2017-01-01");
+//			if(searchDTO.getEndDate() == null || searchDTO.getEndDate().isEmpty() || searchDTO.getEndDate().equals("")) {
+//				searchDTO.setEndDate("2025-12-31");
+//			}
+//		}
+//
+//
+//		switch(searchDTO.getDateType()) {
+//			case 1 :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//				System.out.println(startPostNo - 1 +"+"+ perPagePostCount);
+//				return eventDAO.selectEventRecruitDate(searchDTO, startPostNo - 1, perPagePostCount); //이벤트 응모 시작
+//
+//			case 2 :  	totalCount = eventCntService.selectEventStartDateCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return eventDAO.selectEventStartDate(searchDTO, startPostNo - 1, perPagePostCount);  //이벤트 진행 시작
+//
+//			case 3 :  	totalCount = eventCntService.selectEventCreatedDateCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return eventDAO.selectEventCreatedDate(searchDTO, startPostNo - 1, perPagePostCount);  //작성일
+//
+//			default :  	totalCount = eventCntService.selectEventRecruitDateCnt(searchDTO);
+//				startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//				return eventDAO.selectEventRecruitDate(searchDTO, startPostNo - 1, perPagePostCount); //이벤트 응모 시작
+//		}
+//	}
+//
+//	//필터링조회 지역,모집방식(상태는 3.5 default)
+//	@Override
+//	public List<AEventDTO> selectEventRequest(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//		System.out.println("[EventService] selectEventRequest()");
+//
+//		int totalCount = 0;
+//		int startPostNo = 0;
+//
+////		모집방식 theme
+////		1	선착순
+////		2	랜덤추첨
+////		3	조건에 맞는 신청만
+////		4	사연뽑기
+////		상태코드  3.5만 보이게 세팅
+////		1	요청완료
+////		2	검토중
+////		3	승인 및 게시 대기
+////		4	기각
+////		5	종료
+//		totalCount = eventCntService.selectEventCnt(searchDTO);
+//		startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//		return eventDAO.selectEvent(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
 }

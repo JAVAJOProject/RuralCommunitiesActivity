@@ -11,9 +11,9 @@ public interface MypageReservationMapper {
 	public MypageReservationDTO movepage(int reservationId);
 
 //	Oracle
-//	public List<MypageReservationDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
+	public List<MypageReservationDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("end") int end);
 
 
 //	MySQL
-	public List<MypageReservationDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
+//	public List<MypageReservationDTO> selectByNo(@Param("uId") long uId, @Param("start") int start, @Param("perPagePostNo") int perPagePostNo);
 }

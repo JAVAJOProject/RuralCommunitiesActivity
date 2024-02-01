@@ -6,7 +6,6 @@ import com.javajo.sunshineRoad.model.dto.mypageSeller.MypageRequestEventDTO;
 import com.javajo.sunshineRoad.model.dto.page.PageInfo;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,9 +13,7 @@ import java.util.List;
 @Repository
 @RequiredArgsConstructor
 public class MypageRequestEventDAO {
-	
-	@Autowired
-	 private final SqlSessionTemplate sqlSession;	
+	 private final SqlSessionTemplate sqlSession;
 	 
 	// 이벤트 상세보기  ===> 시향언니
 	public MypageRequestEventDTO getEventInfo(int eventId) {
@@ -61,52 +58,52 @@ public class MypageRequestEventDAO {
 
 
 //	Oracle
-//	//요청한 이벤트 내역
-//	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
-//	    System.out.println("pageInfo" + pageInfo);
-//	    int start = pageInfo.getStartList();
-//	    int end = pageInfo.getEndList();
-//	    MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//	    return requestEventMapper.getEventInfo(sId, start, end);
-//	}
-//	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
-//		System.out.println("pageInfo" + pageInfo);
-//		int start = pageInfo.getStartList();
-//	    int end = pageInfo.getEndList();
-//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//		return requestEventMapper.selectParticipantByNo(eventId, start, end);
-//	}
-//	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
-//		System.out.println("pageInfo" + pageInfo);
-//		int start = pageInfo.getStartList();
-//	    int end = pageInfo.getEndList();
-//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-//		return requestEventMapper.selectWinnerByNo(eventId, start, end);
-//	}
-
-
-//	MySQL
+	//요청한 이벤트 내역
 	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
-		System.out.println("pageInfo" + pageInfo);
-		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
-		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.getEventInfo(sId, start - 1, perPagePostNo);
+	    System.out.println("pageInfo" + pageInfo);
+	    int start = pageInfo.getStartList();
+	    int end = pageInfo.getEndList();
+	    MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+	    return requestEventMapper.getEventInfo(sId, start, end);
 	}
 	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
 		System.out.println("pageInfo" + pageInfo);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
+	    int end = pageInfo.getEndList();
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectParticipantByNo(eventId, start - 1, perPagePostNo);
+		return requestEventMapper.selectParticipantByNo(eventId, start, end);
 	}
 	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
 		System.out.println("pageInfo" + pageInfo);
 		int start = pageInfo.getStartList();
-		int perPagePostNo = pageInfo.getListLimit();
+	    int end = pageInfo.getEndList();
 		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
-		return requestEventMapper.selectWinnerByNo(eventId, start - 1, perPagePostNo);
+		return requestEventMapper.selectWinnerByNo(eventId, start, end);
 	}
+
+
+//	MySQL
+//	public List<MypageRequestEventDTO> getEventList(long sId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.getEventInfo(sId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageEventWinnerDTO> getParticipantList(int eventId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.selectParticipantByNo(eventId, start - 1, perPagePostNo);
+//	}
+//	public List<MypageEventWinnerDTO> getWinnerList(int eventId, PageInfo pageInfo) {
+//		System.out.println("pageInfo" + pageInfo);
+//		int start = pageInfo.getStartList();
+//		int perPagePostNo = pageInfo.getListLimit();
+//		MypageRequestEventMapper requestEventMapper = sqlSession.getMapper(MypageRequestEventMapper.class);
+//		return requestEventMapper.selectWinnerByNo(eventId, start - 1, perPagePostNo);
+//	}
 }
 	
 		//return selectMember;

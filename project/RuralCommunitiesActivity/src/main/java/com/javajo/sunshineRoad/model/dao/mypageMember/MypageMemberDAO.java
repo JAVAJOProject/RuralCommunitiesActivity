@@ -1,18 +1,14 @@
 package com.javajo.sunshineRoad.model.dao.mypageMember;
 
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
 import com.javajo.sunshineRoad.mappers.mypageMember.MypageMemberMapper;
 import com.javajo.sunshineRoad.model.dto.mypageMember.MypageMemberDTO;
-
 import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
 public class MypageMemberDAO {
-	@Autowired
 	private final SqlSessionTemplate sqlSession;
 
 	// 로그인한 회원

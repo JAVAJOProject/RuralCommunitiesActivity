@@ -96,66 +96,6 @@ public class AdminSellerService implements IAdminSellerService {
 
 
 	// Oracle
-//	//전체조회
-//	@Override
-//	public List<AdminSellerDTO> getAllSeller(int requestPageNo, int perPagePostCount){
-//		System.out.println("[SellerService] getAllSeller()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = adminSellerCntDAO.getTotalCount();
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//		return adminSellerDAO.getAllSeller(startPostNo,endPostNo);
-//	}
-//
-//	// 가입일 기간 조회
-//	@Override
-//	public List<AdminSellerDTO> selectSellerDate(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
-//
-//		System.out.println("[SellerService] selectSellerDATE(map)");
-//
-//		int totalCount = 0;
-//		totalCount = adminSellerCntDAO.selectSellerDATECnt(searchDTO);
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//        return adminSellerDAO.selectSellerDATE(searchDTO,startPostNo,endPostNo);
-//	}
-//
-//	//가입승인조회
-//	@Override
-//	public List<AdminSellerDTO> appSeller(int requestPageNo, int perPagePostCount) {
-//		System.out.println("[SellerService] appSeller()");
-//
-//		int totalCount = 0;
-//
-//		totalCount = adminSellerCntDAO.appSellerCnt();
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//        return adminSellerDAO.appSeller(startPostNo,endPostNo);
-//	}
-//
-//	//작성한글 보기
-//	@Override
-//	public List<AdminSellerDTO> wrotePost(int id,int requestPageNo, int perPagePostCount) {
-//
-//		System.out.println("[SellerService] wrotePost()");
-//
-//		int totalCount = 0;
-//		totalCount = adminSellerCntDAO.wrotePostCnt(id);
-//
-//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-//        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
-//
-//        return adminSellerDAO.wrotePost(id,startPostNo,endPostNo);
-//	}
-
-	// MySQL
 	//전체조회
 	@Override
 	public List<AdminSellerDTO> getAllSeller(int requestPageNo, int perPagePostCount){
@@ -166,8 +106,9 @@ public class AdminSellerService implements IAdminSellerService {
 		totalCount = adminSellerCntDAO.getTotalCount();
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return adminSellerDAO.getAllSeller(startPostNo - 1, perPagePostCount);
+		return adminSellerDAO.getAllSeller(startPostNo,endPostNo);
 	}
 
 	// 가입일 기간 조회
@@ -180,8 +121,8 @@ public class AdminSellerService implements IAdminSellerService {
 		totalCount = adminSellerCntDAO.selectSellerDATECnt(searchDTO);
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
-
-		return adminSellerDAO.selectSellerDATE(searchDTO, startPostNo - 1, perPagePostCount);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
+        return adminSellerDAO.selectSellerDATE(searchDTO,startPostNo,endPostNo);
 	}
 
 	//가입승인조회
@@ -194,23 +135,82 @@ public class AdminSellerService implements IAdminSellerService {
 		totalCount = adminSellerCntDAO.appSellerCnt();
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return adminSellerDAO.appSeller(startPostNo - 1, perPagePostCount);
+        return adminSellerDAO.appSeller(startPostNo,endPostNo);
 	}
 
 	//작성한글 보기
 	@Override
-	public List<AdminSellerDTO> wrotePost(long sId, int requestPageNo, int perPagePostCount) {
+	public List<AdminSellerDTO> wrotePost(long id, int requestPageNo, int perPagePostCount) {
 
 		System.out.println("[SellerService] wrotePost()");
 
 		int totalCount = 0;
-		totalCount = adminSellerCntDAO.wrotePostCnt(sId);
+		totalCount = adminSellerCntDAO.wrotePostCnt(id);
 
 		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+        int endPostNo = offSetBasedPaginationUtils.findEndPostNo(totalCount, perPagePostCount, requestPageNo);
 
-		return adminSellerDAO.wrotePost(sId, startPostNo - 1, perPagePostCount);
+        return adminSellerDAO.wrotePost(id,startPostNo,endPostNo);
 	}
+
+	// MySQL
+//	//전체조회
+//	@Override
+//	public List<AdminSellerDTO> getAllSeller(int requestPageNo, int perPagePostCount){
+//		System.out.println("[SellerService] getAllSeller()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = adminSellerCntDAO.getTotalCount();
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return adminSellerDAO.getAllSeller(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	// 가입일 기간 조회
+//	@Override
+//	public List<AdminSellerDTO> selectSellerDate(ASearchDTO searchDTO,int requestPageNo, int perPagePostCount) {
+//
+//		System.out.println("[SellerService] selectSellerDATE(map)");
+//
+//		int totalCount = 0;
+//		totalCount = adminSellerCntDAO.selectSellerDATECnt(searchDTO);
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return adminSellerDAO.selectSellerDATE(searchDTO, startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//가입승인조회
+//	@Override
+//	public List<AdminSellerDTO> appSeller(int requestPageNo, int perPagePostCount) {
+//		System.out.println("[SellerService] appSeller()");
+//
+//		int totalCount = 0;
+//
+//		totalCount = adminSellerCntDAO.appSellerCnt();
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return adminSellerDAO.appSeller(startPostNo - 1, perPagePostCount);
+//	}
+//
+//	//작성한글 보기
+//	@Override
+//	public List<AdminSellerDTO> wrotePost(long sId, int requestPageNo, int perPagePostCount) {
+//
+//		System.out.println("[SellerService] wrotePost()");
+//
+//		int totalCount = 0;
+//		totalCount = adminSellerCntDAO.wrotePostCnt(sId);
+//
+//		int startPostNo = offSetBasedPaginationUtils.findStartPostNo(totalCount, perPagePostCount, requestPageNo);
+//
+//		return adminSellerDAO.wrotePost(sId, startPostNo - 1, perPagePostCount);
+//	}
 
 	
 }
